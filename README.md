@@ -3,7 +3,8 @@
 VTJ 一款基于 Vue3 + Typescript 的低代码开发工具，内置了设计器引擎、渲染器和代码生成器。
 
 ## 演示
-[http://8.134.154.175/](http://8.134.154.175/)
+
+[vtj.design](http://vtj.design/)
 
 ## VTJ 的特点
 
@@ -13,7 +14,6 @@ VTJ 一款基于 Vue3 + Typescript 的低代码开发工具，内置了设计器
 - 内置丰富组件提供支持，可定制可复用区块组件。
 
 ![输入图片说明](dev/public/preview.png)
-
 
 ## 开发环境要求
 
@@ -142,4 +142,5 @@ export interface ProviderOptions {
 ```
 
 ## 交流群
+
 ![输入图片说明](dev/public/ding.jpg)
