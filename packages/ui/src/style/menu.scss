@@ -1,0 +1,9 @@
+@use 'core' as *;
+
+@include b(menu) {
+  border-right: none !important;
+  .x-icon {
+    font-size: inherit;
+    width: 14px;
+  }
+}

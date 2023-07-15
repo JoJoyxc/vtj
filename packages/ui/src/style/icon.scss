@@ -1,0 +1,20 @@
+@use 'core' as *;
+
+@include b(icon) {
+  line-height: 1;
+  @include when(pointer) {
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    transform: translateY(1px);
+  }
+
+  & + .x-icon {
+    margin-left: 10px;
+  }
+}

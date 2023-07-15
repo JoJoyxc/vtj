@@ -1,0 +1,63 @@
+{
+  "name": "vtj-core",
+  "private": true,
+  "devDependencies": {
+    "lerna": "7.1.1",
+    "axios": "1.4.0",
+    "fs-extra": "11.1.1"
+  },
+  "scripts": {
+    "setup": "pnpm install --registry=https://registry.npmmirror.com  && pnpm run build",
+    "reset": "pnpm run clean && pnpm run setup",
+    "outdate": "pnpm outdated -r",
+    "copy": "node scripts/copy.mjs",
+    "copy:uni": "node scripts/uni.mjs",
+    "sync": "node scripts/sync.mjs",
+    "add:package": "cd packages && node vtj/index.js",
+    "add:ui": "node packages/vtj/index.js --ui",
+    "dev": "pnpm run copy && cd dev && pnpm run dev",
+    "dev:boot": "pnpm --filter @vtj/boot dev",
+    "dev:lib": "pnpm run copy && cd dev && pnpm run dev:lib",
+    "dev:mui": "pnpm run copy:uni && cd packages/mui && pnpm run dev",
+    "dev:docs": "cd packages/docs && npm run docs:dev",
+    "dev:ide": "pnpm run copy && pnpm --filter @vtj/ide dev",
+    "preview": "cd dev && pnpm run preview",
+    "preview:mui": "cd packages/mui && pnpm run preview",
+    "preview:ide": "pnpm --filter @vtj/ide preview",
+    "preview:boot": "pnpm --filter @vtj/boot preview",
+    "clean": "lerna clean -y && node scripts/clean.mjs",
+    "build": "pnpm run copy:uni && lerna run --no-private build && node scripts/mui.mjs",
+    "build:dev": "pnpm run copy && cd dev && pnpm run build",
+    "build:boot": "pnpm --filter @vtj/boot build",
+    "build:ide": "pnpm run copy && pnpm run copy && pnpm --filter @vtj/ide build",
+    "build:ui": "pnpm --filter @vtj/ui build",
+    "build:utils": "pnpm --filter @vtj/utils build",
+    "build:cli": "pnpm --filter @vtj/cli build",
+    "build:coder": "pnpm --filter @vtj/coder build",
+    "build:engine": "pnpm --filter @vtj/engine build",
+    "build:runtime": "pnpm --filter @vtj/runtime build",
+    "build:icons": "pnpm --filter @vtj/icons build",
+    "build:adapter": "pnpm --filter @vtj/adapter build",
+    "build:assets": "pnpm --filter @vtj/assets build",
+    "build:vtj": "pnpm --filter create-vtj build",
+    "build:mui": "pnpm run copy:uni && pnpm --filter @vtj/mui build && node scripts/mui.mjs",
+    "test:utils": "cd packages/utils && pnpm run test:unit",
+    "test:icons": "cd packages/icons && pnpm run test:unit",
+    "coverage": "lerna run coverage",
+    "release:test": "lerna publish from-package --dist-tag test --no-private --yes && pnpm run sync",
+    "release:prod": "lerna publish from-package --force-publish --no-private --yes && pnpm run sync",
+    "publish:test": "pnpm run setup && lerna version prerelease --yes && pnpm run release:test",
+    "publish:prepatch": "pnpm run setup && lerna version prepatch --yes && pnpm run release:test",
+    "publish:preminor": "pnpm run setup && lerna version preminor --yes && pnpm run release:test",
+    "publish:premajor": "pnpm run setup && lerna version premajor --yes && pnpm run release:test",
+    "publish:prod": "pnpm run setup && pnpm run ci:update && lerna version patch --yes && pnpm run release:prod",
+    "ci:update": "git add . && git commit -m \"ci update files\" && git push"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "^pnpm@7.27.0",
+  "publishConfig": {
+    "access": "public"
+  }
+}

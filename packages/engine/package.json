@@ -1,0 +1,76 @@
+{
+  "name": "@vtj/engine",
+  "private": false,
+  "version": "0.4.4",
+  "type": "module",
+  "scripts": {
+    "setup": "npm install --registry=https://registry.npmmirror.com",
+    "dev": "cross-env ENV_TYPE=dev vite",
+    "build": " npm run build:runtime && npm run build:shared && vue-tsc && vite build",
+    "build:runtime": "vue-tsc && cross-env FILE=runtime vite build",
+    "build:shared": "vue-tsc && cross-env FILE=shared vite build",
+    "build:cdn": "vue-tsc && cross-env CDN=true vite build",
+    "test:unit": "vitest --environment jsdom",
+    "coverage": "vitest run --coverage --environment jsdom"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "@vtj/icons": "workspace:*",
+    "@vtj/ui": "workspace:*",
+    "@vtj/utils": "workspace:*",
+    "@vueuse/core": "10.2.1",
+    "mitt": "3.0.1",
+    "monaco-editor": "0.39.0",
+    "prettier": "2.8.8",
+    "zen-logger": "1.1.4"
+  },
+  "devDependencies": {
+    "@vtj/cli": "workspace:*",
+    "@types/prettier": "2.7.3"
+  },
+  "files": [
+    "lib",
+    "types",
+    "cdn"
+  ],
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "types/index.d.ts",
+  "exports": {
+    "./lib/style.css": {
+      "import": "./lib/style.css",
+      "require": "./lib/style.css"
+    },
+    "./lib/runtime": {
+      "types": "./types/runtime.d.ts",
+      "import": "./lib/runtime.js",
+      "require": "./lib/runtime.js"
+    },
+    "./runtime": {
+      "types": "./types/runtime.d.ts",
+      "import": "./lib/runtime.js",
+      "require": "./lib/runtime.js"
+    },
+    "./lib/shared": {
+      "types": "./types/shared.d.ts",
+      "import": "./lib/shared.js",
+      "require": "./lib/shared.js"
+    },
+    "./shared": {
+      "types": "./types/shared.d.ts",
+      "import": "./lib/shared.js",
+      "require": "./lib/shared.js"
+    },
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "1f54d735e45fbbff75a090788d3f074b7babfc81"
+}

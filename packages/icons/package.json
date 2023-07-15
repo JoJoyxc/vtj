@@ -1,0 +1,45 @@
+{
+  "name": "@vtj/icons",
+  "private": false,
+  "version": "0.4.4",
+  "type": "module",
+  "scripts": {
+    "setup": "pnpm install --registry=https://registry.npmmirror.com",
+    "dev": "cross-env ENV_TYPE=dev vite",
+    "svg2vue": "node scripts/svg.mjs",
+    "build": "npm run svg2vue && vue-tsc && vite build && pnpm run build:cdn",
+    "build:cdn": "vue-tsc && cross-env CDN=true vite build",
+    "test:unit": "vitest --environment jsdom",
+    "coverage": "vitest run --coverage --environment jsdom"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "2.1.0"
+  },
+  "devDependencies": {
+    "@vtj/cli": "workspace:*",
+    "xml2js": "0.6.0"
+  },
+  "files": [
+    "lib",
+    "types",
+    "cdn"
+  ],
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "types/index.d.ts",
+  "exports": {
+    "./lib/style.css": "./lib/style.css",
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "1f54d735e45fbbff75a090788d3f074b7babfc81"
+}

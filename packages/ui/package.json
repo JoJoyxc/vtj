@@ -1,0 +1,46 @@
+{
+  "name": "@vtj/ui",
+  "private": false,
+  "version": "0.4.4",
+  "type": "module",
+  "scripts": {
+    "setup": "pnpm install --registry=https://registry.npmmirror.com",
+    "dev": "cross-env ENV_TYPE=dev vite",
+    "build": "vue-tsc --noEmit && vite build && pnpm run build:cdn",
+    "build:cdn": "vue-tsc --noEmit && cross-env CDN=true vite build",
+    "build:dts": "rimraf ./types && vue-tsc --declaration --emitDeclarationOnly",
+    "test:unit": "vitest --environment jsdom",
+    "coverage": "vitest run --coverage --environment jsdom"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "@vtj/deps": "workspace:*",
+    "@vtj/icons": "workspace:*",
+    "@vtj/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@vtj/cli": "workspace:*"
+  },
+  "files": [
+    "lib",
+    "types",
+    "cdn"
+  ],
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "types/index.d.ts",
+  "exports": {
+    "./lib/style.css": "./lib/style.css",
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "1f54d735e45fbbff75a090788d3f074b7babfc81"
+}

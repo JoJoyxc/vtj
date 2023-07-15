@@ -1,0 +1,10 @@
+@import './iconfont/iconfont.css';
+
+[class*=' vtj-icon-'],
+[class^='vtj-icon-'] {
+  font-family: 'VtjIconfont' !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  outline: none;
+}

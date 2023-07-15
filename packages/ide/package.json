@@ -1,0 +1,44 @@
+{
+  "name": "@vtj/ide",
+  "private": false,
+  "version": "0.4.4",
+  "scripts": {
+    "setup": "npm install --registry=https://registry.npmmirror.com",
+    "outdate": "npm outdate --registry=https://registry.npmmirror.com",
+    "dev": "cross-env ENV_TYPE=local vite",
+    "build": "npm run build:prod",
+    "build:prod": "vue-tsc && cross-env ENV_TYPE=live vite build",
+    "preview": "vite preview"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "@vtj/assets": "workspace:*",
+    "@vtj/deps": "workspace:*",
+    "@vtj/engine": "workspace:*",
+    "@vtj/icons": "workspace:*",
+    "@vtj/runtime": "workspace:*",
+    "@vtj/ui": "workspace:*",
+    "@vtj/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@vtj/cli": "workspace:*"
+  },
+  "description": "> TODO: description",
+  "author": "陈华春 <samchen08@163.com>",
+  "homepage": "",
+  "license": "ISC",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "vtj": {
+    "project": {
+      "id": "ide",
+      "name": "IDE"
+    }
+  }
+}

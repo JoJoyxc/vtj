@@ -1,0 +1,27 @@
+@use 'core' as *;
+
+body,
+div {
+  @include scroll-bar;
+}
+
+body.is-dragging,
+body.is-resizing {
+  user-select: none;
+  iframe {
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+// for common
+
+// // for tiny components
+// html.tiny {
+//   @include set-css-var-value('vtj-page-bg', $bg-color);
+// }
+
+// // for dark components
+// html.dark {
+//   @include set-css-var-value('vtj-page-bg', $bg-color);
+// }

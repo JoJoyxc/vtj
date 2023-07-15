@@ -1,0 +1,11 @@
+import './style/index.scss';
+import { makeInstaller } from './utils';
+import components from './list';
+export { components };
+export * from './components';
+export * from './hooks';
+export * from './utils';
+export * from './constants';
+const installer = makeInstaller(components);
+export const install = installer.install;
+// export default installer;

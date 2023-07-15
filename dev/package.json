@@ -1,0 +1,33 @@
+{
+  "name": "dev-web",
+  "private": true,
+  "version": "0.0.6",
+  "scripts": {
+    "setup": "pnpm install --registry=https://registry.npmmirror.com",
+    "dev": "cross-env ENV_TYPE=local vite",
+    "build": "pnpm run build:prod",
+    "build:dev": "vue-tsc && cross-env ENV_TYPE=dev vite build",
+    "build:sit": "vue-tsc && cross-env ENV_TYPE=sit vite build",
+    "build:uat": "vue-tsc && cross-env ENV_TYPE=uat vite build",
+    "build:pre": "vue-tsc && cross-env ENV_TYPE=pre vite build",
+    "build:prod": "vue-tsc && cross-env ENV_TYPE=live vite build",
+    "preview": "vite preview"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "@vtj/assets": "workspace:*",
+    "@vtj/engine": "workspace:*",
+    "@vtj/icons": "workspace:*",
+    "@vtj/ui": "workspace:*",
+    "@vtj/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@vtj/cli": "workspace:*"
+  },
+  "description": "> TODO: description",
+  "author": "陈华春 <samchen08@163.com>",
+  "homepage": "",
+  "license": "ISC"
+}

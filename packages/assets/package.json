@@ -1,0 +1,34 @@
+{
+  "name": "@vtj/assets",
+  "private": false,
+  "version": "0.4.4",
+  "scripts": {
+    "setup": "pnpm install --registry=https://registry.npmmirror.com",
+    "dev": "cross-env ENV_TYPE=dev vite",
+    "build:el": "vue-tsc && cross-env BUILD_TYPE=el vite build",
+    "build:ui": "vue-tsc && cross-env BUILD_TYPE=ui vite build",
+    "build:files": "node scripts.mjs",
+    "build": "pnpm run build:el && pnpm run build:ui && pnpm run build:files",
+    "test:unit": "vitest --environment jsdom",
+    "coverage": "vitest run --coverage --environment jsdom"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "@vtj/deps": "workspace:*",
+    "@vtj/engine": "workspace:*"
+  },
+  "devDependencies": {
+    "@vtj/cli": "workspace:*"
+  },
+  "files": [
+    "lib",
+    "types",
+    "cdn"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "1f54d735e45fbbff75a090788d3f074b7babfc81"
+}

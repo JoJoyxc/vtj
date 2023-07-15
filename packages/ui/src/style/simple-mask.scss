@@ -1,0 +1,39 @@
+@use 'core' as *;
+
+@include b(simple-mask) {
+  height: 100%;
+  background-color: $color-white;
+
+  @include e(header) {
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include e(aside) {
+    border-right: 1px solid $border-color;
+  }
+
+  @include e(footer) {
+    border-top: 1px solid $border-color;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include e(brand) {
+  }
+
+  @include e(logo) {
+    font-size: 20px;
+    color: $color-primary-dark-2;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
