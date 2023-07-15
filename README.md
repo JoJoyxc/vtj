@@ -1,7 +1,5 @@
 # VTJ
 
-![输入图片说明](dev/public/logo.png)
-
 VTJ 一款基于 Vue3 + Typescript 的低代码开发工具，内置了设计器引擎、渲染器和代码生成器。
 
 ## VTJ 的特点
