@@ -21,7 +21,10 @@ const modules = isDev
   const options = isDev || idDemo ? undefined : await ideConfig();
   const provider = await createProvider({
     service: idDemo ? 'storage' : 'file',
-    project: isDev || idDemo ? ({ home: '/startup' } as any) : undefined,
+    project:
+      isDev || idDemo
+        ? ({ home: '/startup', name: '项目样例' } as any)
+        : undefined,
     ...options,
     app,
     modules,
