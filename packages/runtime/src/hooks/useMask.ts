@@ -1,11 +1,12 @@
 import { ComputedRef, computed } from 'vue';
+import { useRoute } from 'vue-router';
 import { useProvider } from './useProvider';
 import { isMask } from '../shared';
 import { XSimpleMask, BaseMaskProps } from '@vtj/ui';
 
 export function useMask(id: ComputedRef<string | undefined>) {
   const provider = useProvider();
-
+  const route = useRoute();
   if (!provider) {
     throw new Error('VTJ Provider is not found');
   }
@@ -23,7 +24,8 @@ export function useMask(id: ComputedRef<string | undefined>) {
       project,
       menu: {
         data: provider.dsl.value?.pages || []
-      }
+      },
+      preview: route.path.startsWith('/preview')
     } as BaseMaskProps;
   });
 

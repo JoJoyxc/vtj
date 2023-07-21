@@ -84,6 +84,8 @@ export interface IOptions {
    */
   dtsOutputDir?: string;
 
+  dtsCleanVueFileName?: boolean;
+
   /**
    * 环境变量配置
    */

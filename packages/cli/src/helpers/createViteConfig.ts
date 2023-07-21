@@ -36,6 +36,7 @@ const defaults: IOptions = {
   previewPort: 3010,
   targets: ['chrome > 40'],
   dtsOutputDir: 'types',
+  dtsCleanVueFileName: true,
   envType: 'local',
   lib: false,
   entry: 'src/index.ts',
@@ -138,7 +139,7 @@ const mergePlugins = (options: IOptions) => {
         // outputDir: options.dtsOutputDir,
         outDir: options.dtsOutputDir,
         staticImport: true,
-        cleanVueFileName: true
+        cleanVueFileName: options.dtsCleanVueFileName
         // skipDiagnostics: false
       }) as PluginOption
     );

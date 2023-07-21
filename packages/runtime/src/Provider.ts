@@ -9,7 +9,7 @@ import {
 import { Router, useRouter } from 'vue-router';
 import { merge } from '@vtj/utils';
 import { XSimpleMask } from '@vtj/ui';
-import Link from './components/Link';
+import IDELink from './components/Link';
 import PageContainer from './components/PageContainer';
 import MaskContainer from './components/MaskContainer';
 import Homepage from './components/Homepage';
@@ -107,12 +107,16 @@ export class Provider {
   public dsl: ShallowRef<ProjectSchema | null> = shallowRef(null);
   public pages?: ComputedRef<PageSchema[]>;
   constructor(options: Partial<ProviderOptions> = {}) {
+    const app = options.app;
+    // merge app 会引发警告
+    delete options.app;
     this.options = merge(
       {},
       defaults,
       window.__VTJ_PROVIDER_OPTIONS__,
       options
     );
+    this.options.app = app;
     const { service, project, modules } = this.options;
     this.service = new Service(service, project.id, modules);
   }
@@ -132,7 +136,7 @@ export class Provider {
   }
 
   private createLink(props: IDEProvider) {
-    const app = createApp(Link, props);
+    const app = createApp(IDELink, props);
     const el = document.createElement('div');
     document.body.appendChild(el);
     app.mount(el);
@@ -142,30 +146,15 @@ export class Provider {
     const { Mask = XSimpleMask } = components;
     if (!router) return;
 
-    router.addRoute({
-      path: `${project.preview}/:id`,
-      name: 'vtj-preview',
-      props: (route: any) => route.query,
-      component: PageContainer
-    });
-
-    if (startup) {
-      router.addRoute({
-        name: 'startup',
-        path: project.home,
-        component: Homepage
-      });
-    }
-
     if (Mask) {
       router.addRoute({
-        path: project.page,
+        path: project.preview,
         name: 'vtj-mask',
         component: MaskContainer,
         children: [
           {
             path: ':id',
-            name: 'vtj-page',
+            name: 'vtj-preview',
             props: (route: any) => route.query,
             component: PageContainer
           }
@@ -173,10 +162,25 @@ export class Provider {
       });
     } else {
       router.addRoute({
-        path: `${project.page}/:id`,
-        name: 'vtj-page',
+        path: `${project.preview}/:id`,
+        name: 'vtj-preview',
         props: (route: any) => route.query,
         component: PageContainer
+      });
+    }
+
+    // router.addRoute({
+    //   path: `${project.preview}/:id`,
+    //   name: 'vtj-preview',
+    //   props: (route: any) => route.query,
+    //   component: PageContainer
+    // });
+
+    if (startup) {
+      router.addRoute({
+        name: 'startup',
+        path: project.home,
+        component: Homepage
       });
     }
   }

@@ -8,12 +8,17 @@ import { useRoute, useRouter } from 'vue-router';
 import {
   Engine,
   EVENT_ACTION_PREVIEW,
+  EVENT_ACTION_HOME,
+  EVENT_ACTION_CODER,
   PageSchema,
   SummarySchema,
   FileService,
-  StorageService
+  StorageService,
+  BlockSchema,
+  coder
 } from '@vtj/engine';
 import { useProvider, isPage } from '@vtj/runtime';
+import { ideBase } from '@/api';
 const provider = useProvider();
 const container = ref<HTMLElement | undefined>();
 const {
@@ -52,11 +57,37 @@ const engine = new Engine(container, {
 
 engine.emitter.on(EVENT_ACTION_PREVIEW, (file: PageSchema | SummarySchema) => {
   const split = mode === 'hash' ? '#' : '';
-  // const pathname = location.pathname;
-  const url = isPage(file)
-    ? `${base}${split}${page}/${file.id}`
-    : `${base}${split}${preview}/${(file as SummarySchema).id}`;
+  const url = `${base}${split}${preview}/${(file as SummarySchema).id}`;
   window.open(url);
+});
+
+engine.emitter.on(EVENT_ACTION_HOME, (file: PageSchema) => {
+  const split = mode === 'hash' ? '#' : '';
+  const url = `${base}${split}${home}`;
+  window.open(url);
+});
+
+engine.emitter.on(EVENT_ACTION_CODER, (file: PageSchema | SummarySchema) => {
+  if (!engine.project.current.value) return;
+  const dsl = engine.project.current.value.toDsl();
+  const project = engine.project.toDsl();
+  const vue = coder(dsl, engine.assets);
+  if (isPage(file)) {
+    ideBase({
+      type: 'pageCoder',
+      data: {
+        vue
+      }
+    });
+  } else {
+    ideBase({
+      type: 'blockCoder',
+      data: {
+        vue
+      }
+    });
+  }
+  console.log(EVENT_ACTION_CODER, file);
 });
 
 // console.log('[engine]', engine);

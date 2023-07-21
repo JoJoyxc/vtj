@@ -21,7 +21,8 @@
     "@vtj/engine": "workspace:*",
     "@vtj/icons": "workspace:*",
     "@vtj/ui": "workspace:*",
-    "@vtj/utils": "workspace:*"
+    "@vtj/utils": "workspace:*",
+    "@vtj/runtime": "workspace:*"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:*"

@@ -3,7 +3,7 @@ import { useRoute } from 'vue-router';
 import { usePage } from '../hooks';
 import { useTitle } from '@vueuse/core';
 import Loading from './Loading';
-import Empty from './Empty';
+import VtjEmpty from './Empty';
 export default defineComponent({
   name: 'VtjPageContainer',
   setup(props) {
@@ -25,7 +25,7 @@ export default defineComponent({
     } else if (this.loading) {
       return h(Loading);
     } else {
-      return h(Empty);
+      return h(VtjEmpty);
     }
   }
 });

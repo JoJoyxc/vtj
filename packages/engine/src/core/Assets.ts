@@ -1,4 +1,10 @@
-import { watch, WatchStopHandle, ShallowReactive, computed } from 'vue';
+import {
+  watch,
+  WatchStopHandle,
+  ShallowReactive,
+  computed,
+  ComputedRef
+} from 'vue';
 import { jsonp } from '@vtj/utils';
 import {
   Dependencie,
@@ -31,7 +37,10 @@ export class Assets {
   componentMap: Record<string, ComponentDescription> = {};
   componentGroups: IComponentGroup[] = [];
   public isReady: boolean = false;
-  constructor(public service: Service, project?: ShallowReactive<Project>) {
+  constructor(
+    public service: Service,
+    public project?: ShallowReactive<Project>
+  ) {
     if (project) {
       this.unwatch = watch(project.dependencies, (v) => this.load(v), {
         deep: true

@@ -18,21 +18,23 @@
       <i class="vtj-icon-outline"></i>
     </ElButton>
     <ElDivider direction="vertical"></ElDivider>
+    <ElButton type="primary" size="small" :icon="HomeFilled" @click="onView"
+      >浏览</ElButton
+    >
     <ElButton type="success" size="small" @click="preview">预览</ElButton>
-    <!-- <ElButton type="warning" size="small" @click="publish">发布</ElButton> -->
-    <ElTooltip
-      effect="dark"
-      content="内测中，暂未开放。"
-      placement="bottom-end">
-      <ElButton type="primary" size="small">出码</ElButton>
-    </ElTooltip>
+    <ElButton type="warning" size="small" @click="onCoder">出码</ElButton>
   </div>
 </template>
 <script lang="ts" setup>
 import { toValue } from 'vue';
-import { ElButton, ElMessage, ElDivider, ElTooltip } from 'element-plus';
+import { ElButton, ElMessage, ElDivider } from 'element-plus';
+import { HomeFilled } from '@element-plus/icons-vue';
 import { useCore, useDesigner } from '../../hooks';
-import { EVENT_ACTION_PREVIEW } from '../../core';
+import {
+  EVENT_ACTION_PREVIEW,
+  EVENT_ACTION_HOME,
+  EVENT_ACTION_CODER
+} from '../../core';
 const { project, engine, emitter } = useCore();
 // const { selected } = useDesigner();
 const refresh = () => {
@@ -52,14 +54,11 @@ const preview = () => {
   if (id) {
     const file = project.getFile(id);
     emitter.emit(EVENT_ACTION_PREVIEW, file);
+  } else {
+    ElMessage.warning({
+      message: '请先打开文件'
+    });
   }
-};
-
-const publish = () => {
-  // const id = project.current?.id;
-  // if (id) {
-  //   emitter.emit(EVENT_ACTION_PUBLISH, id);
-  // }
 };
 
 const openCodeSetting = () => {
@@ -86,6 +85,29 @@ const openOutline = () => {
       message: '请先打开文件'
     });
   }
+};
+
+const onCoder = () => {
+  const id = project.current.value?.id;
+  if (id) {
+    const file = project.getFile(id);
+    emitter.emit(EVENT_ACTION_CODER, file);
+  } else {
+    ElMessage.warning({
+      message: '请先打开文件'
+    });
+  }
+};
+
+const onView = () => {
+  const homePage = project.getHomePage();
+  if (!homePage) {
+    ElMessage.warning({
+      message: '请先设置项目首页'
+    });
+    return;
+  }
+  emitter.emit(EVENT_ACTION_HOME, homePage);
 };
 </script>
 

@@ -161,6 +161,11 @@ export class Project {
     return finder(this.pages.value);
   }
 
+  getHomePage() {
+    const pages = this.getPages();
+    return pages.find((n) => !!n.home);
+  }
+
   clearHomePage() {
     const pages = this.getPages();
     pages.forEach((page) => {

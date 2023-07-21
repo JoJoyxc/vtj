@@ -10,7 +10,9 @@ import {
   VUE,
   createLoader,
   ProjectSchema,
-  BlockSchema
+  BlockSchema,
+  Context,
+  ContextMode
 } from '@vtj/engine/runtime';
 
 import { markRaw, App } from 'vue';
@@ -20,6 +22,8 @@ export {
   StorageService,
   VUE,
   createLoader,
+  Context,
+  ContextMode,
   type ProjectSchema,
   type BlockSchema,
   type PageSchema
