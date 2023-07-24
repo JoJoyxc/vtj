@@ -22,11 +22,13 @@
       >浏览</ElButton
     >
     <ElButton type="success" size="small" @click="preview">预览</ElButton>
-    <ElButton type="warning" size="small" @click="onCoder">出码</ElButton>
+    <ElButton type="warning" size="small" @click="onCoder" :loading="loading">
+      出码
+    </ElButton>
   </div>
 </template>
 <script lang="ts" setup>
-import { toValue } from 'vue';
+import { toValue, ref } from 'vue';
 import { ElButton, ElMessage, ElDivider } from 'element-plus';
 import { HomeFilled } from '@element-plus/icons-vue';
 import { useCore, useDesigner } from '../../hooks';
@@ -36,7 +38,7 @@ import {
   EVENT_ACTION_CODER
 } from '../../core';
 const { project, engine, emitter } = useCore();
-// const { selected } = useDesigner();
+const loading = ref(false);
 const refresh = () => {
   if (project.current.value) {
     const { designer } = useDesigner();
@@ -88,15 +90,8 @@ const openOutline = () => {
 };
 
 const onCoder = () => {
-  const id = project.current.value?.id;
-  if (id) {
-    const file = project.getFile(id);
-    emitter.emit(EVENT_ACTION_CODER, file);
-  } else {
-    ElMessage.warning({
-      message: '请先打开文件'
-    });
-  }
+  loading.value = true;
+  emitter.emit(EVENT_ACTION_CODER, loading);
 };
 
 const onView = () => {

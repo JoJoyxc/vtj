@@ -11,6 +11,7 @@ import { merge } from '@vtj/utils';
 import { XSimpleMask } from '@vtj/ui';
 import IDELink from './components/Link';
 import PageContainer from './components/PageContainer';
+import PreviewContainer from './components/PreviewContainer';
 import MaskContainer from './components/MaskContainer';
 import Homepage from './components/Homepage';
 import { ServiceType, Service } from './Service';
@@ -24,6 +25,7 @@ import {
   install,
   ProjectSchema,
   PageSchema,
+  SummarySchema,
   getPages
 } from './shared';
 
@@ -106,6 +108,7 @@ export class Provider {
   public service: Service;
   public dsl: ShallowRef<ProjectSchema | null> = shallowRef(null);
   public pages?: ComputedRef<PageSchema[]>;
+  public blocks?: ComputedRef<SummarySchema[]>;
   constructor(options: Partial<ProviderOptions> = {}) {
     const app = options.app;
     // merge app 会引发警告
@@ -124,6 +127,7 @@ export class Provider {
     const { ide, router, app } = this.options;
     this.dsl.value = await this.service.getProject();
     this.pages = computed(() => getPages(this.dsl.value?.pages ?? []));
+    this.blocks = computed(() => getPages(this.dsl.value?.blocks ?? []));
     if (app) {
       await this.setup(app);
     }
@@ -149,12 +153,25 @@ export class Provider {
     if (Mask) {
       router.addRoute({
         path: project.preview,
-        name: 'vtj-mask',
+        name: 'VtjPreviewMask',
         component: MaskContainer,
         children: [
           {
             path: ':id',
             name: 'vtj-preview',
+            props: (route: any) => route.query,
+            component: PreviewContainer
+          }
+        ]
+      });
+      router.addRoute({
+        path: project.page,
+        name: 'VtjPageMask',
+        component: MaskContainer,
+        children: [
+          {
+            path: ':id',
+            name: 'VtjPage',
             props: (route: any) => route.query,
             component: PageContainer
           }
@@ -163,18 +180,17 @@ export class Provider {
     } else {
       router.addRoute({
         path: `${project.preview}/:id`,
-        name: 'vtj-preview',
+        name: 'VtjPpreview',
+        props: (route: any) => route.query,
+        component: PreviewContainer
+      });
+      router.addRoute({
+        path: `${project.page}/:id`,
+        name: 'VtjPage',
         props: (route: any) => route.query,
         component: PageContainer
       });
     }
-
-    // router.addRoute({
-    //   path: `${project.preview}/:id`,
-    //   name: 'vtj-preview',
-    //   props: (route: any) => route.query,
-    //   component: PageContainer
-    // });
 
     if (startup) {
       router.addRoute({
@@ -207,7 +223,7 @@ export class Provider {
 
   public go(id: string, query: Record<string, any> = {}) {
     const router = useRouter();
-    router.push({ name: 'vtj-page', params: { id }, query });
+    router.push({ name: 'VtjPage', params: { id }, query });
   }
 }
 

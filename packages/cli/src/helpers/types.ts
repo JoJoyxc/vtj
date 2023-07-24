@@ -31,10 +31,6 @@ export interface IOptions {
    */
   base?: string;
 
-  /**
-   *  启动IDE
-   */
-  ide?: boolean;
 
   /**
    * 自定义配置 vite 配置

@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, Ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import {
   Engine,
@@ -15,9 +15,10 @@ import {
   FileService,
   StorageService,
   BlockSchema,
-  coder
+  ProjectSchema
 } from '@vtj/engine';
 import { useProvider, isPage } from '@vtj/runtime';
+import { ElMessage, ElNotification } from 'element-plus';
 import { ideBase } from '@/api';
 const provider = useProvider();
 const container = ref<HTMLElement | undefined>();
@@ -67,27 +68,29 @@ engine.emitter.on(EVENT_ACTION_HOME, (file: PageSchema) => {
   window.open(url);
 });
 
-engine.emitter.on(EVENT_ACTION_CODER, (file: PageSchema | SummarySchema) => {
-  if (!engine.project.current.value) return;
-  const dsl = engine.project.current.value.toDsl();
-  const project = engine.project.toDsl();
-  const vue = coder(dsl, engine.assets);
-  if (isPage(file)) {
-    ideBase({
-      type: 'pageCoder',
-      data: {
-        vue
+engine.emitter.on(EVENT_ACTION_CODER, async (loading: Ref<boolean>) => {
+  loading.value = true;
+  const dsl = engine.project.toDsl();
+  const componentMap = engine.assets.componentMap;
+
+  ideBase({
+    type: 'projectCoder',
+    data: {
+      project: dsl,
+      assets: {
+        componentMap
       }
+    }
+  })
+    .then((res) => {
+      ElMessage.success({
+        message: '出码完成'
+      });
+      return res;
+    })
+    .finally(() => {
+      loading.value = false;
     });
-  } else {
-    ideBase({
-      type: 'blockCoder',
-      data: {
-        vue
-      }
-    });
-  }
-  console.log(EVENT_ACTION_CODER, file);
 });
 
 // console.log('[engine]', engine);

@@ -33,6 +33,7 @@
     "build:ui": "pnpm --filter @vtj/ui build",
     "build:utils": "pnpm --filter @vtj/utils build",
     "build:cli": "pnpm --filter @vtj/cli build",
+    "build:serve": "pnpm --filter @vtj/serve build",
     "build:coder": "pnpm --filter @vtj/coder build",
     "build:engine": "pnpm --filter @vtj/engine build",
     "build:runtime": "pnpm --filter @vtj/runtime build",

@@ -14,7 +14,11 @@ const idDemo = process.env.ENV_TYPE === 'uat';
 const app = createApp(App);
 
 const modules = isDev
-  ? import.meta.glob(['/.vtj/project/*.json', '/.vtj/file/*.json'])
+  ? import.meta.glob([
+      '/.vtj/project/*.json',
+      '/.vtj/file/*.json',
+      '/src/views/pages/*.vue'
+    ])
   : undefined;
 
 (async () => {

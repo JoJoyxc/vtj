@@ -96,10 +96,12 @@ export class Assets {
     return result;
   }
 
-  private parseMap<T>(list: T[]) {
+  private parseMap<T extends ComponentDescription>(list: T[]) {
     const map: Record<string, T> = {};
     for (const c of list) {
-      map[(c as any).name] = c;
+      if (c.package) {
+        map[c.name] = c;
+      }
     }
     return map;
   }
@@ -133,7 +135,7 @@ export class Assets {
       }
     }
     this.componentGroups = this.parseGroups(packages);
-    this.componentMap = this.parseMap(this.components);
+    this.componentMap = this.parseMap<ComponentDescription>(this.components);
     this.isReady = true;
     emitter.emit(EVENT_ASSETS_LOADED);
     const { components, componentGroups, componentMap } = this;

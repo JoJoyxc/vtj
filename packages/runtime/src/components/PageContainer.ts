@@ -1,6 +1,6 @@
-import { defineComponent, h, computed } from 'vue';
+import { defineComponent, h, computed, ref, markRaw } from 'vue';
 import { useRoute } from 'vue-router';
-import { usePage } from '../hooks';
+import { useProvider } from '../hooks';
 import { useTitle } from '@vueuse/core';
 import Loading from './Loading';
 import VtjEmpty from './Empty';
@@ -9,14 +9,32 @@ export default defineComponent({
   setup(props) {
     const route = useRoute();
     const fileId = computed(() => route.params.id as string);
-    const { renderer, dsl, loading } = usePage(fileId);
-    const title = computed(() => dsl.value?.title || '');
+    const provider = useProvider();
+    const { modules = {} } = provider?.options || {};
+    const page = computed(() => {
+      const pages = provider?.pages?.value || [];
+      return pages.find((n) => n.id === fileId.value);
+    });
+    const renderer = ref();
+    const loading = ref<boolean>(true);
+    const loader = modules[`/src/views/pages/${fileId.value}.vue`];
+    loading.value = !!loader;
+    if (loader) {
+      loader()
+        .then((r) => {
+          renderer.value = markRaw(r.default);
+        })
+        .finally(() => {
+          loading.value = false;
+        });
+    }
+    const title = computed(() => page.value?.title || '');
     useTitle(title);
     return {
       fileId,
       renderer,
-      dsl,
-      loading
+      loading,
+      title
     };
   },
   render() {

@@ -1,12 +1,20 @@
 import fs from 'fs-extra';
 import { join } from 'path';
+import { coder, getPages } from '@vtj/engine/shared';
 import { success, fail, ApiRequest } from './shared';
-const { readJSONSync, writeJSONSync, existsSync, ensureDirSync, removeSync } =
-  fs;
+const {
+  readJSONSync,
+  writeJSONSync,
+  existsSync,
+  ensureDirSync,
+  removeSync,
+  writeFileSync
+} = fs;
 const DIR_PATH = join(process.cwd(), '.vtj');
 const PROJECT_PATH = join(DIR_PATH, 'project');
 const FILE_PATH = join(DIR_PATH, 'file');
 const HISTORY_PATH = join(DIR_PATH, 'histroy');
+const SRC_PATH = join(process.cwd(), 'src');
 
 function getFilePath(dir: string, id: string) {
   return join(dir, id + '.json');
@@ -126,4 +134,77 @@ export async function getHistory(req: ApiRequest) {
   } else {
     return success([]);
   }
+}
+
+export async function projectCoder(req: ApiRequest) {
+  const { assets, project } = req.data;
+  if (!assets || !project) {
+    return fail('缺少 assets 或 project');
+  }
+  const pagesDir = join(SRC_PATH, 'views/pages');
+  const blocksDir = join(SRC_PATH, 'components/blocks');
+  const apisPath = join(SRC_PATH, 'api/vtj.ts');
+
+  // console.log('project.pages-------------');
+  // console.log(project.pages);
+  // console.log('project.blocks -------------');
+  // console.log(project.blocks);
+  // console.log('project.apis-------------');
+  // console.log(project.apis);
+  // console.log('assets.componentMap-------------');
+  // console.log(assets.componentMap);
+
+  const jsonPages = getPages(project.pages || [])
+    .map((n) => {
+      const file = getFilePath(FILE_PATH, n.id as string);
+      if (existsSync(file)) {
+        return readJSONSync(file);
+      }
+      return null;
+    })
+    .filter((n) => !!n);
+
+  const jsonBlocks = (project.blocks || [])
+    .map((n: any) => {
+      const file = getFilePath(FILE_PATH, n.id as string);
+      if (existsSync(file)) {
+        return readJSONSync(file);
+      }
+      return null;
+    })
+    .filter((n: any) => !!n);
+
+  try {
+    const { apis, pages, blocks } = coder({
+      pages: jsonPages,
+      blocks: jsonBlocks,
+      apis: project.apis || [],
+      componentMap: assets.componentMap || {}
+    });
+    if (!existsSync(pagesDir)) {
+      ensureDirSync(pagesDir);
+    }
+    if (!existsSync(blocksDir)) {
+      ensureDirSync(blocksDir);
+    }
+
+    for (const file of pages) {
+      const filePath = join(pagesDir, `${file.id}.vue`);
+
+      writeFileSync(filePath, file.content, 'utf-8');
+    }
+
+    for (const file of blocks) {
+      const filePath = join(blocksDir, `${file.id}.vue`);
+
+      writeFileSync(filePath, file.content, 'utf-8');
+    }
+
+    writeFileSync(apisPath, apis, 'utf-8');
+  } catch (e: any) {
+    // console.log(e);
+    return fail(e.message);
+  }
+
+  return success([]);
 }

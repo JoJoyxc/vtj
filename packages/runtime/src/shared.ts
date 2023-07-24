@@ -12,7 +12,8 @@ import {
   ProjectSchema,
   BlockSchema,
   Context,
-  ContextMode
+  ContextMode,
+  SummarySchema
 } from '@vtj/engine/runtime';
 
 import { markRaw, App } from 'vue';
@@ -26,7 +27,8 @@ export {
   ContextMode,
   type ProjectSchema,
   type BlockSchema,
-  type PageSchema
+  type PageSchema,
+  type SummarySchema
 };
 
 export function isPage(schema: unknown): schema is PageSchema {

@@ -9,6 +9,7 @@ export default defineComponent({
     const { Empty = DefaultEmpty } = provider?.options.components ?? {};
     const route = useRoute();
     const fileId = computed(() => route.params.id as string);
+
     const { maskable, page, Mask, maskProps } = useMask(fileId);
 
     return {

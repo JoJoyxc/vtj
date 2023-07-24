@@ -2,7 +2,7 @@ import { Plugin, UserConfig } from 'vite';
 import { join } from 'path';
 import serveStatic from 'serve-static';
 import bodyParser from 'body-parser';
-import { controllers, ApiRequest } from './ide';
+import { controllers, ApiRequest } from './server';
 import fs from 'fs-extra';
 let __config: UserConfig | null = null;
 const API_PATH = '/vtj/base';
@@ -71,7 +71,9 @@ export function IDEPlugin(): Plugin[] {
         const { root = process.cwd() } = __config || {};
         const idePath = join(root, 'node_modules/@vtj/ide/dist');
         server.middlewares.use(serveStatic(idePath));
-        server.middlewares.use(bodyParser.json({ type: 'application/json' }));
+        server.middlewares.use(
+          bodyParser.json({ type: 'application/json', limit: '50000kb' })
+        );
         server.middlewares.use(async (req, res, next) => {
           const reqUrl = req.url || '';
           if (reqUrl.startsWith(API_PATH)) {

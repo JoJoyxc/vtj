@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@vtj/cli": "workspace:*",
+    "@vtj/serve": "workspace:*",
     "@vtj/ide": "workspace:*"
   },
   "description": "> TODO: description",

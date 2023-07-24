@@ -6,7 +6,6 @@ const ENV_TYPE = process.env.ENV_TYPE || 'local';
 
 export default createViteConfig({
   debug: false,
-  ide: true,
   host: '0.0.0.0',
   https: false,
   elementPlus: true,

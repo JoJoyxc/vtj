@@ -25,7 +25,8 @@
     "@vtj/utils": "workspace:*"
   },
   "devDependencies": {
-    "@vtj/cli": "workspace:*"
+    "@vtj/cli": "workspace:*",
+    "@vtj/serve": "workspace:*"
   },
   "description": "> TODO: description",
   "author": "陈华春 <samchen08@163.com>",

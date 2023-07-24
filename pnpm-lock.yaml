@@ -42,6 +42,9 @@ importers:
       '@vtj/cli':
         specifier: workspace:*
         version: link:../packages/cli
+      '@vtj/serve':
+        specifier: workspace:*
+        version: link:../packages/serve
 
   packages/assets:
     dependencies:
@@ -77,6 +80,9 @@ importers:
       '@vtj/ide':
         specifier: workspace:*
         version: link:../ide
+      '@vtj/serve':
+        specifier: workspace:*
+        version: link:../serve
 
   packages/cli:
     dependencies:
@@ -109,7 +115,7 @@ importers:
         version: 1.0.1(vite@4.4.6)
       '@vitejs/plugin-legacy':
         specifier: ~4.1.1
-        version: 4.1.1(terser@5.19.1)(vite@4.4.6)
+        version: 4.1.1(terser@5.19.2)(vite@4.4.6)
       '@vitejs/plugin-vue':
         specifier: ~4.2.3
         version: 4.2.3(vite@4.4.6)(vue@3.3.4)
@@ -147,8 +153,8 @@ importers:
         specifier: ~1.15.0
         version: 1.15.0
       terser:
-        specifier: ~5.19.1
-        version: 5.19.1
+        specifier: ~5.19.2
+        version: 5.19.2
       typescript:
         specifier: ~5.1.6
         version: 5.1.6
@@ -157,13 +163,13 @@ importers:
         version: 0.7.2(rollup@3.25.3)
       vite:
         specifier: ~4.4.6
-        version: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.1)
+        version: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.2)
       vite-plugin-dts:
         specifier: ~3.3.1
         version: 3.3.1(@types/node@20.4.2)(rollup@3.25.3)(typescript@5.1.6)(vite@4.4.6)
       vitest:
         specifier: ~0.33.0
-        version: 0.33.0(jsdom@22.1.0)(sass@1.64.0)(terser@5.19.1)
+        version: 0.33.0(jsdom@22.1.0)(sass@1.64.0)(terser@5.19.2)
       vue-tsc:
         specifier: ~1.8.5
         version: 1.8.5(typescript@5.1.6)
@@ -184,8 +190,8 @@ importers:
         specifier: ~3.0.3
         version: 3.0.3
       '@types/lodash-es':
-        specifier: ~4.17.7
-        version: 4.17.7
+        specifier: ~4.17.8
+        version: 4.17.8
       '@types/numeral':
         specifier: ~2.0.2
         version: 2.0.2
@@ -205,8 +211,8 @@ importers:
         specifier: ~1.11.9
         version: 1.11.9
       echarts:
-        specifier: ~5.4.2
-        version: 5.4.2
+        specifier: ~5.4.3
+        version: 5.4.3
       element-plus:
         specifier: ~2.3.8
         version: 2.3.8(vue@3.3.4)
@@ -321,6 +327,9 @@ importers:
       '@vtj/cli':
         specifier: workspace:*
         version: link:../cli
+      '@vtj/serve':
+        specifier: workspace:*
+        version: link:../serve
 
   packages/runtime:
     dependencies:
@@ -340,6 +349,40 @@ importers:
       '@vtj/cli':
         specifier: workspace:*
         version: link:../cli
+
+  packages/serve:
+    dependencies:
+      body-parser:
+        specifier: ~1.20.2
+        version: 1.20.2
+      fs-extra:
+        specifier: ~11.1.1
+        version: 11.1.1
+      serve-static:
+        specifier: ~1.15.0
+        version: 1.15.0
+    devDependencies:
+      '@types/body-parser':
+        specifier: ~1.19.2
+        version: 1.19.2
+      '@types/serve-static':
+        specifier: ~1.15.2
+        version: 1.15.2
+      '@vtj/engine':
+        specifier: workspace:*
+        version: link:../engine
+      '@vtj/utils':
+        specifier: workspace:*
+        version: link:../utils
+      typescript:
+        specifier: ~5.1.6
+        version: 5.1.6
+      unbuild:
+        specifier: ~1.2.1
+        version: 1.2.1(sass@1.64.0)
+      vite:
+        specifier: ~4.4.6
+        version: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.2)
 
   packages/ui:
     dependencies:
@@ -369,8 +412,8 @@ importers:
   packages/vtj:
     devDependencies:
       '@types/lodash-es':
-        specifier: ~4.17.7
-        version: 4.17.7
+        specifier: ~4.17.8
+        version: 4.17.8
       '@types/prompts':
         specifier: ~2.4.4
         version: 2.4.4
@@ -1645,7 +1688,6 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/android-arm@0.17.19:
@@ -1663,7 +1705,6 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/android-x64@0.17.19:
@@ -1681,7 +1722,6 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/darwin-arm64@0.17.19:
@@ -1699,7 +1739,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/darwin-x64@0.17.19:
@@ -1717,7 +1756,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/freebsd-arm64@0.17.19:
@@ -1735,7 +1773,6 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/freebsd-x64@0.17.19:
@@ -1753,7 +1790,6 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-arm64@0.17.19:
@@ -1771,7 +1807,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-arm@0.17.19:
@@ -1789,7 +1824,6 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-ia32@0.17.19:
@@ -1807,7 +1841,6 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-loong64@0.17.19:
@@ -1825,7 +1858,6 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-mips64el@0.17.19:
@@ -1843,7 +1875,6 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-ppc64@0.17.19:
@@ -1861,7 +1892,6 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-riscv64@0.17.19:
@@ -1879,7 +1909,6 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-s390x@0.17.19:
@@ -1897,7 +1926,6 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-x64@0.17.19:
@@ -1915,7 +1943,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/netbsd-x64@0.17.19:
@@ -1933,7 +1960,6 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/openbsd-x64@0.17.19:
@@ -1951,7 +1977,6 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/sunos-x64@0.17.19:
@@ -1969,7 +1994,6 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/win32-arm64@0.17.19:
@@ -1987,7 +2011,6 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/win32-ia32@0.17.19:
@@ -2005,7 +2028,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/win32-x64@0.17.19:
@@ -2023,7 +2045,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@floating-ui/core@1.3.1:
@@ -2085,7 +2106,6 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.18
-    dev: false
 
   /@jridgewell/sourcemap-codec@1.4.14:
     resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==}
@@ -2744,6 +2764,13 @@ packages:
     dependencies:
       '@babel/types': 7.22.5
 
+  /@types/body-parser@1.19.2:
+    resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
+    dependencies:
+      '@types/connect': 3.4.35
+      '@types/node': 20.4.2
+    dev: true
+
   /@types/chai-subset@1.3.3:
     resolution: {integrity: sha512-frBecisrNGz+F4T6bcc+NLeolfiojh5FxW2klu669+8BARtyQv2C/GkNW6FUodVe4BroGMP/wER/YDGc7rEllw==}
     dependencies:
@@ -2753,6 +2780,12 @@ packages:
   /@types/chai@4.3.5:
     resolution: {integrity: sha512-mEo1sAde+UCE6b2hxn332f1g1E8WfYRu6p5SvTKr2ZKC1f7gFJXk4h5PyGP9Dt6gCaG8y8XhwnXWC6Iy2cmBng==}
     dev: false
+
+  /@types/connect@3.4.35:
+    resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
+    dependencies:
+      '@types/node': 20.4.2
+    dev: true
 
   /@types/estree@1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
@@ -2766,7 +2799,6 @@ packages:
 
   /@types/http-errors@2.0.1:
     resolution: {integrity: sha512-/K3ds8TRAfBvi5vfjuz8y6+GiAYBZ0x4tXv1Av6CWBWn0IlADc+ZX9pMq7oU0fNQPnBwIZl3rmeLp6SBApbxSQ==}
-    dev: false
 
   /@types/istanbul-lib-coverage@2.0.4:
     resolution: {integrity: sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g==}
@@ -2790,8 +2822,8 @@ packages:
       '@types/node': 20.4.2
     dev: false
 
-  /@types/lodash-es@4.17.7:
-    resolution: {integrity: sha512-z0ptr6UI10VlU6l5MYhGwS4mC8DZyYer2mCoyysZtSF7p26zOX8UpbrV0YpNYLGS8K4PUFIyEr62IMFFjveSiQ==}
+  /@types/lodash-es@4.17.8:
+    resolution: {integrity: sha512-euY3XQcZmIzSy7YH5+Unb3b2X12Wtk54YWINBvvGQ5SmMvwb11JQskGsfkH/5HXK77Kr8GF0wkVDIxzAisWtog==}
     dependencies:
       '@types/lodash': 4.14.195
 
@@ -2800,7 +2832,6 @@ packages:
 
   /@types/mime@3.0.1:
     resolution: {integrity: sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==}
-    dev: false
 
   /@types/minimatch@3.0.5:
     resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
@@ -2842,7 +2873,6 @@ packages:
       '@types/http-errors': 2.0.1
       '@types/mime': 3.0.1
       '@types/node': 20.4.2
-    dev: false
 
   /@types/sortablejs@1.15.1:
     resolution: {integrity: sha512-g/JwBNToh6oCTAwNS8UGVmjO7NLDKsejVhvE4x1eWiPTC3uCuNsa/TD4ssvX3du+MLiM+SHPNDuijp8y76JzLQ==}
@@ -2866,10 +2896,10 @@ packages:
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0
     dependencies:
-      vite: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.1)
+      vite: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.2)
     dev: false
 
-  /@vitejs/plugin-legacy@4.1.1(terser@5.19.1)(vite@4.4.6):
+  /@vitejs/plugin-legacy@4.1.1(terser@5.19.2)(vite@4.4.6):
     resolution: {integrity: sha512-um3gbVouD2Q/g19C0qpDfHwveXDCAHzs8OC3e9g6aXpKoD1H14himgs7wkMnhAynBJy7QqUoZNAXDuqN8zLR2g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -2883,8 +2913,8 @@ packages:
       magic-string: 0.30.1
       regenerator-runtime: 0.13.11
       systemjs: 6.14.1
-      terser: 5.19.1
-      vite: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.1)
+      terser: 5.19.2
+      vite: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.2)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2899,7 +2929,7 @@ packages:
       '@babel/core': 7.22.9
       '@babel/plugin-transform-typescript': 7.22.5(@babel/core@7.22.9)
       '@vue/babel-plugin-jsx': 1.1.5(@babel/core@7.22.9)
-      vite: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.1)
+      vite: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.2)
       vue: 3.3.4
     transitivePeerDependencies:
       - supports-color
@@ -2912,7 +2942,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.1)
+      vite: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.2)
       vue: 3.3.4
     dev: false
 
@@ -2926,7 +2956,7 @@ packages:
       magic-string: 0.30.1
       picocolors: 1.0.0
       std-env: 3.3.3
-      vitest: 0.33.0(jsdom@22.1.0)(sass@1.64.0)(terser@5.19.1)
+      vitest: 0.33.0(jsdom@22.1.0)(sass@1.64.0)(terser@5.19.2)
     dev: false
 
   /@vitest/expect@0.33.0:
@@ -3789,7 +3819,6 @@ packages:
 
   /commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
-    dev: false
 
   /commander@9.5.0:
     resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
@@ -4144,11 +4173,11 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /echarts@5.4.2:
-    resolution: {integrity: sha512-2W3vw3oI2tWJdyAz+b8DuWS0nfXtSDqlDmqgin/lfzbkB01cuMEN66KWBlmur3YMp5nEDEEt5s23pllnAzB4EA==}
+  /echarts@5.4.3:
+    resolution: {integrity: sha512-mYKxLxhzy6zyTi/FaEbJMOZU1ULGEQHaeIeuMR5L+JnJTpz+YR03mnnpBhbR4+UYJAgiXgpyTVLffPAjOTLkZA==}
     dependencies:
       tslib: 2.3.0
-      zrender: 5.4.3
+      zrender: 5.4.4
     dev: false
 
   /editorconfig@1.0.4:
@@ -4187,14 +4216,14 @@ packages:
       '@floating-ui/dom': 1.4.3
       '@popperjs/core': /@sxzz/popperjs-es@2.11.7
       '@types/lodash': 4.14.195
-      '@types/lodash-es': 4.17.7
+      '@types/lodash-es': 4.17.8
       '@vueuse/core': 9.13.0(vue@3.3.4)
       async-validator: 4.2.5
       dayjs: 1.11.9
       escape-html: 1.0.3
       lodash: 4.17.21
       lodash-es: 4.17.21
-      lodash-unified: 1.0.3(@types/lodash-es@4.17.7)(lodash-es@4.17.21)(lodash@4.17.21)
+      lodash-unified: 1.0.3(@types/lodash-es@4.17.8)(lodash-es@4.17.21)(lodash@4.17.21)
       memoize-one: 6.0.0
       normalize-wheel-es: 1.2.0
       vue: 3.3.4
@@ -4323,7 +4352,6 @@ packages:
       '@esbuild/win32-arm64': 0.18.11
       '@esbuild/win32-ia32': 0.18.11
       '@esbuild/win32-x64': 0.18.11
-    dev: false
 
   /escalade@3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
@@ -5548,14 +5576,14 @@ packages:
   /lodash-es@4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
 
-  /lodash-unified@1.0.3(@types/lodash-es@4.17.7)(lodash-es@4.17.21)(lodash@4.17.21):
+  /lodash-unified@1.0.3(@types/lodash-es@4.17.8)(lodash-es@4.17.21)(lodash@4.17.21):
     resolution: {integrity: sha512-WK9qSozxXOD7ZJQlpSqOT+om2ZfcT4yO+03FuzAHD0wF6S0l0090LRPDx3vhTTLZ8cFKpBn+IOcVXK6qOcIlfQ==}
     peerDependencies:
       '@types/lodash-es': '*'
       lodash: '*'
       lodash-es: '*'
     dependencies:
-      '@types/lodash-es': 4.17.7
+      '@types/lodash-es': 4.17.8
       lodash: 4.17.21
       lodash-es: 4.17.21
     dev: false
@@ -5968,7 +5996,6 @@ packages:
     resolution: {integrity: sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
-    dev: false
 
   /negotiator@0.6.3:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
@@ -6596,7 +6623,6 @@ packages:
       nanoid: 3.3.6
       picocolors: 1.0.0
       source-map-js: 1.0.2
-    dev: false
 
   /prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
@@ -7220,7 +7246,6 @@ packages:
     dependencies:
       buffer-from: 1.1.2
       source-map: 0.6.1
-    dev: false
 
   /source-map@0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
@@ -7447,8 +7472,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /terser@5.19.1:
-    resolution: {integrity: sha512-27hxBUVdV6GoNg1pKQ7Z5cbR6V9txPVyBA+FQw3BaZ1Wuzvztce5p156DaP0NVZNrMZZ+6iG9Syf7WgMNKDg2Q==}
+  /terser@5.19.2:
+    resolution: {integrity: sha512-qC5+dmecKJA4cpYxRa5aVkKehYsQKc+AHeKl0Oe62aYjBL8ZA33tTljktDHJSaxxMnbI5ZYw+o/S2DxxLu8OfA==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -7456,7 +7481,6 @@ packages:
       acorn: 8.9.0
       commander: 2.20.3
       source-map-support: 0.5.21
-    dev: false
 
   /test-exclude@6.0.0:
     resolution: {integrity: sha512-cAGWPIyOHU6zlmg88jwm7VRyXnMN7iV68OGAbYDk/Mh/xC/pzVPlQtY6ngoIH/5/tciuhGfvESU8GrHrcxD56w==}
@@ -7863,7 +7887,7 @@ packages:
     resolution: {integrity: sha512-efG3U61Umuj/1x6JAtdvnY9m407C/RkrkFilsMcLEWKDivpjNU3/FeL+feCY1Vkur9aQeBJ+z6K4CCPP7hv6vA==}
     dev: false
 
-  /vite-node@0.33.0(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.1):
+  /vite-node@0.33.0(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.2):
     resolution: {integrity: sha512-19FpHYbwWWxDr73ruNahC+vtEdza52kA90Qb3La98yZ0xULqV8A5JLNPUff0f5zID4984tW7l3DH2przTJUZSw==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -7873,7 +7897,7 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.1)
+      vite: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.2)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -7901,7 +7925,7 @@ packages:
       debug: 4.3.4
       kolorist: 1.8.0
       typescript: 5.1.6
-      vite: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.1)
+      vite: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.2)
       vue-tsc: 1.8.5(typescript@5.1.6)
     transitivePeerDependencies:
       - '@types/node'
@@ -7909,7 +7933,7 @@ packages:
       - supports-color
     dev: false
 
-  /vite@4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.1):
+  /vite@4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.2):
     resolution: {integrity: sha512-EY6Mm8vJ++S3D4tNAckaZfw3JwG3wa794Vt70M6cNJ6NxT87yhq7EC8Rcap3ahyHdo8AhCmV9PTk+vG1HiYn1A==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7942,12 +7966,11 @@ packages:
       postcss: 8.4.27
       rollup: 3.25.3
       sass: 1.64.0
-      terser: 5.19.1
+      terser: 5.19.2
     optionalDependencies:
       fsevents: 2.3.2
-    dev: false
 
-  /vitest@0.33.0(jsdom@22.1.0)(sass@1.64.0)(terser@5.19.1):
+  /vitest@0.33.0(jsdom@22.1.0)(sass@1.64.0)(terser@5.19.2):
     resolution: {integrity: sha512-1CxaugJ50xskkQ0e969R/hW47za4YXDUfWJDxip1hwbnhUjYolpfUn2AMOulqG/Dtd9WYAtkHmM/m3yKVrEejQ==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -8000,8 +8023,8 @@ packages:
       strip-literal: 1.0.1
       tinybench: 2.5.0
       tinypool: 0.6.0
-      vite: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.1)
-      vite-node: 0.33.0(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.1)
+      vite: 4.4.6(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.2)
+      vite-node: 0.33.0(@types/node@20.4.2)(sass@1.64.0)(terser@5.19.2)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
@@ -8355,8 +8378,8 @@ packages:
     resolution: {integrity: sha512-Aidoas1IyoaJ+wxV0lefJsMtWTMfiKduICtNpni03CRu4GKIuEXd38/CWDQzGNfhhoNfkHKKF1nLOpKcTb4jXw==}
     dev: false
 
-  /zrender@5.4.3:
-    resolution: {integrity: sha512-DRUM4ZLnoaT0PBVvGBDO9oWIDBKFdAVieNWxWwK0niYzJCMwGchRk21/hsE+RKkIveH3XHCyvXcJDkgLVvfizQ==}
+  /zrender@5.4.4:
+    resolution: {integrity: sha512-0VxCNJ7AGOMCWeHVyTrGzUgrK4asT4ml9PEkeGirAkKNYXYzoPJCLvmyfdoOXcjTHPs10OZVMfD1Rwg16AZyYw==}
     dependencies:
       tslib: 2.3.0
     dev: false

@@ -15,7 +15,8 @@ import {
   NodeDirectiveSchema,
   NodeSlotSchema,
   Assets,
-  DataSourceSchema
+  DataSourceSchema,
+  ComponentDescription
 } from '../core';
 import {
   isJSFunction,
@@ -140,7 +141,8 @@ function parseWatch(watch: WatchSchema[] = [], computedKeys: string[] = []) {
 
 function parseTemplate(
   children: NodeSchema[] = [],
-  computedKeys: string[] = []
+  computedKeys: string[] = [],
+  componentMap: Record<string, ComponentDescription> = {}
 ) {
   const nodes: string[] = [];
   let methods: Record<string, JSFunction> = {};
@@ -150,13 +152,19 @@ function parseTemplate(
     if (invisible) {
       continue;
     }
-    components.push(name);
+    if (componentMap[name]) {
+      components.push(name);
+    }
     const props = bindNodeProps(child.props).join(' ');
     const { binders, handlers } = bindNodeEvents(id || name, child.events);
     const events = binders.join(' ');
     Object.assign(methods, handlers);
     const directives = parseDirectives(child.directives).join(' ');
-    const nodeChildren = parseNodeChildren(child.children, computedKeys);
+    const nodeChildren = parseNodeChildren(
+      child.children,
+      computedKeys,
+      componentMap
+    );
     let childContent = '';
     if (typeof nodeChildren === 'string') {
       childContent = nodeChildren;
@@ -232,7 +240,8 @@ function bindNodeEvents(id: string, events: NodeEventsSchema = {}) {
 
 function parseNodeChildren(
   children?: NodeChildrenSchema,
-  computedKeys: string[] = []
+  computedKeys: string[] = [],
+  componentMap: Record<string, ComponentDescription> = {}
 ) {
   if (!children) return '';
   if (typeof children === 'string') {
@@ -246,7 +255,7 @@ function parseNodeChildren(
   }
 
   if (Array.isArray(children)) {
-    return parseTemplate(children, computedKeys);
+    return parseTemplate(children, computedKeys, componentMap);
   }
 }
 
@@ -291,11 +300,10 @@ function wrapSlot(slot: string | NodeSlotSchema | undefined, content: string) {
 }
 
 function parseImports(
-  assets: Assets,
+  componentMap: Record<string, ComponentDescription>,
   components: string[] = [],
   dataSources: Record<string, DataSourceSchema> = {}
 ) {
-  const { componentMap, project } = assets;
   const imports: Record<string, string[]> = {
     vue: [
       'defineComponent',
@@ -355,7 +363,10 @@ export interface Tokens {
   components: string;
 }
 
-export function parser(dsl: BlockSchema, assets: Assets) {
+export function parser(
+  dsl: BlockSchema,
+  componentMap: Record<string, ComponentDescription>
+) {
   const tokens = {} as Tokens;
   const computedKeys = Object.keys(dsl.computed || {});
   const lifeCycles = parseFunctionMap(dsl.lifeCycles, computedKeys);
@@ -365,7 +376,8 @@ export function parser(dsl: BlockSchema, assets: Assets) {
 
   const { methods, nodes, components } = parseTemplate(
     dsl.children,
-    computedKeys
+    computedKeys,
+    componentMap
   );
   const mergeComputed = [...computed, ...watch.computed];
 
@@ -377,7 +389,7 @@ export function parser(dsl: BlockSchema, assets: Assets) {
     computedKeys
   );
 
-  const imports = parseImports(assets, components, dsl.dataSources || {});
+  const imports = parseImports(componentMap, components, dsl.dataSources || {});
 
   tokens.name = dsl.name;
   tokens.state = parseState(dsl.state).join(',');

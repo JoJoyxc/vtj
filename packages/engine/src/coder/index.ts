@@ -1,10 +1,26 @@
-import { BlockSchema, Assets } from '../core';
-import { compiled } from './template';
+import {
+  BlockSchema,
+  Assets,
+  ProjectSchema,
+  ComponentDescription,
+  ApiSchema
+} from '../core';
+import { compiled, apiCompiled } from './template';
 import { parser } from './tokens';
 import { tsFormatter, htmlFormatter, cssFormatter } from './formatters';
 
-export function coder(dsl: BlockSchema, assets: Assets) {
-  const tokens = parser(dsl, assets);
+export interface ICoderOptions {
+  pages: BlockSchema[];
+  blocks: BlockSchema[];
+  apis: ApiSchema[];
+  componentMap: Record<string, ComponentDescription>;
+}
+
+function vueCoder(
+  dsl: BlockSchema,
+  componentMap: Record<string, ComponentDescription>
+) {
+  const tokens = parser(dsl, componentMap);
   const source = compiled(tokens);
   return htmlFormatter(`
   <template>
@@ -15,8 +31,33 @@ export function coder(dsl: BlockSchema, assets: Assets) {
  `);
 }
 
-export function vueCoder() {}
+function apiCoder(apis: ApiSchema[] = []) {
+  const source = apiCompiled({
+    items: apis
+  });
+  return tsFormatter(source);
+}
 
-export function routeCoder() {}
-
-export function apiCoder() {}
+export function coder(options: ICoderOptions) {
+  const { pages = [], blocks = [], componentMap = {}, apis = [] } = options;
+  const vuePages = pages.map((file) => {
+    return {
+      id: file.id as string,
+      name: file.name,
+      content: vueCoder(file, componentMap)
+    };
+  });
+  const vueBlocks = blocks.map((file) => {
+    return {
+      id: file.id as string,
+      name: file.name,
+      content: vueCoder(file, componentMap)
+    };
+  });
+  const tsApis = apiCoder(apis);
+  return {
+    pages: vuePages,
+    blocks: vueBlocks,
+    apis: tsApis
+  };
+}

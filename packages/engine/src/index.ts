@@ -6,4 +6,3 @@ export * from './renderer';
 export * from './models';
 export * from './utils';
 export * from './views';
-export * from './coder';

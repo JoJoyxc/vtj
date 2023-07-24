@@ -1,4 +1,5 @@
 import { createViteConfig } from '@vtj/cli';
+import { IDEPlugin } from '@vtj/serve';
 import * as EnvConfig from './env.config';
 import { resolve, join } from 'path';
 import proxy from './proxy.config';
@@ -26,7 +27,6 @@ const outDir = process.env.ENV_TYPE === 'live' ? 'dist/ide' : 'dist/demo';
 export default createViteConfig({
   base: './',
   host: '0.0.0.0',
-  ide: ide,
   outDir: outDir,
   port: 9527,
   https: false,
@@ -36,6 +36,7 @@ export default createViteConfig({
   envConfig: EnvConfig,
   envType: ENV_TYPE,
   alias,
+  plugins: [IDEPlugin()],
   defineConfig: (config) => {
     config.server.watch = {
       ignored: ['**/.vtj/**']

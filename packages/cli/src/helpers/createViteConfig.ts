@@ -23,12 +23,10 @@ import ElementPlus from 'unplugin-element-plus/vite';
 import dts from 'vite-plugin-dts';
 import fs from 'fs-extra';
 import babelPlugin from '../babel';
-import { IDEPlugin } from '../IDEPlugin';
 
 import { IOptions, EnvConfig, ProxyConfig, EnvType } from './types';
 
 const defaults: IOptions = {
-  ide: false,
   base: '/',
   debug: false,
   emptyOutDir: true,
@@ -168,10 +166,6 @@ const mergePlugins = (options: IOptions) => {
         brotliSize: true
       }) as any
     );
-  }
-
-  if (options.ide) {
-    plugins.push(IDEPlugin());
   }
 
   if (options.plugins) {

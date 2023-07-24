@@ -15,7 +15,11 @@ export function useMask(id: ComputedRef<string | undefined>) {
 
   const page = computed(() => {
     const pages = provider?.pages?.value || [];
-    return pages.find((n) => id.value === n.id);
+    const blocks = provider?.blocks?.value || [];
+    return (
+      pages.find((n) => id.value === n.id) ||
+      blocks.find((n) => id.value === n.id)
+    );
   });
 
   const maskProps = computed<BaseMaskProps>(() => {

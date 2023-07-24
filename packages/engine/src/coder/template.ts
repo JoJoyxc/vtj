@@ -38,4 +38,22 @@ export default defineComponent({
 });
 `;
 
+const apiTsContent = `
+import { createApi } from '@vtj/utils';
+
+<% items.forEach(function(item, index) { %>
+
+// <%= item.title %> 
+export const <%= item.name %> = createApi({
+  url: '<%= item.url %>',
+  method: '<%= item.method %>',
+  settings: <%= item.settings.value %>
+});
+
+<% }) %>
+
+`;
+
 export const compiled = template(blockTsContent);
+
+export const apiCompiled = template(apiTsContent);

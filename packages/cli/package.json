@@ -37,7 +37,7 @@
     "rollup-plugin-visualizer": "~5.9.2",
     "sass": "~1.64.0",
     "serve-static": "~1.15.0",
-    "terser": "~5.19.1",
+    "terser": "~5.19.2",
     "typescript": "~5.1.6",
     "unplugin-element-plus": "~0.7.2",
     "vite": "~4.4.6",
