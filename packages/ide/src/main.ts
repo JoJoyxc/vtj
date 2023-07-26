@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import { createProvider } from '@vtj/runtime';
+import { ElLoading } from 'element-plus';
 import 'element-plus/dist/index.css';
 import '@vtj/icons/lib/style.css';
 import '@vtj/engine/lib/style.css';
@@ -17,11 +18,16 @@ const modules = isDev
   ? import.meta.glob([
       '/.vtj/project/*.json',
       '/.vtj/file/*.json',
-      '/src/views/pages/*.vue'
+      '/src/views/pages/*.vue',
+      '/src/components/blocks/*.vue'
     ])
   : undefined;
 
 (async () => {
+  const loading = ElLoading.service({
+    body: true,
+    fullscreen: true
+  });
   const options = isDev || idDemo ? undefined : await ideConfig();
   const provider = await createProvider({
     service: idDemo ? 'storage' : 'file',
@@ -36,6 +42,7 @@ const modules = isDev
     ide: isDev || idDemo ? { path: '/' } : null,
     startup: isDev || idDemo ? true : false
   });
+  loading.close();
   app.use(provider);
   app.use(router);
   app.mount('#app');

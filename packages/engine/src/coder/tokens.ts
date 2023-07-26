@@ -321,10 +321,11 @@ function parseImports(
     }
   }
 
-  for (const item of Object.values(dataSources)) {
-    const apis = imports['@/api'] ?? (imports['@/api'] = []);
-    apis.push(item.detail);
-  }
+
+  // for (const item of Object.values(dataSources)) {
+  //   const apis = imports['@/api'] ?? (imports['@/api'] = []);
+  //   apis.push(item.detail);
+  // }
 
   return Object.entries(imports)
     .filter(([name, values]) => !!values.length)
@@ -341,7 +342,7 @@ function parseDataSources(dataSources: Record<string, DataSourceSchema> = {}) {
       ? item.transform.value || `(res) => res`
       : `(res) => res`;
     return `async ${item.name}(...args:any[]) {
-        return await ${item.detail}.call(this, ...args).then(${transform});
+        return await this.provider.apis.value?.${item.detail}.call(this, ...args).then(${transform});
       }`;
   });
 }
@@ -361,6 +362,7 @@ export interface Tokens {
   css: string;
   imports: string;
   components: string;
+  provider: string;
 }
 
 export function parser(
@@ -405,6 +407,5 @@ export function parser(
   tokens.css = dsl.css || '';
   tokens.imports = imports.join('\n');
   tokens.components = components.join(',');
-
   return tokens;
 }

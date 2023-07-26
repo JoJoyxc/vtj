@@ -5,7 +5,11 @@ import { createProvider } from '@vtj/runtime';
 import '@vtj/icons/lib/style.css';
 import '@vtj/ui/lib/style.css';
 import '@/style/index.scss';
-const modules = import.meta.glob(['/.vtj/project/*.json', '/.vtj/file/*.json']);
+const modules = import.meta.glob([
+  '/.vtj/project/*.json',
+  '/.vtj/file/*.json',
+  '/src/views/pages/*.vue'
+]);
 const app = createApp(App);
 
 (async () => {

@@ -143,16 +143,6 @@ export async function projectCoder(req: ApiRequest) {
   }
   const pagesDir = join(SRC_PATH, 'views/pages');
   const blocksDir = join(SRC_PATH, 'components/blocks');
-  const apisPath = join(SRC_PATH, 'api/vtj.ts');
-
-  // console.log('project.pages-------------');
-  // console.log(project.pages);
-  // console.log('project.blocks -------------');
-  // console.log(project.blocks);
-  // console.log('project.apis-------------');
-  // console.log(project.apis);
-  // console.log('assets.componentMap-------------');
-  // console.log(assets.componentMap);
 
   const jsonPages = getPages(project.pages || [])
     .map((n) => {
@@ -175,7 +165,7 @@ export async function projectCoder(req: ApiRequest) {
     .filter((n: any) => !!n);
 
   try {
-    const { apis, pages, blocks } = coder({
+    const { pages, blocks } = coder({
       pages: jsonPages,
       blocks: jsonBlocks,
       apis: project.apis || [],
@@ -199,8 +189,6 @@ export async function projectCoder(req: ApiRequest) {
 
       writeFileSync(filePath, file.content, 'utf-8');
     }
-
-    writeFileSync(apisPath, apis, 'utf-8');
   } catch (e: any) {
     // console.log(e);
     return fail(e.message);

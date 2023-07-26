@@ -1,4 +1,5 @@
 import { createViteConfig } from '@vtj/cli';
+import { IDEPlugin } from '@vtj/serve';
 import * as EnvConfig from './env.config';
 import proxy from './proxy.config';
 
@@ -12,5 +13,6 @@ export default createViteConfig({
   legacy: false,
   proxy,
   envConfig: EnvConfig,
-  envType: ENV_TYPE
+  envType: ENV_TYPE,
+  plugins: [IDEPlugin()]
 });

@@ -5,7 +5,7 @@ import {
   ComponentDescription,
   ApiSchema
 } from '../core';
-import { compiled, apiCompiled } from './template';
+import { compiled } from './template';
 import { parser } from './tokens';
 import { tsFormatter, htmlFormatter, cssFormatter } from './formatters';
 
@@ -31,13 +31,6 @@ function vueCoder(
  `);
 }
 
-function apiCoder(apis: ApiSchema[] = []) {
-  const source = apiCompiled({
-    items: apis
-  });
-  return tsFormatter(source);
-}
-
 export function coder(options: ICoderOptions) {
   const { pages = [], blocks = [], componentMap = {}, apis = [] } = options;
   const vuePages = pages.map((file) => {
@@ -54,10 +47,8 @@ export function coder(options: ICoderOptions) {
       content: vueCoder(file, componentMap)
     };
   });
-  const tsApis = apiCoder(apis);
   return {
     pages: vuePages,
-    blocks: vueBlocks,
-    apis: tsApis
+    blocks: vueBlocks
   };
 }

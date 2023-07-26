@@ -15,6 +15,7 @@ import PreviewContainer from './components/PreviewContainer';
 import MaskContainer from './components/MaskContainer';
 import Homepage from './components/Homepage';
 import { ServiceType, Service } from './Service';
+
 import {
   VUE,
   parseDependencies,
@@ -109,6 +110,7 @@ export class Provider {
   public dsl: ShallowRef<ProjectSchema | null> = shallowRef(null);
   public pages?: ComputedRef<PageSchema[]>;
   public blocks?: ComputedRef<SummarySchema[]>;
+  public apis?: ComputedRef<Record<string, any>>;
   constructor(options: Partial<ProviderOptions> = {}) {
     const app = options.app;
     // merge app 会引发警告
@@ -127,7 +129,8 @@ export class Provider {
     const { ide, router, app } = this.options;
     this.dsl.value = await this.service.getProject();
     this.pages = computed(() => getPages(this.dsl.value?.pages ?? []));
-    this.blocks = computed(() => getPages(this.dsl.value?.blocks ?? []));
+    this.blocks = computed(() => this.dsl.value?.blocks ?? []);
+    this.apis = computed(() => parseApis(this.dsl.value?.apis || []));
     if (app) {
       await this.setup(app);
     }
@@ -213,8 +216,7 @@ export class Provider {
     await loadScripts(scripts);
     await loadScripts(assets);
     const { libs, components } = getLibs(libraries);
-    const apis = parseApis(dsl.value?.apis || []);
-    cache = caches[id] = { libs, components, apis };
+    cache = caches[id] = { libs, components, apis: this.apis?.value };
     if (app) {
       install(app, libs);
     }
