@@ -10,14 +10,14 @@ const alias =
     ? {
         // '@vtj/utils': join(packagesPath, 'utils/src/index.ts'),
         // '@vtj/ui/lib/style.css': join(packagesPath, 'ui/src/style/index.scss'),
-        '@vtj/engine/lib/style.css': join(
-          packagesPath,
-          'engine/src/style/index.scss'
-        ),
+        // '@vtj/engine/lib/style.css': join(
+        //   packagesPath,
+        //   'engine/src/style/index.scss'
+        // ),
         // '@vtj/icons/lib/style.css': join(packagesPath, 'icons/src/style.scss'),
         // '@vtj/ui': join(packagesPath, 'ui/src'),
         // '@vtj/icons': join(packagesPath, 'icons/src'),
-        '@vtj/engine': join(packagesPath, 'engine/src'),
+        // '@vtj/engine': join(packagesPath, 'engine/src'),
         '@vtj/runtime': join(packagesPath, 'runtime/src')
       }
     : undefined;
@@ -39,7 +39,7 @@ export default createViteConfig({
   plugins: [IDEPlugin()],
   defineConfig: (config) => {
     config.server.watch = {
-      ignored: ['**/.vtj/**']
+      // ignored: ['**/.vtj/**']
     };
     return config;
   }

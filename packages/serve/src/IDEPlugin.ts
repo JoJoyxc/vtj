@@ -32,6 +32,7 @@ const getProviderOptions = (config: UserConfig, build?: boolean) => {
   const { base = '/' } = config || {};
   return {
     service: vtj.service || 'file',
+    raw: !!vtj.raw,
     project: {
       id: name,
       name: name,

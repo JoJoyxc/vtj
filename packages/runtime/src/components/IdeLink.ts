@@ -23,7 +23,7 @@ const CSS_TEXT = `
   }
 `;
 
-export default defineComponent({
+export const IDELink = defineComponent({
   name: 'VtjIdeLink',
   props: {
     path: {

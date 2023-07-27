@@ -9,8 +9,7 @@
     "build": "npm run build:prod",
     "build:prod": "vue-tsc && cross-env ENV_TYPE=live vite build",
     "build:uat": "vue-tsc && cross-env ENV_TYPE=uat vite build",
-    "preview": "cross-env ENV_TYPE=live vite preview",
-    "preview:demo": "cross-env ENV_TYPE=uat vite preview"
+    "preview": "cross-env ENV_TYPE=live vite preview"
   },
   "engines": {
     "node": ">=16.0.0"

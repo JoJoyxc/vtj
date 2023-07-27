@@ -43,6 +43,7 @@
     "project": {
       "id": "demo",
       "name": "示例项目"
-    }
+    },
+    "raw": true
   }
 }

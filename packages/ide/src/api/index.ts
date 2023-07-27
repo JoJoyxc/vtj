@@ -1,6 +1,5 @@
 import { createApi } from '@vtj/utils';
 import { ElNotification } from 'element-plus';
-export * from './vtj';
 
 export const ideConfig = createApi({
   url: '/vtj.json',

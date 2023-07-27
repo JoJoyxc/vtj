@@ -20,8 +20,9 @@
   import { useProvider, isPage } from '@vtj/runtime';
   import { ElMessage, ElNotification } from 'element-plus';
   import { ideBase } from '@/api';
-  const provider = useProvider();
   const container = ref<HTMLElement | undefined>();
+  const provider = useProvider();
+  const { project, options } = provider || {};
   const {
     id = 'ide',
     name = 'IDE',
@@ -30,9 +31,10 @@
     page = '/page',
     preview = '/preview',
     home = '/'
-  } = provider?.options.project || {};
+  } = project || {};
 
-  const service = provider?.options.service;
+  const service = options?.service;
+
   const engine = new Engine(container, {
     service: service === 'file' ? new FileService() : new StorageService(),
     config: {
@@ -46,7 +48,7 @@
         {
           name: 'actions',
           props: {
-            coder: true
+            coder: !!options?.raw
           }
         }
       ]
@@ -65,8 +67,17 @@
   engine.emitter.on(
     EVENT_ACTION_PREVIEW,
     (file: PageSchema | SummarySchema) => {
+      const raw = provider?.options.raw;
       const split = mode === 'hash' ? '#' : '';
-      const url = `${base}${split}${preview}/${(file as SummarySchema).id}`;
+      let url = '';
+      if (isPage(file)) {
+        url = raw
+          ? `${base}${split}${preview}/${(file as SummarySchema).id}`
+          : `${base}${split}${page}/${(file as SummarySchema).id}`;
+      } else {
+        url = `${base}${split}${preview}/${(file as SummarySchema).id}`;
+      }
+
       window.open(url);
     }
   );
