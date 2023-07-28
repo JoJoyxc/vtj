@@ -11,24 +11,23 @@ import '@/style/index.scss';
 import { ideConfig } from '@/api';
 import Mask from '@/components/Mask.vue';
 
+const isExample = process.env.ENV_TYPE === 'uat';
+
 const app = createApp(App);
 
-const modules = import.meta.glob([
-  '/.vtj/project/*.json',
-  '/.vtj/file/*.json',
-  '/src/views/pages/*.vue',
-  '/src/components/blocks/*.vue'
-]);
-
 (async () => {
-  const options: any = await ideConfig();
+  const options: any = isExample
+    ? {
+        raw: true,
+        service: 'storage'
+      }
+    : await ideConfig();
   await createProvider(
     merge(
       {
         service: 'file',
         project: { home: '/startup', name: '项目样例' },
         app,
-        modules,
         router,
         ide: { path: '/' },
         startup: true,

@@ -6,10 +6,12 @@
     "setup": "npm install --registry=https://registry.npmmirror.com",
     "outdate": "npm outdate --registry=https://registry.npmmirror.com",
     "dev": "cross-env ENV_TYPE=local vite",
+    "dev:example": "cross-env ENV_TYPE=uat vite",
     "build": "npm run build:prod",
     "build:prod": "vue-tsc && cross-env ENV_TYPE=live vite build",
-    "build:uat": "vue-tsc && cross-env ENV_TYPE=uat vite build",
-    "preview": "cross-env ENV_TYPE=live vite preview"
+    "build:example": "vue-tsc && cross-env ENV_TYPE=uat vite build",
+    "preview": "cross-env ENV_TYPE=live vite preview",
+    "preview:example": "cross-env ENV_TYPE=uat vite preview"
   },
   "engines": {
     "node": ">=16.0.0"
@@ -38,9 +40,11 @@
     "access": "public"
   },
   "vtj": {
+    "service": "file",
     "project": {
       "id": "ide",
       "name": "IDE"
-    }
+    },
+    "raw": true
   }
 }

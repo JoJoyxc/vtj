@@ -18,16 +18,16 @@ const alias =
         // '@vtj/ui': join(packagesPath, 'ui/src'),
         // '@vtj/icons': join(packagesPath, 'icons/src'),
         // '@vtj/engine': join(packagesPath, 'engine/src'),
-        '@vtj/runtime': join(packagesPath, 'runtime/src')
+        '@vtj/runtime': join(packagesPath, 'runtime/src/main')
       }
     : undefined;
 
-const ide = process.env.ENV_TYPE === 'live' ? false : true;
-const outDir = process.env.ENV_TYPE === 'live' ? 'dist/ide' : 'dist/demo';
+const isExample = ENV_TYPE === 'uat';
+
 export default createViteConfig({
   base: './',
   host: '0.0.0.0',
-  outDir: outDir,
+  outDir: isExample ? 'example' : 'dist/ide',
   port: 9527,
   https: false,
   elementPlus: false,

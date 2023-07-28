@@ -144,6 +144,8 @@ export async function projectCoder(req: ApiRequest) {
   const pagesDir = join(SRC_PATH, 'views/pages');
   const blocksDir = join(SRC_PATH, 'components/blocks');
 
+  const results: string[] = [];
+
   const jsonPages = getPages(project.pages || [])
     .map((n) => {
       const file = getFilePath(FILE_PATH, n.id as string);
@@ -180,19 +182,19 @@ export async function projectCoder(req: ApiRequest) {
 
     for (const file of pages) {
       const filePath = join(pagesDir, `${file.id}.vue`);
-
       writeFileSync(filePath, file.content, 'utf-8');
+      results.push(filePath);
     }
 
     for (const file of blocks) {
       const filePath = join(blocksDir, `${file.id}.vue`);
-
       writeFileSync(filePath, file.content, 'utf-8');
+      results.push(filePath);
     }
   } catch (e: any) {
     // console.log(e);
     return fail(e.message);
   }
 
-  return success([]);
+  return success(results);
 }

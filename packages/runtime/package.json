@@ -28,14 +28,14 @@
     "types",
     "cdn"
   ],
-  "main": "lib/index.js",
-  "module": "lib/index.js",
-  "types": "types/index.d.ts",
+  "main": "main.js",
+  "module": "main.js",
+  "types": "main.d.ts",
   "exports": {
     ".": {
-      "types": "./types/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib/index.js"
+      "types": "./main.d.ts",
+      "import": "./main.js",
+      "require": "./main.js"
     }
   },
   "publishConfig": {
