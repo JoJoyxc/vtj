@@ -1,7 +1,7 @@
 {
   "name": "@vtj/ide",
   "private": false,
-  "version": "0.5.0",
+  "version": "0.5.1",
   "scripts": {
     "setup": "npm install --registry=https://registry.npmmirror.com",
     "outdate": "npm outdate --registry=https://registry.npmmirror.com",
@@ -17,17 +17,17 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@vtj/assets": "0.5.0",
-    "@vtj/deps": "0.5.0",
-    "@vtj/engine": "0.5.0",
-    "@vtj/icons": "0.5.0",
-    "@vtj/runtime": "0.5.0",
-    "@vtj/ui": "0.5.0",
-    "@vtj/utils": "0.5.0"
+    "@vtj/assets": "^0.5.1",
+    "@vtj/deps": "^0.5.1",
+    "@vtj/engine": "^0.5.1",
+    "@vtj/icons": "^0.5.1",
+    "@vtj/runtime": "^0.5.1",
+    "@vtj/ui": "^0.5.1",
+    "@vtj/utils": "^0.5.1"
   },
   "devDependencies": {
-    "@vtj/cli": "0.5.0",
-    "@vtj/serve": "0.5.0"
+    "@vtj/cli": "^0.5.1",
+    "@vtj/serve": "^0.5.1"
   },
   "description": "> TODO: description",
   "author": "陈华春 <samchen08@163.com>",
