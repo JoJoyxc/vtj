@@ -1,7 +1,7 @@
 {
   "name": "dev-web",
   "private": true,
-  "version": "0.0.7",
+  "version": "0.1.0",
   "scripts": {
     "setup": "pnpm install --registry=https://registry.npmmirror.com",
     "dev": "cross-env ENV_TYPE=local vite",
@@ -20,9 +20,9 @@
     "@vtj/assets": "workspace:*",
     "@vtj/engine": "workspace:*",
     "@vtj/icons": "workspace:*",
+    "@vtj/runtime": "workspace:*",
     "@vtj/ui": "workspace:*",
-    "@vtj/utils": "workspace:*",
-    "@vtj/runtime": "workspace:*"
+    "@vtj/utils": "workspace:*"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:*",
