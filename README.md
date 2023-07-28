@@ -49,7 +49,12 @@ import App from './App.vue';
 import { createProvider } from '@vtj/runtime';
 import router from './router';
 const app = createApp(App);
-
+const modules = import.meta.glob([
+  '/.vtj/project/*.json',
+  '/.vtj/file/*.json',
+  '/src/views/pages/*.vue',
+  '/src/components/blocks/*.vue'
+]);
 (async () => {
   await createProvider({
     app,

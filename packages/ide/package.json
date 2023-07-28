@@ -34,7 +34,8 @@
   "homepage": "",
   "license": "ISC",
   "files": [
-    "dist"
+    "dist",
+    "example"
   ],
   "publishConfig": {
     "access": "public"

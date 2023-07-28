@@ -132,14 +132,7 @@ export class Provider {
   constructor(options: Partial<ProviderOptions> = {}) {
     const app = options.app as App;
     delete options.app;
-    this.options = merge(
-      {
-        modules: window.__VTJ_MODULES__
-      },
-      defaults,
-      window.__VTJ_PROVIDER_OPTIONS__,
-      options
-    );
+    this.options = merge(defaults, window.__VTJ_PROVIDER_OPTIONS__, options);
     this.options.app = app;
     const { service, project, modules } = this.options;
     this.project = project as ProjectProvider;
