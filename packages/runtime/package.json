@@ -1,7 +1,7 @@
 {
   "name": "@vtj/runtime",
   "private": false,
-  "version": "0.5.0",
+  "version": "0.5.1",
   "type": "module",
   "scripts": {
     "setup": "npm install --registry=https://registry.npmmirror.com",
@@ -15,27 +15,27 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@vtj/deps": "0.5.0",
-    "@vtj/engine": "0.5.0",
-    "@vtj/ui": "0.5.0",
-    "@vtj/utils": "0.5.0"
+    "@vtj/deps": "^0.5.1",
+    "@vtj/engine": "^0.5.1",
+    "@vtj/ui": "^0.5.1",
+    "@vtj/utils": "^0.5.1"
   },
   "devDependencies": {
-    "@vtj/cli": "0.5.0"
+    "@vtj/cli": "^0.5.1"
   },
   "files": [
     "lib",
     "types",
     "cdn"
   ],
-  "main": "main.js",
-  "module": "main.js",
-  "types": "main.d.ts",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "types/index.d.ts",
   "exports": {
     ".": {
-      "types": "./main.d.ts",
-      "import": "./main.js",
-      "require": "./main.js"
+      "types": "./types/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.js"
     }
   },
   "publishConfig": {

@@ -15,7 +15,7 @@
         class="npm-command"
         :closable="false"
         type="info"
-        title="npm create vtj -- -t web" />
+        title="npm create vtj@latest -- -t web" />
     </Dialog>
     <Dialog
       v-model="coderDialogVisible"
@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref, Ref } from 'vue';
+  import { ref, Ref, inject } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
   import {
     Engine,
@@ -51,14 +51,19 @@
   } from '@vtj/engine';
   import { useProvider, isPage } from '@vtj/runtime';
   import { ElMessage, ElAlert, ElSkeleton } from 'element-plus';
-  import { ideBase } from '@/api';
+  import { ideBase, ideConfig } from '@/api';
+
+  const isExample = process.env.ENV_TYPE === 'uat';
+  const isDev = process.env.ENV_TYPE === 'local';
+
   const tipDialogVisible = ref(false);
   const coderDialogVisible = ref(false);
   const coderResults = ref<string[]>([]);
   const coderLoading = ref(false);
   const container = ref<HTMLElement | undefined>();
-  const provider = useProvider();
-  const { project, options } = provider || {};
+  const options = inject('VTJ_PROVIDER_OPTIONS', null);
+  const config = isExample ? ({} as any) : options || (await ideConfig());
+  const { project, raw = true, service = 'storage' } = config || {};
   const {
     id = 'ide',
     name = 'IDE',
@@ -68,7 +73,6 @@
     preview = '/preview',
     home = '/'
   } = project || {};
-  const { raw, service } = options;
 
   const engine = new Engine(container, {
     service: service === 'file' ? new FileService() : new StorageService(),
@@ -94,8 +98,7 @@
     },
     globals: {
       $route: useRoute(),
-      $router: useRouter(),
-      $provider: provider
+      $router: useRouter()
     }
   });
 
