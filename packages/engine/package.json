@@ -20,7 +20,7 @@
     "@vtj/icons": "^0.5.2",
     "@vtj/ui": "^0.5.2",
     "@vtj/utils": "^0.5.2",
-    "@vueuse/core": "~10.2.1",
+    "@vueuse/core": "~10.3.0",
     "mitt": "~3.0.1",
     "monaco-editor": "~0.40.0",
     "prettier": "~2.8.8",
