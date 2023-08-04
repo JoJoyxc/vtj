@@ -1,10 +1,4 @@
-import {
-  watch,
-  WatchStopHandle,
-  ShallowReactive,
-  computed,
-  ComputedRef
-} from 'vue';
+import { watch, WatchStopHandle, ShallowReactive } from 'vue';
 import { jsonp } from '@vtj/utils';
 import {
   Dependencie,
@@ -14,7 +8,7 @@ import {
   NodeFrom
 } from './types';
 
-import { Project, Block } from '../models';
+import { Project } from '../models';
 
 import { EVENT_ASSETS_LOADED, emitter } from './emitter';
 import {
@@ -37,6 +31,7 @@ export interface IComponentGroup {
 
 export class Assets {
   private unwatch?: WatchStopHandle;
+  packages: Dependencie[] = [];
   elements: ComponentDescription[] = [...builtInElements];
   elementsMap: Record<string, ComponentDescription> = {};
   components: ComponentDescription[] = [...builtInComponents];
@@ -126,12 +121,13 @@ export class Assets {
   }
 
   async load(dependencies: Dependencie[]) {
+    this.packages = dependencies;
     this.isReady = false;
     const deps = dependencies.filter((n) => !!n.assetsUrl && n.enabled);
     this.clear();
     const packages: AssetsContent[] = [
       {
-        name: 'built-in',
+        name: 'vue',
         label: '内置',
         names: builtInComponents.map((n) => n.name),
         library: 'Vue',
