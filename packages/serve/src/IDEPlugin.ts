@@ -52,6 +52,7 @@ const getProviderOptions = (config: UserConfig, build?: boolean) => {
       home: '/',
       ...(vtj.project || {})
     },
+    debug: !!vtj.debug,
     ide: build
       ? null
       : {

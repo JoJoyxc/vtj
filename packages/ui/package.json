@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@vtj/deps": "^0.5.3",
-    "@vtj/icons": "^0.5.3",
+    "@vtj/icons": "^0.5.3", 
     "@vtj/utils": "^0.5.3"
   },
   "devDependencies": {

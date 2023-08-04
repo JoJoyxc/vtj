@@ -96,3 +96,20 @@ export async function delay(val: number = 0) {
     setTimeout(resolve, val);
   });
 }
+
+export function arrayToMap<T>(data: T[], prop: keyof T) {
+  return data.reduce((prev, current) => {
+    const value = current[prop];
+    prev.set(value, current);
+    return prev;
+  }, new Map<any, T>());
+}
+
+export function dedupArray<T>(array: any[], prop?: keyof T) {
+  if (prop) {
+    const map = arrayToMap<T>(array, prop);
+    return Array.from(map.values());
+  } else {
+    return Array.from(new Set(array));
+  }
+}

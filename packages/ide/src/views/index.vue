@@ -76,7 +76,7 @@
   const container = ref<HTMLElement | undefined>();
   const options = inject('VTJ_PROVIDER_OPTIONS', null);
   const config = isExample ? ({} as any) : options || (await ideConfig());
-  const { project, raw = true, service = 'storage' } = config || {};
+  const { project, raw = true, service = 'storage', debug } = config || {};
   const {
     id = 'ide',
     name = 'IDE',
@@ -154,6 +154,7 @@
     coderResults.value = await ideBase({
       type: 'projectCoder',
       data: {
+        debug,
         project: dsl,
         assets: {
           componentMap,

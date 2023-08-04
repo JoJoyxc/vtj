@@ -22,7 +22,8 @@ export {
   set,
   isPlainObject,
   lowerFirst,
-  delay
+  delay,
+  dedupArray
 } from '@vtj/utils';
 
 export { toTypeString, toRawType } from '@vue/shared';
@@ -154,10 +155,6 @@ export function createAssetScripts(scripts: string[]): string {
 
 export function createAssetsCss(css: string[] = []) {
   return css.map((url) => `<link rel="stylesheet" href="${url}" />`).join('');
-}
-
-export function dedupArray(array: any[]) {
-  return Array.from(new Set(array));
 }
 
 export function createApiHandler(api: ApiSchema) {

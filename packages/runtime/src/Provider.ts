@@ -102,6 +102,8 @@ export interface ProviderOptions {
   // 生成源码模式
   raw?: boolean;
   isProd?: boolean;
+  // 开启debug
+  debug?: boolean;
 }
 
 const defaults: Partial<ProviderOptions> = {
@@ -122,7 +124,8 @@ const defaults: Partial<ProviderOptions> = {
   },
   ide: undefined,
   raw: true,
-  startup: true
+  startup: true,
+  debug: false
 };
 
 export const providerInjectKey: InjectionKey<Provider> = Symbol('$provider');
