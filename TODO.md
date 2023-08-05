@@ -5,6 +5,7 @@
 - 样式设置器
 - 代码生成器抽取节点样式放到 style 区块
 - 代码生成器 component 特殊元素转换为 HTML 标签
+- 代码生成器按需引用图标
 
 # Cli
 
@@ -35,3 +36,9 @@
 - XFormItem 表单项
 - XTable 表格
 - XList 列表
+
+# Docs
+
+- 组件预览
+
+# Adapter
