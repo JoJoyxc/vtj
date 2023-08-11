@@ -16,30 +16,33 @@
   </ElMenuItem>
 </template>
 <script lang="ts" setup>
-import { ElSubMenu, ElMenuItem } from 'element-plus';
-import { XIcon } from '../';
-import { MenuDataItem } from './types';
-import { XMenuItem as ChildMenuItem } from './components';
-import { getCurrentInstance } from 'vue';
+  import { ElSubMenu, ElMenuItem } from 'element-plus';
+  import { XIcon } from '../';
+  import { MenuDataItem } from './types';
+  import { XMenuItem as ChildMenuItem } from './components';
+  import { getCurrentInstance, DefineComponent } from 'vue';
 
-export interface Props {
-  item: MenuDataItem;
-}
+  export interface Props {
+    item: MenuDataItem;
+  }
 
-defineOptions({
-  name: 'XMenuItem'
-});
+  defineOptions({
+    name: 'XMenuItem'
+  });
 
-const props = defineProps<Props>();
-const instance = getCurrentInstance();
+  const props = defineProps<Props>();
+  const instance = getCurrentInstance();
 
-const getIcon = (name: string = '') => {
-  if (!name) return undefined;
-  const app = instance?.appContext.app;
-  return app?.component(name) || name;
-};
+  const getIcon = (name: string | DefineComponent = '') => {
+    if (!name) return undefined;
+    if (typeof name === 'string') {
+      const app = instance?.appContext.app;
+      return app?.component(name) || name;
+    }
+    return name;
+  };
 
-const getShowItems = (items: MenuDataItem[]) => {
-  return items.filter((n) => !n.hidden);
-};
+  const getShowItems = (items: MenuDataItem[]) => {
+    return items.filter((n) => !n.hidden);
+  };
 </script>

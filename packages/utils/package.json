@@ -11,9 +11,22 @@
     "test:unit": "vitest --environment jsdom",
     "coverage": "vitest run --coverage --environment jsdom"
   },
+  "dependencies": {
+    "@vueuse/core": "~10.3.0"
+  },
   "devDependencies": {
     "@vtj/cli": "^0.5.3",
-    "@vtj/deps": "^0.5.3"
+    "@vueuse/core": "~10.3.0",
+    "@types/js-cookie": "~3.0.3",
+    "@types/lodash-es": "~4.17.8",
+    "@types/numeral": "~2.0.2",
+    "axios": "~1.4.0",
+    "crypto-js": "~4.1.1",
+    "dayjs": "~1.11.9",
+    "js-cookie": "~3.0.5",
+    "jsencrypt": "~3.3.2",
+    "lodash-es": "~4.17.21",
+    "numeral": "~2.0.6"
   },
   "files": [
     "lib",

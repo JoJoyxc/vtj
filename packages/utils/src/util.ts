@@ -41,24 +41,61 @@ export function upperFirstCamelCase(name: string) {
   return upperFirst(camelCase(name));
 }
 
+
 /**
- * 提取对象属性
- * @param object
- * @param filter
- * @returns
+ * 对象排除属性
+ * @param target 需要处理的对象
+ * @param keys 需要排除的属性名称
+ * @returns 
  */
-export function pick(
-  object: Record<string, any>,
-  filter?: (v: any) => boolean
-) {
-  const obj: Record<string, any> = Object.create(null);
-  const match = filter || ((v) => v !== null && v !== undefined);
-  Object.entries(object).forEach(([n, v]) => {
-    if (match(v)) {
-      obj[n] = v;
-    }
-  });
-  return obj;
+export function omit<
+  T extends Record<string, any>,
+  K extends Record<string, any>
+>(target: T, keys: string[] | ((k: string, v: any) => boolean)): K {
+  const result: Record<string, any> = {};
+  if (Array.isArray(keys)) {
+    Object.keys(target).forEach((k) => {
+      if (!keys.includes(k)) {
+        result[k] = target[k];
+      }
+    });
+  } else {
+    const filter = keys;
+    Object.entries(target).forEach(([k, v]) => {
+      if (!filter(k, v)) {
+        result[k] = v;
+      }
+    });
+  }
+  return result as K;
+}
+
+/**
+ * 对象提取属性
+ * @param target 
+ * @param keys 
+ * @returns 
+ */
+export function pick<
+  T extends Record<string, any>,
+  K extends Record<string, any>
+>(target: T, keys: string[] | ((k: string, v: any) => boolean)): K {
+  const result: Record<string, any> = {};
+  if (Array.isArray(keys)) {
+    Object.keys(target).forEach((k) => {
+      if (keys.includes(k)) {
+        result[k] = target[k];
+      }
+    });
+  } else {
+    const filter = keys;
+    Object.entries(target).forEach(([k, v]) => {
+      if (filter(k, v)) {
+        result[k] = v;
+      }
+    });
+  }
+  return result as K;
 }
 
 /**

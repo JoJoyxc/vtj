@@ -14,5 +14,9 @@ export const ui = [
   {
     path: '/ui/simple-mask',
     component: () => import('@/views/ui/simple-mask.vue')
+  },
+  {
+    path: '/ui/title',
+    component: () => import('@/views/ui/title.vue')
   }
 ];
