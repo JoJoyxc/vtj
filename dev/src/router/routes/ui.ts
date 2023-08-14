@@ -22,5 +22,9 @@ export const ui = [
   {
     path: '/ui/action',
     component: () => import('@/views/ui/action.vue')
+  },
+  {
+    path: '/ui/container',
+    component: () => import('@/views/ui/container.vue')
   }
 ];

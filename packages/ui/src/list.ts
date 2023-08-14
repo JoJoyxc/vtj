@@ -5,6 +5,7 @@ import {
   XMenu,
   XSimpleMask,
   XAction,
+  XContainer,
   XTitle
 } from './components';
 
@@ -14,5 +15,6 @@ export default [
   XMenu,
   XSimpleMask,
   XAction,
+  XContainer,
   XTitle
 ] as unknown as Plugin[];
