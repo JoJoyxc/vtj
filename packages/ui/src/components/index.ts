@@ -3,4 +3,5 @@ export * from './startup';
 export * from './icon';
 export * from './menu';
 export * from './simple-mask';
-export * from './title'
+export * from './action';
+export * from './title';

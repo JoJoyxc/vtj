@@ -41,12 +41,11 @@ export function upperFirstCamelCase(name: string) {
   return upperFirst(camelCase(name));
 }
 
-
 /**
  * 对象排除属性
  * @param target 需要处理的对象
  * @param keys 需要排除的属性名称
- * @returns 
+ * @returns
  */
 export function omit<
   T extends Record<string, any>,
@@ -72,9 +71,9 @@ export function omit<
 
 /**
  * 对象提取属性
- * @param target 
- * @param keys 
- * @returns 
+ * @param target
+ * @param keys
+ * @returns
  */
 export function pick<
   T extends Record<string, any>,
@@ -140,6 +139,13 @@ export function arrayToMap<T>(data: T[], prop: keyof T) {
     prev.set(value, current);
     return prev;
   }, new Map<any, T>());
+}
+
+export function mapToObject<V = any>(map: Map<any, V>) {
+  return [...map.entries()].reduce(
+    (obj, [key, value]) => ((obj[key] = value), obj),
+    {} as Record<any, V>
+  );
 }
 
 export function dedupArray<T>(array: any[], prop?: keyof T) {

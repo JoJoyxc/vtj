@@ -13,5 +13,6 @@ export default createViteConfig({
   proxy,
   envConfig: EnvConfig,
   envType: ENV_TYPE,
-  plugins: [IDEPlugin()]
+  plugins: [IDEPlugin()],
+  visualizer: false
 });

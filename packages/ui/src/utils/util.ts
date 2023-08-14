@@ -1,7 +1,3 @@
-export type UnReadOnly<T> = {
-  -readonly [P in keyof T]: T[P];
-};
-
 export function getSizeValue(value: string | number) {
   return typeof value === 'string' ? value : `${value}px`;
 }

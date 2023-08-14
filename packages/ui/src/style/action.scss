@@ -1,0 +1,107 @@
+@use 'core' as *;
+
+@include b(action) {
+  display: inline-flex;
+  vertical-align: middle;
+  & + .x-action {
+    margin-left: 10px;
+  }
+  .el-dropdown,
+  .el-badge {
+    outline: none;
+  }
+
+  @include e(inner) {
+    cursor: pointer;
+    color: getCssVar('text-color-regular');
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    white-space: nowrap;
+    font-size: 14px;
+    > .x-icon + span {
+      margin-left: 0.2em;
+    }
+
+    > span {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    @include when(disabled) {
+      cursor: not-allowed;
+    }
+
+    @include when(primary) {
+      color: getCssVar('color-primary');
+    }
+    @include when(warning) {
+      color: getCssVar('color-warning');
+    }
+    @include when(success) {
+      color: getCssVar('color-success');
+    }
+    @include when(danger) {
+      color: getCssVar('color-danger');
+    }
+    @include when(info) {
+      color: getCssVar('color-info');
+    }
+  }
+
+  @include m(icon) {
+    padding: 0.5em;
+    border-radius: 3px;
+
+    @include when(background-hover) {
+      &:hover {
+        @include when(primary) {
+          background-color: getCssVar('color-primary-light-9');
+        }
+        @include when(success) {
+          background-color: getCssVar('color-success-light-9');
+        }
+        @include when(warning) {
+          background-color: getCssVar('color-warning-light-9');
+        }
+        @include when(danger) {
+          background-color: getCssVar('color-danger-light-9');
+        }
+        @include when(info) {
+          background-color: getCssVar('color-info-light-9');
+        }
+      }
+    }
+
+    @include when(background-always) {
+      @include when(primary) {
+        background-color: getCssVar('color-primary-light-9');
+      }
+      @include when(success) {
+        background-color: getCssVar('color-success-light-9');
+      }
+      @include when(warning) {
+        background-color: getCssVar('color-warning-light-9');
+      }
+      @include when(danger) {
+        background-color: getCssVar('color-danger-light-9');
+      }
+      @include when(info) {
+        background-color: getCssVar('color-info-light-9');
+      }
+    }
+  }
+
+  @include m(large) {
+    font-size: 16px;
+  }
+
+  @include m(small) {
+    font-size: 12px;
+  }
+}

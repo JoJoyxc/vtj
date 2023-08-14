@@ -273,8 +273,8 @@ export class Request {
   }
 
   private showError(settings: IRequestSettings, e: any) {
-    const { showError } = settings;
-    if (showError) {
+    const { failMessage, showError } = settings;
+    if (failMessage && showError) {
       const msg = e?.message || e?.msg || '未知错误';
       showError(msg, e);
     }
@@ -323,16 +323,15 @@ export class Request {
             return resolve(res.promise);
           }
           if (this.validResponse(settings, res)) {
-            resolve(settings.originResponse ? res : res.data?.data);
+            return resolve(settings.originResponse ? res : res.data?.data);
           } else {
             this.showError(settings, res.data);
-            reject(res.data);
+            return reject(res.data);
           }
-          return res;
         })
         .catch((e) => {
           this.showError(settings, e);
-          reject(e);
+          return reject(e);
         })
         .finally(() => {
           this.closeLoading(settings);

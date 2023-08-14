@@ -8,4 +8,4 @@ export * from './utils';
 export * from './constants';
 const installer = makeInstaller(components);
 export const install = installer.install;
-// export default installer;
+export default install;
