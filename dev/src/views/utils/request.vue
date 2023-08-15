@@ -33,6 +33,7 @@
       },
       originResponse: true,
       validSuccess: true,
+      failMessage: true,
       validate(res) {
         return res.data?.success;
       },
@@ -58,6 +59,7 @@
   // const url = '/api/test/user/${id}';
   // const url = '/api/scm/auth/scm/scmPurchaseApplyH/waitList.do';
   const url = '/mock/api.json?q=${id}';
+  let isCancel = false;
   const execApi1 = () => {
     // console.log(request);
     request({
@@ -82,6 +84,7 @@
       .catch((e) => {
         console.log('catch', e);
       });
+    // request.cancel();
     // console.log('request', res);
   };
 

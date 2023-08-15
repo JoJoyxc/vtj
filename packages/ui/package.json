@@ -16,8 +16,9 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@vtj/deps": "^0.5.3",
-    "@vtj/icons": "^0.5.3", 
+    "@element-plus/icons-vue": "~2.1.0",
+    "@vueuse/core": "~10.3.0",
+    "@vtj/icons": "^0.5.3",
     "@vtj/utils": "^0.5.3"
   },
   "devDependencies": {

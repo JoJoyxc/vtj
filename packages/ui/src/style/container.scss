@@ -1,6 +1,7 @@
 @use 'core' as *;
 
 @include b(container) {
+  flex-shrink: 0;
   @include when(fit) {
     width: 100%;
     height: 100%;
@@ -90,7 +91,7 @@
   }
 
   @include when(shrink) {
-    flex-grow: 1;
+    flex-shrink: 1;
   }
 
   @include when(align-self-flex-start) {

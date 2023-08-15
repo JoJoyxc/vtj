@@ -55,7 +55,7 @@
   }
 
   @include m(icon) {
-    padding: 0.5em;
+    padding: 5px;
     border-radius: 3px;
 
     @include when(background-hover) {
@@ -95,13 +95,19 @@
         background-color: getCssVar('color-info-light-9');
       }
     }
+
+    @include when(circle) {
+      border-radius: 50%;
+    }
   }
 
   @include m(large) {
     font-size: 16px;
+    padding: 8px;
   }
 
   @include m(small) {
     font-size: 12px;
+    padding: 3px;
   }
 }

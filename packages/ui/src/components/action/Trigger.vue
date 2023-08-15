@@ -30,9 +30,10 @@
       [`x-action--${props.mode}`]: !!props.mode,
       [`is-${props.type}`]: !!props.type,
       [`x-action--${props.size}`]: !!props.size,
-      [`is-background-${props.iconBackground}`]:
-        props.mode === 'icon' && !!props.iconBackground,
-      'is-disabled': !!props.disabled
+      [`is-background-${props.background}`]:
+        props.mode === 'icon' && !!props.background,
+      'is-disabled': !!props.disabled,
+      'is-circle': !!props.circle
     };
   });
 

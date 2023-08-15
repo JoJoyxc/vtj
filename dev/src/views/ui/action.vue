@@ -95,7 +95,8 @@
       :icon="VtjIconBug"
       type="info"
       label="操作"
-      icon-background="hover"></XAction>
+      background="hover"></XAction>
+    <XAction mode="icon" :icon="VtjIconBug" type="info" circle></XAction>
     <hr />
     <XAction tooltip="提示">
       <h1>Custom</h1>

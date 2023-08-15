@@ -1,5 +1,9 @@
 @use 'core' as *;
-
+body {
+  padding: 0;
+  margin: 0;
+  font-family: getCssVar('font-family');
+}
 body,
 div {
   @include scroll-bar;

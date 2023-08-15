@@ -16,12 +16,7 @@ const TYPES = {
 };
 const DATA_METHODS = ['put', 'post', 'patch'];
 const LOCAL_REQUEST_ID = 'Local-Request-Id';
-const LOADING_TIME = 200;
-
-const RequestCache: Record<
-  string,
-  { settings: IRequestSettings; config: AxiosRequestConfig }
-> = {};
+const LOADING_DELAY = 200;
 
 export interface IRequestSkipWarn {
   // 处理程序
@@ -122,15 +117,20 @@ export interface IRequestConfig<D = any> extends AxiosRequestConfig<D> {
   query?: Record<string, any>;
 }
 
+export interface IRequestRecord {
+  settings: IRequestSettings;
+  config: AxiosRequestConfig;
+  source: CancelTokenSource;
+}
+
 export class Request {
   axios: AxiosInstance;
   settings: IRequestSettings;
-  private cancelTokenSource: CancelTokenSource;
+  records: Record<string, IRequestRecord> = {};
   private loadingTimer: any = null;
   private isLoading: boolean = false;
   private stopSkipWarn?: () => void;
   constructor(options: IRequestOptions = {}) {
-    this.cancelTokenSource = axios.CancelToken.source();
     this.settings = options.settings || {};
     const defaults = omit<IRequestOptions, CreateAxiosDefaults>(options, [
       'settings'
@@ -141,8 +141,7 @@ export class Request {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
           },
-          timeout: 2 * 60 * 1000,
-          cancelToken: this.cancelTokenSource.token
+          timeout: 2 * 60 * 1000
         },
         defaults
       )
@@ -159,11 +158,20 @@ export class Request {
     this.setupSkipWarn(this.settings);
   }
 
-  cancel(message: string = '') {
-    this.cancelTokenSource.cancel(message);
+  cancel(id?: string, message: string = '请求已取消') {
+    if (id) {
+      const record = this.records[id];
+      if (!record) return;
+      record.source.cancel(message);
+    } else {
+      for (const record of Object.values(this.records)) {
+        record.source.cancel(message);
+      }
+    }
   }
 
   private createHeaders(
+    id: string,
     settings: IRequestSettings,
     config: AxiosRequestConfig
   ) {
@@ -177,12 +185,7 @@ export class Request {
       ...injectHeaders
     };
     if (settings.skipWarn) {
-      const id = uid();
       headers[LOCAL_REQUEST_ID] = id;
-      RequestCache[id] = {
-        settings,
-        config
-      };
     }
     return headers;
   }
@@ -256,7 +259,7 @@ export class Request {
       this.loadingTimer = setTimeout(() => {
         this.isLoading = true;
         showLoading();
-      }, LOADING_TIME);
+      }, LOADING_DELAY);
     }
   }
 
@@ -300,8 +303,11 @@ export class Request {
     const config = omit<IRequestConfig<D>, IRequestConfig<D>>(options, [
       'settings'
     ]);
+    const id = uid();
+    const source = axios.CancelToken.source();
+    this.records[id] = { settings, config, source };
     const url = this.createUrl(config);
-    const headers = this.createHeaders(settings, config);
+    const headers = this.createHeaders(id, settings, config);
     const { data, params } = this.createSendData(
       settings,
       config,
@@ -312,6 +318,7 @@ export class Request {
 
     return new Promise<R>((resolve, reject) => {
       this.axios({
+        cancelToken: source.token,
         ...config,
         url,
         headers,
@@ -335,6 +342,7 @@ export class Request {
         })
         .finally(() => {
           this.closeLoading(settings);
+          delete this.records[id];
         });
     });
   }
@@ -371,9 +379,8 @@ export class Request {
     const { code, executor, callback, complete } = settings.skipWarn;
     this.stopSkipWarn = this.useResponse((res) => {
       const headers: Record<string, any> = res.config.headers || {};
-      const requestId = headers[LOCAL_REQUEST_ID] as string;
-      const requestCache = RequestCache[requestId];
-      delete RequestCache[requestId];
+      const id = headers[LOCAL_REQUEST_ID] as string;
+      const requestCache = this.records[id];
       if (!requestCache) return res;
 
       const { data } = res;

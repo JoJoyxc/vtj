@@ -13,7 +13,7 @@
     ElDropdownMenu,
     ElDropdownItem
   } from 'element-plus';
-  import { actionProps, ActionProps, ActionMenuItem } from './types';
+  import { actionProps, ActionEmits } from './types';
   import { useTooltip, useBadge, useDropdown } from './hooks';
   import Trigger from './Trigger.vue';
 
@@ -23,10 +23,7 @@
 
   const props = defineProps(actionProps);
   const slots = useSlots();
-  const emit = defineEmits<{
-    click: [props: ActionProps];
-    command: [item: ActionMenuItem | undefined];
-  }>();
+  const emit = defineEmits<ActionEmits>();
 
   const tooltip = useTooltip(props);
   const badge = useBadge(props);

@@ -16,15 +16,15 @@ export const ui = [
     component: () => import('@/views/ui/simple-mask.vue')
   },
   {
-    path: '/ui/title',
-    component: () => import('@/views/ui/title.vue')
-  },
-  {
     path: '/ui/action',
     component: () => import('@/views/ui/action.vue')
   },
   {
     path: '/ui/container',
     component: () => import('@/views/ui/container.vue')
+  },
+  {
+    path: '/ui/title',
+    component: () => import('@/views/ui/title.vue')
   }
 ];

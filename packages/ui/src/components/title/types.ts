@@ -1,19 +1,11 @@
-import type { TextProps } from 'element-plus';
-import { ExtractPropTypes, PropType } from 'vue';
+import { PropType } from 'vue';
 import { IconParam } from '../icon';
-
-export type TitleLevel =
-  | 'extra-large'
-  | 'large'
-  | 'medium'
-  | 'base'
-  | 'small'
-  | 'extra-small';
+import { ComponentPropsType, BaseSize } from '../shared';
 
 export const titleProps = {
-  level: {
-    type: String as PropType<TitleLevel>,
-    default: 'base'
+  size: {
+    type: String as PropType<BaseSize>,
+    default: 'default'
   },
   content: {
     type: String,
@@ -24,8 +16,17 @@ export const titleProps = {
   },
   icon: {
     type: [String, Object] as PropType<IconParam>
+  },
+  border: {
+    type: Boolean
+  },
+  more: {
+    type: Boolean
   }
 };
 
-export type TitleProps = Partial<ExtractPropTypes<typeof titleProps>> &
-  TextProps;
+export type TitleProps = ComponentPropsType<typeof titleProps>;
+
+export type TitleEmits = {
+  click: [];
+};

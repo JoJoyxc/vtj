@@ -1,10 +1,12 @@
 <template>
   <XContainer class="box" fit direction="column">
     <XContainer class="inner" height="50px">header</XContainer>
-    <XContainer class="inner" grow :flex="false">
-      <div v-for="n in 100">1</div>
+    <XContainer grow>
+      <XContainer>Inner Header</XContainer>
+      <XContainer grow justify="center" align="center">Inner Body</XContainer>
+      <XContainer>Inner Footer</XContainer>
     </XContainer>
-    <XContainer height="40px">footer</XContainer>
+    <XContainer class="inner" height="40px">footer</XContainer>
   </XContainer>
 </template>
 

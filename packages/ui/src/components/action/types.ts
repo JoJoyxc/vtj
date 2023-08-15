@@ -108,12 +108,23 @@ export const actionProps = {
   },
 
   /**
-   * icon 背景设置，单 mode为 icon 时有效
+   * icon 背景设置，当 mode为 icon 时有效
    */
-  iconBackground: {
+  background: {
     type: String as PropType<'always' | 'hover'>,
     default: 'always'
+  },
+  /**
+   * icon 背景样式圆形，当 mode为 icon 时有效
+   */
+  circle: {
+    type: Boolean
   }
 };
 
 export type ActionProps = ComponentPropsType<typeof actionProps>;
+
+export type ActionEmits = {
+  click: [props: ActionProps];
+  command: [item: ActionMenuItem | undefined];
+};
