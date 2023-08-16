@@ -2,7 +2,7 @@ import { PropType } from 'vue';
 import { IconParam } from '../icon';
 import { ComponentPropsType, BaseSize } from '../shared';
 
-export const titleProps = {
+export const headerProps = {
   size: {
     type: String as PropType<BaseSize>,
     default: 'default'
@@ -25,8 +25,8 @@ export const titleProps = {
   }
 };
 
-export type TitleProps = ComponentPropsType<typeof titleProps>;
+export type HeaderProps = ComponentPropsType<typeof headerProps>;
 
-export type TitleEmits = {
+export type HeaderEmits = {
   click: [];
 };

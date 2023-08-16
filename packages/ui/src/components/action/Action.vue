@@ -1,5 +1,5 @@
 <template>
-  <div class="x-action">
+  <div class="x-action" :class="classes">
     <component :is="action"> </component>
   </div>
 </template>
@@ -28,6 +28,12 @@
   const tooltip = useTooltip(props);
   const badge = useBadge(props);
   const dropdown = useDropdown(props);
+
+  const classes = computed(() => {
+    return {
+      [`x-action--${props.mode}`]: !!props.mode
+    };
+  });
 
   const onClick = () => {
     emit('click', props);

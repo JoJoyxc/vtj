@@ -27,9 +27,9 @@
 
   const innerClass = computed(() => {
     return {
-      [`x-action--${props.mode}`]: !!props.mode,
+      [`is-${props.mode}`]: !!props.mode,
       [`is-${props.type}`]: !!props.type,
-      [`x-action--${props.size}`]: !!props.size,
+      [`is-${props.size}`]: !!props.size && props.size !== 'default',
       [`is-background-${props.background}`]:
         props.mode === 'icon' && !!props.background,
       'is-disabled': !!props.disabled,

@@ -98,6 +98,8 @@
       background="hover"></XAction>
     <XAction mode="icon" :icon="VtjIconBug" type="info" circle></XAction>
     <hr />
+    <XAction mode="icon" :icon="VtjIconPlus" size="large"></XAction>
+    <hr />
     <XAction tooltip="提示">
       <h1>Custom</h1>
     </XAction>
@@ -106,7 +108,7 @@
 <script lang="ts" setup>
   import { ref, markRaw } from 'vue';
   import { XAction, ActionMenuItem } from '@vtj/ui';
-  import { VtjIconBug, VtjIconApi } from '@vtj/icons';
+  import { VtjIconBug, VtjIconApi, VtjIconPlus } from '@vtj/icons';
 
   const menus = [
     {

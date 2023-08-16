@@ -23,7 +23,7 @@
 
 # UI
 
-- XTitle 标题
+- XHeader 标题
 - XIcon 图标
 - XContainer 布局容器
 - XPanel 面板

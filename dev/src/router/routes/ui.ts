@@ -24,7 +24,11 @@ export const ui = [
     component: () => import('@/views/ui/container.vue')
   },
   {
-    path: '/ui/title',
-    component: () => import('@/views/ui/title.vue')
+    path: '/ui/header',
+    component: () => import('@/views/ui/header.vue')
+  },
+  {
+    path: '/ui/panel',
+    component: () => import('@/views/ui/panel.vue')
   }
 ];

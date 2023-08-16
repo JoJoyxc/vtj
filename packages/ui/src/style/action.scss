@@ -11,6 +11,12 @@
     outline: none;
   }
 
+  @include m(icon) {
+    & + .x-action--icon {
+      margin-left: 5px;
+    }
+  }
+
   @include e(inner) {
     cursor: pointer;
     color: getCssVar('text-color-regular');
@@ -52,14 +58,32 @@
     @include when(info) {
       color: getCssVar('color-info');
     }
-  }
 
-  @include m(icon) {
-    padding: 5px;
-    border-radius: 3px;
+    @include when(icon) {
+      padding: 5px;
+      border-radius: 3px;
 
-    @include when(background-hover) {
-      &:hover {
+      @include when(background-hover) {
+        &:hover {
+          @include when(primary) {
+            background-color: getCssVar('color-primary-light-9');
+          }
+          @include when(success) {
+            background-color: getCssVar('color-success-light-9');
+          }
+          @include when(warning) {
+            background-color: getCssVar('color-warning-light-9');
+          }
+          @include when(danger) {
+            background-color: getCssVar('color-danger-light-9');
+          }
+          @include when(info) {
+            background-color: getCssVar('color-info-light-9');
+          }
+        }
+      }
+
+      @include when(background-always) {
         @include when(primary) {
           background-color: getCssVar('color-primary-light-9');
         }
@@ -76,38 +100,20 @@
           background-color: getCssVar('color-info-light-9');
         }
       }
-    }
 
-    @include when(background-always) {
-      @include when(primary) {
-        background-color: getCssVar('color-primary-light-9');
+      @include when(circle) {
+        border-radius: 50%;
       }
-      @include when(success) {
-        background-color: getCssVar('color-success-light-9');
+
+      @include when(large) {
+        font-size: 16px;
+        padding: 8px;
       }
-      @include when(warning) {
-        background-color: getCssVar('color-warning-light-9');
-      }
-      @include when(danger) {
-        background-color: getCssVar('color-danger-light-9');
-      }
-      @include when(info) {
-        background-color: getCssVar('color-info-light-9');
+
+      @include when(small) {
+        font-size: 12px;
+        padding: 4px;
       }
     }
-
-    @include when(circle) {
-      border-radius: 50%;
-    }
-  }
-
-  @include m(large) {
-    font-size: 16px;
-    padding: 8px;
-  }
-
-  @include m(small) {
-    font-size: 12px;
-    padding: 3px;
   }
 }

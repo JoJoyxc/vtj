@@ -5,4 +5,5 @@ export * from './menu';
 export * from './simple-mask';
 export * from './action';
 export * from './container';
-export * from './title';
+export * from './header';
+export * from './panel';

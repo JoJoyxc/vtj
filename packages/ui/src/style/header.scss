@@ -1,10 +1,18 @@
 @use 'core' as *;
 
-@include b(title) {
-  padding: 0.5em 0;
+@include b(header) {
+  height: 30px;
+
+  @include when(size-large) {
+    height: 40px;
+  }
+
+  @include when(size-small) {
+    height: 24px;
+  }
 
   @include when(border) {
-    border-bottom: getCssVar('border');
+    border-bottom: 1px solid getCssVar('border-color-light');
   }
 
   @include e(wrapper) {
@@ -42,7 +50,7 @@
   }
 
   @include e(icon) {
-    margin-right: 0.2em;
+    margin-right: 5px;
   }
 
   @include e(content) {
@@ -52,6 +60,7 @@
 
   @include e(more) {
     color: getCssVar('text-color-secondary') !important;
+    margin-left: 3px;
   }
 
   @include e(subtitle) {

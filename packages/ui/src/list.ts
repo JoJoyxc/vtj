@@ -6,7 +6,8 @@ import {
   XSimpleMask,
   XAction,
   XContainer,
-  XTitle
+  XHeader,
+  XPanel
 } from './components';
 
 export default [
@@ -16,5 +17,6 @@ export default [
   XSimpleMask,
   XAction,
   XContainer,
-  XTitle
+  XHeader,
+  XPanel
 ] as unknown as Plugin[];

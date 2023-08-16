@@ -1,6 +1,6 @@
 <template>
   <div>
-    <XTitle :icon="VtjIconBug" content="主标题文本" subtitle="我是副标题" more>
+    <XHeader :icon="VtjIconBug" content="主标题文本" subtitle="我是副标题" more>
       <template #actions>
         <XAction
           :icon="VtjIconPlus"
@@ -13,9 +13,9 @@
           mode="text"
           size="small"></XAction>
       </template>
-    </XTitle>
+    </XHeader>
 
-    <XTitle
+    <XHeader
       size="large"
       :icon="VtjIconBug"
       content="主标题文本"
@@ -33,9 +33,9 @@
           mode="text"
           size="small"></XAction>
       </template>
-    </XTitle>
+    </XHeader>
 
-    <XTitle
+    <XHeader
       size="small"
       :icon="VtjIconBug"
       content="主标题文本"
@@ -55,11 +55,11 @@
           size="small"
           background="hover"></XAction>
       </template>
-    </XTitle>
+    </XHeader>
   </div>
 </template>
 <script lang="ts" setup>
-  import { XTitle, XAction } from '@vtj/ui';
+  import { XHeader, XAction } from '@vtj/ui';
   import {
     VtjIconBug,
     VtjIconApi,
