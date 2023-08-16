@@ -110,9 +110,6 @@ importers:
       '@types/node':
         specifier: ~20.4.7
         version: 20.4.7
-      '@types/serve-static':
-        specifier: ~1.15.2
-        version: 1.15.2
       '@vitejs/plugin-basic-ssl':
         specifier: ~1.0.1
         version: 1.0.1(vite@4.4.9)
@@ -287,12 +284,15 @@ importers:
   packages/icons:
     dependencies:
       '@element-plus/icons-vue':
-        specifier: 2.1.0
+        specifier: ~2.1.0
         version: 2.1.0(vue@3.3.4)
     devDependencies:
       '@vtj/cli':
         specifier: ^0.5.3
         version: link:../cli
+      lodash-es:
+        specifier: ~4.17.21
+        version: 4.17.21
       xml2js:
         specifier: ~0.6.2
         version: 0.6.2
@@ -383,15 +383,18 @@ importers:
 
   packages/ui:
     dependencies:
-      '@vtj/deps':
-        specifier: ^0.5.3
-        version: link:../deps
+      '@element-plus/icons-vue':
+        specifier: ~2.1.0
+        version: 2.1.0(vue@3.3.4)
       '@vtj/icons':
         specifier: ^0.5.3
         version: link:../icons
       '@vtj/utils':
         specifier: ^0.5.3
         version: link:../utils
+      '@vueuse/core':
+        specifier: ~10.3.0
+        version: 10.3.0(vue@3.3.4)
     devDependencies:
       '@vtj/cli':
         specifier: ^0.5.3
@@ -2871,6 +2874,7 @@ packages:
 
   /@types/http-errors@2.0.1:
     resolution: {integrity: sha512-/K3ds8TRAfBvi5vfjuz8y6+GiAYBZ0x4tXv1Av6CWBWn0IlADc+ZX9pMq7oU0fNQPnBwIZl3rmeLp6SBApbxSQ==}
+    dev: true
 
   /@types/istanbul-lib-coverage@2.0.4:
     resolution: {integrity: sha512-z/QT1XN4K4KYuslS23k62yDIDLwLFkzxOuMplDtObz0+y7VqJCaO2o+SPwHCvLFZh7xazvvoor2tA/hPz9ee7g==}
@@ -2903,6 +2907,7 @@ packages:
 
   /@types/mime@3.0.1:
     resolution: {integrity: sha512-Y4XFY5VJAuw0FgAqPNd6NNoV44jbq9Bz2L7Rh/J6jLTiHBSBJa9fxqQIvkIld4GsoDOcCbvzOUAbLPsSKKg+uA==}
+    dev: true
 
   /@types/minimatch@3.0.5:
     resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
@@ -2943,6 +2948,7 @@ packages:
       '@types/http-errors': 2.0.1
       '@types/mime': 3.0.1
       '@types/node': 20.4.7
+    dev: true
 
   /@types/sortablejs@1.15.1:
     resolution: {integrity: sha512-g/JwBNToh6oCTAwNS8UGVmjO7NLDKsejVhvE4x1eWiPTC3uCuNsa/TD4ssvX3du+MLiM+SHPNDuijp8y76JzLQ==}

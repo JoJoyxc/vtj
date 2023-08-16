@@ -7,7 +7,7 @@ import axios, {
   InternalAxiosRequestConfig,
   CancelTokenSource
 } from 'axios';
-import { merge, omit, uid, template } from './util';
+import { merge, omit, uid, template, debounce, throttle } from './util';
 
 const TYPES = {
   form: 'application/x-www-form-urlencoded',
@@ -17,6 +17,7 @@ const TYPES = {
 const DATA_METHODS = ['put', 'post', 'patch'];
 const LOCAL_REQUEST_ID = 'Local-Request-Id';
 const LOADING_DELAY = 200;
+const ERROR_DELAY = 500;
 
 export interface IRequestSkipWarn {
   // 处理程序
@@ -127,9 +128,10 @@ export class Request {
   axios: AxiosInstance;
   settings: IRequestSettings;
   records: Record<string, IRequestRecord> = {};
-  private loadingTimer: any = null;
   private isLoading: boolean = false;
   private stopSkipWarn?: () => void;
+  private showLoading: (settings: IRequestSettings) => void;
+  private showError: (settings: IRequestSettings, e: any) => void;
   constructor(options: IRequestOptions = {}) {
     this.settings = options.settings || {};
     const defaults = omit<IRequestOptions, CreateAxiosDefaults>(options, [
@@ -147,6 +149,11 @@ export class Request {
       )
     );
     this.setupSkipWarn(this.settings);
+    this.showLoading = debounce(this.openLoading.bind(this), LOADING_DELAY);
+    this.showError = throttle(this._showError.bind(this), ERROR_DELAY, {
+      leading: true,
+      trailing: false
+    });
   }
 
   setConfig(options: IRequestOptions = {}) {
@@ -255,27 +262,26 @@ export class Request {
     const { loading, showLoading } = settings;
     if (!loading) return;
     if (showLoading) {
-      clearTimeout(this.loadingTimer);
-      this.loadingTimer = setTimeout(() => {
+      const records = Object.keys(this.records);
+      if (records.length > 0) {
         this.isLoading = true;
         showLoading();
-      }, LOADING_DELAY);
+      }
     }
   }
 
   private closeLoading(settings: IRequestSettings) {
     const { loading, hideLoading } = settings;
     if (!loading) return;
-    if (hideLoading) {
-      clearTimeout(this.loadingTimer);
-      if (this.isLoading) {
-        this.isLoading = false;
-        hideLoading();
-      }
+    this.isLoading = false;
+    const records = Object.keys(this.records);
+    if (hideLoading && records.length === 0) {
+      this.isLoading = false;
+      hideLoading();
     }
   }
 
-  private showError(settings: IRequestSettings, e: any) {
+  private _showError(settings: IRequestSettings, e: any) {
     const { failMessage, showError } = settings;
     if (failMessage && showError) {
       const msg = e?.message || e?.msg || '未知错误';
@@ -314,7 +320,7 @@ export class Request {
       headers,
       isSkipWarn
     );
-    this.openLoading(settings);
+    this.showLoading(settings);
 
     return new Promise<R>((resolve, reject) => {
       this.axios({
@@ -341,8 +347,8 @@ export class Request {
           return reject(e);
         })
         .finally(() => {
-          this.closeLoading(settings);
           delete this.records[id];
+          this.closeLoading(settings);
         });
     });
   }

@@ -23,7 +23,10 @@ export {
   isPlainObject,
   lowerFirst,
   delay,
-  dedupArray
+  dedupArray,
+  isObject,
+  isString,
+  isUndefined
 } from '@vtj/utils';
 
 export { toTypeString, toRawType } from '@vue/shared';
@@ -43,18 +46,6 @@ export function isJSExpression(data: any): data is JSExpression {
 
 export function isJSFunction(x: any): x is JSFunction {
   return typeof x === 'object' && x && x.type === 'JSFunction';
-}
-
-export function isObject(value: any): value is Record<string, unknown> {
-  return value !== null && typeof value === 'object';
-}
-
-export function isString(value: any): value is string {
-  return typeof value === 'string';
-}
-
-export function isUndefined(value: any): boolean {
-  return typeof value === 'undefined' || value === null;
 }
 
 export function omit<

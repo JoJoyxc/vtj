@@ -33,8 +33,20 @@ export function uuid(split = true) {
   return split ? id.toLowerCase() : id.replace(/-/gi, '');
 }
 
-export function isFunction(val: any): boolean {
+export function isFunction(val: any): val is (...args: any[]) => any {
   return typeof val === 'function';
+}
+
+export function isObject(value: any): value is Record<string, unknown> {
+  return value !== null && typeof value === 'object';
+}
+
+export function isString(value: any): value is string {
+  return typeof value === 'string';
+}
+
+export function isUndefined(value: any): boolean {
+  return typeof value === 'undefined' || value === null;
 }
 
 export function upperFirstCamelCase(name: string) {

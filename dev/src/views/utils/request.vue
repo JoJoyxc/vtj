@@ -2,6 +2,7 @@
   <div>
     <h1>request</h1>
     <ElButton @click="execApi1">Test api1</ElButton>
+    <ElButton @click="doRequest">Test api2</ElButton>
   </div>
 </template>
 <script lang="ts" setup>
@@ -55,6 +56,14 @@
       }
     }
   });
+
+  const doRequest = () => {
+    for (let i = 0; i < 10; i++) {
+      request({
+        url: '/mock/api.json?t=' + Date.now()
+      });
+    }
+  };
 
   // const url = '/api/test/user/${id}';
   // const url = '/api/scm/auth/scm/scmPurchaseApplyH/waitList.do';
