@@ -90,7 +90,7 @@ export const actionProps = {
    * 禁用
    */
   disabled: {
-    type: Boolean
+    type: [Boolean, Function] as PropType<boolean | (() => boolean)>
   },
   /**
    * 尺寸

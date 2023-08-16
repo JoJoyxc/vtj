@@ -20,6 +20,10 @@ export const ui = [
     component: () => import('@/views/ui/action.vue')
   },
   {
+    path: '/ui/action-bar',
+    component: () => import('@/views/ui/action-bar.vue')
+  },
+  {
     path: '/ui/container',
     component: () => import('@/views/ui/container.vue')
   },

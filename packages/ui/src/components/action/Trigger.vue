@@ -4,7 +4,7 @@
     :icon="icon"
     :type="props.type"
     :size="props.size"
-    :disabled="props.disabled"
+    :disabled="disabled"
     v-bind="props.button"
     @click="onClick">
     {{ label }}
@@ -19,12 +19,12 @@
   import { computed, toRef } from 'vue';
   import { ElButton } from 'element-plus';
   import { actionProps } from './types';
-  import { useIcon } from '../../hooks';
+  import { useDisabled, useIcon } from '../../';
 
   const props = defineProps(actionProps);
   const emit = defineEmits(['click']);
   const icon = useIcon(toRef(props, 'icon'));
-
+  const disabled = useDisabled(toRef(props, 'disabled'));
   const innerClass = computed(() => {
     return {
       [`is-${props.mode}`]: !!props.mode,

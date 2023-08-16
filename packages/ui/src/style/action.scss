@@ -7,8 +7,13 @@
     margin-left: 10px;
   }
   .el-dropdown,
+  .el-tooltip__trigger,
   .el-badge {
     outline: none;
+  }
+
+  .el-badge__content {
+    zoom: 0.9;
   }
 
   @include m(icon) {
@@ -41,6 +46,7 @@
 
     @include when(disabled) {
       cursor: not-allowed;
+      opacity: 0.6;
     }
 
     @include when(primary) {

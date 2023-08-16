@@ -38,6 +38,11 @@
   import { computed } from 'vue';
   import { XContainer, XHeader } from '../../';
   import { panelProps } from './types';
+
+  defineOptions({
+    name: 'XPanel'
+  });
+
   const props = defineProps(panelProps);
 
   const classes = computed(() => {

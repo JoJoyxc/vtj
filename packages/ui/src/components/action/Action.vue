@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed, markRaw, h, VNode, useSlots } from 'vue';
+  import { computed, markRaw, h, VNode, useSlots, toRef } from 'vue';
   import {
     ElBadge,
     ElTooltip,
@@ -16,6 +16,7 @@
   import { actionProps, ActionEmits } from './types';
   import { useTooltip, useBadge, useDropdown } from './hooks';
   import Trigger from './Trigger.vue';
+  import { useDisabled } from '../../';
 
   defineOptions({
     name: 'XAction'
@@ -28,7 +29,7 @@
   const tooltip = useTooltip(props);
   const badge = useBadge(props);
   const dropdown = useDropdown(props);
-
+  const disabled = useDisabled(toRef(props, 'disabled'));
   const classes = computed(() => {
     return {
       [`x-action--${props.mode}`]: !!props.mode
@@ -50,7 +51,7 @@
   const wrapDropdown = (node: VNode) => {
     return h(
       ElDropdown,
-      { ...dropdown.value, disabled: props.disabled, onCommand },
+      { ...dropdown.value, disabled: disabled.value, onCommand },
       {
         default: () => [node],
         dropdown: () => [
@@ -65,7 +66,7 @@
   };
 
   const wrapTooltip = (node: VNode) => {
-    return h(ElTooltip, { ...tooltip.value, disabled: props.disabled }, () => [
+    return h(ElTooltip, { ...tooltip.value, disabled: disabled.value }, () => [
       node
     ]);
   };

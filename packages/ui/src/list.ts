@@ -5,6 +5,7 @@ import {
   XMenu,
   XSimpleMask,
   XAction,
+  XActionBar,
   XContainer,
   XHeader,
   XPanel
@@ -16,6 +17,7 @@ export default [
   XMenu,
   XSimpleMask,
   XAction,
+  XActionBar,
   XContainer,
   XHeader,
   XPanel

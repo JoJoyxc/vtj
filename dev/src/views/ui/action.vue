@@ -4,6 +4,7 @@
       :icon="VtjIconBug"
       label="操作按钮"
       tooltip="提示信息"
+      :disabled="disabled"
       @click="onClick"></XAction>
     <XAction
       :icon="icon"
@@ -140,4 +141,6 @@
   const onCommand = (item) => {
     console.log('command item', item);
   };
+
+  const disabled = () => true;
 </script>
