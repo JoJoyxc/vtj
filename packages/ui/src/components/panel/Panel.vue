@@ -15,13 +15,21 @@
         </XHeader>
       </slot>
     </XContainer>
-    <XContainer grow class="x-panel__body" :class="bodyClasses">
+    <XContainer
+      :flex="false"
+      :overflow="bodyOverflow"
+      grow
+      padding
+      class="x-panel__body"
+      v-bind="props.body">
       <slot></slot>
     </XContainer>
     <XContainer
       v-if="$slots.footer"
+      :flex="false"
+      padding
       class="x-panel__footer"
-      :class="footerClasses">
+      v-bind="props.footer">
       <slot name="footer"></slot>
     </XContainer>
   </XContainer>
@@ -56,15 +64,7 @@
         };
   });
 
-  const bodyClasses = computed(() => {
-    return {
-      'is-padding': !!props.bodyPadding
-    };
-  });
-
-  const footerClasses = computed(() => {
-    return {
-      'is-padding': !!props.footerPadding
-    };
+  const bodyOverflow = computed(() => {
+    return props.fit || !!props.height ? 'auto' : undefined;
   });
 </script>

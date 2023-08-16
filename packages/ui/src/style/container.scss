@@ -121,4 +121,8 @@
   @include when(overflow-auto) {
     overflow: auto;
   }
+
+  @include when(padding) {
+    padding: 10px;
+  }
 }

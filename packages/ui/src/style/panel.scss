@@ -62,14 +62,10 @@
   }
 
   @include e(body) {
-    @include when(padding) {
-      padding: 10px;
-    }
-  }
-
-  @include e(footer) {
-    @include when(padding) {
-      padding: 10px;
+    @include when(grow) {
+      @include when(overflow-auto) {
+        height: 1px;
+      }
     }
   }
 }

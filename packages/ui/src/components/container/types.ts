@@ -132,6 +132,13 @@ export const containerProps = {
    */
   overflow: {
     type: String as PropType<'auto' | 'hidden' | 'visible'>
+  },
+  /**
+   * 内边距
+   */
+  padding: {
+    type: Boolean,
+    default: false
   }
 };
 

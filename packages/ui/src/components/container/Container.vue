@@ -44,8 +44,8 @@
       'is-shrink': parentFlex.value && props.shrink,
       [`is-align-self-${props.alignSelf}`]:
         parentFlex.value && props.alignSelf !== 'auto',
-      [`is-overflow-${props.overflow}`]:
-        props.overflow && props.overflow !== 'auto'
+      [`is-overflow-${props.overflow}`]: !!props.overflow,
+      'is-padding': !!props.padding
     };
   });
 

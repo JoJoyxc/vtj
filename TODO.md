@@ -23,15 +23,17 @@
 
 # UI
 
-- XHeader 标题
 - XIcon 图标
 - XContainer 布局容器
-- XPanel 面板
-- XDialog 弹窗
-- XMask 母版
-- XLogin 登录
 - XAction 动作
 - XActionBar 动作条
+- XHeader 头部
+- XFooter 底部
+- XPanel 面板
+- XDialog 弹窗
+- XTabs 选项卡
+- XMask 母版
+- XLogin 登录
 - XForm 表单
 - XFormItem 表单项
 - XTable 表格
