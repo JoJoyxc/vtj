@@ -1,22 +1,23 @@
+import { isClient } from '@vueuse/core';
 /**
  * 缓存操作模块，提供sessionStorage和localStorage操作
  * @module storage
  * @author 陈华春
  */
 
-/**
- * sessionStorage
- * @const
- * @type {Storage}
- */
+// /**
+//  * sessionStorage
+//  * @const
+//  * @type {Storage}
+//  */
 
-const SESSION: Storage = window.sessionStorage || {};
+// const SESSION: Storage = window.sessionStorage || {};
 
-/**
- * localStorage
- * @type {Storage}
- */
-const LOCAL: Storage = window.localStorage || {};
+// /**
+//  * localStorage
+//  * @type {Storage}
+//  */
+// const LOCAL: Storage = window.localStorage || {};
 
 /**
  * 内存缓存
@@ -28,8 +29,8 @@ let CACHES: Record<string, any> = {};
  * 存储方式映射
  */
 const TYPES: Record<string, any> = {
-  local: LOCAL,
-  session: SESSION,
+  local: isClient ? window.localStorage : CACHES,
+  session: isClient ? window.sessionStorage : CACHES,
   cache: CACHES
 };
 

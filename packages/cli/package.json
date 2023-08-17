@@ -53,7 +53,7 @@
     }
   },
   "main": "./lib/index.cjs",
-  "module": "lib/index.mjs",
+  "module": "./lib/index.mjs",
   "types": "./lib/index.d.ts",
   "files": [
     "lib",

@@ -33,14 +33,14 @@
     "types",
     "cdn"
   ],
-  "main": "lib/index.js",
-  "module": "lib/index.js",
-  "types": "types/index.d.ts",
+  "main": "./lib/index.cjs",
+  "module": "./lib/index.mjs",
+  "types": "./types/index.d.ts",
   "exports": {
     ".": {
       "types": "./types/index.d.ts",
-      "import": "./lib/index.js",
-      "require": "./lib/index.js"
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.cjs"
     }
   },
   "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b",

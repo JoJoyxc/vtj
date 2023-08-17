@@ -1,3 +1,4 @@
+export * from './version';
 export * from './util';
 export * from './Request';
 export * from './raf';
