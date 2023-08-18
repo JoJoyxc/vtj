@@ -1,10 +1,15 @@
 import { PropType, VNode, DefineComponent } from 'vue';
+import { Position } from '@vueuse/core';
 import { ComponentPropsType } from '../shared';
-import { IconParam } from '../../';
+import { IconParam, DraggableOptions } from '../../';
 
 export type DialogMode = 'normal' | 'maximized' | 'minimized';
 
 export const dialogProps = {
+  modelValue: {
+    type: Boolean,
+    default: true
+  },
   title: {
     type: String
   },
@@ -27,7 +32,8 @@ export const dialogProps = {
     default: true
   },
   draggable: {
-    type: [Boolean, Object]
+    type: [Boolean, Object] as PropType<boolean | DraggableOptions>,
+    default: true
   },
   resizable: {
     type: [Boolean, Object]
@@ -68,11 +74,15 @@ export const dialogProps = {
 export type DialogProps = ComponentPropsType<typeof dialogProps>;
 
 export type DialogEmits = {
+  'update:modelValue': [value: boolean];
   close: [];
-  maximize: [];
-  minimize: [];
+  maximized: [];
+  minimized: [];
   normal: [];
   modeChange: [mode: DialogMode];
+  dragStart: [position: Position];
+  dragging: [position: Position];
+  dragEnd: [position: Position];
 };
 
 export interface DialogState {
@@ -84,4 +94,6 @@ export interface DialogState {
   left: number;
   top: number;
   zIndex: number;
+  dragging: boolean;
+  resizing: boolean;
 }

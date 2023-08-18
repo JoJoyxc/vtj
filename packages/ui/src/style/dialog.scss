@@ -5,6 +5,12 @@
   position: absolute;
   pointer-events: initial;
 
+  @include when(draggable) {
+    & > .x-panel__header {
+      cursor: move;
+    }
+  }
+
   @include when(maximized) {
     width: 100% !important;
     height: 100% !important;
@@ -23,8 +29,12 @@
     top: 0;
     bottom: 0;
     pointer-events: none;
+    overflow: hidden;
     @include when(minimized) {
       display: none;
+    }
+    @include when(dragging) {
+      user-select: none;
     }
   }
 

@@ -1,6 +1,6 @@
 <template>
-  <Teleport to="body">
-    <div ref="wrapper" class="x-dialog__wrapper" :class="classes">
+  <Teleport v-if="props.modelValue" to="body">
+    <div ref="wrapper" class="x-dialog__wrapper" :class="wrapperClass">
       <div v-if="props.modal" class="x-dialog__modal"></div>
       <XPanel
         class="x-dialog"
@@ -11,7 +11,8 @@
         height="600px"
         :footer="{ justify: 'space-between', flex: true, align: 'center' }"
         :class="classes"
-        :style="styles">
+        :style="styles"
+        v-draggable="draggable">
         <template #title>{{ props.title }}</template>
         <template #actions>
           <slot name="actions"></slot>
@@ -47,7 +48,8 @@
             size="small"
             mode="icon"
             type="danger"
-            background="hover"></XAction>
+            background="hover"
+            @click="close"></XAction>
         </template>
         <slot></slot>
         <template #footer>
@@ -67,12 +69,12 @@
   </Teleport>
 </template>
 <script lang="ts" setup>
-  import { Teleport, ref, computed } from 'vue';
+  import { Teleport, ref } from 'vue';
   import { RawClose, Popup, Maximize, Minimize } from '@vtj/icons';
   import { ElButton } from 'element-plus';
-  import { XPanel, XAction, XContainer } from '../';
-  import { dialogProps, DialogMode, DialogEmits } from './types';
-  import { useState } from './hooks';
+  import { XPanel, XAction, XContainer, vDraggable } from '../../';
+  import { dialogProps, DialogEmits } from './types';
+  import { useState, useStyle, useMethods, useDraggableOptions } from './hooks';
 
   defineOptions({
     name: 'XDialog'
@@ -82,30 +84,15 @@
   const emit = defineEmits<DialogEmits>();
   const wrapper = ref();
   const { state, maximized, minimized, normal } = useState(props, wrapper);
-
-  const styles = computed(() => {
-    const { width, height, top, left, zIndex } = state;
-    return {
-      width: `${width}px`,
-      height: `${height}px`,
-      top: `${top}px`,
-      left: `${left}px`,
-      zIndex
-    };
-  });
-
-  const classes = computed(() => {
-    return {
-      [`is-${state.mode}`]: !!state.mode
-    };
-  });
-
-  const changeMode = (mode: DialogMode) => {
-    state.mode = mode;
-  };
+  const { styles, classes, wrapperClass } = useStyle(props, state);
+  const { changeMode, active, close } = useMethods(props, state, emit);
+  const draggable = useDraggableOptions(props, state, emit);
 
   defineExpose({
     state,
-    changeMode
+    maximized,
+    minimized,
+    changeMode,
+    active
   });
 </script>

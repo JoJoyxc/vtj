@@ -36,6 +36,10 @@ export const ui = [
     component: () => import('@/views/ui/panel.vue')
   },
   {
+    path: '/ui/directives',
+    component: () => import('@/views/ui/directives.vue')
+  },
+  {
     path: '/ui/dialog',
     component: () => import('@/views/ui/dialog.vue')
   }
