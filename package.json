@@ -61,7 +61,8 @@
     "ci:update": "git add . && git commit -m \"ci update files\" && git push"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0",
+    "lerna": ">=7.1.4"
   },
   "packageManager": "^pnpm@7.27.0",
   "publishConfig": {

@@ -3,6 +3,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: getCssVar('font-family');
+  background-color: getCssVar('bg-color');
 }
 body,
 div {

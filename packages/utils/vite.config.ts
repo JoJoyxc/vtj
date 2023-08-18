@@ -11,10 +11,5 @@ export default createViteConfig({
   formats: !!process.env.CDN ? undefined : ['es', 'cjs'],
   fileName: !!process.env.CDN ? undefined : (format) => fileMap[format],
   elementPlus: false,
-  cdn: !!process.env.CDN,
-  external: ['vue', '@vueuse/core'],
-  externalGlobals: {
-    vue: 'Vue',
-    '@vueuse/core': 'VueUse'
-  }
+  cdn: !!process.env.CDN
 });

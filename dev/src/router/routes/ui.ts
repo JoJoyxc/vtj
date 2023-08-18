@@ -34,5 +34,9 @@ export const ui = [
   {
     path: '/ui/panel',
     component: () => import('@/views/ui/panel.vue')
+  },
+  {
+    path: '/ui/dialog',
+    component: () => import('@/views/ui/dialog.vue')
   }
 ];

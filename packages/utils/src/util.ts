@@ -1,4 +1,5 @@
 import { upperFirst, camelCase } from 'lodash-es';
+
 export {
   get,
   set,
@@ -14,6 +15,42 @@ export {
 } from 'lodash-es';
 
 export { upperFirst, camelCase };
+
+/**
+ * 是否浏览器环境
+ */
+export const isClient = typeof window !== 'undefined';
+
+/**
+ * 已定义
+ * @param val
+ * @returns
+ */
+export const isDef = (val: unknown) => typeof val !== 'undefined';
+
+/**
+ * 当前时间
+ * @returns
+ */
+ export const now = () => Date.now();
+
+/**
+ * 时间戳
+ * @returns
+ */
+ export const timestamp = () => +Date.now();
+
+/**
+ * 随机数
+ * @param min
+ * @param max
+ * @returns
+ */
+ export const rand = (min: number, max: number) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
 export function uid() {
   return Number(Math.random().toString().substring(2, 5) + Date.now()).toString(

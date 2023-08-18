@@ -1,0 +1,111 @@
+<template>
+  <Teleport to="body">
+    <div ref="wrapper" class="x-dialog__wrapper" :class="classes">
+      <div v-if="props.modal" class="x-dialog__modal"></div>
+      <XPanel
+        class="x-dialog"
+        card
+        shadow="always"
+        :header="{ icon: props.icon, subtitle: props.subtitle }"
+        width="800px"
+        height="600px"
+        :footer="{ justify: 'space-between', flex: true, align: 'center' }"
+        :class="classes"
+        :style="styles">
+        <template #title>{{ props.title }}</template>
+        <template #actions>
+          <slot name="actions"></slot>
+          <XAction
+            v-if="props.minimizable"
+            :icon="Minimize"
+            size="small"
+            mode="icon"
+            type="primary"
+            background="hover"
+            @click="changeMode('minimized')"></XAction>
+          <template v-if="props.maximizable">
+            <XAction
+              v-if="!normal"
+              :icon="Popup"
+              size="small"
+              mode="icon"
+              type="primary"
+              background="hover"
+              @click="changeMode('normal')"></XAction>
+            <XAction
+              v-else
+              :icon="Maximize"
+              size="small"
+              mode="icon"
+              type="primary"
+              background="hover"
+              @click="changeMode('maximized')"></XAction>
+          </template>
+          <XAction
+            v-if="props.closable"
+            :icon="RawClose"
+            size="small"
+            mode="icon"
+            type="danger"
+            background="hover"></XAction>
+        </template>
+        <slot></slot>
+        <template #footer>
+          <slot name="footer">
+            <XContainer>
+              <slot name="extra"></slot>
+            </XContainer>
+            <XContainer>
+              <slot name="handle"></slot>
+              <ElButton type="default" size="default">取消</ElButton>
+              <ElButton type="primary" size="default">确定</ElButton>
+            </XContainer>
+          </slot>
+        </template>
+      </XPanel>
+    </div>
+  </Teleport>
+</template>
+<script lang="ts" setup>
+  import { Teleport, ref, computed } from 'vue';
+  import { RawClose, Popup, Maximize, Minimize } from '@vtj/icons';
+  import { ElButton } from 'element-plus';
+  import { XPanel, XAction, XContainer } from '../';
+  import { dialogProps, DialogMode, DialogEmits } from './types';
+  import { useState } from './hooks';
+
+  defineOptions({
+    name: 'XDialog'
+  });
+
+  const props = defineProps(dialogProps);
+  const emit = defineEmits<DialogEmits>();
+  const wrapper = ref();
+  const { state, maximized, minimized, normal } = useState(props, wrapper);
+
+  const styles = computed(() => {
+    const { width, height, top, left, zIndex } = state;
+    return {
+      width: `${width}px`,
+      height: `${height}px`,
+      top: `${top}px`,
+      left: `${left}px`,
+      zIndex
+    };
+  });
+
+  const classes = computed(() => {
+    return {
+      [`is-${state.mode}`]: !!state.mode
+    };
+  });
+
+  const changeMode = (mode: DialogMode) => {
+    state.mode = mode;
+  };
+
+  defineExpose({
+    state,
+    changeMode
+  });
+</script>

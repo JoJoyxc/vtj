@@ -8,7 +8,8 @@ import {
   XActionBar,
   XContainer,
   XHeader,
-  XPanel
+  XPanel,
+  XDialog
 } from './components';
 
 export default [
@@ -20,5 +21,6 @@ export default [
   XActionBar,
   XContainer,
   XHeader,
-  XPanel
+  XPanel,
+  XDialog
 ] as unknown as Plugin[];

@@ -24,10 +24,10 @@
 </template>
 <script lang="ts" setup>
   import { toRef, useAttrs, computed } from 'vue';
-  import { XContainer, XIcon } from '../../';
+  import { ArrowRight } from '@element-plus/icons-vue';
+  import { XContainer, XIcon } from '../';
   import { useIcon } from '../../hooks';
   import { headerProps } from './types';
-  import { ArrowRight } from '@element-plus/icons-vue';
 
   defineOptions({
     name: 'XHeader',

@@ -1,14 +1,14 @@
 @use 'core' as *;
 
 @include b(header) {
-  height: 30px;
+  height: 34px;
 
   @include when(size-large) {
     height: 40px;
   }
 
   @include when(size-small) {
-    height: 24px;
+    height: 28px;
   }
 
   @include when(border) {

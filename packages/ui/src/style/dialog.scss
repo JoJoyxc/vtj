@@ -1,0 +1,40 @@
+@use 'core' as *;
+
+@include b(dialog) {
+  background-color: getCssVar('bg-color');
+  position: absolute;
+  pointer-events: initial;
+
+  @include when(maximized) {
+    width: 100% !important;
+    height: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+  }
+
+  @include when(minimized) {
+    display: none;
+  }
+
+  @include e(wrapper) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+    @include when(minimized) {
+      display: none;
+    }
+  }
+
+  @include e(modal) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: getCssVar('mask-color-extra-light');
+    pointer-events: initial;
+  }
+}

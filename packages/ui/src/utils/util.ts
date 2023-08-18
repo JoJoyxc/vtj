@@ -9,7 +9,7 @@ export function parseSize(size: string | number = 0, max: number) {
   const regex = /(%|vh|vw)$/i;
   if (regex.test(size)) {
     const value = Number.parseInt(size);
-    return (max * value) / 100;
+    return Math.floor((max * value) / 100);
   }
   return Number.parseInt(size);
 }

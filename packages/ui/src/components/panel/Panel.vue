@@ -9,6 +9,9 @@
     <XContainer v-if="headerProps" :flex="false" class="x-panel__header">
       <slot name="header">
         <XHeader v-bind="headerProps">
+          <template #default>
+            <slot name="title"></slot>
+          </template>
           <template #actions>
             <slot name="actions"></slot>
           </template>
@@ -36,7 +39,7 @@
 </template>
 <script lang="ts" setup>
   import { computed } from 'vue';
-  import { XContainer, XHeader } from '../../';
+  import { XContainer, XHeader } from '../';
   import { panelProps } from './types';
 
   defineOptions({
