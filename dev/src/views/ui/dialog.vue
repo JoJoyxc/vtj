@@ -1,12 +1,13 @@
 <template>
   <div>
+    <button @click="open">open</button>
     <XDialog
-      v-if="visible"
       v-model="visible"
       title="弹窗标题"
       subtitle="我是副标题内容"
       :icon="VtjIconBug"
-      :modal="true">
+      :modal="true"
+      @open="onOpen">
       DialogBody
     </XDialog>
   </div>
@@ -22,4 +23,11 @@
   } from '@vtj/icons';
 
   const visible = ref(true);
+
+  const open = () => {
+    visible.value = true;
+  };
+  const onOpen = () => {
+    console.log('open');
+  };
 </script>

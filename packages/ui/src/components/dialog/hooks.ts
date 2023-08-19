@@ -1,7 +1,9 @@
 import { reactive, watch, MaybeRef, computed } from 'vue';
-import { DialogProps, DialogState, DialogMode, DialogEmits } from './types';
 import { useElementSize, Position } from '@vueuse/core';
-import { parseSize, ShortEmits, DraggableOptions } from '../../';
+import { DialogProps, DialogState, DialogMode, DialogEmits } from './types';
+import { ShortEmits } from '../';
+import { DraggableOptions } from '../../directives';
+import { parseSize } from '../../utils';
 import { isObject } from '@vtj/utils';
 
 let __global_ZIndex__ = 1000;
@@ -89,18 +91,25 @@ export function useMethods(
     emit('modeChange', mode);
   };
 
-  const close = () => {
-    emit('update:modelValue', false);
-    emit('close');
+  const close = async () => {
+    if (!props.beforeClose || (await props.beforeClose())) {
+      emit('update:modelValue', false);
+      emit('close');
+    }
   };
 
   const active = () => {
     ++state.zIndex;
   };
 
+  const show = () => changeMode('normal');
+  const hide = () => changeMode('minimized');
+
   return {
     close,
     changeMode,
+    show,
+    hide,
     active
   };
 }
@@ -108,7 +117,8 @@ export function useMethods(
 export function useDraggableOptions(
   props: DialogProps,
   state: DialogState,
-  emit: ShortEmits<DialogEmits>
+  emit: ShortEmits<DialogEmits>,
+  target: MaybeRef<HTMLElement>
 ) {
   return computed<DraggableOptions>(() => {
     const disabled =
@@ -118,6 +128,7 @@ export function useDraggableOptions(
     return {
       ...(isObject(props.draggable) ? props.draggable : {}),
       disabled,
+      target,
       selector: '.x-panel__header',
       onStart(position: Position) {
         state.dragging = true;

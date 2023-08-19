@@ -37,10 +37,16 @@ export interface DraggableOptions extends UseDraggableOptions {
    * 延时
    */
   delay?: number;
+
+  /**
+   * 目标边缘距离
+   */
+  edge?: number;
 }
 
 export class Draggable {
   private scope: EffectScope;
+  public dragging: boolean = false;
   constructor(public el: HTMLElement, public options: DraggableOptions = {}) {
     this.scope = effectScope();
     this.scope.run(() => {
@@ -61,8 +67,6 @@ export class Draggable {
     const { el, options } = this;
     const { disabled, delay = 100, onStart, onEnd } = options;
     if (disabled) return;
-
-    let dragging = false;
     let timer: any = null;
 
     const handle = this.getHandle();
@@ -73,48 +77,43 @@ export class Draggable {
       initialValue: { x: rect.x, y: rect.y },
       ...options,
       handle,
-      onStart(position, e) {
+      onStart: (position, e) => {
         document.body.classList.add(BODY_CLASS);
+        clearTimeout(timer);
         timer = setTimeout(() => {
-          dragging = true;
+          this.dragging = true;
           rect = el.getBoundingClientRect();
           targetRect = target?.getBoundingClientRect() as DOMRect;
           onStart && onStart(position, e);
         }, delay);
       },
       onEnd: (position, e) => {
-        document.body.classList.remove(BODY_CLASS);
         clearTimeout(timer);
-        if (dragging && targetRect) {
-          const endPostion = this.getPosition(
-            targetRect,
-            rect,
-            position.x,
-            position.y
-          );
+        document.body.classList.remove(BODY_CLASS);
+        if (this.dragging && targetRect) {
+          const { x, y } = position;
+          const endPostion = this.getPosition(targetRect, rect, x, y);
           onEnd && onEnd(endPostion, e);
-          dragging = false;
+          this.dragging = false;
           targetRect = null;
         }
       }
     });
 
     watch([x, y], () => {
-      if (dragging) {
-        if (targetRect) {
-          const position = this.getPosition(targetRect, rect, x.value, y.value);
-          el.style.left = `${position.x}px`;
-          el.style.top = `${position.y}px`;
-        }
+      if (this.dragging && targetRect) {
+        const position = this.getPosition(targetRect, rect, x.value, y.value);
+        el.style.left = `${position.x}px`;
+        el.style.top = `${position.y}px`;
       }
     });
   }
   getPosition(targetRect: DOMRect, rect: DOMRect, x: number, y: number) {
-    const LEN = 50;
-    const xMin = -rect.width + LEN;
-    const xMax = targetRect.width - LEN;
+    const { edge = 50 } = this.options;
+    const xMin = -rect.width + edge;
+    const xMax = targetRect.width - edge;
     const yMin = 0;
-    const yMax = targetRect.height - LEN;
+    const yMax = targetRect.height - edge;
 
     const left = Math.min(xMax, Math.max(x, xMin));
     const top = Math.min(yMax, Math.max(y, yMin));

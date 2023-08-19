@@ -6,7 +6,7 @@ import {
   ActionProps,
   ActionMenuItem,
   ContainerProps
-} from '../../';
+} from '../';
 import { ElTooltipProps, BadgeProps, ButtonProps } from 'element-plus';
 
 export type ActionBarItems = Array<ActionProps | '|'>;

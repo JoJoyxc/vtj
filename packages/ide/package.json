@@ -17,13 +17,17 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
+    "vue": "~3.3.4",
+    "vue-router": "~4.2.4",
     "@vtj/assets": "^0.5.3",
-    "@vtj/deps": "^0.5.3",
     "@vtj/engine": "^0.5.3",
     "@vtj/icons": "^0.5.3",
     "@vtj/runtime": "^0.5.3",
     "@vtj/ui": "^0.5.3",
-    "@vtj/utils": "^0.5.3"
+    "@vtj/utils": "^0.5.3",
+    "@vueuse/core": "~10.3.0",
+    "element-plus": "~2.3.9",
+    "@element-plus/icons-vue": "~2.1.0"
   },
   "devDependencies": {
     "@vtj/cli": "^0.5.3",

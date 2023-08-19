@@ -1,6 +1,6 @@
 import { PropType } from 'vue';
 import { ComponentPropsType, BaseSize } from '../shared';
-import { HeaderProps, ContainerProps } from '../../';
+import { HeaderProps, ContainerProps } from '../';
 
 export const panelProps = {
   /**

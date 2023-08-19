@@ -1,7 +1,8 @@
 import { PropType, VNode, DefineComponent } from 'vue';
 import { Position } from '@vueuse/core';
 import { ComponentPropsType } from '../shared';
-import { IconParam, DraggableOptions } from '../../';
+import { IconParam } from '../';
+import { DraggableOptions } from '../../directives';
 
 export type DialogMode = 'normal' | 'maximized' | 'minimized';
 
@@ -75,6 +76,7 @@ export type DialogProps = ComponentPropsType<typeof dialogProps>;
 
 export type DialogEmits = {
   'update:modelValue': [value: boolean];
+  open: [];
   close: [];
   maximized: [];
   minimized: [];

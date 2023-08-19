@@ -5,13 +5,10 @@
   "type": "module",
   "scripts": {
     "setup": "npm install --registry=https://registry.npmmirror.com",
-    "dev": "cross-env ENV_TYPE=dev vite",
     "build": " npm run build:runtime && npm run build:shared && vue-tsc && vite build",
     "build:runtime": "vue-tsc && cross-env FILE=runtime vite build",
     "build:shared": "vue-tsc && cross-env FILE=shared vite build",
-    "build:cdn": "vue-tsc && cross-env CDN=true vite build",
-    "test:unit": "vitest --environment jsdom",
-    "coverage": "vitest run --coverage --environment jsdom"
+    "build:cdn": "vue-tsc && cross-env CDN=true vite build"
   },
   "engines": {
     "node": ">=16.0.0"
@@ -21,14 +18,18 @@
     "@vtj/ui": "^0.5.3",
     "@vtj/utils": "^0.5.3",
     "@vueuse/core": "~10.3.0",
+    "element-plus": "~2.3.9",
+    "@element-plus/icons-vue": "~2.1.0",
     "mitt": "~3.0.1",
     "monaco-editor": "~0.40.0",
     "prettier": "~2.8.8",
     "zen-logger": "~1.1.4"
   },
   "devDependencies": {
-    "@types/prettier": "2.7.3",
-    "@vtj/cli": "^0.5.3"
+    "@vtj/cli": "^0.5.3",
+    "vue": "~3.3.4",
+    "vue-router": "~4.2.4",
+    "@types/prettier": "2.7.3"
   },
   "files": [
     "lib",

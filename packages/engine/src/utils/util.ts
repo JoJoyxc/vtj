@@ -29,12 +29,16 @@ export {
   isUndefined
 } from '@vtj/utils';
 
-export { toTypeString, toRawType } from '@vue/shared';
-
 import { createApi, jsonp, camelCase } from '@vtj/utils';
 
 import { BUILDIN_DIRECTIVES } from '../constants';
 import { parseExpression } from './parser';
+
+const objectToString = Object.prototype.toString;
+export const toTypeString = (value: unknown) => objectToString.call(value);
+export const toRawType = (value: unknown) => {
+  return toTypeString(value).slice(8, -1);
+};
 
 export function isFunction(fn: any): boolean {
   return typeof fn === 'function';

@@ -21,7 +21,12 @@
     "@vtj/icons": "workspace:*",
     "@vtj/runtime": "workspace:*",
     "@vtj/ui": "workspace:*",
-    "@vtj/utils": "workspace:*"
+    "@vtj/utils": "workspace:*",
+    "@vueuse/core": "~10.3.0",
+    "vue": "~3.3.4",
+    "vue-router": "~4.2.4",
+    "@element-plus/icons-vue": "~2.1.0",
+    "element-plus": "~2.3.9"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:*",

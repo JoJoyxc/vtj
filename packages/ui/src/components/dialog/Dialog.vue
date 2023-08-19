@@ -69,10 +69,11 @@
   </Teleport>
 </template>
 <script lang="ts" setup>
-  import { Teleport, ref } from 'vue';
+  import { Teleport, ref, watchEffect } from 'vue';
   import { RawClose, Popup, Maximize, Minimize } from '@vtj/icons';
   import { ElButton } from 'element-plus';
-  import { XPanel, XAction, XContainer, vDraggable } from '../../';
+  import { XPanel, XAction, XContainer } from '../';
+  import { vDraggable } from '../../directives';
   import { dialogProps, DialogEmits } from './types';
   import { useState, useStyle, useMethods, useDraggableOptions } from './hooks';
 
@@ -85,14 +86,25 @@
   const wrapper = ref();
   const { state, maximized, minimized, normal } = useState(props, wrapper);
   const { styles, classes, wrapperClass } = useStyle(props, state);
-  const { changeMode, active, close } = useMethods(props, state, emit);
-  const draggable = useDraggableOptions(props, state, emit);
+  const { changeMode, active, close, show, hide } = useMethods(
+    props,
+    state,
+    emit
+  );
+  const draggable = useDraggableOptions(props, state, emit, wrapper);
+
+  watchEffect(() => {
+    if (props.modelValue) {
+      emit('open');
+    }
+  });
 
   defineExpose({
     state,
     maximized,
     minimized,
     changeMode,
-    active
+    show,
+    hide
   });
 </script>

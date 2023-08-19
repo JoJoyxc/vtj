@@ -16,7 +16,7 @@
   import { actionProps, ActionEmits } from './types';
   import { useTooltip, useBadge, useDropdown } from './hooks';
   import Trigger from './Trigger.vue';
-  import { useDisabled } from '../../';
+  import { useDisabled } from '../../hooks';
 
   defineOptions({
     name: 'XAction'

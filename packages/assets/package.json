@@ -4,23 +4,27 @@
   "version": "0.5.3",
   "scripts": {
     "setup": "pnpm install --registry=https://registry.npmmirror.com",
-    "dev": "cross-env ENV_TYPE=dev vite",
     "build:el": "vue-tsc && cross-env BUILD_TYPE=el vite build",
     "build:ui": "vue-tsc && cross-env BUILD_TYPE=ui vite build",
     "build:files": "node scripts.mjs",
-    "build": "pnpm run build:el && pnpm run build:ui && pnpm run build:files",
-    "test:unit": "vitest --environment jsdom",
-    "coverage": "vitest run --coverage --environment jsdom"
+    "build": "pnpm run build:el && pnpm run build:ui && pnpm run build:files"
   },
   "engines": {
     "node": ">=16.0.0"
   },
-  "dependencies": {
-    "@vtj/deps": "^0.5.3",
-    "@vtj/engine": "^0.5.3"
-  },
+  "dependencies": {},
   "devDependencies": {
-    "@vtj/cli": "^0.5.3"
+    "@vtj/cli": "workspace:*",
+    "vue": "~3.3.4",
+    "vue-router": "~4.2.4",
+    "@vtj/engine": "workspace:*",
+    "vxe-table": "~4.4.2",
+    "xe-utils": "~3.5.11",
+    "@vueuse/shared": "~10.3.0",
+    "@vueuse/core": "~10.3.0",
+    "@element-plus/icons-vue": "~2.1.0",
+    "element-plus": "~2.3.9",
+    "lodash": "~4.17.21"
   },
   "files": [
     "lib",

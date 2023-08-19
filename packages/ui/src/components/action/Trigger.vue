@@ -19,7 +19,7 @@
   import { computed, toRef } from 'vue';
   import { ElButton } from 'element-plus';
   import { actionProps } from './types';
-  import { useDisabled, useIcon } from '../../';
+  import { useDisabled, useIcon } from '../../hooks';
 
   const props = defineProps(actionProps);
   const emit = defineEmits(['click']);
