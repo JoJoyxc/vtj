@@ -26,7 +26,7 @@ const app = createApp(App);
     ]);
     const options: any = isExample
       ? {
-          raw: true,
+          raw: false,
           service: 'storage'
         }
       : await ideConfig();
@@ -40,9 +40,9 @@ const app = createApp(App);
           app,
           router,
           modules,
-          ide: { path: '/' },
+          ide: { path: location.pathname },
           startup: true,
-          raw: true,
+          raw: isExample ? false : true,
           components: {
             Mask
           }

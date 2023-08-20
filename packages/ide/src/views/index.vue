@@ -75,8 +75,9 @@
   const coderLoading = ref(false);
   const container = ref<HTMLElement | undefined>();
   const options = inject('VTJ_PROVIDER_OPTIONS', null);
+
   const config = isExample ? ({} as any) : options || (await ideConfig());
-  const { project, raw = true, service = 'storage', debug } = config || {};
+  const { project, raw = false, service = 'storage', debug } = config || {};
   const {
     id = 'ide',
     name = 'IDE',
@@ -100,7 +101,7 @@
         {
           name: 'actions',
           props: {
-            coder: raw
+            coder: true
           }
         }
       ]
