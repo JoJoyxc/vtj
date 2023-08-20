@@ -86,7 +86,7 @@
     preview = '/preview',
     home = '/'
   } = project || {};
-
+  const pathname = location.pathname;
   const engine = new Engine(container, {
     service: service === 'file' ? new FileService() : new StorageService(),
     config: {
@@ -94,7 +94,7 @@
         {
           name: 'switcher',
           props: {
-            link: `/#${home}`
+            link: `${pathname}#${home}`
           }
         },
         {
@@ -122,10 +122,10 @@
       let url = '';
       if (isPage(file)) {
         url = raw
-          ? `${base}${split}${preview}/${(file as SummarySchema).id}`
-          : `${base}${split}${page}/${(file as SummarySchema).id}`;
+          ? `${pathname}${split}${preview}/${(file as SummarySchema).id}`
+          : `${pathname}${split}${page}/${(file as SummarySchema).id}`;
       } else {
-        url = `${base}${split}${preview}/${(file as SummarySchema).id}`;
+        url = `${pathname}${split}${preview}/${(file as SummarySchema).id}`;
       }
 
       window.open(url);

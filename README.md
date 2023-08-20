@@ -46,15 +46,15 @@ npm i @vtj/runtime -S
 ```ts
 import { createApp } from 'vue';
 import App from './App.vue';
-import { createProvider } from '@vtj/runtime';
 import router from './router';
+import { createProvider } from '@vtj/runtime';
+import Mask from '@/components/Mask.vue';
+import '@vtj/icons/lib/style.css';
+import '@vtj/ui/lib/style.css';
+import '@/style/index.scss';
+
 const app = createApp(App);
-const modules = import.meta.glob([
-  '/.vtj/project/*.json',
-  '/.vtj/file/*.json',
-  '/src/views/pages/*.vue',
-  '/src/components/blocks/*.vue'
-]);
+
 (async () => {
   await createProvider({
     app,

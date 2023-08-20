@@ -10,6 +10,7 @@
 # Cli
 
 - 支持自动按需引用 UI、Icons 样式表
+- 库模式支持 Tree Shaking
 
 # Serve
 
