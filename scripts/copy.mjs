@@ -31,5 +31,5 @@ const files = [
   ['node_modules/@vtj/icons/cdn/style.css', 'vtj-icons.css']
 ];
 
-doCopy(files, 'public/libs');
+doCopy(files, 'dev/public/libs');
 doCopy(files, 'packages/ide/public/libs');
