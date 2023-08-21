@@ -36,9 +36,9 @@
     "types",
     "cdn"
   ],
-  "main": "lib/index.js",
-  "module": "lib/index.js",
-  "types": "types/index.d.ts",
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
+  "types": "./types/index.d.ts",
   "exports": {
     "./lib/style.css": {
       "import": "./lib/style.css",

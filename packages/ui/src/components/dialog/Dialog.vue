@@ -12,7 +12,8 @@
         :footer="{ justify: 'space-between', flex: true, align: 'center' }"
         :class="classes"
         :style="styles"
-        v-draggable="draggable">
+        v-draggable="draggable"
+        v-resizable="resizable">
         <template #title>{{ props.title }}</template>
         <template #actions>
           <slot name="actions"></slot>
@@ -73,9 +74,15 @@
   import { RawClose, Popup, Maximize, Minimize } from '@vtj/icons';
   import { ElButton } from 'element-plus';
   import { XPanel, XAction, XContainer } from '../';
-  import { vDraggable } from '../../directives';
+  import { vDraggable, vResizable } from '../../directives';
   import { dialogProps, DialogEmits } from './types';
-  import { useState, useStyle, useMethods, useDraggableOptions } from './hooks';
+  import {
+    useState,
+    useStyle,
+    useMethods,
+    useDraggableOptions,
+    useResizableOptions
+  } from './hooks';
 
   defineOptions({
     name: 'XDialog'
@@ -92,7 +99,7 @@
     emit
   );
   const draggable = useDraggableOptions(props, state, emit, wrapper);
-
+  const resizable = useResizableOptions(props, state, emit);
   watchEffect(() => {
     if (props.modelValue) {
       emit('open');

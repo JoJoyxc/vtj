@@ -2,12 +2,19 @@
   <div>
     <XPanel
       v-draggable="{ selector: '.x-header' }"
+      v-resizable="{
+        disabled: false,
+        minWidth: 50,
+        minHeight: 50,
+        maxWidth: 400,
+        maxHeight: 400
+      }"
       header="Title"
       card></XPanel>
   </div>
 </template>
 <script lang="ts" setup>
-  import { vDraggable, XPanel } from '@vtj/ui';
+  import { vDraggable, vResizable, XPanel } from '@vtj/ui';
 </script>
 
 <style lang="scss" scoped>
@@ -15,7 +22,7 @@
     position: absolute;
     width: 300px;
     height: 200px;
-    left: 100px;
-    top: 100px;
+    left: 300px;
+    top: 0;
   }
 </style>

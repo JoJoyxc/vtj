@@ -2,7 +2,11 @@ import { PropType, VNode, DefineComponent } from 'vue';
 import { Position } from '@vueuse/core';
 import { ComponentPropsType } from '../shared';
 import { IconParam } from '../';
-import { DraggableOptions } from '../../directives';
+import {
+  DraggableOptions,
+  ResizableOptions,
+  UseMouseInElementReturn
+} from '../../directives';
 
 export type DialogMode = 'normal' | 'maximized' | 'minimized';
 
@@ -37,7 +41,7 @@ export const dialogProps = {
     default: true
   },
   resizable: {
-    type: [Boolean, Object]
+    type: [Boolean, Object] as PropType<boolean | ResizableOptions>
   },
   closable: {
     type: Boolean,
@@ -85,6 +89,9 @@ export type DialogEmits = {
   dragStart: [position: Position];
   dragging: [position: Position];
   dragEnd: [position: Position];
+  resizeStart: [dir: string, mie: UseMouseInElementReturn];
+  resizeEnd: [dir: string, mie: UseMouseInElementReturn];
+  resizing: [dir: string, mie: UseMouseInElementReturn];
 };
 
 export interface DialogState {

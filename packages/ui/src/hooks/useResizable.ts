@@ -6,6 +6,7 @@ import {
 } from '@vueuse/core';
 import { IS_RESIZING_CLASS_NAME } from '../';
 
+
 export type UseElementBoundingReturn = ReturnType<typeof useElementBounding>;
 export type UseResizableDir = 'n' | 's' | 'w' | 'e';
 

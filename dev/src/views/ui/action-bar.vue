@@ -8,7 +8,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { XActionBar } from '@vtj/ui';
+  import { XActionBar, ActionBarItems } from '@vtj/ui';
   import { VtjIconBug, VtjIconApi, VtjIconPlus } from '@vtj/icons';
 
   const menus = [
@@ -28,7 +28,7 @@
     }
   ];
 
-  const items = [
+  const items: ActionBarItems = [
     {
       label: '按钮一',
       icon: VtjIconPlus,

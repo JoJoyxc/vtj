@@ -2,7 +2,7 @@ import { reactive, watch, MaybeRef, computed } from 'vue';
 import { useElementSize, Position } from '@vueuse/core';
 import { DialogProps, DialogState, DialogMode, DialogEmits } from './types';
 import { ShortEmits } from '../';
-import { DraggableOptions } from '../../directives';
+import { DraggableOptions, ResizableOptions } from '../../directives';
 import { parseSize } from '../../utils';
 import { isObject } from '@vtj/utils';
 
@@ -59,7 +59,8 @@ export function useStyle(props: DialogProps, state: DialogState) {
   const classes = computed(() => {
     return {
       [`is-${state.mode}`]: !!state.mode,
-      [`is-draggable`]: !!props.draggable
+      [`is-draggable`]: !!props.draggable,
+      [`is-resizable`]: !!props.resizable
     };
   });
 
@@ -144,6 +145,41 @@ export function useDraggableOptions(
         state.top = y;
         state.dragging = false;
         emit('dragEnd', position);
+      }
+    };
+  });
+}
+
+export function useResizableOptions(
+  props: DialogProps,
+  state: DialogState,
+  emit: ShortEmits<DialogEmits>
+) {
+  return computed<ResizableOptions>(() => {
+    const disabled =
+      typeof props.resizable === 'boolean'
+        ? !props.resizable
+        : !!props.resizable?.disabled;
+    return {
+      minWidth: 200,
+      minHeight: 150,
+      ...(isObject(props.resizable) ? props.resizable : {}),
+      disabled,
+      dirs: ['e', 's', 'w'],
+      onStart(dir, mie) {
+        state.resizing = true;
+        emit('resizeStart', dir, mie);
+      },
+      onResizing(dir, mie) {
+        emit('resizing', dir, mie);
+      },
+      onEnd(dir, mie) {
+        state.left = mie.elementPositionX.value;
+        state.top = mie.elementPositionY.value;
+        state.width = mie.elementWidth.value;
+        state.height = mie.elementHeight.value;
+        state.resizing = false;
+        emit('resizeEnd', dir, mie);
       }
     };
   });

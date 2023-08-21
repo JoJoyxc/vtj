@@ -9,7 +9,9 @@ import {
 } from '../';
 import { ElTooltipProps, BadgeProps, ButtonProps } from 'element-plus';
 
-export type ActionBarItems = Array<ActionProps | '|'>;
+export type ActionBarItem = ActionProps & { [key: string]: any };
+
+export type ActionBarItems = Array<ActionBarItem | '|'>;
 
 export const actionBarProps = {
   /**
