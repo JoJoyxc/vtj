@@ -1,6 +1,6 @@
 import { PropType, VNode, DefineComponent } from 'vue';
 import { Position } from '@vueuse/core';
-import { ComponentPropsType } from '../shared';
+import { ComponentPropsType, BaseSize } from '../shared';
 import { IconParam } from '../';
 import {
   DraggableOptions,
@@ -23,6 +23,10 @@ export const dialogProps = {
   },
   icon: {
     type: [String, Object] as PropType<IconParam>
+  },
+  size: {
+    type: String as PropType<BaseSize>,
+    default: 'default'
   },
   width: {
     type: [Number, String],
@@ -73,6 +77,13 @@ export const dialogProps = {
   },
   cancel: {
     type: [Boolean, String]
+  },
+  bodyPadding: {
+    type: Boolean,
+    default: true
+  },
+  primary: {
+    type: Boolean
   }
 };
 
@@ -92,6 +103,8 @@ export type DialogEmits = {
   resizeStart: [dir: string, mie: UseMouseInElementReturn];
   resizeEnd: [dir: string, mie: UseMouseInElementReturn];
   resizing: [dir: string, mie: UseMouseInElementReturn];
+  submit: [];
+  cancel: [];
 };
 
 export interface DialogState {

@@ -1,7 +1,11 @@
 <template>
   <Teleport v-if="props.modelValue" to="body">
-    <div ref="wrapper" class="x-dialog__wrapper" :class="wrapperClass">
-      <div v-if="props.modal" class="x-dialog__modal"></div>
+    <div
+      ref="wrapper"
+      class="x-dialog__wrapper"
+      :class="wrapperClass"
+      @mousemove.stop>
+      <div v-if="props.modal" class="x-dialog__modal" :style="modalStyle"></div>
       <XPanel
         class="x-dialog"
         card
@@ -12,15 +16,18 @@
         :footer="{ justify: 'space-between', flex: true, align: 'center' }"
         :class="classes"
         :style="styles"
+        :size="props.size"
+        :body="{ padding: props.bodyPadding }"
         v-draggable="draggable"
-        v-resizable="resizable">
+        v-resizable="resizable"
+        @click="active">
         <template #title>{{ props.title }}</template>
         <template #actions>
           <slot name="actions"></slot>
           <XAction
             v-if="props.minimizable"
             :icon="Minimize"
-            size="small"
+            :size="props.size"
             mode="icon"
             type="primary"
             background="hover"
@@ -29,7 +36,7 @@
             <XAction
               v-if="!normal"
               :icon="Popup"
-              size="small"
+              :size="props.size"
               mode="icon"
               type="primary"
               background="hover"
@@ -37,7 +44,7 @@
             <XAction
               v-else
               :icon="Maximize"
-              size="small"
+              :size="props.size"
               mode="icon"
               type="primary"
               background="hover"
@@ -46,22 +53,48 @@
           <XAction
             v-if="props.closable"
             :icon="RawClose"
-            size="small"
+            :size="props.size"
             mode="icon"
             type="danger"
             background="hover"
             @click="close"></XAction>
         </template>
-        <slot></slot>
-        <template #footer>
+        <slot>
+          <component v-if="props.content" :is="props.content"></component>
+          <iframe
+            v-if="props.src"
+            :src="props.src"
+            class="x-dialog__frame"></iframe>
+        </slot>
+        <template
+          v-if="
+            props.cancel ||
+            props.submit ||
+            $slots.footer ||
+            $slots.extra ||
+            $slots.handle
+          "
+          #footer>
           <slot name="footer">
             <XContainer>
               <slot name="extra"></slot>
             </XContainer>
             <XContainer>
               <slot name="handle"></slot>
-              <ElButton type="default" size="default">取消</ElButton>
-              <ElButton type="primary" size="default">确定</ElButton>
+              <ElButton
+                v-if="props.cancel"
+                type="default"
+                :size="props.size"
+                @click="cancel">
+                {{ typeof props.cancel === 'string' ? props.cancel : '取消' }}
+              </ElButton>
+              <ElButton
+                v-if="props.submit"
+                type="primary"
+                :size="props.size"
+                @click="submit">
+                {{ typeof props.submit === 'string' ? props.cancel : '确定' }}
+              </ElButton>
             </XContainer>
           </slot>
         </template>
@@ -92,8 +125,8 @@
   const emit = defineEmits<DialogEmits>();
   const wrapper = ref();
   const { state, maximized, minimized, normal } = useState(props, wrapper);
-  const { styles, classes, wrapperClass } = useStyle(props, state);
-  const { changeMode, active, close, show, hide } = useMethods(
+  const { styles, classes, wrapperClass, modalStyle } = useStyle(props, state);
+  const { changeMode, active, close, show, hide, submit, cancel } = useMethods(
     props,
     state,
     emit
@@ -112,6 +145,8 @@
     minimized,
     changeMode,
     show,
-    hide
+    hide,
+    submit,
+    cancel
   });
 </script>

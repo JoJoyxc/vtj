@@ -52,7 +52,8 @@ const createEnv = (type: string, envConfig: EnvConfig) => {
   return {
     'process.env': {
       ENV_TYPE: type,
-      ...process.env,
+      NODE_ENV: process.env.NODE_ENV,
+      // ...process.env,
       ...envConfig
     }
   };

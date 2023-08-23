@@ -1,7 +1,7 @@
 @use 'core' as *;
 
 @include b(header) {
-  height: 34px;
+  height: 32px;
 
   @include when(size-large) {
     height: 40px;
@@ -18,6 +18,10 @@
   @include e(wrapper) {
     line-height: 1;
     font-size: 14px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 1px;
 
     @include when(size-large) {
       font-size: 16px;
@@ -51,6 +55,7 @@
 
   @include e(icon) {
     margin-right: 5px;
+    flex-shrink: 0;
   }
 
   @include e(content) {

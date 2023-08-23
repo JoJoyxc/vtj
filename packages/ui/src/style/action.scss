@@ -30,7 +30,7 @@
     align-items: center;
     line-height: 1;
     white-space: nowrap;
-    font-size: 14px;
+    font-size: 12px;
     > .x-icon + span {
       margin-left: 0.2em;
     }
@@ -70,21 +70,27 @@
       border-radius: 3px;
 
       @include when(background-hover) {
+        color: getCssVar('color-info');
         &:hover {
           @include when(primary) {
-            background-color: getCssVar('color-primary-light-9');
+            background-color: getCssVar('color-primary-light-8');
+            color: getCssVar('color-primary');
           }
           @include when(success) {
-            background-color: getCssVar('color-success-light-9');
+            background-color: getCssVar('color-success-light-8');
+            color: getCssVar('color-success');
           }
           @include when(warning) {
-            background-color: getCssVar('color-warning-light-9');
+            background-color: getCssVar('color-warning-light-8');
+            color: getCssVar('color-warning');
           }
           @include when(danger) {
-            background-color: getCssVar('color-danger-light-9');
+            background-color: getCssVar('color-danger-light-8');
+            color: getCssVar('color-danger');
           }
           @include when(info) {
-            background-color: getCssVar('color-info-light-9');
+            background-color: getCssVar('color-info-light-8');
+            color: getCssVar('color-info');
           }
         }
       }

@@ -5,7 +5,7 @@ export function md5(content: string) {
   return String(MD5(content));
 }
 
-function RSA(key: string, content: string) {
+export function RSA(key: string, content: string) {
   const crypt = new JSEncrypt();
   crypt.setKey(key);
   return crypt.encrypt(content);

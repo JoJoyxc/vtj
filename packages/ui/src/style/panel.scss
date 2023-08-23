@@ -43,6 +43,10 @@
 
     @include when(radius) {
       border-radius: getCssVar('border-radius-base');
+      // @include e(header) {
+      //   border-radius: getCssVar('border-radius-base')
+      //     getCssVar('border-radius-base') 0 0;
+      // }
     }
 
     @include e(header) {

@@ -2,22 +2,45 @@
   <div>
     <button @click="open">open</button>
     <button @click="show">show</button>
+
     <XDialog
       ref="dialog"
+      key="dialog1"
       v-model="visible"
       title="弹窗标题"
       subtitle="我是副标题内容"
       :icon="VtjIconBug"
-      :modal="true"
+      :modal="false"
+      src="/#/ui/startup"
+      submit
+      cancel
+      :resizable="false"
+      @open="onOpen">
+      <div>
+        <div v-for="n in 50">{{ n }}</div>
+      </div>
+    </XDialog>
+
+    <XDialog
+      v-if="false"
+      key="dialog2"
+      title="弹窗标题"
+      subtitle="我是副标题内容"
+      :icon="VtjIconBug"
+      :modal="false"
+      src="/#/ui/startup"
+      width="500px"
+      height="400px"
+      submit
+      cancel
       resizable
       @open="onOpen">
-      DialogBody
     </XDialog>
   </div>
 </template>
 <script lang="ts" setup>
-  import { ref } from 'vue';
-  import { XDialog } from '@vtj/ui';
+  import { ref, createVNode } from 'vue';
+  import { XDialog, createDialog } from '@vtj/ui';
   import {
     VtjIconBug,
     VtjIconApi,
@@ -26,7 +49,7 @@
   } from '@vtj/icons';
 
   const dialog = ref();
-  const visible = ref(true);
+  const visible = ref(false);
 
   const open = () => {
     visible.value = true;
@@ -38,4 +61,20 @@
   const show = () => {
     dialog.value.show();
   };
+
+  const vnode = createVNode('div', {}, 'HelloWorld');
+
+  const node = createDialog({
+    title: '动态',
+    icon: VtjIconBug,
+    size: 'default',
+    width: 500,
+    height: 400,
+    content: vnode,
+    submit: true,
+    resizable: true,
+    primary: true
+  });
+
+  console.log(node);
 </script>

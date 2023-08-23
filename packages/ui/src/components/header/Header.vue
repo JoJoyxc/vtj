@@ -4,7 +4,7 @@
     justify="space-between"
     align="center"
     :class="classes">
-    <XContainer align="center" class="x-header__wrapper" :class="classes">
+    <XContainer align="center" class="x-header__wrapper" grow :class="classes">
       <component v-if="icon" :is="icon" class="x-header__icon"></component>
       <span class="x-header__content" v-bind="$attrs">
         <slot>{{ props.content }}</slot>

@@ -66,7 +66,7 @@
   import { ideBase, ideConfig } from '@/api';
 
   const isExample = process.env.ENV_TYPE === 'uat';
-  const isDev = process.env.ENV_TYPE === 'local';
+  // const isDev = process.env.ENV_TYPE === 'local';
 
   const tipDialogVisible = ref(false);
   const coderDialogVisible = ref(false);
@@ -75,8 +75,15 @@
   const coderLoading = ref(false);
   const container = ref<HTMLElement | undefined>();
   const options = inject('VTJ_PROVIDER_OPTIONS', null);
-
-  const config = isExample ? ({} as any) : options || (await ideConfig());
+  const pathname = location.pathname;
+  const config = isExample
+    ? ({
+        project: {
+          base: pathname,
+          home: '/startup'
+        }
+      } as any)
+    : options || (await ideConfig());
   const { project, raw = false, service = 'storage', debug } = config || {};
   const {
     id = 'ide',
@@ -87,7 +94,7 @@
     preview = '/preview',
     home = '/'
   } = project || {};
-  const pathname = location.pathname;
+
   const engine = new Engine(container, {
     service: service === 'file' ? new FileService() : new StorageService(),
     config: {
@@ -123,10 +130,10 @@
       let url = '';
       if (isPage(file)) {
         url = raw
-          ? `${pathname}${split}${preview}/${(file as SummarySchema).id}`
-          : `${pathname}${split}${page}/${(file as SummarySchema).id}`;
+          ? `${base}${split}${preview}/${(file as SummarySchema).id}`
+          : `${base}${split}${page}/${(file as SummarySchema).id}`;
       } else {
-        url = `${pathname}${split}${preview}/${(file as SummarySchema).id}`;
+        url = `${base}${split}${preview}/${(file as SummarySchema).id}`;
       }
 
       window.open(url);

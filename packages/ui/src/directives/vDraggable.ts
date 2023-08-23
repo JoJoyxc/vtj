@@ -55,7 +55,7 @@ export class Draggable {
   }
   private getHandle(): any {
     const { selector, handle } = this.options;
-    return selector ? document.querySelector(selector) : handle;
+    return selector ? this.el.querySelector(selector) : handle;
   }
   private getTarget() {
     const { target = 'body' } = this.options;
@@ -65,7 +65,7 @@ export class Draggable {
   }
   init() {
     const { el, options } = this;
-    const { disabled, delay = 100, onStart, onEnd } = options;
+    const { disabled, delay = 150, onStart, onEnd } = options;
     if (disabled) return;
     let timer: any = null;
 
@@ -91,10 +91,10 @@ export class Draggable {
         clearTimeout(timer);
         document.body.classList.remove(BODY_CLASS);
         if (this.dragging && targetRect) {
+          this.dragging = false;
           const { x, y } = position;
           const endPostion = this.getPosition(targetRect, rect, x, y);
           onEnd && onEnd(endPostion, e);
-          this.dragging = false;
           targetRect = null;
         }
       }

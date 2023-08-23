@@ -60,7 +60,8 @@ export function useStyle(props: DialogProps, state: DialogState) {
     return {
       [`is-${state.mode}`]: !!state.mode,
       [`is-draggable`]: !!props.draggable,
-      [`is-resizable`]: !!props.resizable
+      [`is-resizable`]: !!props.resizable,
+      'is-primary': !!props.primary
     };
   });
 
@@ -72,10 +73,17 @@ export function useStyle(props: DialogProps, state: DialogState) {
     };
   });
 
+  const modalStyle = computed(() => {
+    return {
+      zIndex: state.zIndex
+    };
+  });
+
   return {
     styles,
     classes,
-    wrapperClass
+    wrapperClass,
+    modalStyle
   };
 }
 
@@ -100,18 +108,24 @@ export function useMethods(
   };
 
   const active = () => {
-    ++state.zIndex;
+    state.zIndex = Math.max(state.zIndex, ++__global_ZIndex__);
   };
 
   const show = () => changeMode('normal');
   const hide = () => changeMode('minimized');
-
+  const submit = () => emit('submit');
+  const cancel = () => {
+    emit('cancel');
+    close();
+  };
   return {
     close,
     changeMode,
     show,
     hide,
-    active
+    active,
+    submit,
+    cancel
   };
 }
 
@@ -133,6 +147,7 @@ export function useDraggableOptions(
       selector: '.x-panel__header',
       onStart(position: Position) {
         state.dragging = true;
+        state.zIndex = Math.max(state.zIndex, ++__global_ZIndex__);
         emit('dragStart', position);
       },
       onMove(position: Position) {
@@ -168,6 +183,7 @@ export function useResizableOptions(
       dirs: ['e', 's', 'w'],
       onStart(dir, mie) {
         state.resizing = true;
+        state.zIndex = Math.max(state.zIndex, ++__global_ZIndex__);
         emit('resizeStart', dir, mie);
       },
       onResizing(dir, mie) {

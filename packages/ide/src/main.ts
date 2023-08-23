@@ -30,8 +30,6 @@ const app = createApp(App);
           service: 'storage'
         }
       : await ideConfig();
-
-    app.provide('VTJ_PROVIDER_OPTIONS', options);
     await createProvider(
       merge(
         {
@@ -51,6 +49,7 @@ const app = createApp(App);
       )
     );
   }
+
   app.use(router);
   app.mount('#app');
 })();
