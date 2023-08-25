@@ -9,7 +9,8 @@ import {
   XContainer,
   XHeader,
   XPanel,
-  XDialog
+  XDialog,
+  XMask
 } from './components';
 
 export default [
@@ -22,5 +23,6 @@ export default [
   XContainer,
   XHeader,
   XPanel,
-  XDialog
+  XDialog,
+  XMask
 ] as unknown as Plugin[];

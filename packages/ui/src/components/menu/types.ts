@@ -1,14 +1,22 @@
-import { MenuProps as ElMenuProps } from 'element-plus';
+import { SubMenuProps as ElSubMenuProps } from 'element-plus';
 import { DefineComponent } from 'vue';
 export interface MenuDataItem {
-  id: string;
+  id: string | number;
   title: string;
-  icon?: string | DefineComponent;
+  icon?: string | Record<string, any> | DefineComponent<any, any, any, any>;
   disabled?: boolean;
   hidden?: boolean;
   children?: MenuDataItem[];
 }
 
-export interface MenuProps extends Partial<ElMenuProps> {
+export type SubMenuProps = Partial<ElSubMenuProps>;
+
+export interface MenuProps {
   data?: MenuDataItem[];
+  subMenu?: SubMenuProps;
+  defaultIcon?: DefineComponent<any, any, any, any>;
 }
+
+export type MenuEmits = {
+  select: [item: MenuDataItem];
+};

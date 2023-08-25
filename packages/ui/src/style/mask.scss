@@ -1,0 +1,298 @@
+@use 'core' as *;
+
+@include b(mask) {
+  @include set-css-var-value('mask-content-bg-color', getCssVar('bg-color'));
+  @include set-css-var-value(
+    'mask-topbar-bg-color',
+    getCssVar('fill-color-lighter')
+  );
+  @include set-css-var-value(
+    'mask-sidebar-bg-color',
+    getCssVar('fill-color-lighter')
+  );
+  width: 100%;
+  height: 100%;
+  background-color: getCssVar('mask-content-bg-color');
+  overflow: hidden;
+}
+
+@include b(mask-brand) {
+  height: 40px;
+  overflow: hidden;
+  @include e(logo) {
+    height: 40px;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  @include e(title) {
+    height: 30px;
+  }
+}
+
+@include b(mask-topbar) {
+  height: 40px;
+  background-color: getCssVar('mask-topbar-bg-color');
+  border-bottom: 1px solid getCssVar('border-color-lighter');
+}
+
+@include b(mask-menu) {
+  --el-menu-bg-color: transparent;
+  --el-menu-item-height: 36px;
+  --el-menu-sub-item-height: 34px;
+  --el-font-size-base: 14px;
+  --el-menu-item-font-size: 14px;
+  --el-menu-icon-width: 20px;
+  --el-menu-base-level-padding: 10px;
+  --el-menu-level-padding: 25px;
+  width: 100%;
+  height: 1px;
+  overflow-x: hidden !important;
+  &::-webkit-scrollbar {
+    width: 2px !important;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: transparent !important;
+  }
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.1) !important;
+    }
+  }
+  .el-menu {
+    .el-menu-item [class^='el-icon'],
+    .el-sub-menu .el-icon {
+      font-size: 16px;
+    }
+    .el-sub-menu .el-sub-menu__icon-arrow {
+      font-size: 12px;
+      color: getCssVar('text-color-secondary');
+    }
+    .el-menu-item.is-active {
+      background-color: getCssVar('menu-hover-bg-color');
+    }
+  }
+  .el-menu--collapse {
+    --el-menu-item-height: 50px;
+    width: 100%;
+    > .el-menu-item {
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+      padding-bottom: 20px;
+      margin: 5px;
+      border-radius: getCssVar('border-radius-base');
+      .x-menu__title {
+        height: auto;
+        width: auto;
+        visibility: visible;
+        font-size: 12px;
+        line-height: 1;
+        zoom: 0.9;
+        position: absolute;
+        left: 0;
+        bottom: 10px;
+        width: 100%;
+        text-align: center;
+        color: getCssVar('text-color-secondary');
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      &.is-active {
+        background-color: getCssVar('menu-hover-bg-color');
+        .x-menu__title {
+          color: getCssVar('color-primary');
+        }
+      }
+    }
+    > .el-sub-menu {
+      margin: 5px;
+      > .el-sub-menu__title {
+        width: 100%;
+        display: flex;
+        border-radius: getCssVar('border-radius-base');
+        line-height: 1;
+        padding-left: 0;
+        padding-right: 0;
+        > .x-menu__wrapper {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          width: 100%;
+          .x-menu__title {
+            font-size: 12px;
+            zoom: 0.9;
+            left: 0;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            display: block;
+            position: relative;
+            top: -5px;
+            color: getCssVar('text-color-secondary');
+            overflow: hidden;
+          }
+        }
+      }
+      &.is-active {
+        background-color: getCssVar('menu-hover-bg-color');
+
+        .x-menu__wrapper {
+          color: getCssVar('color-primary');
+          .x-menu__title {
+            color: getCssVar('color-primary');
+          }
+        }
+      }
+      &.is-opened {
+        background-color: getCssVar('menu-hover-bg-color');
+      }
+    }
+
+    .el-menu-item [class^='el-icon'],
+    .el-sub-menu .el-icon {
+      font-size: 20px;
+      margin-right: 0;
+    }
+  }
+}
+
+@include b(mask-menu-popper) {
+  --el-menu-item-height: 36px;
+  --el-menu-sub-item-height: 34px;
+  --el-font-size-base: 12px;
+  --el-menu-item-font-size: 12px;
+  --el-menu-icon-width: 20px;
+  --el-menu-base-level-padding: 14px;
+  max-height: calc(100% - 10px);
+  overflow: auto;
+  .el-menu-item [class^='el-icon'],
+  .el-sub-menu .el-icon {
+    font-size: 14px;
+    margin-right: 0;
+  }
+  .el-sub-menu .el-sub-menu__icon-arrow {
+    font-size: 12px;
+    color: getCssVar('text-color-secondary');
+  }
+  .el-menu-item.is-active {
+    background-color: getCssVar('menu-hover-bg-color');
+  }
+
+  &::-webkit-scrollbar {
+    width: 2px !important;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+@include b(mask-sidebar) {
+  width: 200px;
+  background-color: getCssVar('mask-sidebar-bg-color');
+
+  &:not(.is-resizing) {
+    transition: width 0.2s;
+  }
+
+  @include e(wrapper) {
+    position: relative;
+    border-right: 1px solid getCssVar('border-color-lighter');
+    > .el-divider {
+      margin: 0;
+    }
+  }
+  @include e(expander) {
+    padding: 5px 0;
+    width: 100%;
+    background-color: getCssVar('border-color-lighter');
+    text-align: center;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  @include e(helper) {
+    position: absolute;
+    width: 8px;
+    font-size: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-right: 2px solid transparent;
+  }
+
+  @include when(resizing) {
+    @include e(helper) {
+      border-right: 2px solid getCssVar('color-primary');
+    }
+  }
+
+  @include when(expanded) {
+    width: 60px;
+    .x-mask-avatar__wrapper {
+      overflow: hidden;
+      height: 0;
+      width: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+@include b(mask-topbar) {
+  height: 40px;
+}
+
+@include b(mask-tabs) {
+  width: 1px;
+  .el-tabs {
+    --el-tabs-header-height: 30px;
+    --el-font-size-base: 12px;
+    position: relative;
+    left: -1px;
+  }
+
+  .el-tabs__header {
+    margin: 0;
+    border-bottom: none !important;
+    .el-tabs__item.is-active {
+      background-color: getCssVar('bg-color');
+    }
+  }
+  .el-tabs__content {
+    display: none;
+  }
+}
+
+@include b(mask-toolbar) {
+  padding-right: 10px;
+  > .x-action {
+    margin: 0 5px;
+  }
+}
+
+@include b(mask-avatar) {
+  padding: 10px;
+
+  @include e(wrapper) {
+    padding-left: 10px;
+    font-size: 12px;
+    color: getCssVar('text-color-secondary');
+    line-height: 1.8em;
+  }
+
+  @include e(pic) {
+    flex-shrink: 0;
+  }
+
+  @include e(name) {
+    font-size: 14px;
+    color: getCssVar('text-color-regular');
+  }
+}

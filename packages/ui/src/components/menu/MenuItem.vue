@@ -1,48 +1,66 @@
 <template>
-  <ElSubMenu v-if="!!props.item.children" :index="props.item.id">
+  <ElSubMenu
+    v-if="!!props.item.children"
+    v-bind="props.subMenu"
+    :index="String(props.item.id)">
     <template #title>
-      <div>
-        <XIcon :icon="getIcon(props.item.icon)"></XIcon>
-        <span>{{ props.item.title }}</span>
+      <div class="x-menu__wrapper">
+        <XIcon v-if="props.item.icon" :icon="getIcon(props.item.icon)"></XIcon>
+        <span v-if="props.item.title" class="x-menu__title">
+          {{ props.item.title }}
+        </span>
       </div>
     </template>
     <ChildMenuItem
       v-for="child in getShowItems(props.item.children)"
-      :item="child"></ChildMenuItem>
+      :key="child.id"
+      :item="child"
+      :subMenu="props.subMenu"
+      :defaultIcon="props.defaultIcon"></ChildMenuItem>
   </ElSubMenu>
-  <ElMenuItem v-else :index="props.item.id" v-bind="props.item">
-    <XIcon :icon="getIcon(props.item.icon)"></XIcon>
-    <span>{{ props.item.title }}</span>
+  <ElMenuItem
+    v-else
+    :index="String(props.item.id)"
+    :disabled="props.item.disabled">
+    <XIcon v-if="props.item.icon" :icon="getIcon(props.item.icon)"></XIcon>
+    <template #title>
+      <span v-if="props.item.title" class="x-menu__title">
+        {{ props.item.title }}
+      </span>
+    </template>
   </ElMenuItem>
 </template>
 <script lang="ts" setup>
   import { ElSubMenu, ElMenuItem } from 'element-plus';
   import { XIcon } from '../';
-  import { MenuDataItem } from './types';
+  import { MenuDataItem, SubMenuProps } from './types';
   import { XMenuItem as ChildMenuItem } from './components';
   import { getCurrentInstance, DefineComponent } from 'vue';
 
   export interface Props {
     item: MenuDataItem;
+    subMenu?: SubMenuProps;
+    defaultIcon?: DefineComponent<any, any, any, any>;
   }
 
   defineOptions({
+    inheritAttrs: false,
     name: 'XMenuItem'
   });
 
   const props = defineProps<Props>();
   const instance = getCurrentInstance();
 
-  const getIcon = (name: string | DefineComponent = '') => {
+  const getIcon = (name: unknown) => {
     if (!name) return undefined;
     if (typeof name === 'string') {
       const app = instance?.appContext.app;
-      return app?.component(name) || name;
+      return app?.component(name) || props.defaultIcon || name;
     }
     return name;
   };
 
-  const getShowItems = (items: MenuDataItem[]) => {
+  const getShowItems = (items: MenuDataItem[] = []) => {
     return items.filter((n) => !n.hidden);
   };
 </script>

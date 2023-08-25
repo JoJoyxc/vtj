@@ -24,7 +24,7 @@
     const parent = instance?.parent;
     if (!parent) return false;
     const proxy = parent.proxy as ContainerInstance;
-    return proxy.$options.name === 'XContainer' && !!proxy.flex;
+    return proxy.$options.name === 'XContainer' || !!proxy.flex;
   });
 
   const className = computed(() => {
@@ -40,7 +40,7 @@
       [`is-align-${props.align}`]: props.flex && props.align !== 'flex-start',
       [`is-align-content-${props.alignContent}`]:
         props.flex && props.alignContent !== 'stretch',
-      'is-grow': parentFlex.value && props.grow,
+      'is-grow': props.grow ?? parentFlex.value,
       'is-shrink': parentFlex.value && props.shrink,
       [`is-align-self-${props.alignSelf}`]:
         parentFlex.value && props.alignSelf !== 'auto',

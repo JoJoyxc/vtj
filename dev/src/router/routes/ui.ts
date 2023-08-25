@@ -42,5 +42,15 @@ export const ui = [
   {
     path: '/ui/dialog',
     component: () => import('@/views/ui/dialog.vue')
+  },
+  {
+    path: '/ui/mask',
+    component: () => import('@/views/ui/mask.vue'),
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/ui/pages/index.vue')
+      }
+    ]
   }
 ];

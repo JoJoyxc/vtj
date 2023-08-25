@@ -2,6 +2,7 @@
 
 @include b(container) {
   flex-shrink: 0;
+  box-sizing: border-box;
   @include when(fit) {
     width: 100%;
     height: 100%;

@@ -9,3 +9,4 @@ export * from './container';
 export * from './header';
 export * from './panel';
 export * from './dialog';
+export * from './mask';

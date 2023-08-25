@@ -2,8 +2,19 @@
 
 @include b(menu) {
   border-right: none !important;
+
   .x-icon {
     font-size: inherit;
     width: 14px;
+  }
+
+  @include e(wrapper) {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  @include e(title) {
+    // margin-left: 5px;
   }
 }

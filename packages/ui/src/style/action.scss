@@ -30,7 +30,7 @@
     align-items: center;
     line-height: 1;
     white-space: nowrap;
-    font-size: 12px;
+    font-size: 14px;
     > .x-icon + span {
       margin-left: 0.2em;
     }
@@ -62,7 +62,7 @@
       color: getCssVar('color-danger');
     }
     @include when(info) {
-      color: getCssVar('color-info');
+      color: getCssVar('text-color-regular');
     }
 
     @include when(icon) {
@@ -70,7 +70,7 @@
       border-radius: 3px;
 
       @include when(background-hover) {
-        color: getCssVar('color-info');
+        color: getCssVar('text-color-regular');
         &:hover {
           @include when(primary) {
             background-color: getCssVar('color-primary-light-8');
@@ -90,7 +90,7 @@
           }
           @include when(info) {
             background-color: getCssVar('color-info-light-8');
-            color: getCssVar('color-info');
+            color: getCssVar('text-color-regular');
           }
         }
       }
@@ -119,12 +119,22 @@
 
       @include when(large) {
         font-size: 16px;
-        padding: 8px;
+        padding: 6px;
       }
 
       @include when(small) {
         font-size: 12px;
         padding: 4px;
+      }
+    }
+
+    @include when(text) {
+      @include when(large) {
+        font-size: 16px;
+      }
+
+      @include when(small) {
+        font-size: 12px;
       }
     }
   }
