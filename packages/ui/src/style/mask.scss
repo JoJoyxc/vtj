@@ -10,6 +10,12 @@
     'mask-sidebar-bg-color',
     getCssVar('fill-color-lighter')
   );
+
+  @include set-css-var-value(
+    'mask-sidebar-border-color',
+    getCssVar('border-color-lighter')
+  );
+
   width: 100%;
   height: 100%;
   background-color: getCssVar('mask-content-bg-color');
@@ -34,7 +40,7 @@
 @include b(mask-topbar) {
   height: 40px;
   background-color: getCssVar('mask-topbar-bg-color');
-  border-bottom: 1px solid getCssVar('border-color-lighter');
+  border-bottom: 1px solid getCssVar('mask-sidebar-border-color');
 }
 
 @include b(mask-menu) {
@@ -71,6 +77,11 @@
     }
     .el-menu-item.is-active {
       background-color: getCssVar('menu-hover-bg-color');
+    }
+    .el-sub-menu.is-active {
+      > .el-sub-menu__title {
+        color: getCssVar('color-primary');
+      }
     }
   }
   .el-menu--collapse {
@@ -160,6 +171,18 @@
       margin-right: 0;
     }
   }
+
+  @include e(favorites) {
+    .el-sub-menu__title .x-icon {
+      color: getCssVar('color-warning');
+    }
+  }
+
+  @include e(search) {
+    .el-sub-menu__title .x-icon {
+      color: getCssVar('color-success');
+    }
+  }
 }
 
 @include b(mask-menu-popper) {
@@ -183,6 +206,11 @@
   .el-menu-item.is-active {
     background-color: getCssVar('menu-hover-bg-color');
   }
+  .el-sub-menu.is-active {
+    > .el-sub-menu__title {
+      color: getCssVar('color-primary');
+    }
+  }
 
   &::-webkit-scrollbar {
     width: 2px !important;
@@ -202,7 +230,7 @@
 
   @include e(wrapper) {
     position: relative;
-    border-right: 1px solid getCssVar('border-color-lighter');
+    border-right: 1px solid getCssVar('mask-sidebar-border-color');
     > .el-divider {
       margin: 0;
     }
@@ -210,7 +238,7 @@
   @include e(expander) {
     padding: 5px 0;
     width: 100%;
-    background-color: getCssVar('border-color-lighter');
+    background-color: getCssVar('mask-sidebar-border-color');
     text-align: center;
     cursor: pointer;
     &:hover {
@@ -294,5 +322,98 @@
   @include e(name) {
     font-size: 14px;
     color: getCssVar('text-color-regular');
+  }
+}
+
+@include b(mask-switch-bar) {
+  width: 100%;
+  height: 40px;
+  padding: 10px 5px 10px 10px;
+  border-top: 1px solid var(--el-mask-sidebar-border-color);
+  position: relative;
+  top: -1px;
+  box-sizing: border-box;
+
+  @include e(left) {
+    width: 1px;
+    padding-right: 5px;
+  }
+
+  @include e(right) {
+    @include when(collasped) {
+      width: 100%;
+      padding-right: 5px;
+    }
+  }
+
+  @include e(switch) {
+    height: 24px !important;
+    line-height: 1 !important;
+    width: 50px !important;
+    position: relative;
+    display: block !important;
+    .el-switch__core {
+      @include set-css-var-value(
+        'switch-off-color',
+        getCssVar('mask-content-bg-color')
+      );
+      @include set-css-var-value(
+        'switch-on-color',
+        getCssVar('mask-content-bg-color')
+      );
+      border: 1px solid getCssVar('mask-sidebar-border-color') !important;
+      height: 24px;
+      width: 50px;
+      border-radius: 12px;
+      .el-switch__action {
+        width: 25px;
+        height: 20px;
+        border-radius: 12px;
+        background-color: getCssVar('color-primary-light-8');
+      }
+    }
+    .el-switch__label--left {
+      position: absolute;
+      top: 4px;
+      left: 7px;
+      z-index: 1;
+      margin-right: 0;
+      height: 14px;
+      color: getCssVar('text-color-regular');
+    }
+    .el-switch__label--right {
+      position: absolute;
+      top: 4px;
+      right: 7px;
+      z-index: 1;
+      margin-right: 0;
+      height: 14px;
+      color: getCssVar('text-color-regular');
+    }
+    &.is-checked .el-switch__core .el-switch__action {
+      left: calc(100% - 25px) !important;
+    }
+  }
+
+  @include e(input) {
+    .el-input__wrapper {
+      padding: 0 !important;
+      border-radius: 12px;
+    }
+    .el-input__prefix-inner > :last-child {
+      margin-right: 0;
+      width: 20px;
+    }
+    .el-input__suffix {
+      cursor: pointer;
+      transition: color 0.1s;
+      &:hover {
+        color: getCssVar('color-warning');
+      }
+      .x-icon {
+        width: 20px;
+        margin-left: 0 !important;
+      }
+    }
   }
 }

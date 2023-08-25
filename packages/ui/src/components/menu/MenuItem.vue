@@ -1,6 +1,7 @@
 <template>
   <ElSubMenu
     v-if="!!props.item.children"
+    :disabled="props.item.disabled"
     v-bind="props.subMenu"
     :index="String(props.item.id)">
     <template #title>

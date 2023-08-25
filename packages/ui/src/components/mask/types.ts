@@ -1,10 +1,29 @@
-import { PropType } from 'vue';
+import { PropType, ShallowRef, InjectionKey, ShallowReactive } from 'vue';
 import { ComponentPropsType } from '../shared';
 import { MenuDataItem } from '../';
-import type Mask from './Mask.vue';
+
+export const MASK_STATE_KEY: InjectionKey<ShallowReactive<MaskState>> =
+  Symbol('maskState');
+
 export const maskProps = {
+  /**
+   * 菜单项数据
+   */
   menus: {
-    type: Array as PropType<MenuDataItem[]>,
+    type: [Array, Function] as PropType<
+      MenuDataItem[] | (() => Promise<MenuDataItem[]> | MenuDataItem[])
+    >,
+    default() {
+      return [];
+    }
+  },
+  /**
+   * 收藏菜单项
+   */
+  favorites: {
+    type: [Array, Function] as PropType<
+      MenuDataItem[] | (() => Promise<MenuDataItem[]> | MenuDataItem[])
+    >,
     default() {
       return [];
     }
@@ -13,4 +32,7 @@ export const maskProps = {
 
 export type MaskProps = ComponentPropsType<typeof maskProps>;
 
-export type MaskInstance = InstanceType<typeof Mask>;
+export interface MaskState {
+  menus: ShallowRef<MenuDataItem[]>;
+  favorites: ShallowRef<MenuDataItem[]>;
+}

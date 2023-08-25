@@ -14,17 +14,22 @@
   </XContainer>
 </template>
 <script lang="ts" setup>
-  import { provide, getCurrentInstance, KeepAlive, Suspense } from 'vue';
+  import { provide, KeepAlive, Suspense } from 'vue';
   import { RouterView } from 'vue-router';
   import { XContainer } from '../';
   import Sidebar from './Sidebar.vue';
   import Topbar from './Topbar.vue';
-  import { maskProps } from './types';
+  import { maskProps, MASK_STATE_KEY } from './types';
+  import { useState } from './hooks';
   const props = defineProps(maskProps);
-  const instance = getCurrentInstance();
-  provide('$mask', instance);
-  console.log('instance', instance);
+  const state = useState(props);
+  provide(MASK_STATE_KEY, state);
+
   defineOptions({
     name: 'XMask'
+  });
+
+  defineExpose({
+    state
   });
 </script>
