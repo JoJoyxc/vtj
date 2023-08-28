@@ -58,7 +58,10 @@
         "children": [
             {
                 "id": "test_1",
-                "title": "测试无图标"
+                "title": "测试无图标",
+                "disabled": false,
+                "type": "dialog",
+                "url": "/ui/mask/page?id=test_1"
             }
         ]
     },

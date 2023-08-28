@@ -6,7 +6,6 @@
     :flex="false"
     overflow="auto">
     <XMenu
-      v-if="menus.length"
       v-show="props.collapse"
       :subMenu="{
         popperClass: 'x-mask-menu-popper',
@@ -21,7 +20,6 @@
       :default-active="defaultActive"
       @select="onSelect"></XMenu>
     <XMenu
-      v-if="menus.length"
       v-show="!props.collapse"
       :subMenu="{
         popperClass: 'x-mask-menu-popper',
@@ -75,13 +73,10 @@
       :default-active="defaultActive"
       :default-openeds="[FAVORITES_KEY]"
       @select="onSelect"></XMenu>
-
-    <ElEmpty
-      v-if="!state.favorites.value.length"
-      description="暂无收藏菜单"></ElEmpty>
   </XContainer>
 
   <XContainer
+    v-if="props.keyword"
     v-show="!!props.keyword"
     class="x-mask-menu"
     grow
@@ -120,10 +115,6 @@
       :default-active="defaultActive"
       :default-openeds="[SEARCH_KEY]"
       @select="onSelect"></XMenu>
-
-    <ElEmpty
-      v-if="!searchResult[0].children.length"
-      description="匹配不到相关菜单"></ElEmpty>
   </XContainer>
 </template>
 <script lang="ts" setup>
@@ -140,36 +131,61 @@
   }
   const FAVORITES_KEY = '__favorites__';
   const SEARCH_KEY = '__search__';
-  const defaultActive = ref();
+
   const props = withDefaults(defineProps<Props>(), { collapse: false });
   const state = useInjectState();
   const menus = computed(() => state.menus.value);
+  const emit = defineEmits<{
+    select: [item: MenuDataItem];
+  }>();
+
+  const defaultActive = computed(() => String(state.activeMenu.value?.id));
+
   const favorites = computed(() => {
     return [
       {
         id: FAVORITES_KEY,
         title: '收藏',
         icon: Star,
-        disabled: !state.favorites.value.length,
-        children: state.favorites.value
+        children: state.favorites.value?.length
+          ? state.favorites.value
+          : [
+              {
+                id: FAVORITES_KEY + 'empty',
+                disabled: true,
+                title: '暂无收藏菜单'
+              }
+            ]
       }
     ];
   });
 
   const searchResult = computed(() => {
-    const list: any[] = state.favorites.value;
+    const keyword = (props.keyword || '').trim();
+    const list: MenuDataItem[] = keyword
+      ? state.flatMenus.value.filter((n) => n.title.includes(keyword))
+      : [];
+
     return [
       {
         id: SEARCH_KEY,
         title: '搜索',
         icon: Search,
-        disabled: !list.length,
-        children: list
+        children: list?.length
+          ? list
+          : [
+              {
+                id: SEARCH_KEY + 'empty',
+                disabled: true,
+                title: '查询匹配不到菜单项'
+              }
+            ]
       }
     ];
   });
 
   const onSelect = (item: MenuDataItem) => {
-    defaultActive.value = String(item.id);
+    state.activeMenu.value = item;
+    emit('select', item);
   };
 </script>

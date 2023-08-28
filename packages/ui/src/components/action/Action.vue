@@ -57,7 +57,9 @@
         dropdown: () => [
           h(ElDropdownMenu, () =>
             (props.menus || []).map((item) => {
-              return h(ElDropdownItem, item, () => item.label);
+              return h(ElDropdownItem, item, () =>
+                slots.item ? slots.item({ item }) : item.label
+              );
             })
           )
         ]

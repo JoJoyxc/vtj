@@ -1,6 +1,7 @@
 @use 'core' as *;
 
 @include b(mask) {
+  @include set-css-var-value('mask-brand-color', '#0157fe');
   @include set-css-var-value('mask-content-bg-color', getCssVar('bg-color'));
   @include set-css-var-value(
     'mask-topbar-bg-color',
@@ -26,14 +27,31 @@
   height: 40px;
   overflow: hidden;
   @include e(logo) {
-    height: 40px;
+    height: 26px;
+    width: 60px;
+    text-align: center;
     cursor: pointer;
     &:hover {
       opacity: 0.7;
     }
+    > img {
+      height: 100%;
+    }
   }
   @include e(title) {
-    height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: getCssVar('mask-brand-color');
+    font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+    > span {
+      position: relative;
+      transform: translateX(-10px);
+    }
+  }
+  @include when(collasped) {
+    @include e(title) {
+      display: none;
+    }
   }
 }
 
@@ -262,7 +280,7 @@
     }
   }
 
-  @include when(expanded) {
+  @include when(collasped) {
     width: 60px;
     .x-mask-avatar__wrapper {
       overflow: hidden;
@@ -296,12 +314,34 @@
   .el-tabs__content {
     display: none;
   }
+
+  @include e(trigger) {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    > .x-icon {
+      margin-right: 5px;
+    }
+  }
 }
 
 @include b(mask-toolbar) {
   padding-right: 10px;
   > .x-action {
     margin: 0 5px;
+  }
+
+  @include e(menu-item) {
+    position: relative;
+    display: inline-block;
+    padding-right: 20px;
+    width: 100%;
+    .x-icon {
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 }
 
@@ -347,9 +387,9 @@
   }
 
   @include e(switch) {
-    height: 24px !important;
+    height: 28px !important;
     line-height: 1 !important;
-    width: 50px !important;
+    width: 60px !important;
     position: relative;
     display: block !important;
     .el-switch__core {
@@ -362,20 +402,20 @@
         getCssVar('mask-content-bg-color')
       );
       border: 1px solid getCssVar('mask-sidebar-border-color') !important;
-      height: 24px;
-      width: 50px;
-      border-radius: 12px;
+      height: 28px;
+      width: 60px;
+      border-radius: 14px;
       .el-switch__action {
-        width: 25px;
-        height: 20px;
-        border-radius: 12px;
+        width: 28px;
+        height: 24px;
+        border-radius: 14px;
         background-color: getCssVar('color-primary-light-8');
       }
     }
     .el-switch__label--left {
       position: absolute;
-      top: 4px;
-      left: 7px;
+      top: 6px;
+      left: 9px;
       z-index: 1;
       margin-right: 0;
       height: 14px;
@@ -383,15 +423,19 @@
     }
     .el-switch__label--right {
       position: absolute;
-      top: 4px;
-      right: 7px;
+      top: 6px;
+      right: 9px;
       z-index: 1;
       margin-right: 0;
       height: 14px;
       color: getCssVar('text-color-regular');
     }
+
+    .el-switch__label.is-active {
+      color: getCssVar('color-primary');
+    }
     &.is-checked .el-switch__core .el-switch__action {
-      left: calc(100% - 25px) !important;
+      left: calc(100% - 29px) !important;
     }
   }
 
@@ -414,6 +458,9 @@
         width: 20px;
         margin-left: 0 !important;
       }
+    }
+    .el-input__inner {
+      height: 28px !important;
     }
   }
 }

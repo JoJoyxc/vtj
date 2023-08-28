@@ -50,6 +50,10 @@ export const ui = [
       {
         path: '',
         component: () => import('@/views/ui/pages/index.vue')
+      },
+      {
+        path: 'page',
+        component: () => import('@/views/ui/pages/index.vue')
       }
     ]
   }

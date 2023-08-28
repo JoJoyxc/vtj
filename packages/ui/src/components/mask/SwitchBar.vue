@@ -32,14 +32,14 @@
         :icon="Search"
         mode="icon"
         background="hover"
-        size="small"
+        size="default"
         circle
         @click="onClickSearch"></XAction>
       <XAction
         v-if="props.collasped"
         :icon="Expand"
         mode="icon"
-        size="small"
+        size="default"
         background="hover"
         @click="onToggleCollaspe"
         circle></XAction>
@@ -47,7 +47,7 @@
         v-if="!props.collasped"
         :icon="Fold"
         mode="icon"
-        size="small"
+        size="default"
         background="hover"
         circle
         @click="onToggleCollaspe"></XAction>

@@ -1,6 +1,6 @@
 <template>
   <el-config-provider :locale="zhCn">
-    <Suspense v-if="route.query.preview">
+    <Suspense v-if="route.query.preview || route.path.includes('/ui/mask')">
       <router-view></router-view>
     </Suspense>
     <div v-else class="app">

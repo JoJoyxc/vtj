@@ -10,8 +10,11 @@
       maxWidth: 500,
       minWidth: 200
     }"
-    :class="{ 'is-expanded': collasped }">
-    <Brand></Brand>
+    :class="{ 'is-collasped': collasped }">
+    <Brand
+      :collasped="collasped"
+      :logo="props.logo"
+      :title="props.title"></Brand>
     <XContainer
       class="x-mask-sidebar__wrapper"
       flex
@@ -26,23 +29,39 @@
       <Menu
         :collapse="collasped"
         :favorite="favorite"
-        :keyword="keyword"></Menu>
+        :keyword="keyword"
+        @select="onMenuSelect"></Menu>
       <div class="x-mask-sidebar__helper"></div>
     </XContainer>
   </XContainer>
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { XContainer } from '../';
+  import { XContainer, MenuDataItem } from '../';
   import { vResizable } from '../../directives';
   import Brand from './Brand.vue';
   import Menu from './Menu.vue';
   import SwitchBar from './SwitchBar.vue';
+
+  export interface Props {
+    logo?: string;
+    title?: string;
+  }
+
+  const props = defineProps<Props>();
+
+  const emit = defineEmits<{
+    menuSelect: [item: MenuDataItem];
+  }>();
 
   const collasped = ref(false);
   const favorite = ref(false);
   const keyword = ref('');
   const onSearch = (val: string) => {
     keyword.value = val;
+  };
+
+  const onMenuSelect = (item: MenuDataItem) => {
+    emit('menuSelect', item);
   };
 </script>

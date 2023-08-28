@@ -7,6 +7,10 @@ export interface MenuDataItem {
   disabled?: boolean;
   hidden?: boolean;
   children?: MenuDataItem[];
+  // 打开方式，默认 route
+  type?: 'route' | 'dialog' | 'window';
+  // 菜单路径地址
+  url?: string;
 }
 
 export type SubMenuProps = Partial<ElSubMenuProps>;

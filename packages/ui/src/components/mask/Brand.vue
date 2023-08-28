@@ -1,15 +1,26 @@
 <template>
-  <XContainer class="x-mask-brand" align="center">
-    <XContainer>
-      <img class="x-mask-brand__logo" :src="logo" />
+  <XContainer
+    class="x-mask-brand"
+    :class="{ 'is-collasped': props.collasped }"
+    align="center">
+    <XContainer class="x-mask-brand__logo" flex justify="center" align="center">
+      <img v-if="props.logo" :src="props.logo" />
     </XContainer>
-    <XContainer>
-      <img class="x-mask-brand__title" :src="title" />
+    <XContainer class="x-mask-brand__title" flex align="center">
+      <span v-if="props.title">{{ props.title }}</span>
     </XContainer>
   </XContainer>
 </template>
 <script lang="ts" setup>
-  import { XContainer, XIcon } from '../';
-  import logo from './logo.png';
-  import title from './title.png';
+  import { XContainer } from '../';
+
+  export interface Props {
+    collasped?: boolean;
+    logo?: string;
+    title?: string;
+  }
+
+  const props = withDefaults(defineProps<Props>(), {
+    collasped: false
+  });
 </script>

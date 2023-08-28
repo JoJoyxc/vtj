@@ -1,8 +1,14 @@
 <template>
   <XContainer class="x-mask">
-    <Sidebar></Sidebar>
+    <Sidebar
+      :logo="props.logo"
+      :title="props.title"
+      @menu-select="selectMenu"></Sidebar>
     <XContainer class="x-mask__main" grow flex direction="column">
-      <Topbar></Topbar>
+      <Topbar
+        @tab-remove="removeTab"
+        @tab-click="onTabClick"
+        @home-click="onHomeClick"></Topbar>
       <XContainer class="x-mask__content" :flex="false" grow padding>
         <KeepAlive>
           <Suspense>
@@ -19,10 +25,17 @@
   import { XContainer } from '../';
   import Sidebar from './Sidebar.vue';
   import Topbar from './Topbar.vue';
-  import { maskProps, MASK_STATE_KEY } from './types';
-  import { useState } from './hooks';
+  import { maskProps, MASK_STATE_KEY, MaskEmits } from './types';
+  import { useState, useMethods } from './hooks';
   const props = defineProps(maskProps);
+  const emit = defineEmits<MaskEmits>();
   const state = useState(props);
+  const { selectMenu, removeTab, onTabClick, onHomeClick } = useMethods(
+    props,
+    state,
+    emit
+  );
+
   provide(MASK_STATE_KEY, state);
 
   defineOptions({
@@ -30,6 +43,7 @@
   });
 
   defineExpose({
-    state
+    state,
+    selectMenu
   });
 </script>

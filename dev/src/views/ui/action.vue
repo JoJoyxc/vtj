@@ -12,7 +12,8 @@
       label="操作按钮"
       type="primary"
       :menus="menus"
-      @command="onCommand"></XAction>
+      @command="onCommand">
+    </XAction>
 
     <XAction
       :icon="icon"
