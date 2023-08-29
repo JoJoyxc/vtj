@@ -1,5 +1,6 @@
 <template>
   <XContainer
+    ref="tabsRef"
     class="x-mask-tabs"
     height="100%"
     grow
@@ -18,12 +19,12 @@
               v-if="home.icon"
               :is="(useIcon(home.icon) as any)"></component>
 
-            {{ home.title }}
+            <span v-if="home.title">{{ home.title }}</span>
           </div>
         </template>
       </ElTabPane>
       <ElTabPane
-        v-for="tab in tabs"
+        v-for="tab in props.items"
         :key="`tab_${tab.id}`"
         :name="tab.id"
         lazy
@@ -40,7 +41,7 @@
                   v-if="tab.icon"
                   :is="(useIcon(tab.icon) as any)"></component>
 
-                {{ tab.title }}
+                <span v-if="tab.title">{{ tab.title }}</span>
               </div>
             </template>
             <XActionBar
@@ -61,6 +62,16 @@
   import { CopyDocument, Star, Refresh } from '@element-plus/icons-vue';
   import { useIcon } from '../../hooks';
   import { useInjectState } from './hooks';
+
+  export interface Props {
+    tabs: MenuDataItem[];
+    items: MenuDataItem[];
+  }
+
+  const props = withDefaults(defineProps<Props>(), {
+    tabs: () => [],
+    items: () => []
+  });
 
   const emit = defineEmits<{
     click: [tab: MenuDataItem];
@@ -89,29 +100,26 @@
     }
   ];
 
-  const tabs = computed(() => state.tabs.value);
+  const tabsValue = computed(() => state.activeMenu.value?.id);
+  const home = computed(() => state.home.value);
 
   const isActive = (menu: MenuDataItem) => {
     return menu.id === state.activeMenu.value?.id;
   };
-
-  const tabsValue = computed(() => state.activeMenu.value?.id);
-
-  const home = computed(() => state.home.value);
 
   const onTabClick = (pane: TabsPaneContext) => {
     if (pane.paneName === state.home.value?.id) {
       emit('home');
       return;
     }
-    const tab = tabs.value.find((n) => n.id === pane.paneName);
+    const tab = props.tabs.find((n) => n.id === pane.paneName);
     if (tab) {
       emit('click', tab);
     }
   };
 
   const onTabRemove = (name: string | number) => {
-    const tab = tabs.value.find((n) => n.id === name);
+    const tab = props.tabs.find((n) => n.id === name);
     if (tab) {
       emit('remove', tab);
     }

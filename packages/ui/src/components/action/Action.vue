@@ -42,7 +42,9 @@
 
   const onCommand = (command: any) => {
     const item = props.menus?.find((n) => n.command === command);
-    emit('command', item);
+    if (item) {
+      emit('command', item);
+    }
   };
 
   const wrapBadge = (node: VNode | VNode[]) => {

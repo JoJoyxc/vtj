@@ -60,7 +60,7 @@
   });
 
   const headerProps = computed(() => {
-    if (!props.header === null) return null;
+    if (props.header === null) return null;
     return typeof props.header === 'string'
       ? {
           content: props.header,

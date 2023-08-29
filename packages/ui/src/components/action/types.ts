@@ -126,5 +126,5 @@ export type ActionProps = ComponentPropsType<typeof actionProps>;
 
 export type ActionEmits = {
   click: [props: ActionProps];
-  command: [item: ActionMenuItem | undefined];
+  command: [item: ActionMenuItem];
 };

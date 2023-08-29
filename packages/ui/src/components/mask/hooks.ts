@@ -4,15 +4,26 @@ import {
   ShallowReactive,
   shallowRef,
   computed,
-  nextTick
+  nextTick,
+  ComponentInternalInstance
 } from 'vue';
-import { MaskProps, MaskState, MASK_STATE_KEY, MaskEmits } from './types';
+import {
+  MaskProps,
+  MaskState,
+  MASK_STATE_KEY,
+  MaskEmits,
+  MASK_INSTANCE_KEY
+} from './types';
 import { MenuDataItem, ShortEmits, createDialog } from '../';
 import { useRouter, useRoute, RouteLocationNormalizedLoaded } from 'vue-router';
 import { HomeFilled } from '@element-plus/icons-vue';
 
 export function useInjectState() {
   return inject(MASK_STATE_KEY, null) as ShallowReactive<MaskState>;
+}
+
+export function useInjectMask() {
+  return inject(MASK_INSTANCE_KEY, null) as ComponentInternalInstance;
 }
 
 export function useState(props: MaskProps) {
@@ -119,7 +130,7 @@ export function useMethods(
     if (current) {
       state.activeMenu.value = current;
     } else {
-      state.tabs.value = [menu, ...state.tabs.value];
+      state.tabs.value = [menu, ...state.tabs.value].splice(0, props.maxTabs);
       state.activeMenu.value = menu;
     }
   };

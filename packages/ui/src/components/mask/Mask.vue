@@ -8,8 +8,11 @@
       <Topbar
         @tab-remove="removeTab"
         @tab-click="onTabClick"
-        @home-click="onHomeClick"></Topbar>
+        @home-click="onHomeClick">
+        <slot name="user"></slot>
+      </Topbar>
       <XContainer class="x-mask__content" :flex="false" grow padding>
+        <slot v-if="$slots.default"></slot>
         <KeepAlive>
           <Suspense>
             <RouterView></RouterView>
@@ -20,12 +23,23 @@
   </XContainer>
 </template>
 <script lang="ts" setup>
-  import { provide, KeepAlive, Suspense } from 'vue';
+  import {
+    provide,
+    KeepAlive,
+    Suspense,
+    getCurrentInstance,
+    ComponentInternalInstance
+  } from 'vue';
   import { RouterView } from 'vue-router';
   import { XContainer } from '../';
   import Sidebar from './Sidebar.vue';
   import Topbar from './Topbar.vue';
-  import { maskProps, MASK_STATE_KEY, MaskEmits } from './types';
+  import {
+    maskProps,
+    MASK_INSTANCE_KEY,
+    MASK_STATE_KEY,
+    MaskEmits
+  } from './types';
   import { useState, useMethods } from './hooks';
   const props = defineProps(maskProps);
   const emit = defineEmits<MaskEmits>();
@@ -35,8 +49,10 @@
     state,
     emit
   );
+  const instance = getCurrentInstance();
 
   provide(MASK_STATE_KEY, state);
+  provide(MASK_INSTANCE_KEY, instance as ComponentInternalInstance);
 
   defineOptions({
     name: 'XMask'
