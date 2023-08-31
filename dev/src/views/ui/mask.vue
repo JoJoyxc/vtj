@@ -2,13 +2,13 @@
   <XMask
     :menus="menus"
     :favorites="favorites"
-    manual-menu
-    @menu-select="onMenuSelect"
+    manual
+    @select="onMenuSelect"
     :defaultActiveMenu="defaultActiveMenu"
-    :home="{ url: '/ui/mask' }"
-    :maxTabs="20"
+    homepage="/ui/mask"
+    :tabs="20"
     :actions="actions"
-    theme-switch
+    theme
     @action-click="onActionClick">
   </XMask>
 </template>

@@ -7,16 +7,21 @@ import {
   ComponentInternalInstance
 } from 'vue';
 import { RouteLocationNormalizedLoaded } from 'vue-router';
-import { ComponentPropsType } from '../shared';
-import { MenuDataItem, ActionBarItems, ActionProps, ActionMenuItem } from '../';
-import logo from './logo.png';
-import type Mask from './Mask.vue';
 
-export const MASK_STATE_KEY: InjectionKey<ShallowReactive<MaskState>> =
-  Symbol('maskState');
+import {
+  MenuDataItem,
+  ActionBarItems,
+  ActionProps,
+  ActionMenuItem,
+  ComponentPropsType
+} from '../';
+import logo from './assets/logo.png';
+import type Mask from './Mask.vue';
 
 export const MASK_INSTANCE_KEY: InjectionKey<ComponentInternalInstance> =
   Symbol('$mask');
+
+export const TAB_ITEM_WIDTH = 140;
 
 export const maskProps = {
   /**
@@ -58,7 +63,7 @@ export const maskProps = {
   /**
    * 手动处理菜单打开，设置true，需要自行侦听 menu-select 事件实现菜单打开页面
    */
-  manualMenu: {
+  manual: {
     type: Boolean
   },
   /**
@@ -73,16 +78,17 @@ export const maskProps = {
     >
   },
   /**
-   * home tab 配置
+   * 主页路由路径
    */
-  home: {
-    type: Object as PropType<Partial<MenuDataItem>>
+  homepage: {
+    type: String,
+    default: '/'
   },
 
   /**
    * 最大tabs数量
    */
-  maxTabs: {
+  tabs: {
     type: Number,
     default: 20
   },
@@ -102,7 +108,7 @@ export const maskProps = {
   /**
    * 开启主题切换
    */
-  themeSwitch: {
+  theme: {
     type: Boolean
   }
 };
@@ -111,17 +117,8 @@ export type MaskProps = ComponentPropsType<typeof maskProps>;
 
 export type MaskInstance = InstanceType<typeof Mask>;
 
-export interface MaskState {
-  menus: ShallowRef<MenuDataItem[]>;
-  favorites: ShallowRef<MenuDataItem[]>;
-  flatMenus: ComputedRef<MenuDataItem[]>;
-  activeMenu: ShallowRef<MenuDataItem | null | undefined>;
-  tabs: ShallowRef<MenuDataItem[]>;
-  home: ShallowRef<MenuDataItem | null | undefined>;
-}
-
 export type MaskEmits = {
-  menuSelect: [menu: MenuDataItem];
+  select: [menu: MenuDataItem];
   actionClick: [action: ActionProps];
   actionCommand: [action: ActionProps, item: ActionMenuItem];
 };
@@ -130,3 +127,9 @@ export type MaskSlots = {
   default(): any;
   user(): any;
 };
+
+export interface MaskTab {
+  menu: MenuDataItem;
+  closable?: boolean;
+  dialog?: boolean;
+}

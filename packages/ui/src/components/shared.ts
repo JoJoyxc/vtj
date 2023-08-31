@@ -35,7 +35,7 @@ export type UnionToIntersection<U> = (
 
 export type RecordToUnion<T extends Record<string, any>> = T[keyof T];
 
-export type ShortEmits<T extends Record<string, any>> = UnionToIntersection<
+export type Emits<T extends Record<string, any>> = UnionToIntersection<
   RecordToUnion<{
     [K in keyof T]: (evt: K, ...args: T[K]) => void;
   }>

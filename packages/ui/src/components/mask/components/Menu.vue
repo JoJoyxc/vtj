@@ -119,8 +119,7 @@
 </template>
 <script lang="ts" setup>
   import { computed, ref } from 'vue';
-  import { XContainer, XMenu, MenuDataItem } from '../';
-  import { useInjectState } from './hooks';
+  import { XContainer, XMenu, MenuDataItem } from '../../';
   import { Document, Star, Search } from '@element-plus/icons-vue';
   import { ElEmpty } from 'element-plus';
 
@@ -128,18 +127,21 @@
     collapse?: boolean;
     keyword?: string;
     favorite?: boolean;
+    favorites?: MenuDataItem[];
+    flatMenus?: MenuDataItem[];
+    menus?: MenuDataItem[];
+    active?: MenuDataItem | null;
   }
   const FAVORITES_KEY = '__favorites__';
   const SEARCH_KEY = '__search__';
 
   const props = withDefaults(defineProps<Props>(), { collapse: false });
-  const state = useInjectState();
-  const menus = computed(() => state.menus.value);
+  const menus = computed(() => props.menus || []);
   const emit = defineEmits<{
     select: [item: MenuDataItem];
   }>();
 
-  const defaultActive = computed(() => String(state.activeMenu.value?.id));
+  const defaultActive = computed(() => String(props.active?.id));
 
   const favorites = computed(() => {
     return [
@@ -147,8 +149,8 @@
         id: FAVORITES_KEY,
         title: '收藏',
         icon: Star,
-        children: state.favorites.value?.length
-          ? state.favorites.value
+        children: props.favorites?.length
+          ? props.favorites
           : [
               {
                 id: FAVORITES_KEY + 'empty',
@@ -163,7 +165,7 @@
   const searchResult = computed(() => {
     const keyword = (props.keyword || '').trim();
     const list: MenuDataItem[] = keyword
-      ? state.flatMenus.value.filter((n) => n.title.includes(keyword))
+      ? (props.flatMenus || []).filter((n) => n.title?.includes(keyword))
       : [];
 
     return [
@@ -185,7 +187,6 @@
   });
 
   const onSelect = (item: MenuDataItem) => {
-    state.activeMenu.value = item;
     emit('select', item);
   };
 </script>

@@ -2,23 +2,25 @@
   <ElPopover
     :width="200"
     popper-class="x-mask-avatar__popper"
-    :disabled="!mask.slots.user">
+    :disabled="!$slots.default">
     <template #reference>
       <ElAvatar
         class="x-mask-avatar"
         shape="circle"
         :icon="UserFilled"
-        :src="avatar"
+        :src="props.avatar"
         :size="26"></ElAvatar>
     </template>
-    <component v-if="mask.slots.user" :is="mask.slots.user"></component>
+    <slot v-if="!!$slots.default"></slot>
   </ElPopover>
 </template>
 <script lang="ts" setup>
-  import { computed } from 'vue';
   import { ElAvatar, ElPopover } from 'element-plus';
   import { UserFilled } from '@element-plus/icons-vue';
-  import { useInjectMask } from './hooks';
-  const mask = useInjectMask();
-  const avatar = computed(() => mask.props.avatar as string);
+
+  export interface Props {
+    avatar?: string;
+  }
+
+  const props = defineProps<Props>();
 </script>

@@ -65,7 +65,7 @@
     StarFilled,
     Close
   } from '@element-plus/icons-vue';
-  import { XContainer, XAction, XIcon } from '../';
+  import { XContainer, XAction, XIcon } from '../../';
 
   export interface Props {
     collasped?: boolean;

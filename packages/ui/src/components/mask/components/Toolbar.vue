@@ -21,18 +21,19 @@
 
     <ElDivider direction="vertical"></ElDivider>
     <XActionBar
-      v-if="actions"
+      v-if="props.actions"
       circle
       mode="icon"
       size="default"
       background="hover"
       :items="actions"
-      @click="onActionClick"></XActionBar>
-    <ElDivider v-if="actions" direction="vertical"></ElDivider>
+      @click="onActionClick"
+      @command="onActionCommand"></XActionBar>
+    <ElDivider v-if="props.actions" direction="vertical"></ElDivider>
 
-    <ThemeSwitch v-if="mask.props.themeSwitch"></ThemeSwitch>
-    <ElDivider v-if="mask.props.themeSwitch" direction="vertical"></ElDivider>
-    <Avatar></Avatar>
+    <ThemeSwitch v-if="props.theme"></ThemeSwitch>
+    <ElDivider v-if="props.theme" direction="vertical"></ElDivider>
+    <slot></slot>
   </XContainer>
 </template>
 <script lang="ts" setup>
@@ -42,36 +43,36 @@
     XAction,
     ActionMenuItem,
     XIcon,
-    MenuDataItem,
     XActionBar,
     ActionBarItems,
     ActionProps
-  } from '../';
+  } from '../../';
   import { MoreFilled, Close } from '@element-plus/icons-vue';
-  import { ElDivider, ElAvatar } from 'element-plus';
-  import Avatar from './Avatar.vue';
+  import { ElDivider } from 'element-plus';
   import ThemeSwitch from './ThemeSwitch.vue';
+  import { MaskTab } from '../types';
 
   export interface Props {
-    tabs: MenuDataItem[];
+    tabs: MaskTab[];
+    actions?: ActionBarItems;
+    theme?: boolean;
   }
 
   const props = withDefaults(defineProps<Props>(), { tabs: () => [] });
-  import { useInjectMask } from './hooks';
   const emit = defineEmits([
     'closeOtherTabs',
     'closeAllTabs',
     'closeTab',
-    'clickTab'
+    'clickTab',
+    'actionClick',
+    'actionCommand'
   ]);
-  const mask = useInjectMask();
-  const actions = computed(() => mask.props.actions as ActionBarItems);
 
   const tabs = computed(() => {
     const menus = props.tabs.map((n, i) => {
       return {
         divided: i === 0,
-        label: n.title,
+        label: n.menu.title,
         command: n
       };
     });
@@ -107,10 +108,10 @@
   };
 
   const onActionClick = (action: ActionProps) => {
-    mask.emit('actionClick', action);
+    emit('actionClick', action);
   };
 
   const onActionCommand = (action: ActionProps, item: ActionMenuItem) => {
-    mask.emit('actionCommand', action, item);
+    emit('actionCommand', action, item);
   };
 </script>

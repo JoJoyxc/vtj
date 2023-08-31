@@ -6,7 +6,8 @@ import {
   DefineComponent,
   isVNode,
   MaybeRef,
-  unref
+  unref,
+  markRaw
 } from 'vue';
 import { IconParam, XIcon, IconProps } from '../components';
 
@@ -36,6 +37,6 @@ export function useIconProps(
 export function useIcon(icon: MaybeRef<IconParam | undefined>) {
   const props = useIconProps(icon);
   return props.value
-    ? defineComponent({ render: () => h(XIcon, props.value) })
+    ? markRaw(defineComponent({ render: () => h(XIcon, props.value) }))
     : null;
 }

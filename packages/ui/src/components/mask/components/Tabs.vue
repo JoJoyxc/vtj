@@ -9,39 +9,41 @@
     direction="column">
     <ElTabs
       type="card"
-      :model-value="tabsValue"
+      :model-value="props.value"
       @tab-remove="onTabRemove"
       @tab-click="onTabClick">
-      <ElTabPane v-if="home" :name="home.id">
+      <ElTabPane v-if="props.home" :name="props.home.menu.id">
         <template #label>
           <div class="x-mask-tabs__trigger">
             <component
-              v-if="home.icon"
-              :is="(useIcon(home.icon) as any)"></component>
+              v-if="props.home.menu.icon"
+              :is="(useIcon(props.home.menu.icon) as any)"></component>
 
-            <span v-if="home.title">{{ home.title }}</span>
+            <span v-if="props.home.menu.title">{{
+              props.home.menu.title
+            }}</span>
           </div>
         </template>
       </ElTabPane>
       <ElTabPane
-        v-for="tab in props.items"
-        :key="`tab_${tab.id}`"
-        :name="tab.id"
+        v-for="tab in props.tabs"
+        :key="`tab_${tab.menu.id}`"
+        :name="tab.menu.id"
         lazy
         closable>
         <template #label>
           <ElPopover
-            :disabled="!isActive(tab)"
+            :disabled="!isActiveTab(tab)"
             placement="bottom"
             trigger="hover"
             width="200px">
             <template #reference>
               <div class="x-mask-tabs__trigger">
                 <component
-                  v-if="tab.icon"
-                  :is="(useIcon(tab.icon) as any)"></component>
+                  v-if="tab.menu.icon"
+                  :is="(useIcon(tab.menu.icon) as any)"></component>
 
-                <span v-if="tab.title">{{ tab.title }}</span>
+                <span v-if="tab.menu.title">{{ tab.menu.title }}</span>
               </div>
             </template>
             <XActionBar
@@ -56,30 +58,27 @@
   </XContainer>
 </template>
 <script lang="ts" setup>
-  import { computed } from 'vue';
   import { ElTabs, ElTabPane, ElPopover, TabsPaneContext } from 'element-plus';
-  import { XContainer, XActionBar, ActionBarItems, MenuDataItem } from '../';
+  import { XContainer, XActionBar, ActionBarItems } from '../../';
   import { CopyDocument, Star, Refresh } from '@element-plus/icons-vue';
-  import { useIcon } from '../../hooks';
-  import { useInjectState } from './hooks';
+  import { useIcon } from '../../../hooks';
+  import { MaskTab } from '../types';
 
   export interface Props {
-    tabs: MenuDataItem[];
-    items: MenuDataItem[];
+    tabs: MaskTab[];
+    home: MaskTab;
+    isActiveTab: (tab: MaskTab) => boolean;
+    value?: string | number;
   }
 
-  const props = withDefaults(defineProps<Props>(), {
-    tabs: () => [],
-    items: () => []
-  });
+  const props = defineProps<Props>();
 
   const emit = defineEmits<{
-    click: [tab: MenuDataItem];
-    remove: [tab: MenuDataItem];
+    click: [tab: MaskTab];
+    remove: [tab: MaskTab];
     home: [];
   }>();
 
-  const state = useInjectState();
   const actions: ActionBarItems = [
     {
       icon: Refresh,
@@ -100,26 +99,20 @@
     }
   ];
 
-  const tabsValue = computed(() => state.activeMenu.value?.id);
-  const home = computed(() => state.home.value);
-
-  const isActive = (menu: MenuDataItem) => {
-    return menu.id === state.activeMenu.value?.id;
-  };
-
   const onTabClick = (pane: TabsPaneContext) => {
-    if (pane.paneName === state.home.value?.id) {
+    const name = pane.paneName;
+    if (name === props.home.menu.id) {
       emit('home');
       return;
     }
-    const tab = props.tabs.find((n) => n.id === pane.paneName);
+    const tab = props.tabs.find((n) => n.menu.id === name);
     if (tab) {
       emit('click', tab);
     }
   };
 
   const onTabRemove = (name: string | number) => {
-    const tab = props.tabs.find((n) => n.id === name);
+    const tab = props.tabs.find((n) => n.menu.id === name);
     if (tab) {
       emit('remove', tab);
     }

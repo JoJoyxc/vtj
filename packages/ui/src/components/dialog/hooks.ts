@@ -1,7 +1,7 @@
 import { reactive, watch, MaybeRef, computed } from 'vue';
 import { useElementSize, Position } from '@vueuse/core';
 import { DialogProps, DialogState, DialogMode, DialogEmits } from './types';
-import { ShortEmits } from '../';
+import { Emits } from '../';
 import { DraggableOptions, ResizableOptions } from '../../directives';
 import { parseSize } from '../../utils';
 import { isObject } from '@vtj/utils';
@@ -90,7 +90,7 @@ export function useStyle(props: DialogProps, state: DialogState) {
 export function useMethods(
   props: DialogProps,
   state: DialogState,
-  emit: ShortEmits<DialogEmits>
+  emit: Emits<DialogEmits>
 ) {
   const changeMode = (mode: DialogMode) => {
     state.mode = mode;
@@ -132,7 +132,7 @@ export function useMethods(
 export function useDraggableOptions(
   props: DialogProps,
   state: DialogState,
-  emit: ShortEmits<DialogEmits>,
+  emit: Emits<DialogEmits>,
   target: MaybeRef<HTMLElement>
 ) {
   return computed<DraggableOptions>(() => {
@@ -168,7 +168,7 @@ export function useDraggableOptions(
 export function useResizableOptions(
   props: DialogProps,
   state: DialogState,
-  emit: ShortEmits<DialogEmits>
+  emit: Emits<DialogEmits>
 ) {
   return computed<ResizableOptions>(() => {
     const disabled =
