@@ -181,12 +181,11 @@ export class Provider {
     const { router, components = {}, raw = true, startup } = options;
 
     const { Mask, Startup } = components;
-
-    if (startup && pages.length === 0) {
+    const homepage = this.getHomepage();
+    if (startup && !homepage) {
       router.addRoute({
         path: project.home,
         name: 'Startup',
-        props: (route: any) => route.query,
         component: Startup
       });
     }

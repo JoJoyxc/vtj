@@ -1,4 +1,4 @@
-import { defineComponent, h } from 'vue';
+import { defineComponent, h, computed } from 'vue';
 import { useProvider, useBlock } from '../hooks';
 import { useTitle } from '@vueuse/core';
 
@@ -16,9 +16,8 @@ export const HomeContainer = defineComponent({
     } else {
       const { renderer, file } = await useBlock(provider, homepage);
 
-      if (file) {
-        useTitle(file.title);
-      }
+      const title = computed(() => file.value?.title);
+      useTitle(title);
 
       return {
         provider,

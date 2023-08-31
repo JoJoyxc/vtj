@@ -1,4 +1,4 @@
-import { defineComponent, h, computed, Suspense, watchEffect, ref } from 'vue';
+import { defineComponent, h, computed, watchEffect, ref } from 'vue';
 import { RouterView, useRoute } from 'vue-router';
 import { useProvider } from '../hooks';
 import { isMask } from '../shared';
@@ -31,12 +31,12 @@ export const MaskContainer = defineComponent({
     const { provider, file } = this;
     const { Mask, Empty } = provider.options.components || {};
     if (!file) {
-      return h(Suspense, [h(Empty)]);
+      return h(Empty);
     }
 
     if (isMask(file) && Mask) {
-      return h(Suspense, [h(Mask)]);
+      return h(Mask);
     }
-    return h(Suspense, [h(RouterView)]);
+    return h(RouterView);
   }
 });

@@ -10,7 +10,7 @@ export async function useBlock(provider: Provider, homepage?: PageSchema) {
   const fileId = computed(
     () => (homepage ? homepage.id : route.params.id) as string
   );
-  const file = provider.getFile(fileId.value);
+  const file = computed(() => provider.getFile(fileId.value));
   const isRaw = options.raw && route.path.startsWith(page);
   const { libs, apis, components } = provider;
   const Vue = window.Vue;
