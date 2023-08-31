@@ -7,5 +7,5 @@
 </template>
 
 <script lang="ts" setup>
-import { ElConfigProvider } from 'element-plus';
+  import { ElConfigProvider } from 'element-plus';
 </script>

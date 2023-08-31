@@ -7,6 +7,7 @@ export const PageContainer = defineComponent({
   async setup() {
     const provider = useProvider();
     const { renderer, file } = await useBlock(provider);
+
     if (file) {
       useTitle(file.title);
     }

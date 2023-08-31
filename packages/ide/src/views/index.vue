@@ -95,6 +95,11 @@
     home = '/'
   } = project || {};
 
+  const getPorjectHomePath = () => {
+    const split = mode === 'hash' ? '#' : '';
+    return `${base}${split}${home}`;
+  };
+
   const engine = new Engine(container, {
     service: service === 'file' ? new FileService() : new StorageService(),
     config: {
@@ -102,7 +107,7 @@
         {
           name: 'switcher',
           props: {
-            link: `${pathname}#${home}`
+            link: getPorjectHomePath()
           }
         },
         {

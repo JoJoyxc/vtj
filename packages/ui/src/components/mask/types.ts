@@ -110,6 +110,9 @@ export const maskProps = {
    */
   theme: {
     type: Boolean
+  },
+  disabled: {
+    type: Boolean
   }
 };
 

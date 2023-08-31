@@ -1,77 +1,82 @@
 <template>
   <XContainer class="x-mask">
-    <Sidebar :collapsed="collapsed">
-      <template #brand>
-        <Brand
-          :logo="props.logo"
-          :title="props.title"
-          :url="props.homepage"
-          :collapsed="collapsed"></Brand>
+    <template v-if="!props.disabled">
+      <Sidebar :collapsed="collapsed">
+        <template #brand>
+          <Brand
+            :logo="props.logo"
+            :title="props.title"
+            :url="props.homepage"
+            :collapsed="collapsed"></Brand>
+        </template>
+        <SwitchBar
+          v-model:collasped="collapsed"
+          v-model:favorite="favorite"
+          @search="search"></SwitchBar>
+        <Menu
+          :collapse="collapsed"
+          :keyword="keyword"
+          :favorite="favorite"
+          :favorites="favorites"
+          :flatMenus="flatMenus"
+          :menus="menus"
+          :active="active"
+          @select="selectMenu"></Menu>
+      </Sidebar>
+      <XContainer class="x-mask__main" grow flex direction="column">
+        <XContainer
+          class="x-mask-topbar"
+          justify="space-between"
+          align="center">
+          <Tabs
+            ref="tabRef"
+            :tabs="showTabs"
+            :isActiveTab="isActiveTab"
+            :home="homeTab"
+            :value="active?.id"
+            @click="activeTab"
+            @home="activeHome"
+            @remove="removeTab"></Tabs>
+          <Toolbar
+            :tabs="dropdownTabs"
+            :actions="props.actions"
+            :theme="props.theme"
+            @closeOtherTabs="removeOtherTabs"
+            @closeAllTabs="removeAllTabs"
+            @closeTab="removeTab"
+            @clickTab="moveToShow"
+            @action-click="onActionClick"
+            @action-command="onActionCommand">
+            <Avatar :avatar="props.avatar">
+              <template v-if="$slots.user" #default>
+                <slot name="user"> </slot>
+              </template>
+            </Avatar>
+          </Toolbar>
+        </XContainer>
+        <Content>
+          <template v-if="$slots.default">
+            <slot></slot>
+          </template>
+        </Content>
+      </XContainer>
+    </template>
+    <Content v-else>
+      <template v-if="$slots.default">
+        <slot></slot>
       </template>
-      <SwitchBar
-        v-model:collasped="collapsed"
-        v-model:favorite="favorite"
-        @search="search"></SwitchBar>
-      <Menu
-        :collapse="collapsed"
-        :keyword="keyword"
-        :favorite="favorite"
-        :favorites="favorites"
-        :flatMenus="flatMenus"
-        :menus="menus"
-        :active="active"
-        @select="selectMenu"></Menu>
-    </Sidebar>
-    <XContainer class="x-mask__main" grow flex direction="column">
-      <XContainer class="x-mask-topbar" justify="space-between" align="center">
-        <Tabs
-          ref="tabRef"
-          :tabs="showTabs"
-          :isActiveTab="isActiveTab"
-          :home="homeTab"
-          :value="active?.id"
-          @click="activeTab"
-          @home="activeHome"
-          @remove="removeTab"></Tabs>
-        <Toolbar
-          :tabs="dropdownTabs"
-          :actions="props.actions"
-          :theme="props.theme"
-          @closeOtherTabs="removeOtherTabs"
-          @closeAllTabs="removeAllTabs"
-          @closeTab="removeTab"
-          @clickTab="moveToShow"
-          @action-click="onActionClick"
-          @action-command="onActionCommand">
-          <Avatar :avatar="props.avatar">
-            <template v-if="$slots.user" #default>
-              <slot name="user"> </slot>
-            </template>
-          </Avatar>
-        </Toolbar>
-      </XContainer>
-      <XContainer class="x-mask__content" :flex="false" grow padding>
-        <slot v-if="$slots.default"></slot>
-        <KeepAlive>
-          <Suspense>
-            <RouterView></RouterView>
-          </Suspense>
-        </KeepAlive>
-      </XContainer>
-    </XContainer>
+    </Content>
   </XContainer>
 </template>
 <script lang="ts" setup>
   import {
     provide,
-    KeepAlive,
-    Suspense,
     getCurrentInstance,
     ComponentInternalInstance,
-    watch
+    watch,
+    nextTick
   } from 'vue';
   import {
-    RouterView,
     useRoute,
     useRouter,
     RouteLocationNormalizedLoaded
@@ -84,9 +89,10 @@
   import Tabs from './components/Tabs.vue';
   import Toolbar from './components/Toolbar.vue';
   import Avatar from './components/Avatar.vue';
+  import Content from './components/Content.vue';
   import { maskProps, MASK_INSTANCE_KEY, MaskEmits } from './types';
-
   import { useMenus, useTabs } from './use';
+
   const props = defineProps(maskProps);
   const emit = defineEmits<MaskEmits>();
   const instance = getCurrentInstance();
@@ -101,7 +107,8 @@
     keyword,
     search,
     select,
-    active
+    active,
+    homeMenu
   } = useMenus(props, emit, router);
 
   const {
@@ -117,10 +124,11 @@
     removeAllTabs,
     removeOtherTabs,
     moveToShow
-  } = useTabs(props, emit, router, active, select);
+  } = useTabs(props, emit, router, active, select, homeMenu);
 
-  const selectMenu = (menu: MenuDataItem) => {
+  const selectMenu = async (menu: MenuDataItem) => {
     select(menu);
+    await nextTick();
     addTab({
       menu,
       closable: false
@@ -133,14 +141,18 @@
       return flatMenus.value.find((n) => n.url === to.fullPath);
     });
 
-  watch(flatMenus, () => {
-    const current = defaultActiveMenu(route, flatMenus.value);
-    if (current) {
-      selectMenu(current);
-    } else {
-      activeHome();
-    }
-  });
+  watch(
+    flatMenus,
+    () => {
+      const current = defaultActiveMenu(route, flatMenus.value);
+      if (current) {
+        selectMenu(current);
+      } else {
+        activeHome();
+      }
+    },
+    { immediate: true }
+  );
 
   const onActionClick = (action: ActionProps) => {
     emit('actionClick', action);

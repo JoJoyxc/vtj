@@ -310,6 +310,9 @@
     .el-tabs__item.is-active {
       background-color: getCssVar('bg-color');
     }
+    .x-icon {
+      pointer-events: none;
+    }
   }
   .el-tabs__content {
     display: none;

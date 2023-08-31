@@ -2,17 +2,27 @@ import { shallowRef, computed, ref } from 'vue';
 import { Router } from 'vue-router';
 import { MaskProps, MaskEmits } from '../types';
 import { MenuDataItem, Emits, createDialog } from '../../';
+import { HomeFilled } from '@element-plus/icons-vue';
+
+const HOME_ID = '__vtj__home__';
+
 export function useMenus(
   props: MaskProps,
   emit: Emits<MaskEmits>,
   router: Router
 ) {
+  const homeMenu: MenuDataItem = {
+    id: HOME_ID,
+    icon: HomeFilled,
+    url: props.homepage
+  };
+
   const collapsed = ref(false);
   const favorite = ref(false);
   const keyword = ref('');
   const menus = shallowRef<MenuDataItem[]>([]);
   const favorites = shallowRef<MenuDataItem[]>([]);
-  const active = ref<MenuDataItem | null>(null);
+  const active = ref<MenuDataItem | null>(homeMenu);
   const toFlat = (array: MenuDataItem[]) => {
     let result: MenuDataItem[] = [];
     array.forEach((n) => {
@@ -89,6 +99,7 @@ export function useMenus(
     removeFavorite,
     search,
     select,
-    active
+    active,
+    homeMenu
   };
 }

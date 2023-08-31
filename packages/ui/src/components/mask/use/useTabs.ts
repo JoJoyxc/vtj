@@ -2,7 +2,6 @@ import { shallowRef, watch, computed, ref, Ref } from 'vue';
 import { MaskProps, MaskEmits, TAB_ITEM_WIDTH, MaskTab } from '../types';
 import { MenuDataItem, Emits } from '../../';
 
-import { HomeFilled } from '@element-plus/icons-vue';
 import { useElementSize } from '@vueuse/core';
 import type { Router } from 'vue-router';
 
@@ -11,15 +10,12 @@ export function useTabs(
   emit: Emits<MaskEmits>,
   router: Router,
   active: Ref<MenuDataItem | null | undefined>,
-  select: (menu: MenuDataItem) => void
+  select: (menu: MenuDataItem) => void,
+  homeMenu: MenuDataItem
 ) {
   const homeTab = computed<MaskTab>(() => {
     return {
-      menu: {
-        id: '__vtj__home__',
-        icon: HomeFilled,
-        url: props.homepage
-      },
+      menu: homeMenu,
       closable: false
     };
   });
@@ -29,7 +25,7 @@ export function useTabs(
   // tabs数据项
   const tabs = shallowRef<MaskTab[]>([]);
   // 当前激活得Tab菜单id
-  const tabsValue = computed(() => active.value?.id);
+  const tabsValue = computed(() => active.value?.id || homeMenu.id);
   // baner上可以展示的tab数量
   const showCount = computed(() => Math.floor(width.value / TAB_ITEM_WIDTH));
   // banner 上的tabs项
@@ -49,13 +45,14 @@ export function useTabs(
 
   // 切换tab
   const activeTab = (tab: MaskTab) => {
-    // active.value = tab.menu;
-    select(tab.menu);
+    if (!isActiveTab(tab)) {
+      select(tab.menu);
+    }
   };
 
   // 切换到首页
   const activeHome = () => {
-    activeTab(homeTab.value);
+    active.value = homeTab.value.menu;
     const url = homeTab.value.menu.url;
     if (url) {
       router.push(url).catch((e) => e);

@@ -11,14 +11,7 @@ import { XStartup } from '@vtj/ui';
 import { ServiceType, Service } from './Service';
 import __VTJ_PROVIDER_OPTIONS__ from '.vtj';
 
-import {
-  Empty,
-  IDELink,
-  MaskContainer,
-  PageContainer,
-  PreviewContainer,
-  Homepage
-} from './components';
+import { Empty, IDELink, PageContainer, PreviewContainer } from './components';
 import {
   createIdeLink,
   VUE,
@@ -170,6 +163,7 @@ export class Provider {
     const { raw, isProd } = options;
     // 源码模式在生产环境不需要加依赖
     if (raw && isProd) return;
+
     const { dependencies = [], __VTJ_DATE__ } = dsl || {};
     const deps = dependencies.filter((n) => !!n.enabled && n.library !== VUE);
     const { scripts, css, assets, libraries } = parseDependencies(deps);
@@ -183,19 +177,20 @@ export class Provider {
   }
 
   private createRoutes() {
-    const { options, project } = this;
+    const { options, project, pages } = this;
     const { router, components = {}, raw = true, startup } = options;
 
-    const Mask = components.Mask;
+    const { Mask, Startup } = components;
 
-    if (startup) {
+    if (startup && pages.length === 0) {
       router.addRoute({
         path: project.home,
-        name: 'Home',
+        name: 'Startup',
         props: (route: any) => route.query,
-        component: Homepage
+        component: Startup
       });
     }
+
     if (!Mask) {
       addRoute(router, 'VtjPage', project.page, PageContainer);
       addRoute(router, 'VtjPpreview', project.preview, PreviewContainer);
@@ -205,7 +200,7 @@ export class Provider {
       router,
       'VtjPage',
       project.page,
-      MaskContainer,
+      project.home,
       PageContainer
     );
 
@@ -214,7 +209,7 @@ export class Provider {
         router,
         'VtjPreview',
         project.preview,
-        MaskContainer,
+        project.home,
         PreviewContainer
       );
     }

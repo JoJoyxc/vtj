@@ -1,20 +1,15 @@
-import {
-  ComputedRef,
-  ref,
-  getCurrentInstance,
-  markRaw,
-  computed,
-  watchEffect
-} from 'vue';
+import { ref, markRaw, computed, watchEffect } from 'vue';
 import { Provider } from '../Provider';
-import { createBlockRenderer, createLoader } from '../shared';
+import { createBlockRenderer, createLoader, PageSchema } from '../shared';
 import { useRoute } from 'vue-router';
 
-export async function useBlock(provider: Provider) {
+export async function useBlock(provider: Provider, homepage?: PageSchema) {
   const { options, project, service } = provider;
   const { page } = project;
   const route = useRoute();
-  const fileId = computed(() => route.params.id as string);
+  const fileId = computed(
+    () => (homepage ? homepage.id : route.params.id) as string
+  );
   const file = provider.getFile(fileId.value);
   const isRaw = options.raw && route.path.startsWith(page);
   const { libs, apis, components } = provider;
