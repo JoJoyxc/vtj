@@ -30,13 +30,16 @@
           align="center">
           <Tabs
             ref="tabRef"
+            :favorites="favorites"
             :tabs="showTabs"
             :isActiveTab="isActiveTab"
             :home="homeTab"
             :value="active?.id"
             @click="activeTab"
             @home="activeHome"
-            @remove="removeTab"></Tabs>
+            @remove="removeTab"
+            @refresh="onRefresh"
+            @toggleFavorite="toggleFavorite"></Tabs>
           <Toolbar
             :tabs="dropdownTabs"
             :actions="props.actions"
@@ -54,14 +57,14 @@
             </Avatar>
           </Toolbar>
         </XContainer>
-        <Content>
+        <Content ref="contentRef">
           <template v-if="$slots.default">
             <slot></slot>
           </template>
         </Content>
       </XContainer>
     </template>
-    <Content v-else>
+    <Content ref="contentRef" v-else>
       <template v-if="$slots.default">
         <slot></slot>
       </template>
@@ -74,7 +77,8 @@
     getCurrentInstance,
     ComponentInternalInstance,
     watch,
-    nextTick
+    nextTick,
+    ref
   } from 'vue';
   import {
     useRoute,
@@ -91,17 +95,21 @@
   import Avatar from './components/Avatar.vue';
   import Content from './components/Content.vue';
   import { maskProps, MASK_INSTANCE_KEY, MaskEmits } from './types';
-  import { useMenus, useTabs } from './use';
+  import { useMenus, useTabs, useFavorites } from './use';
+
+  defineOptions({
+    name: 'XMask'
+  });
 
   const props = defineProps(maskProps);
   const emit = defineEmits<MaskEmits>();
   const instance = getCurrentInstance();
   const router = useRouter();
   const route = useRoute();
+  const contentRef = ref();
   const {
     menus,
     flatMenus,
-    favorites,
     collapsed,
     favorite,
     keyword,
@@ -110,6 +118,8 @@
     active,
     homeMenu
   } = useMenus(props, emit, router);
+
+  const { favorites, toggleFavorite } = useFavorites(props);
 
   const {
     tabRef,
@@ -128,11 +138,14 @@
 
   const selectMenu = async (menu: MenuDataItem) => {
     select(menu);
-    await nextTick();
-    addTab({
-      menu,
-      closable: false
-    });
+    const { type = 'route' } = menu;
+    if (type === 'route') {
+      await nextTick();
+      addTab({
+        menu,
+        closable: false
+      });
+    }
   };
 
   const defaultActiveMenu =
@@ -144,11 +157,12 @@
   watch(
     flatMenus,
     () => {
+      if (!flatMenus.value.length) return;
       const current = defaultActiveMenu(route, flatMenus.value);
       if (current) {
         selectMenu(current);
       } else {
-        activeHome();
+        active.value = null;
       }
     },
     { immediate: true }
@@ -162,11 +176,11 @@
     emit('actionCommand', action, item);
   };
 
-  provide(MASK_INSTANCE_KEY, instance as ComponentInternalInstance);
+  const onRefresh = () => {
+    contentRef.value.refresh();
+  };
 
-  defineOptions({
-    name: 'XMask'
-  });
+  provide(MASK_INSTANCE_KEY, instance as ComponentInternalInstance);
 
   defineExpose({
     collapsed,

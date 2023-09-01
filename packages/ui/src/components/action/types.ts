@@ -34,7 +34,7 @@ export const actionProps = {
     type: String
   },
   /**
-   * 动作值，预留备用
+   * 动作值，用来传输数据
    */
   value: {
     type: [String, Number, Object, Array, Boolean] as PropType<unknown>

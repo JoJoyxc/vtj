@@ -47,10 +47,11 @@
               </div>
             </template>
             <XActionBar
-              :items="actions"
+              :items="getActions(tab)"
               mode="text"
               size="small"
-              type="info"></XActionBar>
+              type="info"
+              @click="onActionClick"></XActionBar>
           </ElPopover>
         </template>
       </ElTabPane>
@@ -59,8 +60,19 @@
 </template>
 <script lang="ts" setup>
   import { ElTabs, ElTabPane, ElPopover, TabsPaneContext } from 'element-plus';
-  import { XContainer, XActionBar, ActionBarItems } from '../../';
-  import { CopyDocument, Star, Refresh } from '@element-plus/icons-vue';
+  import {
+    XContainer,
+    XActionBar,
+    ActionBarItems,
+    ActionProps,
+    MenuDataItem
+  } from '../../';
+  import {
+    CopyDocument,
+    Star,
+    Refresh,
+    StarFilled
+  } from '@element-plus/icons-vue';
   import { useIcon } from '../../../hooks';
   import { MaskTab } from '../types';
 
@@ -69,6 +81,7 @@
     home: MaskTab;
     isActiveTab: (tab: MaskTab) => boolean;
     value?: string | number;
+    favorites: MenuDataItem[];
   }
 
   const props = defineProps<Props>();
@@ -77,27 +90,35 @@
     click: [tab: MaskTab];
     remove: [tab: MaskTab];
     home: [];
+    refresh: [];
+    toggleFavorite: [item: MenuDataItem];
   }>();
 
-  const actions: ActionBarItems = [
-    {
-      icon: Refresh,
-      label: '刷新',
-      command: 'refresh'
-    },
-    '|',
-    {
-      icon: Star,
-      label: '收藏',
-      command: 'fav'
-    },
-    '|',
-    {
-      icon: CopyDocument,
-      label: '弹窗',
-      command: 'dialog'
-    }
-  ];
+  const getActions = (tab: MaskTab) => {
+    const isFav = !!props.favorites.find(
+      (n) => n === tab.menu || n.id === tab.menu.id
+    );
+    return [
+      {
+        icon: Refresh,
+        label: '刷新',
+        name: 'refresh'
+      },
+      '|',
+      {
+        icon: isFav ? StarFilled : Star,
+        label: '收藏',
+        name: 'favorite',
+        value: tab.menu
+      },
+      '|',
+      {
+        icon: CopyDocument,
+        label: '弹窗',
+        name: 'dialog'
+      }
+    ] as ActionBarItems;
+  };
 
   const onTabClick = (pane: TabsPaneContext) => {
     const name = pane.paneName;
@@ -116,5 +137,20 @@
     if (tab) {
       emit('remove', tab);
     }
+  };
+
+  const onActionClick = (item: ActionProps) => {
+    switch (item.name) {
+      case 'refresh':
+        emit('refresh');
+        break;
+      case 'favorite':
+        emit('toggleFavorite', item.value as MenuDataItem);
+        break;
+      case 'dialog':
+        break;
+    }
+
+    // console.log(item);
   };
 </script>

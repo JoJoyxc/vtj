@@ -21,7 +21,6 @@ export function useMenus(
   const favorite = ref(false);
   const keyword = ref('');
   const menus = shallowRef<MenuDataItem[]>([]);
-  const favorites = shallowRef<MenuDataItem[]>([]);
   const active = ref<MenuDataItem | null>(homeMenu);
   const toFlat = (array: MenuDataItem[]) => {
     let result: MenuDataItem[] = [];
@@ -42,22 +41,7 @@ export function useMenus(
       typeof props.menus === 'function'
         ? (await props.menus()) || []
         : props.menus ?? [];
-
-    favorites.value =
-      typeof props.favorites === 'function'
-        ? (await props.favorites()) || []
-        : props.favorites ?? [];
   })();
-
-  const addFavorite = (item: MenuDataItem) => {
-    favorites.value = [...favorites.value, item];
-  };
-
-  const removeFavorite = (item: MenuDataItem) => {
-    favorites.value = favorites.value.filter(
-      (n) => n !== item || n.id !== item.id
-    );
-  };
 
   const search = (val: string) => {
     keyword.value = val;
@@ -71,6 +55,13 @@ export function useMenus(
     }
     if (props.manual || !url) return;
     if (type === 'route' && router) {
+      if (
+        url.startsWith('https:') ||
+        url.startsWith('http:') ||
+        url.startsWith('//')
+      ) {
+        return window.open(url);
+      }
       return router.push(url).catch((e) => e);
     }
     if (type === 'window') {
@@ -93,10 +84,7 @@ export function useMenus(
     favorite,
     keyword,
     menus,
-    favorites,
     flatMenus,
-    addFavorite,
-    removeFavorite,
     search,
     select,
     active,

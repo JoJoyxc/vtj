@@ -60,7 +60,7 @@
                 "id": "test_1",
                 "title": "测试无图标",
                 "disabled": false,
-                "type": "dialog",
+                "type": "route",
                 "url": "/ui/mask/page?id=test_1"
             }
         ]

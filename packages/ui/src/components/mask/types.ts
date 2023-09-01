@@ -111,8 +111,17 @@ export const maskProps = {
   theme: {
     type: Boolean
   },
+  /**
+   * 禁用框架容器
+   */
   disabled: {
     type: Boolean
+  },
+  addFavorite: {
+    type: Function as PropType<(menu: MenuDataItem) => void>
+  },
+  removeFavorite: {
+    type: Function as PropType<(menu: MenuDataItem) => void>
   }
 };
 
