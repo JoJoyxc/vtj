@@ -10,6 +10,12 @@
         <span v-if="props.item.title" class="x-menu__title">
           {{ props.item.title }}
         </span>
+        <ElBadge
+          class="x-menu__badge"
+          v-if="props.item.badge"
+          v-bind="getBadge(props.item.badge)">
+          <i></i>
+        </ElBadge>
       </div>
     </template>
     <ChildMenuItem
@@ -28,13 +34,19 @@
       <span v-if="props.item.title" class="x-menu__title">
         {{ props.item.title }}
       </span>
+      <ElBadge
+        class="x-menu__badge"
+        v-if="props.item.badge"
+        v-bind="getBadge(props.item.badge)">
+        <i></i>
+      </ElBadge>
     </template>
   </ElMenuItem>
 </template>
 <script lang="ts" setup>
-  import { ElSubMenu, ElMenuItem } from 'element-plus';
+  import { ElSubMenu, ElMenuItem, ElBadge } from 'element-plus';
   import { XIcon } from '../';
-  import { MenuDataItem, SubMenuProps } from './types';
+  import { MenuDataItem, SubMenuProps, MenuBadge } from './types';
   import { XMenuItem as ChildMenuItem } from './components';
   import { getCurrentInstance, DefineComponent } from 'vue';
 
@@ -59,6 +71,10 @@
       return app?.component(name) || props.defaultIcon || name;
     }
     return name;
+  };
+
+  const getBadge = (badge: MenuBadge) => {
+    return typeof badge === 'object' ? badge : { value: badge };
   };
 
   const getShowItems = (items: MenuDataItem[] = []) => {

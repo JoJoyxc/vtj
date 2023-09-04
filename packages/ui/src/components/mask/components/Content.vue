@@ -3,7 +3,7 @@
     <slot></slot>
     <KeepAlive :key="aliveKey">
       <Suspense>
-        <RouterView :key="viewKey"></RouterView>
+        <RouterView ref="viewRef" :key="viewKey"></RouterView>
       </Suspense>
     </KeepAlive>
   </XContainer>
@@ -16,12 +16,13 @@
   const viewKey = computed(() => route.fullPath);
 
   const aliveKey = ref(Symbol());
-
+  const viewRef = ref();
   const refresh = () => {
     aliveKey.value = Symbol();
   };
 
   defineExpose({
+    viewRef,
     refresh
   });
 </script>

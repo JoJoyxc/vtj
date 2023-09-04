@@ -2,6 +2,7 @@
     {
         "id": 3203362,
         "title": "物料需求计算",
+        "badge": 1,
         "hide": false,
         "need": false,
         "letter": "matDemandCalculation",

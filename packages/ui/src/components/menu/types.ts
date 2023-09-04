@@ -1,4 +1,4 @@
-import { SubMenuProps as ElSubMenuProps } from 'element-plus';
+import { SubMenuProps as ElSubMenuProps, BadgeProps } from 'element-plus';
 import { DefineComponent } from 'vue';
 export interface MenuDataItem {
   id: string | number;
@@ -11,9 +11,12 @@ export interface MenuDataItem {
   type?: 'route' | 'dialog' | 'window';
   // 菜单路径地址
   url?: string;
+  badge?: MenuBadge;
 }
 
 export type SubMenuProps = Partial<ElSubMenuProps>;
+
+export type MenuBadge = number | string | Partial<BadgeProps>;
 
 export interface MenuProps {
   data?: MenuDataItem[];

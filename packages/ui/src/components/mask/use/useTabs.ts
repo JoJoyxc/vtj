@@ -1,9 +1,9 @@
 import { shallowRef, watch, computed, ref, Ref } from 'vue';
 import { MaskProps, MaskEmits, TAB_ITEM_WIDTH, MaskTab } from '../types';
 import { MenuDataItem, Emits } from '../../';
-
 import { useElementSize } from '@vueuse/core';
-import type { Router } from 'vue-router';
+import { ElMessageBox } from 'element-plus';
+import type { Router, RouteLocationRaw } from 'vue-router';
 
 export function useTabs(
   props: MaskProps,
@@ -78,7 +78,11 @@ export function useTabs(
   };
 
   // 删除tab
-  const removeTab = (tab: MaskTab) => {
+  const removeTab = async (tab: MaskTab) => {
+    const ret = await ElMessageBox.confirm('是否关闭页签', '提示', {
+      type: 'warning'
+    }).catch((e) => false);
+    if (!ret) return;
     tabs.value = tabs.value.filter((n) => !isEqual(n, tab));
     // 删除的是激活tab
     if (active.value?.id === tab.menu.id) {
@@ -88,15 +92,32 @@ export function useTabs(
   };
 
   // 删除全部tabs
-  const removeAllTabs = () => {
+  const removeAllTabs = async () => {
+    const ret = await ElMessageBox.confirm('是否关闭全部页签', '提示', {
+      type: 'warning'
+    }).catch((e) => false);
+    if (!ret) return;
     tabs.value = [];
     activeHome();
   };
 
   // 删除其他tabs
-  const removeOtherTabs = () => {
+  const removeOtherTabs = async () => {
+    const ret = await ElMessageBox.confirm('是否关闭其他页签', '提示', {
+      type: 'warning'
+    }).catch((e) => false);
+    if (!ret) return;
     tabs.value = tabs.value.filter((n) => n.menu.id === active.value?.id);
   };
+
+  // const openTab = (to: RouteLocationRaw, menu: MenuDataItem) => {
+  //   const tab: MaskTab = {
+  //     menu: { ...menu, id: Date.now() },
+  //     closable: true
+  //   };
+  //   router.push(to);
+  //   // addTab(tab);
+  // };
 
   return {
     tabRef,
@@ -113,5 +134,6 @@ export function useTabs(
     activeTab,
     removeAllTabs,
     removeOtherTabs
+    // openTab
   };
 }

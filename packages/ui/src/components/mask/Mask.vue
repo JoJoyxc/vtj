@@ -168,6 +168,16 @@
     { immediate: true }
   );
 
+  watch(
+    () => route.fullPath,
+    () => {
+      console.log('route change', route.fullPath);
+    },
+    {
+      immediate: true
+    }
+  );
+
   const onActionClick = (action: ActionProps) => {
     emit('actionClick', action);
   };
@@ -188,6 +198,7 @@
     flatMenus,
     favorites,
     active,
-    selectMenu
+    selectMenu,
+    addTab
   });
 </script>

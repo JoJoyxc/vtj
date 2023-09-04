@@ -3,13 +3,33 @@
     <h3>ID: {{ route.query.id }}</h3>
     <div>
       <ElInput v-model="inputValue"></ElInput>
+      <ElButton @click="onClick">Button</ElButton>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { ElInput } from 'element-plus';
-  import { useRoute } from 'vue-router';
+  import { ElInput, ElButton } from 'element-plus';
+  import { useRoute, useRouter } from 'vue-router';
+  import { useMask } from '@vtj/ui';
   const route = useRoute();
+  const router = useRouter();
   const inputValue = ref('');
+  const mask = useMask();
+  const onClick = () => {
+    router.push('/ui/mask/subpage');
+    mask.exposed?.addTab({
+      menu: {
+        id: 'aaaaa',
+        title: '测试'
+      },
+      closable: true
+    });
+  };
+
+  defineOptions({
+    tabAdapter() {
+      console.log('component tabAdapter');
+    }
+  });
 </script>

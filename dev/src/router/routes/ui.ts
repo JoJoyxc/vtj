@@ -54,6 +54,10 @@ export const ui = [
       {
         path: 'page',
         component: () => import('@/views/ui/pages/index.vue')
+      },
+      {
+        path: 'subpage',
+        component: () => import('@/views/ui/pages/subpage.vue')
       }
     ]
   }
