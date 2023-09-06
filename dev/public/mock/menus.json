@@ -54,15 +54,28 @@
         ]
     },
     {
+        "id": "home",
+        "title": "首页工作台",
+        "type": "dialog",
+        "url": "/ui/mask"
+    },
+    {
         "id": "test",
-        "title": "测试无图标",
+        "title": "测试",
         "children": [
             {
                 "id": "test_1",
-                "title": "测试无图标",
+                "title": "测试弹窗打开",
                 "disabled": false,
-                "type": "route",
+                "type": "dialog",
                 "url": "/ui/mask/page?id=test_1"
+            },
+            {
+                "id": "test_2",
+                "title": "测试新开窗口",
+                "disabled": false,
+                "type": "window",
+                "url": "https://www.baidu.com/"
             }
         ]
     },

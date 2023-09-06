@@ -1,31 +1,35 @@
-import { shallowRef, watch, computed, ref, Ref } from 'vue';
+import { shallowRef, computed, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 import { MaskProps, MaskEmits, TAB_ITEM_WIDTH, MaskTab } from '../types';
-import { MenuDataItem, Emits } from '../../';
+import { Emits } from '../../';
 import { useElementSize } from '@vueuse/core';
 import { ElMessageBox } from 'element-plus';
-import type { Router, RouteLocationRaw } from 'vue-router';
+import { HomeFilled } from '@element-plus/icons-vue';
 
-export function useTabs(
-  props: MaskProps,
-  emit: Emits<MaskEmits>,
-  router: Router,
-  active: Ref<MenuDataItem | null | undefined>,
-  select: (menu: MenuDataItem) => void,
-  homeMenu: MenuDataItem
-) {
+export function useTabs(props: MaskProps, emit: Emits<MaskEmits>) {
+  const route = useRoute();
+  const router = useRouter();
   const homeTab = computed<MaskTab>(() => {
-    return {
-      menu: homeMenu,
-      closable: false
-    };
+    return typeof props.home === 'string'
+      ? {
+          url: props.home,
+          icon: HomeFilled,
+          closable: false
+        }
+      : ({
+          ...props.home,
+          closable: false
+        } as MaskTab);
   });
   // tabs 组件引用
   const tabRef = ref();
   const { width } = useElementSize(tabRef);
   // tabs数据项
   const tabs = shallowRef<MaskTab[]>([]);
-  // 当前激活得Tab菜单id
-  const tabsValue = computed(() => active.value?.id || homeMenu.id);
+
+  // 当前激活的Tab name
+  const currentTabValue = ref<string | undefined>();
+
   // baner上可以展示的tab数量
   const showCount = computed(() => Math.floor(width.value / TAB_ITEM_WIDTH));
   // banner 上的tabs项
@@ -35,28 +39,32 @@ export function useTabs(
 
   // 判断是否激活的tab
   const isActiveTab = (tab: MaskTab) => {
-    return tabsValue.value === tab.menu.id;
+    return route.fullPath === tab.url;
   };
 
   // 判断两个tab项是否相等
   const isEqual = (a: MaskTab, b: MaskTab) => {
-    return a === b || a.menu.id === b.menu.id;
+    return a === b || a.url === b.url;
+  };
+
+  const isExistTab = (url: string) => {
+    return !!tabs.value.find((n) => n.url === url);
+  };
+
+  const isHomeTab = (url: string) => {
+    return homeTab.value.url === url;
   };
 
   // 切换tab
   const activeTab = (tab: MaskTab) => {
-    if (!isActiveTab(tab)) {
-      select(tab.menu);
-    }
+    currentTabValue.value = tab.url;
+    router.push(currentTabValue.value).catch((e) => e);
   };
 
   // 切换到首页
   const activeHome = () => {
-    active.value = homeTab.value.menu;
-    const url = homeTab.value.menu.url;
-    if (url) {
-      router.push(url).catch((e) => e);
-    }
+    currentTabValue.value = homeTab.value.url;
+    router.push(currentTabValue.value).catch((e) => e);
   };
 
   // 新增tab
@@ -67,6 +75,19 @@ export function useTabs(
     } else {
       tabs.value = [tab, ...tabs.value].splice(0, props.tabs || 0);
       activeTab(tab);
+    }
+  };
+
+  const updateTab = (tab: MaskTab) => {
+    const index = tabs.value.findIndex((n) => isEqual(n, tab));
+
+    if (index >= 0) {
+      const match = tabs.value[index];
+      tabs.value = [...tabs.value].splice(
+        index,
+        1,
+        Object.assign(match, tab, { id: Symbol() })
+      );
     }
   };
 
@@ -85,7 +106,8 @@ export function useTabs(
     if (!ret) return;
     tabs.value = tabs.value.filter((n) => !isEqual(n, tab));
     // 删除的是激活tab
-    if (active.value?.id === tab.menu.id) {
+
+    if (currentTabValue.value === tab.url) {
       const first = tabs.value[0];
       first ? activeTab(first) : activeHome();
     }
@@ -107,17 +129,8 @@ export function useTabs(
       type: 'warning'
     }).catch((e) => false);
     if (!ret) return;
-    tabs.value = tabs.value.filter((n) => n.menu.id === active.value?.id);
+    tabs.value = tabs.value.filter((n) => n.url === currentTabValue.value);
   };
-
-  // const openTab = (to: RouteLocationRaw, menu: MenuDataItem) => {
-  //   const tab: MaskTab = {
-  //     menu: { ...menu, id: Date.now() },
-  //     closable: true
-  //   };
-  //   router.push(to);
-  //   // addTab(tab);
-  // };
 
   return {
     tabRef,
@@ -125,7 +138,7 @@ export function useTabs(
     tabs,
     showTabs,
     dropdownTabs,
-    tabsValue,
+    currentTabValue,
     isActiveTab,
     addTab,
     removeTab,
@@ -133,7 +146,10 @@ export function useTabs(
     activeHome,
     activeTab,
     removeAllTabs,
-    removeOtherTabs
+    removeOtherTabs,
+    updateTab,
+    isExistTab,
+    isHomeTab
     // openTab
   };
 }

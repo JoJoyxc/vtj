@@ -72,7 +72,7 @@
     const menus = props.tabs.map((n, i) => {
       return {
         divided: i === 0,
-        label: n.menu.title,
+        label: n.title,
         command: n
       };
     });

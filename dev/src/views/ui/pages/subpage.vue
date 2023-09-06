@@ -2,10 +2,16 @@
   <div>Subpage</div>
 </template>
 
-<script type="ts" setup>
-  import {useMask} from '@vtj/ui'
+<script lang="ts" setup>
+  import { useMask } from '@vtj/ui';
+  const defineTab = () => {
+    return {
+      title: '二级页面'
+    };
+  };
 
-    // const mask = useMask();
-    // mask.exposed.openTab('/ui/mask/subpage', {title:'测试跳转'});
-    // console.log('mask', mask)
+
+  defineExpose({
+    defineTab
+  });
 </script>

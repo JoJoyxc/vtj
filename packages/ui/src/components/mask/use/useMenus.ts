@@ -1,40 +1,38 @@
 import { shallowRef, computed, ref } from 'vue';
-import { Router } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { MaskProps, MaskEmits } from '../types';
 import { MenuDataItem, Emits, createDialog } from '../../';
-import { HomeFilled } from '@element-plus/icons-vue';
+import { arrayToMap } from '@vtj/utils';
 
-const HOME_ID = '__vtj__home__';
-
-export function useMenus(
-  props: MaskProps,
-  emit: Emits<MaskEmits>,
-  router: Router
+function toFlat(
+  array: MenuDataItem[],
+  menuAdapter?: (menu: MenuDataItem) => MenuDataItem
 ) {
-  const homeMenu: MenuDataItem = {
-    id: HOME_ID,
-    icon: HomeFilled,
-    url: props.homepage
-  };
+  let result: MenuDataItem[] = [];
+  array.forEach((n) => {
+    n = menuAdapter ? menuAdapter(n) : n;
+    if (!n.children) {
+      result.push(n);
+    } else {
+      result = result.concat(toFlat(n.children, menuAdapter));
+    }
+  });
+  return result;
+}
 
+export function useMenus(props: MaskProps, emit: Emits<MaskEmits>) {
+  const router = useRouter();
   const collapsed = ref(false);
   const favorite = ref(false);
   const keyword = ref('');
   const menus = shallowRef<MenuDataItem[]>([]);
-  const active = ref<MenuDataItem | null>(homeMenu);
-  const toFlat = (array: MenuDataItem[]) => {
-    let result: MenuDataItem[] = [];
-    array.forEach((n) => {
-      if (!n.children) {
-        result.push(n);
-      } else {
-        result = result.concat(toFlat(n.children));
-      }
-    });
-    return result;
-  };
+  const active = ref<MenuDataItem | null>(null);
+  const flatMenus = computed(() => toFlat(menus.value, props.menuAdapter));
+  const menusMap = computed(() => arrayToMap(flatMenus.value, 'id'));
 
-  const flatMenus = computed(() => toFlat(menus.value));
+  const getMenuByUrl = (url: string) => {
+    return flatMenus.value.find((n) => n.url === url);
+  };
 
   (async () => {
     menus.value =
@@ -48,12 +46,14 @@ export function useMenus(
   };
 
   const select = (menu: MenuDataItem) => {
-    const { type = 'route', url, title, icon } = menu;
+    const activeMenu = menusMap.value.get(menu.id);
+    if (!activeMenu) return;
+    const { type = 'route', url, title, icon } = activeMenu;
     emit('select', menu);
     if (type === 'route') {
-      active.value = menu;
+      active.value = activeMenu;
     }
-    if (props.manual || !url) return;
+    if (!url) return;
     if (type === 'route' && router) {
       if (
         url.startsWith('https:') ||
@@ -85,9 +85,10 @@ export function useMenus(
     keyword,
     menus,
     flatMenus,
+    menusMap,
     search,
     select,
     active,
-    homeMenu
+    getMenuByUrl
   };
 }

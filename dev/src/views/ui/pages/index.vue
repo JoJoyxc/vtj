@@ -11,25 +11,26 @@
   import { ref } from 'vue';
   import { ElInput, ElButton } from 'element-plus';
   import { useRoute, useRouter } from 'vue-router';
-  import { useMask } from '@vtj/ui';
+  import { useMask, MaskTab } from '@vtj/ui';
   const route = useRoute();
   const router = useRouter();
   const inputValue = ref('');
   const mask = useMask();
   const onClick = () => {
     router.push('/ui/mask/subpage');
-    mask.exposed?.addTab({
-      menu: {
-        id: 'aaaaa',
-        title: '测试'
-      },
-      closable: true
-    });
   };
 
   defineOptions({
-    tabAdapter() {
-      console.log('component tabAdapter');
-    }
+    name: 'InnerPage'
+  });
+
+  const defineTab = async () => {
+    return {
+      // title: '自定义标签'
+    };
+  };
+
+  defineExpose({
+    defineTab
   });
 </script>

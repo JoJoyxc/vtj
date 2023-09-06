@@ -4,7 +4,8 @@ import {
   InjectionKey,
   ShallowReactive,
   ComputedRef,
-  ComponentInternalInstance
+  ComponentInternalInstance,
+  DefineComponent
 } from 'vue';
 import { RouteLocationNormalizedLoaded } from 'vue-router';
 
@@ -61,11 +62,12 @@ export const maskProps = {
     }
   },
   /**
-   * 手动处理菜单打开，设置true，需要自行侦听 menu-select 事件实现菜单打开页面
+   * 菜单项数据适配函数，用作转换菜单项数据
    */
-  manual: {
-    type: Boolean
+  menuAdapter: {
+    type: Function as PropType<(menu: MenuDataItem) => MenuDataItem>
   },
+
   /**
    * 设置初始化选中菜单函数
    */
@@ -78,10 +80,10 @@ export const maskProps = {
     >
   },
   /**
-   * 主页路由路径
+   * 主页Tab配置
    */
-  homepage: {
-    type: String,
+  home: {
+    type: [String, Object] as PropType<string | MaskTab>,
     default: '/'
   },
 
@@ -141,7 +143,19 @@ export type MaskSlots = {
 };
 
 export interface MaskTab {
-  menu: MenuDataItem;
+  id?: symbol;
+  // 页面路由
+  url: string;
+  // 标题文本
+  title?: string;
+  // 图标
+  icon?: string | Record<string, any> | DefineComponent<any, any, any, any>;
+  // 能否关闭
   closable?: boolean;
+  // 弹窗模式
   dialog?: boolean;
+  // 关联菜单项
+  menu?: MenuDataItem;
 }
+
+export type MaskDefineTab = () => Partial<MaskTab> | Promise<Partial<MaskTab>>;

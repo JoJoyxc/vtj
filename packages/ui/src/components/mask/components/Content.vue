@@ -1,28 +1,24 @@
 <template>
   <XContainer class="x-mask__content" :flex="false" grow padding>
     <slot></slot>
-    <KeepAlive :key="aliveKey">
-      <Suspense>
-        <RouterView ref="viewRef" :key="viewKey"></RouterView>
-      </Suspense>
-    </KeepAlive>
+
+    <RouterView v-slot="{ Component, route }">
+      <KeepAlive ref="aliveRef">
+        <component v-if="aliveKey" :is="Component" :key="route.fullPath" />
+      </KeepAlive>
+    </RouterView>
   </XContainer>
 </template>
 <script lang="ts" setup>
-  import { KeepAlive, Suspense, computed, ref } from 'vue';
+  import { KeepAlive } from 'vue';
+  import { RouterView } from 'vue-router';
   import { XContainer } from '../../';
-  import { RouterView, useRoute } from 'vue-router';
-  const route = useRoute();
-  const viewKey = computed(() => route.fullPath);
+  import { useViewCache } from '../use';
 
-  const aliveKey = ref(Symbol());
-  const viewRef = ref();
-  const refresh = () => {
-    aliveKey.value = Symbol();
-  };
+  const { aliveKey, aliveRef, refresh, getCacheComponent } = useViewCache();
 
   defineExpose({
-    viewRef,
+    getCacheComponent,
     refresh
   });
 </script>

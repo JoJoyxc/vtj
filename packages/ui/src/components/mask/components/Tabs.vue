@@ -12,23 +12,21 @@
       :model-value="props.value"
       @tab-remove="onTabRemove"
       @tab-click="onTabClick">
-      <ElTabPane v-if="props.home" :name="props.home.menu.id">
+      <ElTabPane v-if="props.home" :name="props.home.url">
         <template #label>
           <div class="x-mask-tabs__trigger">
             <component
-              v-if="props.home.menu.icon"
-              :is="(useIcon(props.home.menu.icon) as any)"></component>
+              v-if="props.home.icon"
+              :is="(useIcon(props.home.icon) as any)"></component>
 
-            <span v-if="props.home.menu.title">{{
-              props.home.menu.title
-            }}</span>
+            <span v-if="props.home.title">{{ props.home.title }}</span>
           </div>
         </template>
       </ElTabPane>
       <ElTabPane
         v-for="tab in props.tabs"
-        :key="`tab_${tab.menu.id}`"
-        :name="tab.menu.id"
+        :key="tab.id || tab.url"
+        :name="tab.url"
         lazy
         closable>
         <template #label>
@@ -40,10 +38,10 @@
             <template #reference>
               <div class="x-mask-tabs__trigger">
                 <component
-                  v-if="tab.menu.icon"
-                  :is="(useIcon(tab.menu.icon) as any)"></component>
+                  v-if="tab.icon"
+                  :is="(useIcon(tab.icon) as any)"></component>
 
-                <span v-if="tab.menu.title">{{ tab.menu.title }}</span>
+                <span v-if="tab.title">{{ tab.title }}</span>
               </div>
             </template>
             <XActionBar
@@ -89,14 +87,14 @@
   const emit = defineEmits<{
     click: [tab: MaskTab];
     remove: [tab: MaskTab];
-    home: [];
     refresh: [];
     toggleFavorite: [item: MenuDataItem];
+    dialog: [tab: MaskTab];
   }>();
 
   const getActions = (tab: MaskTab) => {
     const isFav = !!props.favorites.find(
-      (n) => n === tab.menu || n.id === tab.menu.id
+      (n) => n === tab.menu || n.id === tab.menu?.id
     );
     return [
       {
@@ -109,31 +107,33 @@
         icon: isFav ? StarFilled : Star,
         label: '收藏',
         name: 'favorite',
-        value: tab.menu
+        value: tab.menu,
+        disabled: !tab.menu
       },
       '|',
       {
         icon: CopyDocument,
         label: '弹窗',
-        name: 'dialog'
+        name: 'dialog',
+        value: tab
       }
     ] as ActionBarItems;
   };
 
   const onTabClick = (pane: TabsPaneContext) => {
     const name = pane.paneName;
-    if (name === props.home.menu.id) {
-      emit('home');
+    if (name === props.home.url) {
+      emit('click', props.home);
       return;
     }
-    const tab = props.tabs.find((n) => n.menu.id === name);
+    const tab = props.tabs.find((n) => n.url === name);
     if (tab) {
       emit('click', tab);
     }
   };
 
   const onTabRemove = (name: string | number) => {
-    const tab = props.tabs.find((n) => n.menu.id === name);
+    const tab = props.tabs.find((n) => n.url === name);
     if (tab) {
       emit('remove', tab);
     }
@@ -148,6 +148,7 @@
         emit('toggleFavorite', item.value as MenuDataItem);
         break;
       case 'dialog':
+        emit('dialog', item.value as MaskTab);
         break;
     }
 

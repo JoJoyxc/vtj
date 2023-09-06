@@ -2,10 +2,9 @@
   <XMask
     :menus="menus"
     :favorites="favorites"
-    manual
-    @select="onMenuSelect"
+    :menuAdapter="menuAdapter"
     :defaultActiveMenu="defaultActiveMenu"
-    homepage="/ui/mask"
+    home="/ui/mask"
     :tabs="20"
     :actions="actions"
     theme
@@ -40,11 +39,14 @@
     }).then((res) => res.data);
   };
 
-  const onMenuSelect = (menu: MenuDataItem) => {
-    router.push({
-      path: '/ui/mask/page',
-      query: { id: menu.id }
-    });
+  const menuAdapter = (menu: MenuDataItem) => {
+    return {
+      ...menu,
+      url:
+        !menu.type || menu.type === 'route'
+          ? `/ui/mask/page?id=${menu.id}`
+          : menu.url
+    };
   };
 
   const defaultActiveMenu = (

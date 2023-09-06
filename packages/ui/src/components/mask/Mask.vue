@@ -6,7 +6,7 @@
           <Brand
             :logo="props.logo"
             :title="props.title"
-            :url="props.homepage"
+            :url="homeTab.url"
             :collapsed="collapsed"></Brand>
         </template>
         <SwitchBar
@@ -21,7 +21,7 @@
           :flatMenus="flatMenus"
           :menus="menus"
           :active="active"
-          @select="selectMenu"></Menu>
+          @select="select"></Menu>
       </Sidebar>
       <XContainer class="x-mask__main" grow flex direction="column">
         <XContainer
@@ -32,14 +32,14 @@
             ref="tabRef"
             :favorites="favorites"
             :tabs="showTabs"
-            :isActiveTab="isActiveTab"
             :home="homeTab"
-            :value="active?.id"
-            @click="activeTab"
-            @home="activeHome"
+            :value="currentTabValue"
+            :isActiveTab="isActiveTab"
+            @click="onTabClick"
             @remove="removeTab"
             @refresh="onRefresh"
-            @toggleFavorite="toggleFavorite"></Tabs>
+            @toggleFavorite="toggleFavorite"
+            @dialog="onTabDialog"></Tabs>
           <Toolbar
             :tabs="dropdownTabs"
             :actions="props.actions"
@@ -80,11 +80,7 @@
     nextTick,
     ref
   } from 'vue';
-  import {
-    useRoute,
-    useRouter,
-    RouteLocationNormalizedLoaded
-  } from 'vue-router';
+  import { useRoute, useRouter } from 'vue-router';
   import { XContainer, MenuDataItem, ActionMenuItem, ActionProps } from '../';
   import Sidebar from './components/Sidebar.vue';
   import SwitchBar from './components/SwitchBar.vue';
@@ -94,7 +90,13 @@
   import Toolbar from './components/Toolbar.vue';
   import Avatar from './components/Avatar.vue';
   import Content from './components/Content.vue';
-  import { maskProps, MASK_INSTANCE_KEY, MaskEmits } from './types';
+  import {
+    maskProps,
+    MASK_INSTANCE_KEY,
+    MaskEmits,
+    MaskTab,
+    MaskDefineTab
+  } from './types';
   import { useMenus, useTabs, useFavorites } from './use';
 
   defineOptions({
@@ -116,8 +118,8 @@
     search,
     select,
     active,
-    homeMenu
-  } = useMenus(props, emit, router);
+    getMenuByUrl
+  } = useMenus(props, emit);
 
   const { favorites, toggleFavorite } = useFavorites(props);
 
@@ -128,55 +130,46 @@
     dropdownTabs,
     isActiveTab,
     removeTab,
-    activeTab,
-    activeHome,
     addTab,
     removeAllTabs,
     removeOtherTabs,
-    moveToShow
-  } = useTabs(props, emit, router, active, select, homeMenu);
+    moveToShow,
+    currentTabValue,
+    isHomeTab
+  } = useTabs(props, emit);
 
-  const selectMenu = async (menu: MenuDataItem) => {
-    select(menu);
-    const { type = 'route' } = menu;
-    if (type === 'route') {
+  const init = async (menus?: MenuDataItem[]) => {
+    if (!menus || !menus.length) return;
+    const fullPath = route.fullPath;
+    const menu = getMenuByUrl(fullPath);
+    if (isHomeTab(fullPath)) {
+      currentTabValue.value = fullPath;
+    } else {
       await nextTick();
-      addTab({
-        menu,
-        closable: false
-      });
+      const { url = fullPath, icon, title = '新建标签页' } = menu || {};
+      const view = contentRef.value.getCacheComponent(fullPath);
+      const defineTab = view?.exposed?.defineTab as MaskDefineTab;
+      const tab: MaskTab = Object.assign(
+        { url, icon, title, menu },
+        defineTab ? await defineTab() : {}
+      );
+      addTab(tab);
+    }
+    if (menu) {
+      await nextTick();
+      active.value = menu;
     }
   };
 
-  const defaultActiveMenu =
-    props.defaultActiveMenu ??
-    ((to: RouteLocationNormalizedLoaded) => {
-      return flatMenus.value.find((n) => n.url === to.fullPath);
-    });
-
-  watch(
-    flatMenus,
-    () => {
-      if (!flatMenus.value.length) return;
-      const current = defaultActiveMenu(route, flatMenus.value);
-      if (current) {
-        selectMenu(current);
-      } else {
-        active.value = null;
-      }
-    },
-    { immediate: true }
-  );
-
+  watch(flatMenus, init, { immediate: true });
   watch(
     () => route.fullPath,
-    () => {
-      console.log('route change', route.fullPath);
-    },
-    {
-      immediate: true
-    }
+    () => init(flatMenus.value)
   );
+
+  const onTabClick = (tab: MaskTab) => {
+    router.push(tab.url).catch((e) => e);
+  };
 
   const onActionClick = (action: ActionProps) => {
     emit('actionClick', action);
@@ -190,6 +183,10 @@
     contentRef.value.refresh();
   };
 
+  const onTabDialog = (tab: MaskTab) => {
+    console.log('open dialog', tab);
+  };
+
   provide(MASK_INSTANCE_KEY, instance as ComponentInternalInstance);
 
   defineExpose({
@@ -198,7 +195,7 @@
     flatMenus,
     favorites,
     active,
-    selectMenu,
+    select,
     addTab
   });
 </script>
