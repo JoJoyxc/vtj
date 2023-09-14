@@ -1,4 +1,9 @@
-import { PropType, VNode, DefineComponent } from 'vue';
+import {
+  PropType,
+  VNode,
+  DefineComponent,
+  ComponentInternalInstance
+} from 'vue';
 import { Position } from '@vueuse/core';
 import { ComponentPropsType, BaseSize } from '../shared';
 import { IconParam } from '../';
@@ -68,6 +73,9 @@ export const dialogProps = {
   },
   src: {
     type: String
+  },
+  componentInstance: {
+    type: Object as PropType<Record<string, any> | null>
   },
   beforeClose: {
     type: Function as PropType<() => boolean | Promise<boolean>>

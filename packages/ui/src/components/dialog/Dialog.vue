@@ -1,12 +1,9 @@
 <template>
   <Teleport v-if="props.modelValue" to="body">
-    <div
-      ref="wrapper"
-      class="x-dialog__wrapper"
-      :class="wrapperClass"
-      @mousemove.stop>
+    <div ref="wrapper" class="x-dialog__wrapper" :class="wrapperClass">
       <div v-if="props.modal" class="x-dialog__modal" :style="modalStyle"></div>
       <XPanel
+        ref="panelRef"
         class="x-dialog"
         card
         shadow="always"
@@ -114,7 +111,8 @@
     useStyle,
     useMethods,
     useDraggableOptions,
-    useResizableOptions
+    useResizableOptions,
+    useComponentInstance
   } from './hooks';
 
   defineOptions({
@@ -124,6 +122,7 @@
   const props = defineProps(dialogProps);
   const emit = defineEmits<DialogEmits>();
   const wrapper = ref();
+  const panelRef = ref();
   const { state, maximized, minimized, normal } = useState(props, wrapper);
   const { styles, classes, wrapperClass, modalStyle } = useStyle(props, state);
   const { changeMode, active, close, show, hide, submit, cancel } = useMethods(
@@ -133,6 +132,8 @@
   );
   const draggable = useDraggableOptions(props, state, emit, wrapper);
   const resizable = useResizableOptions(props, state, emit);
+  const componentInstance = useComponentInstance(props, panelRef);
+
   watchEffect(() => {
     if (props.modelValue) {
       emit('open');
@@ -140,6 +141,7 @@
   });
 
   defineExpose({
+    panelRef,
     state,
     maximized,
     minimized,
@@ -147,6 +149,7 @@
     show,
     hide,
     submit,
-    cancel
+    cancel,
+    componentInstance
   });
 </script>

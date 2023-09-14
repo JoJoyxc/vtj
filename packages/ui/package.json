@@ -12,9 +12,9 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "element-plus": "~2.3.9",
+    "element-plus": "~2.3.12",
     "@element-plus/icons-vue": "~2.1.0",
-    "@vueuse/core": "~10.3.0",
+    "@vueuse/core": "~10.4.1",
     "@vtj/icons": "^0.5.3",
     "@vtj/utils": "^0.5.3"
   },

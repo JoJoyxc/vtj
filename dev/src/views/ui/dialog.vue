@@ -2,7 +2,7 @@
   <div>
     <button @click="open">open</button>
     <button @click="show">show</button>
-
+    <XPanel ref="panelRef" header="Title" card>Body</XPanel>
     <XDialog
       ref="dialog"
       key="dialog1"
@@ -11,10 +11,9 @@
       subtitle="我是副标题内容"
       :icon="VtjIconBug"
       :modal="false"
-      src="/#/ui/startup"
       submit
       cancel
-      :resizable="false"
+      :resizable="true"
       @open="onOpen">
       <div>
         <div v-for="n in 50">{{ n }}</div>
@@ -40,7 +39,7 @@
 </template>
 <script lang="ts" setup>
   import { ref, createVNode } from 'vue';
-  import { XDialog, createDialog } from '@vtj/ui';
+  import { XDialog, createDialog, XPanel } from '@vtj/ui';
   import {
     VtjIconBug,
     VtjIconApi,
@@ -48,8 +47,13 @@
     VtjIconSetting
   } from '@vtj/icons';
 
+  const panelRef = ref();
   const dialog = ref();
   const visible = ref(false);
+
+  // setTimeout(() => {
+  //   console.log(panelRef.value?.$);
+  // }, 1000);
 
   const open = () => {
     visible.value = true;
@@ -62,19 +66,22 @@
     dialog.value.show();
   };
 
-  const vnode = createVNode('div', {}, 'HelloWorld');
+  // const vnode = createVNode('div', {}, 'HelloWorld');
 
-  const node = createDialog({
-    title: '动态',
-    icon: VtjIconBug,
-    size: 'default',
-    width: 500,
-    height: 400,
-    content: vnode,
-    submit: true,
-    resizable: true,
-    primary: true
-  });
+  // setTimeout(() => {
+  //   const node = createDialog({
+  //     title: '动态2',
+  //     icon: VtjIconBug,
+  //     size: 'default',
+  //     width: 500,
+  //     height: 400,
+  //     content: vnode,
+  //     componentInstance: panelRef.value,
+  //     submit: true,
+  //     resizable: true,
+  //     primary: true
+  //   });
+  // }, 1000);
 
-  console.log(node);
+  // console.log(node);
 </script>

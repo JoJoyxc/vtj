@@ -23,7 +23,7 @@
     "@vueuse/shared": "~10.3.0",
     "@vueuse/core": "~10.3.0",
     "@element-plus/icons-vue": "~2.1.0",
-    "element-plus": "~2.3.9",
+    "element-plus": "~2.3.12",
     "lodash": "~4.17.21"
   },
   "files": [

@@ -1,6 +1,7 @@
 <template>
   <div>
     <h3>ID: {{ route.query.id }}</h3>
+    <h4>tab: {{ tab?.url }}</h4>
     <div>
       <ElInput v-model="inputValue"></ElInput>
       <ElButton @click="onClick">Button</ElButton>
@@ -8,11 +9,11 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { ref } from 'vue';
+  import { ref, onActivated, onDeactivated } from 'vue';
   import { ElInput, ElButton } from 'element-plus';
   import { useRoute, useRouter } from 'vue-router';
-  import { useMask, MaskTab } from '@vtj/ui';
-  const route = useRoute();
+  import { useMask, MaskTab, defineTab } from '@vtj/ui';
+  // const route = useRoute();
   const router = useRouter();
   const inputValue = ref('');
   const mask = useMask();
@@ -24,13 +25,18 @@
     name: 'InnerPage'
   });
 
-  const defineTab = async () => {
-    return {
-      // title: '自定义标签'
-    };
-  };
+  const { tab, route } = defineTab();
 
-  defineExpose({
-    defineTab
+  onActivated(() => {
+    console.log('onActivated', tab.value?.url);
   });
+
+  onDeactivated(() => {
+    console.log('onDeactivated', tab.value?.url);
+  });
+  // console.log('page tab', tab);
+
+  // defineExpose({
+  //   defineTab
+  // });
 </script>

@@ -12,7 +12,7 @@
         <SwitchBar
           v-model:collasped="collapsed"
           v-model:favorite="favorite"
-          @search="search"></SwitchBar>
+          @search="mask.searchMenu($event)"></SwitchBar>
         <Menu
           :collapse="collapsed"
           :keyword="keyword"
@@ -21,7 +21,7 @@
           :flatMenus="flatMenus"
           :menus="menus"
           :active="active"
-          @select="select"></Menu>
+          @select="mask.selectMenu($event)"></Menu>
       </Sidebar>
       <XContainer class="x-mask__main" grow flex direction="column">
         <XContainer
@@ -33,23 +33,25 @@
             :favorites="favorites"
             :tabs="showTabs"
             :home="homeTab"
-            :value="currentTabValue"
-            :isActiveTab="isActiveTab"
-            @click="onTabClick"
-            @remove="removeTab"
-            @refresh="onRefresh"
-            @toggleFavorite="toggleFavorite"
-            @dialog="onTabDialog"></Tabs>
+            :value="tabValue"
+            :isActiveTab="mask.isCurrentTab.bind(mask)"
+            @click="mask.changeTab($event)"
+            @remove="mask.removeTab($event)"
+            @refresh="mask.refresh($event)"
+            @toggleFavorite="mask.toggleFavorite($event)"
+            @dialog="mask.switchToDialog($event)"></Tabs>
           <Toolbar
             :tabs="dropdownTabs"
             :actions="props.actions"
             :theme="props.theme"
-            @closeOtherTabs="removeOtherTabs"
-            @closeAllTabs="removeAllTabs"
-            @closeTab="removeTab"
-            @clickTab="moveToShow"
-            @action-click="onActionClick"
-            @action-command="onActionCommand">
+            @closeOtherTabs="() => mask.removeOtherTabs()"
+            @closeAllTabs="() => mask.removeAllTabs()"
+            @closeTab="mask.removeTab($event)"
+            @clickTab="mask.moveToShow($event)"
+            @action-click="mask.onActionClick($event)"
+            @action-command="
+              (action, item) => mask.onActionCommand(action, item)
+            ">
             <Avatar :avatar="props.avatar">
               <template v-if="$slots.user" #default>
                 <slot name="user"> </slot>
@@ -57,14 +59,14 @@
             </Avatar>
           </Toolbar>
         </XContainer>
-        <Content ref="contentRef">
+        <Content :tab="currentTab">
           <template v-if="$slots.default">
             <slot></slot>
           </template>
         </Content>
       </XContainer>
     </template>
-    <Content ref="contentRef" v-else>
+    <Content v-else :tab="currentTab">
       <template v-if="$slots.default">
         <slot></slot>
       </template>
@@ -72,16 +74,9 @@
   </XContainer>
 </template>
 <script lang="ts" setup>
-  import {
-    provide,
-    getCurrentInstance,
-    ComponentInternalInstance,
-    watch,
-    nextTick,
-    ref
-  } from 'vue';
+  import { provide } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
-  import { XContainer, MenuDataItem, ActionMenuItem, ActionProps } from '../';
+  import { XContainer } from '../';
   import Sidebar from './components/Sidebar.vue';
   import SwitchBar from './components/SwitchBar.vue';
   import Brand from './components/Brand.vue';
@@ -90,14 +85,8 @@
   import Toolbar from './components/Toolbar.vue';
   import Avatar from './components/Avatar.vue';
   import Content from './components/Content.vue';
-  import {
-    maskProps,
-    MASK_INSTANCE_KEY,
-    MaskEmits,
-    MaskTab,
-    MaskDefineTab
-  } from './types';
-  import { useMenus, useTabs, useFavorites } from './use';
+  import { maskProps, MASK_INSTANCE_KEY, MaskEmits, MaskTab } from './types';
+  import { MaskFactory } from './MaskFactory';
 
   defineOptions({
     name: 'XMask'
@@ -105,97 +94,29 @@
 
   const props = defineProps(maskProps);
   const emit = defineEmits<MaskEmits>();
-  const instance = getCurrentInstance();
   const router = useRouter();
   const route = useRoute();
-  const contentRef = ref();
+
+  const mask = new MaskFactory(props, emit, route, router);
   const {
-    menus,
-    flatMenus,
     collapsed,
-    favorite,
-    keyword,
-    search,
-    select,
-    active,
-    getMenuByUrl
-  } = useMenus(props, emit);
-
-  const { favorites, toggleFavorite } = useFavorites(props);
-
-  const {
-    tabRef,
     homeTab,
+    tabRef,
+    favorite,
+    favorites,
+    keyword,
+    flatMenus,
+    active,
     showTabs,
     dropdownTabs,
-    isActiveTab,
-    removeTab,
-    addTab,
-    removeAllTabs,
-    removeOtherTabs,
-    moveToShow,
-    currentTabValue,
-    isHomeTab
-  } = useTabs(props, emit);
+    tabValue,
+    currentTab,
+    menus
+  } = mask;
 
-  const init = async (menus?: MenuDataItem[]) => {
-    if (!menus || !menus.length) return;
-    const fullPath = route.fullPath;
-    const menu = getMenuByUrl(fullPath);
-    if (isHomeTab(fullPath)) {
-      currentTabValue.value = fullPath;
-    } else {
-      await nextTick();
-      const { url = fullPath, icon, title = '新建标签页' } = menu || {};
-      const view = contentRef.value.getCacheComponent(fullPath);
-      const defineTab = view?.exposed?.defineTab as MaskDefineTab;
-      const tab: MaskTab = Object.assign(
-        { url, icon, title, menu },
-        defineTab ? await defineTab() : {}
-      );
-      addTab(tab);
-    }
-    if (menu) {
-      await nextTick();
-      active.value = menu;
-    }
-  };
-
-  watch(flatMenus, init, { immediate: true });
-  watch(
-    () => route.fullPath,
-    () => init(flatMenus.value)
-  );
-
-  const onTabClick = (tab: MaskTab) => {
-    router.push(tab.url).catch((e) => e);
-  };
-
-  const onActionClick = (action: ActionProps) => {
-    emit('actionClick', action);
-  };
-
-  const onActionCommand = (action: ActionProps, item: ActionMenuItem) => {
-    emit('actionCommand', action, item);
-  };
-
-  const onRefresh = () => {
-    contentRef.value.refresh();
-  };
-
-  const onTabDialog = (tab: MaskTab) => {
-    console.log('open dialog', tab);
-  };
-
-  provide(MASK_INSTANCE_KEY, instance as ComponentInternalInstance);
+  provide(MASK_INSTANCE_KEY, mask);
 
   defineExpose({
-    collapsed,
-    menus,
-    flatMenus,
-    favorites,
-    active,
-    select,
-    addTab
+    mask
   });
 </script>

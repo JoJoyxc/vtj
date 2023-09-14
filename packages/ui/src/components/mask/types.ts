@@ -14,13 +14,14 @@ import {
   ActionBarItems,
   ActionProps,
   ActionMenuItem,
-  ComponentPropsType
+  ComponentPropsType,
+  DialogProps
 } from '../';
 import logo from './assets/logo.png';
 import type Mask from './Mask.vue';
+import type { MaskFactory } from './MaskFactory';
 
-export const MASK_INSTANCE_KEY: InjectionKey<ComponentInternalInstance> =
-  Symbol('$mask');
+export const MASK_INSTANCE_KEY: InjectionKey<MaskFactory> = Symbol('$mask');
 
 export const TAB_ITEM_WIDTH = 140;
 
@@ -68,17 +69,6 @@ export const maskProps = {
     type: Function as PropType<(menu: MenuDataItem) => MenuDataItem>
   },
 
-  /**
-   * 设置初始化选中菜单函数
-   */
-  defaultActiveMenu: {
-    type: Function as PropType<
-      (
-        to: RouteLocationNormalizedLoaded,
-        menus: MenuDataItem[]
-      ) => MenuDataItem | undefined | null
-    >
-  },
   /**
    * 主页Tab配置
    */
@@ -153,9 +143,12 @@ export interface MaskTab {
   // 能否关闭
   closable?: boolean;
   // 弹窗模式
-  dialog?: boolean;
+  dialog?: DialogProps & { [index: string]: any };
   // 关联菜单项
   menu?: MenuDataItem;
+
+  // 路由信息
+  route?: RouteLocationNormalizedLoaded;
 }
 
 export type MaskDefineTab = () => Partial<MaskTab> | Promise<Partial<MaskTab>>;

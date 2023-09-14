@@ -3,8 +3,11 @@
     <slot></slot>
 
     <RouterView v-slot="{ Component, route }">
-      <KeepAlive ref="aliveRef">
-        <component v-if="aliveKey" :is="Component" :key="route.fullPath" />
+      <KeepAlive :exclude="aliveExclude">
+        <component
+          v-if="aliveKey && props.tab && props.tab.url === route.fullPath"
+          :key="route.fullPath"
+          :is="loader.createVNode(Component, route, props.tab)"></component>
       </KeepAlive>
     </RouterView>
   </XContainer>
@@ -13,12 +16,14 @@
   import { KeepAlive } from 'vue';
   import { RouterView } from 'vue-router';
   import { XContainer } from '../../';
-  import { useViewCache } from '../use';
+  import { useMask } from '../MaskFactory';
+  import { MaskTab } from '../types';
 
-  const { aliveKey, aliveRef, refresh, getCacheComponent } = useViewCache();
+  export interface Props {
+    tab?: MaskTab;
+  }
 
-  defineExpose({
-    getCacheComponent,
-    refresh
-  });
+  const props = defineProps<Props>();
+  const mask = useMask();
+  const { aliveKey, aliveExclude, loader } = mask;
 </script>

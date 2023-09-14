@@ -3,7 +3,6 @@
     :menus="menus"
     :favorites="favorites"
     :menuAdapter="menuAdapter"
-    :defaultActiveMenu="defaultActiveMenu"
     home="/ui/mask"
     :tabs="20"
     :actions="actions"

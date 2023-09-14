@@ -32,6 +32,7 @@
         <template #label>
           <ElPopover
             :disabled="!isActiveTab(tab)"
+            :open-delay="500"
             placement="bottom"
             trigger="hover"
             width="200px">
@@ -87,7 +88,7 @@
   const emit = defineEmits<{
     click: [tab: MaskTab];
     remove: [tab: MaskTab];
-    refresh: [];
+    refresh: [tab: MaskTab];
     toggleFavorite: [item: MenuDataItem];
     dialog: [tab: MaskTab];
   }>();
@@ -100,7 +101,8 @@
       {
         icon: Refresh,
         label: '刷新',
-        name: 'refresh'
+        name: 'refresh',
+        value: tab
       },
       '|',
       {
@@ -142,7 +144,7 @@
   const onActionClick = (item: ActionProps) => {
     switch (item.name) {
       case 'refresh':
-        emit('refresh');
+        emit('refresh', item.value as MaskTab);
         break;
       case 'favorite':
         emit('toggleFavorite', item.value as MenuDataItem);

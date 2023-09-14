@@ -4,7 +4,8 @@ import {
   effectScope,
   EffectScope,
   MaybeRef,
-  unref
+  unref,
+  toValue
 } from 'vue';
 import { useDraggable, UseDraggableOptions } from '@vueuse/core';
 import { isEqual } from '@vtj/utils';
@@ -61,7 +62,7 @@ export class Draggable {
     const { target = 'body' } = this.options;
     return typeof target === 'string'
       ? document.querySelector(target)
-      : unref(target);
+      : unref(target) || document.body;
   }
   init() {
     const { el, options } = this;
@@ -71,6 +72,7 @@ export class Draggable {
 
     const handle = this.getHandle();
     const target = this.getTarget();
+
     let rect = el.getBoundingClientRect();
     let targetRect: DOMRect | null = null;
     const { x, y } = useDraggable(el, {

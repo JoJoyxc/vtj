@@ -1,17 +1,13 @@
 <template>
-  <div>Subpage</div>
+  <div>
+    <h3>Subpage</h3>
+    <div>{{ tab }}</div>
+  </div>
 </template>
 
 <script lang="ts" setup>
-  import { useMask } from '@vtj/ui';
-  const defineTab = () => {
-    return {
-      title: '二级页面'
-    };
-  };
-
-
-  defineExpose({
-    defineTab
+  import { defineTab } from '@vtj/ui';
+  const { tab, route } = defineTab({
+    title: '二级页面'
   });
 </script>

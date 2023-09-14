@@ -1,4 +1,12 @@
-import { reactive, watch, MaybeRef, computed } from 'vue';
+import {
+  reactive,
+  watch,
+  MaybeRef,
+  computed,
+  onMounted,
+  onUnmounted,
+  unref
+} from 'vue';
 import { useElementSize, Position } from '@vueuse/core';
 import { DialogProps, DialogState, DialogMode, DialogEmits } from './types';
 import { Emits } from '../';
@@ -199,4 +207,32 @@ export function useResizableOptions(
       }
     };
   });
+}
+
+export function useComponentInstance(
+  props: DialogProps,
+  panelRef: MaybeRef<any>
+) {
+  const componentInstance = props.componentInstance;
+  if (!componentInstance) return;
+  let el: any = null;
+
+  onMounted(() => {
+    const panel = unref(panelRef);
+    const body = unref(panel?.bodyRef);
+    el = (componentInstance as any).$el;
+    if (body && body.$el) {
+      body.$el.appendChild(el);
+    }
+  });
+
+  onUnmounted(() => {
+    if (el && el.parentNode) {
+      el.parentNode.removeChild(el);
+    }
+  });
+
+  return {
+    componentInstance
+  };
 }

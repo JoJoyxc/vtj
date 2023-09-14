@@ -19,6 +19,7 @@
       </slot>
     </XContainer>
     <XContainer
+      ref="bodyRef"
       :flex="false"
       :overflow="bodyOverflow"
       grow
@@ -38,7 +39,7 @@
   </XContainer>
 </template>
 <script lang="ts" setup>
-  import { computed } from 'vue';
+  import { computed, ref } from 'vue';
   import { XContainer, XHeader } from '../';
   import { panelProps } from './types';
 
@@ -47,7 +48,7 @@
   });
 
   const props = defineProps(panelProps);
-
+  const bodyRef = ref();
   const classes = computed(() => {
     return {
       'x-panel--card': !!props.card,
@@ -74,5 +75,9 @@
 
   const bodyOverflow = computed(() => {
     return props.fit || !!props.height ? 'auto' : undefined;
+  });
+
+  defineExpose({
+    bodyRef
   });
 </script>
