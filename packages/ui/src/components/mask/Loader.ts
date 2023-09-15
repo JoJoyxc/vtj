@@ -12,7 +12,7 @@ export class Loader {
     route: RouteLocationNormalizedLoaded,
     tab: MaskTab
   ) {
-    const { loaders } = this;
+    const { loaders, instances } = this;
     const name = upperFirstCamelCase(route.fullPath);
     let wrapper;
     if (loaders.has(name)) {
@@ -26,8 +26,13 @@ export class Loader {
             ...route.query
           });
         },
+        mounted() {
+          // console.log('createVNode', this);
+          // instances.set(name, this);
+        },
         deactivated() {
           if (tab && tab.dialog) {
+            console.log('createDialog', this);
             createDialog({
               title: tab.title,
               icon: tab.icon,

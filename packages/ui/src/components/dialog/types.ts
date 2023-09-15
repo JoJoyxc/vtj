@@ -101,6 +101,7 @@ export type DialogEmits = {
   'update:modelValue': [value: boolean];
   open: [];
   close: [];
+  destroy: [];
   maximized: [];
   minimized: [];
   normal: [];

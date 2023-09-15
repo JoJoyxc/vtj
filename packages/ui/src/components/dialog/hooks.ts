@@ -112,6 +112,7 @@ export function useMethods(
     if (!props.beforeClose || (await props.beforeClose())) {
       emit('update:modelValue', false);
       emit('close');
+      emit('destroy');
     }
   };
 

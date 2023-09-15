@@ -20,6 +20,6 @@ const app = createApp(App);
     }
   });
   app.use(router);
-  app.use(VtjIcons);
+  // app.use(VtjIcons);
   app.mount('#app');
 })();

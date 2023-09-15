@@ -16,9 +16,9 @@ export function createDialog(props: DialogProps, context?: AppContext | null) {
     destroy();
   };
 
-  vnode.props!.onClose = () => {
-    destroy();
-  };
+  // vnode.props!.onClose = () => {
+  //   destroy();
+  // };
 
   document.body.appendChild(container);
   return {

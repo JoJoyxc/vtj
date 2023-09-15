@@ -1,6 +1,6 @@
 <template>
   <ElButtonGroup>
-    <ElButton> Button1 </ElButton>
+    <ElButton> Button1-3 </ElButton>
     <ElButton> Button2 </ElButton>
     <ElButton> Button3 </ElButton>
   </ElButtonGroup>

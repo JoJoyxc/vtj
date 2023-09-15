@@ -362,9 +362,9 @@ export class MaskFactory {
     const { tabs } = this;
     tab.route = undefined;
     tab.dialog = undefined;
+    await this.removeCache(tab.url);
     this.updateTab(tab);
     tabs.value = tabs.value.filter((n) => !isEqual(n, tab));
-    await this.removeCache(tab.url);
   }
 
   switchToTab(tab: MaskTab) {
