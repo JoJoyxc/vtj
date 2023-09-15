@@ -1,18 +1,13 @@
-import { defineComponent, h, MaybeRef, unref } from 'vue';
+import { defineComponent, h, MaybeRef, unref, ComputedRef } from 'vue';
 import { RouteLocationNormalizedLoaded } from 'vue-router';
 import { upperFirstCamelCase } from '@vtj/utils';
 import { MaskTab } from './types';
 import { createDialog } from '../../';
 export class Loader {
   loaders: Map<string, any> = new Map();
-  instances: Map<string, any> = new Map();
-  constructor() {}
-  createVNode(
-    component: any,
-    route: RouteLocationNormalizedLoaded,
-    tab: MaskTab
-  ) {
-    const { loaders, instances } = this;
+  constructor(public dialogs: ComputedRef<MaskTab[]>) {}
+  createVNode(component: any, route: RouteLocationNormalizedLoaded) {
+    const { loaders, dialogs } = this;
     const name = upperFirstCamelCase(route.fullPath);
     let wrapper;
     if (loaders.has(name)) {
@@ -26,13 +21,9 @@ export class Loader {
             ...route.query
           });
         },
-        mounted() {
-          // console.log('createVNode', this);
-          // instances.set(name, this);
-        },
         deactivated() {
+          const tab = dialogs.value.find((n) => n.url === route.fullPath);
           if (tab && tab.dialog) {
-            console.log('createDialog', this);
             createDialog({
               title: tab.title,
               icon: tab.icon,

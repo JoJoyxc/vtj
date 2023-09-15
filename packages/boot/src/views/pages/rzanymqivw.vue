@@ -1,6 +1,6 @@
 <template>
   <ElButtonGroup>
-    <ElButton> Button1-3 </ElButton>
+    <ElButton @click="click_handler_l6pmc60gj8"> {{ $props.id }} </ElButton>
     <ElButton> Button2 </ElButton>
     <ElButton> Button3 </ElButton>
   </ElButtonGroup>
@@ -13,6 +13,13 @@
     name: 'User',
 
     components: { ElButtonGroup, ElButton },
+    props: {
+      id: {
+        type: [String],
+        required: false,
+        default: 'abc'
+      }
+    },
 
     setup(props) {
       const provider = useProvider();
@@ -22,6 +29,17 @@
         props,
         provider
       };
+    },
+
+    methods: {
+      click_handler_l6pmc60gj8() {
+        this.$router.push({
+          path: '/page/rzanymqivw',
+          query: {
+            id: 'test'
+          }
+        });
+      }
     }
   });
 </script>

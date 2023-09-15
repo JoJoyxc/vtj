@@ -1,17 +1,20 @@
-import { ref, markRaw, computed, watchEffect } from 'vue';
+import { ref, markRaw, computed } from 'vue';
+import { useRoute } from 'vue-router';
 import { Provider } from '../Provider';
 import { createBlockRenderer, createLoader, PageSchema } from '../shared';
-import { useRoute } from 'vue-router';
 
 export async function useBlock(provider: Provider, homepage?: PageSchema) {
   const { options, project, service } = provider;
-  const { page } = project;
+  const { preview, home } = project;
   const route = useRoute();
   const fileId = computed(
     () => (homepage ? homepage.id : route.params.id) as string
   );
   const file = computed(() => provider.getFile(fileId.value));
-  const isRaw = options.raw && route.path.startsWith(page);
+  const isPreview = route.path.startsWith(preview);
+  const isHome = home === route.path;
+  // 预览页面不用源码渲染
+  const isRaw = options.raw && (!isPreview || isHome);
   const { libs, apis, components } = provider;
   const Vue = window.Vue;
   let renderer = ref();
@@ -19,7 +22,8 @@ export async function useBlock(provider: Provider, homepage?: PageSchema) {
     getFile: service.getDsl.bind(service),
     options: { libs, components, apis, Vue }
   });
-  watchEffect(async () => {
+
+  if (fileId.value) {
     if (isRaw) {
       renderer.value = await service.getComponent(fileId.value);
     } else {
@@ -37,7 +41,7 @@ export async function useBlock(provider: Provider, homepage?: PageSchema) {
           )
         : null;
     }
-  });
+  }
 
   return {
     renderer,

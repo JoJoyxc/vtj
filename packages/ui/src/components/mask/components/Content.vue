@@ -7,13 +7,13 @@
         <component
           v-if="aliveKey && props.tab && props.tab.url === route.fullPath"
           :key="route.fullPath"
-          :is="loader.createVNode(Component, route, props.tab)"></component>
+          :is="loader.createVNode(Component, route)"></component>
       </KeepAlive>
     </RouterView>
   </XContainer>
 </template>
 <script lang="ts" setup>
-  import { KeepAlive } from 'vue';
+  import { KeepAlive, watch } from 'vue';
   import { RouterView } from 'vue-router';
   import { XContainer } from '../../';
   import { useMask } from '../MaskFactory';

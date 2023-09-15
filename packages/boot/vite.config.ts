@@ -10,13 +10,13 @@ const packagesPath = resolve('../../packages');
 
 const alias = {
   // '@vtj/utils': join(packagesPath, 'utils/src/index.ts'),
-  '@vtj/ui/lib/style.css': join(packagesPath, 'ui/src/style/index.scss'),
+  // '@vtj/ui/lib/style.css': join(packagesPath, 'ui/src/style/index.scss'),
   // '@vtj/engine/lib/style.css': join(
   //   packagesPath,
   //   'engine/src/style/index.scss'
   // ),
   // '@vtj/icons/lib/style.css': join(packagesPath, 'icons/src/style.scss'),
-  '@vtj/ui': join(packagesPath, 'ui/src')
+  // '@vtj/ui': join(packagesPath, 'ui/src'),
   // '@vtj/icons': join(packagesPath, 'icons/src'),
   // '@vtj/engine': join(packagesPath, 'engine/src'),
   // '@vtj/runtime': join(packagesPath, 'runtime/src')

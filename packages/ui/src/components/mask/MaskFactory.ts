@@ -71,7 +71,8 @@ export class MaskFactory {
   aliveKey = ref<symbol | undefined>(Symbol());
   aliveExclude = ref<(string | RegExp)[]>([]);
   tabs = shallowRef<MaskTab[]>([]);
-  loader = new Loader();
+  dialogs: ComputedRef<MaskTab[]>;
+  loader: Loader;
   constructor(
     public props: MaskProps,
     public emit: Emits<MaskEmits>,
@@ -83,6 +84,7 @@ export class MaskFactory {
     this.showTabs = computed(() =>
       this.tabs.value.slice(0, showCount.value).filter((n) => !n.dialog)
     );
+    this.dialogs = computed(() => this.tabs.value.filter((n) => !!n.dialog));
     this.dropdownTabs = computed(() => this.tabs.value.slice(showCount.value));
     this.homeTab = computed(() => createHomeTab(props.home));
     this.flatMenus = computed(() =>
@@ -90,6 +92,7 @@ export class MaskFactory {
     );
     this.menusMap = computed(() => arrayToMap(this.flatMenus.value, 'id'));
     this.currentTab = computed(() => this.getTab(this.tabValue.value));
+    this.loader = new Loader(this.dialogs);
     watch(() => route.fullPath, this.initTab.bind(this));
     this.init();
   }
@@ -244,10 +247,19 @@ export class MaskFactory {
     const menu = menusMap.value.get(
       typeof menuId === 'object' ? menuId.id : menuId
     );
+
     if (!menu) {
       console.warn('找不到菜单', menuId);
       return;
     }
+
+    const tab = this.getTab(menu.url);
+    // tab已是弹窗打开
+    if (tab && tab.dialog) {
+      active.value = menu;
+      return;
+    }
+
     emit('select', menu);
     const { type = 'route', url, title, icon } = menu;
     if (type === 'route') {
@@ -351,6 +363,7 @@ export class MaskFactory {
         this.closeDialog(tab);
       }
     };
+
     this.updateTab(tab);
 
     if (this.isCurrentTab(tab)) {
