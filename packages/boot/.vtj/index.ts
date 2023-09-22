@@ -11,7 +11,7 @@ export default {
   raw: true,
   isProd: process.env.NODE_ENV === 'production',
   project: {
-    id: 'demo',
+    id: 'boot',
     name: '示例项目',
     base: '/',
     mode: 'hash',

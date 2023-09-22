@@ -46,10 +46,10 @@
   "vtj": {
     "service": "file",
     "project": {
-      "id": "demo",
+      "id": "boot",
       "name": "示例项目"
     },
     "raw": true,
-    "debug": true
+    "debug": false
   }
 }

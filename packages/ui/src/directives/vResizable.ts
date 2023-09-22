@@ -1,6 +1,6 @@
 import { Directive, watch, effectScope, EffectScope, ref, Ref } from 'vue';
 import { isEqual } from '@vtj/utils';
-import { useEventListener, useMouseInElement } from '@vueuse/core';
+import { useEventListener, useMouseInElement, Fn } from '@vueuse/core';
 
 declare global {
   interface HTMLElement {
@@ -31,6 +31,8 @@ export class Resizable {
   public resizing: Ref<boolean> = ref(false);
   public direction: Ref<string> = ref('');
   public MIE: UseMouseInElementReturn | null = null;
+  public cleanMousedown?: Fn;
+  public cleanMouseup?: Fn;
   constructor(public el: HTMLElement, public options: ResizableOptions = {}) {
     this.scope = effectScope();
     this.scope.run(() => {
@@ -42,7 +44,7 @@ export class Resizable {
     const { disabled, onStart, onEnd } = options;
     if (disabled) return;
     this.MIE = useMouseInElement(el);
-    useEventListener(document, 'mousedown', () => {
+    this.cleanMousedown = useEventListener(document, 'mousedown', () => {
       if (this.direction?.value && this.MIE) {
         this.resizing.value = true;
         el.classList.add('is-resizing', `is-${this.direction.value}-resizing`);
@@ -50,7 +52,7 @@ export class Resizable {
       }
     });
 
-    useEventListener(document, 'mouseup', () => {
+    this.cleanMouseup = useEventListener(document, 'mouseup', () => {
       if (this.resizing.value && this.direction?.value && this.MIE) {
         el.classList.remove(
           'is-resizing',
@@ -151,6 +153,8 @@ export class Resizable {
     const body = document.body;
     body.style.cursor = '';
     body.classList.remove(BODY_CLASS);
+    this.cleanMousedown && this.cleanMousedown();
+    this.cleanMouseup && this.cleanMouseup();
     this.MIE?.stop();
     this.scope.stop();
   }

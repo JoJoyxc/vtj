@@ -1,13 +1,12 @@
 <template>
   <div>
     <h3>Subpage</h3>
-    <div>{{ tab }}</div>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { defineTab } from '@vtj/ui';
-  const { tab, route } = defineTab({
-    title: '二级页面'
-  });
+  // import { defineTab } from '@vtj/ui';
+  // const { tab, route } = defineTab({
+  //   title: '二级页面'
+  // });
 </script>

@@ -11,7 +11,7 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "element-plus": "~2.3.12",
+    "element-plus": "~2.3.14",
     "@vueuse/core": "~10.4.1",
     "@vtj/engine": "^0.5.3",
     "@vtj/ui": "^0.5.3",

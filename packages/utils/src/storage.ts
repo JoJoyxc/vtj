@@ -25,7 +25,7 @@ export class Storage {
   options: StorageOptions = {
     type: 'cache',
     expired: 0,
-    prefix: '__NewPearl__'
+    prefix: '__VTJ_'
   };
   private caches: Record<string, any> = {};
   private types: StorageTypes;

@@ -70,6 +70,7 @@
   export interface Props {
     collasped?: boolean;
     favorite?: boolean;
+    keyword?: string;
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -77,7 +78,11 @@
     favorite: false
   });
 
-  const emit = defineEmits(['update:collasped', 'search', 'update:favorite']);
+  const emit = defineEmits([
+    'update:collasped',
+    'update:keyword',
+    'update:favorite'
+  ]);
 
   const search = ref(false);
   const keyword = ref('');
@@ -90,7 +95,7 @@
   const onCloseSearch = () => {
     keyword.value = '';
     search.value = false;
-    emit('search', keyword.value);
+    emit('update:keyword', keyword.value);
   };
 
   const onToggleCollaspe = () => {
@@ -98,7 +103,7 @@
   };
 
   const onInput = () => {
-    emit('search', keyword.value);
+    emit('update:keyword', keyword.value);
   };
 
   const onTypeChange = () => {

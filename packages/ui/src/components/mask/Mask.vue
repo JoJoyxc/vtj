@@ -6,13 +6,13 @@
           <Brand
             :logo="props.logo"
             :title="props.title"
-            :url="homeTab.url"
+            :url="home.url"
             :collapsed="collapsed"></Brand>
         </template>
         <SwitchBar
           v-model:collasped="collapsed"
           v-model:favorite="favorite"
-          @search="mask.searchMenu($event)"></SwitchBar>
+          v-model:keyword="keyword"></SwitchBar>
         <Menu
           :collapse="collapsed"
           :keyword="keyword"
@@ -21,7 +21,8 @@
           :flatMenus="flatMenus"
           :menus="menus"
           :active="active"
-          @select="mask.selectMenu($event)"></Menu>
+          @select="select">
+        </Menu>
       </Sidebar>
       <XContainer class="x-mask__main" grow flex direction="column">
         <XContainer
@@ -32,26 +33,24 @@
             ref="tabRef"
             :favorites="favorites"
             :tabs="showTabs"
-            :home="homeTab"
-            :value="tabValue"
-            :isActiveTab="mask.isCurrentTab.bind(mask)"
-            @click="mask.changeTab($event)"
-            @remove="mask.removeTab($event)"
-            @refresh="mask.refresh($event)"
-            @toggleFavorite="mask.toggleFavorite($event)"
-            @dialog="mask.switchToDialog($event)"></Tabs>
+            :home="home"
+            :value="currentTab?.id"
+            @click="changeTab"
+            @toggleFavorite="toggleFavorite"
+            @remove="onRemoveTab"
+            @dialog="openDialog"
+            @refresh="refresh"></Tabs>
+
           <Toolbar
             :tabs="dropdownTabs"
             :actions="props.actions"
             :theme="props.theme"
-            @closeOtherTabs="() => mask.removeOtherTabs()"
-            @closeAllTabs="() => mask.removeAllTabs()"
-            @closeTab="mask.removeTab($event)"
-            @clickTab="mask.moveToShow($event)"
-            @action-click="mask.onActionClick($event)"
-            @action-command="
-              (action, item) => mask.onActionCommand(action, item)
-            ">
+            @closeOtherTabs="onRemoveOtherTabs"
+            @closeAllTabs="onRemoveAllTabs"
+            @closeTab="onRemoveTab"
+            @clickTab="moveToShow"
+            @action-click="onActionClick"
+            @action-command="onActionCommand">
             <Avatar :avatar="props.avatar">
               <template v-if="$slots.user" #default>
                 <slot name="user"> </slot>
@@ -59,14 +58,14 @@
             </Avatar>
           </Toolbar>
         </XContainer>
-        <Content :tab="currentTab">
+        <Content :createView="createView" :exclude="exclude">
           <template v-if="$slots.default">
             <slot></slot>
           </template>
         </Content>
       </XContainer>
     </template>
-    <Content v-else :tab="currentTab">
+    <Content v-else :createView="createView" :exclude="exclude">
       <template v-if="$slots.default">
         <slot></slot>
       </template>
@@ -75,8 +74,7 @@
 </template>
 <script lang="ts" setup>
   import { provide } from 'vue';
-  import { useRoute, useRouter } from 'vue-router';
-  import { XContainer } from '../';
+  import { XContainer, ActionProps, ActionMenuItem } from '../';
   import Sidebar from './components/Sidebar.vue';
   import SwitchBar from './components/SwitchBar.vue';
   import Brand from './components/Brand.vue';
@@ -85,38 +83,80 @@
   import Toolbar from './components/Toolbar.vue';
   import Avatar from './components/Avatar.vue';
   import Content from './components/Content.vue';
-  import { maskProps, MASK_INSTANCE_KEY, MaskEmits, MaskTab } from './types';
-  import { MaskFactory } from './MaskFactory';
 
+  import { maskProps, MaskEmits, MASK_KEY, MaskTab } from './types';
+  import { useSidebar, useHome, useMenus, useTabs, useContent } from './hooks';
   defineOptions({
     name: 'XMask'
   });
 
   const props = defineProps(maskProps);
   const emit = defineEmits<MaskEmits>();
-  const router = useRouter();
-  const route = useRoute();
-
-  const mask = new MaskFactory(props, emit, route, router);
+  const home = useHome(props);
+  const { collapsed, keyword, favorite } = useSidebar(props);
+  const { menus, favorites, flatMenus, active, select, toggleFavorite } =
+    useMenus(props, emit);
   const {
-    collapsed,
-    homeTab,
     tabRef,
-    favorite,
-    favorites,
-    keyword,
-    flatMenus,
-    active,
     showTabs,
-    dropdownTabs,
-    tabValue,
     currentTab,
-    menus
-  } = mask;
+    changeTab,
+    removeTab,
+    tabs,
+    updateTab,
+    isCurrentTab,
+    activeHome,
+    removeAllTabs,
+    removeOtherTabs,
+    dropdownTabs,
+    moveToShow
+  } = useTabs(props, emit, flatMenus, active, home);
 
-  provide(MASK_INSTANCE_KEY, mask);
+  const { createView, openDialog, refresh, exclude, cleanCache, closeDialogs } =
+    useContent({
+      tabs,
+      updateTab,
+      isCurrentTab,
+      activeHome
+    });
 
-  defineExpose({
-    mask
+  const onRemoveTab = async (tab: MaskTab) => {
+    const ret = await removeTab(tab);
+    if (ret) {
+      await cleanCache([tab]);
+    }
+  };
+
+  const onRemoveAllTabs = async () => {
+    const items = await removeAllTabs();
+    if (items) {
+      closeDialogs(items);
+      await cleanCache(items);
+    }
+  };
+
+  const onRemoveOtherTabs = async () => {
+    const items = await removeOtherTabs();
+    if (items) {
+      closeDialogs(items);
+      await cleanCache(items);
+    }
+  };
+
+  const onActionClick = (action: ActionProps) => {
+    emit('actionClick', action);
+  };
+
+  const onActionCommand = (action: ActionProps, item: ActionMenuItem) => {
+    emit('actionCommand', action, item);
+  };
+
+  provide(MASK_KEY, {
+    tabs,
+    flatMenus,
+    favorites,
+    updateTab,
+    active,
+    currentTab
   });
 </script>

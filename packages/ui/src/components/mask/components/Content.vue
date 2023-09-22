@@ -3,27 +3,23 @@
     <slot></slot>
 
     <RouterView v-slot="{ Component, route }">
-      <KeepAlive :exclude="aliveExclude">
+      <KeepAlive :exclude="props.exclude">
         <component
-          v-if="aliveKey && props.tab && props.tab.url === route.fullPath"
-          :key="route.fullPath"
-          :is="loader.createVNode(Component, route)"></component>
+          v-if="Component"
+          :is="props.createView(Component, route)"
+          :key="route.fullPath"></component>
       </KeepAlive>
     </RouterView>
   </XContainer>
 </template>
 <script lang="ts" setup>
-  import { KeepAlive, watch } from 'vue';
-  import { RouterView } from 'vue-router';
+  import { KeepAlive } from 'vue';
+  import { RouterView, RouteLocationNormalizedLoaded } from 'vue-router';
   import { XContainer } from '../../';
-  import { useMask } from '../MaskFactory';
-  import { MaskTab } from '../types';
 
   export interface Props {
-    tab?: MaskTab;
+    createView: (module: any, route: RouteLocationNormalizedLoaded) => any;
+    exclude: string[];
   }
-
   const props = defineProps<Props>();
-  const mask = useMask();
-  const { aliveKey, aliveExclude, loader } = mask;
 </script>

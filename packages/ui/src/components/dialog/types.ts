@@ -41,6 +41,12 @@ export const dialogProps = {
     type: [Number, String],
     default: '70%'
   },
+  left: {
+    type: [Number, String]
+  },
+  top: {
+    type: [Number, String]
+  },
   modal: {
     type: Boolean,
     default: true
@@ -99,7 +105,7 @@ export type DialogProps = ComponentPropsType<typeof dialogProps>;
 
 export type DialogEmits = {
   'update:modelValue': [value: boolean];
-  open: [];
+  open: [instance: ComponentInternalInstance];
   close: [];
   destroy: [];
   maximized: [];

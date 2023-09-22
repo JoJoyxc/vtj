@@ -30,11 +30,20 @@ const app = createApp(App);
           service: 'storage'
         }
       : await ideConfig();
+
+    const devOptions = isDev
+      ? {
+          ide: {
+            path: '/'
+          }
+        }
+      : {};
+    console.log('options', options);
     await createProvider(
       merge(
         {
           service: 'file',
-          project: { home: '/startup', name: '项目样例' },
+          project: { home: '/', name: '项目样例' },
           app,
           router,
           modules,
@@ -45,7 +54,8 @@ const app = createApp(App);
             Mask
           }
         },
-        options
+        options,
+        devOptions
       )
     );
   }

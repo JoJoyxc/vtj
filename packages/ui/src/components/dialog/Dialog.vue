@@ -100,7 +100,13 @@
   </Teleport>
 </template>
 <script lang="ts" setup>
-  import { Teleport, ref, watchEffect } from 'vue';
+  import {
+    Teleport,
+    ref,
+    watchEffect,
+    nextTick,
+    getCurrentInstance
+  } from 'vue';
   import { RawClose, Popup, Maximize, Minimize } from '@vtj/icons';
   import { ElButton } from 'element-plus';
   import { XPanel, XAction, XContainer } from '../';
@@ -121,6 +127,7 @@
 
   const props = defineProps(dialogProps);
   const emit = defineEmits<DialogEmits>();
+  const instance = getCurrentInstance();
   const wrapper = ref();
   const panelRef = ref();
   const { state, maximized, minimized, normal } = useState(props, wrapper);
@@ -134,9 +141,12 @@
   const resizable = useResizableOptions(props, state, emit);
   const componentInstance = useComponentInstance(props, panelRef);
 
-  watchEffect(() => {
+  watchEffect(async () => {
     if (props.modelValue) {
-      emit('open');
+      await nextTick();
+      if (instance) {
+        emit('open', instance);
+      }
     }
   });
 

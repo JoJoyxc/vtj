@@ -12,7 +12,7 @@
       :model-value="props.value"
       @tab-remove="onTabRemove"
       @tab-click="onTabClick">
-      <ElTabPane v-if="props.home" :name="props.home.url">
+      <ElTabPane v-if="props.home" :name="props.home.id">
         <template #label>
           <div class="x-mask-tabs__trigger">
             <component
@@ -25,19 +25,23 @@
       </ElTabPane>
       <ElTabPane
         v-for="tab in props.tabs"
-        :key="tab.id || tab.url"
-        :name="tab.url"
+        :key="tab.id"
+        :name="tab.id"
         lazy
         closable>
         <template #label>
           <ElPopover
-            :disabled="!isActiveTab(tab)"
             :open-delay="500"
             placement="bottom"
             trigger="hover"
-            width="200px">
+            width="200px"
+            :disabled="tab.id !== props.value">
             <template #reference>
-              <div class="x-mask-tabs__trigger">
+              <div
+                class="x-mask-tabs__trigger"
+                draggable="true"
+                @dragstart="onDragStart(tab, $event)"
+                @dragend="onDragEnd(tab, $event)">
                 <component
                   v-if="tab.icon"
                   :is="(useIcon(tab.icon) as any)"></component>
@@ -78,7 +82,7 @@
   export interface Props {
     tabs: MaskTab[];
     home: MaskTab;
-    isActiveTab: (tab: MaskTab) => boolean;
+    isActiveTab?: (tab: MaskTab) => boolean;
     value?: string | number;
     favorites: MenuDataItem[];
   }
@@ -123,19 +127,19 @@
   };
 
   const onTabClick = (pane: TabsPaneContext) => {
-    const name = pane.paneName;
-    if (name === props.home.url) {
+    const id = pane.paneName;
+    if (id === props.home.id) {
       emit('click', props.home);
       return;
     }
-    const tab = props.tabs.find((n) => n.url === name);
+    const tab = props.tabs.find((n) => n.id === id);
     if (tab) {
       emit('click', tab);
     }
   };
 
-  const onTabRemove = (name: string | number) => {
-    const tab = props.tabs.find((n) => n.url === name);
+  const onTabRemove = (id: string | number) => {
+    const tab = props.tabs.find((n) => n.id === id);
     if (tab) {
       emit('remove', tab);
     }
@@ -155,5 +159,20 @@
     }
 
     // console.log(item);
+  };
+
+  const onDragStart = (tab: MaskTab, e: DragEvent) => {
+    if (e.dataTransfer) {
+      e.dataTransfer.setData('tab', tab.id);
+      if (e.target) {
+        (e.target as HTMLElement).classList.add('is-dagging');
+      }
+    }
+  };
+
+  const onDragEnd = (tab: MaskTab, e: DragEvent) => {
+    if (e.target) {
+      (e.target as HTMLElement).classList.remove('is-dagging');
+    }
   };
 </script>

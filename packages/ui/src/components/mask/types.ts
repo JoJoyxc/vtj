@@ -17,11 +17,9 @@ import {
   ComponentPropsType,
   DialogProps
 } from '../';
+import { Emits } from '../shared';
 import logo from './assets/logo.png';
 import type Mask from './Mask.vue';
-import type { MaskFactory } from './MaskFactory';
-
-export const MASK_INSTANCE_KEY: InjectionKey<MaskFactory> = Symbol('$mask');
 
 export const TAB_ITEM_WIDTH = 140;
 
@@ -127,13 +125,16 @@ export type MaskEmits = {
   actionCommand: [action: ActionProps, item: ActionMenuItem];
 };
 
+export type MaskEmitsFn = Emits<MaskEmits>;
+
 export type MaskSlots = {
   default(): any;
   user(): any;
 };
 
 export interface MaskTab {
-  id?: symbol;
+  id: string;
+  name: string;
   // 页面路由
   url: string;
   // 标题文本
@@ -146,9 +147,11 @@ export interface MaskTab {
   dialog?: DialogProps & { [index: string]: any };
   // 关联菜单项
   menu?: MenuDataItem;
-
-  // 路由信息
-  route?: RouteLocationNormalizedLoaded;
 }
 
-export type MaskDefineTab = () => Partial<MaskTab> | Promise<Partial<MaskTab>>;
+export type TabCreator = () => Promise<Partial<MaskTab>> | Partial<MaskTab>;
+
+export const TAB_CREATORS_KEY: InjectionKey<Record<string, TabCreator>> =
+  Symbol();
+
+export const MASK_KEY = Symbol();

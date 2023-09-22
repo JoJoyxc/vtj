@@ -99,7 +99,6 @@
     const split = mode === 'hash' ? '#' : '';
     return `${base}${split}${home}`;
   };
-
   const engine = new Engine(container, {
     service: service === 'file' ? new FileService() : new StorageService(),
     config: {

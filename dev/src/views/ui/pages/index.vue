@@ -5,6 +5,7 @@
     <div>
       <ElInput v-model="inputValue"></ElInput>
       <ElButton @click="onClick">Button</ElButton>
+      <ElButton @click="onNewPage">New Page</ElButton>
     </div>
   </div>
 </template>
@@ -12,11 +13,10 @@
   import { ref, onActivated, onDeactivated } from 'vue';
   import { ElInput, ElButton } from 'element-plus';
   import { useRoute, useRouter } from 'vue-router';
-  import { useMask, MaskTab, defineTab } from '@vtj/ui';
-  // const route = useRoute();
+  import { MaskTab, defineTab } from '@vtj/ui';
+  const route = useRoute();
   const router = useRouter();
   const inputValue = ref('');
-  const mask = useMask();
   const onClick = () => {
     router.push('/ui/mask/subpage');
   };
@@ -25,7 +25,11 @@
     name: 'InnerPage'
   });
 
-  const { tab, route } = defineTab();
+  const { tab } = defineTab();
+
+  const onNewPage = () => {
+    router.push('/ui/mask/page?t=' + Date.now());
+  };
 
   onActivated(() => {
     console.log('onActivated', tab.value?.url);

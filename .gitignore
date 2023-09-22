@@ -44,3 +44,5 @@ lib
 /packages/ide/.vtj
 /packages/ide/src/views/pages
 /packages/ide/src/components/blocks
+
+/packages/boot/.vtj/debug
