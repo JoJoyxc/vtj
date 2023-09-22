@@ -1,7 +1,7 @@
 {
   "name": "@vtj/runtime",
   "private": false,
-  "version": "0.5.3",
+  "version": "0.6.0-alpha.0",
   "type": "module",
   "scripts": {
     "setup": "npm install --registry=https://registry.npmmirror.com",
@@ -11,14 +11,14 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "element-plus": "~2.3.14",
+    "@vtj/engine": "^0.6.0-alpha.0",
+    "@vtj/ui": "^0.6.0-alpha.0",
+    "@vtj/utils": "^0.6.0-alpha.0",
     "@vueuse/core": "~10.4.1",
-    "@vtj/engine": "^0.5.3",
-    "@vtj/ui": "^0.5.3",
-    "@vtj/utils": "^0.5.3"
+    "element-plus": "~2.3.14"
   },
   "devDependencies": {
-    "@vtj/cli": "^0.5.3",
+    "@vtj/cli": "^0.6.0-alpha.0",
     "vue": "~3.3.4",
     "vue-router": "~4.2.4"
   },
