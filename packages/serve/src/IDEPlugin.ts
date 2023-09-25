@@ -183,12 +183,6 @@ export function IDEPlugin(): Plugin[] {
 
         config.optimizeDeps.exclude = [
           '$vtj',
-          'vue',
-          'vue-router',
-          'lodash-es',
-          'element-plus',
-          '@vueuse/core',
-          '@element-plus/icons-vue',
           '@vtj/runtime',
           '@vtj/ui',
           '@vtj/utils',
