@@ -49,7 +49,7 @@
       "id": "ide",
       "name": "IDE"
     },
-    "raw": true
+    "raw": false
   },
   "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b"
 }
