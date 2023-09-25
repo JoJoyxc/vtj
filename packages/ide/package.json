@@ -38,8 +38,7 @@
   "homepage": "",
   "license": "ISC",
   "files": [
-    "dist",
-    "example"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"
