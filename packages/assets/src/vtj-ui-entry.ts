@@ -1,4 +1,5 @@
-import Element from './ui/Element';
+import Icon from './ui/Icon';
+import Container from './ui/Container';
 
 import { AssetsCategory } from '@vtj/engine';
 const categories: AssetsCategory[] = [
@@ -7,5 +8,5 @@ const categories: AssetsCategory[] = [
     category: '元件'
   }
 ];
-const components = [Element];
+const components = [Icon, Container];
 export default { name: 'vtj-ui', label: 'UI', categories, components };

@@ -50,7 +50,7 @@
       "name": "项目样例",
       "home": "/dashboard"
     },
-    "raw": false
+    "raw": true
   },
   "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b"
 }
