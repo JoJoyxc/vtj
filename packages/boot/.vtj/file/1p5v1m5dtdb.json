@@ -1,0 +1,1 @@
+{"name":"Test","title":"测试","inject":[],"state":{},"lifeCycles":{},"methods":{},"computed":{},"watch":[],"css":"","props":[],"emits":[],"slots":[],"transform":{},"dataSources":{},"__VTJ_BLOCK__":true,"id":"1p5v1m5dtdb","children":[{"name":"ElButton","children":"按钮","props":{"type":"primary"},"from":"element-plus","id":"212rrxw42di","invisible":false,"directives":[],"events":{}}]}

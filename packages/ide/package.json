@@ -5,7 +5,7 @@
   "scripts": {
     "setup": "npm install --registry=https://registry.npmmirror.com",
     "outdate": "npm outdate --registry=https://registry.npmmirror.com",
-    "dev": "cross-env ENV_TYPE=local vite",
+    "dev": "cross-env ENV_TYPE=live vite",
     "dev:example": "cross-env ENV_TYPE=uat vite",
     "build": "npm run build:prod",
     "build:prod": "vue-tsc && cross-env ENV_TYPE=live vite build",
@@ -47,7 +47,8 @@
     "service": "file",
     "project": {
       "id": "ide",
-      "name": "IDE"
+      "name": "项目样例",
+      "home": "/dashboard"
     },
     "raw": false
   },

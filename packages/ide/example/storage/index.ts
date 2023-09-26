@@ -1,19 +1,14 @@
 /// <reference types="vite/client" />
-const modules = import.meta.glob([
-  '/.vtj/project/*.json',
-  '/.vtj/file/*.json',
-  '/src/views/pages/*.vue',
-  '/src/components/blocks/*.vue'
-]);
+const modules = import.meta.glob(['/.vtj/project/*.json', '/.vtj/file/*.json']);
 export default {
   modules,
   service: 'file',
-  raw: true,
+  raw: false,
   isProd: process.env.NODE_ENV === 'production',
   project: {
-    id: 'boot',
-    name: '示例项目',
-    base: '/',
+    id: 'ide',
+    name: 'IDE',
+    base: './',
     mode: 'hash',
     page: '/page',
     preview: '/preview',

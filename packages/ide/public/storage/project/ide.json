@@ -1,0 +1,128 @@
+{
+    "__VTJ_PROJECT__": true,
+    "__VTJ_VERSION__": "0.6.3",
+    "__VTJ_DATE__": "1695691212304",
+    "id": "ide",
+    "description": "",
+    "name": "项目样例",
+    "homepageId": "",
+    "dependencies": [
+        {
+            "package": "vue",
+            "version": "3.3.4",
+            "library": "Vue",
+            "urls": [
+                "./libs/vue.global.js"
+            ],
+            "required": true,
+            "official": true,
+            "enabled": true
+        },
+        {
+            "package": "@vueuse/core",
+            "version": "latest",
+            "library": "VueUse",
+            "urls": [
+                "./libs/vueuse.shared.iife.min.js",
+                "./libs/vueuse.core.iife.min.js"
+            ],
+            "required": false,
+            "official": true,
+            "enabled": false
+        },
+        {
+            "package": "element-plus",
+            "version": "latest",
+            "library": "ElementPlus",
+            "urls": [
+                "./libs/element-plus.index.css",
+                "./libs/element-plus.full.min.js"
+            ],
+            "assetsUrl": "./libs/element-plus-assets.js",
+            "assetsLibrary": "ElementPlusAssets",
+            "required": false,
+            "official": true,
+            "enabled": true
+        },
+        {
+            "package": "@element-plus/icons-vue",
+            "version": "latest",
+            "library": "ElementPlusIconsVue",
+            "urls": [
+                "./libs/element-plus-icons-vue.js"
+            ],
+            "required": false,
+            "official": true,
+            "enabled": true
+        },
+        {
+            "package": "@vtj/utils",
+            "version": "latest",
+            "library": "VtjUtils",
+            "urls": [
+                "./libs/vtj-utils.js"
+            ],
+            "required": false,
+            "official": true,
+            "enabled": true
+        },
+        {
+            "package": "@vtj/icons",
+            "version": "latest",
+            "library": "VtjIcons",
+            "urls": [
+                "./libs/vtj-icons.css",
+                "./libs/vtj-icons.js"
+            ],
+            "required": false,
+            "official": true,
+            "enabled": true
+        }
+    ],
+    "pages": [
+        {
+            "id": "21khtm4zec7",
+            "name": "dashboard",
+            "title": "工作台",
+            "isDir": false,
+            "icon": "VtjIconHome",
+            "mask": true,
+            "home": true,
+            "hidden": true
+        },
+        {
+            "id": "rvr31ib2qj",
+            "name": "System",
+            "title": "系统管理",
+            "isDir": true,
+            "icon": "Setting",
+            "mask": true,
+            "home": false,
+            "hidden": false,
+            "children": [
+                {
+                    "id": "1pcy9h8x8kw",
+                    "name": "User",
+                    "title": "用户管理",
+                    "isDir": false,
+                    "icon": "",
+                    "mask": true,
+                    "home": false,
+                    "hidden": false
+                },
+                {
+                    "id": "1hhdijwbk0f",
+                    "name": "Dict",
+                    "title": "字典管理",
+                    "isDir": false,
+                    "icon": "",
+                    "mask": true,
+                    "home": false,
+                    "hidden": false
+                }
+            ]
+        }
+    ],
+    "blocks": [],
+    "apis": []
+}

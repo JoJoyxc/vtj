@@ -6,7 +6,7 @@
   import { ElButton } from 'element-plus';
   import { useProvider } from '@vtj/runtime';
   export default defineComponent({
-    name: '33',
+    name: 'Test',
 
     components: { ElButton },
 
