@@ -56,7 +56,7 @@ const app = createApp(App);
         }
       },
       options,
-      isDev
+      isDev || isExample
         ? {
             ide: { path: location.pathname }
           }
