@@ -45,7 +45,10 @@ const app = createApp(App);
     merge(
       {
         service: 'file',
-        project: { home: isExample ? '/dashboard' : '/' },
+        project: {
+          home: isExample ? '/dashboard' : '/',
+          base: location.pathname
+        },
         app,
         router,
         modules,
