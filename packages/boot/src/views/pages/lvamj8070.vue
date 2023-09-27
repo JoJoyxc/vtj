@@ -1,42 +1,26 @@
 <template>
-  <XContainer
-    :fit="false"
-    :auto="true"
-    wrap="wrap"
-    justify="flex-start"
-    alignContent="flex-start"
-    :grow="false"
-    align="flex-start"
-    :shrink="true"
-    :inline="true"
-    alignSelf="flex-start">
-    <XContainer
-      v-for="(item, index) in 10"
-      :fit="false"
-      :auto="true"
-      :width="200"
-      :height="200"
-      :style='{"background": "#ccc", "margin": "10px"}'
-      :grow="true"
-      :shrink="false"
-      alignSelf="auto"
-      :padding="false"
-      alignContent="flex-start"
-      justify="center"
-      wrap="nowrap"
-      align="center">
-      <XIcon icon="Baseball" :size="100" color="#0A8C77"> </XIcon>
-    </XContainer>
-  </XContainer>
+  <XPanel header="VTJ" :card="false">
+    <component is="div">
+      VTJ 一款基于 Vue3 + Typescript
+      的低代码开发工具，内置了设计器引擎、渲染器和代码生成器
+    </component>
+    <component is="h3"> 开发环境要求 </component>
+    <component is="div">
+      VTJ 使用了最新的 Vue3 生态技术栈，要求 Node 版本必须是 v18+， 建议使用 nvm
+      切换 Node 版本。
+    </component>
+    <component is="h3"> 快速体验 </component>
+    <component is="div"> npm create vtj@latest -- -t web </component>
+  </XPanel>
 </template>
 <script lang="ts">
   import { defineComponent, reactive } from 'vue';
-  import { XContainer, XIcon } from '@vtj/ui';
+  import { XPanel } from '@vtj/ui';
   import { useProvider } from '@vtj/runtime';
   export default defineComponent({
     name: 'Dashboard',
 
-    components: { XContainer, XIcon },
+    components: { XPanel },
 
     setup(props) {
       const provider = useProvider();

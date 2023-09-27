@@ -1,18 +1,28 @@
 <template>
-  <ElButtonGroup>
-    <ElButton> Button1 </ElButton>
-    <ElButton> Button2 </ElButton>
-    <ElButton> Button3 </ElButton>
-  </ElButtonGroup>
+  <XContainer :fit="false" wrap="wrap" :padding="false">
+    <XContainer
+      v-for="(item, index) in 20"
+      :fit="false"
+      :auto="true"
+      width="20%"
+      :height="200"
+      justify="center"
+      align="center"
+      :inline="true"
+      :style='{"background": "#eee", "margin": "5px"}'
+      :grow="true">
+      {{ item }}
+    </XContainer>
+  </XContainer>
 </template>
 <script lang="ts">
   import { defineComponent, reactive } from 'vue';
-  import { ElButtonGroup, ElButton } from 'element-plus';
+  import { XContainer } from '@vtj/ui';
   import { useProvider } from '@vtj/runtime';
   export default defineComponent({
     name: 'Container',
 
-    components: { ElButtonGroup, ElButton },
+    components: { XContainer },
 
     setup(props) {
       const provider = useProvider();
