@@ -43,7 +43,7 @@
 
     methods: {
       click_handler_2jl6c2bv8q8() {
-        this.state.icon = 'Minus';
+        this.state.icon = this.state.icon === 'Minus' ? 'Plus' : 'Minus';
       }
     }
   });
