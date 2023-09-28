@@ -9,6 +9,10 @@
         </component>
       </ElCarouselItem>
     </ElCarousel>
+    <ElDivider> </ElDivider>
+    <XContainer :fit="true" :auto="true">
+      <slot> 插槽默认内容 </slot>
+    </XContainer>
     <template #footer="scope">
       <ElInput
         v-model:modelValue="state.value"
@@ -22,13 +26,27 @@
 </template>
 <script lang="ts">
   import { defineComponent, reactive } from 'vue';
-  import { XPanel } from '@vtj/ui';
-  import { ElCarousel, ElCarouselItem, ElInput, ElButton } from 'element-plus';
+  import { XPanel, XContainer } from '@vtj/ui';
+  import {
+    ElCarousel,
+    ElCarouselItem,
+    ElDivider,
+    ElInput,
+    ElButton
+  } from 'element-plus';
   import { useProvider } from '@vtj/runtime';
   export default defineComponent({
     name: 'MyBlock',
 
-    components: { XPanel, ElCarousel, ElCarouselItem, ElInput, ElButton },
+    components: {
+      XPanel,
+      ElCarousel,
+      ElCarouselItem,
+      ElDivider,
+      XContainer,
+      ElInput,
+      ElButton
+    },
     props: {
       title: {
         type: [String],
