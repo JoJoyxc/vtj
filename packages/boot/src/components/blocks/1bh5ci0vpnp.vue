@@ -11,7 +11,7 @@
     </ElCarousel>
     <template #footer="scope">
       <ElInput
-        v-model:modelValue="this.state.value"
+        v-model:modelValue="state.value"
         placeholder="请输入事件参数文本">
       </ElInput>
       <ElButton type="primary" @click="click_handler_ix6mw4vvx6">
