@@ -14,7 +14,7 @@ request.setConfig({
     type: 'form',
     // 校验请求响应码
     validSuccess: true,
-    // 请求响应返回原始 AxiosResponse
+    // 请求响应返回原始 AxiosResponse, 如果设置为false，成功是返回 res.data.data
     originResponse: false,
     // 自定义校验响应码方法
     validate: (res: any) => {
@@ -40,8 +40,31 @@ request.setConfig({
 
 更多配置项目，参考：https://gitee.com/newgateway/vtj/blob/master/packages/utils/src/request.ts
 
-1. 在 /src/main.ts 引入  /src/api/index.tsss
+1. 在 /src/main.ts 引入 /src/api/index.tsss
 
 ```ts
 import '@/api';
+```
+
+1. 请求参数不需要配置，直接传递给接口方法，如：
+
+```ts
+this.fetchUsemameLogin({
+  username: 'admin',
+  password: '123s'
+});
+```
+
+如该请求的配置与全局的不一致，也可以在调用时更改，如：
+
+
+```ts
+this.fetchUsemameLogin({
+  username: 'admin',
+  password: '123s'
+}, {
+  settings: {
+    originResponse: true
+  }
+});
 ```
