@@ -1,3 +1,10 @@
+# Api相关配置文档
+
+VTJ设计器的请求发送依赖 `@vtj/utils` 中的 `request` 和 `jsonp`。 本地项目需要执行初始化设置。步骤如下：
+
+1. 在 /src/api/index.ts 设置全局 request 配置
+
+```ts
 import { request, IRequestConfig } from '@vtj/utils';
 import { ElNotification } from 'element-plus';
 
@@ -29,3 +36,12 @@ request.setConfig({
     }
   }
 });
+```
+
+更多配置项目，参考：https://gitee.com/newgateway/vtj/blob/master/packages/utils/src/request.ts
+
+1. 在 /src/main.ts 引入  /src/api/index.tsss
+
+```ts
+import '@/api';
+```
