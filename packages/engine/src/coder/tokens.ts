@@ -310,7 +310,7 @@ function bindNodeEvents(
       ? {
           type: 'JSFunction',
           value: `{
-        return (${value.handler.value})();
+        return (${value.handler.value})($event);
       }`
         }
       : value.handler;
@@ -486,7 +486,7 @@ export function parser(
     computedKeys
   );
 
-  const blocksImport = dedupArray(importBlocks, 'id').map((n) => {
+  const blocksImport = dedupArray(importBlocks, 'id').map((n: any) => {
     return `import ${n.name} from '@/components/blocks/${n.id}.vue';`;
   });
 
