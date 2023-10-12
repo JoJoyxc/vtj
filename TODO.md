@@ -6,8 +6,12 @@
 # UI组件库
 
 - XUpload 上传组件
+- XTable  表格组件
+- XLogin  登录组件
 
 # Docs
 - 组件预览
 
 # Adapter
+- 适配业务请求
+- 适配登录
