@@ -198,9 +198,23 @@ export class Simulator {
             env[VUE] = lib;
           }
           const group = componentGroups.find((n) => n.library === library);
+
           const names = group?.names || [];
           names.forEach((name) => {
-            env.components[name] = lib[name];
+            const desc = assets.componentMap[name];
+            if (desc) {
+              if (desc.parent) {
+                const module = lib[desc.parent];
+                env.components[desc.name] = module[desc.name];
+              } else {
+                env.components[desc.name] = lib[name];
+              }
+              if (desc.alias) {
+                env.components[desc.alias] = env.components[desc.name];
+              }
+            } else {
+              env.components[name] = lib[name];
+            }
           });
         }
       });

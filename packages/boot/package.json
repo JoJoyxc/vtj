@@ -24,6 +24,7 @@
     "@vtj/ui": "workspace:*",
     "@vtj/utils": "workspace:*",
     "@vueuse/core": "~10.4.1",
+    "ant-design-vue": "~4.0.3",
     "element-plus": "~2.3.9",
     "vue": "~3.3.4",
     "vue-router": "~4.2.5"
@@ -47,7 +48,7 @@
     "service": "file",
     "project": {
       "id": "boot",
-      "name": "示例项目"
+      "name": "VTJ.PRO"
     },
     "raw": true,
     "debug": false

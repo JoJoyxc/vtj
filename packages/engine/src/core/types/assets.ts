@@ -25,6 +25,19 @@ export interface ComponentDescription {
    * 组件名称
    */
   name: string;
+
+  /**
+   * 组件别名，出码时用到, 如 import {Button as AButton} from 'ant-design-vue'
+   */
+  alias?: string;
+
+  /**
+   * 父组件名称， 如 import { Button } from 'ant-design-vue'
+   * const ButtonGroup = Button.Group;
+   * 
+   */
+  parent?: string;
+
   /**
    * 图标
    */
