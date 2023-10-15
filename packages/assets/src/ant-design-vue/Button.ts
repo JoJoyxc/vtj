@@ -2,8 +2,8 @@ import { ComponentDescription } from '@vtj/engine';
 
 const components: ComponentDescription[] = [
   {
-    name: 'Button',
-    alias: 'AButton',
+    name: 'AButton',
+    alias: 'Button',
     title: '按钮',
     categoryId: 'base',
     doc: 'https://www.antdv.com/components/button-cn',
@@ -80,8 +80,8 @@ const components: ComponentDescription[] = [
     }
   },
   {
-    name: 'Group',
-    alias: 'AButtonGroup',
+    name: 'AButtonGroup',
+    alias: 'Group',
     parent: 'Button',
     title: '按钮组',
     categoryId: 'base',
@@ -90,15 +90,15 @@ const components: ComponentDescription[] = [
     snippet: {
       children: [
         {
-          name: 'Button',
+          name: 'AButton',
           children: 'Button1'
         },
         {
-          name: 'Button',
+          name: 'AButton',
           children: 'Button2'
         },
         {
-          name: 'Button',
+          name: 'AButton',
           children: 'Button3'
         }
       ]

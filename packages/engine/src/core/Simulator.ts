@@ -203,15 +203,9 @@ export class Simulator {
           names.forEach((name) => {
             const desc = assets.componentMap[name];
             if (desc) {
-              if (desc.parent) {
-                const module = lib[desc.parent];
-                env.components[desc.name] = module[desc.name];
-              } else {
-                env.components[desc.name] = lib[name];
-              }
-              if (desc.alias) {
-                env.components[desc.alias] = env.components[desc.name];
-              }
+              env.components[name] = desc.parent
+                ? lib[desc.parent]?.[desc.alias || name]
+                : lib[desc.alias || name];
             } else {
               env.components[name] = lib[name];
             }

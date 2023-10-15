@@ -201,14 +201,11 @@ function parseTemplate(
         continue;
       }
       const desc = componentMap[name];
-      name = desc?.alias ? desc.alias : name;
-
-      if (desc) {
-        if (desc.parent) {
-          components.push(`${name}:${desc.parent}.${desc.name}`);
-        } else {
-          components.push(desc.alias ? `${desc.alias}:${desc.name}` : name);
-        }
+      if (desc && desc.alias) {
+        const aliasName = desc.parent
+          ? `${desc.parent}.${desc.alias}`
+          : desc.alias;
+        components.push(`${name}: ${aliasName}`);
       } else {
         components.push(name);
       }
@@ -415,7 +412,7 @@ function parseImports(
     const desc = componentMap[name.split(':')[0]];
     if (desc && desc.package) {
       const items = imports[desc.package] ?? (imports[desc.package] = []);
-      items.push(desc.parent ? desc.parent : desc.name);
+      items.push(desc.parent || (desc.alias || '').split('.')[0] || desc.name);
     }
   }
 
@@ -478,11 +475,11 @@ export function parser(
   const dataSources = parseDataSources(dsl.dataSources);
 
   // 处理别名
-  Object.values(componentMap).forEach((n) => {
-    if (n.alias) {
-      componentMap[n.alias] = n.parent ? componentMap[n.parent] : n;
-    }
-  });
+  // Object.values(componentMap).forEach((n) => {
+  //   if (n.alias) {
+  //     componentMap[n.alias] = n.parent ? componentMap[n.parent] : n;
+  //   }
+  // });
 
   const { methods, nodes, components, importBlocks } = parseTemplate(
     dsl.children,

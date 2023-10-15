@@ -27,14 +27,18 @@ export interface ComponentDescription {
   name: string;
 
   /**
-   * 组件别名，出码时用到, 如 import {Button as AButton} from 'ant-design-vue'
+   * 组件别名，即组件库导出的原始名称 如 import { Button } from 'ant-design-vue'
    */
   alias?: string;
 
   /**
-   * 父组件名称， 如 import { Button } from 'ant-design-vue'
-   * const ButtonGroup = Button.Group;
-   * 
+   * 组件库导出的名称 如 import { Button } from 'ant-design-vue'
+   * parent: Button
+   * alias: Group
+   * name: AButtonGroup
+   * const AButtonGroup = Button.Group;
+   * 当 parent 有值时 alias 可以设置多级，如 Group.Item
+   *
    */
   parent?: string;
 
