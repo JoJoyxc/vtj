@@ -87,6 +87,15 @@ const components: ComponentDescription[] = [
     categoryId: 'base',
     doc: 'https://www.antdv.com/components/button-cn',
     package: 'ant-design-vue',
+    props: [
+      {
+        name: 'size',
+        label: 'size',
+        setters: 'SelectSetter',
+        options: ['large', 'middle', 'small'],
+        defaultValue: 'middle'
+      }
+    ],
     snippet: {
       children: [
         {

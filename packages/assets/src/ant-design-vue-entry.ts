@@ -38,5 +38,6 @@ export default {
   name: 'ant-design-vue',
   label: 'Antd',
   categories,
-  components
+  components,
+  order: 2
 };

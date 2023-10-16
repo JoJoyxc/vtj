@@ -3,7 +3,6 @@ import App from './App.vue';
 import router from './router';
 import { createProvider } from '@vtj/runtime';
 import { merge } from '@vtj/utils';
-import 'ant-design-vue/dist/reset.css';
 import 'element-plus/dist/index.css';
 import '@vtj/icons/lib/style.css';
 import '@vtj/engine/lib/style.css';

@@ -71,6 +71,7 @@ const Tabs: ComponentDescription[] = [
         name: 'update:modelValue'
       }
     ],
+    slots: ['default', 'addIcon'],
     snippet: {
       props: {
         modelValue: '1'

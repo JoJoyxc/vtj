@@ -9,6 +9,9 @@ export interface AssetsContent {
   label?: string;
   categories?: AssetsCategory[];
   components?: ComponentDescription[];
+
+  // 排序号，资产在组件库的排序，数字小的在前
+  order?: number;
 }
 
 // 资产分类

@@ -206,11 +206,10 @@ function parseTemplate(
           ? `${desc.parent}.${desc.alias}`
           : desc.alias;
         components.push(`${name}: ${aliasName}`);
-      } else {
-        components.push(name);
       }
 
       if (from && typeof from === 'object' && from.type === 'Schema') {
+        components.push(name);
         importBlocks.push({ id: from.id, name });
       }
 
