@@ -63,6 +63,7 @@ export interface IRequestSettings {
   headers?:
     | RawAxiosRequestHeaders
     | ((
+        id: string,
         config: AxiosRequestConfig,
         settings: IRequestSettings
       ) => RawAxiosRequestHeaders);
@@ -192,7 +193,7 @@ export class Request {
   ) {
     const injectHeaders =
       typeof settings.headers === 'function'
-        ? settings.headers(config, settings)
+        ? settings.headers(id, config, settings)
         : settings.headers || {};
     const headers: RawAxiosRequestHeaders = {
       'Content-Type': TYPES[settings.type || 'form'],
