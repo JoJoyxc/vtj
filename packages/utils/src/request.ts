@@ -7,7 +7,7 @@ import axios, {
   InternalAxiosRequestConfig,
   CancelTokenSource
 } from 'axios';
-import { merge, omit, uid, template, debounce, throttle } from './util';
+import { merge, omit, template, debounce, throttle, uuid } from './util';
 
 const TYPES = {
   form: 'application/x-www-form-urlencoded',
@@ -328,7 +328,7 @@ export class Request {
     const config = omit<IRequestConfig<D>, IRequestConfig<D>>(options, [
       'settings'
     ]);
-    const id = uid();
+    const id = uuid(false);
     const source = axios.CancelToken.source();
     this.records[id] = { settings, config, source };
     const url = this.createUrl(config);
