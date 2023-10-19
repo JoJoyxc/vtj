@@ -1,7 +1,7 @@
 {
   "name": "@vtj/ide",
   "private": false,
-  "version": "0.6.20",
+  "version": "0.6.21",
   "scripts": {
     "setup": "npm install --registry=https://registry.npmmirror.com",
     "outdate": "npm outdate --registry=https://registry.npmmirror.com",
@@ -17,16 +17,16 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@vtj/assets": "^0.6.20",
-    "@vtj/engine": "^0.6.20",
-    "@vtj/icons": "^0.6.20",
-    "@vtj/runtime": "^0.6.20",
-    "@vtj/ui": "^0.6.20",
-    "@vtj/utils": "^0.6.20"
+    "@vtj/assets": "^0.6.21",
+    "@vtj/engine": "^0.6.21",
+    "@vtj/icons": "^0.6.21",
+    "@vtj/runtime": "^0.6.21",
+    "@vtj/ui": "^0.6.21",
+    "@vtj/utils": "^0.6.21"
   },
   "devDependencies": {
-    "@vtj/cli": "^0.6.20",
-    "@vtj/serve": "^0.6.20",
+    "@vtj/cli": "^0.6.21",
+    "@vtj/serve": "^0.6.21",
     "vue": "~3.3.4",
     "vue-router": "~4.2.5"
   },
