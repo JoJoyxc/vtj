@@ -58,7 +58,12 @@ export interface IRequestSettings {
   type?: 'form' | 'json' | 'data';
 
   /**
-   * 请求头
+   *  是否注入自定义的请求头
+   */
+  injectHeaders?: boolean;
+
+  /**
+   * 自定义请求头
    */
   headers?:
     | RawAxiosRequestHeaders
@@ -112,7 +117,7 @@ export interface IRequestSettings {
   skipWarn?: IRequestSkipWarn;
 
   /**
-   * 扩展参数
+   * 其他自定义扩展参数
    */
   [index: string]: any;
 }
@@ -175,11 +180,13 @@ export class Request {
   }
 
   cancel(id?: string, message: string = '请求已取消') {
+    // 取消对应id单独请求
     if (id) {
       const record = this.records[id];
       if (!record) return;
       record.source.cancel(message);
     } else {
+      // 不指定id，取消全部未完成的请求
       for (const record of Object.values(this.records)) {
         record.source.cancel(message);
       }
@@ -191,15 +198,19 @@ export class Request {
     settings: IRequestSettings,
     config: AxiosRequestConfig
   ) {
-    const injectHeaders =
-      typeof settings.headers === 'function'
+
+    const injectHeaders = settings.injectHeaders
+      ? typeof settings.headers === 'function'
         ? settings.headers(id, config, settings)
-        : settings.headers || {};
+        : settings.headers || {}
+      : {};
+
     const headers: RawAxiosRequestHeaders = {
       'Content-Type': TYPES[settings.type || 'form'],
       ...config.headers,
       ...injectHeaders
     };
+
     if (settings.skipWarn) {
       headers[LOCAL_REQUEST_ID] = id;
     }
@@ -449,6 +460,7 @@ export function createRequest(options: IRequestOptions = {}): IStaticRequest {
 
 export const request: IStaticRequest = createRequest({
   settings: {
+    injectHeaders: true,
     loading: true,
     originResponse: true
   }
@@ -477,4 +489,9 @@ export function createApis(map: IApiMap) {
   return apis;
 }
 
-export { LOCAL_REQUEST_ID };
+export {
+  LOCAL_REQUEST_ID,
+  type AxiosRequestConfig,
+  type AxiosResponse,
+  type RawAxiosRequestHeaders
+};
