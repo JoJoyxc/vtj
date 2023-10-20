@@ -399,6 +399,7 @@ export class Request {
   private setupSkipWarn(settings: IRequestSettings) {
     if (this.stopSkipWarn) {
       this.stopSkipWarn();
+      this.stopSkipWarn = undefined;
     }
     if (!settings.skipWarn) return;
     const { code, executor, callback, complete } = settings.skipWarn;
