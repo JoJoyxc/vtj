@@ -33,6 +33,8 @@ lib
 /packages/*/types/
 /packages/*/lib/
 /packages/*/cdn/
+/packages/*/es/
+/packages/*/dist/
 /packages/*/coverage/
 /packages/*/node_modules/
 /packages/*/tsconfig.tsbuildinfo

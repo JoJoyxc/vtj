@@ -91,6 +91,31 @@ importers:
         specifier: ~3.5.13
         version: 3.5.13
 
+  packages/base:
+    dependencies:
+      '@types/lodash-es':
+        specifier: ~4.17.8
+        version: 4.17.9
+    devDependencies:
+      '@types/crypto-js':
+        specifier: ~4.1.2
+        version: 4.1.2
+      axios:
+        specifier: ~1.5.1
+        version: 1.5.1
+      crypto-js:
+        specifier: ~4.1.1
+        version: 4.1.1
+      jsencrypt:
+        specifier: ~3.3.2
+        version: 3.3.2
+      lodash-es:
+        specifier: ~4.17.21
+        version: 4.17.21
+      unbuild:
+        specifier: ~2.0.0
+        version: 2.0.0(sass@1.69.4)(typescript@5.2.2)
+
   packages/boot:
     dependencies:
       '@element-plus/icons-vue':
@@ -228,13 +253,13 @@ importers:
         specifier: ~2.1.0
         version: 2.1.0(vue@3.3.4)
       '@vtj/icons':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../icons
       '@vtj/ui':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../ui
       '@vtj/utils':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../utils
       '@vueuse/core':
         specifier: ~10.5.0
@@ -256,7 +281,7 @@ importers:
         version: 1.1.4
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../cli
       vue:
         specifier: ~3.3.4
@@ -272,7 +297,7 @@ importers:
         version: 2.1.0(vue@3.3.4)
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../cli
       cross-env:
         specifier: ~7.0.3
@@ -287,29 +312,29 @@ importers:
   packages/ide:
     dependencies:
       '@vtj/assets':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../assets
       '@vtj/engine':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../engine
       '@vtj/icons':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../icons
       '@vtj/runtime':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../runtime
       '@vtj/ui':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../ui
       '@vtj/utils':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../utils
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../cli
       '@vtj/serve':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../serve
       vue:
         specifier: ~3.3.4
@@ -321,13 +346,13 @@ importers:
   packages/runtime:
     dependencies:
       '@vtj/engine':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../engine
       '@vtj/ui':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../ui
       '@vtj/utils':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../utils
       '@vueuse/core':
         specifier: ~10.5.0
@@ -337,7 +362,7 @@ importers:
         version: 2.4.0(vue@3.3.4)
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../cli
       vue:
         specifier: ~3.3.4
@@ -368,10 +393,10 @@ importers:
         specifier: ~1.15.3
         version: 1.15.3
       '@vtj/engine':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../engine
       '@vtj/utils':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../utils
       typescript:
         specifier: ~5.2.2
@@ -383,16 +408,22 @@ importers:
         specifier: ~4.4.11
         version: 4.4.11(@types/node@20.8.6)(sass@1.69.4)(terser@5.22.0)
 
+  packages/types:
+    devDependencies:
+      unbuild:
+        specifier: ~2.0.0
+        version: 2.0.0(sass@1.69.4)(typescript@5.2.2)
+
   packages/ui:
     dependencies:
       '@element-plus/icons-vue':
         specifier: ~2.1.0
         version: 2.1.0(vue@3.3.4)
       '@vtj/icons':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../icons
       '@vtj/utils':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../utils
       '@vueuse/core':
         specifier: ~10.5.0
@@ -402,7 +433,7 @@ importers:
         version: 2.4.0(vue@3.3.4)
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../cli
       vue:
         specifier: ~3.3.4
@@ -451,7 +482,7 @@ importers:
         version: 2.0.6
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.6.17
+        specifier: ^0.6.22
         version: link:../cli
 
   packages/vtj:
@@ -483,6 +514,15 @@ importers:
       unbuild:
         specifier: ~2.0.0
         version: 2.0.0(sass@1.69.4)(typescript@5.2.2)
+
+  projects/node:
+    devDependencies:
+      '@vtj/base':
+        specifier: workspace:*
+        version: link:../../packages/base
+      '@vtj/cli':
+        specifier: workspace:*
+        version: link:../../packages/cli
 
 packages:
 
@@ -2152,7 +2192,7 @@ packages:
     resolution: {integrity: sha512-rA+fGUo2j/LEq6w1w8s6oVikLbJTWoIDVpYMc7bUCtwDOUuZKMQiRtjmpavY3fTm7ltu42f4AKflc2A70K4wvA==}
     engines: {node: ^14.17.0 || >=16.0.0}
     dependencies:
-      chalk: 4.1.0
+      chalk: 4.1.2
       execa: 5.0.0
       strong-log-transformer: 2.1.0
     dev: true
@@ -2894,7 +2934,6 @@ packages:
 
   /@types/crypto-js@4.1.2:
     resolution: {integrity: sha512-t33RNmTu5ufG/sorROIafiCVJMx3jz95bXUMoPAZcUD14fxMXnuTzqzXZoxpR0tNx2xpw11Dlmem9vGCsrSOfA==}
-    dev: false
 
   /@types/estree@1.0.3:
     resolution: {integrity: sha512-CS2rOaoQ/eAgAfcTfq6amKG7bsN+EMcgGY4FAFQdvSj2y1ixvOZTUA9mOtCai7E1SYu283XNw7urKK30nP3wkQ==}
@@ -4112,7 +4151,6 @@ packages:
 
   /crypto-js@4.1.1:
     resolution: {integrity: sha512-o2JlM7ydqd3Qk9CA0L4NL6mTzU2sdx96a+oOfPu8Mkl/PK51vSyoi8/rQ8NknZtk44vq15lmhAj9CIAGwgeWKw==}
-    dev: false
 
   /cssstyle@3.0.0:
     resolution: {integrity: sha512-N4u2ABATi3Qplzf0hWbVCdjenim8F3ojEXpBDF5hBpjzW182MjNGLqfmQ0SkSPeQ+V86ZXgeH8aXj6kayd4jgg==}
@@ -4807,7 +4845,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.0.5
+      minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
     dev: true
@@ -5336,7 +5374,7 @@ packages:
     resolution: {integrity: sha512-LMIgiIrhigmPrs03JHpxUh2yISK3vLFPkAodPeo0+BuF7wA2FoQbkEg1u8gBYBThncu7e1oEDUfIXVuTqLRUjw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
-      chalk: 4.1.0
+      chalk: 4.1.2
       diff-sequences: 29.6.3
       jest-get-type: 29.6.3
       pretty-format: 29.7.0
@@ -5430,7 +5468,6 @@ packages:
 
   /jsencrypt@3.3.2:
     resolution: {integrity: sha512-arQR1R1ESGdAxY7ZheWr12wCaF2yF47v5qpB76TtV64H1pyGudk9Hvw8Y9tb/FiTIaaTRUyaSnm5T/Y53Ghm/A==}
-    dev: false
 
   /jsesc@0.5.0:
     resolution: {integrity: sha512-uZz5UnB7u4T9LvwmFqXii7pZSouaRPorGs5who1Ip7VO0wxanFvBL7GkM6dTHlgX+jhBApRetaWpnDabOeTcnA==}
@@ -6066,7 +6103,7 @@ packages:
       array-differ: 3.0.0
       array-union: 2.1.0
       arrify: 2.0.1
-      minimatch: 3.0.5
+      minimatch: 3.1.2
     dev: true
 
   /mute-stream@0.0.8:
@@ -6321,7 +6358,7 @@ packages:
       '@yarnpkg/parsers': 3.0.0-rc.46
       '@zkochan/js-yaml': 0.0.6
       axios: 1.5.1
-      chalk: 4.1.0
+      chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
       cliui: 8.0.1
