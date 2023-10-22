@@ -1,4 +1,7 @@
-import { merge } from '@vtj/base';
+import { slice } from '@vtj/base';
 
-const value = { a: 1 };
-console.log(merge(value, { a: 2 }));
+const value = slice([1, 2, 3, 4], 1, 2);
+
+console.log(value);
+
+// console.log(upperFirst('hello'));

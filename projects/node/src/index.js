@@ -1,6 +1,4 @@
-const { md5 } = require('@vtj/base');
+const { slice } = require('@vtj/base');
 
-(async () => {
-  const value = await md5('ABc');
-  console.log(value);
-})();
+const value = slice([1, 2, 3, 4], 1, 2);
+console.log(value);

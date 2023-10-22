@@ -38,8 +38,9 @@
 - create-vtj 独立
 - @vtj/types 基础类型定义
 - @vtj/base 基础工具库，支持 node 和 浏览器环境
+- @vtj/node 仅支持Node环境公共工具库。依赖：@vtj/base
 - @vtj/utils 仅支持浏览器环境公共工具库。依赖：@vtj/base
-- @vtj/cli 项目脚手架。依赖：@vtj/base
+- @vtj/cli 项目脚手架。依赖：@vtj/node
 - @vtj/assets 资产。依赖：@vtj/cli、@vtj/types
 - @vtj/icons 图标库，依赖：@vtj/cli
 - @vtj/ui 组件库，依赖：@vtj/cli、 @vtj/utils、@vtj/icons
