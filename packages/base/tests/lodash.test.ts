@@ -1,13 +1,5 @@
 import { expect, test } from 'vitest';
-import {
-  isString,
-  isSymbol,
-  camelCase,
-  upperFirst,
-  slice,
-  words,
-  get
-} from '../src';
+import { isString, isSymbol, camelCase, upperFirst, get, set } from '../src';
 
 test('isString', () => {
   expect(isString('abc')).toBe(true);
@@ -29,16 +21,6 @@ test('upperFirst', () => {
   expect(upperFirst('helloWorld')).equal('HelloWorld');
 });
 
-test('slice', () => {
-  expect(slice([1, 2, 3, 4])).toEqual([1, 2, 3, 4]);
-  expect(slice([1, 2, 3, 4], 3)).toEqual([4]);
-  expect(slice([1, 2, 3, 4], 1, 3)).toEqual([2, 3]);
-});
-
-test('words', () => {
-  expect(words('hello world! ok')).toEqual(['hello', 'world', 'ok']);
-});
-
 test('get', () => {
   const obj = {
     a: 1,
@@ -52,4 +34,13 @@ test('get', () => {
   expect(get(obj, 'c.2')).toBe(3);
   expect(get(obj, 'd.0.a')).toBe(3);
   expect(get(obj, 'e', null)).toBe(null);
+});
+
+test('set', () => {
+  const object = { a: [{ b: { c: 3 } }] };
+  set(object, 'a[0].b.c', 4);
+  set(object, ['x', '0', 'y', 'z'], 5);
+
+  expect(object.a[0].b.c).toBe(4);
+  expect(get(object, 'x.0.y.z')).toBe(5);
 });

@@ -7,7 +7,9 @@
         "build": "unbuild",
         "test": "vitest"
     },
-    "dependencies": {},
+    "dependencies": {
+        "@types/lodash-es": "~4.17.8"
+    },
     "devDependencies": {
         "@types/crypto-js": "~4.1.2",
         "@types/lodash-es": "~4.17.8",
@@ -20,14 +22,14 @@
     },
     "exports": {
         ".": {
-            "types": "./dist/index.d.ts",
+            "types": "./es/index.d.ts",
             "import": "./dist/index.mjs",
             "require": "./dist/index.cjs"
         }
     },
     "main": "./dist/index.cjs",
     "module": "./dist/index.mjs",
-    "types": "./dist/index.d.ts",
+    "types": "./es/index.d.ts",
     "files": [
         "dist"
     ],
