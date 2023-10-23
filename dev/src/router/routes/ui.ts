@@ -72,5 +72,9 @@ export const ui = [
   {
     path: '/ui/dialog-form',
     component: () => import('@/views/ui/dialog-form.vue')
+  },
+  {
+    path: '/ui/tabs',
+    component: () => import('@/views/ui/tabs.vue')
   }
 ];

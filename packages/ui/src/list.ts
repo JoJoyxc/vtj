@@ -13,7 +13,8 @@ import {
   XMask,
   XField,
   XForm,
-  XDialogForm
+  XDialogForm,
+  XTabs
 } from './components';
 
 export default [
@@ -30,5 +31,6 @@ export default [
   XMask,
   XField,
   XForm,
-  XDialogForm
+  XDialogForm,
+  XTabs
 ] as DefineComponent<any, any, any, any>[];
