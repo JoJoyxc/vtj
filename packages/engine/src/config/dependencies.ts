@@ -46,7 +46,7 @@ export const dependencies: Dependencie[] = [
     package: 'echarts',
     version: 'latest',
     library: 'echarts',
-    urls: ['/libs/echarts.min.js'],
+    urls: ['./libs/echarts.min.js'],
     required: false,
     official: true,
     enabled: true
