@@ -100,7 +100,7 @@ export const dependencies: Dependencie[] = [
     assetsLibrary: 'AntDesignVueAssets',
     required: false,
     official: true,
-    enabled: false
+    enabled: true
   }
 
   // {
