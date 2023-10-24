@@ -1,13 +1,12 @@
 <template>
   <div>
-    <XContainer style="margin-bottom: 10px" wrap="wrap">
+    <XContainer style="margin-bottom: 10px" wrap="wrap" gap>
       <XPanel
         v-for="n in 10"
         @click="onClick"
         :header="null"
         width="calc(20% - 10px)"
-        shadow="always"
-        style="margin-left: 10px; margin-top: 10px">
+        shadow="always">
         <XDataItem title="应用名称" :icon="icon"></XDataItem>
       </XPanel>
     </XContainer>

@@ -25,8 +25,8 @@
     "@vtj/utils": "workspace:*",
     "@vueuse/core": "~10.5.0",
     "ant-design-vue": "~4.0.6",
-    "element-plus": "~2.4.0",
-    "vue": "~3.3.4",
+    "element-plus": "~2.4.1",
+    "vue": "~3.3.6",
     "vue-router": "~4.2.5"
   },
   "devDependencies": {
