@@ -1,5 +1,5 @@
 import { PropType } from 'vue';
-import { ComponentPropsType, BaseSize } from '../shared';
+import { ComponentPropsType } from '../shared';
 import { IconParam } from '../';
 
 export interface TabsItem {

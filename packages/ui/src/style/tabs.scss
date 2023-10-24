@@ -2,7 +2,7 @@
 
 @include b(tabs) {
   --el-tabs-header-height: 30px !important;
-
+  margin-bottom: 10px;
   @include when(no-border) {
     .el-tabs__nav-wrap::after {
       background-color: transparent;

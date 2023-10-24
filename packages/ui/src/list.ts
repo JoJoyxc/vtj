@@ -14,7 +14,8 @@ import {
   XField,
   XForm,
   XDialogForm,
-  XTabs
+  XTabs,
+  XDataItem
 } from './components';
 
 export default [
@@ -32,5 +33,6 @@ export default [
   XField,
   XForm,
   XDialogForm,
-  XTabs
+  XTabs,
+  XDataItem
 ] as DefineComponent<any, any, any, any>[];

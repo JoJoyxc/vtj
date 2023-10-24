@@ -76,5 +76,9 @@ export const ui = [
   {
     path: '/ui/tabs',
     component: () => import('@/views/ui/tabs.vue')
+  },
+  {
+    path: '/ui/data-item',
+    component: () => import('@/views/ui/data-item.vue')
   }
 ];
