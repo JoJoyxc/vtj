@@ -13,10 +13,8 @@
 - XTabs 选项卡
 - XToolbar 工具条
 - XTable 表格组件
-- XCard 卡片组件
 - XList 数据列表
 - XDataItem 数据项
-- XDataCard 数据卡片
 - XDataPicker 数据选择器
 - XLogin 登录组件（支持账号密码、短信验证码、扫码）登录
 

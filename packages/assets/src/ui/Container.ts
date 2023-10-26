@@ -136,8 +136,7 @@ const component: ComponentDescription = {
   ],
   snippet: {
     props: {
-      fit: true,
-      auto: true
+      fit: true
     }
   }
 };
