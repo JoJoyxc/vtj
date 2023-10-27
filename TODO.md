@@ -16,6 +16,7 @@
 - XList 数据列表
 - XDataItem 数据项
 - XDataPicker 数据选择器
+- XOrgPicker 组织架构/人员选择器
 - XLogin 登录组件（支持账号密码、短信验证码、扫码）登录
 
 # Docs

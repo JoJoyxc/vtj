@@ -16,3 +16,4 @@ export * from './dialog-form';
 export * from './tabs';
 export * from './data-item';
 export * from './chart';
+export * from './list';

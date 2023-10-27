@@ -84,5 +84,9 @@ export const ui = [
   {
     path: '/ui/chart',
     component: () => import('@/views/ui/chart.vue')
+  },
+  {
+    path: '/ui/list',
+    component: () => import('@/views/ui/list.vue')
   }
 ];

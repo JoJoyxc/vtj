@@ -15,11 +15,19 @@ import { AssetsCategory } from '@vtj/engine';
 const categories: AssetsCategory[] = [
   {
     id: 'base',
-    category: '元件'
+    category: '基础元件'
+  },
+  {
+    id: 'layout',
+    category: '布局排版'
   },
   {
     id: 'form',
     category: '表单'
+  },
+  {
+    id: 'data',
+    category: '数据展示'
   }
 ];
 const components = [
