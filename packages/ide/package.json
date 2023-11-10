@@ -17,17 +17,17 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@vtj/assets": "^0.6.25",
-    "@vtj/engine": "^0.6.25",
-    "@vtj/icons": "^0.6.25",
-    "@vtj/runtime": "^0.6.25",
-    "@vtj/ui": "^0.6.25",
-    "@vtj/utils": "^0.6.25"
+    "@vtj/assets": "workspace:^",
+    "@vtj/engine": "workspace:^",
+    "@vtj/icons": "workspace:^",
+    "@vtj/runtime": "workspace:^",
+    "@vtj/ui": "workspace:^",
+    "@vtj/utils": "workspace:^"
   },
   "devDependencies": {
-    "@vtj/cli": "^0.6.25",
-    "@vtj/serve": "^0.6.25",
-    "vue": "~3.3.7",
+    "@vtj/cli": "workspace:^",
+    "@vtj/serve": "workspace:^",
+    "vue": "~3.3.8",
     "vue-router": "~4.2.5"
   },
   "description": "> TODO: description",

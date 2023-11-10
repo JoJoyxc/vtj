@@ -13,16 +13,16 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "~2.1.0",
-    "@vtj/icons": "^0.6.25",
-    "@vtj/utils": "^0.6.25",
+    "@vtj/icons": "workspace:^",
+    "@vtj/utils": "workspace:^",
     "@vueuse/core": "~10.5.0",
     "echarts": "~5.4.3",
-    "element-plus": "~2.4.1"
+    "element-plus": "~2.4.2"
   },
   "devDependencies": {
-    "@vtj/cli": "^0.6.25",
-    "vue": "~3.3.7",
-    "vue-router": "~4.2.4"
+    "@vtj/cli": "workspace:^",
+    "vue": "~3.3.8",
+    "vue-router": "~4.2.5"
   },
   "files": [
     "lib",
