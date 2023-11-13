@@ -139,6 +139,13 @@ export const containerProps = {
   padding: {
     type: Boolean,
     default: false
+  },
+  // 嵌套子组件加间隔
+  gap: {
+    type: Boolean
+  },
+  autoPointer: {
+    type: Boolean
   }
 };
 

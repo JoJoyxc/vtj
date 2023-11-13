@@ -41,3 +41,14 @@ export function pick<
 }
 
 export const NOOP = () => {};
+
+export function toObjectProps<T extends Record<string, any>>(
+  value?: boolean | T,
+  defaultValue = {} as T
+) {
+  const result = { ...defaultValue } as T;
+  if (typeof value === 'boolean') {
+    return result;
+  }
+  return Object.assign(result, value || {}) as T;
+}

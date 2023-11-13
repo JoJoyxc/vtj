@@ -1,6 +1,6 @@
 {
   "name": "create-vtj",
-  "version": "0.6.22",
+  "version": "0.6.25",
   "private": false,
   "type": "module",
   "license": "MIT",
@@ -23,9 +23,9 @@
     "node": ">=16.0.0"
   },
   "devDependencies": {
-    "@types/lodash-es": "~4.17.9",
-    "@types/minimist": "~1.2.3",
-    "@types/prompts": "~2.4.6",
+    "@types/lodash-es": "~4.17.11",
+    "@types/minimist": "~1.2.5",
+    "@types/prompts": "~2.4.8",
     "cross-spawn": "~7.0.3",
     "kolorist": "~1.8.0",
     "lodash-es": "~4.17.21",
