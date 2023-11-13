@@ -23,8 +23,8 @@
     "@vtj/runtime": "workspace:*",
     "@vtj/ui": "workspace:*",
     "@vtj/utils": "workspace:*",
-    "@vueuse/core": "~10.5.0",
-    "ant-design-vue": "~4.0.6",
+    "@vueuse/core": "~10.6.0",
+    "ant-design-vue": "~4.0.7",
     "element-plus": "~2.4.2",
     "vue": "~3.3.8",
     "vue-router": "~4.2.5"

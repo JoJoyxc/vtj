@@ -10,6 +10,7 @@
     "setup": "pnpm install --registry=https://registry.npmmirror.com  && pnpm run build",
     "reset": "pnpm run clean && pnpm run setup",
     "outdate": "pnpm outdated -r",
+    "update": "npm config set registry=https://registry.npmmirror.com/ && pnpm up -r --latest && npm config set registry=https://registry.npmjs.org/",
     "copy": "node scripts/copy.mjs",
     "copy:uni": "node scripts/uni.mjs",
     "sync": "node scripts/sync.mjs",
@@ -60,10 +61,10 @@
     "ci:update": "git add . && git commit -m \"ci update files\" && git push"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "lerna": ">=7.1.4"
+    "node": ">=20.0.0",
+    "lerna": ">=7.4.0"
   },
-  "packageManager": "^pnpm@7.27.0",
+  "packageManager": "^pnpm@8.10.3",
   "publishConfig": {
     "access": "public"
   }
