@@ -1,20 +1,19 @@
 import {
   computed,
   ref,
-  Ref,
   watch,
-  ComponentInternalInstance,
-  ComputedRef
+  type ComponentInternalInstance,
+  type ComputedRef
 } from 'vue';
 import {
-  BuiltinFieldEditor,
+  type BuiltinFieldEditor,
   builtinFieldEditors,
-  FieldProps,
-  FieldOption,
-  FieldEmits,
-  FieldEditorProps
+  type FieldProps,
+  type FieldOption,
+  type FieldEmits,
+  type FieldEditorProps
 } from '../types';
-import { Emits, FormModel } from '../../';
+import type { Emits, FormModel } from '../../';
 import { merge, toArray } from '@vtj/utils';
 
 export async function useOptions(

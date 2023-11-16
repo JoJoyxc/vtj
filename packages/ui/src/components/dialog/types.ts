@@ -1,13 +1,13 @@
-import {
+import type {
   PropType,
   VNode,
   DefineComponent,
   ComponentInternalInstance
 } from 'vue';
-import { Position } from '@vueuse/core';
-import { ComponentPropsType, BaseSize } from '../shared';
-import { IconParam } from '../';
-import {
+import type { Position } from '@vueuse/core';
+import type { ComponentPropsType, BaseSize } from '../shared';
+import type { IconParam } from '../';
+import type {
   DraggableOptions,
   ResizableOptions,
   UseMouseInElementReturn

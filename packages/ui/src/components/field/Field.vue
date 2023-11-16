@@ -53,10 +53,10 @@
   import { WarningFilled } from '@vtj/icons';
   import { isEqual, isObject, set } from '@vtj/utils';
   import { XIcon } from '../icon';
-  import { fieldProps, FieldEmits, FieldEditorProps } from './types';
+  import { fieldProps, type FieldEmits, type FieldEditorProps } from './types';
   import {
     formInstanceKey,
-    FormInstance,
+    type FormInstance,
     formModelKey,
     getSizeValue
   } from '../../';

@@ -1,5 +1,5 @@
 import './style.scss';
-import { App } from 'vue';
+import { type App } from 'vue';
 
 import * as svgIcons from './components';
 import * as Icons from './icons';

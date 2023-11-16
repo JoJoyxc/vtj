@@ -1,13 +1,13 @@
-import { PropType } from 'vue';
-import { ComponentPropsType, BaseSize, BaseType } from '../shared';
-import {
+import type { PropType } from 'vue';
+import type { ComponentPropsType, BaseSize, BaseType } from '../shared';
+import type {
   ActionMode,
   ActionDropdown,
   ActionProps,
   ActionMenuItem,
   ContainerProps
 } from '../';
-import { ElTooltipProps, BadgeProps, ButtonProps } from 'element-plus';
+import type { ElTooltipProps, BadgeProps, ButtonProps } from 'element-plus';
 
 export type ActionBarItem = ActionProps & { [key: string]: any };
 

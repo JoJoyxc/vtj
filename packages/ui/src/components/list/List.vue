@@ -59,7 +59,12 @@
 <script lang="ts" setup>
   import { computed, ref, reactive, watchEffect } from 'vue';
   import { useVirtualList } from '@vueuse/core';
-  import { listProps, ListData, ListEmits, ListState } from './types';
+  import {
+    listProps,
+    type ListData,
+    type ListEmits,
+    type ListState
+  } from './types';
   import { getSizeValue, toObjectProps } from '../../utils';
   import { useLoader } from '../../hooks';
   import {
@@ -137,10 +142,6 @@
       itemHeight: props.itemHeight || 0
     }
   );
-
-  const getKey = (item: any) => {
-    return props.dataKey ? item[props.dataKey] : undefined;
-  };
 
   const load = () => {
     if (!props.infiniteScroll || nomore.value) return;

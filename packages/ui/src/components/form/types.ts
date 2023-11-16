@@ -1,5 +1,5 @@
-import { PropType, InjectionKey, ComponentInternalInstance } from 'vue';
-import { ComponentPropsType } from '../shared';
+import type { PropType, InjectionKey, ComponentInternalInstance } from 'vue';
+import type { ComponentPropsType } from '../shared';
 import type Form from './Form.vue';
 export const formProps = {
   /**

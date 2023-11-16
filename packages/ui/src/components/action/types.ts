@@ -1,12 +1,12 @@
-import { PropType, ExtractPropTypes } from 'vue';
+import type { PropType, ExtractPropTypes } from 'vue';
 import {
-  ElTooltipProps,
-  BadgeProps,
+  type ElTooltipProps,
+  type BadgeProps,
   dropdownProps,
-  ButtonProps
+  type ButtonProps
 } from 'element-plus';
-import { ComponentPropsType, BaseSize, BaseType } from '../shared';
-import { IconParam } from '../icon';
+import type { ComponentPropsType, BaseSize, BaseType } from '../shared';
+import type { IconParam } from '../icon';
 
 export type ActionMode = 'button' | 'text' | 'icon';
 

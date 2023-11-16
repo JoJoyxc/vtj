@@ -55,7 +55,8 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
-    "bin"
+    "bin",
+    "config"
   ],
   "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b",
   "publishConfig": {

@@ -1,4 +1,5 @@
 import './style/index.scss';
+export * from './version';
 import { makeInstaller } from './utils';
 import components from './list';
 export { components };
@@ -7,6 +8,5 @@ export * from './directives';
 export * from './hooks';
 export * from './utils';
 export * from './constants';
-export * from './version';
 const installer = makeInstaller(components);
 export const install = installer.install;

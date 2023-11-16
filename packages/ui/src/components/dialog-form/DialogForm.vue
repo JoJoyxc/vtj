@@ -35,7 +35,7 @@
 <script lang="ts" setup>
   import { ref, computed } from 'vue';
   import { XDialog, XForm } from '../';
-  import { dialogFormProps, DialogFormEmits } from './types';
+  import { dialogFormProps, type DialogFormEmits } from './types';
 
   defineOptions({
     name: 'XDialogForm'

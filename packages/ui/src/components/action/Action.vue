@@ -5,7 +5,15 @@
 </template>
 
 <script lang="ts" setup>
-  import { computed, markRaw, h, VNode, useSlots, toRef, toRaw } from 'vue';
+  import {
+    computed,
+    markRaw,
+    h,
+    type VNode,
+    useSlots,
+    toRef,
+    toRaw
+  } from 'vue';
   import {
     ElBadge,
     ElTooltip,
@@ -13,7 +21,7 @@
     ElDropdownMenu,
     ElDropdownItem
   } from 'element-plus';
-  import { actionProps, ActionEmits } from './types';
+  import { actionProps, type ActionEmits } from './types';
   import { useTooltip, useBadge, useDropdown } from './hooks';
   import Trigger from './Trigger.vue';
   import { useDisabled } from '../../hooks';

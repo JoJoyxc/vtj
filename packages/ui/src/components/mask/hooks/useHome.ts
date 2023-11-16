@@ -1,5 +1,5 @@
 import { computed } from 'vue';
-import { MaskProps, MaskTab } from '../types';
+import type { MaskProps, MaskTab } from '../types';
 import { HomeFilled } from '@vtj/icons';
 import { uid } from '@vtj/utils';
 

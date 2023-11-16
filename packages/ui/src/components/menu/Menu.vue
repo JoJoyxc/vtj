@@ -11,7 +11,7 @@
   import { computed } from 'vue';
   import { ElMenu } from 'element-plus';
   import { Menu } from '@vtj/icons';
-  import { MenuProps, MenuDataItem, MenuEmits } from './types';
+  import type { MenuProps, MenuDataItem, MenuEmits } from './types';
   import { XMenuItem } from './components';
 
   defineOptions({

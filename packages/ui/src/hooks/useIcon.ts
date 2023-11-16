@@ -2,15 +2,15 @@ import {
   defineComponent,
   h,
   computed,
-  ComputedRef,
-  DefineComponent,
+  type ComputedRef,
+  type DefineComponent,
   isVNode,
-  MaybeRef,
+  type MaybeRef,
   unref,
   markRaw,
   getCurrentInstance
 } from 'vue';
-import { IconParam, XIcon, IconProps } from '../components';
+import { type IconParam, XIcon, type IconProps } from '../components';
 
 export function useIconProps(
   iconRef: MaybeRef<IconParam | undefined>

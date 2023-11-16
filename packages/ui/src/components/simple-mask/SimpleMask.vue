@@ -29,46 +29,52 @@
   </ElContainer>
 </template>
 <script lang="ts" setup>
-import { ElContainer, ElHeader, ElMain, ElAside, ElFooter } from 'element-plus';
-import { RouterView, useRouter, useRoute } from 'vue-router';
-import { XMenu, MenuDataItem, BaseMaskProps } from '../';
-import { computed } from 'vue';
+  import {
+    ElContainer,
+    ElHeader,
+    ElMain,
+    ElAside,
+    ElFooter
+  } from 'element-plus';
+  import { RouterView, useRouter, useRoute } from 'vue-router';
+  import { XMenu, type MenuDataItem, type BaseMaskProps } from '../';
+  import { computed } from 'vue';
 
-const props = withDefaults(defineProps<BaseMaskProps>(), {
-  project: () => ({
-    name: 'Logo',
-    home: '/'
-  })
-});
+  const props = withDefaults(defineProps<BaseMaskProps>(), {
+    project: () => ({
+      name: 'Logo',
+      home: '/'
+    })
+  });
 
-const router = useRouter();
-const route = useRoute();
+  const router = useRouter();
+  const route = useRoute();
 
-const defaultActive = computed(() => {
-  return route.params.id as string;
-});
+  const defaultActive = computed(() => {
+    return route.params.id as string;
+  });
 
-const goHome = () => {
-  const home = props.project.home;
-  if (home) {
-    router.push(home);
-  }
-};
+  const goHome = () => {
+    const home = props.project.home;
+    if (home) {
+      router.push(home);
+    }
+  };
 
-const onMenuSelect = (item: MenuDataItem) => {
-  const id = item?.id;
-  if (id) {
-    const basePath = props.preview ? '/preview' : props.project.page;
-    const path = `${basePath}/${id}`;
-    router.push(path);
-  }
-};
+  const onMenuSelect = (item: MenuDataItem) => {
+    const id = item?.id;
+    if (id) {
+      const basePath = props.preview ? '/preview' : props.project.page;
+      const path = `${basePath}/${id}`;
+      router.push(path);
+    }
+  };
 
-defineOptions({
-  name: 'XSimpleMask'
-});
+  defineOptions({
+    name: 'XSimpleMask'
+  });
 
-defineExpose({
-  goHome
-});
+  defineExpose({
+    goHome
+  });
 </script>

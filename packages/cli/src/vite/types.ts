@@ -2,7 +2,6 @@ import type {
   UserConfig,
   UserConfigExport,
   ProxyOptions,
-  LibraryFormats,
   PluginOption
 } from 'vite';
 

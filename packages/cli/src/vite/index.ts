@@ -1,5 +1,5 @@
-import { UserConfig, ServerOptions, UserConfigExport } from 'vite';
-import {
+import type { UserConfig, ServerOptions, UserConfigExport } from 'vite';
+import type {
   CreateViteConfigOptions,
   EnvConfig,
   ProxyConfig,

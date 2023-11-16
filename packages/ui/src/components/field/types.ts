@@ -1,13 +1,13 @@
-import { PropType, VNode } from 'vue';
-import { ComponentPropsType, BaseSize } from '../shared';
-import { ElTooltipProps } from 'element-plus';
+import type { PropType, VNode } from 'vue';
+import type { ComponentPropsType, BaseSize } from '../shared';
+import type { ElTooltipProps } from 'element-plus';
 import {
-  BuiltinFieldEditor,
-  BuiltinFieldEditorType,
+  type BuiltinFieldEditor,
+  type BuiltinFieldEditorType,
   builtinFieldEditors
 } from './builtin';
 
-import { FormModel } from '../../';
+import type { FormModel } from '../../';
 
 export {
   type BuiltinFieldEditor,

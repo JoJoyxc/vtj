@@ -112,7 +112,7 @@
   import { ElButton } from 'element-plus';
   import { XPanel, XAction, XContainer } from '../';
   import { vDraggable, vResizable } from '../../directives';
-  import { dialogProps, DialogEmits } from './types';
+  import { dialogProps, type DialogEmits } from './types';
   import {
     useState,
     useStyle,

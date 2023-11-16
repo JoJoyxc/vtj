@@ -1,16 +1,21 @@
 import {
   reactive,
   watch,
-  MaybeRef,
+  type MaybeRef,
   computed,
   onMounted,
   onUnmounted,
   unref
 } from 'vue';
-import { useElementSize, Position } from '@vueuse/core';
-import { DialogProps, DialogState, DialogMode, DialogEmits } from './types';
-import { Emits } from '../';
-import { DraggableOptions, ResizableOptions } from '../../directives';
+import { useElementSize, type Position } from '@vueuse/core';
+import type {
+  DialogProps,
+  DialogState,
+  DialogMode,
+  DialogEmits
+} from './types';
+import type { Emits } from '../';
+import type { DraggableOptions, ResizableOptions } from '../../directives';
 import { parseSize } from '../../utils';
 import { isObject } from '@vtj/utils';
 

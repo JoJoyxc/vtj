@@ -7,13 +7,16 @@ import {
   nextTick,
   provide,
   toRaw,
-  ComponentInternalInstance
+  type ComponentInternalInstance
 } from 'vue';
-import { routeLocationKey, RouteLocationNormalizedLoaded } from 'vue-router';
+import {
+  routeLocationKey,
+  type RouteLocationNormalizedLoaded
+} from 'vue-router';
 import { upperFirstCamelCase } from '@vtj/utils';
 import { useEventListener } from '@vueuse/core';
 import { createDialog } from '../../';
-import { MaskTab } from '../types';
+import type { MaskTab } from '../types';
 import { useTabs } from './useTabs';
 
 export type UseContentOptions = ReturnType<typeof useTabs>;

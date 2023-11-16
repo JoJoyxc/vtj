@@ -41,8 +41,8 @@
   import {
     formProps,
     formInstanceKey,
-    FormEmits,
-    FormModel,
+    type FormEmits,
+    type FormModel,
     formModelKey
   } from './types';
   import { XField } from '../../';

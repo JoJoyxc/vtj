@@ -1,5 +1,5 @@
 import {
-  MaybeRef,
+  type MaybeRef,
   onMounted,
   onUnmounted,
   ref,
@@ -9,8 +9,8 @@ import {
 } from 'vue';
 import * as echarts from 'echarts';
 import { useResizeObserver } from '@vueuse/core';
-import { ECharts } from 'echarts';
-import { ChartProps } from './types';
+import type { ECharts } from 'echarts';
+import type { ChartProps } from './types';
 import { debounce } from '@vtj/utils';
 
 export function useChart(el: MaybeRef<HTMLElement>, props: ChartProps) {

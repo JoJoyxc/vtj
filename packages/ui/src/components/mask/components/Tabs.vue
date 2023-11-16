@@ -62,17 +62,22 @@
   </XContainer>
 </template>
 <script lang="ts" setup>
-  import { ElTabs, ElTabPane, ElPopover, TabsPaneContext } from 'element-plus';
+  import {
+    ElTabs,
+    ElTabPane,
+    ElPopover,
+    type TabsPaneContext
+  } from 'element-plus';
   import {
     XContainer,
     XActionBar,
-    ActionBarItems,
-    ActionProps,
-    MenuDataItem
+    type ActionBarItems,
+    type ActionProps,
+    type MenuDataItem
   } from '../../';
   import { CopyDocument, Star, Refresh, StarFilled } from '@vtj/icons';
   import { useIcon } from '../../../hooks';
-  import { MaskTab } from '../types';
+  import { type MaskTab } from '../types';
 
   export interface Props {
     tabs: MaskTab[];
@@ -165,7 +170,7 @@
     }
   };
 
-  const onDragEnd = (tab: MaskTab, e: DragEvent) => {
+  const onDragEnd = (_tab: MaskTab, e: DragEvent) => {
     if (e.target) {
       (e.target as HTMLElement).classList.remove('is-dagging');
     }
