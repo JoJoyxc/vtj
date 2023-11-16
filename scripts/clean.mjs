@@ -1,7 +1,7 @@
 import { join } from 'path';
 import { rm, readdir } from 'fs/promises';
 const PARENT_PATH = 'packages';
-const DIRS = ['lib', 'cdn', 'types', 'dist'];
+const DIRS = ['lib', 'cdn', 'types', 'dist','coverage'];
 const FILES = ['tsconfig.tsbuildinfo', 'package-lock.json', 'pnpm-lock.yaml'];
 
 async function getPackages() {

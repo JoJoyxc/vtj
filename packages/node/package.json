@@ -1,0 +1,40 @@
+{
+  "name": "@vtj/node",
+  "private": false,
+  "version": "0.7.0",
+  "type": "module",
+  "scripts": {
+    "build": "unbuild && npm run dts",
+    "test": "vitest run",
+    "vitest": "vitest",
+    "coverage": "vitest run --coverage",
+    "dts": "tsc src/index.ts --target es2015 --moduleResolution Node --outDir temp --declarationDir types --declaration --esModuleInterop"
+  },
+  "dependencies": {
+    "@vtj/base": "workspace:^",
+    "@types/fs-extra": "~11.0.4",
+    "fs-extra": "~11.1.1"
+  },
+  "devDependencies": {
+    "unbuild": "~2.0.0",
+    "vitest": "~0.34.6"
+  },
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b"
+}

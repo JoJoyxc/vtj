@@ -1,33 +1,68 @@
-import upperFirst from 'lodash-es/upperFirst';
-import camelCase from 'lodash-es/camelCase';
-import get from 'lodash-es/get';
-import set from 'lodash-es/set';
-import isPlainObject from 'lodash-es/isPlainObject';
-import cloneDeep from 'lodash-es/cloneDeep';
-import merge from 'lodash-es/merge';
-import debounce from 'lodash-es/debounce';
-import throttle from 'lodash-es/throttle';
-import isEqual from 'lodash-es/isEqual';
-import template from 'lodash-es/template';
-import lowerFirst from 'lodash-es/lowerFirst';
-import kebabCase from 'lodash-es/kebabCase';
+/**
+ * 已定义
+ * @param val
+ * @returns
+ */
+export const isDef = (val: unknown) => typeof val !== 'undefined';
 
-export {
-  upperFirst,
-  camelCase,
-  get,
-  set,
-  isPlainObject,
-  cloneDeep,
-  merge,
-  debounce,
-  throttle,
-  isEqual,
-  template,
-  lowerFirst,
-  kebabCase
+/**
+ * 当前时间
+ * @returns
+ */
+export const now = () => Date.now();
+
+/**
+ * 时间戳
+ * @returns
+ */
+export const timestamp = () => +Date.now();
+
+/**
+ * 生成一个随机数
+ * @param min
+ * @param max
+ * @returns
+ */
+export const random = (min: number, max: number) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export function upperFirstCamelCase(name: string) {
-  return upperFirst(camelCase(name));
+/**
+ * 唯一id
+ * @returns
+ */
+export function uid() {
+  return Number(Math.random().toString().substring(2, 5) + Date.now()).toString(
+    36
+  );
+}
+
+/**
+ * 生成一个 UUID 或 GUID， 默认GUID
+ * @param split true为GUID，fasle为UUID
+ * @returns
+ */
+export function uuid(split = true) {
+  const id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
+    /[xy]/g,
+    function (c) {
+      const r = (Math.random() * 16) | 0;
+      const v = c === 'x' ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    }
+  );
+  return split ? id.toLowerCase() : id.replace(/-/gi, '');
+}
+
+/**
+ * 延时函数
+ * @param val
+ * @returns
+ */
+export async function delay(val: number = 0) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, val);
+  });
 }

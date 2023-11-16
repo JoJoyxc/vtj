@@ -1,6 +1,6 @@
 {
   "name": "@vtj/icons",
-  "private": false,
+  "private": true,
   "version": "0.6.25",
   "type": "module",
   "scripts": {

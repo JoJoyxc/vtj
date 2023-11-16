@@ -7,6 +7,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+pnpm-lock.yaml
 
 node_modules/
 dist
@@ -30,6 +31,7 @@ lib
 .hbuildx
 
 # project
+/packages/*/temp/
 /packages/*/types/
 /packages/*/lib/
 /packages/*/cdn/
@@ -48,3 +50,5 @@ lib
 /packages/ide/src/components/blocks
 
 /packages/boot/.vtj/debug
+
+/projects/*/types

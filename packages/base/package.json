@@ -1,40 +1,46 @@
 {
-    "name": "@vtj/base",
-    "private": false,
-    "version": "0.6.22",
-    "type": "module",
-    "scripts": {
-        "build": "unbuild",
-        "test": "vitest"
-    },
-    "dependencies": {
-        "@types/lodash-es": "~4.17.8"
-    },
-    "devDependencies": {
-        "@types/crypto-js": "~4.1.2",
-        "@types/lodash-es": "~4.17.8",
-        "lodash-es": "~4.17.21",
-        "crypto-js": "~4.1.1",
-        "axios": "~1.5.1",
-        "jsencrypt": "~3.3.2",
-        "unbuild": "~2.0.0",
-        "vitest": "~0.34.6"
-    },
-    "exports": {
-        ".": {
-            "types": "./es/index.d.ts",
-            "import": "./dist/index.mjs",
-            "require": "./dist/index.cjs"
-        }
-    },
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.mjs",
-    "types": "./es/index.d.ts",
-    "files": [
-        "dist"
-    ],
-    "publishConfig": {
-        "access": "public"
-    },
-    "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b"
+  "name": "@vtj/base",
+  "private": false,
+  "version": "0.7.0",
+  "type": "module",
+  "scripts": {
+    "build": "unbuild && npm run dts",
+    "test": "vitest run",
+    "vitest": "vitest",
+    "coverage": "vitest run --coverage",
+    "dts": "tsc src/index.ts --target es2015 --moduleResolution Node --outDir temp --declarationDir types --declaration --esModuleInterop"
+  },
+  "dependencies": {
+    "@types/lodash-es": "~4.17.8",
+    "@types/numeral": "~2.0.5"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "~4.1.2",
+    "lodash-es": "~4.17.21",
+    "crypto-js": "~4.1.1",
+    "axios": "~1.5.1",
+    "jsencrypt": "~3.3.2",
+    "dayjs": "~1.11.10",
+    "numeral": "~2.0.6",
+    "unbuild": "~2.0.0",
+    "vitest": "~0.34.6"
+  },
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b"
 }

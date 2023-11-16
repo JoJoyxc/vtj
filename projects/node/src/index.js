@@ -1,4 +1,6 @@
-const { slice } = require('@vtj/base');
+// import * as VtjBase from '@vtj/base';
+const { RSA, unRSA } = require('@vtj/base');
 
-const value = slice([1, 2, 3, 4], 1, 2);
-console.log(value);
+const code = RSA('abc');
+
+console.log(code, unRSA(code));

@@ -1,7 +1,7 @@
 {
   "name": "@vtj/serve",
   "version": "0.6.25",
-  "private": false,
+  "private": true,
   "type": "module",
   "license": "MIT",
   "author": "Chen Huachun",

@@ -7,7 +7,7 @@ import axios, {
   InternalAxiosRequestConfig,
   CancelTokenSource
 } from 'axios';
-import { merge, omit, template, debounce, throttle, uuid } from './util';
+import { merge, omit, template, debounce, throttle, uuid } from '@vtj/base';
 
 const TYPES = {
   form: 'application/x-www-form-urlencoded',
@@ -486,6 +486,7 @@ export function createApis(map: IApiMap) {
 }
 
 export {
+  axios,
   LOCAL_REQUEST_ID,
   type AxiosRequestConfig,
   type AxiosResponse,

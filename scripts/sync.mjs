@@ -10,15 +10,6 @@ const modules = [
   '@vtj/ide',
   '@vtj/assets',
   '@vtj/deps'
-  // '@newpearl/lcdp-adapter',
-  // '@newpearl/lcdp-assets',
-  // '@newpearl/lcdp-charts',
-  // '@newpearl/lcdp-engine',
-  // '@newpearl/lcdp-ui',
-  // '@newpearl/lcdp-mui',
-  // '@newpearl/lcdp-utils',
-  // '@newpearl/lcdp-icons',
-  // '@newpearl/lcdp-deps'
 ];
 
 const maxTimes = 60;

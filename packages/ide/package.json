@@ -1,6 +1,6 @@
 {
   "name": "@vtj/ide",
-  "private": false,
+  "private": true,
   "version": "0.6.25",
   "scripts": {
     "setup": "npm install --registry=https://registry.npmmirror.com",

@@ -1,23 +1,22 @@
 {
-    "name": "node_project",
-    "private": true,
-    "version": "0.6.22",
-    "scripts": {
-        "js": "node src/index.js",
-        "mjs": "node src/index.mjs",
-        "build": "unbuild"
-    },
-    "main": "./dist/index.mjs",
-    "engines": {
-        "node": ">=16.0.0"
-    },
-    "dependencies": {},
-    "devDependencies": {
-        "@vtj/base": "workspace:*",
-        "@vtj/cli": "workspace:*"
-    },
-    "description": "> TODO: description",
-    "author": "陈华春 <samchen08@163.com>",
-    "homepage": "",
-    "license": "ISC"
+  "name": "node_project",
+  "private": true,
+  "version": "0.6.22",
+  "scripts": {
+    "js": "node src/index.js",
+    "mjs": "node src/index.mjs",
+    "build": "unbuild"
+  },
+  "main": "./dist/index.mjs",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@vtj/base": "workspace:*"
+  },
+  "description": "> TODO: description",
+  "author": "陈华春 <samchen08@163.com>",
+  "homepage": "",
+  "license": "ISC"
 }

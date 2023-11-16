@@ -1,5 +1,5 @@
 import { append } from './url';
-import { template } from './util';
+import { template } from '@vtj/base';
 
 let __count__ = 0;
 
