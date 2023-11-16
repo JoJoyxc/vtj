@@ -50,7 +50,7 @@
 <script lang="ts" setup>
   import { computed, ref, watch, inject } from 'vue';
   import { ElFormItem, ElTooltip, formContextKey } from 'element-plus';
-  import { WarningFilled } from '@element-plus/icons-vue';
+  import { WarningFilled } from '@vtj/icons';
   import { isEqual, isObject, set } from '@vtj/utils';
   import { XIcon } from '../icon';
   import { fieldProps, FieldEmits, FieldEditorProps } from './types';

@@ -10,7 +10,7 @@
 <script lang="ts" setup>
   import { computed } from 'vue';
   import { ElMenu } from 'element-plus';
-  import { Menu } from '@element-plus/icons-vue';
+  import { Menu } from '@vtj/icons';
   import { MenuProps, MenuDataItem, MenuEmits } from './types';
   import { XMenuItem } from './components';
 

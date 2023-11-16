@@ -37,7 +37,7 @@
 </template>
 <script lang="ts" setup>
   import { ElButton, ElDivider } from 'element-plus';
-  import { VideoPlay, Document } from '@element-plus/icons-vue';
+  import { VideoPlay, Document } from '@vtj/icons';
   import Logo from '../mask/assets/logo.png';
 
   export interface StartupProps {

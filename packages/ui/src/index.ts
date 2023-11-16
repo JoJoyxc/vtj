@@ -10,4 +10,3 @@ export * from './constants';
 export * from './version';
 const installer = makeInstaller(components);
 export const install = installer.install;
-export default install;

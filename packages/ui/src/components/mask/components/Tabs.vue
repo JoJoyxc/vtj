@@ -17,7 +17,7 @@
           <div class="x-mask-tabs__trigger">
             <component
               v-if="props.home.icon"
-              :is="(useIcon(props.home.icon) as any)"></component>
+              :is="useIcon(props.home.icon) as any"></component>
 
             <span v-if="props.home.title">{{ props.home.title }}</span>
           </div>
@@ -44,7 +44,7 @@
                 @dragend="onDragEnd(tab, $event)">
                 <component
                   v-if="tab.icon"
-                  :is="(useIcon(tab.icon) as any)"></component>
+                  :is="useIcon(tab.icon) as any"></component>
 
                 <span v-if="tab.title">{{ tab.title }}</span>
               </div>
@@ -70,12 +70,7 @@
     ActionProps,
     MenuDataItem
   } from '../../';
-  import {
-    CopyDocument,
-    Star,
-    Refresh,
-    StarFilled
-  } from '@element-plus/icons-vue';
+  import { CopyDocument, Star, Refresh, StarFilled } from '@vtj/icons';
   import { useIcon } from '../../../hooks';
   import { MaskTab } from '../types';
 

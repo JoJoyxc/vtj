@@ -24,7 +24,7 @@
 </template>
 <script lang="ts" setup>
   import { toRef, useAttrs, computed } from 'vue';
-  import { ArrowRight } from '@element-plus/icons-vue';
+  import { ArrowRight } from '@vtj/icons';
   import { XContainer, XIcon } from '../';
   import { useIcon } from '../../hooks';
   import { headerProps } from './types';
