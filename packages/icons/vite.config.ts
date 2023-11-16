@@ -1,13 +1,18 @@
 import { createViteConfig } from '@vtj/cli';
+
+const isUmd = !!process.env.UMD;
+
 export default createViteConfig({
-  debug: false,
   lib: true,
-  elementPlus: false,
-  cdn: !!process.env.CDN,
-  libraryName: 'VtjIcons',
-  external: ['vue', '@element-plus/icons-vue'],
-  externalGlobals: {
-    vue: 'Vue',
-    '@element-plus/icons-vue': 'ElementPlusIconsVue'
-  }
+  dts: isUmd ? false : true,
+  version: true,
+  library: 'VtjIcons',
+  emptyOutDir: isUmd ? false : true,
+  external: ['vue'],
+  externalGlobals: isUmd
+    ? {
+        vue: 'Vue'
+      }
+    : undefined,
+  formats: isUmd ? ['umd', 'iife'] : ['es', 'cjs']
 });

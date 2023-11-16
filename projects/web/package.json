@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vtj/utils": "workspace:*",
+    "@vtj/icons": "workspace:*",
     "vue": "^3.3.4"
   },
   "devDependencies": {

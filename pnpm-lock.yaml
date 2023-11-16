@@ -310,9 +310,6 @@ importers:
       '@vtj/cli':
         specifier: workspace:^
         version: link:../cli
-      cross-env:
-        specifier: ~7.0.3
-        version: 7.0.3
       vue:
         specifier: ~3.3.8
         version: 3.3.8(typescript@5.2.2)
@@ -535,6 +532,9 @@ importers:
 
   projects/web:
     dependencies:
+      '@vtj/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@vtj/utils':
         specifier: workspace:*
         version: link:../../packages/utils
@@ -4283,6 +4283,7 @@ packages:
     hasBin: true
     dependencies:
       cross-spawn: 7.0.3
+    dev: false
 
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
