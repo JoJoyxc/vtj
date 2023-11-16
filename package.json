@@ -9,7 +9,7 @@
     "@vitest/coverage-v8": "~0.34.6"
   },
   "scripts": {
-    "setup": "pnpm install --registry=https://registry.npmmirror.com  && pnpm run build",
+    "setup": "pnpm install --registry=https://registry.npmmirror.com",
     "clean": "lerna clean -y && node scripts/clean.mjs",
     "reset": "pnpm run clean && pnpm run setup",
     "outdate": "pnpm outdated -r",
@@ -17,7 +17,11 @@
     "sync": "node scripts/sync.mjs",
     "test": "lerna run --no-private test",
     "build": "lerna run --no-private build",
-    "coverage": "lerna run --no-private coverage"
+    "coverage": "lerna run --no-private coverage",
+    "ci": "git add . && git commit -m \"ci commit \" && git push",
+    "prerelease": "npm run setup && lerna version prerelease --yes && npm run test && npm run build && npm run ci && lerna publish from-package --dist-tag test --no-private --yes && pnpm run sync",
+    "patch": "npm run setup && lerna version patch --yes && npm run build && npm run ci && lerna publish from-package --force-publish --no-private --yes && pnpm run sync",
+    "minor": "npm run setup && lerna version minor --yes && npm run build && npm run ci && lerna publish from-package --force-publish --no-private --yes && pnpm run sync"
   },
   "engines": {
     "node": ">=20.0.0",
