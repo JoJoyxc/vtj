@@ -10,6 +10,8 @@
   },
   "scripts": {
     "setup": "pnpm install --registry=https://registry.npmmirror.com",
+    "dev": "cd dev && npm run dev",
+    "dev:build": "cd dev && npm run build",
     "clean": "lerna clean -y && node scripts/clean.mjs",
     "reset": "pnpm run clean && pnpm run setup",
     "outdate": "pnpm outdated -r",

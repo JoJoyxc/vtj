@@ -36,7 +36,7 @@
 </template>
 <script lang="ts" setup>
   import { h } from 'vue';
-  import { XIcon, useIcon } from '@vtj/ui';
+  import { XIcon } from '@vtj/ui';
   import { Menu, Setting } from '@element-plus/icons-vue';
   import Logo from '@/assets/logo.png';
   import { Fixed } from '@vtj/icons';

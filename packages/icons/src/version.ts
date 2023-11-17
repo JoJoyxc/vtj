@@ -4,4 +4,5 @@
  * @author CHC chenhuachun1549@dingtalk.com 
  * @version 0.7.0
  * @license <a href="https://vtj.pro/license.html">MIT License</a>
- */export const version = '0.7.0';
+ */
+export const version = '0.7.0';

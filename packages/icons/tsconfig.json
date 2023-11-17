@@ -1,7 +1,7 @@
 {
   "extends": "../cli/config/tsconfig.web.json",
   "include": [
-    "src",
+    "src"
   ],
   "references": [
     {

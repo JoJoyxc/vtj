@@ -60,12 +60,7 @@
 </template>
 <script lang="ts" setup>
   import { XHeader, XAction } from '@vtj/ui';
-  import {
-    VtjIconBug,
-    VtjIconApi,
-    VtjIconPlus,
-    VtjIconSetting
-  } from '@vtj/icons';
+  import { VtjIconBug, VtjIconPlus, VtjIconSetting } from '@vtj/icons';
 
   const onClick = () => {
     console.log('clicked!');

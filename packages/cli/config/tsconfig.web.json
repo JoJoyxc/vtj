@@ -2,6 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": true,
+    // Required in Vue projects
+    "jsx": "preserve",
     "moduleResolution": "bundler",
     "lib": [
       // Should target at least ES2016 in Vue 3

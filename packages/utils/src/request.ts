@@ -1,4 +1,5 @@
-import axios, {
+import axios from 'axios';
+import type {
   AxiosInstance,
   CreateAxiosDefaults,
   AxiosResponse,
@@ -142,7 +143,7 @@ export class Request {
   axios: AxiosInstance;
   settings: IRequestSettings;
   records: Record<string, IRequestRecord> = {};
-  private isLoading: boolean = false;
+  isLoading: boolean = false;
   private stopSkipWarn?: () => void;
   private showLoading: (settings: IRequestSettings) => void;
   private showError: (settings: IRequestSettings, e: any) => void;

@@ -1,14 +1,7 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "esModuleInterop": true,
-    "strict": false
-  },
+  "extends": "../cli/config/tsconfig.node.json",
   "include": [
-    "src",
-    "tests"
+    "src"
   ],
   "references": [
     {

@@ -79,8 +79,3 @@ export function append(url: string, query: string | Record<string, any>) {
   const queryStr = stringify(joinQuery);
   return queryStr ? [path, queryStr].join('?') : url;
 }
-
-export function decodeUrl(url: string): string {
-  const result = decodeURIComponent(url);
-  return url === result ? result : decodeUrl(result);
-}

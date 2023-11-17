@@ -1,5 +1,5 @@
-import { CreateViteConfigOptions } from './types';
-import { PluginOption } from 'vite';
+import type { CreateViteConfigOptions } from './types';
+import { type PluginOption } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
@@ -8,7 +8,7 @@ import dts from 'vite-plugin-dts';
 import { visualizer } from 'rollup-plugin-visualizer';
 import ElementPlus from 'unplugin-element-plus/vite';
 import { removeSync, toArray } from '@vtj/node';
-import { babelPlugin, versionPlugin } from '../plugins';
+import { babelPlugin, versionPlugin, staticServer } from '../plugins';
 
 const createBabelPlugin = (targets: string[]) => {
   return babelPlugin({
@@ -76,6 +76,10 @@ export const mergePlugins = (opts: CreateViteConfigOptions) => {
         brotliSize: true
       }) as any
     );
+  }
+
+  if (opts.staticDirs) {
+    plugins.push(staticServer(opts.staticDirs));
   }
 
   if (opts.plugins) {

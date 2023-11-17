@@ -108,8 +108,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { ref, markRaw } from 'vue';
-  import { XAction, ActionMenuItem } from '@vtj/ui';
+  import { ref } from 'vue';
+  import { XAction } from '@vtj/ui';
   import { VtjIconBug, VtjIconApi, VtjIconPlus } from '@vtj/icons';
 
   const menus = [
@@ -136,10 +136,10 @@
     icon.value = VtjIconApi;
   }, 3000);
 
-  const onClick = (action) => {
+  const onClick = (action: any) => {
     console.log('click action', action);
   };
-  const onCommand = (item) => {
+  const onCommand = (item: any) => {
     console.log('command item', item);
   };
 

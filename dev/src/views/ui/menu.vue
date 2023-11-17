@@ -2,7 +2,7 @@
   <XMenu :data="data" @select="onSelect" default-active="A-1"></XMenu>
 </template>
 <script lang="ts" setup>
-  import { XMenu, MenuDataItem } from '@vtj/ui';
+  import { XMenu, type MenuDataItem } from '@vtj/ui';
   import { components } from '@vtj/icons';
   const data: MenuDataItem[] = [
     {
@@ -25,7 +25,7 @@
     }
   ];
 
-  const onSelect = (item) => {
+  const onSelect = (item: MenuDataItem) => {
     console.log('onSelect', item);
   };
 </script>

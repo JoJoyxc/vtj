@@ -7,7 +7,7 @@
   import { reactive } from 'vue';
   import { XChart } from '@vtj/ui';
 
-  const option = reactive({
+  const option: any = reactive({
     xAxis: {
       type: 'category',
       data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']

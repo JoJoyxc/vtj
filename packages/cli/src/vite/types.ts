@@ -201,4 +201,9 @@ export interface CreateViteConfigOptions {
    * 开启 unplugin-element-plus
    */
   elementPlus?: boolean | Record<string, any>;
+
+  /**
+   * 静态服务目录
+   */
+  staticDirs?: string[];
 }

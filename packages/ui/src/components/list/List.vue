@@ -153,6 +153,10 @@
     }
   };
 
+  const getKey = (item: any) => {
+    return props.dataKey ? item[props.dataKey] : undefined;
+  };
+
   defineExpose({
     list,
     scrollTo,
@@ -161,6 +165,7 @@
     state,
     pageCount,
     nomore,
-    data
+    data,
+    getKey
   });
 </script>

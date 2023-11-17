@@ -2,8 +2,7 @@
   "extends": "../cli/config/tsconfig.json",
   "compilerOptions": {},
   "include": [
-    "src",
-    "tests"
+    "src"
   ],
   "references": [
     {

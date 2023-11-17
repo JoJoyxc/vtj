@@ -11,7 +11,7 @@ function writeVersion(file: string) {
  * @author CHC chenhuachun1549@dingtalk.com 
  * @version ${pkg.version}
  * @license <a href="https://vtj.pro/license.html">MIT License</a>
- */`;
+ */\n`;
   const code = `export const version = '${pkg.version}';`;
   const content = `${banner}${code}`;
   const toPath = resolve(file);

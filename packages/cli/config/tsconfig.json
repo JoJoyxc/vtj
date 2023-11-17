@@ -4,8 +4,6 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "useDefineForClassFields": true,
-    // Required in Vue projects
-    "jsx": "preserve",
     // `"noImplicitThis": true` is part of `strict`
     // Added again here in case some users decide to disable `strict`.
     // This enables stricter inference for data properties on `this`.
@@ -34,6 +32,7 @@
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true
   }
 }

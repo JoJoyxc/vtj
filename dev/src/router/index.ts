@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import { utils, ui, lcdp, icons } from './routes';
+import { pageRoutes } from '../modules';
+// import { utils, ui, icons } from './routes';
 
 const routes: any = [
   {
@@ -12,10 +13,7 @@ const routes: any = [
     name: 'NotFound',
     component: () => import('@/views/not-found.vue')
   },
-  ...utils,
-  ...ui,
-  ...lcdp,
-  ...icons
+  ...pageRoutes.value
 ];
 
 const router = createRouter({

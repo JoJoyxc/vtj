@@ -8,7 +8,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { XActionBar, ActionBarItems } from '@vtj/ui';
+  import { XActionBar, type ActionBarItems } from '@vtj/ui';
   import { VtjIconBug, VtjIconApi, VtjIconPlus } from '@vtj/icons';
 
   const menus = [
@@ -38,7 +38,7 @@
       label: '按钮二',
       icon: VtjIconBug,
       menus,
-      onCommand(item) {
+      onCommand(item: any) {
         console.log('onCommand', item);
       }
     },
@@ -57,7 +57,7 @@
     return false;
   };
 
-  const onCommand = (action, menu) => {
+  const onCommand = (action: any, menu: any) => {
     console.log('onCommand', action, menu);
   };
 </script>

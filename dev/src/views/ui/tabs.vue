@@ -9,9 +9,7 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { ElButton } from 'element-plus';
-  import { Setting } from '@element-plus/icons-vue';
-  import { XTabs, XPanel, TabsItem } from '@vtj/ui';
+  import { XTabs, XPanel, type TabsItem } from '@vtj/ui';
 
   const currentValue = ref(2);
 

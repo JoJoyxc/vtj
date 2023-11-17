@@ -6,7 +6,6 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { ref } from 'vue';
   import { storage } from '@vtj/utils';
 
   const saveStorage = () => {
