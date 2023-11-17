@@ -19,7 +19,6 @@
     title: string;
     items: {
       path: string;
-      [index: string]: any;
     }[];
   }
 
@@ -51,9 +50,9 @@
   }
 
   .menu-item {
-    padding-left: 20px;
-    height: 20px;
-    line-height: 20px;
+    padding-left: 10px;
+    height: 24px;
+    line-height: 24px;
 
     a {
       text-decoration: none;

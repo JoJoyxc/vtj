@@ -1,6 +1,6 @@
 {
   "name": "@vtj/core",
-  "private": true,
+  "private": false,
   "version": "0.7.0",
   "type": "module",
   "scripts": {
@@ -10,7 +10,9 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@vtj/utils": "workspace:^"
+    "@vtj/base": "workspace:^",
+    "mitt": "~3.0.1",
+    "zen-logger": "~1.1.4"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:^"
@@ -22,7 +24,7 @@
       "require": "./dist/index.cjs"
     }
   },
-  "main": "./dist/index.umd.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./types/index.d.ts",
   "files": [

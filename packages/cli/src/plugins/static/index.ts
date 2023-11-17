@@ -9,6 +9,11 @@ export function staticServer(dirs: string[]): Plugin {
       for (let dir of dirs) {
         server.middlewares.use(serveStatic(resolve(dir)));
       }
+    },
+    configurePreviewServer(server) {
+      for (let dir of dirs) {
+        server.middlewares.use(serveStatic(resolve(dir)));
+      }
     }
   };
 }

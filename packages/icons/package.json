@@ -21,6 +21,7 @@
     "xml2js": "~0.6.2"
   },
   "exports": {
+    "./dist/style.css": "./dist/style.css",
     ".": {
       "types": "./types/index.d.ts",
       "import": "./dist/index.mjs",

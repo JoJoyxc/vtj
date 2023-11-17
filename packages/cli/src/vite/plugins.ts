@@ -43,7 +43,9 @@ export const mergePlugins = (opts: CreateViteConfigOptions) => {
 
   if (opts.lib && opts.dts) {
     if (opts.dtsOutputDir) {
-      removeSync(opts.dtsOutputDir);
+      try {
+        removeSync(opts.dtsOutputDir);
+      } catch (_e) {}
     }
     plugins.push(
       dts({

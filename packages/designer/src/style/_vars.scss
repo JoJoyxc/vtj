@@ -1,0 +1,29 @@
+@mixin scroll-bar {
+  $--scrollbar-thumb-background: rgba(0, 0, 0, 0.15);
+  $--scrollbar-track-background: transparent;
+
+  ::-webkit-scrollbar {
+    z-index: 11;
+    width: 8px;
+    height: 8px;
+
+    &-thumb {
+      border-radius: 5px;
+      width: 8px;
+      background: $--scrollbar-thumb-background;
+    }
+
+    &-corner {
+      background: $--scrollbar-track-background;
+    }
+
+    &-track {
+      background: $--scrollbar-track-background;
+
+      &-piece {
+        background: $--scrollbar-track-background;
+        width: 8px;
+      }
+    }
+  }
+}

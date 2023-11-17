@@ -1,5 +1,5 @@
 {
-  "name": "@vtj/ui",
+  "name": "@vtj/designer",
   "private": false,
   "version": "0.7.0",
   "type": "module",
@@ -10,15 +10,13 @@
     "vitest": "vitest",
     "coverage": "vitest run --coverage"
   },
-  "engines": {
-    "node": ">=16.0.0"
-  },
   "dependencies": {
     "@vtj/icons": "workspace:^",
     "@vtj/utils": "workspace:^",
+    "@vtj/ui": "workspace:^",
+    "@vtj/core": "workspace:^",
     "@vueuse/core": "~10.6.0",
-    "echarts": "~5.4.3",
-    "element-plus": "~2.4.2"
+    "monaco-editor": "~0.44.0"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:^",
@@ -29,7 +27,7 @@
     "dist",
     "types"
   ],
-  "main": "dist/index.umd.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "types/index.d.ts",
   "exports": {

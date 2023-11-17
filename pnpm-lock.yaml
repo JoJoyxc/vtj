@@ -26,6 +26,12 @@ importers:
 
   dev:
     dependencies:
+      '@vtj/core':
+        specifier: workspace:*
+        version: link:../packages/core
+      '@vtj/designer':
+        specifier: workspace:*
+        version: link:../packages/designer
       '@vtj/icons':
         specifier: workspace:*
         version: link:../packages/icons
@@ -218,6 +224,9 @@ importers:
       sass:
         specifier: ~1.69.5
         version: 1.69.5
+      serve-static:
+        specifier: ~1.15.0
+        version: 1.15.0
       terser:
         specifier: ~5.24.0
         version: 5.24.0
@@ -245,13 +254,50 @@ importers:
 
   packages/core:
     dependencies:
-      '@vtj/utils':
+      '@vtj/base':
         specifier: workspace:^
-        version: link:../utils
+        version: link:../base
+      mitt:
+        specifier: ~3.0.1
+        version: 3.0.1
+      zen-logger:
+        specifier: ~1.1.4
+        version: 1.1.4
     devDependencies:
       '@vtj/cli':
         specifier: workspace:^
         version: link:../cli
+
+  packages/designer:
+    dependencies:
+      '@vtj/core':
+        specifier: workspace:^
+        version: link:../core
+      '@vtj/icons':
+        specifier: workspace:^
+        version: link:../icons
+      '@vtj/ui':
+        specifier: workspace:^
+        version: link:../ui
+      '@vtj/utils':
+        specifier: workspace:^
+        version: link:../utils
+      '@vueuse/core':
+        specifier: ~10.6.0
+        version: 10.6.1(vue@3.3.8)
+      monaco-editor:
+        specifier: ~0.44.0
+        version: 0.44.0
+    devDependencies:
+      '@vtj/cli':
+        specifier: workspace:^
+        version: link:../cli
+      vue:
+        specifier: ~3.3.8
+        version: 3.3.8(typescript@5.2.2)
+      vue-router:
+        specifier: ~4.2.5
+        version: 4.2.5(vue@3.3.8)
 
   packages/engine:
     dependencies:

@@ -7,20 +7,24 @@
         <ElOption label="@vtj/utils" value="utils"></ElOption>
         <ElOption label="@vtj/icons" value="icons"></ElOption>
         <ElOption label="@vtj/ui" value="ui"></ElOption>
+        <ElOption label="@vtj/core" value="core"></ElOption>
+        <ElOption label="@vtj/designer" value="designer"></ElOption>
       </ElSelect>
     </div>
     <Menus :title="`@vtj/${current}`" :items="list"></Menus>
   </div>
 </template>
 <script lang="ts" setup>
-  import { ref, computed } from 'vue';
+  import { ref, computed, watch } from 'vue';
   import { ElSelect, ElOption } from 'element-plus';
+  import { storage } from '@vtj/utils';
   import { useRouter } from 'vue-router';
   import { getModules } from '../modules';
   import Menus from './Menus.vue';
   const router = useRouter();
+  const cacheKey = 'current';
 
-  const current = ref('ui');
+  const current = ref(storage.get(cacheKey, { type: 'local' }) || 'base');
 
   const list = computed(() => {
     const items = current.value ? getModules(current.value) : [];
@@ -29,6 +33,10 @@
         path: item.replace('.vue', '').replace('/src/views', '')
       };
     });
+  });
+
+  watch(current, (v) => {
+    storage.save(cacheKey, v, { type: 'local' });
   });
 
   const goHome = () => {

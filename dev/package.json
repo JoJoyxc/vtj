@@ -19,6 +19,8 @@
     "@vtj/icons": "workspace:*",
     "@vtj/ui": "workspace:*",
     "@vtj/utils": "workspace:*",
+    "@vtj/core": "workspace:*",
+    "@vtj/designer": "workspace:*",
     "vue": "~3.3.8",
     "vue-router": "~4.2.5"
   },

@@ -12,6 +12,7 @@
     "setup": "pnpm install --registry=https://registry.npmmirror.com",
     "dev": "cd dev && npm run dev",
     "dev:build": "cd dev && npm run build",
+    "dev:preview": "cd dev && npm run preview",
     "clean": "lerna clean -y && node scripts/clean.mjs",
     "reset": "pnpm run clean && pnpm run setup",
     "outdate": "pnpm outdated -r",
@@ -23,7 +24,8 @@
     "ci": "git add . && git commit -m \"ci commit \" && git push",
     "prerelease": "npm run setup && lerna version prerelease --yes && npm run test && npm run build && npm run ci && lerna publish from-package --dist-tag test --no-private --yes && pnpm run sync",
     "patch": "npm run setup && lerna version patch --yes && npm run build && npm run ci && lerna publish from-package --force-publish --no-private --yes && pnpm run sync",
-    "minor": "npm run setup && lerna version minor --yes && npm run build && npm run ci && lerna publish from-package --force-publish --no-private --yes && pnpm run sync"
+    "minor": "npm run setup && lerna version minor --yes && npm run build && npm run ci && lerna publish from-package --force-publish --no-private --yes && pnpm run sync",
+    "test:core": "pnpm --filter @vtj/core vitest"
   },
   "engines": {
     "node": ">=20.0.0",
