@@ -10,8 +10,9 @@ export default createViteConfig({
     'element-plus',
     '@element-plus/icons-vue',
     '@vueuse/core',
+    '@vtj/core',
     '@vtj/utils',
-    '@vtj/icons',
+    '@vtj/icons'
   ],
   formats: ['es', 'cjs']
 });

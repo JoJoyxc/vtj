@@ -1,19 +1,2 @@
-@use 'vars' as *;
-
-:root {
-  --vtj-base-color: #fff;
-}
-
-@include scroll-bar;
-
-body {
-  background-color: var(--vtj-base-color);
-  overflow: hidden;
-  &.is-resizing {
-    user-select: none;
-
-    iframe {
-      pointer-events: none;
-    }
-  }
-}
+@use 'base';
+@use 'skeleton';
