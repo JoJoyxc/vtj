@@ -52,3 +52,5 @@ lib
 /packages/boot/.vtj/debug
 
 /projects/*/types
+/docs/typedoc
+/docs/.vitepress/cache

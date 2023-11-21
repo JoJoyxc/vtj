@@ -1,6 +1,6 @@
-import babel, { TransformOptions } from '@babel/core';
-import { Loader } from 'esbuild';
-import { Plugin } from 'vite';
+import babel, { type TransformOptions } from '@babel/core';
+import { type Loader } from 'esbuild';
+import { type Plugin } from 'vite';
 
 import { esbuildPluginBabel } from './esbuildBabel';
 

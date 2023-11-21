@@ -1,0 +1,19 @@
+{
+    "name": "@vtj",
+    "entryPoints": [
+        "refs/base.ts",
+        "refs/node.ts",
+        "refs/cli.ts",
+        "refs/utils.ts",
+        "refs/icons.ts",
+        "refs/ui.ts",
+        "refs/core.ts",
+        "refs/designer.ts",
+    ],
+    "entryPointStrategy": "resolve",
+    "out": "docs/dist/typedoc",
+    "excludeExternals": true,
+    "externalPattern": [
+        "**/node_modules/**",
+    ]
+}

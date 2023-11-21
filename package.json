@@ -1,12 +1,13 @@
 {
-  "name": "vtj-core",
+  "name": "vtj",
   "private": true,
+  "description": "简单介绍一下",
   "devDependencies": {
     "axios": "~1.6.1",
     "fs-extra": "~11.1.1",
     "lerna": "~7.4.2",
     "jsdom": "~22.1.0",
-    "@vitest/coverage-v8": "~0.34.6"
+    "typedoc": "~0.25.3"
   },
   "scripts": {
     "setup": "pnpm install --registry=https://registry.npmmirror.com",
@@ -21,11 +22,15 @@
     "test": "lerna run --no-private test",
     "build": "lerna run --no-private build",
     "coverage": "lerna run --no-private coverage",
+    "typedoc": "typedoc",
     "ci": "git add . && git commit -m \"ci commit \" && git push",
     "prerelease": "npm run setup && lerna version prerelease --yes && npm run test && npm run build && npm run ci && lerna publish from-package --dist-tag test --no-private --yes && pnpm run sync",
     "patch": "npm run setup && lerna version patch --yes && npm run build && npm run ci && lerna publish from-package --force-publish --no-private --yes && pnpm run sync",
     "minor": "npm run setup && lerna version minor --yes && npm run build && npm run ci && lerna publish from-package --force-publish --no-private --yes && pnpm run sync",
-    "test:core": "pnpm --filter @vtj/core vitest"
+    "test:core": "cd packages/core && npm run vitest",
+    "docs:dev": "cd docs && vitepress dev",
+    "docs:build": "cd docs && vitepress build && cd .. && npm run typedoc",
+    "docs:preview": "cd docs && vitepress preview"
   },
   "engines": {
     "node": ">=20.0.0",

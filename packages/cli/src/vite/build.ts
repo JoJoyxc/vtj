@@ -1,6 +1,6 @@
-import { CreateViteConfigOptions } from './types';
+import type { CreateViteConfigOptions } from './types';
 import externalGlobals from 'rollup-plugin-external-globals';
-import { BuildOptions, LibraryOptions } from 'vite';
+import type { BuildOptions, LibraryOptions } from 'vite';
 
 const defaultManualChunks = (id: string) => {
   if (id.includes('node_modules')) {

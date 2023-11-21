@@ -4,8 +4,7 @@
   "version": "0.7.0",
   "type": "module",
   "scripts": {
-    "build": "vue-tsc && vite build && npm run build:umd",
-    "build:umd": "cross-env UMD=true vite build",
+    "build": "vue-tsc && vite build",
     "test": "vitest run",
     "vitest": "vitest",
     "coverage": "vitest run --coverage"

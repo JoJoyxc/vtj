@@ -1,5 +1,5 @@
-import babel, { TransformOptions } from '@babel/core';
-import { Loader, Plugin, OnLoadArgs, OnLoadResult } from 'esbuild';
+import babel, { type TransformOptions } from '@babel/core';
+import type { Loader, Plugin, OnLoadArgs, OnLoadResult } from 'esbuild';
 import fs from 'fs';
 import path from 'path';
 

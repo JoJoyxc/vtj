@@ -12,7 +12,9 @@ export default createViteConfig({
     '@vueuse/core',
     '@vtj/core',
     '@vtj/utils',
-    '@vtj/icons'
+    '@vtj/icons',
+    '@vtj/ui',
+    'element-plus/es/locale/lang/zh-cn'
   ],
   formats: ['es', 'cjs']
 });

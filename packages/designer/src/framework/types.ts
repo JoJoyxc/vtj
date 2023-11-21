@@ -19,7 +19,7 @@ export enum RegionType {
   Status = 'Status'
 }
 /**
- * 器件
+ * 基础器件
  */
 export interface Widget {
   /**
@@ -34,4 +34,53 @@ export interface Widget {
    * Vue组件
    */
   component: Record<string, any> | VNode | DefineComponent<any, any, any, any>;
+
+  /**
+   * 不可见，停用
+   */
+  invisible?: boolean;
+}
+
+/**
+ * App类型器件
+ */
+export interface AppWidget extends Widget {
+  /**
+   * 标识app
+   */
+  type: 'app';
+  /**
+   *  应用图标
+   */
+  icon: string;
+  /**
+   * 应用名称
+   */
+  label?: string;
+  /**
+   * 应用打开方式
+   */
+  openType?: 'panel' | 'link' | 'dialog';
+}
+
+/**
+ * 选项卡类型器件
+ */
+export interface TabWidget extends Widget {
+  /**
+   * 标识tab
+   */
+  type: 'tab';
+  /**
+   * tab名称
+   */
+  label: string;
+  /**
+   * tab图标
+   */
+  icon?: string;
+  /**
+   * 能关闭的
+   */
+  closable?: boolean;
 }

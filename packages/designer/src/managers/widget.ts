@@ -1,59 +1,68 @@
-import { widgets as components } from '../components';
+import { builtInWidgets } from './built-in';
 import { type Widget, RegionType } from '../framework';
+import { logger } from '@vtj/core';
 
-const builtInWidgets: Record<RegionType, string[]> = {
-  Brand: ['Logo'],
-  Toolbar: [],
-  Actions: [],
-  Apps: [],
-  Workspace: [],
-  Settings: [],
-  Status: []
-};
-
+/**
+ * Widget管理类
+ */
 class WidgetManager {
   private widgets: Record<string, Widget> = {};
-  constructor(components: Record<string, any>) {
-    this.widgets = this.createWidgets(components);
+
+  constructor() {
+    this.widgets = this.createWidgets();
   }
 
-  private createWidgets(components: Record<string, any>) {
-    const entries = Object.entries(builtInWidgets) as Array<
-      [keyof typeof RegionType, string[]]
-    >;
+  private createWidgets() {
     const widgets: Record<string, Widget> = {};
-    for (const [region, items] of entries) {
-      for (const name of items) {
-        widgets[name] = {
-          name,
-          region,
-          component: components[name] || components.EmptyWidget
-        };
-      }
+    for (const item of builtInWidgets) {
+      widgets[item.name] = item;
     }
     return widgets;
   }
 
+  /**
+   * 注册一个器件
+   * @param widget
+   */
   register(widget: Widget) {
     this.widgets[widget.name] = widget;
-    const regions = builtInWidgets[widget.region];
-    if (!regions.includes(widget.name)) {
-      regions.push(widget.name);
-    }
   }
 
+  /**
+   * 根据名称获取器件配置
+   * @param name
+   * @returns
+   */
   get(name: string) {
     return this.widgets[name];
   }
 
-  getWidgets(region?: keyof typeof RegionType) {
-    if (region) {
-      const names = builtInWidgets[region];
-      return names.map((name) => this.widgets[name]);
-    } else {
-      return Object.values(this.widgets);
+  /**
+   * 修改器件
+   * @param name
+   * @param widget
+   * @returns
+   */
+  set(name: string, widget: Partial<Widget>) {
+    const match = this.widgets[name];
+    if (!match) {
+      logger.warn(`widget '${name}' is not found`);
+      return;
     }
+    Object.assign(match, widget);
+  }
+  /**
+   * 根据区域名称获取区域内的器件配置
+   * @param region
+   * @returns
+   */
+  getWidgets(region?: keyof typeof RegionType) {
+    const widgets = Object.values(this.widgets);
+    if (region) {
+      return widgets.filter((n) => n.region === region);
+    }
+    return widgets;
   }
 }
 
-export const widgetManager = new WidgetManager(components);
+export const widgetManager = new WidgetManager();

@@ -1,4 +1,4 @@
-import { defineComponent, h, type PropType } from 'vue';
+import { ref, defineComponent, h, type PropType } from 'vue';
 import { type Widget } from '../framework';
 
 export const WidgetWrapper = defineComponent({
@@ -9,7 +9,19 @@ export const WidgetWrapper = defineComponent({
       required: true
     }
   },
+  setup() {
+    const widgetRef = ref();
+    return {
+      widgetRef
+    };
+  },
   render() {
-    return h(this.widget.component, this.$props);
+    return h(this.widget.component, {
+      ...this.$props,
+      ...this.$attrs,
+      ref: 'widgetRef'
+    });
   }
 });
+
+export type WidgetWrapperInstance = InstanceType<typeof WidgetWrapper>;

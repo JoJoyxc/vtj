@@ -1,4 +1,4 @@
-import { CreateViteConfigOptions } from './types';
+import type { CreateViteConfigOptions } from './types';
 
 export const defaults: CreateViteConfigOptions = {
   debug: false,

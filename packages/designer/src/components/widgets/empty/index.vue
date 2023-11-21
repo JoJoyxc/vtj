@@ -1,5 +1,5 @@
 <template>
-  <div>EmptyWidget</div>
+  <div class="v-empty-widget">EmptyWidget</div>
 </template>
 <script lang="ts" setup>
   defineOptions({

@@ -3,5 +3,5 @@
   "version": "independent",
   "useNx": true,
   "npmClient": "pnpm",
-  "packages": ["packages/*", "projects/*", "dev"]
+  "packages": ["packages/*", "projects/*", "dev", "docs"]
 }
