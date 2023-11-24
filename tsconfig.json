@@ -2,7 +2,7 @@
   "extends": "./packages/cli/config/tsconfig.json",
   "compilerOptions": {},
   "include": [
-    "refs",
+    "docs/refs",
     "packages/base/src/**/*.ts",
     "packages/node/src/**/*.ts",
   ]

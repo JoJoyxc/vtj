@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
   title: 'VTJ.PRO',
   description: 'VTJ 是一款基于 Vue3 + Typescript 的低代码开发工具.',
+  srcDir: 'src',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
