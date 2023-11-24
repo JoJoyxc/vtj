@@ -36,6 +36,11 @@ export interface Widget {
   component: Record<string, any> | VNode | DefineComponent<any, any, any, any>;
 
   /**
+   * 组件默认参数
+   */
+  props?: Record<string, any>;
+
+  /**
    * 不可见，停用
    */
   invisible?: boolean;

@@ -1,4 +1,4 @@
-import { defineComponent, ref, h, type InjectionKey } from 'vue';
+import { defineComponent, ref, h } from 'vue';
 import { toArray } from '@vtj/utils';
 import { logger } from '@vtj/core';
 import { useEngine, RegionType } from '../framework';
@@ -6,9 +6,6 @@ import { Skeleton } from '../components';
 import { widgetManager } from '../managers';
 import { type RegionWrapperInstance } from './region';
 import { type WidgetWrapperInstance } from './widget';
-
-export const SkeletonKey: InjectionKey<SkeletonWrapperInstance> =
-  Symbol('VtjSkeleton');
 
 export const SkeletonWrapper = defineComponent({
   name: 'SkeletonWrapper',

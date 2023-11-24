@@ -4,6 +4,7 @@ import {
   JSFunction,
   NodeModifiers
 } from '../core';
+
 export class Event {
   public handler: JSFunction;
   public modifiers: NodeModifiers = {};

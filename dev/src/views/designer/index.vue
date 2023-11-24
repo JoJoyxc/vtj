@@ -3,19 +3,19 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { Engine } from '@vtj/designer';
+  import { Engine, widgetManager } from '@vtj/designer';
+
+  import logo from '@/assets/logo.png';
+
+  widgetManager.set('Logo', {
+    props: {
+      icon: logo
+    }
+  });
+
   const container = ref();
   const engine = new Engine(container);
-
   console.log('engine', engine);
-  setTimeout(() => {
-    const brand = engine.skeleton?.getRegion('Brand');
-    console.log('brandWrapper', brand);
-    const logo = engine.skeleton?.getWidget('Logo');
-    console.log('logo', logo);
-    // engine.skeleton?.toggleCollapse();
-    // engine.skeleton?.settable(false);
-  }, 1000);
 </script>
 <style lang="scss" scoped>
   .designer {

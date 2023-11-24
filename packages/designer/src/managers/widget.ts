@@ -1,6 +1,7 @@
+import { logger } from '@vtj/core';
+import { merge } from '@vtj/utils';
 import { builtInWidgets } from './built-in';
 import { type Widget, RegionType } from '../framework';
-import { logger } from '@vtj/core';
 
 /**
  * Widget管理类
@@ -49,7 +50,10 @@ class WidgetManager {
       logger.warn(`widget '${name}' is not found`);
       return;
     }
-    Object.assign(match, widget);
+    merge(match, widget);
+    if (widget.component) {
+      match.component = widget.component;
+    }
   }
   /**
    * 根据区域名称获取区域内的器件配置

@@ -5,6 +5,6 @@ export const builtInWidgets: Widget[] = [
   {
     name: 'Logo',
     region: 'Brand',
-    component: widgets.Logo
+    component: widgets?.Logo
   }
 ];

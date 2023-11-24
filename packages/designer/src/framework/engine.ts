@@ -25,6 +25,8 @@ export class Engine {
       app.provide(engineKey, this);
       app.mount(container);
       this.app = app;
+    } else {
+      logger.warn('VTJEngine constructor param [ container ] is undefined');
     }
   }
 }

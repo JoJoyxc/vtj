@@ -1,9 +1,13 @@
 import { ref, defineComponent, h, type PropType } from 'vue';
-import { type Widget } from '../framework';
+import { type Widget, RegionType } from '../framework';
 
 export const WidgetWrapper = defineComponent({
   name: 'WidgetWrapper',
   props: {
+    region: {
+      type: String as PropType<RegionType>,
+      required: true
+    },
     widget: {
       type: Object as PropType<Widget>,
       required: true
@@ -17,6 +21,7 @@ export const WidgetWrapper = defineComponent({
   },
   render() {
     return h(this.widget.component, {
+      ...this.widget.props,
       ...this.$props,
       ...this.$attrs,
       ref: 'widgetRef'

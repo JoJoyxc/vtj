@@ -32,7 +32,7 @@ export interface NodeSchema {
   /**
    * 绑定事件
    */
-  events?: Record<string, NodeEvent>;
+  events?: NodeEvents;
 
   // 内置指令
   directives?: NodeDirective[];
@@ -97,9 +97,12 @@ export interface NodeProps {
  * 事件描述
  */
 export interface NodeEvent {
+  name: string;
   handler: JSFunction;
   modifiers?: Record<string, boolean>;
 }
+
+export type NodeEvents = Record<string, NodeEvent>;
 
 /**
  * 子组件描述
@@ -124,7 +127,7 @@ export interface NodeDirective {
   // 参数
   arg?: string | JSExpression;
   // 修饰符
-  modifiers?: Record<string, boolean>;
+  modifiers?: NodeModifiers;
   // 指令值
   value?: JSExpression;
   // v-for 迭代器
@@ -133,3 +136,16 @@ export interface NodeDirective {
     index: string;
   };
 }
+
+/**
+ * 循环指令迭代器
+ */
+export interface NodeDirectiveIterator {
+  item: string;
+  index: string;
+}
+
+/**
+ * 事件/指令修饰符
+ */
+export type NodeModifiers = Record<string, boolean>;

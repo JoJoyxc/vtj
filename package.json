@@ -28,6 +28,7 @@
     "patch": "npm run setup && lerna version patch --yes && npm run build && npm run ci && lerna publish from-package --force-publish --no-private --yes && pnpm run sync",
     "minor": "npm run setup && lerna version minor --yes && npm run build && npm run ci && lerna publish from-package --force-publish --no-private --yes && pnpm run sync",
     "test:core": "cd packages/core && npm run vitest",
+    "test:designer": "cd packages/designer && npm run vitest",
     "docs:dev": "cd docs && vitepress dev",
     "docs:build": "cd docs && vitepress build && cd .. && npm run typedoc",
     "docs:preview": "cd docs && vitepress preview"
