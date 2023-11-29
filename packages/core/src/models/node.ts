@@ -78,6 +78,9 @@ export class NodeModel {
    */
   public directives: DirectiveModel[] = [];
 
+  /**
+   * 销毁标识
+   */
   public disposed: boolean = false;
 
   constructor(
@@ -107,13 +110,20 @@ export class NodeModel {
       directives = []
     } = this.schema;
     this.invisible = invisible;
-    this.setChildren(children, silent);
-    this.setSlot(slot, silent);
+    this.setChildren(children, true);
+    this.setSlot(slot, true);
     this.props = PropModel.parse(props);
     this.events = EventModel.parse(events);
     this.directives = DirectiveModel.parse(directives);
+    if (!silent) {
+      emitter.emit(EVENT_NODE_CHANGE, this);
+    }
   }
-
+  /**
+   * 设置子节点
+   * @param children
+   * @param silent
+   */
   setChildren(
     children: NodeSchema[] | string | JSExpression = '',
     silent: boolean = false
@@ -140,10 +150,18 @@ export class NodeModel {
     }
   }
 
+  /**
+   * 新增或更新属性
+   * @param name
+   * @param value
+   * @param defaultValue
+   * @param silent
+   */
   setProp(
     name: string,
     value: JSONValue | JSExpression | JSFunction,
-    defaultValue?: JSONValue | JSExpression | JSFunction
+    defaultValue?: JSONValue | JSExpression | JSFunction,
+    silent: boolean = false
   ) {
     const prop = this.props[name];
     if (prop) {
@@ -151,64 +169,122 @@ export class NodeModel {
     } else {
       this.props[name] = new PropModel(name, value, defaultValue);
     }
-    emitter.emit(EVENT_NODE_CHANGE, this);
+    if (!silent) {
+      emitter.emit(EVENT_NODE_CHANGE, this);
+    }
   }
 
-  removeProp(name: string) {
+  /**
+   * 删除属性
+   * @param name
+   * @param silent
+   */
+  removeProp(name: string, silent: boolean = false) {
     delete this.props[name];
-    emitter.emit(EVENT_NODE_CHANGE, this);
+    if (!silent) {
+      emitter.emit(EVENT_NODE_CHANGE, this);
+    }
   }
 
+  /**
+   * 获取属性值
+   * @param name
+   * @returns
+   */
   getPropValue(name: string) {
     const prop = this.props[name];
     if (!prop) return undefined;
     return prop.getValue();
   }
 
-  setEvent(scheam: NodeEvent) {
+  /**
+   * 新增或更新事件
+   * @param scheam
+   * @param silent
+   */
+  setEvent(scheam: NodeEvent, silent: boolean = false) {
     const event = this.events[scheam.name];
     if (event) {
       event.update(scheam);
     } else {
       this.events[scheam.name] = new EventModel(scheam);
     }
-    emitter.emit(EVENT_NODE_CHANGE, this);
+    if (!silent) {
+      emitter.emit(EVENT_NODE_CHANGE, this);
+    }
   }
 
-  removeEvent(name: string) {
+  /**
+   * 删除事件
+   * @param name
+   * @param silent
+   */
+  removeEvent(name: string, silent: boolean = false) {
     delete this.events[name];
-    emitter.emit(EVENT_NODE_CHANGE, this);
+    if (!silent) {
+      emitter.emit(EVENT_NODE_CHANGE, this);
+    }
   }
 
-  setDirective(scheam: NodeDirective) {
+  /**
+   * 新增或更新指令
+   * @param scheam
+   * @param silent
+   */
+  setDirective(scheam: NodeDirective, silent: boolean = false) {
     const index = this.directives.findIndex((n) => n.id === scheam.id);
     if (index >= 0) {
       this.directives.splice(index, 1, new DirectiveModel(scheam));
     } else {
       this.directives.push(new DirectiveModel(scheam));
     }
-    emitter.emit(EVENT_NODE_CHANGE, this);
+    if (!silent) {
+      emitter.emit(EVENT_NODE_CHANGE, this);
+    }
   }
 
-  removeDirective(dirctive: DirectiveModel) {
-    const index = this.directives.findIndex((n) => n.id === dirctive.id);
+  /**
+   * 删除指令
+   * @param dirctive
+   * @param silent
+   */
+  removeDirective(dirctive: DirectiveModel, silent: boolean = false) {
+    const index = this.directives.findIndex(
+      (n) => n === dirctive || n.id === dirctive.id
+    );
     if (index >= 0) {
       this.directives.splice(index, 1);
     }
-    emitter.emit(EVENT_NODE_CHANGE, this);
+    if (!silent) {
+      emitter.emit(EVENT_NODE_CHANGE, this);
+    }
   }
 
-  removeChild(node: NodeModel) {
+  /**
+   * 删除子节点
+   * @param node
+   * @param silent
+   * @returns
+   */
+  removeChild(node: NodeModel, silent: boolean = false) {
     const { children, disposed } = this;
     if (disposed) return;
     if (!Array.isArray(children)) return;
     const index = children.findIndex((n) => n === node);
     node.parent = null;
     children.splice(index, 1);
-    emitter.emit(EVENT_NODE_CHANGE, this);
+    if (!silent) {
+      emitter.emit(EVENT_NODE_CHANGE, this);
+    }
   }
 
-  appendChild(node: NodeModel) {
+  /**
+   * 追加子节点
+   * @param node
+   * @param silent
+   * @returns
+   */
+  appendChild(node: NodeModel, silent: boolean = false) {
     const { children, disposed } = this;
     if (disposed) return;
     node.parent = this;
@@ -217,9 +293,84 @@ export class NodeModel {
     } else {
       children.push(node);
     }
-    emitter.emit(EVENT_NODE_CHANGE, this);
+    if (!silent) {
+      emitter.emit(EVENT_NODE_CHANGE, this);
+    }
   }
 
+  /**
+   * 在当前节点的后面插入节点
+   * @param node
+   * @param silent
+   * @returns
+   */
+  insertAfter(node: NodeModel, silent: boolean = false) {
+    if (!this.parent) return;
+    const brothers = this.parent.children;
+    if (Array.isArray(brothers)) {
+      node.parent = this.parent;
+      const index = brothers.indexOf(this);
+      brothers.splice(index + 1, 0, node);
+      if (!silent) {
+        emitter.emit(EVENT_NODE_CHANGE, this.parent);
+      }
+    }
+  }
+
+  /**
+   * 在当前节点的前面插入节点
+   * @param node
+   * @param silent
+   * @returns
+   */
+  insertBefore(node: NodeModel, silent: boolean = false) {
+    if (!this.parent) return;
+    const brothers = this.parent.children;
+    if (Array.isArray(brothers)) {
+      node.parent = this.parent;
+      const index = brothers.indexOf(this);
+      brothers.splice(index, 0, node);
+      if (!silent) {
+        emitter.emit(EVENT_NODE_CHANGE, this.parent);
+      }
+    }
+  }
+
+  movePrev(silent: boolean = false) {
+    const parent = this.parent;
+    if (!parent) return;
+    const children = parent.children;
+    if (Array.isArray(children)) {
+      const index = children.indexOf(this);
+      if (index > 0) {
+        children.splice(index, 1);
+        children.splice(index - 1, 0, this);
+        if (!silent) {
+          emitter.emit(EVENT_NODE_CHANGE, parent);
+        }
+      }
+    }
+  }
+  moveNext(silent: boolean = false) {
+    const parent = this.parent;
+    if (!parent) return;
+    const children = parent.children;
+    if (Array.isArray(children)) {
+      const index = children.indexOf(this);
+      if (index > -1 && index < children.length - 1) {
+        children.splice(index, 1);
+        children.splice(index + 1, 0, this);
+        if (!silent) {
+          emitter.emit(EVENT_NODE_CHANGE, parent);
+        }
+      }
+    }
+  }
+
+  /**
+   * 获取DSL
+   * @returns
+   */
   toDsl(): NodeSchema {
     const {
       id,
@@ -250,15 +401,24 @@ export class NodeModel {
     };
   }
 
-  dispose() {
+  /**
+   * 销毁
+   * @param silent
+   * @returns
+   */
+  dispose(silent: boolean = false) {
     const { children, disposed } = this;
     if (disposed) return;
     if (Array.isArray(children)) {
-      children.forEach((node) => node.dispose());
+      children.forEach((node) => node.dispose(true));
     }
 
     if (this.parent) {
-      this.parent.removeChild(this);
+      this.parent.removeChild(this, silent);
+    } else {
+      if (!silent) {
+        emitter.emit(EVENT_NODE_CHANGE, this);
+      }
     }
 
     this.parent = null;

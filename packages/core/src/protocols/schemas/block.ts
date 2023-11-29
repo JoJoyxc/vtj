@@ -70,7 +70,7 @@ export interface BlockSchema {
   /**
    * 节点树
    */
-  children?: NodeSchema[];
+  nodes?: NodeSchema[];
 
   /**
    * 数据源

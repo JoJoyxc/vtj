@@ -2,6 +2,7 @@
   "name": "vtj",
   "private": true,
   "description": "简单介绍一下",
+  "type": "module",
   "devDependencies": {
     "axios": "~1.6.2",
     "fs-extra": "~11.2.0",
