@@ -14,20 +14,20 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "~2.1.0",
+    "@element-plus/icons-vue": "~2.3.1",
     "@vtj/icons": "workspace:^",
     "@vtj/ui": "workspace:^",
     "@vtj/utils": "workspace:^",
-    "@vueuse/core": "~10.6.0",
-    "element-plus": "~2.4.2",
+    "@vueuse/core": "~10.6.1",
+    "element-plus": "~2.4.3",
     "mitt": "~3.0.1",
     "monaco-editor": "~0.44.0",
-    "prettier": "~3.0.3",
+    "prettier": "~3.1.0",
     "zen-logger": "~1.1.4"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:^",
-    "vue": "~3.3.8",
+    "vue": "~3.3.9",
     "vue-router": "~4.2.5"
   },
   "files": [

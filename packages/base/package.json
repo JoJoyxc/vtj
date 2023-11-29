@@ -11,15 +11,15 @@
     "dts": "tsc src/index.ts --target es2015 --moduleResolution Node --outDir temp --declarationDir types --declaration --esModuleInterop"
   },
   "dependencies": {
-    "@types/lodash-es": "~4.17.8",
+    "@types/lodash-es": "~4.17.12",
     "@types/numeral": "~2.0.5"
   },
   "devDependencies": {
-    "@types/crypto-js": "~4.1.2",
-    "lodash-es": "~4.17.21",
-    "crypto-js": "~4.1.1",
-    "jsencrypt": "~3.3.2",
+    "@types/crypto-js": "~4.2.1",
+    "crypto-js": "~4.2.0",
     "dayjs": "~1.11.10",
+    "jsencrypt": "~3.3.2",
+    "lodash-es": "~4.17.21",
     "numeral": "~2.0.6",
     "unbuild": "~2.0.0",
     "vitest": "~0.34.6"

@@ -1,6 +1,7 @@
 import type { CreateViteConfigOptions } from './types';
 import externalGlobals from 'rollup-plugin-external-globals';
 import type { BuildOptions, LibraryOptions } from 'vite';
+import { resolve } from 'path';
 
 const defaultManualChunks = (id: string) => {
   if (id.includes('node_modules')) {
@@ -18,6 +19,15 @@ const extMap: Record<string, string> = {
   cjs: '.cjs',
   umd: '.umd.js',
   iife: '.iife.js'
+};
+
+const createInput = (opts: CreateViteConfigOptions) => {
+  if (!opts.pages) return undefined;
+  const input: Record<string, string> = {};
+  for (const [name, file] of Object.entries(opts.pages)) {
+    input[name] = resolve(file);
+  }
+  return input;
 };
 
 export const createBuild = (opts: CreateViteConfigOptions) => {
@@ -50,7 +60,8 @@ export const createBuild = (opts: CreateViteConfigOptions) => {
       plugins: rollupPlugins,
       output: {
         manualChunks
-      }
+      },
+      input: createInput(opts)
     }
   };
 

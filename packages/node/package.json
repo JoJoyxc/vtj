@@ -11,9 +11,9 @@
     "dts": "tsc src/index.ts --target es2015 --moduleResolution Node --outDir temp --declarationDir types --declaration --esModuleInterop"
   },
   "dependencies": {
-    "@vtj/base": "workspace:^",
     "@types/fs-extra": "~11.0.4",
-    "fs-extra": "~11.1.1"
+    "@vtj/base": "workspace:^",
+    "fs-extra": "~11.2.0"
   },
   "devDependencies": {
     "unbuild": "~2.0.0",

@@ -206,4 +206,9 @@ export interface CreateViteConfigOptions {
    * 静态服务目录
    */
   staticDirs?: string[];
+
+  /**
+   * 多页面模式
+   */
+  pages?: Record<string, string>;
 }

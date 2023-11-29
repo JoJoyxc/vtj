@@ -14,6 +14,7 @@ dist
 dist-ssr
 lib
 *.local
+.nx
 
 
 # Editor directories and files

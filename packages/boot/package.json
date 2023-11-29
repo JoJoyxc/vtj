@@ -18,15 +18,15 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@element-plus/icons-vue": "~2.1.0",
+    "@element-plus/icons-vue": "~2.3.1",
     "@vtj/icons": "workspace:*",
     "@vtj/runtime": "workspace:*",
     "@vtj/ui": "workspace:*",
     "@vtj/utils": "workspace:*",
-    "@vueuse/core": "~10.6.0",
+    "@vueuse/core": "~10.6.1",
     "ant-design-vue": "~4.0.7",
-    "element-plus": "~2.4.2",
-    "vue": "~3.3.8",
+    "element-plus": "~2.4.3",
+    "vue": "~3.3.9",
     "vue-router": "~4.2.5"
   },
   "devDependencies": {

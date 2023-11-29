@@ -27,7 +27,7 @@
   "devDependencies": {
     "@vtj/cli": "workspace:^",
     "@vtj/serve": "workspace:^",
-    "vue": "~3.3.8",
+    "vue": "~3.3.9",
     "vue-router": "~4.2.5"
   },
   "description": "> TODO: description",

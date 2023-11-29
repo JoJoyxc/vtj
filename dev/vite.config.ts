@@ -11,6 +11,10 @@ const alias =
         '@vtj/utils': join(packagesPath, 'utils/src/index.ts'),
         '@vtj/ui/dist/style.css': join(packagesPath, 'ui/src/style/index.scss'),
         '@vtj/icons/dist/style.css': join(packagesPath, 'icons/src/style.scss'),
+        '@vtj/designer/dist/style.css': join(
+          packagesPath,
+          'designer/src/style/index.scss'
+        ),
         '@vtj/ui': join(packagesPath, 'ui/src'),
         '@vtj/core': join(packagesPath, 'core/src'),
         '@vtj/designer': join(packagesPath, 'designer/src')
@@ -27,5 +31,9 @@ export default createViteConfig({
   alias,
   elementPlus: true,
   babel: false,
-  staticDirs: ['../packages']
+  staticDirs: ['../packages'],
+  pages: {
+    main: 'index.html',
+    nested: 'nested.html'
+  }
 });

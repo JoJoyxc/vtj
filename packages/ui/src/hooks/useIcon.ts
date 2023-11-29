@@ -37,9 +37,11 @@ export function useIconProps(
   });
 }
 
-export function useIcon(icon: MaybeRef<IconParam | undefined>) {
+export function useIcon(
+  icon: MaybeRef<IconParam | undefined>
+): Record<string, any> | undefined {
   const props = useIconProps(icon);
   return props.value
     ? markRaw(defineComponent({ render: () => h(XIcon, props.value) }))
-    : null;
+    : undefined;
 }

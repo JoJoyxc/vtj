@@ -9,13 +9,12 @@
     "vitest": "vitest",
     "coverage": "vitest run --coverage"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/js-cookie": "~3.0.6",
-    "axios": "~1.6.1",
-    "js-cookie": "~3.0.5",
     "@vtj/base": "workspace:^",
-    "@vtj/cli": "workspace:^"
+    "@vtj/cli": "workspace:^",
+    "axios": "~1.6.2",
+    "js-cookie": "~3.0.5"
   },
   "exports": {
     ".": {

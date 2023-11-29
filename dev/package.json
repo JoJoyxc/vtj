@@ -2,6 +2,7 @@
   "name": "dev-web",
   "private": true,
   "version": "0.7.0",
+  "type": "module",
   "scripts": {
     "dev": "cross-env ENV_TYPE=local vite",
     "build": "pnpm run build:prod",
@@ -13,15 +14,15 @@
     "preview": "vite preview"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=20.0.0"
   },
   "dependencies": {
+    "@vtj/core": "workspace:*",
+    "@vtj/designer": "workspace:*",
     "@vtj/icons": "workspace:*",
     "@vtj/ui": "workspace:*",
     "@vtj/utils": "workspace:*",
-    "@vtj/core": "workspace:*",
-    "@vtj/designer": "workspace:*",
-    "vue": "~3.3.8",
+    "vue": "~3.3.9",
     "vue-router": "~4.2.5"
   },
   "devDependencies": {

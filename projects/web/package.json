@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vtj/utils": "workspace:*",
     "@vtj/icons": "workspace:*",
-    "vue": "^3.3.4"
+    "@vtj/utils": "workspace:*",
+    "vue": "^3.3.9"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:*"

@@ -10,16 +10,16 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@vtj/icons": "workspace:^",
-    "@vtj/utils": "workspace:^",
-    "@vtj/ui": "workspace:^",
     "@vtj/core": "workspace:^",
-    "@vueuse/core": "~10.6.0",
+    "@vtj/icons": "workspace:^",
+    "@vtj/ui": "workspace:^",
+    "@vtj/utils": "workspace:^",
+    "@vueuse/core": "~10.6.1",
     "monaco-editor": "~0.44.0"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:^",
-    "vue": "~3.3.8",
+    "vue": "~3.3.9",
     "vue-router": "~4.2.5"
   },
   "files": [

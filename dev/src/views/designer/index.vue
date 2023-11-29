@@ -4,6 +4,8 @@
 <script lang="ts" setup>
   import { ref } from 'vue';
   import { Engine, widgetManager } from '@vtj/designer';
+  import '@vtj/designer/dist/style.css';
+  import 'element-plus/theme-chalk/index.css';
 
   import logo from '@/assets/logo.png';
 

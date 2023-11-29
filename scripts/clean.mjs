@@ -9,16 +9,16 @@ async function getPackages(dir) {
   return await readdir(dir);
 }
 
-async function cleanDir(list) {
-  console.log('开始清理编译产物...');
+async function cleanDir(list, parentPath) {
+  console.log('开始清理[' + parentPath + ']编译产物...');
   for (let pkg of list) {
     for (let dir of DIRS) {
-      const dirpath = join(PARENT_PATH, pkg, dir);
+      const dirpath = join(parentPath, pkg, dir);
       await rm(dirpath, { recursive: true, force: true });
       // console.log(`remove`, dirpath);
     }
     for (let file of FILES) {
-      const filepath = join(PARENT_PATH, pkg, file);
+      const filepath = join(parentPath, pkg, file);
       await rm(filepath, { recursive: true, force: true });
       // console.log(`remove`, filepath);
     }
@@ -27,8 +27,8 @@ async function cleanDir(list) {
   for (let file of FILES) {
     await rm(file, { recursive: true, force: true });
   }
-  console.log('done:', '清除编译产物完成！');
+  console.log('done:', '清除[' + parentPath + ']编译产物完成！');
 }
 
-cleanDir(await getPackages(PACKAGES_PATH));
-cleanDir(await getPackages(PROJECTS_PATH));
+cleanDir(await getPackages(PACKAGES_PATH), PACKAGES_PATH);
+cleanDir(await getPackages(PROJECTS_PATH), PROJECTS_PATH);
