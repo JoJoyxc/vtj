@@ -1,4 +1,6 @@
-// 依赖包
+/**
+ * 依赖包
+ */
 export interface Dependencie {
   /**
    * 包名
@@ -22,15 +24,23 @@ export interface Dependencie {
    */
   enabled?: boolean;
 
-  // 库导出名称
+  /**
+   * 库导出名称
+   */
   library: string;
 
-  // 加载资源url
+  /**
+   * 加载资源url
+   */
   urls: string[];
 
-  // 资产配置url
+  /**
+   * 资产配置url
+   */
   assetsUrl?: string;
 
-  // 资产配置导出名称
+  /**
+   * 资产配置导出名称
+   */
   assetsLibrary?: string;
 }

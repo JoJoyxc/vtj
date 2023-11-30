@@ -17,7 +17,7 @@ export interface NodeSchema {
   /**
    * 来源
    */
-  from: any;
+  from?: NodeFrom;
 
   /**
    * 不可见的
@@ -34,7 +34,9 @@ export interface NodeSchema {
    */
   events?: NodeEvents;
 
-  // 内置指令
+  /**
+   * 内置指令
+   */
   directives?: NodeDirective[];
 
   /**
@@ -62,6 +64,9 @@ export type NodeFrom =
  */
 export interface NodeFromSchema {
   type: 'Schema';
+  /**
+   * Block Id
+   */
   id: string;
 }
 
@@ -74,7 +79,7 @@ export interface NodeFromUrlSchema {
 }
 
 /**
- * 来源远程组件： 未实现
+ * 来源远程组件
  */
 export interface NodeFromRemote {
   type: 'Remote';

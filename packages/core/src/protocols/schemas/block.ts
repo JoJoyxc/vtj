@@ -1,9 +1,10 @@
 import type { JSExpression, JSFunction, JSONValue } from '../shared';
 import type { NodeSchema } from './node';
 import type { DataSourceSchema } from './dataSource';
+
 export interface BlockSchema {
   /**
-   * 标识
+   * 唯一标识
    */
   id?: string;
 
@@ -11,11 +12,6 @@ export interface BlockSchema {
    * 组件名
    */
   name: string;
-
-  /**
-   * 中文描述
-   */
-  title?: string;
 
   /**
    * 注入

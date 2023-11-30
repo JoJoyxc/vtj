@@ -39,3 +39,15 @@ export interface JSFunction {
   id?: string;
   value: string;
 }
+
+/**
+ * 数据类型
+ */
+export type DataType =
+  | 'String'
+  | 'Boolean'
+  | 'Number'
+  | 'Date'
+  | 'Object'
+  | 'Array'
+  | 'Function';

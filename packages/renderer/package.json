@@ -1,0 +1,39 @@
+{
+  "name": "@vtj/renderer",
+  "private": false,
+  "version": "0.7.0",
+  "type": "module",
+  "scripts": {
+    "build": "vue-tsc && vite build",
+    "test": "vitest run",
+    "vitest": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@vtj/base": "workspace:^",
+    "@vtj/core": "workspace:^"
+  },
+  "devDependencies": {
+    "@vtj/cli": "workspace:^",
+    "vue": "~3.3.9",
+    "vue-router": "~4.2.5"
+  },
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b",
+  "publishConfig": {
+    "access": "public"
+  }
+}
