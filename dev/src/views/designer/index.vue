@@ -6,14 +6,16 @@
   import { Engine, widgetManager } from '@vtj/designer';
   import '@vtj/designer/dist/style.css';
   import 'element-plus/theme-chalk/index.css';
+  import '@vtj/icons/dist/style.css';
 
-  import logo from '@/assets/logo.png';
+  console.log(widgetManager);
+  // import logo from '@/assets/logo.png';
 
-  widgetManager.set('Logo', {
-    props: {
-      icon: logo
-    }
-  });
+  // widgetManager.set('Logo', {
+  //   props: {
+  //     icon: logo
+  //   }
+  // });
 
   const container = ref();
   const engine = new Engine(container);

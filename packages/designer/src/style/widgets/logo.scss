@@ -1,6 +1,6 @@
 @use '../core' as *;
 
-@include b(logo) {
+@include b(logo-widget) {
   font-size: 18px;
   font-weight: bold;
   color: getCssVar('color-primary');

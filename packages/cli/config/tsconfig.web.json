@@ -16,6 +16,9 @@
       "DOM.Iterable"
       // No `ScriptHost` because Vue 3 dropped support for IE
     ],
-    "types": []
+    "types": [
+      "vite/client",
+      "vitest/globals"
+    ]
   }
 }

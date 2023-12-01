@@ -217,11 +217,11 @@ export class ProjectModel {
    */
   createPage(page: PageFile, parentId?: string, silent: boolean = false) {
     page.id = page.id || uid();
-
     if (page.dir) {
       page.children = [];
     } else {
       page.dsl = new BlockModel({
+        id: page.id,
         name: upperFirstCamelCase(page.name)
       }).toDsl();
     }
@@ -314,20 +314,36 @@ export class ProjectModel {
     }
   }
 
+  /**
+   * 获取区块文件
+   * @param id
+   * @returns
+   */
   getBlock(id: string) {
     return this.blocks.find((n) => n.id === id);
   }
 
+  /**
+   * 创建区块
+   * @param block
+   * @param silent
+   */
   createBlock(block: BlockFile, silent: boolean = false) {
-    block.id = block.id || uid();
+    const id = block.id || uid();
     const name = upperFirstCamelCase(block.name);
-    block.dsl = new BlockModel({ name }).toDsl();
+    block.id = id;
+    block.dsl = new BlockModel({ id, name }).toDsl();
     this.blocks.push(block);
     if (!silent) {
       emitter.emit(EVENT_PROJECT_BLOCKS_CHANGE, this);
     }
   }
 
+  /**
+   *
+   * @param block 更新区块
+   * @param silent
+   */
   updateBlock(block: BlockFile, silent: boolean = false) {
     const match = this.getBlock(block.id);
     if (match) {
@@ -340,6 +356,11 @@ export class ProjectModel {
     }
   }
 
+  /**
+   * 删除区块
+   * @param id
+   * @param silent
+   */
   removeBlock(id: string, silent: boolean = false) {
     const blocks = this.blocks;
     const index = blocks.findIndex((n) => n.id === id);
@@ -356,15 +377,30 @@ export class ProjectModel {
     }
   }
 
+  /**
+   * 检查是否存在名称的区块
+   * @param name
+   * @returns
+   */
   existBlockName(name: string) {
     return this.blocks.some((n) => n.name === name);
   }
 
+  /**
+   * 检测是否存在名称的页面
+   * @param name
+   * @returns
+   */
   existPageName(name: string) {
     const pages = this.getPages();
     return pages.some((n) => n.name === name);
   }
 
+  /**
+   * 新增或更新api
+   * @param item
+   * @param silent
+   */
   setApi(item: ApiSchema, silent: boolean = false) {
     const match = this.apis.findIndex((n) => n.name === item.name);
     if (match) {
@@ -376,6 +412,11 @@ export class ProjectModel {
       emitter.emit(EVENT_PROJECT_APIS_CHANGE, this);
     }
   }
+  /**
+   * 删除api
+   * @param name
+   * @param silent
+   */
   removeApi(name: string, silent: boolean = false) {
     const index = this.apis.findIndex((n) => n.name === name);
     if (index > -1) {

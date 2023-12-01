@@ -1,5 +1,5 @@
 <template>
-  <div class="v-brand-region">
+  <div class="v-toolbar-region">
     <WidgetWrapper
       v-for="widget in widgets"
       ref="widgetsRef"
@@ -20,8 +20,7 @@
   const { widgets, widgetsRef } = useRegion(props.region);
 
   defineOptions({
-    name: 'BrandRegion',
-    inheritAttrs: false
+    name: 'ToolbarRegion'
   });
 
   defineExpose({

@@ -64,7 +64,7 @@
   const leftResizable: ResizableOptions = {
     dirs: ['e'],
     maxWidth: 600,
-    minWidth: 50
+    minWidth: 49
   };
 
   const rightResizable: ResizableOptions = {

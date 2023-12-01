@@ -1,0 +1,9 @@
+@use '../core' as *;
+
+@include b(brand-region) {
+  text-align: left;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}

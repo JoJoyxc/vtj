@@ -37,10 +37,10 @@ export const SkeletonWrapper = defineComponent({
     /**
      * 切换应用区域折叠或展开
      */
-    toggleCollapse() {
+    toggleCollapse(value?: boolean) {
       if (this.skeletonRef) {
         const collapsed = this.skeletonRef.collapsed;
-        this.skeletonRef.collapsed = !collapsed;
+        this.skeletonRef.collapsed = value ?? !collapsed;
       }
     },
     /**

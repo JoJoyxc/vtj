@@ -1,4 +1,10 @@
 import { type VNode, type DefineComponent } from 'vue';
+
+export type VueComponent =
+  | Record<string, any>
+  | VNode
+  | DefineComponent<any, any, any, any>;
+
 /**
  * 区域类型
  */
@@ -33,7 +39,7 @@ export interface Widget {
   /**
    * Vue组件
    */
-  component: Record<string, any> | VNode | DefineComponent<any, any, any, any>;
+  component: VueComponent;
 
   /**
    * 组件默认参数
@@ -57,7 +63,7 @@ export interface AppWidget extends Widget {
   /**
    *  应用图标
    */
-  icon: string;
+  icon: VueComponent;
   /**
    * 应用名称
    */
@@ -66,6 +72,11 @@ export interface AppWidget extends Widget {
    * 应用打开方式
    */
   openType?: 'panel' | 'link' | 'dialog';
+
+  /**
+   * 链接url，openType 为 link 时有效
+   */
+  url?: string;
 }
 
 /**
@@ -83,7 +94,7 @@ export interface TabWidget extends Widget {
   /**
    * tab图标
    */
-  icon?: string;
+  icon?: VueComponent;
   /**
    * 能关闭的
    */

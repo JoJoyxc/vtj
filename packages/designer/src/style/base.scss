@@ -1,1 +1,11 @@
 @use 'core' as *;
+
+@include scroll-bar;
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}

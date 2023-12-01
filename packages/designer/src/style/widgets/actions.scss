@@ -1,0 +1,8 @@
+@use '../core' as *;
+
+@include b(actions-widget) {
+  padding: 0 10px;
+  .el-button + .el-button {
+    margin-left: 5px;
+  }
+}

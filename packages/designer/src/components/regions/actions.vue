@@ -1,5 +1,5 @@
 <template>
-  <div class="v-brand-region">
+  <div class="v-actions-region">
     <WidgetWrapper
       v-for="widget in widgets"
       ref="widgetsRef"
@@ -11,7 +11,7 @@
   import { WidgetWrapper } from '../../wrappers';
   import { RegionType } from '../../framework';
   import { useRegion } from '../hooks';
-
+  
   export interface Props {
     region: RegionType;
   }
@@ -20,7 +20,7 @@
   const { widgets, widgetsRef } = useRegion(props.region);
 
   defineOptions({
-    name: 'BrandRegion',
+    name: 'ActionsRegion',
     inheritAttrs: false
   });
 

@@ -1,30 +1,30 @@
 <template>
-  <div class="v-logo" @click="onClick">
+  <div class="v-logo-widget" @click="onClick">
     <img
       v-if="props.icon"
       :title="props.text"
-      class="v-logo__icon"
+      class="v-logo-widget__icon"
       :src="props.icon" />
     <span v-else>{{ props.text }}</span>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { type Widget, RegionType } from '../../../framework';
+  import logo from './logo.png';
   export interface Props {
-    widget: Widget;
-    region: RegionType;
     icon?: string;
     text?: string;
     link?: string;
   }
 
   defineOptions({
-    name: 'Logo'
+    name: 'LogoWidget',
+    inheritAttrs: false
   });
 
   const props = withDefaults(defineProps<Props>(), {
-    text: 'VTJ'
+    text: 'VTJ',
+    icon: logo
   });
 
   const onClick = () => {
