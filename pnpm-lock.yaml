@@ -419,6 +419,31 @@ importers:
         specifier: ~4.2.5
         version: 4.2.5(vue@3.3.9)
 
+  packages/materials:
+    dependencies:
+      '@vtj/core':
+        specifier: workspace:^
+        version: link:../core
+      '@vtj/ui':
+        specifier: workspace:^
+        version: link:../ui
+      '@vtj/utils':
+        specifier: workspace:^
+        version: link:../utils
+      ant-design-vue:
+        specifier: ~4.0.7
+        version: 4.0.7(vue@3.3.9)
+    devDependencies:
+      '@vtj/cli':
+        specifier: workspace:^
+        version: link:../cli
+      vue:
+        specifier: ~3.3.9
+        version: 3.3.9(typescript@5.3.2)
+      vue-router:
+        specifier: ~4.2.5
+        version: 4.2.5(vue@3.3.9)
+
   packages/node:
     dependencies:
       '@types/fs-extra':
