@@ -10,25 +10,34 @@ async function getPackages(dir) {
 }
 
 async function cleanDir(list, parentPath) {
-  console.log('开始清理[' + parentPath + ']编译产物...');
   for (let pkg of list) {
     for (let dir of DIRS) {
       const dirpath = join(parentPath, pkg, dir);
       await rm(dirpath, { recursive: true, force: true });
-      // console.log(`remove`, dirpath);
     }
     for (let file of FILES) {
       const filepath = join(parentPath, pkg, file);
       await rm(filepath, { recursive: true, force: true });
-      // console.log(`remove`, filepath);
     }
   }
   await rm('node_modules', { recursive: true, force: true });
   for (let file of FILES) {
     await rm(file, { recursive: true, force: true });
   }
-  console.log('done:', '清除[' + parentPath + ']编译产物完成！');
 }
 
-cleanDir(await getPackages(PACKAGES_PATH), PACKAGES_PATH);
-cleanDir(await getPackages(PROJECTS_PATH), PROJECTS_PATH);
+async function cleanOther() {
+  await rm('.nx', { recursive: true, force: true });
+  await rm('dev/dist', { recursive: true, force: true });
+  await rm('dev/node_modules', { recursive: true, force: true });
+  await rm('docs/dist', { recursive: true, force: true });
+  await rm('docs/node_modules', { recursive: true, force: true });
+  await rm('docs/cache', { recursive: true, force: true });
+  await rm('docs/.vitepress/cache', { recursive: true, force: true });
+}
+
+console.log('开始清理...');
+await cleanDir(await getPackages(PACKAGES_PATH), PACKAGES_PATH);
+await cleanDir(await getPackages(PROJECTS_PATH), PROJECTS_PATH);
+await cleanOther();
+console.log('开始完成！');

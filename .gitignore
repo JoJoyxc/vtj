@@ -55,3 +55,4 @@ lib
 /projects/*/types
 /docs/typedoc
 /docs/.vitepress/cache
+/docs/cache

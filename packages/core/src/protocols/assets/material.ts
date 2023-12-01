@@ -5,6 +5,11 @@ import type { NodeSchema, NodeFrom } from '../schemas';
  */
 export interface Material {
   /**
+   * 版本号
+   */
+  version: string;
+
+  /**
    * 物料名称标识
    */
   name: string;
