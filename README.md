@@ -36,8 +36,27 @@ npm run setup && npm run build && npm run dev
 ### 模块说明
 
 - packages
+  - base
+  - cli
+  - core
+  - designer
+  - icons
+  - materials
+  - node
+  - ui
+  - utils
 - platforms
+  - electron
+  - pro
+  - server
+  - uniapp
+  - web
 - projects
+  - egg
+  - electron
+  - libaray
+  - uniapp
+  - web
 - docs
 - dev
 
