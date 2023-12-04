@@ -9,11 +9,7 @@
     "docs:preview": "vitepress preview"
   },
   "dependencies": {
-    "@vtj/core": "workspace:*",
-    "@vtj/designer": "workspace:*",
-    "@vtj/icons": "workspace:*",
-    "@vtj/ui": "workspace:*",
-    "@vtj/utils": "workspace:*",
+    "@vtj/pro": "workspace:*",
     "vue": "~3.3.9",
     "vue-router": "~4.2.5"
   },

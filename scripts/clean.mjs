@@ -2,6 +2,7 @@ import { join } from 'path';
 import { rm, readdir } from 'fs/promises';
 const PACKAGES_PATH = 'packages';
 const PROJECTS_PATH = 'projects';
+const PLATFORMS_PATH = 'platforms';
 const DIRS = ['lib', 'cdn', 'types', 'dist', 'coverage', 'temp'];
 const FILES = ['tsconfig.tsbuildinfo', 'package-lock.json', 'pnpm-lock.yaml'];
 
@@ -38,6 +39,7 @@ async function cleanOther() {
 
 console.log('开始清理...');
 await cleanDir(await getPackages(PACKAGES_PATH), PACKAGES_PATH);
+await cleanDir(await getPackages(PLATFORMS_PATH), PLATFORMS_PATH);
 await cleanDir(await getPackages(PROJECTS_PATH), PROJECTS_PATH);
 await cleanOther();
 console.log('开始完成！');

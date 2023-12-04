@@ -1,18 +1,19 @@
 {
   "name": "vtj",
   "private": true,
-  "description": "简单介绍一下",
+  "description": "VTJ 一款基于 Vue3 + Typescript 的低代码开发工具，内置了设计器引擎、渲染器和代码生成器。",
   "type": "module",
   "devDependencies": {
+    "pnpm": "~8.10.4",
+    "lerna": "~8.0.0",
     "axios": "~1.6.2",
     "fs-extra": "~11.2.0",
     "jsdom": "~23.0.1",
-    "lerna": "~8.0.0",
     "typedoc": "~0.25.4"
   },
   "scripts": {
     "setup": "pnpm install --unsafe-perm --registry=https://registry.npmmirror.com",
-    "dev": "npm run coverage && cd dev && npm run dev",
+    "dev": "cd dev && npm run dev",
     "dev:build": "cd dev && npm run build",
     "dev:preview": "cd dev && npm run preview",
     "clean": "lerna clean -y && node scripts/clean.mjs",
@@ -37,9 +38,10 @@
   },
   "engines": {
     "node": ">=20.0.0",
-    "lerna": ">=8.0.0"
+    "lerna": ">=8.0.0",
+    "pnpm": ">=8.10.4"
   },
-  "packageManager": "^pnpm@8.10.3",
+  "packageManager": "^pnpm@8.10.4",
   "publishConfig": {
     "access": "public"
   }

@@ -8,7 +8,8 @@ export default createViteConfig({
   version: true,
   library: 'VtjIcons',
   emptyOutDir: isUmd ? false : true,
-  external: ['vue'],
+  // 在umd模式，内置@element-plus/icons-vue
+  external: isUmd ? ['vue'] : ['vue', '@element-plus/icons-vue'],
   externalGlobals: isUmd
     ? {
         vue: 'Vue'

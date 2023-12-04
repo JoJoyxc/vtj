@@ -1,6 +1,5 @@
 import './style.scss';
-import { type App } from 'vue';
-
+export { version as VTJ_ICONS_VERSION } from './version';
 import * as svgIcons from './components';
 import * as Icons from './icons';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
@@ -14,19 +13,19 @@ export interface Icon {
   unicode: string;
 }
 
-const components: Record<string, any> = {
+const icons: Record<string, any> = {
   ...ElementPlusIconsVue,
   ...svgIcons,
   ...Icons
 };
 
-const install = (app: App) => {
-  const installed = (app as any).__VTJ_ICONS_INSTALLED__;
-  if (installed) return;
-  for (const [key, component] of Object.entries(components)) {
-    app.component(key, component as any);
-  }
-  (app as any).__VTJ_ICONS_INSTALLED__ = true;
-};
+// const install = (app: App) => {
+//   const installed = (app as any).__VTJ_ICONS_INSTALLED__;
+//   if (installed) return;
+//   for (const [key, component] of Object.entries(components)) {
+//     app.component(key, component as any);
+//   }
+//   (app as any).__VTJ_ICONS_INSTALLED__ = true;
+// };
 
-export { components, install };
+export { icons };
