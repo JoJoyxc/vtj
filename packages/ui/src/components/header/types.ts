@@ -29,4 +29,5 @@ export type HeaderProps = ComponentPropsType<typeof headerProps>;
 
 export type HeaderEmits = {
   click: [];
+  clickIcon: [];
 };

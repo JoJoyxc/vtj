@@ -1,12 +1,12 @@
 <template>
-  <Panel class="v-pages-widget" title="页面管理" plus subtitle="(共 0 条)">
-    PagesWidget
+  <Panel class="v-components-widget" title="组件库">
+    ComponentsWidget
   </Panel>
 </template>
 <script lang="ts" setup>
   import { Panel } from '../../shared';
 
   defineOptions({
-    name: 'PagesWidget'
+    name: 'ComponentsWidget'
   });
 </script>

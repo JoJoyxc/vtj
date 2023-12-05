@@ -34,4 +34,8 @@
   const handleClick = () => {
     emit('click');
   };
+
+  defineOptions({
+    name: 'VIcon'
+  });
 </script>

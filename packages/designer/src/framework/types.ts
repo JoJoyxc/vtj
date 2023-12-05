@@ -6,6 +6,14 @@ export type VueComponent =
   | DefineComponent<any, any, any, any>;
 
 /**
+ * 器件分组
+ */
+export enum WidgetGroup {
+  Block = 'block',
+  Node = 'node'
+}
+
+/**
  * 区域类型
  */
 export enum RegionType {
@@ -50,6 +58,11 @@ export interface Widget {
    * 不可见，停用
    */
   invisible?: boolean;
+
+  /**
+   * 分组名称
+   */
+  group?: string;
 }
 
 /**

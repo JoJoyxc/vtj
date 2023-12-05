@@ -20,7 +20,8 @@
       :icon="VtjIconBug"
       content="主标题文本"
       subtitle="我是副标题"
-      more>
+      more
+      @click="onClick">
       <template #actions>
         <XAction
           :icon="VtjIconPlus"
@@ -42,6 +43,7 @@
       subtitle="我是副标题"
       border
       more
+      @clickIcon="onClickIcon"
       @click="onClick">
       <template #actions>
         <XAction
@@ -59,10 +61,19 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { XHeader, XAction } from '@vtj/ui';
-  import { VtjIconBug, VtjIconPlus, VtjIconSetting } from '@vtj/icons';
+  import {
+    VtjIconBug,
+    VtjIconPlus,
+    VtjIconSetting,
+    XHeader,
+    XAction
+  } from '@vtj/web';
 
   const onClick = () => {
     console.log('clicked!');
+  };
+
+  const onClickIcon = () => {
+    console.log('onClickIcon!');
   };
 </script>

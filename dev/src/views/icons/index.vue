@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <div v-for="[name, svg] in icons" class="item">
+    <div v-for="[name, svg] in iconsArray" class="item">
       <XIcon :icon="svg" :size="40"></XIcon>
       <div>
         <span> {{ name }}</span>
@@ -9,11 +9,9 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { components } from '@vtj/icons';
-  import { XIcon } from '@vtj/ui';
-  import '@vtj/icons/dist/style.css';
+  import { icons, XIcon } from '@vtj/web';
 
-  const icons = Object.entries(components);
+  const iconsArray = Object.entries(icons);
 </script>
 
 <style lang="scss" scoped>

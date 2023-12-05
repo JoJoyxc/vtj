@@ -1,12 +1,12 @@
 <template>
-  <Panel class="v-pages-widget" title="页面管理" plus subtitle="(共 0 条)">
-    PagesWidget
+  <Panel class="v-apis-widget" title="API管理" plus>
+    ApisWidget
   </Panel>
 </template>
 <script lang="ts" setup>
   import { Panel } from '../../shared';
 
   defineOptions({
-    name: 'PagesWidget'
+    name: 'ApisWidget'
   });
 </script>

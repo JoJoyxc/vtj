@@ -16,6 +16,7 @@ export interface ActionMenuItem {
   divided?: boolean;
   icon?: IconParam;
   label?: string;
+  [index: string]: any;
 }
 
 export type ActionDropdown = Partial<ExtractPropTypes<typeof dropdownProps>>;

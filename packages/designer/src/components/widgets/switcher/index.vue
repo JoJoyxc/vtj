@@ -20,8 +20,8 @@
   }
 
   const props = withDefaults(defineProps<Props>(), {
-    title: '',
-    subtitle: '',
+    title: '项目名称',
+    subtitle: '系统管理',
     link: ''
   });
 

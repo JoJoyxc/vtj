@@ -51,12 +51,12 @@
   const engine = useEngine();
   const { widgets, widgetsRef } = useRegion(props.region);
   const panelWidgets = computed(() => {
-    return (widgets as AppWidget[]).filter((n) => {
+    return (widgets.value as AppWidget[]).filter((n) => {
       return n.openType === 'panel';
     });
   });
   const otherWidgets = computed(() => {
-    return (widgets as AppWidget[]).filter((n) => {
+    return (widgets.value as AppWidget[]).filter((n) => {
       return n.openType !== 'panel';
     });
   });

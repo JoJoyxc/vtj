@@ -1,0 +1,7 @@
+@use '../core' as *;
+
+@include b(panel) {
+  > .x-panel__header {
+    padding: 0 5px !important;
+  }
+}

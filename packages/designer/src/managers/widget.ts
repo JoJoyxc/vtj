@@ -58,12 +58,15 @@ class WidgetManager {
   /**
    * 根据区域名称获取区域内的器件配置
    * @param region
+   * @param group
    * @returns
    */
-  getWidgets(region?: keyof typeof RegionType) {
+  getWidgets(region?: keyof typeof RegionType, group?: string) {
     const widgets = Object.values(this.widgets);
     if (region) {
-      return widgets.filter((n) => n.region === region);
+      return widgets.filter(
+        (n) => n.region === region && (!group || (group && group === n.group))
+      );
     }
     return widgets;
   }

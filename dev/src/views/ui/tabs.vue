@@ -2,6 +2,7 @@
   <div>
     <XTabs :items="items" v-model="currentValue"></XTabs>
     <XTabs :items="items" type="card"></XTabs>
+
     <XPanel header="业务核心数据">
       <XTabs :items="items"> </XTabs>
     </XPanel>

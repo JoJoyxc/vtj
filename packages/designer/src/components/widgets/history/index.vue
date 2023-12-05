@@ -1,12 +1,12 @@
 <template>
-  <Panel class="v-pages-widget" title="页面管理" plus subtitle="(共 0 条)">
-    PagesWidget
+  <Panel class="v-history-widget" title="历史记录">
+    HistoryWidget
   </Panel>
 </template>
 <script lang="ts" setup>
   import { Panel } from '../../shared';
 
   defineOptions({
-    name: 'PagesWidget'
+    name: 'HistoryWidget'
   });
 </script>

@@ -65,17 +65,6 @@ export const panelProps = {
   header: {
     type: [String, Object] as PropType<string | HeaderProps | null>
   },
-
-  bodyPadding: {
-    type: Boolean,
-    default: true
-  },
-
-  footerPadding: {
-    type: Boolean,
-    default: true
-  },
-
   body: {
     type: Object as PropType<ContainerProps>
   },

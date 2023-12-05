@@ -3,7 +3,12 @@
  * 在vitest环境 这样写法引用不到 widgets，未知原因，可能是 vitest 的bug
  */
 import { widgets } from '../components/widgets';
-import { type Widget, type AppWidget, type TabWidget } from '../framework';
+import {
+  WidgetGroup,
+  type Widget,
+  type AppWidget,
+  type TabWidget
+} from '../framework';
 import {
   VtjIconDocument,
   VtjIconComponents,
@@ -48,7 +53,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'Blocks',
     region: 'Apps',
-    component: widgets.EmptyWidget,
+    component: widgets.Blocks,
     type: 'app',
     openType: 'panel',
     icon: VtjIconComponents,
@@ -57,7 +62,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'Components',
     region: 'Apps',
-    component: widgets.EmptyWidget,
+    component: widgets.Components,
     type: 'app',
     openType: 'panel',
     icon: VtjIconBlock,
@@ -66,7 +71,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'Outline',
     region: 'Apps',
-    component: widgets.EmptyWidget,
+    component: widgets.Outline,
     type: 'app',
     openType: 'panel',
     icon: VtjIconOutline,
@@ -75,7 +80,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'History',
     region: 'Apps',
-    component: widgets.EmptyWidget,
+    component: widgets.History,
     type: 'app',
     openType: 'panel',
     icon: VtjIconHistory,
@@ -84,7 +89,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'Apis',
     region: 'Apps',
-    component: widgets.EmptyWidget,
+    component: widgets.Apis,
     type: 'app',
     openType: 'panel',
     icon: VtjIconApi,
@@ -93,7 +98,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'Deps',
     region: 'Apps',
-    component: widgets.EmptyWidget,
+    component: widgets.Deps,
     type: 'app',
     openType: 'panel',
     icon: VtjIconCategory,
@@ -107,5 +112,85 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
     openType: 'dialog',
     icon: VtjIconInfo,
     label: '关于'
+  },
+  {
+    name: 'Designer',
+    region: 'Workspace',
+    component: widgets.Designer,
+    type: 'tab',
+    closable: false,
+    label: '设计视图'
+  },
+  {
+    name: 'Schema',
+    region: 'Workspace',
+    component: widgets.EmptyWidget,
+    type: 'tab',
+    closable: true,
+    label: 'Schema'
+  },
+  {
+    name: 'Docs',
+    region: 'Workspace',
+    component: widgets.EmptyWidget,
+    type: 'tab',
+    closable: true,
+    label: '帮助中心'
+  },
+  {
+    name: 'Script',
+    region: 'Settings',
+    component: widgets.EmptyWidget,
+    type: 'tab',
+    group: WidgetGroup.Block,
+    label: '设置'
+  },
+  {
+    name: 'DataSources',
+    region: 'Settings',
+    component: widgets.EmptyWidget,
+    type: 'tab',
+    group: WidgetGroup.Block,
+    label: '数据源'
+  },
+  {
+    name: 'Css',
+    region: 'Settings',
+    component: widgets.EmptyWidget,
+    type: 'tab',
+    group: WidgetGroup.Block,
+    label: '样式'
+  },
+  {
+    name: 'Advanced',
+    region: 'Settings',
+    component: widgets.EmptyWidget,
+    type: 'tab',
+    group: WidgetGroup.Block,
+    label: '定义'
+  },
+  {
+    name: 'Properties',
+    region: 'Settings',
+    component: widgets.EmptyWidget,
+    type: 'tab',
+    group: WidgetGroup.Node,
+    label: '属性'
+  },
+  {
+    name: 'Events',
+    region: 'Settings',
+    component: widgets.EmptyWidget,
+    type: 'tab',
+    group: WidgetGroup.Node,
+    label: '事件'
+  },
+  {
+    name: 'Directives',
+    region: 'Settings',
+    component: widgets.EmptyWidget,
+    type: 'tab',
+    group: WidgetGroup.Node,
+    label: '指令'
   }
 ];
