@@ -1,3 +1,4 @@
 import Icon from './Icon.vue';
-
-export { Icon };
+import Panel from './panel.vue';
+import Tabs from './tabs.vue';
+export { Icon, Panel, Tabs };

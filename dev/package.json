@@ -17,12 +17,12 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
-    "@vtj/utils": "workspace:^",
     "@vtj/icons": "workspace:^",
-    "@vtj/ui": "workspace:^",
-    "@vtj/web": "workspace:*",
     "@vtj/pro": "workspace:*",
-    "vue": "~3.3.9",
+    "@vtj/ui": "workspace:^",
+    "@vtj/utils": "workspace:^",
+    "@vtj/web": "workspace:*",
+    "vue": "~3.3.10",
     "vue-router": "~4.2.5"
   },
   "devDependencies": {

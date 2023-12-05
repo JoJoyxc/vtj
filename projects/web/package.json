@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@vtj/web": "workspace:*",
-    "vue": "^3.3.9"
+    "vue": "^3.3.10"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:*"

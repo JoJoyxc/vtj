@@ -30,14 +30,6 @@
       :loading="loading">
       出码
     </ElButton>
-    <ElButton
-      v-if="props.copy"
-      type="danger"
-      size="small"
-      @click="onCopy"
-      :loading="copyLoading">
-      复制
-    </ElButton>
   </div>
 </template>
 <script lang="ts" setup>
@@ -52,7 +44,6 @@
 
   export interface Props {
     coder?: boolean;
-    copy?: boolean;
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -61,7 +52,6 @@
   });
 
   const loading = ref(false);
-  const copyLoading = ref(false);
 
   const refresh = () => {
     ElMessage.warning({
@@ -88,8 +78,6 @@
   };
 
   const onCoder = () => {};
-
-  const onCopy = () => {};
 
   const onView = () => {
     ElMessage.warning({

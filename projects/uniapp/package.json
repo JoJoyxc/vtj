@@ -53,7 +53,7 @@
     "@dcloudio/uni-mp-toutiao": "3.0.0-3090820231124001",
     "@dcloudio/uni-mp-weixin": "3.0.0-3090820231124001",
     "@dcloudio/uni-quickapp-webview": "3.0.0-3090820231124001",
-    "vue": "^3.3.9",
+    "vue": "^3.3.10",
     "vue-i18n": "^9.8.0"
   },
   "devDependencies": {
@@ -63,6 +63,6 @@
     "@dcloudio/uni-stacktracey": "3.0.0-3090820231124001",
     "@dcloudio/vite-plugin-uni": "3.0.0-3090820231124001",
     "@vtj/cli": "workspace:*",
-    "@vue/runtime-core": "^3.3.9"
+    "@vue/runtime-core": "^3.3.10"
   }
 }
