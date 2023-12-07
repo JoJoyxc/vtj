@@ -2,23 +2,22 @@
   <XMenu :data="data" @select="onSelect" default-active="A-1"></XMenu>
 </template>
 <script lang="ts" setup>
-  import { XMenu, type MenuDataItem } from '@vtj/ui';
-  import { components } from '@vtj/icons';
+  import { icons, XMenu, type MenuDataItem } from '@vtj/web';
   const data: MenuDataItem[] = [
     {
       id: 'A',
       title: 'A',
-      icon: components['Document'],
+      icon: icons['Document'],
       children: [
         {
           id: 'A-1',
           title: 'A-1',
-          icon: components['vtj-icon-np-share']
+          icon: icons['vtj-icon-np-share']
         },
         {
           id: 'A-2',
           title: 'A-2',
-          icon: components['vtj-icon-np-share'],
+          icon: icons['vtj-icon-np-share'],
           disabled: true
         }
       ]

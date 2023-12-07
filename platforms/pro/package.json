@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {},
   "dependencies": {
+    "@vtj/utils": "workspace:^",
+    "@vtj/icons": "workspace:^",
+    "@vtj/ui": "workspace:^",
     "@vtj/core": "workspace:^",
     "@vtj/designer": "workspace:^",
     "@vtj/renderer": "workspace:^",

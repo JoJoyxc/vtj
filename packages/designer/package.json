@@ -14,7 +14,6 @@
     "@vtj/icons": "workspace:^",
     "@vtj/ui": "workspace:^",
     "@vtj/utils": "workspace:^",
-    "@vueuse/core": "~10.6.1",
     "monaco-editor": "~0.44.0"
   },
   "devDependencies": {

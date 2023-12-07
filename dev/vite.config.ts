@@ -34,6 +34,6 @@ export default createViteConfig({
   staticDirs: ['../packages'],
   pages: {
     main: 'index.html',
-    nested: 'nested.html'
+    ide: 'ide.html'
   }
 });

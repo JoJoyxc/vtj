@@ -1,34 +1,13 @@
 <template>
   <div class="home">
-    <ElPageHeader title="测试覆盖率报告" :icon="<any>null">
-      <template #content>
-        <ElTabs v-model="current" stretch>
-          <ElTabPane
-            v-for="item in packages"
-            :label="`@vtj/${item}`"
-            :name="item"></ElTabPane>
-        </ElTabs>
-      </template>
-    </ElPageHeader>
-    <iframe :src="`/${current}/coverage/index.html`"></iframe>
+    <RouterLink to="/coverage">测试覆盖率报告</RouterLink>
+    <a href="/ide.html">低代码设计器</a>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue';
-  import { ElPageHeader, ElTabs, ElTabPane } from 'element-plus';
-  const packages = [
-    'base',
-    'node',
-    'cli',
-    'icons',
-    'utils',
-    'ui',
-    'core',
-    'designer',
-    'renderer'
-  ];
-  const current = ref('base');
+  // import { ref } from 'vue';
+  import { RouterLink } from 'vue-router';
 </script>
 
 <style lang="scss" scoped>

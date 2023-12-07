@@ -112,7 +112,7 @@ export const actionProps = {
    * icon 背景设置，当 mode为 icon 时有效
    */
   background: {
-    type: String as PropType<'always' | 'hover'>,
+    type: String as PropType<'always' | 'hover' | 'none'>,
     default: 'always'
   },
   /**

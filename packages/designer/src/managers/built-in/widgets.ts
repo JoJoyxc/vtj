@@ -2,13 +2,13 @@
  * import { widgets } from '../components';
  * 在vitest环境 这样写法引用不到 widgets，未知原因，可能是 vitest 的bug
  */
-import { widgets } from '../components/widgets';
+import { widgets } from '../../components/widgets';
 import {
   WidgetGroup,
   type Widget,
   type AppWidget,
   type TabWidget
-} from '../framework';
+} from '../../framework';
 import {
   VtjIconDocument,
   VtjIconComponents,

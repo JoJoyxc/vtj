@@ -1,0 +1,52 @@
+@use '../core' as *;
+
+@include b(item) {
+  padding: 3px 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  margin-bottom: 4px;
+  min-height: 30px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  &:hover {
+    border: 1px dashed var(--el-border-color) !important;
+  }
+
+  @include e(switch) {
+    margin-left: 5px;
+  }
+
+  @include e(title) {
+    > .x-icon {
+      margin-right: 3px;
+    }
+  }
+  @include e(subtitle) {
+    margin-left: 5px;
+    font-style: italic;
+    opacity: 0.5;
+  }
+
+  @include when(active) {
+    background-color: var(--el-color-primary-light-9);
+    color: var(--el-color-primary);
+  }
+
+  @include when(background) {
+    background-color: var(--el-fill-color-lighter);
+  }
+  @include when(border) {
+    border: 1px dashed var(--el-border-color-lighter);
+  }
+
+  @include when(hover) {
+    > .v-item__actions {
+      display: none;
+    }
+    &:hover {
+      > .v-item__actions {
+        display: block;
+      }
+    }
+  }
+}

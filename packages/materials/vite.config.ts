@@ -11,7 +11,7 @@ const materials = {
   element: {
     entry: 'src/element/index.ts',
     library: 'ElementPlusMaterial',
-    outDir: 'dist/materials/element-plus'
+    outDir: 'dist/materials/element'
   },
   antdv: {
     entry: 'src/antdv/index.ts',

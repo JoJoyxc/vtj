@@ -19,7 +19,7 @@
     "clean": "lerna clean -y && node scripts/clean.mjs",
     "reset": "pnpm run clean && pnpm run setup",
     "outdate": "pnpm outdated -r",
-    "update": "npm config set registry=https://registry.npmmirror.com/ && pnpm up -r --unsafe-perm && npm config set registry=https://registry.npmjs.org/",
+    "update": "pnpm up -r --unsafe-perm --registry=https://registry.npmmirror.com",
     "sync": "node scripts/sync.mjs",
     "test": "lerna run --no-private test",
     "build": "lerna run --no-private build",

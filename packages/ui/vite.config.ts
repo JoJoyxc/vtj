@@ -7,23 +7,32 @@ export default createViteConfig({
   version: true,
   library: 'VtjUI',
   emptyOutDir: isUmd ? false : true,
-  external: [
-    'vue',
-    'vue-router',
-    'element-plus',
-    '@element-plus/icons-vue',
-    '@vueuse/core',
-    '@vtj/utils',
-    '@vtj/icons',
-    'echarts'
-  ],
+  external: isUmd
+    ? [
+        'vue',
+        'vue-router',
+        'element-plus',
+        '@element-plus/icons-vue',
+        '@vtj/utils',
+        '@vtj/icons',
+        'echarts'
+      ]
+    : [
+        'vue',
+        'vue-router',
+        'element-plus',
+        '@element-plus/icons-vue',
+        '@vueuse/core',
+        '@vtj/utils',
+        '@vtj/icons',
+        'echarts'
+      ],
   externalGlobals: isUmd
     ? {
         vue: 'Vue',
         'vue-router': 'VueRouter',
         'element-plus': 'ElementPlus',
         '@element-plus/icons-vue': 'VtjIcons',
-        '@vueuse/core': 'VueUse',
         '@vtj/utils': 'VtjUtils',
         '@vtj/icons': 'VtjIcons',
         echarts: 'echarts'

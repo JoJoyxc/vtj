@@ -9,6 +9,11 @@ const routes: any = [
     component: () => import('@/views/index.vue')
   },
   {
+    path: '/',
+    name: 'coverage',
+    component: () => import('@/views/coverage.vue')
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('@/views/not-found.vue')

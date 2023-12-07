@@ -7,15 +7,31 @@ import {
   type MaybeRef,
   type App
 } from 'vue';
-import { logger } from '@vtj/core';
+import { logger, ProjectModel, Service, type ProjectSchema } from '@vtj/core';
 import { SkeletonWrapper, type SkeletonWrapperInstance } from '../wrappers';
+import { depsManager } from '../managers';
 
 export const engineKey: InjectionKey<Engine> = Symbol('VtjEngine');
+
+export interface EngineOptions {
+  container: MaybeRef<HTMLElement | undefined>;
+  service: Service;
+  project: ProjectSchema;
+}
 
 export class Engine {
   public app?: App;
   public skeleton?: SkeletonWrapperInstance | null;
-  constructor(public container: MaybeRef<HTMLElement | undefined>) {
+  public container: MaybeRef<HTMLElement | undefined>;
+  public service: Service;
+  public project: ProjectModel;
+  constructor(options: EngineOptions) {
+    const { container, service, project } = options;
+    this.container = container;
+    this.service = service;
+    const deps = depsManager.get();
+    console.log(deps);
+    this.project = new ProjectModel(project);
     onMounted(this.render.bind(this));
   }
   private render() {
