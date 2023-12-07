@@ -71,8 +71,8 @@
 <script lang="ts" setup>
   import { ElTag } from 'element-plus';
   import { Setting } from '@element-plus/icons-vue';
-  import { XTabs, XDataItem, XPanel, XContainer, XAction } from '@vtj/ui';
-  import { VtjIconPlus } from '@vtj/icons';
+  import { XTabs, XDataItem, XPanel, XContainer, XAction } from '@vtj/web';
+  import { VtjIconPlus } from '@vtj/web';
 
   const actions = [
     {

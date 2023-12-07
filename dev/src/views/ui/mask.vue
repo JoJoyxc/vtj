@@ -12,8 +12,8 @@
 </template>
 <script lang="ts" setup>
   import { reactive, markRaw } from 'vue';
-  import { XMask, type MenuDataItem, type ActionBarItems } from '@vtj/ui';
-  import { request } from '@vtj/utils';
+  import { XMask, type MenuDataItem, type ActionBarItems } from '@vtj/web';
+  import { request } from '@vtj/web';
   import {
     Lock,
     SwitchButton,

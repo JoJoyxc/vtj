@@ -17,7 +17,7 @@
 <script lang="ts" setup>
   import { ref, computed, watch } from 'vue';
   import { ElSelect, ElOption } from 'element-plus';
-  import { storage } from '@vtj/utils';
+  import { storage } from '@vtj/web';
   import { useRouter } from 'vue-router';
   import { getModules } from '../modules';
   import Menus from './Menus.vue';

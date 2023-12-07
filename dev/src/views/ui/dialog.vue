@@ -39,10 +39,8 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { XDialog, XPanel } from '@vtj/ui';
-  import {
-    VtjIconBug
-  } from '@vtj/icons';
+  import { XDialog, XPanel } from '@vtj/web';
+  import { VtjIconBug } from '@vtj/web';
 
   const panelRef = ref();
   const dialog = ref();

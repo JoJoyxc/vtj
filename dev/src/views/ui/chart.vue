@@ -5,7 +5,7 @@
 </template>
 <script lang="ts" setup>
   import { reactive } from 'vue';
-  import { XChart } from '@vtj/ui';
+  import { XChart } from '@vtj/web';
 
   const option: any = reactive({
     xAxis: {

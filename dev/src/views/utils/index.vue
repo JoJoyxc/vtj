@@ -6,7 +6,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { storage } from '@vtj/utils';
+  import { storage } from '@vtj/web';
 
   const saveStorage = () => {
     storage.save('key', { value: 1 }, { type: 'local' });

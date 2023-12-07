@@ -42,7 +42,7 @@
 <script lang="ts" setup>
   import { ElButton } from 'element-plus';
   import { reactive, ref } from 'vue';
-  import { XField, XForm } from '@vtj/ui';
+  import { XField, XForm } from '@vtj/web';
 
   const form = ref();
   const inline = ref(false);

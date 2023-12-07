@@ -6,7 +6,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { request } from '@vtj/utils';
+  import { request } from '@vtj/web';
   import {
     ElNotification,
     ElLoading,

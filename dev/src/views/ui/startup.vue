@@ -2,5 +2,5 @@
   <XStartup></XStartup>
 </template>
 <script lang="ts" setup>
-import { XStartup } from '@vtj/ui';
+  import { XStartup } from '@vtj/web';
 </script>

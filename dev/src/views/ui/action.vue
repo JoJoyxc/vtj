@@ -109,8 +109,8 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { XAction } from '@vtj/ui';
-  import { VtjIconBug, VtjIconApi, VtjIconPlus } from '@vtj/icons';
+  import { XAction } from '@vtj/web';
+  import { VtjIconBug, VtjIconApi, VtjIconPlus } from '@vtj/web';
 
   const menus = [
     {

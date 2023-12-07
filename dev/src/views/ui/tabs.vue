@@ -10,7 +10,7 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { XTabs, XPanel, type TabsItem } from '@vtj/ui';
+  import { XTabs, XPanel, type TabsItem } from '@vtj/web';
 
   const currentValue = ref(2);
 

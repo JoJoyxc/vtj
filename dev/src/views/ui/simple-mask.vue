@@ -6,7 +6,7 @@
   </XSimpleMask>
 </template>
 <script lang="ts" setup>
-  import { XSimpleMask } from '@vtj/ui';
+  import { XSimpleMask } from '@vtj/web';
 </script>
 
 <style lang="scss" scoped></style>

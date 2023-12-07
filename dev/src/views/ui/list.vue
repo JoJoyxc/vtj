@@ -16,7 +16,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { XList, XDataItem, type ListData } from '@vtj/ui';
+  import { XList, XDataItem, type ListData } from '@vtj/web';
 
   // const list: any = [];
 
