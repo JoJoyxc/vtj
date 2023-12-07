@@ -2,8 +2,8 @@
   <XDialog
     ref="dialogRef"
     :model-value="props.modelValue"
-    :submit="props.submit"
-    :cancel="props.cancel"
+    :submit="submitText"
+    :cancel="cancelText"
     :size="props.size"
     @submit="onSubmit"
     @close="onClose"
@@ -67,6 +67,14 @@
       onClose();
     }
   };
+
+  const submitText = computed(() =>
+    props.formProps?.disabled ? false : props.submit
+  );
+
+  const cancelText = computed(() =>
+    props.formProps?.disabled ? false : props.cancel
+  );
 
   defineExpose({
     $vtjEl,

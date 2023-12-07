@@ -74,8 +74,8 @@
   );
 
   const submit = async () => {
-    const ret = await formRef.value.validate().catch((e: any) => e);
-    if (ret && props.model) {
+    const ret = await formRef.value.validate().catch(() => false);
+    if (ret) {
       emit('submit', toRaw(model));
       if (props.submitMethod) {
         loading.value = true;

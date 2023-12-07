@@ -6,9 +6,9 @@ import type {
   HistorySchema
 } from '@vtj/core';
 
-export class StorageService implements Service {
+export class MemoryService implements Service {
   public init(project: ProjectSchema): Promise<ProjectSchema> {
-    console.log('StorageService', project);
+    console.log('MemoryService', project);
     return Promise.resolve({} as ProjectSchema);
   }
   public saveProject(project: ProjectSchema): Promise<boolean> {

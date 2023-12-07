@@ -13,10 +13,11 @@
   },
   "scripts": {
     "setup": "pnpm install --unsafe-perm --registry=https://registry.npmmirror.com",
-    "dev": "cd dev && npm run dev",
+    "dev": "npm run copy && cd dev && npm run dev",
     "dev:build": "cd dev && npm run build",
     "dev:preview": "cd dev && npm run preview",
     "clean": "lerna clean -y && node scripts/clean.mjs",
+    "copy": "node scripts/copy.mjs",
     "reset": "pnpm run clean && pnpm run setup",
     "outdate": "pnpm outdated -r",
     "update": "pnpm up -r --unsafe-perm --registry=https://registry.npmmirror.com",

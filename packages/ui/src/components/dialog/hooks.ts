@@ -125,8 +125,15 @@ export function useMethods(
     }
   };
 
-  const active = () => {
-    state.zIndex = Math.max(state.zIndex, ++__global_ZIndex__);
+  const active = (e: any) => {
+    const nodeName = e.target.nodeName || '';
+    if (
+      !['INPUT', 'TEXTAREA', 'RADIO', 'CHECKBOX'].includes(
+        nodeName.toUpperCase()
+      )
+    ) {
+      state.zIndex = Math.max(state.zIndex, ++__global_ZIndex__);
+    }
   };
 
   const show = () => changeMode('normal');

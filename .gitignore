@@ -31,28 +31,19 @@ lib
 .history
 .hbuildx
 
-# project
+# packages
 /packages/*/temp/
 /packages/*/types/
-/packages/*/lib/
-/packages/*/cdn/
-/packages/*/es/
 /packages/*/dist/
 /packages/*/coverage/
 /packages/*/node_modules/
 /packages/*/tsconfig.tsbuildinfo
-/dev/public/libs
-/example/public/libs
-/packages/ide/public/libs
 /packages/icons/src/components
-/packages/boot/public/libs
-/packages/ide/.vtj
-/packages/ide/src/views/pages
-/packages/ide/src/components/blocks
 
-/packages/boot/.vtj/debug
+# dev
+/dev/public/@vtj
 
-/projects/*/types
+# docs
 /docs/typedoc
 /docs/.vitepress/cache
 /docs/cache

@@ -148,6 +148,13 @@
     emits('switch', v);
   });
 
+  watch(
+    () => props.modelValue,
+    (v) => {
+      switchValue.value = !!v;
+    }
+  );
+
   defineOptions({
     name: 'VItem'
   });

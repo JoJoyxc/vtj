@@ -6,7 +6,7 @@ import type {
 } from './schemas';
 
 export abstract class Service {
-  public abstract init(): Promise<ProjectSchema>;
+  public abstract init(project: ProjectSchema): Promise<ProjectSchema>;
   public abstract saveProject(project: ProjectSchema): Promise<boolean>;
   public abstract createFile(file: PageFile | BlockFile): Promise<boolean>;
   public abstract getFile(id: string): Promise<PageFile | BlockFile>;

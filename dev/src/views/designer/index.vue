@@ -3,14 +3,14 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { Engine, widgetManager, StorageService } from '@vtj/pro';
+  import { Engine, widgetManager, MemoryService } from '@vtj/pro';
 
   console.log(widgetManager);
 
   const container = ref();
   const engine = new Engine({
     container,
-    service: new StorageService(),
+    service: new MemoryService(),
     project: {
       name: 'demo'
     }

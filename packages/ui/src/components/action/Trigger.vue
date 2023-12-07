@@ -37,7 +37,10 @@
     };
   });
 
-  const onClick = () => {
+  const onClick = (e: MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
     emit('click');
+    return false;
   };
 </script>

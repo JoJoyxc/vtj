@@ -39,7 +39,6 @@ export const EVENT_PROJECT_BLOCKS_CHANGE = 'EVENT_PROJECT_BLOCKS_CHANGE';
 export const EVENT_PROJECT_APIS_CHANGE = 'EVENT_PROJECT_APIS_CHANGE';
 
 export class ProjectModel {
-  private readonly __VTJ_PROJECT__: boolean = true;
   id: string = '';
   name: string = '';
   description: string = '';
@@ -77,16 +76,13 @@ export class ProjectModel {
   }
 
   toDsl() {
-    const { __VTJ_PROJECT__, id } = this;
-    const attrs = ProjectModel.attrs.reduce(
-      (result, current) => {
-        result[current] = (this as any)[current];
-        return result;
-      },
-      {} as Record<string, any>
-    );
+    const { id } = this;
+    const attrs = ProjectModel.attrs.reduce((result, current) => {
+      result[current] = (this as any)[current];
+      return result;
+    }, {} as Record<string, any>);
     return {
-      __VTJ_PROJECT__,
+      __VTJ_PROJECT__: true,
       id,
       ...attrs
     } as ProjectSchema;
@@ -145,18 +141,6 @@ export class ProjectModel {
     if (index > -1) {
       deps.splice(index, 1);
     }
-    if (!silent) {
-      emitter.emit(EVENT_PROJECT_DEPS_CHANGE, this);
-    }
-  }
-
-  /**
-   * 合并依赖
-   * @param source
-   * @param silent
-   */
-  mergeDeps(source: Dependencie[], silent: boolean = false) {
-    this.dependencies = merge(this.dependencies, source);
     if (!silent) {
       emitter.emit(EVENT_PROJECT_DEPS_CHANGE, this);
     }

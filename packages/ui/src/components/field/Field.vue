@@ -16,10 +16,12 @@
     <template #error="{ error }">
       <slot name="error" :error="error">
         <div
-          v-if="props.tooltipMessage"
+          v-if="formInstance?.props.tooltipMessage ?? props.tooltipMessage"
           class="x-field__info"
           :style="infoStyle">
-          <ElTooltip :content="error" v-bind="tooltipMessageComputed">
+          <ElTooltip
+            :content="getErrorMessage(error)"
+            v-bind="tooltipMessageComputed">
             <XIcon
               class="x-field__trigger"
               :icon="WarningFilled"
@@ -111,9 +113,18 @@
   const tooltipMessageComputed = computed(() => {
     return Object.assign(
       {},
+      formInstance?.props.tooltipMessage || {},
       typeof props.tooltipMessage === 'boolean' ? {} : props.tooltipMessage
     );
   });
+
+  const getErrorMessage = (error: string = '') => {
+    console.log(formInstance);
+    if (error.includes('is required')) {
+      return `${props.label || props.name}是必填项！`;
+    }
+    return error;
+  };
 
   const computedClass = computed(() => {
     return {
