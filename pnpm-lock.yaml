@@ -207,6 +207,9 @@ importers:
       '@vtj/icons':
         specifier: workspace:^
         version: link:../icons
+      '@vtj/renderer':
+        specifier: workspace:^
+        version: link:../renderer
       '@vtj/ui':
         specifier: workspace:^
         version: link:../ui

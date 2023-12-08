@@ -3,5 +3,7 @@ import Panel from './panel.vue';
 import Tabs from './tabs.vue';
 import Item from './item.vue';
 import Box from './box.vue';
+import Viewport from './viewport.vue';
+
 export * from './types';
-export { Icon, Panel, Tabs, Item, Box };
+export { Icon, Panel, Tabs, Item, Box, Viewport };

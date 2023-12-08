@@ -17,7 +17,8 @@ const alias =
         ),
         '@vtj/ui': join(packagesPath, 'ui/src'),
         '@vtj/core': join(packagesPath, 'core/src'),
-        '@vtj/designer': join(packagesPath, 'designer/src')
+        '@vtj/designer': join(packagesPath, 'designer/src'),
+        '@vtj/renderer': join(packagesPath, 'renderer/src')
       }
     : undefined;
 

@@ -14,6 +14,7 @@
     "@vtj/icons": "workspace:^",
     "@vtj/ui": "workspace:^",
     "@vtj/utils": "workspace:^",
+    "@vtj/renderer": "workspace:^",
     "monaco-editor": "~0.45.0"
   },
   "devDependencies": {

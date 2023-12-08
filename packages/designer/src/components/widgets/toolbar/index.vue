@@ -78,4 +78,8 @@
     name: 'ToolbarWidget',
     inheritAttrs: false
   });
+
+  defineExpose({
+    mode
+  });
 </script>

@@ -1,6 +1,7 @@
 @use '../core' as *;
 
 @include b(settings-region) {
+  overflow: hidden;
   @include e(header) {
     height: 30px;
     padding: 0 10px;

@@ -12,6 +12,7 @@ import {
 import { logger, ProjectModel, Service, type ProjectSchema } from '@vtj/core';
 import { SkeletonWrapper, type SkeletonWrapperInstance } from '../wrappers';
 import { depsManager } from '../managers';
+import { Simulator } from './simulator';
 
 export const engineKey: InjectionKey<ShallowReactive<Engine>> =
   Symbol('VtjEngine');
@@ -27,11 +28,15 @@ export class Engine {
   public skeleton?: SkeletonWrapperInstance | null;
   public container: MaybeRef<HTMLElement | undefined>;
   public service: Service;
+  public simulator: Simulator;
   public project?: ProjectModel;
+  private listeners: Array<() => void> = [];
+  private isReady: boolean = false;
   constructor(options: EngineOptions) {
     const { container, service, project } = options;
     this.container = container;
     this.service = service;
+    this.simulator = new Simulator();
     this.init(project);
     onMounted(this.render.bind(this));
   }
@@ -43,6 +48,8 @@ export class Engine {
     if (dsl) {
       dsl.dependencies = depsManager.merge(dsl.dependencies || []);
       this.project = new ProjectModel(dsl);
+      this.isReady = true;
+      this.emitListener();
     }
   }
   private render() {
@@ -54,6 +61,20 @@ export class Engine {
       this.app = app;
     } else {
       logger.warn('VTJEngine constructor param [ container ] is undefined');
+    }
+  }
+  private emitListener() {
+    for (const listener of this.listeners) {
+      listener();
+    }
+    this.listeners = [];
+  }
+
+  ready(callback: () => void) {
+    if (this.isReady) {
+      callback();
+    } else {
+      this.listeners.push(callback);
     }
   }
 }

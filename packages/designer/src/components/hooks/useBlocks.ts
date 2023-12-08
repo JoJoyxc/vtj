@@ -9,9 +9,11 @@ import { useEngine } from '../../framework';
 
 export function useBlocks() {
   const engine = useEngine();
-  const blocks: ShallowRef<BlockFile[]> = shallowRef(
-    engine.project?.blocks ?? []
-  );
+  const blocks: ShallowRef<BlockFile[]> = shallowRef([]);
+  engine.ready(() => {
+    blocks.value = engine.project?.blocks ?? [];
+  });
+
   emitter.on(EVENT_PROJECT_BLOCKS_CHANGE, (project) => {
     blocks.value = (project as ProjectModel).blocks.slice(0);
   });
