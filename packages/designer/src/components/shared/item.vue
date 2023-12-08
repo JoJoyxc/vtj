@@ -12,7 +12,7 @@
         <span v-if="subtitle" class="v-item__subtitle">{{ subtitle }}</span>
       </slot>
     </XContainer>
-    <XContainer class="v-item__actions">
+    <XContainer class="v-item__actions" @click.stop>
       <XAction
         v-for="action in currentActions"
         :name="action.name"

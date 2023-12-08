@@ -144,6 +144,20 @@ export const fieldProps = {
    */
   cascader: {
     type: [String, Array] as PropType<string | string[]>
+  },
+
+  /**
+   * 校验错误信息
+   */
+  error: {
+    type: String
+  },
+
+  /**
+   * 提示文本
+   */
+  tip: {
+    type: String
   }
 };
 

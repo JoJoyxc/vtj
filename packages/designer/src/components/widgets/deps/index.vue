@@ -20,18 +20,19 @@
       :model="model"
       :submitMethod="submitMethod"
       :formProps="{
-        disabled: readonly
+        disabled: readonly,
+        tooltipMessage: false
       }">
       <XField name="package" label="包名" required :disabled="!!model"></XField>
-      <XField name="version" label="版本" required error="add"></XField>
+      <XField name="version" label="版本" required></XField>
       <XField name="library" label="导出名称" required></XField>
       <XField
         name="urls"
         label="资源文件"
         editor="textarea"
         :props="{ rows: 3 }"
+        tip="多个资源可以换行输入"
         required>
-        <div class="v-deps-widget__tip">多个资源可以换行输入</div>
       </XField>
 
       <XField name="assetsUrl" label="物料URL"></XField>
@@ -44,29 +45,41 @@
   import type { Dependencie } from '@vtj/core';
   import { XDialogForm, XField } from '@vtj/ui';
   import { Panel, Item } from '../../shared';
-  import { useEngine } from '../../../framework';
   import { useDeps } from '../../hooks';
-  const engine = useEngine();
-  const { dependencies } = useDeps(engine.project?.dependencies);
+
+  const { dependencies, engine } = useDeps();
+
+  // 显示弹窗
+  const visible = ref(false); 
+
+  // 能否更改表单
+  const readonly = ref(false);
+
+  // 编辑表单数据
+  const model = ref<any>({});
+
+  // 弹窗标题
+  const title = computed(() => {
+    return readonly.value ? '查看依赖' : model.value ? '编辑依赖' : '新增依赖';
+  });
+
   const getActions = (dep: Dependencie): any[] => {
     return dep.required || dep.official ? [] : ['edit', 'remove'];
   };
+
   const isSwitchable = (dep: Dependencie) => {
     return dep.official && !dep.required;
+  };
+
+  const submitMethod = async (data: any) => {
+    data.urls = data.urls.split('\n');
+    engine.project?.setDeps(data);
+    return true;
   };
 
   const onSwitch = (dep: Dependencie) => {
     engine.project?.setDeps(dep);
   };
-
-  const visible = ref(false);
-  const readonly = ref(false);
-
-  const model = ref<any>({});
-
-  const title = computed(() => {
-    return readonly.value ? '查看依赖' : model.value ? '编辑依赖' : '新增依赖';
-  });
 
   const onAdd = () => {
     readonly.value = false;
@@ -96,12 +109,6 @@
     if (e.name === 'remove') {
       engine.project?.removeDeps(dep);
     }
-  };
-
-  const submitMethod = async (data: any) => {
-    data.urls = data.urls.split('\n');
-    engine.project?.setDeps(data);
-    return true;
   };
 
   defineOptions({

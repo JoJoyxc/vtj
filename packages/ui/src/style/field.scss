@@ -19,6 +19,14 @@
     flex-grow: 1;
   }
 
+  @include e(tip) {
+    display: block;
+    width: 100%;
+    font-size: 12px;
+    color: getCssVar('text-color-secondary');
+    line-height: 1.8em;
+  }
+
   @include when('tooltip-outer') {
     &.el-form-item--small {
       .el-form-item__content {

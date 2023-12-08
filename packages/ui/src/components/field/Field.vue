@@ -28,6 +28,9 @@
               :size="computedSize"></XIcon>
           </ElTooltip>
         </div>
+        <div v-else class="el-form-item__error">
+          {{ getErrorMessage(error) }}
+        </div>
       </slot>
     </template>
 
@@ -45,6 +48,11 @@
           </template>
         </component>
       </slot>
+      <div v-if="props.tip || $slots.tip" class="x-field__tip">
+        <slot name="tip">
+          {{ props.tip }}
+        </slot>
+      </div>
     </div>
     <slot></slot>
   </ElFormItem>
@@ -119,7 +127,9 @@
   });
 
   const getErrorMessage = (error: string = '') => {
-    console.log(formInstance);
+    if (props.error) {
+      return props.error;
+    }
     if (error.includes('is required')) {
       return `${props.label || props.name}是必填项！`;
     }

@@ -9,7 +9,7 @@
       <el-container class="v-skeleton__wrapper">
         <el-aside
           v-resizable="leftResizable"
-          :width="leftWidth"
+          :width="props.leftWidth"
           class="v-skeleton__left"
           :class="{
             'is-collapsed': collapsed
@@ -22,7 +22,7 @@
         <el-aside
           v-if="settable"
           v-resizable="rightResizable"
-          :width="rightWidth"
+          :width="props.rightWidth"
           class="v-skeleton__right">
           <RegionWrapper ref="settings" region="Settings"></RegionWrapper>
         </el-aside>
@@ -54,23 +54,38 @@
     footerHeight?: string;
   }
 
-  withDefaults(defineProps<Props>(), {
+  const props = withDefaults(defineProps<Props>(), {
     headerHeight: '36px',
     leftWidth: '400px',
     rightWidth: '350px',
     footerHeight: '20px'
   });
 
+  const leftWidth = ref(parseInt(props.leftWidth));
+  const rightWidth = ref(parseInt(props.rightWidth));
+
   const leftResizable: ResizableOptions = {
     dirs: ['e'],
     maxWidth: 600,
-    minWidth: 49
+    minWidth: 49,
+    onResizing(_dir, mie) {
+      leftWidth.value = mie.elementWidth.value;
+    },
+    onEnd(_dir, mie) {
+      leftWidth.value = mie.elementWidth.value;
+    }
   };
 
   const rightResizable: ResizableOptions = {
     dirs: ['w'],
     maxWidth: 600,
-    minWidth: 2
+    minWidth: 2,
+    onResizing(_dir, mie) {
+      rightWidth.value = mie.elementWidth.value;
+    },
+    onEnd(_dir, mie) {
+      rightWidth.value = mie.elementWidth.value;
+    }
   };
 
   const brand = ref();
@@ -96,6 +111,8 @@
     settings,
     status,
     collapsed,
-    settable
+    settable,
+    leftWidth,
+    rightWidth
   });
 </script>

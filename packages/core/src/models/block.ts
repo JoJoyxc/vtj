@@ -28,7 +28,6 @@ export class BlockModel {
   public readonly __VTJ_BLOCK__: boolean = true;
   public readonly id: string;
   public name: string = '';
-  public title: string = '';
   public inject: BlockInject[] = [];
   public state: BlockState = {};
   public lifeCycles: Record<string, JSFunction> = {};
@@ -45,7 +44,6 @@ export class BlockModel {
 
   static normalAttrs: string[] = [
     'name',
-    'title',
     'inject',
     'state',
     'lifeCycles',
@@ -87,13 +85,10 @@ export class BlockModel {
    */
   toDsl(): BlockSchema {
     const { __VTJ_BLOCK__, id, nodes } = this;
-    const attrs = BlockModel.normalAttrs.reduce(
-      (result, current) => {
-        result[current] = (this as any)[current];
-        return result;
-      },
-      {} as Record<string, any>
-    );
+    const attrs = BlockModel.normalAttrs.reduce((result, current) => {
+      result[current] = (this as any)[current];
+      return result;
+    }, {} as Record<string, any>);
 
     return {
       ...attrs,

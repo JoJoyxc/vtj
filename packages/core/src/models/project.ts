@@ -201,6 +201,7 @@ export class ProjectModel {
    */
   createPage(page: PageFile, parentId?: string, silent: boolean = false) {
     page.id = page.id || uid();
+    page.type = 'page';
     if (page.dir) {
       page.children = [];
     } else {
@@ -316,6 +317,7 @@ export class ProjectModel {
     const id = block.id || uid();
     const name = upperFirstCamelCase(block.name);
     block.id = id;
+    block.type = 'block';
     block.dsl = new BlockModel({ id, name }).toDsl();
     this.blocks.push(block);
     if (!silent) {
@@ -332,6 +334,9 @@ export class ProjectModel {
     const match = this.getBlock(block.id);
     if (match) {
       Object.assign(match, block);
+      if (match.dsl) {
+        match.dsl.name = block.name;
+      }
     } else {
       logger.warn(`not found PageFile for id: ${block.id} `);
     }

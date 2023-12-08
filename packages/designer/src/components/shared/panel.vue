@@ -7,6 +7,7 @@
         mode="icon"
         :icon="VtjIconPlus"
         background="hover"
+        title="新增"
         @click="onClickPlus"></XAction>
       <slot name="actions"></slot>
     </template>
