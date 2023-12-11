@@ -21,6 +21,6 @@
   .designer {
     width: 100%;
     height: 100%;
-    border: 1px solid var(--el-border-color);
+    // border: 1px solid var(--el-border-color);
   }
 </style>

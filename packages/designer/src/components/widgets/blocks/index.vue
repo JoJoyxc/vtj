@@ -15,6 +15,7 @@
           @remove="onRemove(block)"></Box>
       </ElCol>
     </ElRow>
+    <ElEmpty v-if="!blocks.length"></ElEmpty>
     <XDialogForm
       v-model="visible"
       :title="title"
@@ -39,7 +40,7 @@
 </template>
 <script lang="ts" setup>
   import { ref, computed, type Ref } from 'vue';
-  import { ElRow, ElCol } from 'element-plus';
+  import { ElRow, ElCol, ElEmpty } from 'element-plus';
   import { XDialogForm, XField } from '@vtj/ui';
   import { upperFirstCamelCase } from '@vtj/utils';
   import type { BlockFile } from '@vtj/core';

@@ -13,6 +13,7 @@ import { logger, ProjectModel, Service, type ProjectSchema } from '@vtj/core';
 import { SkeletonWrapper, type SkeletonWrapperInstance } from '../wrappers';
 import { depsManager } from '../managers';
 import { Simulator } from './simulator';
+import { Assets } from './assets';
 
 export const engineKey: InjectionKey<ShallowReactive<Engine>> =
   Symbol('VtjEngine');
@@ -29,6 +30,7 @@ export class Engine {
   public container: MaybeRef<HTMLElement | undefined>;
   public service: Service;
   public simulator: Simulator;
+  public assets: Assets;
   public project?: ProjectModel;
   private listeners: Array<() => void> = [];
   private isReady: boolean = false;
@@ -36,7 +38,8 @@ export class Engine {
     const { container, service, project } = options;
     this.container = container;
     this.service = service;
-    this.simulator = new Simulator();
+    this.assets = new Assets();
+    this.simulator = new Simulator(this.assets);
     this.init(project);
     onMounted(this.render.bind(this));
   }

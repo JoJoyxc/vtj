@@ -8,7 +8,7 @@
       :actions="getActions(dep)"
       background
       :switch="isSwitchable(dep)"
-      :model-value="dep.enabled"
+      v-model="dep.enabled"
       @switch="onSwitch(dep)"
       @click="onView(dep)"
       @action="onAction(dep, $event)"></Item>
@@ -50,7 +50,7 @@
   const { dependencies, engine } = useDeps();
 
   // 显示弹窗
-  const visible = ref(false); 
+  const visible = ref(false);
 
   // 能否更改表单
   const readonly = ref(false);

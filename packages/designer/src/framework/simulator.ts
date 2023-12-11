@@ -1,28 +1,25 @@
-import { type Ref, watch } from 'vue';
+import { type Ref, watchEffect } from 'vue';
 import { logger, type Dependencie } from '@vtj/core';
 import { parseDeps, createAssetsCss, createAssetScripts } from '@vtj/renderer';
-
+import { Assets } from './assets';
 declare global {
   interface Window {
     __simulator__: Simulator;
+    Vue?: any;
+    VueRouter?: any;
+    ElementPlus?: any;
   }
 }
 
 export class Simulator {
   public contentWindow: Window | null = null;
-  constructor() {}
+  constructor(public assets: Assets) {}
   init(iframe: Ref<HTMLIFrameElement | undefined>, deps: Ref<Dependencie[]>) {
-    watch(
-      [iframe, deps],
-      ([el, v]) => {
-        if (el && v) {
-          this.setup(el, v);
-        }
-      },
-      {
-        immediate: true
+    watchEffect(() => {
+      if (iframe.value && deps.value.length) {
+        this.setup(iframe.value, deps.value);
       }
-    );
+    });
   }
 
   private setup(iframe: HTMLIFrameElement, deps: Dependencie[]) {
@@ -34,8 +31,8 @@ export class Simulator {
     cw.__simulator__ = this;
     const doc = cw.document;
     this.contentWindow = cw;
-    const { scripts, css } = parseDeps(deps);
-
+    const { scripts, css, materials, libraryExports, materialExports } =
+      parseDeps(deps);
     doc.open();
     doc.write(`
      <!DOCTYPE html>
@@ -52,23 +49,33 @@ export class Simulator {
               min-height: 100vh;
               width: 100%;
               height: 100%;
-              font-size:12px;
+              font-size:14px;
             }
          </style>
          ${createAssetsCss(css)}
          ${createAssetScripts(scripts)}
+         ${createAssetScripts(materials)}
        </head>
        <body> 
        </body>
        <script>
-       __simulator__.ready();
+       __simulator__.ready(
+        ${JSON.stringify(libraryExports)}, ${JSON.stringify(materialExports)}
+       );
      </script> 
      </html>
     `);
     doc.close();
   }
 
-  ready() {
-    console.log('simulator ready');
+  ready(libraryExports: string[] = [], materialExports: string[] = []) {
+    const cw = this.contentWindow as any;
+    const materials = materialExports.map((name: string) => {
+      return cw[name];
+    });
+
+    this.assets.load(materials);
+
+    console.log('ready', libraryExports, materialExports, materials);
   }
 }

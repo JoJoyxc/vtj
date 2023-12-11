@@ -19,7 +19,10 @@ export function parseDeps(deps: Dependencie[]) {
   const packages = deps.filter((n) => !!n.enabled);
   const scripts: string[] = [];
   const css: string[] = [];
-  packages.forEach(({ urls }) => {
+  const materials: string[] = [];
+  const libraryExports: string[] = [];
+  const materialExports: string[] = [];
+  packages.forEach(({ urls, assetsUrl, library, assetsLibrary }) => {
     urls?.forEach((url) => {
       if (isJSUrl(url)) {
         scripts.push(url);
@@ -28,9 +31,21 @@ export function parseDeps(deps: Dependencie[]) {
         css.push(url);
       }
     });
+    if (library) {
+      libraryExports.push(library);
+    }
+    if (assetsUrl) {
+      materials.push(assetsUrl);
+    }
+    if (assetsLibrary) {
+      materialExports.push(assetsLibrary);
+    }
   });
   return {
     scripts,
-    css
+    css,
+    materials,
+    libraryExports,
+    materialExports
   };
 }

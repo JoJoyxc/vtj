@@ -9,14 +9,12 @@
   import { computed, ref } from 'vue';
   import { useElementSize } from '@vueuse/core';
   import { Viewport } from '../../shared';
-  import { useEngine } from '../../../framework';
   import { useDeps } from '../../hooks';
 
-  const engine = useEngine();
   const container = ref();
   const iframe = ref<HTMLIFrameElement>();
   const { width, height } = useElementSize(container);
-  const { dependencies } = useDeps();
+  const { dependencies, engine } = useDeps();
   engine.simulator.init(iframe, dependencies);
 
   const mode = computed(() => {

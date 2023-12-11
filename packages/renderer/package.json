@@ -10,7 +10,7 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@vtj/base": "workspace:^",
+    "@vtj/utils": "workspace:^",
     "@vtj/core": "workspace:^"
   },
   "devDependencies": {

@@ -48,7 +48,7 @@ export const builtInDeps: Dependencie[] = [
       './@vtj/deps/element-plus/index.css',
       './@vtj/deps/element-plus/index.full.min.js'
     ],
-    assetsUrl: './@vtj/meterials/element-plus/index.umd.js',
+    assetsUrl: './@vtj/materials/element/index.umd.js',
     assetsLibrary: 'ElementPlusMaterial',
     required: false,
     official: true,
@@ -68,7 +68,7 @@ export const builtInDeps: Dependencie[] = [
     version: 'latest',
     library: 'VtjUI',
     urls: ['./@vtj/deps/@vtj/ui/style.css', './@vtj/deps/@vtj/ui/index.umd.js'],
-    assetsUrl: './@vtj/meterials/ui/index.umd.js',
+    assetsUrl: './@vtj/materials/ui/index.umd.js',
     assetsLibrary: 'VtjUIMaterial',
     required: false,
     official: true,
