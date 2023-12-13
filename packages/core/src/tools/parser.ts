@@ -43,3 +43,11 @@ export function parseFunction(
   }
   return fn as Function;
 }
+
+export function isJSExpression(data: any): data is JSExpression {
+  return data && data.type === 'JSExpression';
+}
+
+export function isJSFunction(x: any): x is JSFunction {
+  return typeof x === 'object' && x && x.type === 'JSFunction';
+}

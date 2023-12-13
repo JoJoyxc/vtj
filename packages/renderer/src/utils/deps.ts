@@ -22,6 +22,7 @@ export function parseDeps(deps: Dependencie[]) {
   const materials: string[] = [];
   const libraryExports: string[] = [];
   const materialExports: string[] = [];
+  const materialMapLibrary: Record<string, string> = {};
   packages.forEach(({ urls, assetsUrl, library, assetsLibrary }) => {
     urls?.forEach((url) => {
       if (isJSUrl(url)) {
@@ -40,12 +41,16 @@ export function parseDeps(deps: Dependencie[]) {
     if (assetsLibrary) {
       materialExports.push(assetsLibrary);
     }
+    if (library && assetsLibrary) {
+      materialMapLibrary[assetsLibrary] = library;
+    }
   });
   return {
     scripts,
     css,
     materials,
     libraryExports,
-    materialExports
+    materialExports,
+    materialMapLibrary
   };
 }

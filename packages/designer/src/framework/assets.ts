@@ -10,6 +10,8 @@ export interface AssetGroup {
   name: string;
   label: string;
   count: number;
+  library?: string;
+  names?: string[];
   components?: MaterialDescription[];
   children?: AssetGroup[];
 }
@@ -19,7 +21,7 @@ export class Assets {
   componentMap: Map<string, MaterialDescription> = new Map();
   groups: AssetGroup[] = [];
   constructor() {
-    console.log(builtInMaterials);
+    // console.log(builtInMaterials);
   }
 
   private getCateoryComponents(
@@ -40,10 +42,11 @@ export class Assets {
   private parseGroups(materials: Material[]) {
     const result: AssetGroup[] = [];
     for (let pkg of materials) {
-      const { categories, components, label, name } = pkg;
+      const { categories, components, label, name, library } = pkg;
       if (!categories || !components) {
         continue;
       }
+      const names = components.map((n) => n.name);
       const children: AssetGroup[] = categories.map((c) =>
         this.getCateoryComponents(c, components)
       );
@@ -55,6 +58,8 @@ export class Assets {
         name: pkg.name,
         label: label || name,
         count: total,
+        names,
+        library,
         children
       };
       result.push(group);

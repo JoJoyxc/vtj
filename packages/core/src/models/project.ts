@@ -47,7 +47,7 @@ export class ProjectModel {
   pages: PageFile[] = [];
   blocks: BlockFile[] = [];
   apis: ApiSchema[] = [];
-  current?: BlockFile | PageFile;
+  current: BlockModel | null = null;
   static attrs: string[] = [
     'name',
     'homepage',
@@ -93,9 +93,11 @@ export class ProjectModel {
    * @param silent
    */
   active(file: BlockFile | PageFile, silent: boolean = false) {
-    this.current = file;
-    if (!silent) {
-      emitter.emit(EVENT_PROJECT_ACTIVED, this);
+    if (file.dsl) {
+      this.current = new BlockModel(file.dsl);
+      if (!silent) {
+        emitter.emit(EVENT_PROJECT_ACTIVED, this);
+      }
     }
   }
   /**
@@ -103,7 +105,7 @@ export class ProjectModel {
    * @param silent
    */
   deactivate(silent: boolean = false) {
-    this.current = undefined;
+    this.current = null;
     if (!silent) {
       emitter.emit(EVENT_PROJECT_ACTIVED, this);
     }
@@ -320,6 +322,11 @@ export class ProjectModel {
     block.type = 'block';
     block.dsl = new BlockModel({ id, name }).toDsl();
     this.blocks.push(block);
+
+    if (!this.current) {
+      this.active(block, silent);
+    }
+
     if (!silent) {
       emitter.emit(EVENT_PROJECT_BLOCKS_CHANGE, this);
     }

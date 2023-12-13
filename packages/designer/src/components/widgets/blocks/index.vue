@@ -10,9 +10,11 @@
         <Box
           :name="block.name"
           :title="block.title"
+          :active="current?.id === block.id"
           editable
           @edit="onEdit(block)"
-          @remove="onRemove(block)"></Box>
+          @remove="onRemove(block)"
+          @click="onClick(block)"></Box>
       </ElCol>
     </ElRow>
     <ElEmpty v-if="!blocks.length"></ElEmpty>
@@ -45,12 +47,13 @@
   import { upperFirstCamelCase } from '@vtj/utils';
   import type { BlockFile } from '@vtj/core';
   import { Panel, Box } from '../../shared';
-  import { useColSpan, useBlocks } from '../../hooks';
+  import { useColSpan, useBlocks, useCurrent } from '../../hooks';
 
   const { span } = useColSpan();
   const { blocks, engine } = useBlocks();
 
   const model: Ref<BlockFile | undefined> = ref(undefined);
+  const { current } = useCurrent();
   const visible = ref(false);
   const title = computed(() => (model.value?.id ? '编辑' : '新增'));
   const subtitle = computed(() => {
@@ -84,6 +87,7 @@
     model.value = file;
     visible.value = true;
   };
+
   const onRemove = (file: BlockFile) => {
     engine.project?.removeBlock(file.id);
   };
@@ -92,6 +96,11 @@
     if (model.value) {
       model.value.name = upperFirstCamelCase(val);
     }
+  };
+
+  const onClick = (file: BlockFile) => {
+    engine.project?.active(file);
+    console.log('click', engine.project);
   };
 
   defineOptions({

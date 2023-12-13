@@ -74,6 +74,11 @@ export interface BlockSchema {
   dataSources?: Record<string, DataSourceSchema>;
 
   /**
+   * babel代码转换缓存
+   */
+  transform?: Record<string, string>;
+
+  /**
    * 标记
    */
   __VTJ_BLOCK__?: boolean;

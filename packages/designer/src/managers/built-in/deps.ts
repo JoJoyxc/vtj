@@ -73,5 +73,27 @@ export const builtInDeps: Dependencie[] = [
     required: false,
     official: true,
     enabled: true
+  },
+  {
+    package: 'ant-design-vue',
+    version: 'latest',
+    library: 'antd',
+    urls: [
+      './@vtj/deps/ant-design-vue/rest.css',
+      './@vtj/deps/ant-design-vue/dayjs/dayjs.min.js',
+      './@vtj/deps/ant-design-vue/dayjs/plugin/customParseFormat.js',
+      './@vtj/deps/ant-design-vue/dayjs/plugin/weekday.js',
+      './@vtj/deps/ant-design-vue/dayjs/plugin/localeData.js',
+      './@vtj/deps/ant-design-vue/dayjs/plugin/weekOfYear.js',
+      './@vtj/deps/ant-design-vue/dayjs/plugin/weekYear.js',
+      './@vtj/deps/ant-design-vue/dayjs/plugin/advancedFormat.js',
+      './@vtj/deps/ant-design-vue/dayjs/plugin/quarterOfYear.js',
+      './@vtj/deps/ant-design-vue/antd.min.js'
+    ],
+    assetsUrl: './@vtj/materials/antdv/index.umd.js',
+    assetsLibrary: 'AntdvMaterial',
+    required: false,
+    official: true,
+    enabled: false
   }
 ];

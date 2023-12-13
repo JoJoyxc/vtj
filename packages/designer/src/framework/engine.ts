@@ -22,6 +22,7 @@ export interface EngineOptions {
   container: MaybeRef<HTMLElement | undefined>;
   service: Service;
   project: ProjectSchema;
+  globals?: Record<string, any>;
 }
 
 export class Engine {
@@ -29,17 +30,21 @@ export class Engine {
   public skeleton?: SkeletonWrapperInstance | null;
   public container: MaybeRef<HTMLElement | undefined>;
   public service: Service;
-  public simulator: Simulator;
   public assets: Assets;
-  public project?: ProjectModel;
   private listeners: Array<() => void> = [];
   private isReady: boolean = false;
+  public project?: ProjectModel;
+  public simulator?: Simulator;
   constructor(options: EngineOptions) {
-    const { container, service, project } = options;
+    const { container, service, project, globals = {} } = options;
     this.container = container;
     this.service = service;
     this.assets = new Assets();
-    this.simulator = new Simulator(this.assets);
+    this.simulator = new Simulator({
+      assets: this.assets,
+      globals,
+      service: this.service
+    });
     this.init(project);
     onMounted(this.render.bind(this));
   }

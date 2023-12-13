@@ -19,6 +19,10 @@
     }
   }
 
+  @include when(active) {
+    background-color: var(--el-color-primary-light-9);
+  }
+
   @include e(footer) {
     position: absolute;
     opacity: 0;

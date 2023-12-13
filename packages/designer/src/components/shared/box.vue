@@ -1,5 +1,5 @@
 <template>
-  <div class="v-box">
+  <div class="v-box" :class="classes" draggable>
     <XContainer direction="column" justify="center" align="center">
       <span class="v-box__name">{{ props.name }}</span>
       <span class="v-box__label">{{ props.title }}</span>
@@ -15,6 +15,7 @@
   </div>
 </template>
 <script lang="ts" setup>
+  import { computed } from 'vue';
   import { XContainer, XIcon } from '@vtj/ui';
   import { VtjIconEdit, VtjIconRemove } from '@vtj/icons';
   import { ElMessageBox } from 'element-plus';
@@ -23,6 +24,7 @@
     name: string;
     title: string;
     editable?: boolean;
+    active?: boolean;
   }
 
   const props = defineProps<Props>();
@@ -39,6 +41,12 @@
       emits('remove');
     }
   };
+
+  const classes = computed(() => {
+    return {
+      'is-active': props.active
+    };
+  });
 
   defineOptions({
     name: 'VBox'

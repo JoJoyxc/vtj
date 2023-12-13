@@ -15,7 +15,10 @@
   const iframe = ref<HTMLIFrameElement>();
   const { width, height } = useElementSize(container);
   const { dependencies, engine } = useDeps();
-  engine.simulator.init(iframe, dependencies);
+
+  engine.ready(() => {
+    engine.simulator?.init(iframe, dependencies);
+  });
 
   const mode = computed(() => {
     const widget = engine.skeleton?.getWidget('Toolbar');
