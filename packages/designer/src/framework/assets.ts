@@ -1,10 +1,12 @@
 import type {
   Material,
   MaterialCategory,
-  MaterialDescription
+  MaterialDescription,
+  NodeFrom,
+  Service
 } from '@vtj/core';
 import { arrayToMap } from '@vtj/utils';
-import { builtInMaterials } from '../managers/built-in';
+import { builtInMaterials, SetterValueTypes } from '../managers';
 
 export interface AssetGroup {
   name: string;
@@ -20,9 +22,7 @@ export class Assets {
   components: MaterialDescription[] = [];
   componentMap: Map<string, MaterialDescription> = new Map();
   groups: AssetGroup[] = [];
-  constructor() {
-    // console.log(builtInMaterials);
-  }
+  constructor(public service: Service) {}
 
   private getCateoryComponents(
     cateory: MaterialCategory,
@@ -77,5 +77,47 @@ export class Assets {
     }
     this.groups = this.parseGroups(packages);
     this.componentMap = arrayToMap(this.components, 'name');
+  }
+
+  async getBlockMaterial(from: NodeFrom) {
+    if (!from || typeof from === 'string') return null;
+    const blockId = from.type === 'Schema' ? from.id : null;
+    if (!blockId) return null;
+    const file = await this.service.getFile(blockId);
+    if (!file?.dsl) return null;
+    const { id, name, slots, props, emits } = file.dsl;
+    /**
+     * 根据数据类型自动匹配设置器
+     * @param type
+     * @returns
+     */
+    const getSetters = (type: string | string[]) => {
+      const types = Array.isArray(type) ? type : [type];
+      let setters: string[] = [];
+      for (const t of types) {
+        setters = setters.concat(SetterValueTypes[t] || []);
+      }
+      return setters;
+    };
+    const desc: MaterialDescription = {
+      id,
+      name,
+      // 如果没有定义插槽，不能放置子组件
+      childIncludes: slots?.length ? undefined : false,
+      props: (props || []).map((n) => {
+        return typeof n === 'string'
+          ? {
+              name: n
+            }
+          : {
+              name: n.name,
+              type: n.type as any,
+              setters: getSetters(n.type as any)
+            };
+      }),
+      events: emits,
+      slots
+    };
+    return desc;
   }
 }

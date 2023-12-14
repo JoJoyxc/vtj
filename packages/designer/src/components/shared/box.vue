@@ -1,5 +1,10 @@
 <template>
-  <div class="v-box" :class="classes" draggable>
+  <div
+    class="v-box"
+    :class="classes"
+    :draggable="draggable"
+    @dragstart="onDragStart"
+    @dragend="onDragEnd">
     <XContainer direction="column" justify="center" align="center">
       <span class="v-box__name">{{ props.name }}</span>
       <span class="v-box__label">{{ props.title }}</span>
@@ -25,10 +30,11 @@
     title: string;
     editable?: boolean;
     active?: boolean;
+    draggable?: boolean;
   }
 
   const props = defineProps<Props>();
-  const emits = defineEmits(['edit', 'remove']);
+  const emits = defineEmits(['edit', 'remove', 'dragstart', 'dragend']);
   const onEdit = () => {
     emits('edit');
   };
@@ -47,6 +53,14 @@
       'is-active': props.active
     };
   });
+
+  const onDragStart = () => {
+    emits('dragstart', props);
+  };
+
+  const onDragEnd = () => {
+    emits('dragend', props);
+  };
 
   defineOptions({
     name: 'VBox'

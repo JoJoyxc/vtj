@@ -1,6 +1,5 @@
 import {
   type BlockSchema,
-  type BlockModel,
   type BlockProp,
   type BlockPropDataType,
   type BlockState,
@@ -24,8 +23,8 @@ export type DataSourceHandler = (...args: any[]) => Promise<any>;
 
 export interface CreateRendererOptions {
   Vue?: any;
-  dsl: BlockSchema;
-  block?: BlockModel;
+  mode?: ContextMode;
+  dsl?: BlockSchema;
   components?: Record<string, any>;
   libs?: Record<string, any>;
   apis?: Record<string, any>;
@@ -36,14 +35,15 @@ export interface CreateRendererOptions {
 export function createRenderer(options: CreateRendererOptions) {
   const {
     Vue = globalVue,
-    block,
+    mode = ContextMode.Runtime,
     components = {},
     libs = {},
     apis = {},
     loader
   } = options;
-  const mode = !!block ? ContextMode.Design : ContextMode.Runtime;
+
   const dsl: ComputedRef<BlockSchema> = Vue.computed(() => options.dsl);
+
   const attrs = {
     $components: components,
     $libs: libs,

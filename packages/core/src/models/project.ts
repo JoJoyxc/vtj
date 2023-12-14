@@ -376,20 +376,24 @@ export class ProjectModel {
   /**
    * 检查是否存在名称的区块
    * @param name
+   * @param excludes
    * @returns
    */
-  existBlockName(name: string) {
-    return this.blocks.some((n) => n.name === name);
+  existBlockName(name: string, excludes: string[] = []) {
+    return this.blocks.some((n) => {
+      return n.name === name && !excludes.includes(n.id);
+    });
   }
 
   /**
    * 检测是否存在名称的页面
    * @param name
+   * @param excludes
    * @returns
    */
-  existPageName(name: string) {
+  existPageName(name: string, excludes: string[] = []) {
     const pages = this.getPages();
-    return pages.some((n) => n.name === name);
+    return pages.some((n) => n.name === name && !excludes.includes(n.id));
   }
 
   /**

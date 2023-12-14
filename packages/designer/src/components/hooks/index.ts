@@ -4,3 +4,4 @@ export * from './useColSpan';
 export * from './useBlocks';
 export * from './useAssets';
 export * from './useCurrent';
+export * from './useDesigner';

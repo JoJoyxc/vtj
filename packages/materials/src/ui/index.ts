@@ -4,8 +4,10 @@ import type {
   MaterialDescription
 } from '@vtj/core';
 import { version } from '../version';
+import { setPackageName } from '../shared';
 import icon from './icon';
 
+const name = '@vtj/ui';
 const components: MaterialDescription[] = [icon];
 
 const categories: MaterialCategory[] = [
@@ -34,7 +36,7 @@ const material: Material = {
   library: 'VtjUIMaterial',
   order: 1,
   categories,
-  components
+  components: setPackageName(components, name)
 };
 
 export default material;

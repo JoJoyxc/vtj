@@ -10,7 +10,7 @@ import {
   EVENT_NODE_CHANGE
 } from '@vtj/core';
 import { type SimulatorEnv } from './simulator';
-import { createRenderer, createLoader } from '@vtj/renderer';
+import { createRenderer, createLoader, ContextMode } from '@vtj/renderer';
 import { ElNotification } from 'element-plus';
 export class Renderer {
   private app: App | null = null;
@@ -66,10 +66,12 @@ export class Renderer {
 
     this.dsl = Vue.reactive(block.toDsl()) as BlockSchema;
     const loader = createLoader({
-      getFile: this.service.getFile.bind(this.service),
+      getDsl: async (id: string) => {
+        return (await this.service.getFile(id))?.dsl || null;
+      },
       options: {
+        mode: ContextMode.Design,
         Vue,
-        block,
         components,
         libs,
         apis,
@@ -78,8 +80,8 @@ export class Renderer {
     });
     const renderer = createRenderer({
       Vue,
+      mode: ContextMode.Design,
       dsl: this.dsl,
-      block,
       components,
       libs,
       apis,

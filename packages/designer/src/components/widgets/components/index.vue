@@ -15,7 +15,12 @@
     <div v-if="searchKey" class="v-components-widget__result">
       <ElRow wrap="wrap" :gutter="5">
         <ElCol v-for="desc in searchResult" :span="span" :key="desc.name">
-          <Box :name="desc.name" :title="desc.label || desc.name"></Box>
+          <Box
+            :name="desc.name"
+            :title="desc.label || desc.name"
+            draggable
+            @dragstart="onDragStart(desc)"
+            @dragend="onDragEnd"></Box>
         </ElCol>
       </ElRow>
       <ElEmpty v-if="!searchResult.length"></ElEmpty>
@@ -34,7 +39,12 @@
                   v-for="desc in item.components"
                   :span="span"
                   :key="desc.name">
-                  <Box :name="desc.name" :title="desc.label || desc.name"></Box>
+                  <Box
+                    :name="desc.name"
+                    :title="desc.label || desc.name"
+                    draggable
+                    @dragstart="onDragStart(desc)"
+                    @dragend="onDragEnd"></Box>
                 </ElCol>
               </ElRow>
             </ElCollapseItem>
@@ -53,14 +63,31 @@
     ElCol,
     ElEmpty
   } from 'element-plus';
-
+  import { type MaterialDescription } from '@vtj/core';
   import { VtjIconSearch } from '@vtj/icons';
   import { XTabs } from '@vtj/ui';
   import { Panel, Box } from '../../shared';
   import { useColSpan, useAssets } from '../../hooks';
-  const { span } = useColSpan();
+  import { type Designer } from '../../../framework';
+  const { span, engine } = useColSpan();
   const { tabs, currentTab, currentGroup, model, searchKey, searchResult } =
     useAssets();
+
+  const onDragStart = (desc: MaterialDescription) => {
+    const designer = engine.skeleton?.getWidget('Designer')?.widgetRef
+      ?.designer as Designer;
+    if (designer) {
+      designer.setDragging(desc);
+    }
+  };
+
+  const onDragEnd = () => {
+    const designer = engine.skeleton?.getWidget('Designer')?.widgetRef
+      ?.designer as Designer;
+    if (designer) {
+      designer.setDragging(null);
+    }
+  };
 
   defineOptions({
     name: 'ComponentsWidget'

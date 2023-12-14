@@ -4,8 +4,10 @@ import type {
   MaterialDescription
 } from '@vtj/core';
 import { version } from '../version';
+import { setPackageName } from '../shared';
 import button from './button';
 
+const name = 'ant-design-vue';
 const components: MaterialDescription[] = [...button];
 
 const categories: MaterialCategory[] = [
@@ -40,13 +42,13 @@ const categories: MaterialCategory[] = [
 ];
 
 const material: Material = {
-  name: 'ant-design-vue',
+  name,
   version: version,
   label: 'Antdv',
   library: 'AntdvMaterial',
   order: 2,
   categories,
-  components
+  components: setPackageName(components, name)
 };
 
 export default material;

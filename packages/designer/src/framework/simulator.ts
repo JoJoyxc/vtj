@@ -182,4 +182,10 @@ export class Simulator {
       globals: this.globals
     };
   }
+
+  dispose() {
+    this.renderer?.dispose();
+    this.contentWindow = null;
+    this.renderer = null;
+  }
 }

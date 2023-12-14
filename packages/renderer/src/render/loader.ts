@@ -15,17 +15,17 @@ export const defaultLoader: BlockLoader = (name: string) => {
 };
 
 export interface CreateLoaderOptions {
-  getFile: (id: string) => Promise<BlockSchema | null>;
+  getDsl: (id: string) => Promise<BlockSchema | null>;
   options: Partial<CreateRendererOptions>;
 }
 
 export function createLoader(opts: CreateLoaderOptions): BlockLoader {
-  const { getFile, options } = opts;
+  const { getDsl, options } = opts;
   return (name: string, from?: NodeFrom, Vue: any = globalVue) => {
     if (!from || typeof from === 'string') return name;
     if (from.type === 'Schema') {
       return Vue.defineAsyncComponent(async () => {
-        const dsl = await getFile(from.id);
+        const dsl = await getDsl(from.id);
         return dsl
           ? createRenderer({
               ...options,

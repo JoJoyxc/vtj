@@ -396,11 +396,7 @@ export class BlockModel {
           ? target.insertAfter(node, silent)
           : this.insertAfter(node, target, silent);
       } else {
-        if (target.parent) {
-          target.appendChild(node, silent);
-        } else {
-          this.appendNode(node, silent);
-        }
+        target.appendChild(node, silent);
       }
     } else {
       this.appendNode(node, silent);
@@ -408,7 +404,7 @@ export class BlockModel {
   }
 
   private __removeNode(node: NodeModel, silent: boolean = false) {
-    const index = this.nodes.findIndex((n) => n === node);
+    const index = this.nodes.findIndex((n) => n.id === node.id);
     if (index > -1) {
       this.nodes.splice(index, 1);
       if (!silent) {

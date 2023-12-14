@@ -9,7 +9,14 @@ import {
   type MaybeRef,
   type App
 } from 'vue';
-import { logger, ProjectModel, Service, type ProjectSchema } from '@vtj/core';
+import {
+  logger,
+  ProjectModel,
+  Service,
+  emitter,
+  type Emitter,
+  type ProjectSchema
+} from '@vtj/core';
 import { SkeletonWrapper, type SkeletonWrapperInstance } from '../wrappers';
 import { depsManager } from '../managers';
 import { Simulator } from './simulator';
@@ -34,12 +41,13 @@ export class Engine {
   private listeners: Array<() => void> = [];
   private isReady: boolean = false;
   public project?: ProjectModel;
-  public simulator?: Simulator;
+  public simulator: Simulator;
+  public emitter: Emitter = emitter;
   constructor(options: EngineOptions) {
     const { container, service, project, globals = {} } = options;
     this.container = container;
     this.service = service;
-    this.assets = new Assets();
+    this.assets = new Assets(this.service);
     this.simulator = new Simulator({
       assets: this.assets,
       globals,

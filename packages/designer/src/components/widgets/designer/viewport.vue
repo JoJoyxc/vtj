@@ -5,7 +5,7 @@
 </template>
 <script lang="ts" setup>
   import { computed } from 'vue';
-  import { MOBILE_SIZE, PAD_SIZE } from '../../constants';
+  import { MOBILE_SIZE, PAD_SIZE } from '../../../constants';
   export interface Props {
     mode?: 'pc' | 'pad' | 'mobile';
     width?: number;

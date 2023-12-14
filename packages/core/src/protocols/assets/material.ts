@@ -134,6 +134,11 @@ export interface MaterialDescription {
    * Block Id
    */
   id?: string;
+
+  /**
+   * 所属包名
+   */
+  package?: string;
 }
 
 /**

@@ -49,7 +49,15 @@ const elements: MaterialDescription[] = [
       }
     ],
     snippet: {
-      children: '插槽默认内容'
+      children: [
+        {
+          name: 'component',
+          props: {
+            is: 'span'
+          },
+          children: '默认插槽内容'
+        }
+      ]
     }
   }
 ];
@@ -61,6 +69,7 @@ const components: MaterialDescription[] = [
     label: '过渡效果',
     categoryId: 'components',
     doc: 'https://cn.vuejs.org/api/built-in-components.html#transition',
+    package: 'vue',
     props: [
       {
         name: 'name',
@@ -184,6 +193,7 @@ const components: MaterialDescription[] = [
     label: '过渡效果组',
     categoryId: 'components',
     doc: 'https://cn.vuejs.org/api/built-in-components.html#transitiongroup',
+    package: 'vue',
     props: [
       {
         name: 'name',
@@ -313,6 +323,7 @@ const components: MaterialDescription[] = [
     label: '缓存切换组件',
     categoryId: 'components',
     doc: 'https://cn.vuejs.org/api/built-in-components.html#keepalive',
+    package: 'vue',
     props: [
       {
         name: 'include',
@@ -339,6 +350,7 @@ const components: MaterialDescription[] = [
     label: '传送组件',
     categoryId: 'components',
     doc: 'https://cn.vuejs.org/api/built-in-components.html#teleport',
+    package: 'vue',
     props: [
       {
         name: 'to',
@@ -360,6 +372,7 @@ const components: MaterialDescription[] = [
     label: '异步依赖',
     categoryId: 'components',
     doc: 'https://cn.vuejs.org/api/built-in-components.html#suspense',
+    package: 'vue',
     props: [
       {
         name: 'timeout',

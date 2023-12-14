@@ -4,8 +4,10 @@ import type {
   MaterialDescription
 } from '@vtj/core';
 import { version } from '../version';
+import { setPackageName } from '../shared';
 import button from './button';
 
+const name = 'element-plus';
 const components: MaterialDescription[] = [...button];
 
 const categories: MaterialCategory[] = [
@@ -36,13 +38,13 @@ const categories: MaterialCategory[] = [
 ];
 
 const material: Material = {
-  name: 'element-plus',
+  name,
   version: version,
   label: 'Element+',
   library: 'ElementPlusMaterial',
   order: 2,
   categories,
-  components
+  components: setPackageName(components, name)
 };
 
 export default material;

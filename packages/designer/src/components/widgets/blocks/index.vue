@@ -48,6 +48,7 @@
   import type { BlockFile } from '@vtj/core';
   import { Panel, Box } from '../../shared';
   import { useColSpan, useBlocks, useCurrent } from '../../hooks';
+  import { notify } from '../../../utils';
 
   const { span } = useColSpan();
   const { blocks, engine } = useBlocks();
@@ -70,10 +71,22 @@
 
   const submitMethod = async (data: any) => {
     const file = data as BlockFile;
+    const project = engine.project;
+    if (!project) return false;
     if (data.id) {
-      engine.project?.updateBlock(file);
+      if (!project.existBlockName(file.name, [file.id])) {
+        project.updateBlock(file);
+      } else {
+        notify(`名称【${file.name}】已经存在，请更换名称`);
+        return false;
+      }
     } else {
-      engine.project?.createBlock(file);
+      if (!project.existBlockName(file.name)) {
+        project.createBlock(file);
+      } else {
+        notify(`名称【${file.name}】已经存在，请更换名称`);
+        return false;
+      }
     }
     return true;
   };
