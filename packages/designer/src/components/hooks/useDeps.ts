@@ -1,7 +1,6 @@
 import { ref, type Ref } from 'vue';
 import {
   type Dependencie,
-  type ProjectModel,
   EVENT_PROJECT_DEPS_CHANGE,
   emitter
 } from '@vtj/core';
@@ -15,8 +14,8 @@ export function useDeps() {
     dependencies.value = engine.project?.dependencies ?? [];
   });
 
-  emitter.on(EVENT_PROJECT_DEPS_CHANGE, (project) => {
-    dependencies.value = (project as ProjectModel).dependencies.slice(0);
+  emitter.on(EVENT_PROJECT_DEPS_CHANGE, (e) => {
+    dependencies.value = e.model.dependencies.slice(0);
   });
 
   return {

@@ -1,6 +1,7 @@
 import {
   createApp,
   onMounted,
+  onUnmounted,
   unref,
   inject,
   shallowReactive,
@@ -14,8 +15,16 @@ import {
   ProjectModel,
   Service,
   emitter,
+  EVENT_PROJECT_CHANGE,
+  EVENT_BLOCK_CHANGE,
+  EVENT_NODE_CHANGE,
+  EVENT_PROJECT_BLOCKS_CHANGE,
+  EVENT_PROJECT_PAGES_CHANGE,
   type Emitter,
-  type ProjectSchema
+  type ProjectSchema,
+  type BlockFile,
+  type ProjectModelEvent,
+  type PageFile
 } from '@vtj/core';
 import { SkeletonWrapper, type SkeletonWrapperInstance } from '../wrappers';
 import { depsManager } from '../managers';
@@ -53,8 +62,10 @@ export class Engine {
       globals,
       service: this.service
     });
+    this.bindEvents();
     this.init(project);
     onMounted(this.render.bind(this));
+    onUnmounted(this.dispose.bind(this));
   }
   private async init(project: ProjectSchema) {
     const dsl = await this.service.init(project).catch((e) => {
@@ -86,11 +97,59 @@ export class Engine {
     this.listeners = [];
   }
 
+  private bindEvents() {
+    emitter.on(EVENT_PROJECT_CHANGE, (e) =>
+      this.service.saveProject(e.model.toDsl())
+    );
+    emitter.on(EVENT_BLOCK_CHANGE, (e) => this.service.saveFile(e.toDsl()));
+    emitter.on(EVENT_NODE_CHANGE, () => this.saveCurrentFile());
+    emitter.on(EVENT_PROJECT_BLOCKS_CHANGE, (e) => this.saveFile(e));
+    emitter.on(EVENT_PROJECT_PAGES_CHANGE, (e) => this.saveFile(e));
+  }
+
+  private async saveFile(e: ProjectModelEvent) {
+    const type = e.type;
+    if (type === 'create') {
+      const block = e.data as BlockFile | PageFile;
+      block.dsl && this.service.saveFile(block.dsl);
+    }
+
+    if (type === 'update') {
+      const block = e.data as BlockFile;
+      const dsl = await this.service.getFile(block.id);
+      if (dsl) {
+        dsl.name = block.name;
+        this.service.saveFile(dsl);
+      }
+    }
+
+    if (type === 'delete') {
+      const id = e.data as string;
+      this.service.removeFile(id);
+    }
+  }
+
+  private saveCurrentFile() {
+    const current = this.project?.current;
+    if (current) {
+      this.service.saveFile(current.toDsl());
+    }
+  }
+
   ready(callback: () => void) {
     if (this.isReady) {
       callback();
     } else {
       this.listeners.push(callback);
+    }
+  }
+
+  dispose() {
+    this.emitter.all.clear();
+    this.simulator.dispose();
+    if (this.app) {
+      this.app.unmount();
+      this.container = undefined;
     }
   }
 }

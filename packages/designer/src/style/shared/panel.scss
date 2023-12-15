@@ -5,3 +5,13 @@
     padding: 0 5px 0 10px !important;
   }
 }
+
+@include b(sub-panel) {
+  > .x-panel__body {
+    background-color: var(--el-bg-color);
+  }
+  .x-header__content {
+    color: var(--el-text-color-regular);
+    // font-weight: normal;
+  }
+}

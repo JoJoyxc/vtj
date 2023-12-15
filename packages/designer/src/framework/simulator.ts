@@ -3,9 +3,9 @@ import {
   logger,
   type Dependencie,
   Service,
-  ProjectModel,
   emitter,
-  EVENT_PROJECT_ACTIVED
+  EVENT_PROJECT_ACTIVED,
+  BlockModel
 } from '@vtj/core';
 import { parseDeps, createAssetsCss, createAssetScripts } from '@vtj/renderer';
 import { Assets } from './assets';
@@ -43,16 +43,17 @@ export class Simulator {
   public globals: Record<string, any>;
   public renderer: Renderer | null = null;
   public service: Service;
+  public current: BlockModel | null = null;
   constructor(options: SimulatorOptions) {
     const { assets, globals = {}, service } = options;
     this.assets = assets;
     this.globals = globals;
     this.service = service;
-    emitter.on(EVENT_PROJECT_ACTIVED, (project) => {
-      const block = (project as ProjectModel).current;
+    emitter.on(EVENT_PROJECT_ACTIVED, (e) => {
+      this.current = e.model.current;
       this.renderer?.dispose();
-      if (block) {
-        this.renderer?.render(block);
+      if (this.current) {
+        this.renderer?.render(this.current);
       }
     });
   }
@@ -121,6 +122,8 @@ export class Simulator {
     materialExports: string[] = [],
     materialMapLibrary: Record<string, string> = {}
   ) {
+    this.renderer?.dispose();
+    this.renderer = null;
     const cw = this.contentWindow as any;
     const materials = materialExports.map((name: string) => {
       return cw[name];
@@ -133,6 +136,9 @@ export class Simulator {
       materialMapLibrary
     );
     this.renderer = new Renderer(env, this.service);
+    if (this.current) {
+      this.renderer.render(this.current);
+    }
   }
 
   createEnv(

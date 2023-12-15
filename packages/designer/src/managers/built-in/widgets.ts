@@ -138,9 +138,9 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
     label: '帮助中心'
   },
   {
-    name: 'Script',
+    name: 'Scripts',
     region: 'Settings',
-    component: widgets.EmptyWidget,
+    component: widgets.Scripts,
     type: 'tab',
     group: WidgetGroup.Block,
     label: '设置'
@@ -172,7 +172,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'Properties',
     region: 'Settings',
-    component: widgets.EmptyWidget,
+    component: widgets.Properties,
     type: 'tab',
     group: WidgetGroup.Node,
     label: '属性'

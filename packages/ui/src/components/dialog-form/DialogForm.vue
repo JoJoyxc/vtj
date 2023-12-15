@@ -1,6 +1,7 @@
 <template>
   <XDialog
     ref="dialogRef"
+    class="x-dialog-form"
     :model-value="props.modelValue"
     :submit="submitText"
     :cancel="cancelText"
@@ -12,6 +13,7 @@
     v-bind="$attrs">
     <XForm
       ref="formRef"
+      class="x-dialog-form__form"
       :footer="false"
       label-width="80px"
       :size="props.size"

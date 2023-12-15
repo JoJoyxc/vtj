@@ -111,9 +111,12 @@
     }
   };
 
-  const onClick = (file: BlockFile) => {
+  const onClick = async (file: BlockFile) => {
+    const dsl = await engine.service.getFile(file.id);
+    if (dsl) {
+      file.dsl = dsl;
+    }
     engine.project?.active(file);
-    console.log('click', engine.project);
   };
 
   defineOptions({

@@ -83,9 +83,9 @@ export class Assets {
     if (!from || typeof from === 'string') return null;
     const blockId = from.type === 'Schema' ? from.id : null;
     if (!blockId) return null;
-    const file = await this.service.getFile(blockId);
-    if (!file?.dsl) return null;
-    const { id, name, slots, props, emits } = file.dsl;
+    const dsl = await this.service.getFile(blockId);
+    if (!dsl) return null;
+    const { id, name, slots, props, emits } = dsl;
     /**
      * 根据数据类型自动匹配设置器
      * @param type

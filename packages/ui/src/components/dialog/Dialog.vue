@@ -17,7 +17,8 @@
         :body="{ padding: props.bodyPadding }"
         v-draggable="draggable"
         v-resizable="resizable"
-        @click="active">
+        @click="active"
+        v-bind="$attrs">
         <template #title>{{ props.title }}</template>
         <template #actions>
           <slot name="actions"></slot>

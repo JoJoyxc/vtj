@@ -20,7 +20,7 @@
           <RegionWrapper ref="workspace" region="Workspace"></RegionWrapper>
         </el-main>
         <el-aside
-          v-if="settable"
+          v-show="settable"
           v-resizable="rightResizable"
           :width="props.rightWidth"
           class="v-skeleton__right">
@@ -96,7 +96,7 @@
   const settings = ref();
   const status = ref();
   const collapsed = ref(false);
-  const settable = ref(true);
+  const settable = ref(false);
 
   defineOptions({
     name: 'Skeletion'

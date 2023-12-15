@@ -5,11 +5,19 @@
   border-radius: 4px;
   font-size: 14px;
   margin-bottom: 4px;
-  min-height: 30px;
+  min-height: 28px;
   border: 1px solid transparent;
   cursor: pointer;
   &:hover {
-    border: 1px dashed var(--el-border-color) !important;
+    border: 1px dashed var(--el-color-primary-light-7) !important;
+    background-color: var(--el-color-primary-light-9) !important;
+  }
+
+  .el-switch--small {
+    height: 16px;
+  }
+  .x-action__inner:hover {
+    background-color: var(--el-color-primary-light-7);
   }
 
   @include e(switch) {
@@ -25,6 +33,11 @@
     margin-left: 5px;
     font-style: italic;
     opacity: 0.5;
+  }
+
+  @include when(small) {
+    min-height: 24px;
+    height: 24px;
   }
 
   @include when(active) {

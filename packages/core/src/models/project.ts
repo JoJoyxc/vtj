@@ -6,8 +6,14 @@ import type {
   BlockFile,
   ApiSchema
 } from '../protocols';
-import { emitter, logger } from '../tools';
+import { emitter, logger, type ModelEventType } from '../tools';
 import { BlockModel } from './block';
+
+export interface ProjectModelEvent {
+  model: ProjectModel;
+  type: ModelEventType;
+  data: any;
+}
 
 /**
  * 项目信息更新时触发事件
@@ -70,8 +76,12 @@ export class ProjectModel {
         (this as any)[key] = value;
       }
     }
-    if (silent) {
-      emitter.emit(EVENT_PROJECT_CHANGE, this);
+    if (!silent) {
+      emitter.emit(EVENT_PROJECT_CHANGE, {
+        model: this,
+        type: 'update',
+        data: schema
+      });
     }
   }
 
@@ -96,7 +106,11 @@ export class ProjectModel {
     if (file.dsl) {
       this.current = new BlockModel(file.dsl);
       if (!silent) {
-        emitter.emit(EVENT_PROJECT_ACTIVED, this);
+        emitter.emit(EVENT_PROJECT_ACTIVED, {
+          model: this,
+          type: 'update',
+          data: file
+        });
       }
     }
   }
@@ -107,7 +121,11 @@ export class ProjectModel {
   deactivate(silent: boolean = false) {
     this.current = null;
     if (!silent) {
-      emitter.emit(EVENT_PROJECT_ACTIVED, this);
+      emitter.emit(EVENT_PROJECT_ACTIVED, {
+        model: this,
+        type: 'update',
+        data: null
+      });
     }
   }
 
@@ -119,16 +137,25 @@ export class ProjectModel {
   setDeps(item: Dependencie, silent: boolean = false) {
     const deps = this.dependencies;
     const index = deps.findIndex((n) => n.package === item.package);
+    let type: ModelEventType;
     if (index > -1) {
+      type = 'update';
       deps.splice(index, 1, {
         ...deps[index],
         ...item
       });
     } else {
+      type = 'create';
       deps.push(item);
     }
     if (!silent) {
-      emitter.emit(EVENT_PROJECT_DEPS_CHANGE, this);
+      const event: ProjectModelEvent = {
+        model: this,
+        type,
+        data: item
+      };
+      emitter.emit(EVENT_PROJECT_DEPS_CHANGE, event);
+      emitter.emit(EVENT_PROJECT_CHANGE, event);
     }
   }
 
@@ -144,7 +171,13 @@ export class ProjectModel {
       deps.splice(index, 1);
     }
     if (!silent) {
-      emitter.emit(EVENT_PROJECT_DEPS_CHANGE, this);
+      const event: ProjectModelEvent = {
+        model: this,
+        type: 'delete',
+        data: item
+      };
+      emitter.emit(EVENT_PROJECT_DEPS_CHANGE, event);
+      emitter.emit(EVENT_PROJECT_CHANGE, event);
     }
   }
 
@@ -234,7 +267,16 @@ export class ProjectModel {
     }
 
     if (!silent) {
-      emitter.emit(EVENT_PROJECT_PAGES_CHANGE, this);
+      const event: ProjectModelEvent = {
+        model: this,
+        type: 'create',
+        data: {
+          page,
+          parentId
+        }
+      };
+      emitter.emit(EVENT_PROJECT_PAGES_CHANGE, event);
+      emitter.emit(EVENT_PROJECT_CHANGE, event);
     }
   }
 
@@ -251,7 +293,15 @@ export class ProjectModel {
       logger.warn(`not found PageFile for id: ${page.id} `);
     }
     if (!silent) {
-      emitter.emit(EVENT_PROJECT_PAGES_CHANGE, this);
+      const event: ProjectModelEvent = {
+        model: this,
+        type: 'update',
+        data: {
+          page
+        }
+      };
+      emitter.emit(EVENT_PROJECT_PAGES_CHANGE, event);
+      emitter.emit(EVENT_PROJECT_CHANGE, event);
     }
   }
 
@@ -270,7 +320,16 @@ export class ProjectModel {
     pages.splice(index, 0, newPage);
 
     if (!silent) {
-      emitter.emit(EVENT_PROJECT_PAGES_CHANGE, this);
+      const event: ProjectModelEvent = {
+        model: this,
+        type: 'create',
+        data: {
+          page,
+          parentId
+        }
+      };
+      emitter.emit(EVENT_PROJECT_PAGES_CHANGE, event);
+      emitter.emit(EVENT_PROJECT_CHANGE, event);
     }
   }
 
@@ -297,7 +356,13 @@ export class ProjectModel {
       this.deactivate(silent);
     }
     if (!silent) {
-      emitter.emit(EVENT_PROJECT_PAGES_CHANGE, this);
+      const event: ProjectModelEvent = {
+        model: this,
+        type: 'delete',
+        data: id
+      };
+      emitter.emit(EVENT_PROJECT_PAGES_CHANGE, event);
+      emitter.emit(EVENT_PROJECT_CHANGE, event);
     }
   }
 
@@ -328,7 +393,13 @@ export class ProjectModel {
     }
 
     if (!silent) {
-      emitter.emit(EVENT_PROJECT_BLOCKS_CHANGE, this);
+      const event: ProjectModelEvent = {
+        model: this,
+        type: 'create',
+        data: block
+      };
+      emitter.emit(EVENT_PROJECT_BLOCKS_CHANGE, event);
+      emitter.emit(EVENT_PROJECT_CHANGE, event);
     }
   }
 
@@ -348,7 +419,13 @@ export class ProjectModel {
       logger.warn(`not found PageFile for id: ${block.id} `);
     }
     if (!silent) {
-      emitter.emit(EVENT_PROJECT_BLOCKS_CHANGE, this);
+      const event: ProjectModelEvent = {
+        model: this,
+        type: 'update',
+        data: block
+      };
+      emitter.emit(EVENT_PROJECT_BLOCKS_CHANGE, event);
+      emitter.emit(EVENT_PROJECT_CHANGE, event);
     }
   }
 
@@ -369,7 +446,13 @@ export class ProjectModel {
       logger.warn(`not found PageFile for id: ${id} `);
     }
     if (!silent) {
-      emitter.emit(EVENT_PROJECT_BLOCKS_CHANGE, this);
+      const event: ProjectModelEvent = {
+        model: this,
+        type: 'delete',
+        data: id
+      };
+      emitter.emit(EVENT_PROJECT_BLOCKS_CHANGE, event);
+      emitter.emit(EVENT_PROJECT_CHANGE, event);
     }
   }
 
@@ -403,13 +486,22 @@ export class ProjectModel {
    */
   setApi(item: ApiSchema, silent: boolean = false) {
     const match = this.apis.findIndex((n) => n.name === item.name);
+    let type: ModelEventType;
     if (match) {
+      type = 'update';
       Object.assign(match, item);
     } else {
+      type = 'create';
       this.apis.push(item);
     }
     if (!silent) {
-      emitter.emit(EVENT_PROJECT_APIS_CHANGE, this);
+      const event: ProjectModelEvent = {
+        model: this,
+        type,
+        data: item
+      };
+      emitter.emit(EVENT_PROJECT_APIS_CHANGE, event);
+      emitter.emit(EVENT_PROJECT_CHANGE, event);
     }
   }
   /**
@@ -425,7 +517,13 @@ export class ProjectModel {
       logger.warn(`not found Api for name: ${name} `);
     }
     if (!silent) {
-      emitter.emit(EVENT_PROJECT_APIS_CHANGE, this);
+      const event: ProjectModelEvent = {
+        model: this,
+        type: 'delete',
+        data: name
+      };
+      emitter.emit(EVENT_PROJECT_APIS_CHANGE, event);
+      emitter.emit(EVENT_PROJECT_CHANGE, event);
     }
   }
 }

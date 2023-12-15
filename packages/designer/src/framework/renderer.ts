@@ -67,7 +67,7 @@ export class Renderer {
     this.dsl = Vue.reactive(block.toDsl()) as BlockSchema;
     const loader = createLoader({
       getDsl: async (id: string) => {
-        return (await this.service.getFile(id))?.dsl || null;
+        return (await this.service.getFile(id)) || null;
       },
       options: {
         mode: ContextMode.Design,

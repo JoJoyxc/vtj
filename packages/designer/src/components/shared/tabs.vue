@@ -36,7 +36,7 @@
         </div>
       </div>
     </template>
-    <slot> Tabs </slot>
+    <slot></slot>
   </XPanel>
 </template>
 <script lang="ts" setup>

@@ -1,21 +1,29 @@
 <template>
-  <XContainer class="v-settings-region" fit direction="column">
+  <XContainer v-if="current" class="v-settings-region" fit direction="column">
     <XContainer
+      v-if="selected"
       flex
       justify="space-between"
       align="center"
       class="v-settings-region__header">
       <XContainer class="v-settings-region__title">
         <VtjIconLayers></VtjIconLayers>
-        <span> XContainer </span>
+        <span>
+          {{ selected?.model.name }}:
+          <i>{{ selected?.model.id }}</i>
+        </span>
       </XContainer>
-      <XContainer>
+      <XContainer v-if="docUrl">
         <XAction :icon="VtjIconHelp" mode="text" label="帮助"></XAction>
       </XContainer>
     </XContainer>
 
-    <XContainer grow>
-      <Tabs :items="tabs" v-model="currentTab" stretch>
+    <XContainer v-if="selected" grow :padding="false">
+      <Tabs
+        :items="tabs"
+        v-model="currentTab"
+        stretch
+        :body="{ padding: false }">
         <template v-for="widget in widgets" :key="widget.name">
           <WidgetWrapper
             ref="widgetsRef"
@@ -25,23 +33,43 @@
         </template>
       </Tabs>
     </XContainer>
+
+    <ElEmpty v-if="!selected" description="请在左侧画布选中节点"></ElEmpty>
   </XContainer>
 </template>
 <script lang="ts" setup>
-  import { computed, ref } from 'vue';
+  import { computed, ref, watch } from 'vue';
   import { XContainer, XAction } from '@vtj/ui';
   import { VtjIconLayers, VtjIconHelp } from '@vtj/icons';
-  import { RegionType, WidgetGroup, type TabWidget } from '../../framework';
+  import { ElEmpty } from 'element-plus';
+  import { isBlock } from '@vtj/core';
+  import {
+    RegionType,
+    WidgetGroup,
+    useEngine,
+    type TabWidget,
+    type Designer
+  } from '../../framework';
   import { WidgetWrapper } from '../../wrappers';
   import { Tabs } from '../shared';
-  import { useRegion } from '../hooks';
+  import { useRegion, useCurrent } from '../hooks';
 
   export interface Props {
     region: RegionType;
   }
 
   const props = defineProps<Props>();
-  const group = ref<string>(WidgetGroup.Block);
+  const engine = useEngine();
+  const { current } = useCurrent();
+  const designer = computed<Designer>(
+    () => engine.skeleton?.getWidget('Designer')?.widgetRef.designer
+  );
+  const selected = computed(() => designer.value?.selected.value);
+  const isSelectBlock = computed(() => isBlock(selected.value?.model));
+  const group = computed(() =>
+    isSelectBlock.value ? WidgetGroup.Block : WidgetGroup.Node
+  );
+
   const { widgets, widgetsRef } = useRegion(props.region, group);
 
   const tabs = computed(() => {
@@ -53,7 +81,28 @@
     });
   });
 
-  const currentTab = ref(tabs.value[0]?.name);
+  const currentTab = ref('');
+
+  const docUrl = computed(() => {
+    const node = selected.value?.model;
+    if (node) {
+      const desc = engine.assets.componentMap.get(node.name);
+      return desc?.doc;
+    }
+    return null;
+  });
+
+  watch(current, (v) => {
+    engine.skeleton?.settable(!!v);
+  });
+
+  watch(
+    tabs,
+    (v) => {
+      currentTab.value = v[0]?.name;
+    },
+    { immediate: true }
+  );
 
   defineOptions({
     name: 'SettingsRegion'

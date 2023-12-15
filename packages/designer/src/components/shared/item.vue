@@ -92,6 +92,7 @@
     modelValue?: any;
     active?: boolean;
     hover?: boolean;
+    small?: boolean;
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -116,7 +117,8 @@
       'is-background': props.background,
       'is-border': props.border,
       'is-active': props.active,
-      'is-hover': props.hover
+      'is-hover': props.hover,
+      'is-small': props.small
     };
   });
 

@@ -2,8 +2,7 @@ import { ref, type Ref } from 'vue';
 import {
   EVENT_PROJECT_ACTIVED,
   EVENT_BLOCK_CHANGE,
-  ProjectModel,
-  type BlockModel,
+  BlockModel,
   emitter
 } from '@vtj/core';
 import { useEngine } from '../../framework';
@@ -13,8 +12,9 @@ export function useCurrent() {
   const current: Ref<BlockModel | null> = ref(null);
   const isEmpty = ref(true);
 
-  emitter.on(EVENT_PROJECT_ACTIVED, (project) => {
-    current.value = (project as ProjectModel).current;
+  emitter.on(EVENT_PROJECT_ACTIVED, (e) => {
+    current.value = e.model.current;
+    isEmpty.value = !current.value || current.value.nodes.length === 0;
   });
 
   emitter.on(EVENT_BLOCK_CHANGE, (block: any) => {
