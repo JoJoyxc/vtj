@@ -1,3 +1,15 @@
+export const toTypeString = (value: unknown) =>
+  Object.prototype.toString.call(value);
+
+/**
+ * 获取原生数据类型
+ * @param value
+ * @returns
+ */
+export const toRawType = (value: unknown) => {
+  return toTypeString(value).slice(8, -1);
+};
+
 /**
  * 已定义
  * @param val

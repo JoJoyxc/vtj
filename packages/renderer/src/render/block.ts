@@ -15,7 +15,7 @@ import { ContextMode, DATA_TYPES } from '../constants';
 import { Context } from './context';
 import { adoptedStyleSheets } from '../utils';
 import { nodeRender } from './node';
-import type { ComputedRef } from 'vue';
+import type { ComputedRef, DefineComponent } from 'vue';
 import * as globalVue from 'vue';
 import { type BlockLoader } from './loader';
 
@@ -57,7 +57,7 @@ export function createRenderer(options: CreateRendererOptions) {
     attrs
   });
 
-  return Vue.defineComponent({
+  const renderer: DefineComponent<any, any, any, any> = Vue.defineComponent({
     name: dsl.value.name,
     props: {
       ...createProps(dsl.value.props ?? [], context)
@@ -107,6 +107,11 @@ export function createRenderer(options: CreateRendererOptions) {
     },
     ...createLifeCycles(dsl.value.lifeCycles ?? {}, context)
   });
+
+  return {
+    renderer,
+    context
+  };
 }
 
 function createProps(props: Array<string | BlockProp> = [], context: Context) {

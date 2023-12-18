@@ -1,6 +1,6 @@
 <template>
   <XContainer class="v-scripts-widget" direction="column" fit>
-    <Group title="状态数据"></Group>
+    <State title="状态数据"></State>
     <!-- <Group title="计算属性"></Group>
     <Group title="组件方法"></Group>
     <Group title="生命周期"></Group>
@@ -10,5 +10,5 @@
 
 <script lang="ts" setup>
   import { XContainer } from '@vtj/ui';
-  import Group from './group.vue';
+  import State from './state.vue';
 </script>

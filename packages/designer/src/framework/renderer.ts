@@ -10,13 +10,19 @@ import {
   EVENT_NODE_CHANGE
 } from '@vtj/core';
 import { type SimulatorEnv } from './simulator';
-import { createRenderer, createLoader, ContextMode } from '@vtj/renderer';
+import {
+  createRenderer,
+  createLoader,
+  ContextMode,
+  Context
+} from '@vtj/renderer';
 import { ElNotification } from 'element-plus';
 export class Renderer {
   private app: App | null = null;
   private dsl: BlockSchema | null = null;
   private nodeChange: (this: Renderer, node: NodeModel) => void;
   private blockChange: (this: Renderer, block: BlockModel) => void;
+  public context: Context | null = null;
   constructor(public env: SimulatorEnv, public service: Service) {
     this.nodeChange = this.__onNodeChange.bind(this);
     this.blockChange = this.__onBlockChange.bind(this);
@@ -78,7 +84,7 @@ export class Renderer {
         window
       }
     });
-    const renderer = createRenderer({
+    const { renderer, context } = createRenderer({
       Vue,
       mode: ContextMode.Design,
       dsl: this.dsl,
@@ -91,6 +97,7 @@ export class Renderer {
     this.app = Vue.createApp(renderer) as App;
     this.install(this.app);
     this.app.mount(el);
+    this.context = context;
     emitter.on(EVENT_NODE_CHANGE, this.nodeChange as any);
     emitter.on(EVENT_BLOCK_CHANGE, this.blockChange as any);
   }
@@ -106,6 +113,7 @@ export class Renderer {
       this.app = null;
     }
     this.dsl = null;
+    this.context = null;
     emitter.off(EVENT_NODE_CHANGE, this.nodeChange as any);
     emitter.off(EVENT_BLOCK_CHANGE, this.blockChange as any);
   }

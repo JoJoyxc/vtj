@@ -1,4 +1,4 @@
-import { ref, type Ref } from 'vue';
+import { type Ref, ref } from 'vue';
 import {
   EVENT_PROJECT_ACTIVED,
   EVENT_BLOCK_CHANGE,
@@ -19,6 +19,11 @@ export function useCurrent() {
 
   emitter.on(EVENT_BLOCK_CHANGE, (block: any) => {
     isEmpty.value = (block as BlockModel).nodes.length === 0;
+  });
+
+  engine.ready(() => {
+    current.value = engine.project?.current ?? null;
+    isEmpty.value = !current.value || current.value.nodes.length === 0;
   });
 
   return {

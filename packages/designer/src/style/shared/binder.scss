@@ -24,4 +24,20 @@
       margin: 14px 0;
     }
   }
+
+  @include e(form) {
+    width: 100%;
+  }
+}
+
+@include b(context-viewer) {
+  .el-tree {
+    --el-tree-node-hover-bg-color: transparent;
+    .v-item {
+      margin: 0;
+    }
+  }
+  .el-tree-node__content {
+    height: 28px;
+  }
 }

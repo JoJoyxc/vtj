@@ -64,11 +64,11 @@ export const dialogProps = {
   },
   maximizable: {
     type: Boolean,
-    default: true
+    default: false
   },
   minimizable: {
     type: Boolean,
-    default: true
+    default: false
   },
   mode: {
     type: String as PropType<DialogMode>,

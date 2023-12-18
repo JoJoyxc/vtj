@@ -1,49 +1,143 @@
 <template>
   <XDialog
+    :model-value="props.modelValue"
     class="v-binder"
-    title="状态数据"
+    :title="title"
     width="1000px"
     height="600px"
-    :body-padding="false">
+    :body-padding="false"
+    :maximizable="false"
+    :minimizable="false"
+    @close="onClose">
     <XContainer fit direction="row">
       <XContainer width="30%" height="100%">
         <Tabs class="v-binder__tabs" :items="tabs" v-model="currentTab">
           <XContainer class="v-binder__tab-content" fit padding :flex="false">
-            <ElInput
-              size="small"
-              clearable
-              :prefix-icon="Search"
-              placeholder="筛选可用项"></ElInput>
-            <div v-for="n in 4">
-              <ElDivider border-style="dotted">状态{{ n }}</ElDivider>
-              <Item title="state" background :actions="['copy']" small></Item>
-              <Item title="state" background :actions="['copy']" small></Item>
-              <Item title="state" background :actions="['copy']" small></Item>
+            <div v-show="currentTab === 'normal'">
+              <ElInput
+                size="small"
+                clearable
+                :prefix-icon="Search"
+                placeholder="筛选可用项"></ElInput>
+              <div v-for="n in 4">
+                <ElDivider border-style="dotted">状态{{ n }}</ElDivider>
+                <Item
+                  title="state"
+                  background
+                  :actions="['copy']"
+                  small
+                  @action="onCopy()"></Item>
+                <Item title="state" background :actions="['copy']" small></Item>
+                <Item title="state" background :actions="['copy']" small></Item>
+              </div>
             </div>
+            <Viewer
+              v-show="currentTab === 'viewer'"
+              :context="props.context"
+              @copy="onCopy"
+              @pick="onPicker"></Viewer>
           </XContainer>
         </Tabs>
       </XContainer>
-      <XContainer flex grow padding>main</XContainer>
+      <XPanel grow :header="null" :border="false">
+        <XForm
+          ref="formRef"
+          class="v-binder__form"
+          :footer="false"
+          label-position="top"
+          :tooltip-message="false"
+          :model="props.model"
+          :rules="props.rules"
+          :submit-method="handleSubmit">
+          <slot></slot>
+        </XForm>
+        <template #footer>
+          <XContainer justify="space-between">
+            <ElButton type="warning" @click="onUnbind">移除绑定</ElButton>
+            <XContainer>
+              <ElButton type="default" @click="onCancel">取消</ElButton>
+              <ElButton type="primary" @click="onSubmit">确定</ElButton>
+            </XContainer>
+          </XContainer>
+        </template>
+      </XPanel>
     </XContainer>
   </XDialog>
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { XDialog, XContainer } from '@vtj/ui';
+  import { XDialog, XContainer, XForm, XPanel } from '@vtj/ui';
   import { Search } from '@vtj/icons';
-  import { ElInput, ElDivider } from 'element-plus';
+  import { Context } from '@vtj/renderer';
+  import { BlockModel } from '@vtj/core';
+  import { ElInput, ElDivider, ElButton, ElMessage } from 'element-plus';
   import Tabs from './tabs.vue';
   import Item from './item.vue';
+  import Viewer from './viewer.vue';
+  export interface Props {
+    title: string;
+    context?: Context;
+    block?: BlockModel;
+    model?: Record<string, any>;
+    rules?: Record<string, any>;
+    modelValue?: boolean;
+    submitMethod?: (model: Record<string, any>) => Promise<boolean>;
+  }
 
+  const props = defineProps<Props>();
+  const emits = defineEmits([
+    'unbind',
+    'submit',
+    'cancel',
+    'pick',
+    'update:modelValue',
+    'close'
+  ]);
   const tabs = [
     {
       name: 'normal',
       label: '常用'
     },
     {
-      name: 'advanced',
+      name: 'viewer',
       label: '高级'
     }
   ];
   const currentTab = ref('normal');
+  const formRef = ref();
+
+  const handleSubmit = async (model: any) => {
+    emits('submit', model);
+    if (props.submitMethod) {
+      const ret = await props.submitMethod(model);
+      if (ret) {
+        onClose();
+      }
+    } else {
+      onClose();
+    }
+  };
+
+  const onClose = () => {
+    emits('update:modelValue', false);
+    emits('close');
+  };
+  const onUnbind = () => {
+    emits('unbind');
+  };
+  const onCancel = () => {
+    onClose();
+  };
+
+  const onSubmit = () => {
+    formRef.value?.submit();
+  };
+  const onPicker = (val: string) => {
+    emits('pick', val);
+  };
+  const onCopy = () => {
+    ElMessage.success({
+      message: '已经复制到粘贴板'
+    });
+  };
 </script>

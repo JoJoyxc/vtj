@@ -137,8 +137,9 @@
   };
 
   const computedClass = computed(() => {
+    const tm = formInstance?.props.tooltipMessage ?? props.tooltipMessage;
     return {
-      [`is-tooltip-${props.tooltipPosition}`]: !!props.tooltipPosition
+      [`is-tooltip-${props.tooltipPosition}`]: !!tm && !!props.tooltipPosition
     };
   });
 
