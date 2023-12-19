@@ -51,3 +51,15 @@ export function isJSExpression(data: any): data is JSExpression {
 export function isJSFunction(x: any): x is JSFunction {
   return typeof x === 'object' && x && x.type === 'JSFunction';
 }
+
+export function isJSCode(data: unknown): data is JSExpression | JSFunction {
+  return isJSExpression(data) || isJSFunction(data);
+}
+
+export function JSCodeToString(data: unknown) {
+  if (isJSCode(data)) {
+    return data.value;
+  } else {
+    return JSON.stringify(data);
+  }
+}

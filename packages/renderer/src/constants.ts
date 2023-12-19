@@ -39,6 +39,23 @@ export const CONTEXT_HOST = [
   '$forceUpdate'
 ];
 
+// 组件生命周期
+export const LIFE_CYCLES_LIST = [
+  'beforeCreate',
+  'created',
+  'beforeMount',
+  'mounted',
+  'beforeUpdate',
+  'updated',
+  'beforeUnmount',
+  'unmounted',
+  'errorCaptured',
+  'renderTracked',
+  'renderTriggered',
+  'activated',
+  'deactivated'
+];
+
 /**
  * 内置指令
  */

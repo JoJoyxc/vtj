@@ -15,21 +15,23 @@
           <XContainer class="v-binder__tab-content" fit padding :flex="false">
             <div v-show="currentTab === 'normal'">
               <ElInput
+                v-model="keyword"
                 size="small"
                 clearable
                 :prefix-icon="Search"
                 placeholder="筛选可用项"></ElInput>
-              <div v-for="n in 4">
-                <ElDivider border-style="dotted">状态{{ n }}</ElDivider>
+              <div v-for="group in searchResult">
+                <ElDivider border-style="dotted">{{ group.title }}</ElDivider>
                 <Item
-                  title="state"
+                  v-for="item in group.items"
+                  :title="item"
                   background
                   :actions="['copy']"
                   small
-                  @action="onCopy()"></Item>
-                <Item title="state" background :actions="['copy']" small></Item>
-                <Item title="state" background :actions="['copy']" small></Item>
+                  @click="onPicker(item)"
+                  @action="onCopy(item)"></Item>
               </div>
+              <ElEmpty v-if="!searchResult.length"></ElEmpty>
             </div>
             <Viewer
               v-show="currentTab === 'viewer'"
@@ -53,7 +55,11 @@
         </XForm>
         <template #footer>
           <XContainer justify="space-between">
-            <ElButton type="warning" @click="onUnbind">移除绑定</ElButton>
+            <XContainer>
+              <ElButton v-if="unbindEnabled" type="warning" @click="onUnbind">
+                移除绑定
+              </ElButton>
+            </XContainer>
             <XContainer>
               <ElButton type="default" @click="onCancel">取消</ElButton>
               <ElButton type="primary" @click="onSubmit">确定</ElButton>
@@ -70,18 +76,27 @@
   import { Search } from '@vtj/icons';
   import { Context } from '@vtj/renderer';
   import { BlockModel } from '@vtj/core';
-  import { ElInput, ElDivider, ElButton, ElMessage } from 'element-plus';
+  import {
+    ElInput,
+    ElDivider,
+    ElButton,
+    ElMessage,
+    ElEmpty
+  } from 'element-plus';
+  import { useClipboard } from '@vueuse/core';
+  import { useBinder } from '../hooks';
   import Tabs from './tabs.vue';
   import Item from './item.vue';
   import Viewer from './viewer.vue';
   export interface Props {
     title: string;
-    context?: Context;
-    block?: BlockModel;
+    context: Context | null;
+    block: BlockModel | null;
     model?: Record<string, any>;
     rules?: Record<string, any>;
     modelValue?: boolean;
     submitMethod?: (model: Record<string, any>) => Promise<boolean>;
+    unbindEnabled?: boolean;
   }
 
   const props = defineProps<Props>();
@@ -93,6 +108,10 @@
     'update:modelValue',
     'close'
   ]);
+
+  const { searchResult, keyword } = useBinder(props.block, props.context);
+  const { copy } = useClipboard({});
+
   const tabs = [
     {
       name: 'normal',
@@ -135,7 +154,8 @@
   const onPicker = (val: string) => {
     emits('pick', val);
   };
-  const onCopy = () => {
+  const onCopy = (name: string) => {
+    copy(name);
     ElMessage.success({
       message: '已经复制到粘贴板'
     });

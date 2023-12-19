@@ -1,18 +1,18 @@
 <template>
   <Group
-    title="状态数据"
+    title="组件方法"
     :current="props.current"
     :context="props.context"
     :list="list"
-    nameLabel="状态数据名称"
-    valueLabel="状态初始值 [ JSExpression ]"
+    nameLabel="方法名称"
+    valueLabel="方法函数 [ JSFunction ]"
     :createEmpty="createEmpty"
     :remove="remove"
     :submit="submit"></Group>
 </template>
 <script lang="ts" setup>
   import { computed } from 'vue';
-  import { BlockModel, JSCodeToString, type JSExpression } from '@vtj/core';
+  import { BlockModel, JSCodeToString, type JSFunction } from '@vtj/core';
   import { Context } from '@vtj/renderer';
   import Group from './group.vue';
   import { notify, expressionValidate } from '../../../utils';
@@ -23,7 +23,7 @@
   }
   const props = defineProps<Props>();
   const list = computed(() => {
-    const entries = Object.entries(props.current?.state || {});
+    const entries = Object.entries(props.current?.methods || {});
     return entries.map(([name, value]) => {
       return { name, value: JSCodeToString(value) };
     });
@@ -36,21 +36,22 @@
   };
 
   const remove = (data: any) => {
-    return props.current?.removeState(data.name);
+    return props.current?.removeFunction('methods', data.name);
   };
   const submit = async (form: any, edit: boolean) => {
     const { name, value } = form;
-    if (!edit && !!props.current?.state[name]) {
+    if (!edit && !!props.current?.methods[name]) {
       notify(`名称 ${name} 已存在，请更换！`);
       return false;
     }
-    const code: JSExpression = {
-      type: 'JSExpression',
+    const code: JSFunction = {
+      type: 'JSFunction',
       value
     };
     const valid = expressionValidate(code, props.context, true);
     if (!valid) return false;
-    props.current?.setState(name, code);
+
+    props.current?.setFunction('methods', name, code);
     return true;
   };
 </script>

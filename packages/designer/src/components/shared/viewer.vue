@@ -27,17 +27,14 @@
   import { toRawType } from '@vtj/utils';
   import { Context } from '@vtj/renderer';
   import Item from './item.vue';
-  import { useClipboard } from '@vueuse/core';
 
   export interface Props {
-    context?: Context;
+    context: Context | null;
   }
 
   const props = defineProps<Props>();
 
   const emit = defineEmits(['pick', 'copy']);
-
-  const { copy } = useClipboard({});
 
   // const context = computed(() => project.current.value?.runtimeContext);
 
@@ -94,7 +91,6 @@
   };
 
   const onCopy = (item: any) => {
-    copy(item.path);
     emit('copy', item.path);
   };
 

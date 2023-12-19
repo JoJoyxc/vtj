@@ -5,3 +5,5 @@ export * from './useBlocks';
 export * from './useAssets';
 export * from './useCurrent';
 export * from './useDesigner';
+export * from './useSelected';
+export * from './useBinder';

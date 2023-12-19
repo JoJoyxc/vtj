@@ -42,17 +42,16 @@
   import { XContainer, XAction } from '@vtj/ui';
   import { VtjIconLayers, VtjIconHelp } from '@vtj/icons';
   import { ElEmpty } from 'element-plus';
-  import { isBlock } from '@vtj/core';
+
   import {
     RegionType,
     WidgetGroup,
     useEngine,
-    type TabWidget,
-    type Designer
+    type TabWidget
   } from '../../framework';
   import { WidgetWrapper } from '../../wrappers';
   import { Tabs } from '../shared';
-  import { useRegion, useCurrent } from '../hooks';
+  import { useRegion, useCurrent, useSelected } from '../hooks';
 
   export interface Props {
     region: RegionType;
@@ -61,11 +60,8 @@
   const props = defineProps<Props>();
   const engine = useEngine();
   const { current } = useCurrent();
-  const designer = computed<Designer>(
-    () => engine.skeleton?.getWidget('Designer')?.widgetRef.designer
-  );
-  const selected = computed(() => designer.value?.selected.value);
-  const isSelectBlock = computed(() => isBlock(selected.value?.model));
+  const { selected, isSelectBlock } = useSelected();
+
   const group = computed(() =>
     isSelectBlock.value ? WidgetGroup.Block : WidgetGroup.Node
   );
