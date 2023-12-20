@@ -121,4 +121,6 @@ export type BlockPropDataType =
   | 'Number'
   | 'Boolean'
   | 'Array'
-  | 'Object';
+  | 'Object'
+  | 'Function'
+  | 'Date';

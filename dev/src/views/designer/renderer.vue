@@ -1,6 +1,6 @@
 <template>
   <div>
-    <component :is="Block" title="456" subtitle="subtitle"></component>
+    <component :is="renderer" title="456" subtitle="subtitle"></component>
   </div>
 </template>
 <script lang="ts" setup>
@@ -30,12 +30,11 @@
     ]
   });
 
-  const Block = createRenderer({ dsl });
+  const { renderer } = createRenderer({ dsl });
 
-  console.log(Block);
+  console.log(renderer);
 
   setTimeout(() => {
     // dsl.nodes[0].children.value = '"abc"';
   }, 1000);
-  
 </script>

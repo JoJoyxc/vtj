@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@vtj/cli": "workspace:^",
-    "vue": "~3.3.10",
+    "vue": "~3.3.13",
     "vue-router": "~4.2.5"
   },
   "files": [

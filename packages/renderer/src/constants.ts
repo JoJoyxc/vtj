@@ -69,5 +69,7 @@ export const DATA_TYPES: Record<BlockPropDataType, any> = {
   Number: Number,
   Boolean: Boolean,
   Array: Array,
-  Object: Object
+  Object: Object,
+  Function: Function,
+  Date: Date
 };

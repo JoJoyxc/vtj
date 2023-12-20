@@ -5,11 +5,6 @@
     <Methods :current="current" :context="context"></Methods>
     <LifeCycles :current="current" :context="context"></LifeCycles>
     <Watch :current="current" :context="context"></Watch>
-    <!-- <State :current="current" :context="context"></State> -->
-    <!-- <Group title="计算属性"></Group>
-    <Group title="组件方法"></Group>
-    <Group title="生命周期"></Group>
-    <Group title="监听器"></Group> -->
   </XContainer>
 </template>
 

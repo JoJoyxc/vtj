@@ -3,10 +3,11 @@ import type {
   MaterialCategory,
   MaterialDescription,
   NodeFrom,
-  Service
+  Service,
+  BlockPropDataType
 } from '@vtj/core';
 import { arrayToMap } from '@vtj/utils';
-import { builtInMaterials, SetterValueTypes } from '../managers';
+import { builtInMaterials, setterManager } from '../managers';
 
 export interface AssetGroup {
   name: string;
@@ -95,7 +96,9 @@ export class Assets {
       const types = Array.isArray(type) ? type : [type];
       let setters: string[] = [];
       for (const t of types) {
-        setters = setters.concat(SetterValueTypes[t] || []);
+        setters = setters.concat(
+          setterManager.getByType(t as BlockPropDataType)
+        );
       }
       return setters;
     };

@@ -1,4 +1,5 @@
 import { type VNode, type DefineComponent } from 'vue';
+import { type BlockPropDataType } from '@vtj/core';
 
 export type VueComponent =
   | Record<string, any>
@@ -112,4 +113,13 @@ export interface TabWidget extends Widget {
    * 能关闭的
    */
   closable?: boolean;
+}
+
+/**
+ * 设置器配置
+ */
+export interface SetterConfig {
+  name: string;
+  component: VueComponent;
+  dataType: BlockPropDataType;
 }

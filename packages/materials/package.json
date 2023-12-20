@@ -16,10 +16,10 @@
     "@vtj/core": "workspace:^",
     "@vtj/ui": "workspace:^",
     "@vtj/utils": "workspace:^",
-    "ant-design-vue": "~4.0.7",
+    "ant-design-vue": "~4.0.8",
     "echarts": "~5.4.3",
     "element-plus": "~2.4.3",
-    "vue": "~3.3.10",
+    "vue": "~3.3.13",
     "vue-router": "~4.2.5"
   },
   "files": [

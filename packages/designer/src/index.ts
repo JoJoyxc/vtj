@@ -4,4 +4,5 @@ export * from './constants';
 export * from './components';
 export * from './framework';
 export * from './managers';
+export * from './wrappers';
 export * from './utils';
