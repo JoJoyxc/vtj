@@ -56,13 +56,21 @@
         <template #footer>
           <XContainer justify="space-between">
             <XContainer>
-              <ElButton v-if="unbindEnabled" type="warning" @click="onUnbind">
+              <ElButton
+                v-if="unbindEnabled"
+                type="warning"
+                size="default"
+                @click="onUnbind">
                 移除绑定
               </ElButton>
             </XContainer>
             <XContainer>
-              <ElButton type="default" @click="onCancel">取消</ElButton>
-              <ElButton type="primary" @click="onSubmit">确定</ElButton>
+              <ElButton type="default" size="default" @click="onCancel">
+                取消
+              </ElButton>
+              <ElButton type="primary" size="default" @click="onSubmit">
+                确定
+              </ElButton>
             </XContainer>
           </XContainer>
         </template>
@@ -148,7 +156,7 @@
     onClose();
   };
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     formRef.value?.submit();
   };
   const onPicker = (val: string) => {

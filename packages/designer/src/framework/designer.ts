@@ -9,8 +9,10 @@ import {
   BlockModel,
   isBlock,
   emitter,
-  EVENT_PROJECT_ACTIVED
+  EVENT_PROJECT_ACTIVED,
+  EVENT_NODE_CHANGE
 } from '@vtj/core';
+import { delay } from '@vtj/utils';
 import { type Engine } from './engine';
 
 export interface VtjElement extends HTMLElement {
@@ -78,6 +80,7 @@ export class Designer {
       EVENT_PROJECT_ACTIVED,
       this.bind(this.onActiveChange, 'onActiveChange')
     );
+    emitter.on(EVENT_NODE_CHANGE, this.bind(this.onViewChange, 'onViewChange'));
   }
 
   private unbindEvents(cw: Window, doc: Document) {
@@ -104,6 +107,10 @@ export class Designer {
     emitter.off(
       EVENT_PROJECT_ACTIVED,
       this.bind(this.onActiveChange, 'onActiveChange')
+    );
+    emitter.off(
+      EVENT_NODE_CHANGE,
+      this.bind(this.onViewChange, 'onViewChange')
     );
   }
 
@@ -194,9 +201,9 @@ export class Designer {
   ): Array<BlockModel | NodeModel> {
     const elements = path.filter((n) => this.isVtjElement(n));
     const root = this.engine.project?.current as BlockModel;
-    const nodePath = elements.map(
-      (n) => this.getNodeByElement(n as VtjElement) as NodeModel
-    );
+    const nodePath = elements
+      .map((n) => this.getNodeByElement(n as VtjElement) as NodeModel)
+      .filter((n) => !!n);
     return [...nodePath, root];
   }
 
@@ -254,7 +261,9 @@ export class Designer {
     };
   }
 
-  updateRect() {
+  async updateRect() {
+    // 等待元素更新才能获取更新后的 getBoundingClientRect
+    await delay(0);
     const selected = unref(this.selected);
     const hover = unref(this.hover);
 

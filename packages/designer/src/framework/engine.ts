@@ -5,14 +5,18 @@ import {
   unref,
   inject,
   shallowReactive,
+  ref,
+  nextTick,
   type ShallowReactive,
   type InjectionKey,
   type MaybeRef,
-  type App
+  type App,
+  type Ref
 } from 'vue';
 import {
   logger,
   ProjectModel,
+  BlockModel,
   Service,
   emitter,
   EVENT_PROJECT_CHANGE,
@@ -20,12 +24,14 @@ import {
   EVENT_NODE_CHANGE,
   EVENT_PROJECT_BLOCKS_CHANGE,
   EVENT_PROJECT_PAGES_CHANGE,
+  EVENT_PROJECT_ACTIVED,
   type Emitter,
   type ProjectSchema,
   type BlockFile,
   type ProjectModelEvent,
   type PageFile
 } from '@vtj/core';
+import { Context } from '@vtj/renderer';
 import { SkeletonWrapper, type SkeletonWrapperInstance } from '../wrappers';
 import { depsManager } from '../managers';
 import { Simulator } from './simulator';
@@ -52,6 +58,8 @@ export class Engine {
   public project?: ProjectModel;
   public simulator: Simulator;
   public emitter: Emitter = emitter;
+  public current: Ref<BlockModel | null> = ref(null);
+  public context: Ref<Context | null> = ref(null);
   constructor(options: EngineOptions) {
     const { container, service, project, globals = {} } = options;
     this.container = container;
@@ -76,7 +84,7 @@ export class Engine {
       dsl.dependencies = depsManager.merge(dsl.dependencies || []);
       this.project = new ProjectModel(dsl);
       this.isReady = true;
-      this.emitListener();
+      this.emits();
     }
   }
   private render() {
@@ -90,7 +98,7 @@ export class Engine {
       logger.warn('VTJEngine constructor param [ container ] is undefined');
     }
   }
-  private emitListener() {
+  private emits() {
     for (const listener of this.listeners) {
       listener();
     }
@@ -101,10 +109,20 @@ export class Engine {
     emitter.on(EVENT_PROJECT_CHANGE, (e) =>
       this.service.saveProject(e.model.toDsl())
     );
-    emitter.on(EVENT_BLOCK_CHANGE, (e) => this.service.saveFile(e.toDsl()));
+    emitter.on(EVENT_BLOCK_CHANGE, async (e) => {
+      await nextTick();
+      this.service.saveFile(e.toDsl());
+      this.context.value = this.simulator.renderer?.context || null;
+    });
     emitter.on(EVENT_NODE_CHANGE, () => this.saveCurrentFile());
     emitter.on(EVENT_PROJECT_BLOCKS_CHANGE, (e) => this.saveFile(e));
     emitter.on(EVENT_PROJECT_PAGES_CHANGE, (e) => this.saveFile(e));
+
+    emitter.on(EVENT_PROJECT_ACTIVED, async (e) => {
+      await nextTick();
+      this.current.value = e.model.current;
+      this.context.value = this.simulator.renderer?.context || null;
+    });
   }
 
   private async saveFile(e: ProjectModelEvent) {
@@ -130,7 +148,7 @@ export class Engine {
   }
 
   private saveCurrentFile() {
-    const current = this.project?.current;
+    const current = this.current.value;
     if (current) {
       this.service.saveFile(current.toDsl());
     }

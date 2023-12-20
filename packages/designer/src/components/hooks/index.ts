@@ -7,3 +7,4 @@ export * from './useCurrent';
 export * from './useDesigner';
 export * from './useSelected';
 export * from './useBinder';
+export * from './useNodeProps';

@@ -146,20 +146,20 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
     label: '设置'
   },
   {
+    name: 'Css',
+    region: 'Settings',
+    component: widgets.EmptyWidget,
+    type: 'tab',
+    group: WidgetGroup.Block,
+    label: 'CSS'
+  },
+  {
     name: 'DataSources',
     region: 'Settings',
     component: widgets.EmptyWidget,
     type: 'tab',
     group: WidgetGroup.Block,
     label: '数据源'
-  },
-  {
-    name: 'Css',
-    region: 'Settings',
-    component: widgets.EmptyWidget,
-    type: 'tab',
-    group: WidgetGroup.Block,
-    label: '样式'
   },
   {
     name: 'Advanced',
@@ -176,6 +176,14 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
     type: 'tab',
     group: WidgetGroup.Node,
     label: '属性'
+  },
+  {
+    name: 'Style',
+    region: 'Settings',
+    component: widgets.EmptyWidget,
+    type: 'tab',
+    group: WidgetGroup.Node,
+    label: '样式'
   },
   {
     name: 'Events',

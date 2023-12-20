@@ -33,7 +33,7 @@
         tip="名称为英文驼峰格式"
         :rules="{
           message: '名称格式错误',
-          pattern: /^[A-Za-z][a-zA-Z0-9]*$/
+          pattern: NAME_REGEX
         }"
         @change="onNameChange"></XField>
       <XField name="title" label="标题" required></XField>
@@ -49,6 +49,7 @@
   import { Panel, Box } from '../../shared';
   import { useColSpan, useBlocks, useCurrent } from '../../hooks';
   import { notify } from '../../../utils';
+  import { NAME_REGEX } from '../../../constants';
 
   const { span } = useColSpan();
   const { blocks, engine } = useBlocks();

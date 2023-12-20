@@ -76,8 +76,8 @@
   const handleBlur = async () => {
     await format();
     const content = editor?.getValue();
-    emit('blur', content);
     emit('update:modelValue', content);
+    emit('blur', content);
   };
 
   const createEditor = () => {

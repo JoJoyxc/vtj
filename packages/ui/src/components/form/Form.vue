@@ -4,6 +4,8 @@
     class="x-form"
     :inline="props.inline"
     :model="model"
+    @keyup.enter="submit"
+    @submit.stop.prevent
     v-bind="$attrs">
     <slot></slot>
     <XField v-if="props.footer" editor="none" class="x-form__footer" label=" ">

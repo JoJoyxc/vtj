@@ -31,7 +31,7 @@
   const createEmpty = () => {
     return {
       name: '',
-      value: '() => { }'
+      value: ''
     };
   };
 

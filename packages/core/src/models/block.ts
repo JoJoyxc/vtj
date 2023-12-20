@@ -1,5 +1,5 @@
 import { uid } from '@vtj/base';
-import { emitter } from '../tools';
+import { emitter, cloneDsl } from '../tools';
 import type {
   BlockSchema,
   BlockInject,
@@ -497,8 +497,7 @@ export class BlockModel {
    * @returns
    */
   cloneNode(target: NodeModel, silent: boolean = false) {
-    const dsl = target.toDsl();
-    delete dsl.id;
+    const dsl = cloneDsl(target.toDsl());
     const node = new NodeModel(dsl);
     this.addNode(node, target, 'bottom', silent);
     return node;

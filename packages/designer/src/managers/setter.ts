@@ -1,15 +1,16 @@
 import { logger, type BlockPropDataType } from '@vtj/core';
 import { merge } from '@vtj/utils';
-import { builtInSetters } from './built-in';
-import { type SetterConfig } from '../framework';
+import { builtInSetters, defaultSetter } from './built-in';
+import { type Setter } from '../framework';
 
 class SetterManager {
-  private setters: Record<string, SetterConfig> = {};
+  private setters: Record<string, Setter> = {};
+  public defaultSetter: Setter = defaultSetter;
   constructor() {
     this.setters = this.createSetters();
   }
   private createSetters() {
-    const setters: Record<string, SetterConfig> = {};
+    const setters: Record<string, Setter> = {};
     for (const item of builtInSetters) {
       setters[item.name] = item;
     }
@@ -20,7 +21,7 @@ class SetterManager {
    * 注册一个设置器
    * @param widget
    */
-  register(setter: SetterConfig) {
+  register(setter: Setter) {
     this.setters[setter.name] = setter;
   }
 
@@ -39,7 +40,7 @@ class SetterManager {
    * @param widget
    * @returns
    */
-  set(name: string, setter: Partial<SetterConfig>) {
+  set(name: string, setter: Partial<Setter>) {
     const match = this.setters[name];
     if (!match) {
       logger.warn(`setter '${name}' is not found`);
@@ -53,7 +54,7 @@ class SetterManager {
 
   getByType(type: BlockPropDataType) {
     const setters = Object.values(this.setters);
-    return setters.filter((n) => n.dataType === type).map((n) => n.name);
+    return setters.filter((n) => n.type === type).map((n) => n.name);
   }
 }
 

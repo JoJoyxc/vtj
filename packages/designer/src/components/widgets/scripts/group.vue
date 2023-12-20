@@ -29,13 +29,14 @@
           :label="nameLabel"
           required
           :disabled="isEdit"></XField>
-        <XField name="value" :label="valueLabel" required>
+        <XField ref="codeFieldRef" name="value" :label="valueLabel" required>
           <template #editor>
             <Editor
               ref="editorRef"
               dark
               height="350px"
-              v-model="model.value"></Editor>
+              v-model="model.value"
+              @blur="onEditorBlur"></Editor>
           </template>
         </XField>
       </slot>
@@ -69,6 +70,7 @@
   });
 
   const editorRef = ref();
+  const codeFieldRef = ref();
   const visible = ref(false);
   const model = ref<any>(props.createEmpty());
   const isEdit = ref(false);
@@ -107,5 +109,9 @@
 
   const submit = async (form: any) => {
     return props.submit(form, isEdit.value);
+  };
+
+  const onEditorBlur = () => {
+    codeFieldRef.value?.itemRef.validate();
   };
 </script>

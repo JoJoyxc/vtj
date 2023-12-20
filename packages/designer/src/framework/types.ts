@@ -118,8 +118,17 @@ export interface TabWidget extends Widget {
 /**
  * 设置器配置
  */
-export interface SetterConfig {
+export interface Setter {
+  /**
+   * 设置器名称
+   */
   name: string;
+  /**
+   * 设置器组件
+   */
   component: VueComponent;
-  dataType: BlockPropDataType;
+  /**
+   * 设置器数据类型
+   */
+  type: BlockPropDataType;
 }
