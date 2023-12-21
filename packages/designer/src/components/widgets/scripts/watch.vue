@@ -9,7 +9,8 @@
     :createEmpty="createEmpty"
     :remove="remove"
     :submit="submit"
-    :itemTitle="itemTitle">
+    :itemTitle="itemTitle"
+    grow>
     <template #fields="{ model, nameLabel, valueLabel }">
       <XField name="source" :label="nameLabel" required>
         <template #editor>

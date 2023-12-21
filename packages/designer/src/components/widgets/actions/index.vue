@@ -41,6 +41,7 @@
     VtjIconOutline,
     VtjIconRefresh
   } from '@vtj/icons';
+  import { useSelected } from '../../hooks';
 
   export interface Props {
     coder?: boolean;
@@ -51,12 +52,22 @@
     copy: true
   });
 
+  const { engine, designer } = useSelected();
+
   const loading = ref(false);
 
   const refresh = () => {
-    ElMessage.warning({
-      message: '请先打开文件'
-    });
+    if (engine.current.value) {
+      designer.value.setSelected(null);
+      engine.simulator.refresh();
+      ElMessage.success({
+        message: '刷新完成'
+      });
+    } else {
+      ElMessage.warning({
+        message: '请先打开文件'
+      });
+    }
   };
 
   const preview = () => {
@@ -66,15 +77,23 @@
   };
 
   const openCodeSetting = () => {
-    ElMessage.warning({
-      message: '请先打开文件'
-    });
+    if (engine.current.value) {
+      designer.value.setSelected(engine.current.value);
+    } else {
+      ElMessage.warning({
+        message: '请先打开文件'
+      });
+    }
   };
 
   const openOutline = () => {
-    ElMessage.warning({
-      message: '请先打开文件'
-    });
+    if (engine.current.value) {
+      engine.skeleton?.getRegion('Apps').regionRef.setActive('Outline');
+    } else {
+      ElMessage.warning({
+        message: '请先打开文件'
+      });
+    }
   };
 
   const onCoder = () => {};

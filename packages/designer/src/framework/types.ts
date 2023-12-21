@@ -131,4 +131,9 @@ export interface Setter {
    * 设置器数据类型
    */
   type: BlockPropDataType;
+
+  /**
+   * 设计器参数
+   */
+  props?: Record<string, any>;
 }

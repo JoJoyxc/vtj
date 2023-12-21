@@ -7,7 +7,7 @@ import {
 } from '@vtj/core';
 import { Context } from '@vtj/renderer';
 import { BlockModel } from '@vtj/core';
-import { type VueComponent } from '../framework';
+import { type Setter } from '../framework';
 import { setterManager } from '../managers';
 import { SetterView } from '../components';
 
@@ -57,23 +57,23 @@ export const SetterWrapper = defineComponent({
         ? this.setters
         : [this.setters];
       return setters.map((setter) => {
-        let component;
+        let match;
         if (typeof setter === 'string') {
-          component = this.getComopnent(setter);
+          match = this.getSetter(setter);
           return {
-            component: markRaw(component),
-            name: setter,
+            component: markRaw(match.component),
+            name: match.name,
             label: setter,
-            props: {}
+            props: match.props || {}
           };
         } else {
           const item: MaterialSetter = setter as MaterialSetter;
-          component = item.component || this.getComopnent(item.name);
+          match = this.getSetter(item.name);
           return {
-            component: markRaw(component),
+            component: markRaw(item.component || match.component),
             name: item.name,
             label: item.label || item.name,
-            props: item.props
+            props: Object.assign(match.props || {}, item.props)
           };
         }
       });
@@ -146,10 +146,9 @@ export const SetterWrapper = defineComponent({
   },
   emits: ['change', 'remove'],
   methods: {
-    getComopnent(name: string | VueComponent): VueComponent {
+    getSetter(name: string | Setter): Setter {
       return typeof name === 'string'
-        ? setterManager.get(name)?.component ||
-            setterManager.defaultSetter.component
+        ? setterManager.get(name) || setterManager.defaultSetter
         : name;
     },
     changeValue(val: any) {

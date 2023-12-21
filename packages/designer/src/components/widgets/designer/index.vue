@@ -33,11 +33,11 @@
 <script lang="ts" setup>
   import { computed, ref } from 'vue';
   import { useElementSize } from '@vueuse/core';
+  import type { NodeModel } from '@vtj/core';
+  import { ElEmpty } from 'element-plus';
   import Viewport from './viewport.vue';
   import Actions from './actions.vue';
   import { useDeps, useDesigner, useCurrent } from '../../hooks';
-  import type { NodeModel } from '@vtj/core';
-  import { ElEmpty } from 'element-plus';
 
   const container = ref();
   const iframe = ref<HTMLIFrameElement>();

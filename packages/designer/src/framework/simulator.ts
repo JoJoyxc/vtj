@@ -51,10 +51,7 @@ export class Simulator {
     this.service = service;
     emitter.on(EVENT_PROJECT_ACTIVED, (e) => {
       this.current = e.model.current;
-      this.renderer?.dispose();
-      if (this.current) {
-        this.renderer?.render(this.current);
-      }
+      this.refresh();
     });
   }
   init(iframe: Ref<HTMLIFrameElement | undefined>, deps: Ref<Dependencie[]>) {
@@ -187,6 +184,13 @@ export class Simulator {
       apis: {},
       globals: this.globals
     };
+  }
+
+  refresh() {
+    this.renderer?.dispose();
+    if (this.current) {
+      this.renderer?.render(this.current);
+    }
   }
 
   dispose() {

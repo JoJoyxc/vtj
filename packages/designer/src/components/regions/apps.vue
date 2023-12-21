@@ -84,6 +84,12 @@
     engine.skeleton?.toggleCollapse(!v);
   });
 
+  const setActive = (name: string) => {
+    const widget = panelWidgets.value.find((n) => n.name === name) as AppWidget;
+    active.value = widget;
+    open.value = widget;
+  };
+
   defineOptions({
     name: 'AppsRegion',
     inheritAttrs: false
@@ -91,6 +97,7 @@
 
   defineExpose({
     widgets,
-    widgetsRef
+    widgetsRef,
+    setActive
   });
 </script>

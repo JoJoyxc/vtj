@@ -6,6 +6,7 @@ import NumberSetter from './number.vue';
 import ColorSetter from './color.vue';
 import IconSetter from './icon.vue';
 import JsonSetter from './json.vue';
+import FunctionSetter from './function.vue';
 
 export const setters = {
   StringSetter,
@@ -15,5 +16,6 @@ export const setters = {
   NumberSetter,
   ColorSetter,
   IconSetter,
-  JsonSetter
+  JsonSetter,
+  FunctionSetter
 };

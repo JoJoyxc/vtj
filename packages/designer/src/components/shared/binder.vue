@@ -9,7 +9,7 @@
     :maximizable="false"
     :minimizable="false"
     @close="onClose">
-    <XContainer fit direction="row">
+    <XContainer fit direction="row" overflow="hidden">
       <XContainer width="30%" height="100%">
         <Tabs class="v-binder__tabs" :items="tabs" v-model="currentTab">
           <XContainer class="v-binder__tab-content" fit padding :flex="false">

@@ -1,0 +1,88 @@
+<template>
+  <XPanel class="x-test" header="VTJ 低代码测试组件" border>
+    <ElDivider>内部数据</ElDivider>
+    <XContainer>{{ data }}</XContainer>
+    <ElDivider>属性</ElDivider>
+    <ElDescriptions :column="3" border>
+      <ElDescriptionsItem v-for="[name, value] of propsArray" :label="name">
+        <pre>{{ JSON.stringify(value, null, 2) }}</pre>
+      </ElDescriptionsItem>
+    </ElDescriptions>
+    <ElDivider>插槽</ElDivider>
+    <XContainer justify="space-around" flex gap>
+      <XPanel header="default" grow card>
+        <div class="x-test__slot">
+          <slot :props="props" :data="data">
+            <pre>{{ JSON.stringify({ props, data }, null, 2) }}</pre>
+          </slot>
+        </div>
+      </XPanel>
+      <XPanel header="extra" grow card>
+        <div class="x-test__slot">
+          <slot name="extra" :props="props" :data="data">
+            <pre>{{ JSON.stringify({ props, data }, null, 2) }}</pre>
+          </slot>
+        </div>
+      </XPanel>
+    </XContainer>
+    <ElDivider>事件和方法</ElDivider>
+    <XContainer>
+      <ElButton @click="click">click</ElButton>
+      <ElButton @click="submit">submit</ElButton>
+      <ElButton @click="onChange">change</ElButton>
+    </XContainer>
+  </XPanel>
+</template>
+<script lang="ts" setup>
+  import { computed, ref } from 'vue';
+  import {
+    ElDivider,
+    ElDescriptions,
+    ElDescriptionsItem,
+    ElButton,
+    ElMessage
+  } from 'element-plus';
+  import { XPanel } from '../panel';
+  import { XContainer } from '../container';
+  import { testProps, type TestEmits } from './types';
+
+  defineOptions({
+    name: 'XTest'
+  });
+
+  const props = defineProps(testProps);
+  const emit = defineEmits<TestEmits>();
+  const propsArray = computed(() => Object.entries(props));
+
+  const data = ref<any>('default inner data');
+
+  const click = () => {
+    ElMessage.info({
+      message: '触发click事件'
+    });
+    emit('click', props);
+  };
+
+  const submit = () => {
+    ElMessage.info({
+      message: '触发submit事件'
+    });
+    emit('submit', props);
+  };
+
+  const change = (params: any) => {
+    data.value = params;
+    emit('change', data.value);
+  };
+
+  const onChange = () => {
+    change('user click change:' + Date.now());
+  };
+
+  defineExpose({
+    click,
+    submit,
+    data,
+    change
+  });
+</script>

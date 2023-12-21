@@ -1,6 +1,6 @@
 <template>
   <ElInputNumber
-    class="vtj-number-setter"
+    class="v-number-setter"
     controls-position="right"
     :model-value="modelValue"
     v-bind="$attrs"

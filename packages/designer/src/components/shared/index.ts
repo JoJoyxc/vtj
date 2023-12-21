@@ -5,6 +5,7 @@ import Item from './item.vue';
 import Box from './box.vue';
 import Binder from './binder.vue';
 import Viewer from './viewer.vue';
+import SlotsPicker from './slots.vue';
 
 export * from './types';
-export { Icon, Panel, Tabs, Item, Box, Binder, Viewer };
+export { Icon, Panel, Tabs, Item, Box, Binder, Viewer, SlotsPicker };

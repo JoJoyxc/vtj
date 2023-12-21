@@ -5,7 +5,6 @@
     size="small"
     :fit="false"
     plus
-    grow
     @plus="onPlus">
     <Item
       v-for="item of list"

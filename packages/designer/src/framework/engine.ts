@@ -60,6 +60,7 @@ export class Engine {
   public emitter: Emitter = emitter;
   public current: Ref<BlockModel | null> = ref(null);
   public context: Ref<Context | null> = ref(null);
+  public isEmptyCurrent: Ref<boolean> = ref(false);
   constructor(options: EngineOptions) {
     const { container, service, project, globals = {} } = options;
     this.container = container;
@@ -112,7 +113,7 @@ export class Engine {
     emitter.on(EVENT_BLOCK_CHANGE, async (e) => {
       await nextTick();
       this.service.saveFile(e.toDsl());
-      this.context.value = this.simulator.renderer?.context || null;
+      this.updateCurrent(e);
     });
     emitter.on(EVENT_NODE_CHANGE, () => this.saveCurrentFile());
     emitter.on(EVENT_PROJECT_BLOCKS_CHANGE, (e) => this.saveFile(e));
@@ -120,9 +121,14 @@ export class Engine {
 
     emitter.on(EVENT_PROJECT_ACTIVED, async (e) => {
       await nextTick();
-      this.current.value = e.model.current;
-      this.context.value = this.simulator.renderer?.context || null;
+      this.updateCurrent(e.model.current);
     });
+  }
+
+  private updateCurrent(block: BlockModel | null) {
+    this.current.value = block;
+    this.context.value = this.simulator.renderer?.context || null;
+    this.isEmptyCurrent.value = this.current.value?.nodes.length === 0;
   }
 
   private async saveFile(e: ProjectModelEvent) {

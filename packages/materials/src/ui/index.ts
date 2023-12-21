@@ -5,10 +5,11 @@ import type {
 } from '@vtj/core';
 import { version } from '../version';
 import { setPackageName } from '../shared';
+import test from './test';
 import icon from './icon';
 
 const name = '@vtj/ui';
-const components: MaterialDescription[] = [icon];
+const components: MaterialDescription[] = [test, icon];
 
 const categories: MaterialCategory[] = [
   {
@@ -26,6 +27,10 @@ const categories: MaterialCategory[] = [
   {
     id: 'data',
     category: '数据展示'
+  },
+  {
+    id: 'test',
+    category: '测试套件'
   }
 ];
 

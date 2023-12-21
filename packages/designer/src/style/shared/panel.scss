@@ -4,6 +4,10 @@
   > .x-panel__header {
     padding: 0 5px 0 10px !important;
   }
+  .el-empty {
+    --el-empty-padding: 10px 0;
+    --el-empty-description-margin-top: 10px;
+  }
 }
 
 @include b(sub-panel) {

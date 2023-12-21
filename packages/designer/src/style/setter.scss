@@ -109,3 +109,15 @@
     }
   }
 }
+
+@include b(number-setter) {
+  width: 100% !important;
+}
+
+@include b(function-setter) {
+  @include when(active) {
+    .el-input__suffix {
+      color: var(--el-color-primary);
+    }
+  }
+}

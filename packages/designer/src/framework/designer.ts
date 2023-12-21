@@ -1,10 +1,18 @@
-import { type Ref, type ShallowRef, shallowRef, unref, nextTick } from 'vue';
+import {
+  type Ref,
+  type ShallowRef,
+  shallowRef,
+  unref,
+  nextTick,
+  createApp
+} from 'vue';
 import { type Context } from '@vtj/renderer';
 import {
   type Dependencie,
   type DropPosition,
   type MaterialDescription,
   type NodeSchema,
+  type MaterialSlot,
   NodeModel,
   BlockModel,
   isBlock,
@@ -13,7 +21,25 @@ import {
   EVENT_NODE_CHANGE
 } from '@vtj/core';
 import { delay } from '@vtj/utils';
+import { SlotsPicker } from '../components';
 import { type Engine } from './engine';
+
+export function createSlotsPicker(slots: MaterialSlot[]) {
+  return new Promise<MaterialSlot>((resolve, reject) => {
+    const dialog = createApp(SlotsPicker, {
+      slots: slots,
+      onClose: () => {
+        dialog.unmount();
+        reject(null);
+      },
+      onSubmit: (slot: MaterialSlot) => {
+        dialog.unmount();
+        resolve(slot);
+      }
+    });
+    dialog.mount(document.createElement('div'));
+  });
+}
 
 export interface VtjElement extends HTMLElement {
   __vtj__?: string;
@@ -132,22 +158,71 @@ export class Designer {
     this.selected.value = null;
   }
 
+  private async getDropSlot(to: NodeModel | null) {
+    if (!to) return undefined;
+    const { engine } = this;
+    const assets = engine.assets;
+    const componentMap = assets.componentMap;
+    const targetDesc =
+      (await assets.getBlockMaterial(to.from)) || componentMap.get(to.name);
+    if (!targetDesc?.slots) return undefined;
+    const slots: MaterialSlot[] = (targetDesc?.slots || ['default']).map(
+      (n) => {
+        if (typeof n === 'string') {
+          return {
+            name: n,
+            params: []
+          };
+        } else {
+          return {
+            name: n.name,
+            params: n.params || []
+          };
+        }
+      }
+    );
+    if (slots.length === 0) {
+      return undefined;
+    }
+    if (slots.length === 1) {
+      return slots[0];
+    }
+    // 用户没选择插槽，返回null
+    const slot = await createSlotsPicker(slots).catch(() => null);
+    /**
+     * 当只有一个插槽，名称是default，并且没有任何参数，可以省略不指定插槽名
+     */
+    if (
+      slot &&
+      slot.name === 'default' &&
+      (!slot.params || slot.params?.length === 0)
+    ) {
+      return undefined;
+    }
+
+    return slot;
+  }
+
   private async onDrop(e: DragEvent) {
     e.preventDefault();
     const { engine, dragging, dropping } = this;
     const current = engine.project?.current;
     const helper = this.getHelper(e);
     if (!current || !dragging || !dropping.value || !helper) return;
-    if (!(await this.allowDrop(helper.model))) return;
+    const to = helper.model;
+    if (!(await this.allowDrop(to))) return;
     const dsl = this.createNodeDsl(dragging);
     const node = new NodeModel(dsl);
     const type = dropping.value.type;
-    // todo: slot
-    current.addNode(
-      node,
-      isBlock(helper.model) ? undefined : helper.model,
-      type
-    );
+    if (isBlock(to)) {
+      current.addNode(node, undefined, type);
+    } else {
+      const slot = await this.getDropSlot(type === 'inner' ? to : to.parent);
+      // null 是用户没选任何插槽
+      if (slot === null) return;
+      node.slot = slot;
+      current.addNode(node, to, type);
+    }
   }
 
   private onSelected(e: MouseEvent) {

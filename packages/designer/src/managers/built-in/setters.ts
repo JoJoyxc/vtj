@@ -34,7 +34,7 @@ export const builtInSetters: Array<Setter> = [
     type: 'Number'
   },
   {
-    name: 'NumberSetter',
+    name: 'ColorSetter',
     component: setters.ColorSetter,
     type: 'String'
   },
@@ -46,11 +46,30 @@ export const builtInSetters: Array<Setter> = [
   {
     name: 'ObjectSetter',
     component: setters.JsonSetter,
-    type: 'Object'
+    type: 'Object',
+    props: {
+      type: 'Object'
+    }
   },
   {
     name: 'ArraySetter',
     component: setters.JsonSetter,
-    type: 'Array'
+    type: 'Array',
+    props: {
+      type: 'Array'
+    }
+  },
+  {
+    name: 'JsonSetter',
+    component: setters.JsonSetter,
+    type: 'Object',
+    props: {
+      type: 'JSON'
+    }
+  },
+  {
+    name: 'FunctionSetter',
+    component: setters.FunctionSetter,
+    type: 'Function'
   }
 ];
