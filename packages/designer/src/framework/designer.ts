@@ -57,26 +57,45 @@ export interface DesignHelper {
 export class Designer {
   private proxied: Record<string, any> = {};
   public document: Document | null = null;
-  public contentWindow: Window | null = null;
   public hover: ShallowRef<DesignHelper | null> = shallowRef(null);
   public dropping: ShallowRef<DesignHelper | null> = shallowRef(null);
   public selected: ShallowRef<DesignHelper | null> = shallowRef(null);
   public dragging: MaterialDescription | null = null;
   constructor(
     public engine: Engine,
-    public iframe: Ref<HTMLIFrameElement | undefined>,
+    public contentWindow: Window,
     public dependencies: Ref<Dependencie[]>
   ) {
-    engine.ready(() => {
-      engine.simulator?.init(iframe, dependencies);
-      const cw = engine.simulator?.contentWindow;
-      if (cw) {
-        this.contentWindow = cw;
-        this.document = cw.document;
-        this.bindEvents(cw, this.document);
-      }
-    });
+    this.document = this.contentWindow.document;
+    this.bindEvents(contentWindow, this.document);
+    // engine.ready(() => {
+    //   engine.simulator?.init(iframe, dependencies);
+    //   this.reset();
+    //   // const cw = engine.simulator?.contentWindow;
+    //   // if (cw) {
+    //   //   this.contentWindow = cw;
+    //   //   this.document = cw.document;
+    //   //   this.bindEvents(cw, this.document);
+    //   // }
+    //   setTimeout(() => {
+    //     this.reset();
+    //   }, 10000);
+    // });
   }
+
+  // private reset() {
+  //   const { contentWindow, document, engine } = this;
+  //   if (contentWindow && document) {
+  //     this.setSelected(null);
+  //     this.unbindEvents(contentWindow, document);
+  //   }
+  //   const cw = engine.simulator?.contentWindow;
+  //   if (cw) {
+  //     this.contentWindow = cw;
+  //     this.document = cw.document;
+  //     this.bindEvents(cw, this.document);
+  //   }
+  // }
 
   private bind(func: (...args: any[]) => void, name: string) {
     let proxy = this.proxied[name];
@@ -427,11 +446,12 @@ export class Designer {
 
   dispose() {
     const { contentWindow: cw, document: doc } = this;
+    this.setSelected(null);
+    this.setHover(null);
+    this.setDragging(null);
     if (cw && doc) {
       this.unbindEvents(cw, doc);
     }
-    this.engine.simulator?.dispose();
     this.document = null;
-    this.contentWindow = null;
   }
 }

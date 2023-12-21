@@ -62,26 +62,26 @@
     switch (type) {
       case 'remove':
         current.value.removeNode(model);
-        designer.setSelected(null);
+        designer.value?.setSelected(null);
 
         break;
       case 'copy':
         const node = current.value.cloneNode(model);
-        designer.setSelected(node);
+        designer.value?.setSelected(node);
         break;
       case 'prev':
         current.value.movePrev(model);
-        designer.setSelected(model);
+        designer.value?.setSelected(model);
         break;
       case 'next':
         current.value.moveNext(model);
-        designer.setSelected(model);
+        designer.value?.setSelected(model);
         break;
       case 'hover':
-        designer.setHover(model);
+        designer.value?.setHover(model);
         break;
       case 'selected':
-        designer.setSelected(model);
+        designer.value?.setSelected(model);
         break;
     }
   };

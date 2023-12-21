@@ -1,16 +1,9 @@
-import { type Ref, watchEffect } from 'vue';
-import {
-  logger,
-  type Dependencie,
-  Service,
-  emitter,
-  EVENT_PROJECT_ACTIVED,
-  BlockModel
-} from '@vtj/core';
+import { type Ref, type ShallowRef, shallowRef, watchEffect, watch } from 'vue';
+import { logger, type Dependencie } from '@vtj/core';
 import { parseDeps, createAssetsCss, createAssetScripts } from '@vtj/renderer';
-import { Assets } from './assets';
 import { Renderer } from './renderer';
-
+import { Designer } from './designer';
+import { type Engine } from './engine';
 declare global {
   interface Window {
     __simulator__: Simulator;
@@ -32,32 +25,37 @@ export interface SimulatorEnv {
 }
 
 export interface SimulatorOptions {
-  assets: Assets;
   globals: Record<string, any>;
-  service: Service;
+  engine: Engine;
 }
 
 export class Simulator {
   public contentWindow: Window | null = null;
-  public assets: Assets;
   public globals: Record<string, any>;
   public renderer: Renderer | null = null;
-  public service: Service;
-  public current: BlockModel | null = null;
+  public designer: ShallowRef<Designer | null> = shallowRef(null);
+  public engine: Engine;
   constructor(options: SimulatorOptions) {
-    const { assets, globals = {}, service } = options;
-    this.assets = assets;
+    const { engine, globals = {} } = options;
+    this.engine = engine;
     this.globals = globals;
-    this.service = service;
-    emitter.on(EVENT_PROJECT_ACTIVED, (e) => {
-      this.current = e.model.current;
+
+    watch(this.engine.current, () => {
       this.refresh();
     });
   }
   init(iframe: Ref<HTMLIFrameElement | undefined>, deps: Ref<Dependencie[]>) {
     watchEffect(() => {
-      if (iframe.value && deps.value.length) {
+      if (iframe.value && deps.value) {
         this.setup(iframe.value, deps.value);
+        if (this.contentWindow) {
+          this.designer.value?.dispose();
+          this.designer.value = new Designer(
+            this.engine,
+            this.contentWindow,
+            deps
+          );
+        }
       }
     });
   }
@@ -125,16 +123,17 @@ export class Simulator {
     const materials = materialExports.map((name: string) => {
       return cw[name];
     });
+    const { assets, service, current } = this.engine;
 
-    this.assets.load(materials);
+    assets.load(materials);
     const env = this.createEnv(
       libraryExports,
       materialExports,
       materialMapLibrary
     );
-    this.renderer = new Renderer(env, this.service);
-    if (this.current) {
-      this.renderer.render(this.current);
+    this.renderer = new Renderer(env, service);
+    if (current.value) {
+      this.renderer.render(current.value);
     }
   }
 
@@ -156,7 +155,7 @@ export class Simulator {
 
     const components: Record<string, any> = {};
 
-    const { groups, componentMap } = this.assets;
+    const { groups, componentMap } = this.engine.assets;
     for (const group of groups) {
       const names = group.names || [];
       const lib = library[materialMapLibrary[group.library || '']];
@@ -188,8 +187,9 @@ export class Simulator {
 
   refresh() {
     this.renderer?.dispose();
-    if (this.current) {
-      this.renderer?.render(this.current);
+    const current = this.engine.current.value;
+    if (current) {
+      this.renderer?.render(current);
     }
   }
 

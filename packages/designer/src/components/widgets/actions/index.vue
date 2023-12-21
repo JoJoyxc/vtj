@@ -58,7 +58,7 @@
 
   const refresh = () => {
     if (engine.current.value) {
-      designer.value.setSelected(null);
+      designer.value?.setSelected(null);
       engine.simulator.refresh();
       ElMessage.success({
         message: '刷新完成'
@@ -78,7 +78,7 @@
 
   const openCodeSetting = () => {
     if (engine.current.value) {
-      designer.value.setSelected(engine.current.value);
+      designer.value?.setSelected(engine.current.value);
     } else {
       ElMessage.warning({
         message: '请先打开文件'

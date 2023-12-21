@@ -67,9 +67,8 @@ export class Engine {
     this.service = service;
     this.assets = new Assets(this.service);
     this.simulator = new Simulator({
-      assets: this.assets,
-      globals,
-      service: this.service
+      engine: this,
+      globals
     });
     this.bindEvents();
     this.init(project);

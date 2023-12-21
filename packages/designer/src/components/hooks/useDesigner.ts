@@ -1,29 +1,28 @@
-import { type Ref, onUnmounted, computed } from 'vue';
+import { type Ref, computed } from 'vue';
 import { type Dependencie } from '@vtj/core';
-import { useEngine, Designer, type DesignHelper } from '../../framework';
+import { useEngine, type DesignHelper } from '../../framework';
 
 export function useDesigner(
   iframe: Ref<HTMLIFrameElement | undefined>,
   dependencies: Ref<Dependencie[]>
 ) {
   const engine = useEngine();
-  const designer = new Designer(engine, iframe, dependencies);
+
+  engine.simulator.init(iframe, dependencies);
+
+  const designer = computed(() => engine.simulator.designer.value);
 
   const hover = computed(() =>
-    getComputedHelper('hover', designer.hover.value)
+    getComputedHelper('hover', designer.value?.hover.value)
   );
 
   const dropping = computed(() =>
-    getComputedHelper('dropping', designer.dropping.value)
+    getComputedHelper('dropping', designer.value?.dropping.value)
   );
 
   const selected = computed(() =>
-    getComputedHelper('selected', designer.selected.value)
+    getComputedHelper('selected', designer.value?.selected.value)
   );
-
-  onUnmounted(() => {
-    designer.dispose();
-  });
 
   return {
     designer,
@@ -70,7 +69,7 @@ function getDropRect(helpr: DesignHelper) {
   return newRect;
 }
 
-function getComputedHelper(name: string, helpr: DesignHelper | null) {
+function getComputedHelper(name: string, helpr?: DesignHelper | null) {
   if (!helpr) return null;
   const { left, top, width, height } =
     name === 'dropping' ? getDropRect(helpr) : helpr.rect;

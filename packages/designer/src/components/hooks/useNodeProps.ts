@@ -18,7 +18,9 @@ const defaultSetters: MaterialSetter[] = [
   }
 ];
 
-export function useNodeProps(selected: ComputedRef<DesignHelper | null>) {
+export function useNodeProps(
+  selected: ComputedRef<DesignHelper | null | undefined>
+) {
   const engine = useEngine();
 
   const node = computed(() => {
