@@ -68,34 +68,7 @@ export class Designer {
   ) {
     this.document = this.contentWindow.document;
     this.bindEvents(contentWindow, this.document);
-    // engine.ready(() => {
-    //   engine.simulator?.init(iframe, dependencies);
-    //   this.reset();
-    //   // const cw = engine.simulator?.contentWindow;
-    //   // if (cw) {
-    //   //   this.contentWindow = cw;
-    //   //   this.document = cw.document;
-    //   //   this.bindEvents(cw, this.document);
-    //   // }
-    //   setTimeout(() => {
-    //     this.reset();
-    //   }, 10000);
-    // });
   }
-
-  // private reset() {
-  //   const { contentWindow, document, engine } = this;
-  //   if (contentWindow && document) {
-  //     this.setSelected(null);
-  //     this.unbindEvents(contentWindow, document);
-  //   }
-  //   const cw = engine.simulator?.contentWindow;
-  //   if (cw) {
-  //     this.contentWindow = cw;
-  //     this.document = cw.document;
-  //     this.bindEvents(cw, this.document);
-  //   }
-  // }
 
   private bind(func: (...args: any[]) => void, name: string) {
     let proxy = this.proxied[name];
@@ -160,7 +133,10 @@ export class Designer {
   }
 
   private onMouseOver(e: MouseEvent) {
-    this.hover.value = this.getHelper(e);
+    const hover = this.getHelper(e);
+    if (hover?.model.id !== this.selected.value?.model.id) {
+      this.hover.value = hover;
+    }
   }
   private onViewChange() {
     this.updateRect();
@@ -177,7 +153,7 @@ export class Designer {
     this.selected.value = null;
   }
 
-  private async getDropSlot(to: NodeModel | null) {
+  public async getDropSlot(to: NodeModel | null) {
     if (!to) return undefined;
     const { engine } = this;
     const assets = engine.assets;
@@ -245,6 +221,7 @@ export class Designer {
   }
 
   private onSelected(e: MouseEvent) {
+    this.setHover(null);
     this.selected.value = this.getHelper(e);
   }
 

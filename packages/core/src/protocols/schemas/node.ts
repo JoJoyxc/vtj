@@ -20,6 +20,11 @@ export interface NodeSchema {
   from?: NodeFrom;
 
   /**
+   * 锁定
+   */
+  locked?: boolean;
+
+  /**
    * 不可见的
    */
   invisible?: boolean;

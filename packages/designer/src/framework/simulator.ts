@@ -92,8 +92,6 @@ export class Simulator {
               margin: 0;
               min-height: 100vh;
               width: 100%;
-              height: 100%;
-              font-size:14px;
             }
          </style>
          ${createAssetsCss(css)}
@@ -195,7 +193,9 @@ export class Simulator {
 
   dispose() {
     this.renderer?.dispose();
+    this.designer.value?.dispose();
     this.contentWindow = null;
     this.renderer = null;
+    this.designer.value = null;
   }
 }

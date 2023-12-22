@@ -14,6 +14,11 @@ export interface BlockSchema {
   name: string;
 
   /**
+   * 锁定
+   */
+  locked?: boolean;
+
+  /**
    * 注入
    */
   inject?: BlockInject[];

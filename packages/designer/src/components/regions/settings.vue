@@ -18,7 +18,7 @@
       </XContainer>
     </XContainer>
 
-    <XContainer v-if="selected" grow :padding="false">
+    <XContainer v-if="selected && !selected.model.locked" grow :padding="false">
       <Tabs
         :items="tabs"
         v-model="currentTab"
@@ -35,6 +35,11 @@
     </XContainer>
 
     <ElEmpty v-if="!selected" description="请在左侧画布选中节点"></ElEmpty>
+
+    <ElEmpty
+      v-if="selected && selected.model.locked"
+      :image-size="1"
+      description="节点已被锁定, 禁止编辑"></ElEmpty>
   </XContainer>
 </template>
 <script lang="ts" setup>

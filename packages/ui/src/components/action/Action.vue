@@ -45,10 +45,12 @@
   });
 
   const onClick = () => {
+    if (disabled.value) return;
     emit('click', toRaw(props));
   };
 
   const onCommand = (command: any) => {
+    if (disabled.value) return;
     const item = props.menus?.find((n) => n.command === command);
     if (item) {
       emit('command', toRaw(item));

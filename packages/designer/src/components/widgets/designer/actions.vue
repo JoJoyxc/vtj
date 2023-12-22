@@ -9,7 +9,7 @@
       background="none"
       @command="onCommand"></XAction>
     <XActionBar
-      v-if="visible"
+      :disabled="!visible"
       mode="icon"
       size="small"
       :items="items"
@@ -49,7 +49,7 @@
   });
 
   const visible = computed(() => {
-    return !isBlock(props.model);
+    return !isBlock(props.model) && !props.model.locked;
   });
 
   const menus = computed(() => {

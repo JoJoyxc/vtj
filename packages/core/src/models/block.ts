@@ -40,10 +40,12 @@ export class BlockModel {
   public slots: string[] = [];
   public dataSources: Record<string, DataSourceSchema> = {};
   public nodes: NodeModel[] = [];
+  public locked: boolean = false;
   public disposed: boolean = false;
 
   static normalAttrs: string[] = [
     'name',
+    'locked',
     'inject',
     'state',
     'lifeCycles',
@@ -501,5 +503,41 @@ export class BlockModel {
     const node = new NodeModel(dsl);
     this.addNode(node, target, 'bottom', silent);
     return node;
+  }
+
+  lock(silent: boolean = false) {
+    this.locked = true;
+    for (const child of this.nodes) {
+      child.lock(true);
+    }
+    if (!silent) {
+      emitter.emit(EVENT_BLOCK_CHANGE, this);
+    }
+  }
+
+  unlock(silent: boolean = false) {
+    this.locked = false;
+    for (const child of this.nodes) {
+      child.unlock(true);
+    }
+    if (!silent) {
+      emitter.emit(EVENT_BLOCK_CHANGE, this);
+    }
+  }
+
+  isChild(node: NodeModel): boolean {
+    let match = false;
+    for (const child of this.nodes) {
+      if (node === child || node.id === child.id) {
+        match = true;
+        break;
+      } else {
+        match = child.isChild(node);
+        if (match) {
+          break;
+        }
+      }
+    }
+    return match;
   }
 }

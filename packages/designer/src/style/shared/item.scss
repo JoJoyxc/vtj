@@ -41,8 +41,8 @@
   }
 
   @include when(active) {
-    background-color: var(--el-color-primary-light-9);
-    color: var(--el-color-primary);
+    background-color: var(--el-color-primary-light-9) !important;
+    color: var(--el-color-primary) !important;
   }
 
   @include when(background) {

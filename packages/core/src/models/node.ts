@@ -31,7 +31,7 @@ export class NodeModel {
   /**
    * 锁定
    */
-  public lock: boolean = false;
+  public locked: boolean = false;
 
   /**
    * 记录所有节点的实例
@@ -83,10 +83,7 @@ export class NodeModel {
    */
   public disposed: boolean = false;
 
-  constructor(
-    private schema: NodeSchema,
-    public parent: NodeModel | null = null
-  ) {
+  constructor(schema: NodeSchema, public parent: NodeModel | null = null) {
     const { id = uid(), name, from = '' } = schema;
     this.id = id;
     this.name = name;
@@ -100,16 +97,17 @@ export class NodeModel {
    * @param silent 是否静默，静默更新即不触发事件
    */
   update(schema: Partial<NodeSchema>, silent: boolean = false) {
-    Object.assign(this.schema, schema);
     const {
       invisible = false,
+      locked = false,
       children = [],
       slot,
       props = {},
       events = {},
       directives = []
-    } = this.schema;
+    } = schema;
     this.invisible = invisible;
+    this.locked = locked;
     this.setChildren(children, true);
     this.setSlot(slot, true);
     this.props = PropModel.parse(props);
@@ -377,6 +375,7 @@ export class NodeModel {
       name,
       from,
       invisible,
+      locked,
       slot,
       children,
       props,
@@ -384,15 +383,15 @@ export class NodeModel {
       events
     } = this;
     const nodes = Array.isArray(children)
-      ? children.filter((n) => !n.invisible).map((n) => n.toDsl())
+      ? children.map((n) => n.toDsl())
       : children;
 
     return {
-      ...this.schema,
       id,
       name,
       from,
       invisible,
+      locked,
       slot,
       children: nodes,
       props: PropModel.toDsl(props),
@@ -424,5 +423,59 @@ export class NodeModel {
     this.parent = null;
     this.disposed = true;
     delete NodeModel.nodes[this.id];
+  }
+
+  lock(silent: boolean = false) {
+    this.locked = true;
+    if (Array.isArray(this.children)) {
+      for (const child of this.children) {
+        child.lock(true);
+      }
+    }
+    if (!silent) {
+      emitter.emit(EVENT_NODE_CHANGE, this);
+    }
+  }
+
+  unlock(silent: boolean = false) {
+    this.locked = false;
+    if (Array.isArray(this.children)) {
+      for (const child of this.children) {
+        child.unlock(true);
+      }
+    }
+    if (!silent) {
+      emitter.emit(EVENT_NODE_CHANGE, this);
+    }
+  }
+
+  setVisible(visible: boolean, silent: boolean = false) {
+    this.invisible = !visible;
+    if (Array.isArray(this.children)) {
+      for (const child of this.children) {
+        child.setVisible(visible, true);
+      }
+    }
+    if (!silent) {
+      emitter.emit(EVENT_NODE_CHANGE, this);
+    }
+  }
+
+  isChild(node: NodeModel): boolean {
+    let match = false;
+    if (Array.isArray(this.children)) {
+      for (const child of this.children) {
+        if (node === child || node.id === child.id) {
+          match = true;
+          break;
+        } else {
+          match = child.isChild(node);
+          if (match) {
+            break;
+          }
+        }
+      }
+    }
+    return match;
   }
 }

@@ -40,6 +40,7 @@
   const onClick = (e: MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
+    if (disabled.value) return;
     emit('click');
     return false;
   };

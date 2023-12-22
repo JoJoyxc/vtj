@@ -5,7 +5,7 @@
   height: 100%;
   box-sizing: border-box;
   position: relative;
-  overflow: hidden;
+  overflow: auto;
 
   iframe {
     width: 100%;
@@ -20,23 +20,24 @@
   }
 
   @include e(hover) {
-    border: 1px dashed var(--el-color-primary);
-    background-color: rgba(64, 158, 255, 0.05);
+    border: 2px dotted var(--el-color-warning-dark-2);
+    background-color: rgba(230, 162, 60, 0.1);
     position: absolute;
     left: 0;
     top: 0;
     pointer-events: none;
+
     > span {
-      color: var(--el-color-primary);
+      display: inline-block;
+      color: var(--el-color-warning-dark-2);
       position: absolute;
-      background-color: var(--el-color-primary-light-9);
-      height: 23px;
-      line-height: 22px;
+      background-color: var(--el-color-warning-light-7);
       border-radius: 4px;
       font-size: 12px;
-      padding: 0 5px;
+      padding: 4px 8px;
       white-space: nowrap;
-      box-shadow: 0 0 3px var(--el-bg-color);
+      box-shadow: var(--el-box-shadow-lighter);
+      z-index: 10;
       > i {
         color: var(--el-text-color-secondary);
       }
@@ -47,23 +48,23 @@
 
       &.is-left-top {
         left: 0;
-        top: -2px;
+        top: -4px;
         transform: translateY(-100%);
       }
 
       &.is-left-bottom {
         left: 0;
-        bottom: -2px;
+        bottom: -4px;
         transform: translateY(100%);
       }
       &.is-right-top {
         right: 0;
-        top: -2px;
+        top: -4px;
         transform: translateY(-100%);
       }
       &.is-right-bottom {
         right: 0;
-        bottom: -2px;
+        bottom: -4px;
         transform: translateY(100%);
       }
     }
@@ -80,7 +81,8 @@
   }
 
   @include e(selected) {
-    border: 2px solid var(--el-color-primary);
+    border: 2px solid var(--el-color-primary-dark-2);
+    background-color: rgba(64, 158, 255, 0.1);
     position: absolute;
     left: 0;
     top: 0;
@@ -106,6 +108,7 @@
   left: 0;
   top: 0;
   background-color: var(--el-fill-color-dark);
+  overflow: hidden;
 }
 
 @include b(actions) {
@@ -116,9 +119,10 @@
   display: flex;
   > .x-action,
   > .x-action-bar {
-    background-color: var(--el-color-primary);
+    background-color: var(--el-color-primary-dark-2);
     border-radius: 4px;
     padding: 2px 5px;
+    box-shadow: var(--el-box-shadow-lighter);
 
     .x-action__inner {
       color: var(--el-color-primary-light-9);
@@ -129,7 +133,7 @@
   }
 
   .x-action:hover {
-    background-color: var(--el-color-primary-light-3);
+    background-color: var(--el-color-primary);
     border-radius: 4px;
   }
   &.is-inner {

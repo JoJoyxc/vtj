@@ -50,8 +50,7 @@
 <script lang="ts" setup>
   import { ref, computed } from 'vue';
   import { ElInput, ElEmpty, ElButton } from 'element-plus';
-  import { ArrowDown, Search } from '@element-plus/icons-vue';
-  import { icons } from '@vtj/icons';
+  import { icons, ArrowDown, Search } from '@vtj/icons';
   import { XIcon, XDialog } from '@vtj/ui';
 
   export interface Props {

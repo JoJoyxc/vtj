@@ -7,6 +7,7 @@ import {
   shallowReactive,
   ref,
   nextTick,
+  triggerRef,
   type ShallowReactive,
   type InjectionKey,
   type MaybeRef,
@@ -128,6 +129,8 @@ export class Engine {
     this.current.value = block;
     this.context.value = this.simulator.renderer?.context || null;
     this.isEmptyCurrent.value = this.current.value?.nodes.length === 0;
+    // 在子节点改变时需要手动触发更新
+    triggerRef(this.current);
   }
 
   private async saveFile(e: ProjectModelEvent) {
@@ -155,6 +158,7 @@ export class Engine {
   private saveCurrentFile() {
     const current = this.current.value;
     if (current) {
+      this.updateCurrent(current);
       this.service.saveFile(current.toDsl());
     }
   }
