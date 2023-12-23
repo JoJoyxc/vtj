@@ -42,18 +42,18 @@
         color: var(--el-text-color-secondary);
       }
       &.is-inner {
-        left: 2px;
-        top: 2px;
+        left: 4px;
+        top: 4px;
       }
 
       &.is-left-top {
-        left: 0;
+        left: -2px;
         top: -4px;
         transform: translateY(-100%);
       }
 
       &.is-left-bottom {
-        left: 0;
+        left: -2px;
         bottom: -4px;
         transform: translateY(100%);
       }
@@ -71,12 +71,13 @@
   }
 
   @include e(dropping) {
-    border: 2px solid var(--el-color-primary);
-    background-color: rgba(64, 158, 255, 0.05);
+    border: 4px solid var(--el-color-success-dark-2);
+    background-color: rgba(82, 155, 46, 0.1);
     position: absolute;
     pointer-events: none;
+    z-index: 20;
     &.is-inner {
-      border: 1px solid var(--el-color-primary);
+      border: 2px solid var(--el-color-success-dark-2);
     }
   }
 
@@ -142,7 +143,7 @@
   }
 
   &.is-left-top {
-    left: 0;
+    left: -2px;
     top: -4px;
     transform: translateY(-100%);
   }
@@ -158,7 +159,7 @@
     transform: translateY(-100%);
   }
   &.is-right-bottom {
-    right: 0;
+    right: -2px;
     bottom: -4px;
     transform: translateY(100%);
   }

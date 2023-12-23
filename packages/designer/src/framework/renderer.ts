@@ -17,7 +17,7 @@ import {
   Context
 } from '@vtj/renderer';
 import { ElNotification } from 'element-plus';
-
+import { notify } from '../utils';
 
 export class Renderer {
   private app: App | null = null;
@@ -98,7 +98,12 @@ export class Renderer {
     });
     this.app = Vue.createApp(renderer) as App;
     this.install(this.app);
-    this.app.mount(el);
+    try {
+      this.app.mount(el);
+    } catch (e: any) {
+      notify(e.message || '未知错误', '运行时错误');
+      console.error(e);
+    }
     this.context = context;
     emitter.on(EVENT_NODE_CHANGE, this.nodeChange as any);
     emitter.on(EVENT_BLOCK_CHANGE, this.blockChange as any);

@@ -2,18 +2,18 @@
   <div ref="container" class="v-designer">
     <Viewport :mode="mode" :width="width" :height="height">
       <iframe ref="iframe" frameborder="0"></iframe>
+      <div
+        v-if="dropping"
+        class="v-designer__dropping"
+        :class="`is-inner`"
+        :style="dropping.style"></div>
+
       <div v-if="hover" class="v-designer__hover" :style="hover.style">
         <span :class="`is-${hover.position}`">
           {{ hover.model.name }}:
           <i>{{ hover.model.id }}</i>
         </span>
       </div>
-
-      <div
-        v-if="dropping"
-        class="v-designer__dropping"
-        :class="`is-inner`"
-        :style="dropping.style"></div>
 
       <div v-if="selected" class="v-designer__selected" :style="selected.style">
         <Actions

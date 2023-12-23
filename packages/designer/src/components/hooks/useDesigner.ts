@@ -73,11 +73,12 @@ function getComputedHelper(name: string, helpr?: DesignHelper | null) {
   if (!helpr) return null;
   const { left, top, width, height } =
     name === 'dropping' ? getDropRect(helpr) : helpr.rect;
-  const style = {
+  const style: Record<string, any> = {
     left: `${left}px`,
     top: `${top}px`,
     width: `${width}px`,
-    height: `${height}px`
+    height: `${height}px`,
+    visibility: width || height ? 'visible' : 'hidden'
   };
   return {
     ...helpr,

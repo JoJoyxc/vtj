@@ -49,15 +49,7 @@ const elements: MaterialDescription[] = [
       }
     ],
     snippet: {
-      children: [
-        {
-          name: 'component',
-          props: {
-            is: 'span'
-          },
-          children: '默认插槽内容'
-        }
-      ]
+      children: '默认插槽内容'
     }
   }
 ];

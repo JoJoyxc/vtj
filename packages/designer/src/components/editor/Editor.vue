@@ -3,6 +3,7 @@
     class="v-code-editor"
     :class="{ 'is-border': props.border }"
     ref="container"
+    @keyup.enter.stop
     :style="{ height: props.height }"></div>
 </template>
 <script lang="ts" setup>

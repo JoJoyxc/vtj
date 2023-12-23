@@ -205,19 +205,23 @@ export class Designer {
     const helper = this.getHelper(e);
     if (!current || !dragging || !dropping.value || !helper) return;
     const to = helper.model;
-    if (!(await this.allowDrop(to))) return;
+    const type = dropping.value.type;
+    if (!(await this.allowDrop(to, type))) return;
     const dsl = this.createNodeDsl(dragging);
     const node = new NodeModel(dsl);
-    const type = dropping.value.type;
     if (isBlock(to)) {
       current.addNode(node, undefined, type);
     } else {
       const slot = await this.getDropSlot(type === 'inner' ? to : to.parent);
       // null 是用户没选任何插槽
-      if (slot === null) return;
+      if (slot === null) {
+        this.dropping.value = null;
+        return;
+      }
       node.slot = slot;
       current.addNode(node, to, type);
     }
+    this.dropping.value = null;
   }
 
   private onSelected(e: MouseEvent) {
@@ -228,8 +232,8 @@ export class Designer {
   private async onDragOver(e: DragEvent) {
     const helper = this.getHelper(e);
     if (!helper) return;
-    const { model } = helper;
-    if (model && (await this.allowDrop(model))) {
+    const { model, type } = helper;
+    if (model && (await this.allowDrop(model, type))) {
       e.preventDefault();
       this.dropping.value = helper;
     } else {
@@ -278,6 +282,16 @@ export class Designer {
     return [...nodePath, root];
   }
 
+  private setDslFrom(dsl: NodeSchema) {
+    const desc = this.engine.assets.componentMap.get(dsl.name);
+    dsl.from = dsl.from || desc?.package;
+    if (Array.isArray(dsl.children)) {
+      for (const child of dsl.children) {
+        this.setDslFrom(child);
+      }
+    }
+  }
+
   private createNodeDsl(desc: MaterialDescription) {
     const { name, snippet = {}, from } = desc;
     const dsl: NodeSchema = {
@@ -285,6 +299,7 @@ export class Designer {
       name,
       from: from || desc.package
     };
+    this.setDslFrom(dsl);
     return dsl;
   }
 
@@ -381,7 +396,9 @@ export class Designer {
   async setSelected(model: NodeModel | BlockModel | null) {
     await nextTick();
     if (model) {
-      const el = this.getElmenetByModel(model);
+      // 当 model 为 slot 特殊元素时，是找不到 Elmenet，需要创建一个临时的Elmenet
+      const el =
+        this.getElmenetByModel(model) || this.document?.createElement('span');
       if (!el) return;
       const rect = el.getBoundingClientRect();
       const path = isBlock(model) ? [] : this.findPathByNode(model);
@@ -397,22 +414,49 @@ export class Designer {
     }
   }
 
-  async allowDrop(target: NodeModel | BlockModel) {
+  async setDropping(
+    model: NodeModel | BlockModel | null,
+    type: DropPosition = 'inner'
+  ) {
+    await nextTick();
+    if (model) {
+      const el = this.getElmenetByModel(model);
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const path = isBlock(model) ? [] : this.findPathByNode(model);
+      this.dropping.value = {
+        el,
+        model,
+        rect,
+        type,
+        path
+      };
+    } else {
+      this.dropping.value = null;
+    }
+  }
+
+  async allowDrop(
+    target: NodeModel | BlockModel,
+    type: DropPosition = 'inner'
+  ) {
     const { dragging, engine } = this;
     const current = engine.project?.current;
     if (!dragging || !current) return false;
     if (isBlock(target)) return true;
     const componentMap = engine.assets.componentMap;
+    const node = type !== 'inner' ? target.parent || target : target;
     const targetDesc =
-      (await engine.assets.getBlockMaterial(target.from)) ||
-      componentMap.get(target.name);
+      (await engine.assets.getBlockMaterial(node.from)) ||
+      componentMap.get(node.name);
+
     if (!targetDesc) return false;
     const { parentIncludes = true, name } = dragging;
     const { childIncludes = true } = targetDesc;
 
     const mathParent =
       parentIncludes === true ||
-      (Array.isArray(parentIncludes) && parentIncludes.includes(target.name));
+      (Array.isArray(parentIncludes) && parentIncludes.includes(node.name));
 
     const matchChild =
       childIncludes === true ||

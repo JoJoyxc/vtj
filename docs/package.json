@@ -9,6 +9,9 @@
     "docs:preview": "vitepress preview"
   },
   "dependencies": {
+    "@vitepress-demo-preview/component": "~2.3.2",
+    "@vitepress-demo-preview/plugin": "~1.2.2",
+    "@vtj/web": "workspace:*",
     "@vtj/pro": "workspace:*",
     "vue": "~3.3.13",
     "vue-router": "~4.2.5"

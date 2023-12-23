@@ -18,9 +18,9 @@ export function getComponentName(node: NodeModel | BlockModel) {
   return node.name;
 }
 
-export function notify(message: string) {
+export function notify(message: string, title: string = '提示') {
   return ElNotification.warning({
-    title: '提示',
+    title,
     message
   });
 }

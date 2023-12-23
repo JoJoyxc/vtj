@@ -13,7 +13,6 @@
       :allow-drag="allowDrag"
       @current-change="handleCurrentChange"
       @node-drop="handleDrop"
-      @mouseover="handleMouseOver"
       @node-drag-start="handleDragStart"
       @node-drag-end="handleDragEnd">
       <template #default="{ data, node }">
@@ -40,7 +39,9 @@
           :title="data.label"
           :subtitle="data.type"
           :actions="getActions(data.model)"
-          @action="onAction">
+          @action="onAction"
+          @mouseenter="onMouseEnter(data)"
+          @mouseleave="onMouseLeave">
         </Item>
       </template>
     </ElTree>
@@ -48,12 +49,15 @@
 </template>
 <script lang="ts" setup>
   import { computed, watch, ref, type Ref } from 'vue';
-  import { ElTree } from 'element-plus';
+  import { ElTree, ElMessage } from 'element-plus';
   import {
     type NodeModel,
     type BlockModel,
     type DropPosition,
-    isBlock
+    type PropModel,
+    isBlock,
+    isJSExpression,
+    isJSFunction
   } from '@vtj/core';
   import { VtjIconLock, VtjIconInvisible } from '@vtj/icons';
   import { Panel, Item } from '../../shared';
@@ -84,9 +88,23 @@
   const { current } = useCurrent();
   const tree: Ref<TreeRootData[]> = ref([]);
 
+  const getTypeFlag = (prop: PropModel, defaultValue: string) => {
+    const value = prop?.value || defaultValue;
+    if (isJSExpression(value) || isJSFunction(value)) {
+      return value.type;
+    }
+    return value.toString();
+  };
+
   const getNodeType = (node: NodeModel) => {
     if (node.slot && node.slot.name) {
       return `#${node.slot.name}`;
+    }
+    if (node.name === 'component') {
+      return getTypeFlag(node.props?.is, 'div');
+    }
+    if (node.name === 'slot') {
+      return getTypeFlag(node.props.name, 'default');
     }
     return 'Node';
   };
@@ -173,39 +191,60 @@
     return false;
   };
 
-  const allowDrop = (_dragging: any, drop: any, type: any) => {
+  // todo: ElTree 不支持异步判断，需要改造该方法
+  const allowDrop = async (_dragging: any, drop: any, type: any) => {
     const data: TreeRootData | TreeNodeData = drop.data;
+    const typeMap: Record<string, string> = {
+      prev: 'top',
+      next: 'bottom',
+      inner: 'inner'
+    };
+    const dropType = typeMap[type] as DropPosition;
+    let ret = false;
     // 不能放置Block同级
     if (isBlock(data.model)) {
-      return type === 'inner';
+      ret = type === 'inner';
+      designer.value?.setDropping(ret ? data.model : null, 'inner');
     } else {
       const node: NodeModel = data.model;
-      if (type === 'inner') {
-        return designer.value?.allowDrop(node);
-      } else {
-        if (node.parent) {
-          return designer.value?.allowDrop(node.parent);
-        }
-        return true;
-      }
+      ret = !!(await designer.value?.allowDrop(node, dropType));
+      designer.value?.setDropping(ret ? node : null, 'inner');
     }
+    return ret;
   };
 
   const handleCurrentChange = (cur: any) => {
     const node = cur?.model;
     if (!node || node.invisible) return;
     designer.value?.setSelected(node);
+    designer.value?.setHover(null);
   };
 
   const handleDrop = async (dragging: any, drop: any, type: any) => {
     const item: TreeNodeData = dragging.data;
     const target: TreeRootData | TreeNodeData = drop.data;
     if (isBlock(target.model)) {
+      designer.value?.setDropping(null);
+      designer.value?.setDragging(null);
       return;
     }
     const targetNode: NodeModel = target.model;
     const dropType =
       { before: 'left', after: 'right' }[type as string] || 'inner';
+    const ret = await designer.value?.allowDrop(
+      targetNode,
+      dropType as DropPosition
+    );
+    if (!ret) {
+      designer.value?.setDropping(null);
+      refreshTree();
+      ElMessage.warning({
+        message: `${item.model.name}不能放置到该位置`
+      });
+      designer.value?.setDragging(null);
+      return;
+    }
+
     const slot = await designer.value?.getDropSlot(
       type === 'inner' ? targetNode : targetNode.parent
     );
@@ -218,22 +257,29 @@
       // 用户不选择插槽，还原树
       refreshTree();
     }
+    designer.value?.setDropping(null);
+    designer.value?.setDragging(null);
+    engine.simulator.refresh();
   };
 
-  const handleMouseOver = (e: any) => {
-    const vm = e.target?.__vueParentComponent;
-    if (!vm) return;
-    const item: TreeRootData | TreeNodeData = vm.ctx?.node?.data;
-    if (!item) return;
-    if (isBlock(item.model)) {
-      designer.value?.setHover(item.model);
+  const onMouseEnter = (data: TreeNodeData | TreeRootData) => {
+    if (isBlock(data.model)) {
+      designer.value?.setHover(data.model);
     } else {
-      if (!item.model.invisible) {
-        designer.value?.setHover(item.model);
-      } else {
+      designer.value?.setHover(data.model);
+
+      if (data.model.invisible) {
+        designer.value?.setHover(null);
+      }
+
+      if (data.model.name === 'slot') {
         designer.value?.setHover(null);
       }
     }
+  };
+
+  const onMouseLeave = () => {
+    designer.value?.setHover(null);
   };
 
   const handleDragStart = (node: any) => {
@@ -245,10 +291,10 @@
     }
   };
 
-  const handleDragEnd = (node: any) => {
+  const handleDragEnd = async (node: any) => {
     const data: TreeNodeData = node.data;
     data.dragging = false;
-    designer.value?.setDragging(null);
+    // designer.value?.setDragging(null);
   };
 
   const cleanHelper = (
