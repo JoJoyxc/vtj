@@ -5,6 +5,7 @@ import {
   unref,
   inject,
   shallowReactive,
+  shallowRef,
   ref,
   nextTick,
   triggerRef,
@@ -12,25 +13,31 @@ import {
   type InjectionKey,
   type MaybeRef,
   type App,
-  type Ref
+  type Ref,
+  type ShallowRef
 } from 'vue';
 import {
   logger,
   ProjectModel,
   BlockModel,
+  HistoryModel,
   Service,
   emitter,
-  EVENT_PROJECT_CHANGE,
   EVENT_BLOCK_CHANGE,
   EVENT_NODE_CHANGE,
   EVENT_PROJECT_BLOCKS_CHANGE,
-  EVENT_PROJECT_PAGES_CHANGE,
+  // EVENT_PROJECT_PAGES_CHANGE,
+  // EVENT_PROJECT_DEPS_CHANGE,
+  EVENT_PROJECT_CHANGE,
   EVENT_PROJECT_ACTIVED,
+  EVENT_HISTORY_CHANGE,
+  EVENT_HISTORY_LOAD,
   type Emitter,
   type ProjectSchema,
   type BlockFile,
   type ProjectModelEvent,
-  type PageFile
+  type PageFile,
+  type HistoryItem
 } from '@vtj/core';
 import { Context } from '@vtj/renderer';
 import { SkeletonWrapper, type SkeletonWrapperInstance } from '../wrappers';
@@ -56,12 +63,13 @@ export class Engine {
   public assets: Assets;
   private listeners: Array<() => void> = [];
   private isReady: boolean = false;
-  public project?: ProjectModel;
   public simulator: Simulator;
   public emitter: Emitter = emitter;
+  public project: ShallowRef<ProjectModel | null> = shallowRef(null);
   public current: Ref<BlockModel | null> = ref(null);
   public context: Ref<Context | null> = ref(null);
   public isEmptyCurrent: Ref<boolean> = ref(false);
+  public history: ShallowRef<HistoryModel | null> = shallowRef(null);
   constructor(options: EngineOptions) {
     const { container, service, project, globals = {} } = options;
     this.container = container;
@@ -83,7 +91,7 @@ export class Engine {
     });
     if (dsl) {
       dsl.dependencies = depsManager.merge(dsl.dependencies || []);
-      this.project = new ProjectModel(dsl);
+      this.project.value = new ProjectModel(dsl);
       this.isReady = true;
       this.emits();
     }
@@ -107,22 +115,41 @@ export class Engine {
   }
 
   private bindEvents() {
-    emitter.on(EVENT_PROJECT_CHANGE, (e) =>
-      this.service.saveProject(e.model.toDsl())
-    );
-    emitter.on(EVENT_BLOCK_CHANGE, async (e) => {
-      await nextTick();
-      this.service.saveFile(e.toDsl());
-      this.updateCurrent(e);
-    });
-    emitter.on(EVENT_NODE_CHANGE, () => this.saveCurrentFile());
-    emitter.on(EVENT_PROJECT_BLOCKS_CHANGE, (e) => this.saveFile(e));
-    emitter.on(EVENT_PROJECT_PAGES_CHANGE, (e) => this.saveFile(e));
+    emitter.on(EVENT_PROJECT_CHANGE, (e) => this.saveProject(e));
+    emitter.on(EVENT_PROJECT_BLOCKS_CHANGE, (e) => this.saveBlockFile(e));
+    emitter.on(EVENT_PROJECT_ACTIVED, (e) => this.activeFile(e));
+    emitter.on(EVENT_BLOCK_CHANGE, (e) => this.changeFile(e));
+    emitter.on(EVENT_NODE_CHANGE, () => this.changeCurrentFile());
+    emitter.on(EVENT_HISTORY_CHANGE, (e) => this.saveHistory(e));
+    emitter.on(EVENT_HISTORY_LOAD, (e) => this.loadHistory(e));
+  }
 
-    emitter.on(EVENT_PROJECT_ACTIVED, async (e) => {
-      await nextTick();
-      this.updateCurrent(e.model.current);
-    });
+  private async activeFile(e: ProjectModelEvent) {
+    await nextTick();
+    const dsl = e.model.currentFile?.dsl;
+    if (dsl) {
+      const block = new BlockModel(dsl);
+      this.updateCurrent(block);
+      this.initHistory(block);
+      triggerRef(this.project);
+    }
+  }
+
+  private async changeFile(e: BlockModel) {
+    await nextTick();
+    const dsl = e.toDsl();
+    this.service.saveFile(dsl);
+    this.updateCurrent(e);
+    this.history.value?.add(dsl);
+    triggerRef(this.history);
+  }
+
+  private changeCurrentFile() {
+    this.saveCurrentFile();
+    if (this.current.value) {
+      this.history.value?.add(this.current.value.toDsl());
+      triggerRef(this.history);
+    }
   }
 
   private updateCurrent(block: BlockModel | null) {
@@ -133,11 +160,18 @@ export class Engine {
     triggerRef(this.current);
   }
 
-  private async saveFile(e: ProjectModelEvent) {
+  private async saveProject(e: ProjectModelEvent) {
+    const project = e.model;
+    const dsl = project.toDsl();
+    await this.service.saveProject(dsl);
+    triggerRef(this.project);
+  }
+
+  private async saveBlockFile(e: ProjectModelEvent) {
     const type = e.type;
     if (type === 'create') {
       const block = e.data as BlockFile | PageFile;
-      block.dsl && this.service.saveFile(block.dsl);
+      block.dsl && (await this.service.saveFile(block.dsl));
     }
 
     if (type === 'update') {
@@ -145,14 +179,15 @@ export class Engine {
       const dsl = await this.service.getFile(block.id);
       if (dsl) {
         dsl.name = block.name;
-        this.service.saveFile(dsl);
+        await this.service.saveFile(dsl);
       }
     }
 
     if (type === 'delete') {
       const id = e.data as string;
-      this.service.removeFile(id);
+      await this.service.removeFile(id);
     }
+    triggerRef(this.project);
   }
 
   private saveCurrentFile() {
@@ -161,6 +196,27 @@ export class Engine {
       this.updateCurrent(current);
       this.service.saveFile(current.toDsl());
     }
+  }
+
+  private async initHistory(block: BlockModel | null) {
+    if (block) {
+      const dsl = await this.service.getHistory(block.id);
+      this.history.value = dsl ? new HistoryModel(dsl) : null;
+    } else {
+      this.history.value = null;
+    }
+  }
+
+  private async saveHistory(e: HistoryModel) {
+    const dsl = e.toDsl();
+    await this.service.saveHistory(dsl);
+    triggerRef(this.history);
+  }
+
+  private async loadHistory(e: HistoryItem) {
+    const block = new BlockModel(e.dsl);
+    this.updateCurrent(block);
+    triggerRef(this.history);
   }
 
   ready(callback: () => void) {

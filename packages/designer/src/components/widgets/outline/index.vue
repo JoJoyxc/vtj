@@ -106,7 +106,7 @@
     if (node.name === 'slot') {
       return getTypeFlag(node.props.name, 'default');
     }
-    return 'Node';
+    return engine.assets.componentMap.get(node.name)?.package || 'Node';
   };
 
   const getActions = (node: BlockModel | NodeModel): any[] => {

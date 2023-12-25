@@ -1,6 +1,6 @@
 <template>
   <div class="v-toolbar-widget">
-    <ElRadioGroup size="small" v-model="mode" @change="onModeChane">
+    <ElRadioGroup size="small" v-model="mode">
       <ElRadioButton label="pc">
         <VtjIconPc></VtjIconPc>
       </ElRadioButton>
@@ -25,22 +25,22 @@
       <ElButton
         type="default"
         size="small"
-        @click="onHistoryBackward"
-        :disabled="!backward">
+        @click="backward"
+        :disabled="backwardDisabled">
         <VtjIconUndo></VtjIconUndo>
       </ElButton>
       <ElButton
         type="default"
         size="small"
-        @click="onHistoryForward"
-        :disabled="!forward">
+        @click="forward"
+        :disabled="forwardDisabled">
         <VtjIconRedo></VtjIconRedo>
       </ElButton>
     </ElButtonGroup>
   </div>
 </template>
 <script lang="ts" setup>
-  import { ref, computed } from 'vue';
+  import { ref } from 'vue';
   import {
     ElButtonGroup,
     ElButton,
@@ -57,22 +57,10 @@
     VtjIconUndo,
     VtjIconRedo
   } from '@vtj/icons';
+  import { useHistory } from '../../hooks';
 
+  const { forward, backward, forwardDisabled, backwardDisabled } = useHistory();
   const mode = ref('pc');
-
-  const backward = computed(() => {
-    return true;
-  });
-
-  const forward = computed(() => {
-    return true;
-  });
-
-  const onHistoryBackward = () => {};
-
-  const onHistoryForward = () => {};
-
-  const onModeChane = (_value: any) => {};
 
   defineOptions({
     name: 'ToolbarWidget',

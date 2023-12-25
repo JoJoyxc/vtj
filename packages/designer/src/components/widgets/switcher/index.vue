@@ -9,29 +9,18 @@
   </div>
 </template>
 <script lang="ts" setup>
+  import { computed } from 'vue';
   import { ElButton, ElDivider } from 'element-plus';
   import { VtjIconBack } from '@vtj/icons';
-
-  export interface Props {
-    title?: string;
-    subtitle?: string;
-    link?: string;
-    router?: boolean;
-  }
-
-  const props = withDefaults(defineProps<Props>(), {
-    title: '项目名称',
-    subtitle: '系统管理',
-    link: ''
-  });
+  import { useCurrent } from '../../hooks';
 
   const emit = defineEmits(['click']);
+  const { engine } = useCurrent();
+  const title = computed(() => engine.project.value?.name);
+  const subtitle = computed(() => engine.project.value?.currentFile?.title);
 
   const onClick = () => {
-    if (props.link) {
-      location.href = props.link;
-    }
-    emit('click');
+    emit('click', engine.project.value);
   };
 
   defineOptions({

@@ -72,7 +72,7 @@
 
   const submitMethod = async (data: any) => {
     const file = data as BlockFile;
-    const project = engine.project;
+    const project = engine.project.value;
     if (!project) return false;
     if (data.id) {
       if (!project.existBlockName(file.name, [file.id])) {
@@ -103,7 +103,7 @@
   };
 
   const onRemove = (file: BlockFile) => {
-    engine.project?.removeBlock(file.id);
+    engine.project.value?.removeBlock(file.id);
   };
 
   const onNameChange = (val: string) => {
@@ -117,7 +117,7 @@
     if (dsl) {
       file.dsl = dsl;
     }
-    engine.project?.active(file);
+    engine.project.value?.active(file);
   };
 
   defineOptions({

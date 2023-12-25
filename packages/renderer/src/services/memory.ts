@@ -3,7 +3,8 @@ import {
   type ProjectSchema,
   type BlockSchema,
   type HistorySchema,
-  ProjectModel
+  ProjectModel,
+  HistoryModel
 } from '@vtj/core';
 
 export class MemoryService implements Service {
@@ -45,7 +46,8 @@ export class MemoryService implements Service {
   }
 
   public getHistory(id: string): Promise<HistorySchema> {
-    const history = this.histories[id];
+    const dsl = this.histories[id];
+    const history = new HistoryModel(dsl || { id });
     return Promise.resolve(history);
   }
 }

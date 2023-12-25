@@ -53,7 +53,7 @@ export class ProjectModel {
   pages: PageFile[] = [];
   blocks: BlockFile[] = [];
   apis: ApiSchema[] = [];
-  current: BlockModel | null = null;
+  currentFile: PageFile | BlockFile | null = null;
   static attrs: string[] = [
     'name',
     'homepage',
@@ -104,7 +104,7 @@ export class ProjectModel {
    */
   active(file: BlockFile | PageFile, silent: boolean = false) {
     if (file.dsl) {
-      this.current = new BlockModel(file.dsl);
+      this.currentFile = file;
       if (!silent) {
         emitter.emit(EVENT_PROJECT_ACTIVED, {
           model: this,
@@ -119,7 +119,7 @@ export class ProjectModel {
    * @param silent
    */
   deactivate(silent: boolean = false) {
-    this.current = null;
+    this.currentFile = null;
     if (!silent) {
       emitter.emit(EVENT_PROJECT_ACTIVED, {
         model: this,
@@ -262,7 +262,7 @@ export class ProjectModel {
     }
 
     // 没有打开任何文件时，自动打开新建的页面
-    if (!this.current) {
+    if (!this.currentFile) {
       this.active(page, silent);
     }
 
@@ -352,7 +352,7 @@ export class ProjectModel {
       }
     };
     remover(id, this.pages);
-    if (this.current?.id === id) {
+    if (this.currentFile?.id === id) {
       this.deactivate(silent);
     }
     if (!silent) {
@@ -388,7 +388,7 @@ export class ProjectModel {
     block.dsl = new BlockModel({ id, name }).toDsl();
     this.blocks.push(block);
 
-    if (!this.current) {
+    if (!this.currentFile) {
       this.active(block, silent);
     }
 
@@ -439,7 +439,7 @@ export class ProjectModel {
     const index = blocks.findIndex((n) => n.id === id);
     if (index > -1) {
       blocks.splice(index, 1);
-      if (this.current?.id === id) {
+      if (this.currentFile?.id === id) {
         this.deactivate(silent);
       }
     } else {

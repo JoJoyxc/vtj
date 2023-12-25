@@ -1,21 +1,11 @@
-import { shallowRef, type ShallowRef } from 'vue';
-import {
-  type BlockFile,
-  EVENT_PROJECT_BLOCKS_CHANGE,
-  emitter
-} from '@vtj/core';
+import { computed } from 'vue';
 import { useEngine } from '../../framework';
 
 export function useBlocks() {
   const engine = useEngine();
-  const blocks: ShallowRef<BlockFile[]> = shallowRef([]);
-  engine.ready(() => {
-    blocks.value = engine.project?.blocks ?? [];
-  });
 
-  emitter.on(EVENT_PROJECT_BLOCKS_CHANGE, (e) => {
-    blocks.value = e.model.blocks.slice(0);
-  });
+  const blocks = computed(() => engine.project.value?.blocks ?? []);
+
   return {
     engine,
     blocks

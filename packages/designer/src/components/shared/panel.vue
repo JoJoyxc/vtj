@@ -9,6 +9,14 @@
         background="hover"
         title="新增"
         @click="onClickPlus"></XAction>
+      <XAction
+        v-if="props.remove"
+        :size="($attrs.size as any)"
+        mode="icon"
+        :icon="DeleteFilled"
+        background="hover"
+        title="清空历史记录"
+        @click="onClickRemove"></XAction>
       <slot name="actions"></slot>
     </template>
     <slot></slot>
@@ -20,17 +28,18 @@
 <script lang="ts" setup>
   import { computed } from 'vue';
   import { XPanel, XAction } from '@vtj/ui';
-  import { VtjIconPlus, Back } from '@vtj/icons';
+  import { VtjIconPlus, Back, DeleteFilled } from '@vtj/icons';
 
   export interface Props {
     title?: string;
     subtitle?: string;
     plus?: boolean;
     back?: boolean;
+    remove?: boolean;
   }
 
   const props = defineProps<Props>();
-  const emit = defineEmits(['plus', 'back']);
+  const emit = defineEmits(['plus', 'back', 'remove']);
 
   const onClickPlus = () => {
     emit('plus');
@@ -38,6 +47,10 @@
 
   const onClickBack = () => {
     emit('back');
+  };
+
+  const onClickRemove = () => {
+    emit('remove');
   };
 
   const header = computed(() => {

@@ -5,3 +5,4 @@ export * from './numeral';
 export * from './day';
 export * from './util';
 export * from './data';
+export * from './lz-string';

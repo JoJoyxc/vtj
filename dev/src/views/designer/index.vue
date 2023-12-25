@@ -5,7 +5,13 @@
   import { ref } from 'vue';
   import { Engine, widgetManager, StorageService } from '@vtj/pro';
 
-  console.log(widgetManager);
+  widgetManager.set('Switcher', {
+    props: {
+      onClick: (project: any) => {
+        console.log('Switcher clicked', project);
+      }
+    }
+  });
 
   const container = ref();
   const engine = new Engine({

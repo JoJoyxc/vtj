@@ -8,6 +8,9 @@
     <XContainer class="v-item__title" align="center">
       <slot>
         <XIcon v-if="icon" :icon="icon"></XIcon>
+        <span v-if="index !== undefined" class="v-item__index">
+          # {{ index }}
+        </span>
         <span class="v-item__content">{{ title }}</span>
         <span v-if="subtitle" class="v-item__subtitle">{{ subtitle }}</span>
       </slot>
@@ -83,6 +86,7 @@
 
   export interface Props {
     icon?: Record<string, any> | string;
+    index?: number;
     title?: string;
     subtitle?: string;
     actions?: Array<keyof typeof builtInActions>;

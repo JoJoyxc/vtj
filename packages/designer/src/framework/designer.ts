@@ -201,7 +201,7 @@ export class Designer {
   private async onDrop(e: DragEvent) {
     e.preventDefault();
     const { engine, dragging, dropping } = this;
-    const current = engine.project?.current;
+    const current = engine.current.value;
     const helper = this.getHelper(e);
     if (!current || !dragging || !dropping.value || !helper) return;
     const to = helper.model;
@@ -275,7 +275,7 @@ export class Designer {
     path: EventTarget[] | HTMLElement[] = []
   ): Array<BlockModel | NodeModel> {
     const elements = path.filter((n) => this.isVtjElement(n));
-    const root = this.engine.project?.current as BlockModel;
+    const root = this.engine.current.value as BlockModel;
     const nodePath = elements
       .map((n) => this.getNodeByElement(n as VtjElement) as NodeModel)
       .filter((n) => !!n);
@@ -324,7 +324,7 @@ export class Designer {
         path.unshift(current);
       }
     }
-    const root = this.engine.project?.current as BlockModel;
+    const root = this.engine.current.value as BlockModel;
     path.unshift(root);
     return path.reverse();
   }
@@ -333,7 +333,7 @@ export class Designer {
     const targets = e.composedPath() || [];
     const el = this.findVtjElement(targets) || this.document?.body;
     if (!el) return null;
-    const model = this.getNodeByElement(el) || this.engine.project?.current;
+    const model = this.getNodeByElement(el) || this.engine.current.value;
     if (!model) return null;
     const rect = el.getBoundingClientRect();
     const type = this.getDropType(rect, e.clientX, e.clientY);
@@ -345,6 +345,13 @@ export class Designer {
       type,
       path
     };
+  }
+
+  cleanHelper() {
+    this.setSelected(null);
+    this.setHover(null);
+    this.setDragging(null);
+    this.setDropping(null);
   }
 
   async updateRect() {
@@ -441,7 +448,7 @@ export class Designer {
     type: DropPosition = 'inner'
   ) {
     const { dragging, engine } = this;
-    const current = engine.project?.current;
+    const current = engine.current.value;
     if (!dragging || !current) return false;
     if (isBlock(target)) return true;
     const componentMap = engine.assets.componentMap;

@@ -54,7 +54,7 @@ export class HistoryModel {
     };
     this.items.unshift(item);
     if (this.items.length > max) {
-      this.items = this.items.splice(max);
+      this.items.splice(max);
     }
     this.index = -1;
     if (!silent) {
@@ -90,7 +90,6 @@ export class HistoryModel {
     const item = items[this.index];
     if (item && !silent) {
       emitter.emit(EVENT_HISTORY_LOAD, item);
-      emitter.emit(EVENT_HISTORY_CHANGE, this);
     }
   }
 
@@ -104,7 +103,6 @@ export class HistoryModel {
     const item = items[this.index];
     if (item && !silent) {
       emitter.emit(EVENT_HISTORY_LOAD, item);
-      emitter.emit(EVENT_HISTORY_CHANGE, this);
     }
   }
 
@@ -114,8 +112,14 @@ export class HistoryModel {
       this.index = index;
       if (!silent) {
         emitter.emit(EVENT_HISTORY_LOAD, this.items[index]);
-        emitter.emit(EVENT_HISTORY_CHANGE, this);
       }
+    }
+  }
+  clear(silent: boolean = false) {
+    this.index = -1;
+    this.items = [];
+    if (!silent) {
+      emitter.emit(EVENT_HISTORY_CHANGE, this);
     }
   }
 }

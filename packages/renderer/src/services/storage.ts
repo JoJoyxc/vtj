@@ -3,7 +3,8 @@ import {
   type ProjectSchema,
   type BlockSchema,
   type HistorySchema,
-  ProjectModel
+  ProjectModel,
+  HistoryModel
 } from '@vtj/core';
 
 import { Storage } from '@vtj/utils';
@@ -54,10 +55,7 @@ export class StorageService implements Service {
 
   public getHistory(id: string): Promise<HistorySchema> {
     const dsl = storage.get(`history_${id}`);
-    if (dsl) {
-      return Promise.resolve(dsl as HistorySchema);
-    } else {
-      return Promise.reject(null);
-    }
+    const history = new HistoryModel(dsl || { id });
+    return Promise.resolve(history.toDsl());
   }
 }

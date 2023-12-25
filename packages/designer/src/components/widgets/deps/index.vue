@@ -73,12 +73,12 @@
 
   const submitMethod = async (data: any) => {
     data.urls = data.urls.split('\n');
-    engine.project?.setDeps(data);
+    engine.project.value?.setDeps(data);
     return true;
   };
 
   const onSwitch = (dep: Dependencie) => {
-    engine.project?.setDeps(dep);
+    engine.project.value?.setDeps(dep);
   };
 
   const onAdd = () => {
@@ -107,7 +107,7 @@
     }
 
     if (e.name === 'remove') {
-      engine.project?.removeDeps(dep);
+      engine.project.value?.removeDeps(dep);
     }
   };
 
