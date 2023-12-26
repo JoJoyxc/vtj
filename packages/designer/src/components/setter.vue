@@ -95,7 +95,7 @@
   import { Context } from '@vtj/renderer';
   import { BlockModel } from '@vtj/core';
   import { VariableBinder } from './binders';
-  import { expressionValidate } from '../utils';
+  import { expressionValidate, confirm } from '../utils';
 
   export interface Props {
     context: Context | null;
@@ -190,9 +190,12 @@
     return true;
   };
 
-  const onVarsRemove = () => {
-    closeBinder();
-    modelValue.value = undefined;
-    emit('change', '');
+  const onVarsRemove = async () => {
+    const ret = await confirm('确定要解除绑定吗？');
+    if (ret) {
+      closeBinder();
+      modelValue.value = undefined;
+      emit('change', '');
+    }
   };
 </script>

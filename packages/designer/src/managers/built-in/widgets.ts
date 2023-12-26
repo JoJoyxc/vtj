@@ -188,7 +188,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'Events',
     region: 'Settings',
-    component: widgets.EmptyWidget,
+    component: widgets.Events,
     type: 'tab',
     group: WidgetGroup.Node,
     label: '事件'

@@ -485,13 +485,16 @@ export class ProjectModel {
    * @param silent
    */
   setApi(item: ApiSchema, silent: boolean = false) {
-    const match = this.apis.find((n) => n.name === item.name);
+    const match = this.apis.find(
+      (n) => n.name === item.name || n.id === item.id
+    );
     let type: ModelEventType;
     if (match) {
       type = 'update';
       Object.assign(match, item);
     } else {
       type = 'create';
+      item.id = uid();
       this.apis.push(item);
     }
 
@@ -511,7 +514,7 @@ export class ProjectModel {
    * @param silent
    */
   removeApi(name: string, silent: boolean = false) {
-    const index = this.apis.findIndex((n) => n.name === name);
+    const index = this.apis.findIndex((n) => n.name === name || n.id === name);
     if (index > -1) {
       this.apis.splice(index, 1);
     } else {
@@ -529,6 +532,6 @@ export class ProjectModel {
   }
 
   existApiName(name: string, excludes: string[] = []) {
-    return this.apis.some((n) => n.name === name && !excludes.includes(n.name));
+    return this.apis.some((n) => n.name === name && !excludes.includes(n.id));
   }
 }

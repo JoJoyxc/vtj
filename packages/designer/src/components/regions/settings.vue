@@ -98,9 +98,9 @@
   });
 
   watch(
-    tabs,
-    (v) => {
-      currentTab.value = v[0]?.name;
+    group,
+    () => {
+      currentTab.value = tabs.value[0]?.name;
     },
     { immediate: true }
   );

@@ -2,6 +2,7 @@
   <Panel class="v-apis-widget" title="API管理" plus @plus="onPlus">
     <Item
       v-for="item in list"
+      :key="item.id"
       small
       :title="item.name"
       :subtitle="item.label"
@@ -129,12 +130,13 @@
 <script lang="ts" setup>
   import { ref, computed } from 'vue';
   import { XDialogForm, XField, XContainer } from '@vtj/ui';
+  import { cloneDeep } from '@vtj/utils';
   import { ElEmpty } from 'element-plus';
   import { Panel, Item } from '../../shared';
   import { useProject } from '../../hooks';
   import Editor from '../../editor';
-  import { NAME_REGEX } from '../../../constants';
-  import { expressionValidate } from '../../../utils';
+  import { NAME_REGEX, API_METHOD_TYPES } from '../../../constants';
+  import { expressionValidate, notify } from '../../../utils';
   defineOptions({
     name: 'ApisWidget'
   });
@@ -176,14 +178,12 @@
     formModel.value = createEmptyFormModel();
   };
 
-  const methods = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'JSONP'].map(
-    (n) => {
-      return {
-        label: n,
-        value: n.toLowerCase()
-      };
-    }
-  );
+  const methods = API_METHOD_TYPES.map((n) => {
+    return {
+      label: n,
+      value: n.toLowerCase()
+    };
+  });
 
   const tagTypeMap = {
     get: 'success',
@@ -232,11 +232,19 @@
 
   const onEdit = (item: any) => {
     isEdit.value = true;
-    formModel.value = item;
+    formModel.value = cloneDeep(item);
     visible.value = true;
   };
 
   const submit = async (data: any) => {
+    const isExist = project.value?.existApiName(
+      data.name,
+      isEdit.value ? [data.id] : []
+    );
+    if (isExist) {
+      notify(`API名称 [ ${data.name} ] 已存在`);
+      return false;
+    }
     project.value?.setApi(data);
     return true;
   };

@@ -44,7 +44,7 @@
   import { ref, computed, type Ref } from 'vue';
   import { ElRow, ElCol, ElEmpty } from 'element-plus';
   import { XDialogForm, XField } from '@vtj/ui';
-  import { upperFirstCamelCase } from '@vtj/utils';
+  import { upperFirstCamelCase, cloneDeep } from '@vtj/utils';
   import type { BlockFile } from '@vtj/core';
   import { Panel, Box } from '../../shared';
   import { useColSpan, useBlocks, useCurrent } from '../../hooks';
@@ -98,7 +98,7 @@
   };
 
   const onEdit = (file: BlockFile) => {
-    model.value = file;
+    model.value = cloneDeep(file);
     visible.value = true;
   };
 

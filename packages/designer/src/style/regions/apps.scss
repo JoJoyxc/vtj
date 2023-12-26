@@ -38,10 +38,10 @@
     }
     &.is-open {
       border-left: 2px solid getCssVar('color-primary');
-      background-color: #fff;
+      background-color: var(--el-bg-color);
       margin-right: -1px;
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
+      border-top: 1px solid var(--el-border-color);
+      border-bottom: 1px solid var(--el-border-color);
       &:first-child {
         border-top: 1px solid transparent;
       }

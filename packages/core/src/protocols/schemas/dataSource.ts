@@ -14,6 +14,10 @@ export type ApiMethod = 'get' | 'post' | 'put' | 'delete' | 'patch' | 'jsonp';
  * 项目级API类型数据源
  */
 export interface ApiSchema {
+  /**
+   * 唯一标识
+   */
+  id: string;
 
   /**
    * 接口名称
