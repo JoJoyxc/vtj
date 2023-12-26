@@ -36,9 +36,7 @@ export class Renderer {
     Object.assign(app.config.globalProperties, globals);
     app.config.errorHandler = (err, instance, info) => {
       const name = instance?.$options.name;
-      const message = `[ ${name}] ${
-        (err as any)?.message || err || '未知错误'
-      }`;
+      const message = `[${name}] ${(err as any)?.message || err || '未知错误'}`;
       console.error({
         err,
         instance,
