@@ -9,3 +9,4 @@ export * from './useSelected';
 export * from './useBinder';
 export * from './useNodeProps';
 export * from './useHistory';
+export * from './useProject';

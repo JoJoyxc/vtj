@@ -6,13 +6,15 @@ import type { JSFunction, JSExpression } from '../shared';
 export type DataSourceType = 'api' | 'cube' | 'meta';
 
 /**
+ * 请求方法
+ */
+export type ApiMethod = 'get' | 'post' | 'put' | 'delete' | 'patch' | 'jsonp';
+
+/**
  * 项目级API类型数据源
  */
 export interface ApiSchema {
-  /**
-   * 唯一标识
-   */
-  id: string;
+
   /**
    * 接口名称
    */
@@ -31,12 +33,22 @@ export interface ApiSchema {
   /**
    * 接口请求方法
    */
-  method?: string;
+  method?: ApiMethod;
 
   /**
    * 请求 设置配置
    */
-  settings?: JSExpression;
+  settings?: Record<string, any>;
+
+  /**
+   * 请求头配置
+   */
+  headers?: JSExpression | JSFunction;
+
+  /**
+   * jsonp请求配置
+   */
+  jsonpOptions?: Record<string, any>;
 }
 
 /**
@@ -74,4 +86,3 @@ export interface DataSourceSchema {
    */
   test?: JSFunction;
 }
-

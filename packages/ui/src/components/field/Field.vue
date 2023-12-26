@@ -61,7 +61,7 @@
   import { computed, ref, watch, inject } from 'vue';
   import { ElFormItem, ElTooltip, formContextKey } from 'element-plus';
   import { WarningFilled } from '@vtj/icons';
-  import { isEqual, isObject, set } from '@vtj/utils';
+  import { isEqual, isObject, set, get } from '@vtj/utils';
   import { XIcon } from '../icon';
   import { fieldProps, type FieldEmits, type FieldEditorProps } from './types';
   import {
@@ -88,7 +88,7 @@
       return props.visible(formModel);
     } else if (isObject(props.visible)) {
       return Object.entries(props.visible).every(([k, v]) => {
-        return formModel[k] === v;
+        return get(formModel, k) === v;
       });
     } else {
       return props.visible;
@@ -98,7 +98,7 @@
   const initFieldValue = () => {
     const proxy = formInstance?.proxy as FormInstance;
     if (proxy && formModel && props.name) {
-      return formModel[props.name] ?? props.modelValue;
+      return get(formModel, props.name) ?? props.modelValue;
     } else {
       return props.modelValue;
     }
@@ -190,7 +190,7 @@
     () => {
       const proxy = formInstance?.proxy as FormInstance;
       if (!proxy || !props.name || !formModel) return props.modelValue;
-      return formModel[props.name] ?? props.modelValue;
+      return get(formModel, props.name) ?? props.modelValue;
     },
     (v) => {
       if (fieldVisible.value) {
@@ -212,7 +212,7 @@
           set(formModel, props.name, fieldValue.value);
         } else {
           fieldValue.value = undefined;
-          delete formModel[props.name];
+          set(formModel, props.name, undefined);
         }
       }
     },

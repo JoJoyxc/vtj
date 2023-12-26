@@ -485,7 +485,7 @@ export class ProjectModel {
    * @param silent
    */
   setApi(item: ApiSchema, silent: boolean = false) {
-    const match = this.apis.findIndex((n) => n.name === item.name);
+    const match = this.apis.find((n) => n.name === item.name);
     let type: ModelEventType;
     if (match) {
       type = 'update';
@@ -494,6 +494,7 @@ export class ProjectModel {
       type = 'create';
       this.apis.push(item);
     }
+
     if (!silent) {
       const event: ProjectModelEvent = {
         model: this,
@@ -525,5 +526,9 @@ export class ProjectModel {
       emitter.emit(EVENT_PROJECT_APIS_CHANGE, event);
       emitter.emit(EVENT_PROJECT_CHANGE, event);
     }
+  }
+
+  existApiName(name: string, excludes: string[] = []) {
+    return this.apis.some((n) => n.name === name && !excludes.includes(n.name));
   }
 }

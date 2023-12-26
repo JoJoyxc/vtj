@@ -13,7 +13,7 @@
         v-if="props.remove"
         :size="($attrs.size as any)"
         mode="icon"
-        :icon="DeleteFilled"
+        :icon="Delete"
         background="hover"
         title="清空历史记录"
         @click="onClickRemove"></XAction>
@@ -28,7 +28,7 @@
 <script lang="ts" setup>
   import { computed } from 'vue';
   import { XPanel, XAction } from '@vtj/ui';
-  import { VtjIconPlus, Back, DeleteFilled } from '@vtj/icons';
+  import { VtjIconPlus, Back, Delete } from '@vtj/icons';
 
   export interface Props {
     title?: string;

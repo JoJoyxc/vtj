@@ -31,6 +31,11 @@
     width: 30px;
   }
 
+  @include e(tag) {
+    margin-right: 10px;
+    zoom: 0.7;
+  }
+
   @include e(title) {
     > .x-icon {
       margin-right: 3px;

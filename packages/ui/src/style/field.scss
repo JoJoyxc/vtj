@@ -31,18 +31,21 @@
     &.el-form-item--small {
       .el-form-item__content {
         padding-right: 16px;
+        line-height: 1;
       }
     }
 
     &.el-form-item--default {
       .el-form-item__content {
         padding-right: 20px;
+        line-height: 1;
       }
     }
 
     &.el-form-item--large {
       .el-form-item__content {
         padding-right: 24px;
+        line-height: 1;
       }
     }
   }

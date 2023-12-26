@@ -152,12 +152,14 @@ export class Engine {
     }
   }
 
-  private updateCurrent(block: BlockModel | null) {
+  private async updateCurrent(block: BlockModel | null) {
     this.current.value = block;
+    await nextTick();
     this.context.value = this.simulator.renderer?.context || null;
     this.isEmptyCurrent.value = this.current.value?.nodes.length === 0;
     // 在子节点改变时需要手动触发更新
     triggerRef(this.current);
+    triggerRef(this.context);
   }
 
   private async saveProject(e: ProjectModelEvent) {

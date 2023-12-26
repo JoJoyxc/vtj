@@ -8,6 +8,13 @@
     <XContainer class="v-item__title" align="center">
       <slot>
         <XIcon v-if="icon" :icon="icon"></XIcon>
+        <ElTag
+          v-if="props.tag"
+          class="v-item__tag"
+          size="small"
+          :type="props.tagType">
+          {{ props.tag }}
+        </ElTag>
         <span v-if="index !== undefined" class="v-item__index">
           # {{ index }}
         </span>
@@ -48,7 +55,7 @@
     VtjIconInvisible,
     VtjIconVisible
   } from '@vtj/icons';
-  import { ElSwitch, ElMessageBox } from 'element-plus';
+  import { ElSwitch, ElMessageBox, ElTag } from 'element-plus';
   const builtInActions = {
     add: {
       label: '创建',
@@ -87,6 +94,8 @@
   export interface Props {
     icon?: Record<string, any> | string;
     index?: number;
+    tag?: string;
+    tagType?: 'success' | 'info' | 'warning' | 'danger' | '';
     title?: string;
     subtitle?: string;
     actions?: Array<keyof typeof builtInActions>;
