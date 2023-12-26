@@ -87,7 +87,6 @@ export class Simulator {
              content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,viewport-fit=cover"/>
          <style>
             html, body, #app {
-              background: #fff;
               padding: 0;
               margin: 0;
               min-height: 100vh;

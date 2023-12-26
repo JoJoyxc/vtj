@@ -14,6 +14,7 @@ import Designer from './designer/index.vue';
 import Scripts from './scripts/index.vue';
 import Properties from './properties/index.vue';
 import Events from './events/index.vue';
+import Css from './css/index.vue';
 
 export const widgets = {
   Logo,
@@ -31,5 +32,6 @@ export const widgets = {
   Designer,
   Scripts,
   Properties,
-  Events
+  Events,
+  Css
 };

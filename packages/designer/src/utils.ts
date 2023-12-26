@@ -7,7 +7,7 @@ import {
   parseExpression,
   parseFunction
 } from '@vtj/core';
-import { ElNotification, ElMessageBox } from 'element-plus';
+import { ElNotification, ElMessageBox, ElMessage } from 'element-plus';
 
 export function getComponentName(node: NodeModel | BlockModel) {
   if (isBlock(node)) return node.name;
@@ -29,6 +29,16 @@ export async function confirm(message: string) {
   return await ElMessageBox.confirm(message, '提示', { type: 'warning' }).catch(
     () => false
   );
+}
+
+export function message(
+  message: string,
+  type: 'success' | 'warning' = 'success'
+) {
+  return ElMessage({
+    message,
+    type
+  });
 }
 
 export function expressionValidate(

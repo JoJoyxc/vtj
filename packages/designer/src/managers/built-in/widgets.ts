@@ -148,7 +148,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'Css',
     region: 'Settings',
-    component: widgets.EmptyWidget,
+    component: widgets.Css,
     type: 'tab',
     group: WidgetGroup.Block,
     label: 'CSS'
