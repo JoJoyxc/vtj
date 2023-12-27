@@ -196,7 +196,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'Directives',
     region: 'Settings',
-    component: widgets.EmptyWidget,
+    component: widgets.Directives,
     type: 'tab',
     group: WidgetGroup.Node,
     label: '指令'

@@ -14,7 +14,7 @@ import {
   type FieldEditorProps
 } from '../types';
 import type { Emits, FormModel } from '../../';
-import { merge, toArray } from '@vtj/utils';
+import { merge, toArray, get } from '@vtj/utils';
 
 export async function useOptions(
   props: FieldProps,
@@ -41,7 +41,7 @@ export function useEditor(
     if (!instance || !model) return {};
     const cascader = toArray<string>(props.cascader);
     return cascader.reduce((prev, current) => {
-      prev[current] = model[current];
+      prev[current] = get(model, current);
       return prev;
     }, {} as FormModel);
   });

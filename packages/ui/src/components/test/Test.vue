@@ -25,6 +25,17 @@
         </div>
       </XPanel>
     </XContainer>
+    <ElDivider>双向绑定</ElDivider>
+    <XContainer>
+      <ElDescriptions :column="2" border>
+        <ElDescriptionsItem label="modelValue">
+          <ElInput v-model="currentModelValue" />
+        </ElDescriptionsItem>
+        <ElDescriptionsItem label="syncProp">
+          <ElInput v-model="currentSyncProp" />
+        </ElDescriptionsItem>
+      </ElDescriptions>
+    </XContainer>
     <ElDivider>事件和方法</ElDivider>
     <XContainer>
       <ElButton @click="click">click</ElButton>
@@ -40,7 +51,8 @@
     ElDescriptions,
     ElDescriptionsItem,
     ElButton,
-    ElMessage
+    ElMessage,
+    ElInput
   } from 'element-plus';
   import { XPanel } from '../panel';
   import { XContainer } from '../container';
@@ -53,6 +65,24 @@
   const props = defineProps(testProps);
   const emit = defineEmits<TestEmits>();
   const propsArray = computed(() => Object.entries(props));
+
+  const currentModelValue = computed({
+    get() {
+      return props.modelValue;
+    },
+    set(value) {
+      emit('update:modelValue', value);
+    }
+  });
+
+  const currentSyncProp = computed({
+    get() {
+      return props.syncProp;
+    },
+    set(value) {
+      emit('update:syncProp', value);
+    }
+  });
 
   const data = ref<any>('default inner data');
 

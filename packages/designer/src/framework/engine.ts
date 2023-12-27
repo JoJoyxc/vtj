@@ -26,8 +26,6 @@ import {
   EVENT_BLOCK_CHANGE,
   EVENT_NODE_CHANGE,
   EVENT_PROJECT_BLOCKS_CHANGE,
-  // EVENT_PROJECT_PAGES_CHANGE,
-  // EVENT_PROJECT_DEPS_CHANGE,
   EVENT_PROJECT_CHANGE,
   EVENT_PROJECT_ACTIVED,
   EVENT_HISTORY_CHANGE,
@@ -153,13 +151,19 @@ export class Engine {
   }
 
   private async updateCurrent(block: BlockModel | null) {
-    this.current.value = block;
-    await nextTick();
-    this.context.value = this.simulator.renderer?.context || null;
-    this.isEmptyCurrent.value = this.current.value?.nodes.length === 0;
-    // 在子节点改变时需要手动触发更新
-    triggerRef(this.current);
-    triggerRef(this.context);
+    const isChange = this.current.value?.id !== block?.id;
+    if (isChange) {
+      this.current.value = block;
+      await nextTick();
+      this.context.value = this.simulator.renderer?.context || null;
+      this.isEmptyCurrent.value = this.current.value?.nodes.length === 0;
+      triggerRef(this.current);
+      triggerRef(this.context);
+    } else {
+      this.context.value = this.simulator.renderer?.context || null;
+      this.isEmptyCurrent.value = this.current.value?.nodes.length === 0;
+      triggerRef(this.context);
+    }
   }
 
   private async saveProject(e: ProjectModelEvent) {

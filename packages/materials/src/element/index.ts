@@ -6,9 +6,10 @@ import type {
 import { version } from '../version';
 import { setPackageName } from '../shared';
 import button from './button';
+import input from './input';
 
 const name = 'element-plus';
-const components: MaterialDescription[] = [...button];
+const components: MaterialDescription[] = [...button, input];
 
 const categories: MaterialCategory[] = [
   {

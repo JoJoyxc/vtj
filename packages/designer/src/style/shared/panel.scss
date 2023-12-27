@@ -20,5 +20,16 @@
   }
   .el-form-item {
     margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+  & .v-sub-panel {
+    & + .v-sub-panel {
+      margin-top: 10px;
+    }
+    .x-header__content {
+      font-weight: normal;
+    }
   }
 }

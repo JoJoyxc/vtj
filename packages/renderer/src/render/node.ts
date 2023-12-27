@@ -230,7 +230,7 @@ function vModelRender(Vue: any, directive: NodeDirective, context: Context) {
     ? context.__parseExpression(directive.arg)
     : directive.arg || 'modelValue';
   return {
-    modelValue: context.__parseExpression(directive.value),
+    [arg]: context.__parseExpression(directive.value),
     [`onUpdate:${arg}`]:
       modifiers.length && func ? Vue.withModifiers(func, modifiers) : func
   };

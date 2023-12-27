@@ -11,3 +11,4 @@ export * from './useNodeProps';
 export * from './useHistory';
 export * from './useProject';
 export * from './useNodeEvents';
+export * from './useDirectives';

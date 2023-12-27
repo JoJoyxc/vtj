@@ -41,6 +41,14 @@ const test: MaterialDescription = {
     {
       name: 'colorProp',
       setters: 'ColorSetter'
+    },
+    {
+      name: 'modelValue',
+      setters: 'StringSetter'
+    },
+    {
+      name: 'syncProp',
+      setters: 'StringSetter'
     }
   ],
   events: [
@@ -55,6 +63,14 @@ const test: MaterialDescription = {
     {
       name: 'change',
       params: ['data']
+    },
+    {
+      name: 'update:modelValue',
+      params: ['value']
+    },
+    {
+      name: 'update:syncProp',
+      params: ['value']
     }
   ],
   slots: [

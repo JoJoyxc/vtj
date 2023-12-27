@@ -9,6 +9,11 @@ export const defaultSetter: Setter = {
 
 export const builtInSetters: Array<Setter> = [
   {
+    name: 'InputSetter',
+    component: setters.StringSetter,
+    type: 'String'
+  },
+  {
     name: 'StringSetter',
     component: setters.StringSetter,
     type: 'String'

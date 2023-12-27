@@ -24,6 +24,12 @@ export const testProps = {
   },
   colorProp: {
     type: String
+  },
+  modelValue: {
+    type: String
+  },
+  syncProp: {
+    type: String
   }
 };
 
@@ -33,4 +39,6 @@ export type TestEmits = {
   click: [props: TestProps];
   submit: [props: TestProps];
   change: [data: any];
+  'update:modelValue': [value?: string];
+  'update:syncProp': [value?: string];
 };
