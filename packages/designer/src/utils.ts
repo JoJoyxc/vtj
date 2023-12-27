@@ -1,22 +1,10 @@
 import {
-  type NodeModel,
-  type BlockModel,
   type JSExpression,
   type JSFunction,
-  isBlock,
   parseExpression,
   parseFunction
 } from '@vtj/core';
 import { ElNotification, ElMessageBox, ElMessage } from 'element-plus';
-
-export function getComponentName(node: NodeModel | BlockModel) {
-  if (isBlock(node)) return node.name;
-  if (node.name === 'component') {
-    const name = node.props.is?.value;
-    return typeof name === 'string' ? name : node.name;
-  }
-  return node.name;
-}
 
 export function notify(message: string, title: string = '提示') {
   return ElNotification.warning({

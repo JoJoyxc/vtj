@@ -54,10 +54,7 @@
     type NodeModel,
     type BlockModel,
     type DropPosition,
-    type PropModel,
-    isBlock,
-    isJSExpression,
-    isJSFunction
+    isBlock
   } from '@vtj/core';
   import { VtjIconLock, VtjIconInvisible } from '@vtj/icons';
   import { Panel, Item } from '../../shared';
@@ -88,27 +85,6 @@
   const { current } = useCurrent();
   const tree: Ref<TreeRootData[]> = ref([]);
 
-  const getTypeFlag = (prop: PropModel, defaultValue: string) => {
-    const value = prop?.value || defaultValue;
-    if (isJSExpression(value) || isJSFunction(value)) {
-      return value.type;
-    }
-    return value.toString();
-  };
-
-  const getNodeType = (node: NodeModel) => {
-    if (node.slot && node.slot.name) {
-      return `#${node.slot.name}`;
-    }
-    if (node.name === 'component') {
-      return getTypeFlag(node.props?.is, 'div');
-    }
-    if (node.name === 'slot') {
-      return getTypeFlag(node.props.name, 'default');
-    }
-    return engine.assets.componentMap.get(node.name)?.package || 'Node';
-  };
-
   const getActions = (node: BlockModel | NodeModel): any[] => {
     if (isBlock(node)) {
       return node.locked ? ['unlock'] : ['lock'];
@@ -138,7 +114,7 @@
       const item: TreeNodeData = {
         id: model.id,
         label: model.name,
-        type: getNodeType(model),
+        type: model.id, //getNodeType(model),
         model
       };
       if (Array.isArray(model.children)) {
@@ -156,7 +132,7 @@
       {
         id,
         label: name,
-        type: 'Block',
+        type: id,
         model: current.value,
         children: toTree(nodes)
       }

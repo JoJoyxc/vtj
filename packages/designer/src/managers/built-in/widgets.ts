@@ -162,9 +162,9 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
     label: '数据源'
   },
   {
-    name: 'Advanced',
+    name: 'Defined',
     region: 'Settings',
-    component: widgets.EmptyWidget,
+    component: widgets.Defined,
     type: 'tab',
     group: WidgetGroup.Block,
     label: '定义'

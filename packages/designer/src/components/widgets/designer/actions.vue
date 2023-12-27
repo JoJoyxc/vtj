@@ -28,7 +28,7 @@
     VtjIconRemove
   } from '@vtj/icons';
   import { NodeModel, BlockModel, isBlock } from '@vtj/core';
-  import { getComponentName, confirm } from '../../../utils';
+  import { confirm } from '../../../utils';
 
   export interface Props {
     position?: string;
@@ -42,11 +42,7 @@
 
   const emits = defineEmits(['action']);
 
-  const title = computed(() => {
-    return isBlock(props.model)
-      ? props.model.name
-      : getComponentName(props.model);
-  });
+  const title = computed(() => props.model.name);
 
   const visible = computed(() => {
     return !isBlock(props.model) && !props.model.locked;
@@ -56,7 +52,7 @@
     return props.path.map((n) => {
       return {
         command: n,
-        label: getComponentName(n),
+        label: n.name,
         onMouseenter: () => {
           emits('action', { type: 'hover', model: n });
         }

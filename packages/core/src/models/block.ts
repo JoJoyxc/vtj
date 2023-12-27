@@ -287,6 +287,38 @@ export class BlockModel {
   }
 
   /**
+   * 设置插槽
+   * @param emit
+   * @param silent
+   */
+  setSlot(slot: string, silent: boolean = false) {
+    const index = this.slots.findIndex((n) => n === slot);
+    if (index > -1) {
+      this.slots.splice(index, 1, slot);
+    } else {
+      this.slots.push(slot);
+    }
+    if (!silent) {
+      emitter.emit(EVENT_BLOCK_CHANGE, this);
+    }
+  }
+
+  /**
+   * 删除插槽
+   * @param emit
+   * @param silent
+   */
+  removeSlot(slot: string, silent: boolean = false) {
+    const index = this.slots.findIndex((n) => n === slot);
+    if (index > -1) {
+      this.slots.splice(index, 1);
+      if (!silent) {
+        emitter.emit(EVENT_BLOCK_CHANGE, this);
+      }
+    }
+  }
+
+  /**
    * 设置注入
    * @param inject
    * @param silent

@@ -68,7 +68,7 @@
         </SetterWrapper>
       </ElForm>
     </Panel>
-    <Panel class="v-sub-panel" title="双向绑定" size="small" :fit="false">
+    <Panel class="v-sub-panel" title="双向绑定" size="small" :fit="false" grow>
       <Panel
         v-for="(vModel, index) in vModels"
         card

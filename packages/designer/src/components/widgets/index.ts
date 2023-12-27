@@ -16,6 +16,7 @@ import Properties from './properties/index.vue';
 import Events from './events/index.vue';
 import Css from './css/index.vue';
 import Directives from './directives/index.vue';
+import Defined from './defined/index.vue';
 
 export const widgets = {
   Logo,
@@ -35,5 +36,6 @@ export const widgets = {
   Properties,
   Events,
   Css,
-  Directives
+  Directives,
+  Defined
 };

@@ -150,18 +150,16 @@ export class Engine {
     }
   }
 
-  private async updateCurrent(block: BlockModel | null) {
-    const isChange = this.current.value?.id !== block?.id;
-    if (isChange) {
-      this.current.value = block;
-      await nextTick();
-      this.context.value = this.simulator.renderer?.context || null;
-      this.isEmptyCurrent.value = this.current.value?.nodes.length === 0;
+  private async updateCurrent(
+    block: BlockModel | null,
+    isTrigger: boolean = true
+  ) {
+    this.current.value = block;
+    await nextTick();
+    this.context.value = this.simulator.renderer?.context || null;
+    this.isEmptyCurrent.value = this.current.value?.nodes.length === 0;
+    if (isTrigger) {
       triggerRef(this.current);
-      triggerRef(this.context);
-    } else {
-      this.context.value = this.simulator.renderer?.context || null;
-      this.isEmptyCurrent.value = this.current.value?.nodes.length === 0;
       triggerRef(this.context);
     }
   }
@@ -221,8 +219,7 @@ export class Engine {
 
   private async loadHistory(e: HistoryItem) {
     const block = new BlockModel(e.dsl);
-    this.updateCurrent(block);
-    triggerRef(this.history);
+    await this.updateCurrent(block);
   }
 
   ready(callback: () => void) {

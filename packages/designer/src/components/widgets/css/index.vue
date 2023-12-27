@@ -2,6 +2,7 @@
   <Panel
     class="v-css-widget v-sub-panel"
     title="lang:css scoped"
+    size="small"
     fit
     save
     @save="onSave">

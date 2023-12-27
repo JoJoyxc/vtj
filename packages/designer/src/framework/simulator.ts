@@ -40,7 +40,8 @@ export class Simulator {
     this.engine = engine;
     this.globals = globals;
 
-    watch(this.engine.current, () => {
+    watch(this.engine.current, (v, o) => {
+      if (v?.id === o?.id) return;
       this.refresh();
     });
   }
