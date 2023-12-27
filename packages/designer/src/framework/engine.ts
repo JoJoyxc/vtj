@@ -159,7 +159,7 @@ export class Engine {
     this.context.value = this.simulator.renderer?.context || null;
     this.isEmptyCurrent.value = this.current.value?.nodes.length === 0;
     if (isTrigger) {
-      triggerRef(this.current);
+      // triggerRef(this.current);
       triggerRef(this.context);
     }
   }
