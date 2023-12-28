@@ -19,7 +19,7 @@ export enum ContextMode {
   /**
    * 虚拟节点
    */
-  VNode = 'VNodess'
+  VNode = 'VNode'
 }
 
 /**

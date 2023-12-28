@@ -35,7 +35,8 @@ export default createViteConfig({
   staticDirs: ['../packages'],
   pages: {
     main: 'index.html',
-    ide: 'ide.html'
+    ide: 'ide.html',
+    preview: 'preview.html'
   },
   optimizeDeps: [
     'monaco-editor',

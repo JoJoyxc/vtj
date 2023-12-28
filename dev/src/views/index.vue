@@ -2,6 +2,7 @@
   <div class="home">
     <RouterLink to="/coverage">测试覆盖率报告</RouterLink>
     <a href="/ide.html">低代码设计器</a>
+    <a href="/preview.html">测试预览</a>
   </div>
 </template>
 

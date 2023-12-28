@@ -1,5 +1,3 @@
-
-
 export function toString(value: any) {
   return typeof value === 'string' ? value : JSON.stringify(value);
 }
@@ -28,5 +26,15 @@ export function adoptedStyleSheets(global: Window, id: string, css: string) {
       styleSheet.innerHTML = css;
       doc.head.appendChild(styleSheet);
     }
+  }
+}
+
+export async function loadCss(id: string, url: string) {
+  const css = await window
+    .fetch(url)
+    .then((res) => res.text())
+    .catch(() => '');
+  if (css) {
+    adoptedStyleSheets(window, id, css);
   }
 }

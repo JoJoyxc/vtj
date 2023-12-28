@@ -156,7 +156,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'DataSources',
     region: 'Settings',
-    component: widgets.EmptyWidget,
+    component: widgets.DataSources,
     type: 'tab',
     group: WidgetGroup.Block,
     label: '数据源'

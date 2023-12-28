@@ -37,7 +37,12 @@ import {
   type PageFile,
   type HistoryItem
 } from '@vtj/core';
-import { Context } from '@vtj/renderer';
+import {
+  Context,
+  ContextMode,
+  Provider,
+  type ProvideAdapter
+} from '@vtj/renderer';
 import { SkeletonWrapper, type SkeletonWrapperInstance } from '../wrappers';
 import { depsManager } from '../managers';
 import { Simulator } from './simulator';
@@ -51,16 +56,17 @@ export interface EngineOptions {
   service: Service;
   project: ProjectSchema;
   globals?: Record<string, any>;
+  adapter?: ProvideAdapter;
 }
 
 export class Engine {
+  private listeners: Array<() => void> = [];
+  private isReady: boolean = false;
   public app?: App;
   public skeleton?: SkeletonWrapperInstance | null;
   public container: MaybeRef<HTMLElement | undefined>;
   public service: Service;
   public assets: Assets;
-  private listeners: Array<() => void> = [];
-  private isReady: boolean = false;
   public simulator: Simulator;
   public emitter: Emitter = emitter;
   public project: ShallowRef<ProjectModel | null> = shallowRef(null);
@@ -68,14 +74,20 @@ export class Engine {
   public context: Ref<Context | null> = ref(null);
   public isEmptyCurrent: Ref<boolean> = ref(false);
   public history: ShallowRef<HistoryModel | null> = shallowRef(null);
+  public provider: Provider;
   constructor(options: EngineOptions) {
     const { container, service, project, globals = {} } = options;
+    this.provider = new Provider({
+      mode: ContextMode.Design,
+      globals,
+      project,
+      service
+    });
     this.container = container;
     this.service = service;
     this.assets = new Assets(this.service);
     this.simulator = new Simulator({
-      engine: this,
-      globals
+      engine: this
     });
     this.bindEvents();
     this.init(project);
@@ -90,7 +102,6 @@ export class Engine {
     if (dsl) {
       dsl.dependencies = depsManager.merge(dsl.dependencies || []);
       this.project.value = new ProjectModel(dsl);
-      this.isReady = true;
       this.emits();
     }
   }
@@ -106,6 +117,7 @@ export class Engine {
     }
   }
   private emits() {
+    this.isReady = true;
     for (const listener of this.listeners) {
       listener();
     }
@@ -220,6 +232,7 @@ export class Engine {
   private async loadHistory(e: HistoryItem) {
     const block = new BlockModel(e.dsl);
     await this.updateCurrent(block);
+    triggerRef(this.history);
   }
 
   ready(callback: () => void) {

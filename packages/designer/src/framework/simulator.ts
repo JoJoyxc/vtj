@@ -1,6 +1,12 @@
 import { type Ref, type ShallowRef, shallowRef, watchEffect, watch } from 'vue';
 import { logger, type Dependencie } from '@vtj/core';
-import { parseDeps, createAssetsCss, createAssetScripts } from '@vtj/renderer';
+import {
+  parseDeps,
+  createAssetsCss,
+  createAssetScripts,
+  createApis,
+  getRawComponent
+} from '@vtj/renderer';
 import { Renderer } from './renderer';
 import { Designer } from './designer';
 import { type Engine } from './engine';
@@ -25,29 +31,25 @@ export interface SimulatorEnv {
 }
 
 export interface SimulatorOptions {
-  globals: Record<string, any>;
   engine: Engine;
 }
 
 export class Simulator {
   public contentWindow: Window | null = null;
-  public globals: Record<string, any>;
   public renderer: Renderer | null = null;
   public designer: ShallowRef<Designer | null> = shallowRef(null);
   public engine: Engine;
   constructor(options: SimulatorOptions) {
-    const { engine, globals = {} } = options;
+    const { engine } = options;
     this.engine = engine;
-    this.globals = globals;
 
-    watch(this.engine.current, (v, o) => {
-      if (v?.id === o?.id) return;
+    watch(this.engine.current, () => {
       this.refresh();
     });
   }
   init(iframe: Ref<HTMLIFrameElement | undefined>, deps: Ref<Dependencie[]>) {
     watchEffect(() => {
-      if (iframe.value && deps.value) {
+      if (iframe.value && deps.value.length) {
         this.setup(iframe.value, deps.value);
         if (this.contentWindow) {
           this.designer.value?.dispose();
@@ -141,6 +143,8 @@ export class Simulator {
     materialMapLibrary: Record<string, string> = {}
   ): SimulatorEnv {
     const cw = this.contentWindow as any;
+    const { engine } = this;
+    const { project, assets, provider } = engine;
     const materials = materialExports.reduce((prev, cur) => {
       prev[cur] = cw[cur];
       return prev;
@@ -153,7 +157,7 @@ export class Simulator {
 
     const components: Record<string, any> = {};
 
-    const { groups, componentMap } = this.engine.assets;
+    const { groups, componentMap } = assets;
     for (const group of groups) {
       const names = group.names || [];
       const lib = library[materialMapLibrary[group.library || '']];
@@ -161,15 +165,16 @@ export class Simulator {
         names.forEach((name) => {
           const desc = componentMap.get(name);
           if (desc) {
-            components[name] = desc.parent
-              ? lib[desc.parent]?.[desc.alias || name]
-              : lib[desc.alias || name];
+            components[name] = getRawComponent(desc, lib);
           } else {
             components[name] = lib[name];
           }
         });
       }
     }
+
+    const { adapter, globals } = provider;
+    const apis = createApis(project.value?.apis, adapter);
 
     return {
       window: cw,
@@ -178,8 +183,8 @@ export class Simulator {
       materials,
       components,
       container: cw.document.body,
-      apis: {},
-      globals: this.globals
+      apis,
+      globals
     };
   }
 

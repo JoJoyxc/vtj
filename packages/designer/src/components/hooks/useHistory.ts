@@ -1,5 +1,6 @@
 import { computed } from 'vue';
 import { useEngine, Designer } from '../../framework';
+import { message } from '../../utils';
 export function useHistory() {
   const engine = useEngine();
 
@@ -22,6 +23,7 @@ export function useHistory() {
   const load = (id: string) => {
     designer.value?.cleanHelper();
     history.value?.load(id);
+    message('已载入历史记录', 'success');
   };
 
   const forwardDisabled = computed(() => {

@@ -194,7 +194,7 @@ function createInject(Vue: any, injects: BlockInject[] = [], context: Context) {
   }, {} as Record<string, any>);
 }
 
-function createDataSources(
+export function createDataSources(
   dataSources: Record<string, DataSourceSchema>,
   context: Context
 ) {

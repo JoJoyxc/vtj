@@ -17,7 +17,7 @@ export interface FetchJsonpOptions extends fetchJsonp.Options {
   query?: Record<string, any>;
 }
 
-export function jsonp<T = any>(
+export async function jsonp<T = any>(
   url: string,
   options: FetchJsonpOptions = {}
 ): Promise<T> {
@@ -28,5 +28,8 @@ export function jsonp<T = any>(
   }
 
   const _url = append(url, query);
-  return fetchJsonp(_url, options).then((res) => res.json() as Promise<T>);
+  const res = await fetchJsonp(_url, options);
+  return await (res.json() as Promise<T>);
 }
+
+export type Jsonp = typeof jsonp;

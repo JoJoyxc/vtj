@@ -1,4 +1,4 @@
-import type { Dependencie } from '@vtj/core';
+import type { Dependencie, MaterialDescription } from '@vtj/core';
 
 export function isCSSUrl(url: string): boolean {
   return /\.css$/.test(url);
@@ -21,6 +21,7 @@ export function parseDeps(deps: Dependencie[]) {
   const css: string[] = [];
   const materials: string[] = [];
   const libraryExports: string[] = [];
+  const libraryMap: Record<string, string[]> = {};
   const materialExports: string[] = [];
   const materialMapLibrary: Record<string, string> = {};
   packages.forEach(({ urls, assetsUrl, library, assetsLibrary }) => {
@@ -34,6 +35,7 @@ export function parseDeps(deps: Dependencie[]) {
     });
     if (library) {
       libraryExports.push(library);
+      libraryMap[library] = urls || [];
     }
     if (assetsUrl) {
       materials.push(assetsUrl);
@@ -51,6 +53,12 @@ export function parseDeps(deps: Dependencie[]) {
     materials,
     libraryExports,
     materialExports,
-    materialMapLibrary
+    materialMapLibrary,
+    libraryMap
   };
+}
+
+export function getRawComponent(desc: MaterialDescription, lib: any) {
+  const { name, parent, alias } = desc;
+  return parent ? lib[parent]?.[alias || name] : lib[name];
 }
