@@ -1,5 +1,11 @@
 <template>
   <div class="v-actions-widget">
+    <ElBadge :value="0" :max="99" :hidden="true">
+      <XAction mode="icon" :icon="VtjIconBug" background="hover"></XAction>
+    </ElBadge>
+
+    <ElDivider direction="vertical"></ElDivider>
+
     <ElButton @click="refresh" type="default" size="small" title="刷新">
       <VtjIconRefresh></VtjIconRefresh>
     </ElButton>
@@ -10,7 +16,9 @@
       @click="openCodeSetting">
       <VtjIconSetting></VtjIconSetting>
     </ElButton>
+
     <ElButton
+      v-if="false"
       type="default"
       size="small"
       title="页面大纲树"
@@ -18,13 +26,10 @@
       <VtjIconOutline></VtjIconOutline>
     </ElButton>
     <ElDivider direction="vertical"></ElDivider>
-    <ElButton type="primary" size="small" :icon="HomeFilled" @click="onView">
-      浏览
-    </ElButton>
-    <ElButton type="success" size="small" @click="preview">预览</ElButton>
+    <ElButton type="primary" size="small" @click="preview">预览</ElButton>
     <ElButton
       v-if="props.coder"
-      type="warning"
+      type="success"
       size="small"
       @click="onCoder"
       :loading="loading">
@@ -34,13 +39,14 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { ElButton, ElMessage, ElDivider } from 'element-plus';
+  import { ElButton, ElMessage, ElDivider, ElBadge } from 'element-plus';
   import {
-    HomeFilled,
     VtjIconSetting,
     VtjIconOutline,
-    VtjIconRefresh
+    VtjIconRefresh,
+    VtjIconBug
   } from '@vtj/icons';
+  import { XAction } from '@vtj/ui';
   import { useSelected } from '../../hooks';
 
   export interface Props {
@@ -97,12 +103,6 @@
   };
 
   const onCoder = () => {};
-
-  const onView = () => {
-    ElMessage.warning({
-      message: '请先设置项目首页'
-    });
-  };
 
   defineOptions({
     name: 'ActionsWidget',

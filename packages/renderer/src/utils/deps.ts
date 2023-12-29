@@ -60,5 +60,5 @@ export function parseDeps(deps: Dependencie[]) {
 
 export function getRawComponent(desc: MaterialDescription, lib: any) {
   const { name, parent, alias } = desc;
-  return parent ? lib[parent]?.[alias || name] : lib[name];
+  return parent ? lib[parent]?.[alias || name] : lib[alias || name];
 }

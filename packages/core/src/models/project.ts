@@ -352,6 +352,9 @@ export class ProjectModel {
       }
     };
     remover(id, this.pages);
+    if (id === this.homepage) {
+      this.homepage = '';
+    }
     if (this.currentFile?.id === id) {
       this.deactivate(silent);
     }

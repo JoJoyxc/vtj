@@ -59,4 +59,9 @@ export interface PageFile extends BlockFile {
    * 不在菜单显示
    */
   hidden?: boolean;
+
+  /**
+   * 源码文件，非低代码页面
+   */
+  raw?: boolean;
 }

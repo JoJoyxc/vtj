@@ -1,7 +1,7 @@
 <template>
   <div class="v-icon-setter">
     <ElInput
-      size="small"
+      :size="props.size"
       readonly
       placeholder="请选择图标"
       :model-value="props.modelValue"
@@ -23,7 +23,7 @@
       @submit="onSubmit">
       <div class="v-icon-setter__content">
         <ElInput
-          size="small"
+          :size="props.size"
           :prefix-icon="Search"
           clearable
           v-model="keyword"
@@ -55,10 +55,12 @@
 
   export interface Props {
     modelValue?: string;
+    size?: 'small' | 'large' | 'default' | '';
   }
 
   const props = withDefaults(defineProps<Props>(), {
-    modelValue: ''
+    modelValue: '',
+    size: 'small'
   });
 
   const emit = defineEmits(['change', 'update:modelValue']);
