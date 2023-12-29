@@ -1,6 +1,5 @@
-// import { createApp } from 'vue';
-import { createProvider, StorageService } from '@vtj/renderer';
-
+import { createApp } from 'vue';
+import { createProvider, StorageService } from '@vtj/pro';
 const service = new StorageService();
 
 const { provider, onReady } = createProvider({
@@ -15,11 +14,11 @@ const { provider, onReady } = createProvider({
   }
 });
 
-onReady(() => {
-  console.log('ready', provider);
+onReady(async () => {
+  const renderer = await provider.getRenderComponent('la9cvg19w8');
+  if (renderer) {
+    const app = createApp(renderer);
+    app.use(provider);
+    app.mount('#app');
+  }
 });
-
-console.log(provider.project);
-
-// const app = createApp(Designer);
-// app.mount('#app');

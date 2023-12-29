@@ -1,13 +1,16 @@
+import { type App, type InjectionKey } from 'vue';
 import {
   type ProjectSchema,
   type PageFile,
   type BlockFile,
   type Service,
-  type Material
+  type Material,
+  logger
 } from '@vtj/core';
 import { type Request, type Jsonp, jsonp, loadScript } from '@vtj/utils';
 import { request } from './defaults';
 import { createApis } from './apis';
+
 import {
   parseDeps,
   isCSSUrl,
@@ -16,15 +19,17 @@ import {
   getRawComponent
 } from '../utils';
 import { ContextMode } from '../constants';
+import { createRenderer, createLoader } from '../render';
+
+export const providerKey: InjectionKey<Provider> = Symbol('Provider');
 
 export interface ProviderOptions {
   service: Service;
-  project: ProjectSchema;
+  project: Partial<ProjectSchema>;
   mode?: ContextMode;
   adapter?: Partial<ProvideAdapter>;
   dependencies?: Record<string, () => Promise<any>>;
   globals?: Record<string, any>;
-  file?: PageFile | BlockFile;
 }
 
 export interface ProvideAdapter {
@@ -62,7 +67,7 @@ export class Provider {
     Object.assign(this.adapter, adapter);
 
     if (mode === ContextMode.Runtime) {
-      this.load(project);
+      this.load(project as ProjectSchema);
     } else {
       this.emits();
     }
@@ -127,12 +132,61 @@ export class Provider {
     this.listeners = [];
   }
 
+  install(app: App) {
+    app.provide(providerKey, this);
+    app.provide('$provider', this);
+    app.config.globalProperties.$provider = this;
+  }
+
   ready(callback: () => void) {
     if (this.isReady) {
       callback();
     } else {
       this.listeners.push(callback);
     }
+  }
+  getFile(id: string): PageFile | BlockFile | null {
+    const { pages = [], blocks = [] } = this.project || {};
+    return (
+      pages.find((item) => item.id === id) ||
+      blocks.find((item) => item.id === id) ||
+      null
+    );
+  }
+  async getRenderComponent(id: string) {
+    const file = this.getFile(id);
+    if (!file) {
+      logger.warn(`Can not find file: ${id}`);
+      return null;
+    }
+    const dsl = await this.service.getFile(file.id).catch(() => null);
+    if (!dsl) {
+      logger.warn(`Can not find dsl: ${id}`);
+      return null;
+    }
+    const { library, components, mode, apis } = this;
+    const options = {
+      mode,
+      Vue: library.Vue,
+      components,
+      libs: library,
+      apis,
+      window
+    };
+    const loader = createLoader({
+      getDsl: async (id: string) => {
+        return (await this.service.getFile(id)) || null;
+      },
+      options
+    });
+
+    const { renderer } = createRenderer({
+      ...options,
+      dsl,
+      loader
+    });
+
+    return renderer;
   }
 }
 

@@ -131,7 +131,7 @@ export class Simulator {
       materialExports,
       materialMapLibrary
     );
-    this.renderer = new Renderer(env, service);
+    this.renderer = new Renderer(env, service, this.designer.value);
     if (current.value) {
       this.renderer.render(current.value);
     }

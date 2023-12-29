@@ -18,6 +18,7 @@ import {
 } from '@vtj/renderer';
 import { ElNotification } from 'element-plus';
 import { notify } from '../utils';
+import { type Designer } from './designer';
 
 export class Renderer {
   private app: App | null = null;
@@ -25,7 +26,11 @@ export class Renderer {
   private nodeChange: (this: Renderer, node: NodeModel) => void;
   private blockChange: (this: Renderer, block: BlockModel) => void;
   public context: Context | null = null;
-  constructor(public env: SimulatorEnv, public service: Service) {
+  constructor(
+    public env: SimulatorEnv,
+    public service: Service,
+    public designer: Designer | null = null
+  ) {
     this.nodeChange = this.__onNodeChange.bind(this);
     this.blockChange = this.__onBlockChange.bind(this);
   }
@@ -34,9 +39,10 @@ export class Renderer {
     const { library, globals } = this.env;
     const plugins = Object.values(library);
     Object.assign(app.config.globalProperties, globals);
-    app.config.errorHandler = (err, instance, info) => {
+    app.config.errorHandler = (err: any, instance, info) => {
       const name = instance?.$options.name;
-      const message = `[${name}] ${(err as any)?.message || err || '未知错误'}`;
+      const msg = err?.message || err?.msg || '未知错误';
+      const message = `[ ${name} ] ${msg}`;
       console.error({
         err,
         instance,
@@ -147,5 +153,9 @@ export class Renderer {
   private __onBlockChange(block: BlockModel) {
     this.dispose();
     this.render(block);
+    // 恢复选中状态
+    if (this.designer?.selected.value) {
+      this.designer.setSelected(block);
+    }
   }
 }
