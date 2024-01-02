@@ -537,4 +537,15 @@ export class ProjectModel {
   existApiName(name: string, excludes: string[] = []) {
     return this.apis.some((n) => n.name === name && !excludes.includes(n.id));
   }
+  setHomepage(id: string, silent: boolean = false) {
+    this.homepage = id;
+    if (!silent) {
+      const event: ProjectModelEvent = {
+        model: this,
+        type: 'update',
+        data: id
+      };
+      emitter.emit(EVENT_PROJECT_CHANGE, event);
+    }
+  }
 }

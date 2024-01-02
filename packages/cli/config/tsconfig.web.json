@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "jsxImportSource": "vue",
     "noEmit": true,
     // Required in Vue projects
     "jsx": "preserve",

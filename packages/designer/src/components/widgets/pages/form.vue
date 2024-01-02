@@ -12,6 +12,7 @@
       editor="radio"
       :options="typeOptions"
       :props="{ button: true, size: 'small' }"
+      :disabled="!!props.item"
       required></XField>
     <XField
       name="name"
@@ -19,11 +20,7 @@
       required
       @change="onNameChange"
       :rules="{ pattern: NAME_REGEX, message: '名称格式不正确' }"></XField>
-    <XField
-      name="title"
-      label="标题"
-      required
-      :disabled="!!props.item"></XField>
+    <XField name="title" label="标题" required></XField>
     <XField name="icon" label="菜单图标" editor="none">
       <template #editor>
         <IconSetter v-model="model.icon" size="default"></IconSetter>
@@ -87,7 +84,11 @@
   };
 
   const submit = async (data: any) => {
-    project.value?.createPage(data, props.parentId);
+    if (!!props.item) {
+      project.value?.updatePage(data);
+    } else {
+      project.value?.createPage(data, props.parentId);
+    }
     return true;
   };
 </script>

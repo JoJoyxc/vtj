@@ -69,7 +69,7 @@ export class Engine {
   public assets: Assets;
   public simulator: Simulator;
   public emitter: Emitter = emitter;
-  public project: ShallowRef<ProjectModel | null> = shallowRef(null);
+  public project: Ref<ProjectModel | null> = ref(null);
   public current: Ref<BlockModel | null> = ref(null);
   public context: Ref<Context | null> = ref(null);
   public isEmptyCurrent: Ref<boolean> = ref(false);

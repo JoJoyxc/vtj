@@ -53,7 +53,8 @@
     VtjIconLock,
     VtjIconUnlock,
     VtjIconInvisible,
-    VtjIconVisible
+    VtjIconVisible,
+    VtjIconHome
   } from '@vtj/icons';
   import { ElSwitch, ElMessageBox, ElTag } from 'element-plus';
   const builtInActions = {
@@ -88,6 +89,10 @@
     visible: {
       label: '显示',
       icon: VtjIconVisible
+    },
+    home: {
+      label: '主页',
+      icon: VtjIconHome
     }
   };
 
