@@ -47,3 +47,6 @@ lib
 /docs/typedoc
 /docs/.vitepress/cache
 /docs/cache
+
+# pro
+/platforms/pro/public/@vtj

@@ -133,9 +133,18 @@ export class Provider {
   }
 
   install(app: App) {
-    app.provide(providerKey, this);
-    app.provide('$provider', this);
-    app.config.globalProperties.$provider = this;
+    const installed = app.config.globalProperties.installed || {};
+    for (const [name, library] of Object.entries(this.library)) {
+      if (
+        !installed[name] &&
+        (typeof library.install === 'function' || typeof library === 'function')
+      ) {
+        app.use(library);
+        installed[name] = true;
+      }
+    }
+
+    app.config.globalProperties.installed = installed;
   }
 
   ready(callback: () => void) {
@@ -146,12 +155,29 @@ export class Provider {
     }
   }
   getFile(id: string): PageFile | BlockFile | null {
-    const { pages = [], blocks = [] } = this.project || {};
-    return (
-      pages.find((item) => item.id === id) ||
-      blocks.find((item) => item.id === id) ||
-      null
-    );
+    const { blocks = [] } = this.project || {};
+    return this.getPage(id) || blocks.find((item) => item.id === id) || null;
+  }
+  getPage(id: string): PageFile | null {
+    const { pages = [] } = this.project || {};
+    const finder = (
+      id: string,
+      pages: PageFile[] = []
+    ): PageFile | undefined => {
+      for (const page of pages) {
+        if (page.id === id) {
+          return page;
+        } else {
+          if (page.children && page.children.length) {
+            const match = finder(id, page.children);
+            if (match) {
+              return match;
+            }
+          }
+        }
+      }
+    };
+    return finder(id, pages) || null;
   }
   async getRenderComponent(id: string) {
     const file = this.getFile(id);

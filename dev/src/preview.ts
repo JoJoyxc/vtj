@@ -15,7 +15,7 @@ const { provider, onReady } = createProvider({
 });
 
 onReady(async () => {
-  const renderer = await provider.getRenderComponent('la9cvg19w8');
+  const renderer = await provider.getRenderComponent('18it67rnv1t');
   if (renderer) {
     const app = createApp(renderer);
     app.use(provider);

@@ -35,7 +35,10 @@
     "test:renderer": "cd packages/renderer && npm run vitest",
     "docs:dev": "cd docs && vitepress dev",
     "docs:build": "cd docs && vitepress build && cd .. && npm run typedoc",
-    "docs:preview": "cd docs && vitepress preview"
+    "docs:preview": "cd docs && vitepress preview",
+    "pro:dev": "npm run copy && cd platforms/pro && npm run dev",
+    "pro:build": "npm run copy && cd platforms/pro && npm run build",
+    "pro:preview": "cd platforms/pro && npm run preview"
   },
   "engines": {
     "node": ">=20.0.0",

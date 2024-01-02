@@ -26,20 +26,47 @@
       <VtjIconOutline></VtjIconOutline>
     </ElButton>
     <ElDivider direction="vertical"></ElDivider>
-    <ElButton type="primary" size="small" @click="preview">预览</ElButton>
-    <ElButton
+    <ElDropdown
+      split-button
+      type="primary"
+      size="small"
+      @click="preview('current')"
+      @command="preview">
+      <span>预览</span>
+      <template #dropdown>
+        <ElDropdownMenu>
+          <ElDropdownItem command="current">当前文件</ElDropdownItem>
+          <ElDropdownItem command="home">主页</ElDropdownItem>
+        </ElDropdownMenu>
+      </template>
+    </ElDropdown>
+    <ElDropdown
       v-if="props.coder"
+      split-button
       type="success"
       size="small"
-      @click="onCoder"
-      :loading="loading">
-      出码
-    </ElButton>
+      @click="onCoder">
+      <span>出码</span>
+      <template #dropdown>
+        <ElDropdownMenu>
+          <ElDropdownItem command="current">当前文件</ElDropdownItem>
+          <ElDropdownItem command="all">全部</ElDropdownItem>
+        </ElDropdownMenu>
+      </template>
+    </ElDropdown>
   </div>
 </template>
 <script lang="ts" setup>
-  import { ref } from 'vue';
-  import { ElButton, ElMessage, ElDivider, ElBadge } from 'element-plus';
+  // import { ref } from 'vue';
+  import {
+    ElButton,
+    ElMessage,
+    ElDivider,
+    ElBadge,
+    ElDropdown,
+    ElDropdownMenu,
+    ElDropdownItem
+  } from 'element-plus';
   import {
     VtjIconSetting,
     VtjIconOutline,
@@ -58,9 +85,11 @@
     copy: true
   });
 
+  const emits = defineEmits(['preview', 'coder']);
+
   const { engine, designer } = useSelected();
 
-  const loading = ref(false);
+  // const loading = ref(false);
 
   const refresh = () => {
     if (engine.current.value) {
@@ -76,10 +105,28 @@
     }
   };
 
-  const preview = () => {
-    ElMessage.warning({
-      message: '请先打开文件'
-    });
+  const preview = (type: 'current' | 'home') => {
+    const project = engine.project.value;
+    if (!project) return;
+    if (type === 'current') {
+      if (engine.current.value) {
+        emits('preview', type, project.currentFile);
+      } else {
+        ElMessage.warning({
+          message: '请先打开文件'
+        });
+      }
+    }
+    if (type === 'home') {
+      const home = project.homepage ? project.getPage(project.homepage) : null;
+      if (home) {
+        emits('preview', type, home);
+      } else {
+        ElMessage.warning({
+          message: '请先设置主页'
+        });
+      }
+    }
   };
 
   const openCodeSetting = () => {

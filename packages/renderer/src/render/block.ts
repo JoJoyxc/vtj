@@ -109,7 +109,7 @@ export function createRenderer(options: CreateRendererOptions) {
   });
 
   return {
-    renderer,
+    renderer: Vue.markRaw(renderer),
     context
   };
 }

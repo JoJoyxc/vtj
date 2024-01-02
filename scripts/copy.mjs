@@ -8,4 +8,5 @@ const to = 'dev/public/@vtj';
 
 if (existsSync(from)) {
   copySync(from, to);
+  copySync(from, 'platforms/pro/public/@vtj');
 }
