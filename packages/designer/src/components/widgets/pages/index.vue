@@ -5,21 +5,29 @@
     plus
     subtitle="(共 0 条)"
     @plus="onPlus">
-    <ElTree :data="pages" node-key="id" default-expand-all draggable>
-      <template #default="{ data }">
+    <ElTree
+      :data="pages"
+      node-key="id"
+      default-expand-all
+      draggable
+      :allow-drop="allowDrop"
+      @node-drop="onNodeDrop">
+      <template #default="{ data, node }">
         <Item
           class="v-pages-widget__item"
           :icon="icons[data.icon]"
           :title="data.title"
           :subtitle="data.name"
-          :model-value="data"
+          :model-value="{ data, node }"
           :actions="
             data.dir
               ? ['add', 'edit', 'remove']
               : ['home', 'copy', 'edit', 'remove']
           "
           @action="onAction"
-          :tag="project?.homepage === data.id ? '首页' : undefined"
+          @click="onClick(data)"
+          :active="current?.id === data.id"
+          :tag="project?.homepage === data.id ? '主页' : undefined"
           tag-type="success"
           grow
           small
@@ -36,21 +44,23 @@
   </Panel>
 </template>
 <script lang="ts" setup>
-  import { ref, computed } from 'vue';
+  import { ref, computed, toValue } from 'vue';
   import { ElTree } from 'element-plus';
   import { icons } from '@vtj/icons';
+  import { type PageFile } from '@vtj/core';
   import { cloneDeep } from '@vtj/utils';
   import PageForm from './form.vue';
   import { Panel, Item } from '../../shared';
-  import { useProject } from '../../hooks';
+  import { useProject, useCurrent } from '../../hooks';
+  import { message, notify } from '../../../utils';
 
   defineOptions({
     name: 'PagesWidget'
   });
 
-  const { project } = useProject();
+  const { project, engine } = useProject();
   const pages = computed(() => project.value?.pages || []);
-
+  const { current } = useCurrent();
   const visible = ref(false);
   const item = ref();
   const parentId = ref();
@@ -61,18 +71,60 @@
     visible.value = true;
   };
 
-  const onAction = (action: any) => {
+  const onAction = async (action: any) => {
     const { name, modelValue } = action;
+    const { data, node } = modelValue;
     if (name === 'add') {
       item.value = undefined;
-      parentId.value = modelValue.id;
+      parentId.value = data.id;
       visible.value = true;
     }
 
     if (name === 'edit') {
-      item.value = cloneDeep(modelValue);
+      item.value = cloneDeep(data);
       parentId.value = undefined;
       visible.value = true;
     }
+    if (name === 'remove') {
+      if (data.dir) {
+        const page = project.value?.getPage(data.id);
+        if (page && page.children?.length) {
+          notify('请先删除子页面');
+          return;
+        }
+      }
+      project.value?.removePage(data.id);
+    }
+
+    if (name === 'copy') {
+      const parentId = node.parent?.data.id;
+      project.value?.clonePage(data, parentId);
+    }
+
+    if (name === 'home') {
+      project.value?.setHomepage(data.id);
+      message('设置主页成功', 'success');
+    }
+  };
+
+  const onClick = async (file: PageFile) => {
+    const dsl = await engine.service.getFile(file.id);
+    if (dsl) {
+      file.dsl = dsl;
+    }
+    engine.project.value?.active(file);
+  };
+
+  const allowDrop = (_draggingNode: any, dropNode: any, type: string) => {
+    if (type === 'inner') {
+      return !!dropNode.data.dir;
+    }
+    return true;
+  };
+
+  const onNodeDrop = () => {
+    project.value?.update({
+      pages: toValue(pages)
+    });
   };
 </script>

@@ -42,4 +42,4 @@ export type Emitter = {
   };
 };
 
-export type ModelEventType = 'create' | 'update' | 'delete';
+export type ModelEventType = 'create' | 'update' | 'delete' | 'clone';

@@ -26,6 +26,7 @@ import {
   EVENT_BLOCK_CHANGE,
   EVENT_NODE_CHANGE,
   EVENT_PROJECT_BLOCKS_CHANGE,
+  EVENT_PROJECT_PAGES_CHANGE,
   EVENT_PROJECT_CHANGE,
   EVENT_PROJECT_ACTIVED,
   EVENT_HISTORY_CHANGE,
@@ -127,6 +128,7 @@ export class Engine {
   private bindEvents() {
     emitter.on(EVENT_PROJECT_CHANGE, (e) => this.saveProject(e));
     emitter.on(EVENT_PROJECT_BLOCKS_CHANGE, (e) => this.saveBlockFile(e));
+    emitter.on(EVENT_PROJECT_PAGES_CHANGE, (e) => this.saveBlockFile(e));
     emitter.on(EVENT_PROJECT_ACTIVED, (e) => this.activeFile(e));
     emitter.on(EVENT_BLOCK_CHANGE, (e) => this.changeFile(e));
     emitter.on(EVENT_NODE_CHANGE, () => this.changeCurrentFile());
@@ -202,6 +204,17 @@ export class Engine {
     if (type === 'delete') {
       const id = e.data as string;
       await this.service.removeFile(id);
+      await this.service.removeHistory(id);
+    }
+
+    if (type === 'clone') {
+      const { page, newPage } = e.data;
+      const dsl = await this.service.getFile(page.id);
+      if (dsl) {
+        dsl.id = newPage.id;
+        dsl.name = newPage.name;
+        await this.service.saveFile(dsl);
+      }
     }
     triggerRef(this.project);
   }

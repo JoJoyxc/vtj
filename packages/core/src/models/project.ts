@@ -240,10 +240,12 @@ export class ProjectModel {
     if (page.dir) {
       page.children = [];
     } else {
-      page.dsl = new BlockModel({
-        id: page.id,
-        name: upperFirstCamelCase(page.name)
-      }).toDsl();
+      page.dsl =
+        page.dsl ||
+        new BlockModel({
+          id: page.id,
+          name: upperFirstCamelCase(page.name)
+        }).toDsl();
     }
 
     if (parentId) {
@@ -270,10 +272,7 @@ export class ProjectModel {
       const event: ProjectModelEvent = {
         model: this,
         type: 'create',
-        data: {
-          page,
-          parentId
-        }
+        data: page
       };
       emitter.emit(EVENT_PROJECT_PAGES_CHANGE, event);
       emitter.emit(EVENT_PROJECT_CHANGE, event);
@@ -296,9 +295,7 @@ export class ProjectModel {
       const event: ProjectModelEvent = {
         model: this,
         type: 'update',
-        data: {
-          page
-        }
+        data: page
       };
       emitter.emit(EVENT_PROJECT_PAGES_CHANGE, event);
       emitter.emit(EVENT_PROJECT_CHANGE, event);
@@ -312,20 +309,28 @@ export class ProjectModel {
    * @param silent
    */
   clonePage(page: PageFile, parentId?: string, silent: boolean = false) {
-    const newPage = merge({}, page, { id: uid() });
+    const id = uid();
+    const name = `${page.name}Copy`;
+    const title = `${page.title}_副本`;
+
+    const dsl = new BlockModel({
+      id,
+      name
+    }).toDsl();
+    const newPage = merge({}, page, { id, name, title, dsl });
     const pages = parentId
       ? this.getPage(parentId)?.children || []
       : this.pages;
     const index = pages.findIndex((n) => n.id === page.id);
-    pages.splice(index, 0, newPage);
+    pages.splice(index + 1, 0, newPage);
 
     if (!silent) {
       const event: ProjectModelEvent = {
         model: this,
-        type: 'create',
+        type: 'clone',
         data: {
           page,
-          parentId
+          newPage
         }
       };
       emitter.emit(EVENT_PROJECT_PAGES_CHANGE, event);

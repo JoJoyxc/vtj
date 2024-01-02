@@ -47,6 +47,7 @@
   import IconSetter from '../../setters/icon.vue';
   import { NAME_REGEX } from '../../../constants';
   import { useProject } from '../../hooks';
+  import { notify } from '../../../utils';
 
   export interface Props {
     item?: PageFile;
@@ -84,6 +85,11 @@
   };
 
   const submit = async (data: any) => {
+    const exist = project.value?.existPageName(data.name, [data.id]);
+    if (exist) {
+      notify('页面名称已存在，请更换');
+      return false;
+    }
     if (!!props.item) {
       project.value?.updatePage(data);
     } else {
