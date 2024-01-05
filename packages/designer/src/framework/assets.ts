@@ -119,7 +119,8 @@ export class Assets {
             };
       }),
       events: emits,
-      slots
+      slots,
+      from
     };
     return desc;
   }

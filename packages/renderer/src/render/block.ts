@@ -51,7 +51,6 @@ export function createRenderer(options: CreateRendererOptions) {
   const context = new Context({
     mode,
     dsl: dsl.value,
-    loader,
     attrs
   });
 
@@ -98,9 +97,9 @@ export function createRenderer(options: CreateRendererOptions) {
       if (!dsl.value.nodes) return null;
       const nodes: NodeSchema[] = dsl.value.nodes || [];
       if (nodes.length === 1) {
-        return nodeRender(nodes[0], context, Vue);
+        return nodeRender(nodes[0], context, Vue, loader);
       } else {
-        return nodes.map((child) => nodeRender(child, context, Vue));
+        return nodes.map((child) => nodeRender(child, context, Vue, loader));
       }
     },
     ...createLifeCycles(dsl.value.lifeCycles ?? {}, context)

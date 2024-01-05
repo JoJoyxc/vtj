@@ -50,7 +50,8 @@
 
   const classes = computed(() => {
     return {
-      'is-active': props.active
+      'is-active': props.active,
+      'is-draggable': props.draggable
     };
   });
 

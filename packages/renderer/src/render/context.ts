@@ -5,13 +5,11 @@ import {
   type JSFunction,
   type JSExpression
 } from '@vtj/core';
-import { defaultLoader, type BlockLoader } from './loader';
 import { parseFunction, parseExpression } from '../utils';
 
 export interface ContextOptions {
   mode: ContextMode;
   dsl?: BlockSchema;
-  loader?: any;
   attrs?: ContextAttrs;
 }
 
@@ -28,7 +26,6 @@ export class Context {
   __instance: any | null = null;
   __contextRefs: Record<string, Context> = {};
   __refs: Record<string, any> = {};
-  __loader: BlockLoader = defaultLoader;
   context: Record<string, any> = {};
   state: Record<string, any> = {};
   $props: Record<string, any> = {};

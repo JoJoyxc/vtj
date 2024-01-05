@@ -242,7 +242,7 @@ export class Designer {
   }
 
   private isVtjElement(el: EventTarget | HTMLElement): el is VtjElement {
-    return !!(el as any).__vtj__;
+    return !!(el as any).__vtj__ && !!(el as any).__context__;
   }
 
   private findVtjElement(targets: HTMLElement[] | EventTarget[]) {

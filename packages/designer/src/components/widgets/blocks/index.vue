@@ -14,7 +14,10 @@
           editable
           @edit="onEdit(block)"
           @remove="onRemove(block)"
-          @click="onClick(block)"></Box>
+          @click="onClick(block)"
+          :draggable="current?.id !== block.id"
+          @dragstart="onDragStart(block)"
+          @dragend="onDragEnd"></Box>
       </ElCol>
     </ElRow>
     <ElEmpty v-if="!blocks.length"></ElEmpty>
@@ -45,7 +48,8 @@
   import { ElRow, ElCol, ElEmpty } from 'element-plus';
   import { XDialogForm, XField } from '@vtj/ui';
   import { upperFirstCamelCase, cloneDeep } from '@vtj/utils';
-  import type { BlockFile } from '@vtj/core';
+  import type { BlockFile, NodeFrom } from '@vtj/core';
+  import { type Designer } from '../../../framework';
   import { Panel, Box } from '../../shared';
   import { useColSpan, useBlocks, useCurrent } from '../../hooks';
   import { notify } from '../../../utils';
@@ -118,6 +122,27 @@
       file.dsl = dsl;
     }
     engine.project.value?.active(file);
+  };
+
+  const onDragStart = async (file: BlockFile) => {
+    const from: NodeFrom = {
+      type: 'Schema',
+      id: file.id as string
+    };
+    const desc = await engine.assets.getBlockMaterial(from);
+    const designer = engine.skeleton?.getWidget('Designer')?.widgetRef
+      ?.designer as Designer;
+    if (designer && desc) {
+      designer.setDragging(desc);
+    }
+  };
+
+  const onDragEnd = () => {
+    const designer = engine.skeleton?.getWidget('Designer')?.widgetRef
+      ?.designer as Designer;
+    if (designer) {
+      designer.setDragging(null);
+    }
   };
 
   defineOptions({

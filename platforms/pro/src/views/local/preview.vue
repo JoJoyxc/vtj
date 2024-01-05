@@ -4,8 +4,8 @@
 <script lang="ts" setup>
   import { ref, getCurrentInstance } from 'vue';
   import { useRoute } from 'vue-router';
-  import { createProvider, StorageService } from '@/lcdp';
-  const service = new StorageService();
+  import { createProvider, RemoteService } from '@/lcdp';
+  const service = new RemoteService();
 
   const { provider, onReady } = createProvider({
     service,
@@ -23,11 +23,9 @@
   const instance = getCurrentInstance();
 
   onReady(async () => {
-    console.log('provider', provider);
     instance?.appContext.app.use(provider);
     renderer.value = await provider.getRenderComponent(
       route.params.id.toString()
     );
-    console.log(route.params.id, renderer.value);
   });
 </script>

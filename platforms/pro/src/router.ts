@@ -14,7 +14,7 @@ const routes = [
   {
     path: '/local/preview/:id',
     name: 'localPreview',
-    component: () => import('./views/index.vue')
+    component: () => import('./views/local/preview.vue')
   },
   {
     path: '/example',

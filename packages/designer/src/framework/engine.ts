@@ -142,8 +142,10 @@ export class Engine {
       const block = new BlockModel(dsl);
       this.updateCurrent(block);
       this.initHistory(block);
-      triggerRef(this.project);
+    } else {
+      this.updateCurrent(null);
     }
+    triggerRef(this.project);
   }
 
   private async changeFile(e: BlockModel) {

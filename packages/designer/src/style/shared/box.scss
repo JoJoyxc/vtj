@@ -3,7 +3,6 @@
 @include b(box) {
   position: relative;
   height: 60px;
-  cursor: move;
   overflow: hidden;
   background-color: var(--el-fill-color-lighter);
   border: 1px dashed transparent;
@@ -21,6 +20,9 @@
 
   @include when(active) {
     background-color: var(--el-color-primary-light-9);
+  }
+  @include when(draggable) {
+    cursor: move;
   }
 
   @include e(footer) {

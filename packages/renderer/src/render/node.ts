@@ -15,11 +15,13 @@ import { camelCase, upperFirst, isString, pick } from '@vtj/utils';
 import { Context } from './context';
 import { BUILDIN_DIRECTIVES } from '../constants';
 import { toString, isJSExpression, isJSFunction } from '../utils';
+import { defaultLoader, type BlockLoader } from './loader';
 
 export function nodeRender(
   dsl: NodeSchema,
   context: Context,
-  Vue: any = globalVue
+  Vue: any = globalVue,
+  loader: BlockLoader = defaultLoader
 ): VNode | VNode[] | null {
   if (!dsl || !dsl.name || dsl.invisible) return null;
 
@@ -44,7 +46,7 @@ export function nodeRender(
       if (dsl.name === 'slot') return dsl.name;
 
       // 组件加载器,默认返回 dsl.name
-      const name = context.__loader(dsl.name, dsl.from, Vue);
+      const name = loader(dsl.name, dsl.from, Vue);
       return typeof name === 'string' ? $components[name] ?? name : name;
     })();
 

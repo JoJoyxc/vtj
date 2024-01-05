@@ -1,6 +1,7 @@
 import type { DefineComponent } from 'vue';
 import type { NodeFrom, BlockSchema } from '@vtj/core';
 import { createRenderer, type CreateRendererOptions } from './block';
+import { ContextMode } from '../constants';
 import * as globalVue from 'vue';
 
 export type BlockLoader = (
@@ -31,8 +32,9 @@ export function createLoader(opts: CreateLoaderOptions): BlockLoader {
               ...options,
               Vue,
               dsl,
+              mode: ContextMode.Runtime,
               loader: createLoader(opts)
-            })
+            }).renderer
           : null;
       });
     }
