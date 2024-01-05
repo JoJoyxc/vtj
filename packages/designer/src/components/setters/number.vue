@@ -8,7 +8,7 @@
 </template>
 <script lang="ts" setup>
   import { ElInputNumber } from 'element-plus';
-  import { isJSExpression } from '@vtj/core';
+  import { isJSExpression } from '@vtj/renderer';
   import { computed } from 'vue';
 
   export interface Props {

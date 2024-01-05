@@ -6,7 +6,7 @@ import type {
   BlockFile,
   ApiSchema
 } from '../protocols';
-import { emitter, logger, type ModelEventType } from '../tools';
+import { emitter, type ModelEventType } from '../tools';
 import { BlockModel } from './block';
 
 export interface ProjectModelEvent {
@@ -83,6 +83,9 @@ export class ProjectModel {
         data: schema
       });
     }
+  }
+  isPageFile(file: PageFile | BlockFile): file is PageFile {
+    return file.type === 'page';
   }
 
   toDsl() {
@@ -257,7 +260,7 @@ export class ProjectModel {
           dir.children = [page];
         }
       } else {
-        logger.warn(`not found PageFile for id: ${parentId} `);
+        console.warn(`not found PageFile for id: ${parentId} `);
       }
     } else {
       this.pages.push(page);
@@ -289,7 +292,7 @@ export class ProjectModel {
     if (match) {
       Object.assign(match, page);
     } else {
-      logger.warn(`not found PageFile for id: ${page.id} `);
+      console.warn(`not found PageFile for id: ${page.id} `);
     }
     if (!silent) {
       const event: ProjectModelEvent = {
@@ -424,7 +427,7 @@ export class ProjectModel {
         match.dsl.name = block.name;
       }
     } else {
-      logger.warn(`not found PageFile for id: ${block.id} `);
+      console.warn(`not found PageFile for id: ${block.id} `);
     }
     if (!silent) {
       const event: ProjectModelEvent = {
@@ -451,7 +454,7 @@ export class ProjectModel {
         this.deactivate(silent);
       }
     } else {
-      logger.warn(`not found PageFile for id: ${id} `);
+      console.warn(`not found PageFile for id: ${id} `);
     }
     if (!silent) {
       const event: ProjectModelEvent = {
@@ -526,7 +529,7 @@ export class ProjectModel {
     if (index > -1) {
       this.apis.splice(index, 1);
     } else {
-      logger.warn(`not found Api for name: ${name} `);
+      console.warn(`not found Api for name: ${name} `);
     }
     if (!silent) {
       const event: ProjectModelEvent = {

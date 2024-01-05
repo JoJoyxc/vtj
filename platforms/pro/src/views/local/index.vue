@@ -8,10 +8,10 @@
   import {
     Engine,
     widgetManager,
-    StorageService,
+    RemoteService,
     type PageFile,
     type BlockFile
-  } from '../../src';
+  } from '@/lcdp';
 
   const container = ref();
   const router = useRouter();
@@ -29,7 +29,7 @@
       onPreview: (type: 'current' | 'home', file: PageFile | BlockFile) => {
         console.log('Actions preview', type, file);
         router.push({
-          name: 'preview',
+          name: 'localPreview',
           params: {
             id: file.id
           }
@@ -40,11 +40,7 @@
 
   new Engine({
     container,
-    service: new StorageService(),
-    project: {
-      id: 'demo',
-      name: 'dev-project'
-    }
+    service: new RemoteService()
   });
 </script>
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 import { uid, cloneDeep } from '@vtj/base';
 import type { HistorySchema, HistoryItem, BlockSchema } from '../protocols';
-import { emitter, logger } from '../tools';
+import { emitter, type ModelEventType } from '../tools';
 
 export interface HistoryModelOptions {
   max: number;
@@ -8,6 +8,12 @@ export interface HistoryModelOptions {
 
 export const EVENT_HISTORY_CHANGE = 'EVENT_HISTORY_CHANGE';
 export const EVENT_HISTORY_LOAD = 'EVENT_HISTORY_LOAD';
+
+export interface HistoryModelEvent {
+  model: HistoryModel;
+  type: ModelEventType;
+  data: any;
+}
 
 export class HistoryModel {
   private options: HistoryModelOptions = { max: 50 };
@@ -28,7 +34,7 @@ export class HistoryModel {
     const { id, items } = this;
     return {
       id,
-      items
+      items: items.map((n) => ({ id: n.id, label: n.label }))
     };
   }
   /**
@@ -54,11 +60,22 @@ export class HistoryModel {
     };
     this.items.unshift(item);
     if (this.items.length > max) {
-      this.items.splice(max);
+      const removeItems = this.items.splice(max);
+      if (!silent) {
+        emitter.emit(EVENT_HISTORY_CHANGE, {
+          model: this,
+          type: 'delete',
+          data: removeItems.map((n) => n.id)
+        });
+      }
     }
     this.index = -1;
     if (!silent) {
-      emitter.emit(EVENT_HISTORY_CHANGE, this);
+      emitter.emit(EVENT_HISTORY_CHANGE, {
+        model: this,
+        type: 'create',
+        data: item
+      });
     }
   }
   /**
@@ -76,10 +93,14 @@ export class HistoryModel {
         this.index = this.items.length - 1;
       }
     } else {
-      logger.warn(`not found HistoryItem for id: ${id} `);
+      console.warn(`not found HistoryItem for id: ${id} `);
     }
     if (!silent) {
-      emitter.emit(EVENT_HISTORY_CHANGE, this);
+      emitter.emit(EVENT_HISTORY_CHANGE, {
+        model: this,
+        type: 'delete',
+        data: [id]
+      });
     }
   }
 
@@ -89,7 +110,11 @@ export class HistoryModel {
     --this.index;
     const item = items[this.index];
     if (item && !silent) {
-      emitter.emit(EVENT_HISTORY_LOAD, item);
+      emitter.emit(EVENT_HISTORY_LOAD, {
+        model: this,
+        type: 'load',
+        data: item
+      });
     }
   }
 
@@ -102,7 +127,11 @@ export class HistoryModel {
     ++this.index;
     const item = items[this.index];
     if (item && !silent) {
-      emitter.emit(EVENT_HISTORY_LOAD, item);
+      emitter.emit(EVENT_HISTORY_LOAD, {
+        model: this,
+        type: 'load',
+        data: item
+      });
     }
   }
 
@@ -111,15 +140,24 @@ export class HistoryModel {
     if (index >= 0) {
       this.index = index;
       if (!silent) {
-        emitter.emit(EVENT_HISTORY_LOAD, this.items[index]);
+        emitter.emit(EVENT_HISTORY_LOAD, {
+          model: this,
+          type: 'load',
+          data: this.items[index]
+        });
       }
     }
   }
   clear(silent: boolean = false) {
     this.index = -1;
+    const ids = this.items.map((n) => n.id);
     this.items = [];
     if (!silent) {
-      emitter.emit(EVENT_HISTORY_CHANGE, this);
+      emitter.emit(EVENT_HISTORY_CHANGE, {
+        model: this,
+        type: 'clear',
+        data: ids
+      });
     }
   }
 }

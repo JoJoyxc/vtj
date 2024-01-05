@@ -3,7 +3,7 @@ import {
   type ProjectModelEvent,
   type BlockModel,
   type NodeModel,
-  type HistoryModel,
+  type HistoryModelEvent,
   EVENT_PROJECT_CHANGE,
   EVENT_PROJECT_ACTIVED,
   EVENT_PROJECT_DEPS_CHANGE,
@@ -16,8 +16,6 @@ import {
   EVENT_HISTORY_LOAD
 } from '../models';
 
-import type { HistoryItem } from '../protocols';
-
 type Events = {
   [EVENT_PROJECT_CHANGE]: ProjectModelEvent;
   [EVENT_PROJECT_ACTIVED]: ProjectModelEvent;
@@ -27,8 +25,8 @@ type Events = {
   [EVENT_PROJECT_APIS_CHANGE]: ProjectModelEvent;
   [EVENT_BLOCK_CHANGE]: BlockModel;
   [EVENT_NODE_CHANGE]: NodeModel;
-  [EVENT_HISTORY_CHANGE]: HistoryModel;
-  [EVENT_HISTORY_LOAD]: HistoryItem;
+  [EVENT_HISTORY_CHANGE]: HistoryModelEvent;
+  [EVENT_HISTORY_LOAD]: HistoryModelEvent;
 };
 
 export const emitter = mitt<Events>();
@@ -42,4 +40,10 @@ export type Emitter = {
   };
 };
 
-export type ModelEventType = 'create' | 'update' | 'delete' | 'clone';
+export type ModelEventType =
+  | 'create'
+  | 'update'
+  | 'delete'
+  | 'clone'
+  | 'clear'
+  | 'load';

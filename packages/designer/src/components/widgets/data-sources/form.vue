@@ -72,11 +72,9 @@
   import {
     type DataSourceSchema,
     BlockModel,
-    type JSFunction,
-    parseExpression,
-    logger
+    type JSFunction
   } from '@vtj/core';
-  import { Context } from '@vtj/renderer';
+  import { Context, parseExpression, logger } from '@vtj/renderer';
   import Editor from '../../editor';
   import { NAME_REGEX } from '../../../constants';
   import { expressionValidate, notify } from '../../../utils';

@@ -4,7 +4,7 @@
 <script lang="ts" setup>
   import { ref, getCurrentInstance } from 'vue';
   import { useRoute } from 'vue-router';
-  import { createProvider, StorageService } from '../../src';
+  import { createProvider, StorageService } from '@/lcdp';
   const service = new StorageService();
 
   const { provider, onReady } = createProvider({

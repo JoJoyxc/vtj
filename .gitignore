@@ -30,6 +30,7 @@ lib
 *.sw?
 .history
 .hbuildx
+.vtj
 
 # packages
 /packages/*/temp/

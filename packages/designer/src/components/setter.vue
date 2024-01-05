@@ -85,7 +85,8 @@
     ElDropdownItem,
     ElInput
   } from 'element-plus';
-  import { type MaterialSetter, isJSExpression } from '@vtj/core';
+  import { type MaterialSetter } from '@vtj/core';
+  import { isJSExpression } from '@vtj/renderer';
   import {
     VtjIconVars,
     VtjIconSwitch,

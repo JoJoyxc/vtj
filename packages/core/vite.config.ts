@@ -4,5 +4,5 @@ export default createViteConfig({
   dts: true,
   version: true,
   formats: ['es', 'cjs'],
-  external: ['vue', 'mitt', 'zen-logger', '@vtj/base']
+  external: ['vue', '@vtj/base']
 });

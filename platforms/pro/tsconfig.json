@@ -1,5 +1,13 @@
 {
   "extends": "./node_modules/@vtj/cli/config/tsconfig.web.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
+  },
   "include": [
     "src"
   ],

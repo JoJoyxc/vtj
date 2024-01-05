@@ -1,4 +1,5 @@
-import { logger, type BlockPropDataType } from '@vtj/core';
+import { type BlockPropDataType } from '@vtj/core';
+import { logger } from '@vtj/renderer';
 import { merge } from '@vtj/utils';
 import { builtInSetters, defaultSetter } from './built-in';
 import { type Setter } from '../framework';

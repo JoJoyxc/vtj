@@ -9,14 +9,12 @@ import {
   type NodeModifiers,
   type JSFunction,
   type NodeChildren,
-  type NodeSlot,
-  isJSExpression,
-  isJSFunction
+  type NodeSlot
 } from '@vtj/core';
 import { camelCase, upperFirst, isString, pick } from '@vtj/utils';
 import { Context } from './context';
 import { BUILDIN_DIRECTIVES } from '../constants';
-import { toString } from '../utils';
+import { toString, isJSExpression, isJSFunction } from '../utils';
 
 export function nodeRender(
   dsl: NodeSchema,

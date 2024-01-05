@@ -7,13 +7,11 @@ import {
   type BlockInject,
   type DataSourceSchema,
   type BlockWatch,
-  type NodeSchema,
-  isJSExpression,
-  isJSFunction
+  type NodeSchema
 } from '@vtj/core';
 import { ContextMode, DATA_TYPES } from '../constants';
 import { Context } from './context';
-import { adoptedStyleSheets } from '../utils';
+import { adoptedStyleSheets, isJSExpression, isJSFunction } from '../utils';
 import { nodeRender } from './node';
 import type { ComputedRef, DefineComponent } from 'vue';
 import * as globalVue from 'vue';

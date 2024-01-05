@@ -12,8 +12,8 @@
 </template>
 <script lang="ts" setup>
   import { computed } from 'vue';
-  import { BlockModel, JSCodeToString, type JSFunction } from '@vtj/core';
-  import { Context } from '@vtj/renderer';
+  import { BlockModel, type JSFunction } from '@vtj/core';
+  import { Context, JSCodeToString } from '@vtj/renderer';
   import Group from './group.vue';
   import { notify, expressionValidate } from '../../../utils';
 

@@ -6,7 +6,7 @@
   "devDependencies": {
     "pnpm": "~8.13.0",
     "lerna": "~8.0.0",
-    "axios": "~1.6.2",
+    "axios": "~1.6.4",
     "fs-extra": "~11.2.0",
     "jsdom": "~23.0.1",
     "typedoc": "~0.25.6"
@@ -36,9 +36,12 @@
     "docs:dev": "cd docs && vitepress dev",
     "docs:build": "cd docs && vitepress build && cd .. && npm run typedoc",
     "docs:preview": "cd docs && vitepress preview",
-    "pro:dev": "npm run copy && cd platforms/pro && npm run dev",
-    "pro:build": "npm run copy && cd platforms/pro && npm run build",
-    "pro:preview": "cd platforms/pro && npm run preview"
+    "pro:dev": "cd platforms/pro && npm run dev",
+    "pro:build": "cd platforms/pro && npm run build",
+    "pro:preview": "cd platforms/pro && npm run preview",
+    "web:dev": "cd projects/web && npm run dev",
+    "web:build": "cd projects/web  && npm run build",
+    "web:preview": "cd projects/web && npm run preview"
   },
   "engines": {
     "node": ">=20.0.0",

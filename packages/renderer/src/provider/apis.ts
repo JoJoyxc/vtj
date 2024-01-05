@@ -1,5 +1,6 @@
-import { type ApiSchema, parseExpression } from '@vtj/core';
+import { type ApiSchema } from '@vtj/core';
 import { type IRequestConfig, merge } from '@vtj/utils';
+import { parseExpression } from '../utils';
 
 import { type ProvideAdapter } from './provider';
 export function createApi(schema: ApiSchema, adapter: ProvideAdapter) {

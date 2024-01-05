@@ -3,11 +3,10 @@ import { ContextMode, CONTEXT_HOST } from '../constants';
 import {
   type BlockSchema,
   type JSFunction,
-  type JSExpression,
-  parseFunction,
-  parseExpression
+  type JSExpression
 } from '@vtj/core';
 import { defaultLoader, type BlockLoader } from './loader';
+import { parseFunction, parseExpression } from '../utils';
 
 export interface ContextOptions {
   mode: ContextMode;

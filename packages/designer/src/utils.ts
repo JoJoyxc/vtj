@@ -1,9 +1,5 @@
-import {
-  type JSExpression,
-  type JSFunction,
-  parseExpression,
-  parseFunction
-} from '@vtj/core';
+import { type JSExpression, type JSFunction } from '@vtj/core';
+import { parseExpression, parseFunction } from '@vtj/renderer';
 import { ElNotification, ElMessageBox, ElMessage } from 'element-plus';
 
 export function notify(message: string, title: string = '提示') {

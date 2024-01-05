@@ -31,8 +31,8 @@
 </template>
 <script lang="ts" setup>
   import { computed } from 'vue';
-  import { BlockModel, JSCodeToString, type JSFunction } from '@vtj/core';
-  import { Context, LIFE_CYCLES_LIST } from '@vtj/renderer';
+  import { BlockModel, type JSFunction } from '@vtj/core';
+  import { Context, LIFE_CYCLES_LIST, JSCodeToString } from '@vtj/renderer';
   import { XField } from '@vtj/ui';
   import Group from './group.vue';
   import { notify, expressionValidate } from '../../../utils';

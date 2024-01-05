@@ -11,8 +11,7 @@
   },
   "dependencies": {
     "@vtj/base": "workspace:^",
-    "mitt": "~3.0.1",
-    "zen-logger": "~1.1.4"
+    "mitt": "~3.0.1"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:^"

@@ -3,6 +3,7 @@ import {
   type ProjectSchema,
   type BlockSchema,
   type HistorySchema,
+  type HistoryItem,
   ProjectModel,
   HistoryModel
 } from '@vtj/core';
@@ -49,7 +50,14 @@ export class StorageService implements Service {
     return Promise.resolve(true);
   }
   public removeHistory(id: string): Promise<boolean> {
-    storage.remove(`history_${id}`);
+    const history = storage.get(`history_${id}`) as HistorySchema;
+    if (history) {
+      const items = history.items || [];
+      const ids = items.map((item) => item.id);
+      this.removeHistoryItem(id, ids);
+      storage.remove(`history_${id}`);
+    }
+
     return Promise.resolve(true);
   }
 
@@ -57,5 +65,20 @@ export class StorageService implements Service {
     const dsl = storage.get(`history_${id}`);
     const history = new HistoryModel(dsl || { id });
     return Promise.resolve(history.toDsl());
+  }
+
+  public getHistoryItem(fId: string, id: string): Promise<HistoryItem> {
+    const item = storage.get(`history_${fId}_${id}`);
+    return Promise.resolve(item);
+  }
+  public saveHistoryItem(fId: string, item: HistoryItem): Promise<boolean> {
+    storage.save(`history_${fId}_${item.id}`, item);
+    return Promise.resolve(true);
+  }
+  public removeHistoryItem(fId: string, ids: string[]): Promise<boolean> {
+    ids.forEach((id) => {
+      storage.remove(`history_${fId}_${id}`);
+    });
+    return Promise.resolve(true);
   }
 }

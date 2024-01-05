@@ -10,7 +10,8 @@
 <script lang="ts" setup>
   import { ref, watch } from 'vue';
   import { ElInput } from 'element-plus';
-  import { type JSExpression, isJSExpression } from '@vtj/core';
+  import { type JSExpression } from '@vtj/core';
+  import { isJSExpression } from '@vtj/renderer';
   import { Context } from '@vtj/renderer';
   import { expressionValidate } from '../../utils';
 

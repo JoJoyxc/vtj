@@ -4,12 +4,12 @@ import {
   type PageFile,
   type BlockFile,
   type Service,
-  type Material,
-  logger
+  type Material
 } from '@vtj/core';
 import { type Request, type Jsonp, jsonp, loadScript } from '@vtj/utils';
 import { request } from './defaults';
 import { createApis } from './apis';
+import { logger } from '../utils';
 
 import {
   parseDeps,

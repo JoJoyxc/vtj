@@ -1,4 +1,9 @@
-import type { ProjectSchema, BlockSchema, HistorySchema } from './schemas';
+import type {
+  ProjectSchema,
+  BlockSchema,
+  HistorySchema,
+  HistoryItem
+} from './schemas';
 
 export abstract class Service {
   public abstract init(project: ProjectSchema): Promise<ProjectSchema>;
@@ -9,4 +14,13 @@ export abstract class Service {
   public abstract saveHistory(history: HistorySchema): Promise<boolean>;
   public abstract removeHistory(id: string): Promise<boolean>;
   public abstract getHistory(id: string): Promise<HistorySchema>;
+  public abstract getHistoryItem(fId: string, id: string): Promise<HistoryItem>;
+  public abstract saveHistoryItem(
+    fId: string,
+    item: HistoryItem
+  ): Promise<boolean>;
+  public abstract removeHistoryItem(
+    fId: string,
+    ids: string[]
+  ): Promise<boolean>;
 }

@@ -30,5 +30,5 @@ export interface HistoryItem {
   /**
    * 记录项内容
    */
-  dsl: BlockSchema;
+  dsl?: BlockSchema;
 }

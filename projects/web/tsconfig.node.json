@@ -9,6 +9,7 @@
   "include": [
     "vite.config.ts",
     "proxy.config.ts",
-    "env.config.ts"
+    "env.config.ts",
+    "node_modules/@vtj/pro/**/*",
   ]
 }

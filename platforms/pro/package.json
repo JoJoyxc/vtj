@@ -1,14 +1,17 @@
 {
   "name": "@vtj/pro",
+  "description": "VTJ.PRO",
   "private": false,
   "version": "0.7.0",
   "type": "module",
   "scripts": {
     "dev": "cross-env ENV_TYPE=local vite",
-    "build": "vue-tsc && cross-env ENV_TYPE=live vite build",
+    "build": "unbuild && vue-tsc && cross-env ENV_TYPE=live vite build",
+    "unbuild": "unbuild",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vtj/node": "workspace:^",
     "@vtj/utils": "workspace:^",
     "@vtj/icons": "workspace:^",
     "@vtj/ui": "workspace:^",
@@ -19,21 +22,28 @@
   },
   "devDependencies": {
     "@vtj/cli": "workspace:^",
-    "vue": "~3.4.3",
+    "unbuild": "~2.0.0",
+    "vue": "~3.4.4",
     "vue-router": "~4.2.5"
   },
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts",
-      "require": "./src/index.ts"
-    }
+      "types": "./src/lcdp/index.ts",
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.mjs"
+    },
+    "./vite": {
+      "types": "./src/lcdp/vite.ts",
+      "import": "./lib/vite.mjs",
+      "require": "./lib/vite.mjs"
+    },
+    "./*": "./*"
   },
-  "main": "./src/index.ts",
-  "module": "./src/index.ts",
-  "types": "./src/index.ts",
+  "main": "./lib/index.mjs",
+  "module": "./lib/index.mjs",
+  "types": "./src/lcdp/index.ts",
   "files": [
-    "src",
+    "lib",
     "dist"
   ],
   "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b",

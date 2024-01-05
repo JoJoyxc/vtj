@@ -101,7 +101,8 @@
 <script lang="ts" setup>
   import { XContainer } from '@vtj/ui';
   import { ElForm, ElEmpty } from 'element-plus';
-  import { DirectiveModel, parseExpression } from '@vtj/core';
+  import { DirectiveModel } from '@vtj/core';
+  import { parseExpression } from '@vtj/renderer';
   import { Panel } from '../../shared';
   import { SetterWrapper } from '../../../wrappers';
   import { useCurrent, useSelected, useDirectives } from '../../hooks';

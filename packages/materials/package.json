@@ -16,11 +16,11 @@
     "@vtj/core": "workspace:^",
     "@vtj/ui": "workspace:^",
     "@vtj/utils": "workspace:^",
-    "vant": "~4.8.1",
+    "vant": "~4.8.2",
     "ant-design-vue": "~4.0.8",
     "echarts": "~5.4.3",
     "element-plus": "~2.4.3",
-    "vue": "~3.4.3",
+    "vue": "~3.4.4",
     "vue-router": "~4.2.5"
   },
   "files": [

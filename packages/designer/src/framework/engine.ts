@@ -5,7 +5,6 @@ import {
   unref,
   inject,
   shallowReactive,
-  shallowRef,
   ref,
   nextTick,
   triggerRef,
@@ -13,11 +12,9 @@ import {
   type InjectionKey,
   type MaybeRef,
   type App,
-  type Ref,
-  type ShallowRef
+  type Ref
 } from 'vue';
 import {
-  logger,
   ProjectModel,
   BlockModel,
   HistoryModel,
@@ -36,12 +33,14 @@ import {
   type BlockFile,
   type ProjectModelEvent,
   type PageFile,
-  type HistoryItem
+  type HistoryItem,
+  type HistoryModelEvent
 } from '@vtj/core';
 import {
   Context,
   ContextMode,
   Provider,
+  logger,
   type ProvideAdapter
 } from '@vtj/renderer';
 import { SkeletonWrapper, type SkeletonWrapperInstance } from '../wrappers';
@@ -55,7 +54,7 @@ export const engineKey: InjectionKey<ShallowReactive<Engine>> =
 export interface EngineOptions {
   container: MaybeRef<HTMLElement | undefined>;
   service: Service;
-  project: ProjectSchema;
+  project?: Partial<ProjectSchema>;
   globals?: Record<string, any>;
   adapter?: ProvideAdapter;
 }
@@ -74,24 +73,24 @@ export class Engine {
   public current: Ref<BlockModel | null> = ref(null);
   public context: Ref<Context | null> = ref(null);
   public isEmptyCurrent: Ref<boolean> = ref(false);
-  public history: ShallowRef<HistoryModel | null> = shallowRef(null);
+  public history: Ref<HistoryModel | null> = ref(null);
   public provider: Provider;
   constructor(options: EngineOptions) {
-    const { container, service, project, globals = {} } = options;
+    const { container, service, project = {}, globals = {} } = options;
+    this.container = container;
+    this.service = service;
     this.provider = new Provider({
       mode: ContextMode.Design,
       globals,
       project,
       service
     });
-    this.container = container;
-    this.service = service;
     this.assets = new Assets(this.service);
     this.simulator = new Simulator({
       engine: this
     });
     this.bindEvents();
-    this.init(project);
+    this.init(project as ProjectSchema);
     onMounted(this.render.bind(this));
     onUnmounted(this.dispose.bind(this));
   }
@@ -173,7 +172,6 @@ export class Engine {
     this.context.value = this.simulator.renderer?.context || null;
     this.isEmptyCurrent.value = this.current.value?.nodes.length === 0;
     if (isTrigger) {
-      // triggerRef(this.current);
       triggerRef(this.context);
     }
   }
@@ -187,16 +185,20 @@ export class Engine {
 
   private async saveBlockFile(e: ProjectModelEvent) {
     const type = e.type;
+    const project = e.model;
     if (type === 'create') {
-      const block = e.data as BlockFile | PageFile;
-      block.dsl && (await this.service.saveFile(block.dsl));
+      const file = e.data as BlockFile | PageFile;
+      file.dsl && (await this.service.saveFile(file.dsl));
     }
 
     if (type === 'update') {
-      const block = e.data as BlockFile;
-      const dsl = await this.service.getFile(block.id);
+      const file = e.data as BlockFile | PageFile;
+      if (project.isPageFile(file) && file.dir) {
+        return;
+      }
+      const dsl = await this.service.getFile(file.id);
       if (dsl) {
-        dsl.name = block.name;
+        dsl.name = file.name;
         await this.service.saveFile(dsl);
       }
     }
@@ -229,23 +231,46 @@ export class Engine {
 
   private async initHistory(block: BlockModel | null) {
     if (block) {
-      const dsl = await this.service.getHistory(block.id);
-      this.history.value = dsl ? new HistoryModel(dsl) : null;
+      const dsl = await this.service.getHistory(block.id).catch(() => null);
+      this.history.value = new HistoryModel(
+        Object.assign(dsl || {}, { id: block.id })
+      );
     } else {
       this.history.value = null;
     }
   }
 
-  private async saveHistory(e: HistoryModel) {
-    const dsl = e.toDsl();
+  private async saveHistory(e: HistoryModelEvent) {
+    const type = e.type;
+    const history = e.model;
+    if (type === 'create') {
+      await this.service.saveHistoryItem(history.id as string, e.data);
+    }
+    if (type === 'delete') {
+      await this.service.removeHistoryItem(
+        history.id as string,
+        e.data as string[]
+      );
+    }
+
+    if (type === 'clear') {
+      await this.service.removeHistoryItem(history.id as string, e.data);
+    }
+
+    const dsl = history.toDsl();
     await this.service.saveHistory(dsl);
     triggerRef(this.history);
   }
 
-  private async loadHistory(e: HistoryItem) {
-    const block = new BlockModel(e.dsl);
-    await this.updateCurrent(block);
-    triggerRef(this.history);
+  private async loadHistory(e: HistoryModelEvent) {
+    const history = e.model;
+    const data = e.data as HistoryItem;
+    const item = await this.service.getHistoryItem(history.id, data.id);
+    if (item && item.dsl) {
+      const block = new BlockModel(item.dsl);
+      await this.updateCurrent(block);
+      triggerRef(this.history);
+    }
   }
 
   ready(callback: () => void) {

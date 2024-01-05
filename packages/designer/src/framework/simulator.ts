@@ -1,11 +1,12 @@
 import { type Ref, type ShallowRef, shallowRef, watchEffect, watch } from 'vue';
-import { logger, type Dependencie } from '@vtj/core';
+import { type Dependencie } from '@vtj/core';
 import {
   parseDeps,
   createAssetsCss,
   createAssetScripts,
   createApis,
-  getRawComponent
+  getRawComponent,
+  logger
 } from '@vtj/renderer';
 import { Renderer } from './renderer';
 import { Designer } from './designer';
@@ -94,6 +95,7 @@ export class Simulator {
               margin: 0;
               min-height: 100vh;
               width: 100%;
+              background: #fff;
             }
          </style>
          ${createAssetsCss(css)}

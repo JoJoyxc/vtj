@@ -6,17 +6,17 @@ const materials = {
   ui: {
     entry: 'src/ui/index.ts',
     library: 'VtjUIMaterial',
-    outDir: 'dist/materials/ui'
+    outDir: 'dist/assets/ui'
   },
   element: {
     entry: 'src/element/index.ts',
     library: 'ElementPlusMaterial',
-    outDir: 'dist/materials/element'
+    outDir: 'dist/assets/element'
   },
   antdv: {
     entry: 'src/antdv/index.ts',
     library: 'AntdvMaterial',
-    outDir: 'dist/materials/antdv'
+    outDir: 'dist/assets/antdv'
   }
 };
 

@@ -3,6 +3,7 @@ import {
   type ProjectSchema,
   type BlockSchema,
   type HistorySchema,
+  type HistoryItem,
   ProjectModel,
   HistoryModel
 } from '@vtj/core';
@@ -11,6 +12,7 @@ export class MemoryService implements Service {
   private projects: Record<string, ProjectSchema> = {};
   private files: Record<string, BlockSchema> = {};
   private histories: Record<string, HistorySchema> = {};
+  private historyItems: Record<string, HistoryItem> = {};
 
   public init(project: ProjectSchema): Promise<ProjectSchema> {
     const model = new ProjectModel(project);
@@ -41,7 +43,13 @@ export class MemoryService implements Service {
     return Promise.resolve(true);
   }
   public removeHistory(id: string): Promise<boolean> {
-    delete this.histories[id];
+    const history = this.histories[id] as HistorySchema;
+    if (history) {
+      const items = history.items || [];
+      const ids = items.map((item) => item.id);
+      this.removeHistoryItem(id, ids);
+      delete this.historyItems[id];
+    }
     return Promise.resolve(true);
   }
 
@@ -49,5 +57,23 @@ export class MemoryService implements Service {
     const dsl = this.histories[id];
     const history = new HistoryModel(dsl || { id });
     return Promise.resolve(history);
+  }
+
+  public getHistoryItem(fId: string, id: string): Promise<HistoryItem> {
+    const key = `${fId}_${id}`;
+    const item = this.historyItems[key] || {};
+    return Promise.resolve(item);
+  }
+  public saveHistoryItem(fId: string, item: HistoryItem): Promise<boolean> {
+    const key = `${fId}_${item.id}`;
+    this.historyItems[key] = item;
+    return Promise.resolve(true);
+  }
+  public removeHistoryItem(fId: string, ids: string[]): Promise<boolean> {
+    ids.forEach((id) => {
+      const key = `${fId}_${id}`;
+      delete this.historyItems[key];
+    });
+    return Promise.resolve(true);
   }
 }
