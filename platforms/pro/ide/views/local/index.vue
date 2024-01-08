@@ -11,7 +11,7 @@
     RemoteService,
     type PageFile,
     type BlockFile
-  } from '@/lcdp';
+  } from '../../../src';
 
   const container = ref();
   const router = useRouter();

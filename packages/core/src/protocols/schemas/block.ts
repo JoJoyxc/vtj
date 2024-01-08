@@ -87,6 +87,11 @@ export interface BlockSchema {
    * 标记
    */
   __VTJ_BLOCK__?: boolean;
+
+  /**
+   * 版本
+   */
+  __VERSION__?: string;
 }
 
 /**

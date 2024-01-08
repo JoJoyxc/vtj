@@ -467,6 +467,7 @@ export const request: IStaticRequest = createRequest({
   }
 });
 
+
 export function createApi<R = any, D = any>(config: string | IRequestConfig) {
   const _conifg: IRequestConfig =
     typeof config === 'string' ? { url: config } : config;

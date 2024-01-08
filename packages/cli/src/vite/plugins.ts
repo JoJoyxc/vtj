@@ -8,7 +8,10 @@ import dts from 'vite-plugin-dts';
 import { visualizer } from 'rollup-plugin-visualizer';
 import ElementPlus from 'unplugin-element-plus/vite';
 import { removeSync, toArray } from '@vtj/node';
-import { babelPlugin, versionPlugin, staticServer } from '../plugins';
+import { copyPlugin, type CopyPluginOption } from '../plugins/copy';
+import { babelPlugin } from '../plugins/babel';
+import { versionPlugin } from '../plugins/version';
+import { staticPlugin } from '../plugins/static';
 
 const createBabelPlugin = (targets: string[]) => {
   return babelPlugin({
@@ -81,7 +84,15 @@ export const mergePlugins = (opts: CreateViteConfigOptions) => {
   }
 
   if (opts.staticDirs) {
-    plugins.push(staticServer(opts.staticDirs));
+    plugins.push(staticPlugin(opts.staticDirs));
+    if (opts.copyStatic) {
+      const copyOptions: CopyPluginOption[] = opts.staticDirs.map((n) => {
+        return typeof n === 'string'
+          ? { from: n, to: '/' }
+          : { from: n.dir, to: n.path };
+      });
+      plugins.push(copyPlugin(copyOptions));
+    }
   }
 
   if (opts.plugins) {

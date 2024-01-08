@@ -1,4 +1,4 @@
-import { uid } from '@vtj/base';
+import { uid, timestamp } from '@vtj/base';
 import { emitter, cloneDsl } from '../tools';
 import type {
   BlockSchema,
@@ -95,6 +95,7 @@ export class BlockModel {
     return {
       ...attrs,
       __VTJ_BLOCK__,
+      __VERSION__: timestamp().toString(),
       id,
       nodes: nodes.map((n) => n.toDsl())
     } as BlockSchema;

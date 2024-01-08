@@ -1,5 +1,7 @@
+import type { Plugin } from 'vue';
+import { isFunction, isString } from '@vtj/utils';
 export function toString(value: any) {
-  return typeof value === 'string' ? value : JSON.stringify(value);
+  return isString(value) ? value : JSON.stringify(value);
 }
 
 export function adoptedStyleSheets(global: Window, id: string, css: string) {
@@ -37,4 +39,8 @@ export async function loadCss(id: string, url: string) {
   if (css) {
     adoptedStyleSheets(window, id, css);
   }
+}
+
+export function isVuePlugin(value: unknown): value is Plugin {
+  return isFunction(value) || isFunction((value as any)?.install);
 }

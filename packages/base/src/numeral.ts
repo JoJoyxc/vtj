@@ -1,6 +1,12 @@
 import numeral from 'numeral';
 
-export function numberFormat(value: number, format: string) {
+/**
+ * 数字格式化，默认2位小数
+ * @param value
+ * @param format
+ * @returns
+ */
+export function numberFormat(value: number, format: string = '0.00') {
   return numeral(value).format(format);
 }
 

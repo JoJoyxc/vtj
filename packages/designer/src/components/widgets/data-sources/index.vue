@@ -10,6 +10,7 @@
         :actions="['edit', 'remove']"
         @action="onAction"
         @click="onEdit(item)"></Item>
+      <ElEmpty v-if="!apiDataSources.length" :image-size="50"></ElEmpty>
     </Panel>
     <DialogForm
       v-if="visible"
@@ -21,6 +22,7 @@
 </template>
 <script lang="ts" setup>
   import { ref, computed } from 'vue';
+  import { ElEmpty } from 'element-plus';
   import { XContainer } from '@vtj/ui';
   import DialogForm from './form.vue';
   import { Panel, Item } from '../../shared';

@@ -3,7 +3,7 @@
     class="v-history-widget"
     title="历史记录"
     :subtitle="subtitle"
-    remove
+    :remove="!!total"
     @remove="onRemove">
     <ElEmpty v-if="total === 0" :image-size="50"></ElEmpty>
     <template v-if="history">

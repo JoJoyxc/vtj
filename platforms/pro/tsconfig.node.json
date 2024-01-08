@@ -11,6 +11,6 @@
     "proxy.config.ts",
     "env.config.ts",
     "build.config.ts",
-    "lcdp/**/*.ts",
+    "src/vite/*.ts"
   ]
 }

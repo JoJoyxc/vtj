@@ -4,12 +4,15 @@
   "description": "VTJ 一款基于 Vue3 + Typescript 的低代码开发工具，内置了设计器引擎、渲染器和代码生成器。",
   "type": "module",
   "devDependencies": {
-    "pnpm": "~8.13.0",
+    "pnpm": "~8.14.0",
     "lerna": "~8.0.0",
     "axios": "~1.6.4",
     "fs-extra": "~11.2.0",
-    "jsdom": "~23.0.1",
-    "typedoc": "~0.25.6"
+    "jsdom": "~23.1.0",
+    "typedoc": "~0.25.6",
+    "typescript": "~5.3.3",
+    "ts-node": "~10.9.2",
+    "nodemon": "~3.0.2"
   },
   "scripts": {
     "setup": "pnpm install --unsafe-perm --registry=https://registry.npmmirror.com",

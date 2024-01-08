@@ -8,8 +8,8 @@
       ]
     }
   },
-  "include": [
-    "src"
+  "exclude": [
+    "src/vite/*.ts"
   ],
   "references": [
     {

@@ -18,6 +18,7 @@ import Css from './css/index.vue';
 import Directives from './directives/index.vue';
 import Defined from './defined/index.vue';
 import DataSources from './data-sources/index.vue';
+import Style from './style/index.vue';
 
 export const widgets = {
   Logo,
@@ -39,5 +40,6 @@ export const widgets = {
   Css,
   Directives,
   Defined,
-  DataSources
+  DataSources,
+  Style
 };

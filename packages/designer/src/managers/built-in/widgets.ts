@@ -180,7 +180,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'Style',
     region: 'Settings',
-    component: widgets.EmptyWidget,
+    component: widgets.Style,
     type: 'tab',
     group: WidgetGroup.Node,
     label: '样式'

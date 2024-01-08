@@ -6,10 +6,10 @@ import {
   type Service,
   type Material
 } from '@vtj/core';
-import { type Request, type Jsonp, jsonp, loadScript } from '@vtj/utils';
+import { type IStaticRequest, type Jsonp, jsonp, loadScript } from '@vtj/utils';
 import { request } from './defaults';
 import { createApis } from './apis';
-import { logger } from '../utils';
+import { logger, isVuePlugin } from '../utils';
 
 import {
   parseDeps,
@@ -33,7 +33,7 @@ export interface ProviderOptions {
 }
 
 export interface ProvideAdapter {
-  request: Request;
+  request: IStaticRequest;
   jsonp: Jsonp;
 }
 
@@ -135,10 +135,7 @@ export class Provider {
   install(app: App) {
     const installed = app.config.globalProperties.installed || {};
     for (const [name, library] of Object.entries(this.library)) {
-      if (
-        !installed[name] &&
-        (typeof library.install === 'function' || typeof library === 'function')
-      ) {
+      if (!installed[name] && isVuePlugin(library)) {
         app.use(library);
         installed[name] = true;
       }

@@ -4,7 +4,7 @@
 <script lang="ts" setup>
   import { ref, getCurrentInstance } from 'vue';
   import { useRoute } from 'vue-router';
-  import { createProvider, RemoteService } from '@/lcdp';
+  import { createProvider, RemoteService } from '../../../src';
   const service = new RemoteService();
 
   const { provider, onReady } = createProvider({

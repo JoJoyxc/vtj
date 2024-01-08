@@ -5,6 +5,8 @@ import type {
   PluginOption
 } from 'vite';
 
+import { type StaticPluginOption } from '../plugins/static';
+
 /**
  * 代理配置
  */
@@ -205,7 +207,12 @@ export interface CreateViteConfigOptions {
   /**
    * 静态服务目录
    */
-  staticDirs?: string[];
+  staticDirs?: Array<string | StaticPluginOption>;
+
+  /**
+   * 打包复制静态目录
+   */
+  copyStatic?: boolean;
 
   /**
    * 多页面模式

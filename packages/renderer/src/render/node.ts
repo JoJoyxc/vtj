@@ -47,7 +47,7 @@ export function nodeRender(
 
       // 组件加载器,默认返回 dsl.name
       const name = loader(dsl.name, dsl.from, Vue);
-      return typeof name === 'string' ? $components[name] ?? name : name;
+      return isString(name) ? $components[name] ?? name : name;
     })();
 
     const props = parseNodeProps(id, dsl.props ?? {}, context);
@@ -179,7 +179,7 @@ function renderSlot(
   } else {
     if (!children) return null;
 
-    if (typeof children === 'string') {
+    if (isString(children)) {
       return Vue.createTextVNode(children);
     }
 
@@ -303,9 +303,7 @@ function createSlotsConfig(nodes: NodeSchema[]) {
 }
 
 function parseSlot(slot: string | NodeSlot = 'default') {
-  return typeof slot === 'string'
-    ? { name: slot, params: [] }
-    : { params: [], ...slot };
+  return isString(slot) ? { name: slot, params: [] } : { params: [], ...slot };
 }
 
 function vForRender(

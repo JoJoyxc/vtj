@@ -1,9 +1,9 @@
-import { Request } from '@vtj/utils';
+import { createRequest } from '@vtj/utils';
 import { ElLoading, ElNotification } from 'element-plus';
 
 let loading: any = null;
 
-export const request = new Request({
+export const request = createRequest({
   settings: {
     type: 'form',
     validSuccess: true,

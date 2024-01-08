@@ -2,7 +2,7 @@ import { createViteConfig } from '@vtj/cli';
 import { resolve, join } from 'path';
 import * as EnvConfig from './env.config';
 import proxy from './proxy.config';
-import { VtjPlugin } from './src/lcdp/vite';
+import { createVtjPlugin } from './src/vite';
 const ENV_TYPE = process.env.ENV_TYPE || 'local';
 const packagesPath = resolve('../../packages');
 
@@ -34,7 +34,7 @@ export default createViteConfig({
   alias,
   elementPlus: false,
   babel: false,
-  emptyOutDir: false,
+  emptyOutDir: true,
   dts: false,
   optimizeDeps: [
     'monaco-editor',
@@ -44,5 +44,10 @@ export default createViteConfig({
     'monaco-editor/esm/vs/language/html/html.worker',
     'monaco-editor/esm/vs/language/typescript/ts.worker'
   ],
-  plugins: [VtjPlugin()]
+  plugins: [
+    createVtjPlugin({
+      link: './link.js',
+      copy: true
+    })
+  ]
 });

@@ -9,6 +9,7 @@ import {
   type BlockWatch,
   type NodeSchema
 } from '@vtj/core';
+import { isString } from '@vtj/utils';
 import { ContextMode, DATA_TYPES } from '../constants';
 import { Context } from './context';
 import { adoptedStyleSheets, isJSExpression, isJSFunction } from '../utils';
@@ -120,7 +121,7 @@ function createProps(props: Array<string | BlockProp> = [], context: Context) {
 
   return props
     .map((n) => {
-      return typeof n === 'string'
+      return isString(n)
         ? {
             name: n
           }

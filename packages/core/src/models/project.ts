@@ -1,4 +1,4 @@
-import { uid, merge, upperFirstCamelCase } from '@vtj/base';
+import { uid, timestamp, merge, upperFirstCamelCase } from '@vtj/base';
 import type {
   ProjectSchema,
   Dependencie,
@@ -96,6 +96,7 @@ export class ProjectModel {
     }, {} as Record<string, any>);
     return {
       __VTJ_PROJECT__: true,
+      __VERSION__: timestamp().toString(),
       id,
       ...attrs
     } as ProjectSchema;

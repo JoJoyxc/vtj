@@ -54,16 +54,13 @@ export function toArray<T = any>(maybeArray?: T | T[]): T[] {
  * @returns
  */
 export function zipObject(obj: Record<string, any>) {
-  return Object.keys(obj).reduce(
-    (prev, current) => {
-      const value = obj[current];
-      if (value !== undefined && value !== null) {
-        prev[current] = value;
-      }
-      return prev;
-    },
-    {} as Record<string, any>
-  );
+  return Object.keys(obj).reduce((prev, current) => {
+    const value = obj[current];
+    if (value !== undefined && value !== null) {
+      prev[current] = value;
+    }
+    return prev;
+  }, {} as Record<string, any>);
 }
 
 /**

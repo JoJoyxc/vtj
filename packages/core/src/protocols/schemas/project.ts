@@ -50,4 +50,9 @@ export interface ProjectSchema {
    * 标记
    */
   __VTJ_PROJECT__?: boolean;
+
+  /**
+   * 版本
+   */
+  __VERSION__?: string;
 }

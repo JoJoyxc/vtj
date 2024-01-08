@@ -2,7 +2,8 @@ import {
   ProjectModel,
   type ProjectSchema,
   type BlockSchema,
-  type HistorySchema
+  type HistorySchema,
+  type HistoryItem
 } from '@vtj/core';
 
 import { resolve } from 'path';
@@ -42,7 +43,7 @@ export async function notMatch(_req: ApiRequest) {
   return fail('找不到处理程序');
 }
 
-export async function init(_req: ApiRequest) {
+export async function init() {
   const pkg = readJsonSync(resolve(root, 'package.json'));
   // 从项目的 package.json 中读取项目信息
   const { name, description } = pkg || {};
@@ -67,8 +68,7 @@ export async function init(_req: ApiRequest) {
   return success(dsl);
 }
 
-export async function saveProject(req: ApiRequest) {
-  const project = req.data as ProjectSchema;
+export async function saveProject(project: ProjectSchema) {
   const filePath = getProjectFilePath(project.id as string);
   if (pathExistsSync(filePath)) {
     writeJsonSync(filePath, project);
@@ -78,8 +78,7 @@ export async function saveProject(req: ApiRequest) {
   }
 }
 
-export async function saveFile(req: ApiRequest) {
-  const file = req.data as BlockSchema;
+export async function saveFile(file: BlockSchema) {
   const filePath = getFilePath(file.id as string);
   if (!pathExistsSync(filePath)) {
     ensureFileSync(filePath);
@@ -88,8 +87,7 @@ export async function saveFile(req: ApiRequest) {
   return success(true);
 }
 
-export async function getFile(req: ApiRequest) {
-  const id = req.data as string;
+export async function getFile(id: string) {
   const filePath = getFilePath(id);
   if (pathExistsSync(filePath)) {
     const json = readJsonSync(filePath);
@@ -99,8 +97,7 @@ export async function getFile(req: ApiRequest) {
   }
 }
 
-export async function removeFile(req: ApiRequest) {
-  const id = req.data as string;
+export async function removeFile(id: string) {
   const filePath = getFilePath(id);
   if (pathExistsSync(filePath)) {
     removeSync(filePath);
@@ -110,8 +107,7 @@ export async function removeFile(req: ApiRequest) {
   }
 }
 
-export async function getHistory(req: ApiRequest) {
-  const id = req.data as string;
+export async function getHistory(id: string) {
   const filePath = getHistoryFilePath(id);
   if (pathExistsSync(filePath)) {
     const json = readJsonSync(filePath);
@@ -121,8 +117,7 @@ export async function getHistory(req: ApiRequest) {
   }
 }
 
-export async function saveHistory(req: ApiRequest) {
-  const file = req.data as HistorySchema;
+export async function saveHistory(file: HistorySchema) {
   const filePath = getHistoryFilePath(file.id as string);
   if (!pathExistsSync(filePath)) {
     ensureFileSync(filePath);
@@ -131,8 +126,7 @@ export async function saveHistory(req: ApiRequest) {
   return success(true);
 }
 
-export async function removeHistory(req: ApiRequest) {
-  const id = req.data as string;
+export async function removeHistory(id: string) {
   const filePath = getHistoryFilePath(id);
   const dir = getHistoryItemDir(id);
   if (pathExistsSync(filePath)) {
@@ -144,8 +138,7 @@ export async function removeHistory(req: ApiRequest) {
   }
 }
 
-export async function getHistoryItem(req: ApiRequest) {
-  const { fId, id } = req.data || {};
+export async function getHistoryItem(fId: string, id: string) {
   const filePath = getHistoryItemFilePath(fId, id);
   if (pathExistsSync(filePath)) {
     const json = readJsonSync(filePath);
@@ -155,8 +148,7 @@ export async function getHistoryItem(req: ApiRequest) {
   }
 }
 
-export async function saveHistoryItem(req: ApiRequest) {
-  const { fId, item } = req.data || {};
+export async function saveHistoryItem(fId: string, item: HistoryItem) {
   const filePath = getHistoryItemFilePath(fId, item.id);
   if (!pathExistsSync(filePath)) {
     ensureFileSync(filePath);
@@ -165,8 +157,7 @@ export async function saveHistoryItem(req: ApiRequest) {
   return success(true);
 }
 
-export async function removeHistoryItem(req: ApiRequest) {
-  const { fId, ids = [] } = req.data || {};
+export async function removeHistoryItem(fId: string, ids: string[]) {
   ids.forEach((id: string) => {
     const filePath = getHistoryItemFilePath(fId, id);
     removeSync(filePath);
