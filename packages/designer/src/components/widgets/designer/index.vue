@@ -35,8 +35,8 @@
   import { useElementSize } from '@vueuse/core';
   import type { NodeModel } from '@vtj/core';
   import { ElEmpty } from 'element-plus';
-  import Viewport from './viewport.vue';
   import Actions from './actions.vue';
+  import { Viewport } from '../../shared';
   import { useDeps, useDesigner, useCurrent } from '../../hooks';
 
   const container = ref();

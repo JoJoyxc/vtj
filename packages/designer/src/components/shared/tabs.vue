@@ -9,7 +9,7 @@
           v-model="currentTab"
           @tab-remove="handelTabRemove"
           :stretch="props.stretch"></XTabs>
-        <div v-if="props.menus" class="v-tabs__actions">
+        <div v-if="props.menus && props.menus.length" class="v-tabs__actions">
           <XAction
             mode="icon"
             size="small"

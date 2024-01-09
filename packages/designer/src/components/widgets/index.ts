@@ -19,6 +19,7 @@ import Directives from './directives/index.vue';
 import Defined from './defined/index.vue';
 import DataSources from './data-sources/index.vue';
 import Style from './style/index.vue';
+import Previewer from './previewer/index.vue';
 
 export const widgets = {
   Logo,
@@ -41,5 +42,6 @@ export const widgets = {
   Directives,
   Defined,
   DataSources,
-  Style
+  Style,
+  Previewer
 };

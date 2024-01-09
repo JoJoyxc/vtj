@@ -46,7 +46,7 @@ export default createViteConfig({
   ],
   plugins: [
     createVtjPlugin({
-      link: './link.js',
+      link: false,
       copy: true
     })
   ]

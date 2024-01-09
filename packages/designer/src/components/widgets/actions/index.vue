@@ -6,9 +6,18 @@
 
     <ElDivider direction="vertical"></ElDivider>
 
+    <ElButton
+      @click="onPreview"
+      :type="isPreview ? 'warning' : 'default'"
+      size="small"
+      title="预览">
+      <VtjIconPreview></VtjIconPreview>
+    </ElButton>
+
     <ElButton @click="refresh" type="default" size="small" title="刷新">
       <VtjIconRefresh></VtjIconRefresh>
     </ElButton>
+
     <ElButton
       type="default"
       size="small"
@@ -16,48 +25,20 @@
       @click="openCodeSetting">
       <VtjIconSetting></VtjIconSetting>
     </ElButton>
-
-    <ElButton
-      v-if="false"
-      type="default"
-      size="small"
-      title="页面大纲树"
-      @click="openOutline">
-      <VtjIconOutline></VtjIconOutline>
-    </ElButton>
     <ElDivider direction="vertical"></ElDivider>
-    <ElDropdown
-      split-button
-      type="primary"
-      size="small"
-      @click="preview('current')"
-      @command="preview">
-      <span>预览</span>
+    <ElDropdown split-button type="primary" size="small">
+      <span>发布</span>
       <template #dropdown>
         <ElDropdownMenu>
-          <ElDropdownItem command="current">当前文件</ElDropdownItem>
-          <ElDropdownItem command="home">主页</ElDropdownItem>
-        </ElDropdownMenu>
-      </template>
-    </ElDropdown>
-    <ElDropdown
-      v-if="props.coder"
-      split-button
-      type="success"
-      size="small"
-      @click="onCoder">
-      <span>出码</span>
-      <template #dropdown>
-        <ElDropdownMenu>
-          <ElDropdownItem command="current">当前文件</ElDropdownItem>
-          <ElDropdownItem command="all">全部</ElDropdownItem>
+          <ElDropdownItem command="current">发布页面</ElDropdownItem>
+          <ElDropdownItem command="home">整站发布</ElDropdownItem>
         </ElDropdownMenu>
       </template>
     </ElDropdown>
   </div>
 </template>
 <script lang="ts" setup>
-  // import { ref } from 'vue';
+  import { ref } from 'vue';
   import {
     ElButton,
     ElMessage,
@@ -69,32 +50,37 @@
   } from 'element-plus';
   import {
     VtjIconSetting,
-    VtjIconOutline,
     VtjIconRefresh,
-    VtjIconBug
+    VtjIconBug,
+    VtjIconPreview
   } from '@vtj/icons';
   import { XAction } from '@vtj/ui';
+  import { delay } from '@vtj/utils';
   import { useSelected } from '../../hooks';
 
   export interface Props {
     coder?: boolean;
   }
 
-  const props = withDefaults(defineProps<Props>(), {
+  withDefaults(defineProps<Props>(), {
     coder: true,
     copy: true
   });
 
-  const emits = defineEmits(['preview', 'coder']);
-
   const { engine, designer } = useSelected();
+  const isPreview = ref(false);
 
   // const loading = ref(false);
 
   const refresh = () => {
     if (engine.current.value) {
-      designer.value?.setSelected(null);
-      engine.simulator.refresh();
+      if (isPreview.value) {
+        const widget = engine.skeleton?.getWidget('Previewer');
+        widget?.widgetRef.refresh();
+      } else {
+        designer.value?.setSelected(null);
+        engine.simulator.refresh();
+      }
       ElMessage.success({
         message: '刷新完成'
       });
@@ -105,32 +91,13 @@
     }
   };
 
-  const preview = (type: 'current' | 'home') => {
-    const project = engine.project.value;
-    if (!project) return;
-    if (type === 'current') {
-      if (engine.current.value) {
-        emits('preview', type, project.currentFile);
-      } else {
-        ElMessage.warning({
-          message: '请先打开文件'
-        });
-      }
-    }
-    if (type === 'home') {
-      const home = project.homepage ? project.getPage(project.homepage) : null;
-      if (home) {
-        emits('preview', type, home);
-      } else {
-        ElMessage.warning({
-          message: '请先设置主页'
-        });
-      }
-    }
-  };
-
-  const openCodeSetting = () => {
+  const openCodeSetting = async () => {
     if (engine.current.value) {
+      if (isPreview.value) {
+        engine.skeleton?.closePreview();
+        isPreview.value = false;
+        await delay(1000);
+      }
       designer.value?.setSelected(engine.current.value);
     } else {
       ElMessage.warning({
@@ -139,17 +106,23 @@
     }
   };
 
-  const openOutline = () => {
+  const onPreview = () => {
+    const project = engine.project.value;
+    if (!project) return;
     if (engine.current.value) {
-      engine.skeleton?.getRegion('Apps').regionRef.setActive('Outline');
+      if (isPreview.value) {
+        engine.skeleton?.closePreview();
+        isPreview.value = false;
+        return;
+      }
+      engine.skeleton?.openPreview('');
+      isPreview.value = true;
     } else {
       ElMessage.warning({
         message: '请先打开文件'
       });
     }
   };
-
-  const onCoder = () => {};
 
   defineOptions({
     name: 'ActionsWidget',

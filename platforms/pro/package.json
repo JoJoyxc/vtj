@@ -23,7 +23,7 @@
   "devDependencies": {
     "@vtj/cli": "workspace:^",
     "unbuild": "~2.0.0",
-    "vue": "~3.4.4",
+    "vue": "~3.4.6",
     "vue-router": "~4.2.5"
   },
   "exports": {

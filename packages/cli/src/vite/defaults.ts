@@ -11,5 +11,6 @@ export const defaults: CreateViteConfigOptions = {
   polyfills: true,
   entry: 'src/index.ts',
   libFileName: 'index',
-  formats: ['es', 'cjs', 'umd', 'iife']
+  formats: ['es', 'cjs', 'umd', 'iife'],
+  loading: true
 };

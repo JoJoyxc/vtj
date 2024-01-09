@@ -100,12 +100,14 @@ export function createVtjPlugin(options: Partial<VtjPluginOptions> = {}) {
     if (pathExistsSync(materialsPath1)) {
       copyOptions.push({
         from: materialsPath1,
-        to: '@vtj/materials'
+        to: '@vtj/materials',
+        emptyDir: true
       });
     } else if (pathExistsSync(materialsPath2)) {
       copyOptions.push({
         from: materialsPath2,
-        to: '@vtj/materials'
+        to: '@vtj/materials',
+        emptyDir: true
       });
     } else {
       console.warn(

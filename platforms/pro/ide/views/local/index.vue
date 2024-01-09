@@ -3,37 +3,24 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { useRouter } from 'vue-router';
-
-  import {
-    Engine,
-    widgetManager,
-    RemoteService,
-    type PageFile,
-    type BlockFile
-  } from '../../../src';
+  import { Engine, widgetManager, RemoteService } from '../../../src';
 
   const container = ref();
-  const router = useRouter();
 
   widgetManager.set('Switcher', {
     props: {
-      onClick: (project: any) => {
-        console.log('Switcher clicked', project);
+      onClick: (_project: any) => {
+        const pathname = location.pathname;
+        location.href = pathname === '@vtj/pro/' ? '/' : pathname;
       }
     }
   });
 
-  widgetManager.set('Actions', {
+  widgetManager.set('Previewer', {
     props: {
-      onPreview: (type: 'current' | 'home', file: PageFile | BlockFile) => {
-        console.log('Actions preview', type, file);
-        router.push({
-          name: 'localPreview',
-          params: {
-            id: file.id
-          }
-        });
+      path: (block: any) => {
+        const pathname = location.pathname;
+        return `${pathname}#/local/preview/${block.id}`;
       }
     }
   });

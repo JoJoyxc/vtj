@@ -1,6 +1,7 @@
 <template>
   <Tabs
     class="v-workspace-region"
+    :key="tabKey"
     :items="tabs"
     :menus="menus"
     v-model="currentTab"
@@ -19,16 +20,19 @@
   </Tabs>
 </template>
 <script lang="ts" setup>
-  import { computed, reactive, ref } from 'vue';
+  import { computed, reactive, ref, watchEffect } from 'vue';
   import { Tabs } from '../shared';
   import { RegionType, type TabWidget } from '../../framework';
   import { WidgetWrapper } from '../../wrappers';
   import { useRegion } from '../hooks';
   export interface Props {
     region: RegionType;
+    preview?: boolean;
   }
 
   const props = defineProps<Props>();
+
+  const tabKey = ref(Symbol('tabKey'));
 
   const { widgets, widgetsRef } = useRegion(props.region);
 
@@ -45,11 +49,15 @@
   );
 
   const tabs = computed(() => {
-    return items.filter((n) => !n.closable || n.checked);
+    return !props.preview
+      ? items.filter(
+          (n) => (!n.closable || n.checked) && n.name !== 'Previewer'
+        )
+      : items.filter((n) => n.name === 'Previewer');
   });
 
   const menus = computed(() => {
-    return items.filter((n) => n.closable);
+    return !props.preview ? items.filter((n) => n.closable) : [];
   });
 
   const currentTab = ref(tabs.value[0]?.name);
@@ -75,6 +83,11 @@
       }
     }
   };
+
+  watchEffect(() => {
+    currentTab.value = tabs.value[0]?.name;
+    tabKey.value = Symbol('tabKey');
+  });
 
   defineOptions({
     name: 'WorkspaceRegion'

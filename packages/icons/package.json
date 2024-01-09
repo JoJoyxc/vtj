@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@vtj/cli": "workspace:^",
-    "vue": "~3.4.4",
+    "vue": "~3.4.6",
     "xml2js": "~0.6.2"
   },
   "exports": {

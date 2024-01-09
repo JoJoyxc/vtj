@@ -122,6 +122,14 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
     label: '设计视图'
   },
   {
+    name: 'Previewer',
+    region: 'Workspace',
+    component: widgets.Previewer,
+    type: 'tab',
+    closable: false,
+    label: '预览视图'
+  },
+  {
     name: 'Schema',
     region: 'Workspace',
     component: widgets.EmptyWidget,

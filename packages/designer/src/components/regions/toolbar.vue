@@ -4,7 +4,8 @@
       v-for="widget in widgets"
       ref="widgetsRef"
       :region="region"
-      :widget="widget"></WidgetWrapper>
+      :widget="widget"
+      :preview="preview"></WidgetWrapper>
   </div>
 </template>
 <script lang="ts" setup>
@@ -14,6 +15,7 @@
 
   export interface Props {
     region: RegionType;
+    preview?: boolean;
   }
 
   const props = defineProps<Props>();

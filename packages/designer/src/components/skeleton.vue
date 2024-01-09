@@ -3,11 +3,15 @@
     <el-container class="v-skeleton">
       <el-header class="v-skeleton__header" :height="headerHeight">
         <RegionWrapper ref="brand" region="Brand"></RegionWrapper>
-        <RegionWrapper ref="toolbar" region="Toolbar"></RegionWrapper>
+        <RegionWrapper
+          ref="toolbar"
+          region="Toolbar"
+          :preview="preview"></RegionWrapper>
         <RegionWrapper ref="actions" region="Actions"></RegionWrapper>
       </el-header>
       <el-container class="v-skeleton__wrapper">
         <el-aside
+          v-if="!preview"
           v-resizable="leftResizable"
           :width="props.leftWidth"
           class="v-skeleton__left"
@@ -17,9 +21,13 @@
           <RegionWrapper ref="apps" region="Apps"></RegionWrapper>
         </el-aside>
         <el-main class="v-skeleton__main">
-          <RegionWrapper ref="workspace" region="Workspace"></RegionWrapper>
+          <RegionWrapper
+            ref="workspace"
+            region="Workspace"
+            :preview="preview"></RegionWrapper>
         </el-main>
         <el-aside
+          v-if="!preview"
           v-show="settable"
           v-resizable="rightResizable"
           :width="props.rightWidth"
@@ -27,7 +35,10 @@
           <RegionWrapper ref="settings" region="Settings"></RegionWrapper>
         </el-aside>
       </el-container>
-      <el-footer class="v-skeleton__footer" :height="footerHeight">
+      <el-footer
+        v-if="!preview"
+        class="v-skeleton__footer"
+        :height="footerHeight">
         <RegionWrapper ref="status" region="Status"></RegionWrapper>
       </el-footer>
     </el-container>
@@ -61,6 +72,7 @@
     footerHeight: '20px'
   });
 
+  const preview = ref(false);
   const leftWidth = ref(parseInt(props.leftWidth));
   const rightWidth = ref(parseInt(props.rightWidth));
 
@@ -113,6 +125,7 @@
     collapsed,
     settable,
     leftWidth,
-    rightWidth
+    rightWidth,
+    preview
   });
 </script>

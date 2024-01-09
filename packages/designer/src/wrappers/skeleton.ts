@@ -79,6 +79,16 @@ export const SkeletonWrapper = defineComponent({
       }
       const wrappers = this.getWidgets(widget.region);
       return wrappers.find((n) => n.widget.name === name);
+    },
+    openPreview(_id: string) {
+      if (this.skeletonRef) {
+        this.skeletonRef.preview = true;
+      }
+    },
+    closePreview() {
+      if (this.skeletonRef) {
+        this.skeletonRef.preview = false;
+      }
     }
   }
 });

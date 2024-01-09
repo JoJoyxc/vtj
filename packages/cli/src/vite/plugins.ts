@@ -12,7 +12,7 @@ import { copyPlugin, type CopyPluginOption } from '../plugins/copy';
 import { babelPlugin } from '../plugins/babel';
 import { versionPlugin } from '../plugins/version';
 import { staticPlugin } from '../plugins/static';
-
+import { loadingPlugin } from '../plugins/loading';
 const createBabelPlugin = (targets: string[]) => {
   return babelPlugin({
     apply: 'build',
@@ -93,6 +93,10 @@ export const mergePlugins = (opts: CreateViteConfigOptions) => {
       });
       plugins.push(copyPlugin(copyOptions));
     }
+  }
+
+  if (opts.loading) {
+    plugins.push(loadingPlugin());
   }
 
   if (opts.plugins) {

@@ -218,4 +218,9 @@ export interface CreateViteConfigOptions {
    * 多页面模式
    */
   pages?: Record<string, string>;
+
+  /**
+   * 生成 loading html
+   */
+  loading?: boolean;
 }

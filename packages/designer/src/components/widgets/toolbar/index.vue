@@ -26,14 +26,14 @@
         type="default"
         size="small"
         @click="backward"
-        :disabled="backwardDisabled">
+        :disabled="backwardDisabled || !!props.preview">
         <VtjIconUndo></VtjIconUndo>
       </ElButton>
       <ElButton
         type="default"
         size="small"
         @click="forward"
-        :disabled="forwardDisabled">
+        :disabled="forwardDisabled || !!props.preview">
         <VtjIconRedo></VtjIconRedo>
       </ElButton>
     </ElButtonGroup>
@@ -58,6 +58,12 @@
     VtjIconRedo
   } from '@vtj/icons';
   import { useHistory } from '../../hooks';
+
+  export interface Props {
+    preview?: boolean;
+  }
+
+  const props = defineProps<Props>();
 
   const { forward, backward, forwardDisabled, backwardDisabled } = useHistory();
   const mode = ref('pc');
