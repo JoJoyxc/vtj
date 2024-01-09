@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <XPanel border
-      >XPanel
-
-      <ElButton type="primary" :icon="VtjIconApi">Button</ElButton>
-    </XPanel>
-  </div>
+  <ElConfigProvider :locale="zhCn">
+    <Suspense>
+      <XMask :disabled="disabled"></XMask>
+    </Suspense>
+  </ElConfigProvider>
 </template>
 <script setup lang="ts">
-  import { ElButton } from 'element-plus';
-  import { XPanel, VtjIconApi } from '@vtj/web';
+  import { Suspense } from 'vue';
+  import { ElConfigProvider } from 'element-plus';
+  import { XMask } from '@vtj/web';
+  import { useMask } from '@vtj/renderer';
+  import zhCn from 'element-plus/es/locale/lang/zh-cn';
+
+  const { disabled } = useMask();
 </script>

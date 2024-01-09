@@ -1,8 +1,8 @@
 import { createViteConfig } from '@vtj/cli';
+import { createDevPlugin } from '@vtj/dev';
 import { resolve, join } from 'path';
 import * as EnvConfig from './env.config';
 import proxy from './proxy.config';
-import { createVtjPlugin } from './src/vite';
 const ENV_TYPE = process.env.ENV_TYPE || 'local';
 const packagesPath = resolve('../../packages');
 
@@ -45,7 +45,7 @@ export default createViteConfig({
     'monaco-editor/esm/vs/language/typescript/ts.worker'
   ],
   plugins: [
-    createVtjPlugin({
+    createDevPlugin({
       link: false,
       copy: true
     })

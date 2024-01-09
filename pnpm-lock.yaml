@@ -257,6 +257,28 @@ importers:
         specifier: ~4.2.5
         version: 4.2.5(vue@3.4.6)
 
+  packages/dev:
+    dependencies:
+      '@vtj/core':
+        specifier: workspace:^
+        version: link:../core
+      '@vtj/node':
+        specifier: workspace:^
+        version: link:../node
+    devDependencies:
+      '@vtj/cli':
+        specifier: workspace:^
+        version: link:../cli
+      unbuild:
+        specifier: ~2.0.0
+        version: 2.0.0(sass@1.69.7)(typescript@5.3.3)
+      vite:
+        specifier: ~5.0.9
+        version: 5.0.11(@types/node@20.10.7)(sass@1.69.7)(terser@5.26.0)
+      vitest:
+        specifier: ~1.1.0
+        version: 1.1.3(@types/node@20.10.7)(jsdom@23.2.0)(sass@1.69.7)(terser@5.26.0)
+
   packages/icons:
     dependencies:
       '@element-plus/icons-vue':
@@ -438,9 +460,9 @@ importers:
       '@vtj/cli':
         specifier: workspace:^
         version: link:../../packages/cli
-      unbuild:
-        specifier: ~2.0.0
-        version: 2.0.0(sass@1.69.7)(typescript@5.3.3)
+      '@vtj/dev':
+        specifier: workspace:^
+        version: link:../../packages/dev
       vue:
         specifier: ~3.4.6
         version: 3.4.6(typescript@5.3.3)
@@ -546,9 +568,9 @@ importers:
 
   projects/web:
     dependencies:
-      '@vtj/pro':
+      '@vtj/renderer':
         specifier: workspace:*
-        version: link:../../platforms/pro
+        version: link:../../packages/renderer
       '@vtj/web':
         specifier: workspace:*
         version: link:../../platforms/web
@@ -562,6 +584,9 @@ importers:
       '@vtj/cli':
         specifier: workspace:*
         version: link:../../packages/cli
+      '@vtj/dev':
+        specifier: workspace:*
+        version: link:../../packages/dev
 
 packages:
 
@@ -8381,7 +8406,7 @@ packages:
     hasBin: true
     dependencies:
       async: 3.2.5
-      chalk: 4.1.0
+      chalk: 4.1.2
       filelist: 1.0.4
       minimatch: 3.1.2
     dev: true

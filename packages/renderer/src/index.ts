@@ -4,3 +4,4 @@ export * from './utils';
 export * from './provider';
 export * from './render';
 export * from './services';
+export * from './hooks';

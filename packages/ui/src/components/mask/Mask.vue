@@ -1,5 +1,5 @@
 <template>
-  <XContainer class="x-mask">
+  <XContainer class="x-mask" :class="{ 'is-disabled': props.disabled }" fit>
     <template v-if="!props.disabled">
       <Sidebar :collapsed="collapsed">
         <template #brand>

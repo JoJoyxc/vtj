@@ -4,5 +4,12 @@ export default createViteConfig({
   dts: true,
   version: true,
   formats: ['es', 'cjs'],
-  external: ['vue', 'vue-router', '@vtj/base', '@vtj/core', '@vtj/utils']
+  external: [
+    'vue',
+    'vue-router',
+    '@vtj/base',
+    '@vtj/core',
+    '@vtj/utils',
+    '@vueuse/core'
+  ]
 });

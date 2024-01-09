@@ -1,4 +1,5 @@
-import { type App, type InjectionKey } from 'vue';
+import { type App, type InjectionKey, inject } from 'vue';
+import { type Router } from 'vue-router';
 import {
   type ProjectSchema,
   type PageFile,
@@ -20,14 +21,17 @@ import {
 } from '../utils';
 import { ContextMode } from '../constants';
 import { createRenderer, createLoader } from '../render';
+import { PageContainer } from './page';
 
 export const providerKey: InjectionKey<Provider> = Symbol('Provider');
 
 export interface ProviderOptions {
   service: Service;
-  project: Partial<ProjectSchema>;
+  project?: Partial<ProjectSchema>;
+  modules?: Record<string, () => Promise<any>>;
   mode?: ContextMode;
   adapter?: Partial<ProvideAdapter>;
+  router?: Router;
   dependencies?: Record<string, () => Promise<any>>;
   globals?: Record<string, any>;
 }
@@ -40,6 +44,7 @@ export interface ProvideAdapter {
 export class Provider {
   public mode: ContextMode;
   public globals: Record<string, any> = {};
+  public modules: Record<string, () => Promise<any>> = {};
   public adapter: ProvideAdapter = { request, jsonp };
   public apis: Record<string, (...args: any[]) => Promise<any>> = {};
   public dependencies: Record<string, () => Promise<any>> = {};
@@ -47,19 +52,24 @@ export class Provider {
   public service: Service;
   public project: ProjectSchema | null = null;
   public components: Record<string, any> = {};
+  private router: Router | null = null;
   private listeners: Array<() => void> = [];
   private isReady: boolean = false;
   constructor(options: ProviderOptions) {
     const {
+      service,
       mode = ContextMode.Runtime,
       dependencies,
-      project,
-      service,
+      project = {},
       adapter = {},
-      globals = {}
+      globals = {},
+      modules = {},
+      router = null
     } = options;
     this.mode = mode;
+    this.modules = modules;
     this.service = service;
+    this.router = router;
     if (dependencies) {
       this.dependencies = dependencies;
     }
@@ -74,8 +84,12 @@ export class Provider {
   }
 
   async load(project: ProjectSchema) {
-    this.project = await this.service.init(project);
-    const { dependencies: deps = [], apis } = this.project;
+    const module = this.modules['.vtj/project.json'];
+    this.project = module ? await module() : await this.service.init(project);
+    if (!this.project) {
+      throw new Error('project is null');
+    }
+    const { dependencies: deps = [], apis } = this.project as ProjectSchema;
     const { dependencies, library, components } = this;
     const {
       libraryExports,
@@ -120,8 +134,26 @@ export class Provider {
     if (apis) {
       this.apis = createApis(apis, this.adapter);
     }
-
+    this.initRouter();
     this.emits();
+  }
+
+  private initRouter() {
+    const { router, project } = this;
+    if (!router) return;
+    router.addRoute({
+      path: '/page/:id',
+      name: 'VtjPage',
+      component: PageContainer
+    });
+
+    if (project?.homepage) {
+      router.addRoute({
+        path: '/',
+        name: 'VtjHomepage',
+        redirect: project.homepage
+      });
+    }
   }
 
   private emits() {
@@ -140,7 +172,7 @@ export class Provider {
         installed[name] = true;
       }
     }
-
+    app.provide(providerKey, this);
     app.config.globalProperties.installed = installed;
   }
 
@@ -176,13 +208,22 @@ export class Provider {
     };
     return finder(id, pages) || null;
   }
+  async getDsl(id: string) {
+    const module = this.modules[`.vtj/files/${id}.json`];
+    return module ? await module() : this.service.getFile(id).catch(() => null);
+  }
   async getRenderComponent(id: string) {
     const file = this.getFile(id);
     if (!file) {
       logger.warn(`Can not find file: ${id}`);
       return null;
     }
-    const dsl = await this.service.getFile(file.id).catch(() => null);
+    const rawPath = `.vtj/vue/${id}.vue`;
+    const rawModule = this.modules[rawPath];
+    if (rawModule) {
+      return await rawModule();
+    }
+    const dsl = await this.getDsl(file.id);
     if (!dsl) {
       logger.warn(`Can not find dsl: ${id}`);
       return null;
@@ -198,7 +239,7 @@ export class Provider {
     };
     const loader = createLoader({
       getDsl: async (id: string) => {
-        return (await this.service.getFile(id)) || null;
+        return (await this.getDsl(id)) || null;
       },
       options
     });
@@ -220,4 +261,12 @@ export function createProvider(options: ProviderOptions) {
     provider,
     onReady
   };
+}
+
+export function useProvider(): Provider {
+  const provider = inject(providerKey);
+  if (!provider) {
+    throw new Error('Can not find provider');
+  }
+  return provider;
 }

@@ -19,8 +19,8 @@ import { fail, success, type ApiRequest } from './shared';
 const root = resolve('./');
 const vtjDir = resolve('.vtj');
 
-const getProjectFilePath = (name: string) => {
-  return resolve(vtjDir, `${name.replace(/\//g, '__')}.json`);
+const getProjectFilePath = (_name: string) => {
+  return resolve(vtjDir, 'project.json');
 };
 
 const getFilePath = (id: string) => {

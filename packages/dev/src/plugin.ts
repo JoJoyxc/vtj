@@ -14,7 +14,7 @@ import { pathExistsSync } from '@vtj/node';
 import bodyParser from 'body-parser';
 import { router } from './controller';
 
-export interface VtjPluginOptions {
+export interface DevPluginOptions {
   baseURL: string;
   copy: boolean;
   server: boolean;
@@ -23,7 +23,7 @@ export interface VtjPluginOptions {
 
 const setApis = (
   server: ViteDevServer | PreviewServer,
-  options: VtjPluginOptions
+  options: DevPluginOptions
 ) => {
   server.middlewares.use(
     bodyParser.json({ type: 'application/json', limit: '50000kb' })
@@ -40,7 +40,7 @@ const setApis = (
   });
 };
 
-const apiServerPlugin = function (options: VtjPluginOptions): Plugin {
+const apiServerPlugin = function (options: DevPluginOptions): Plugin {
   return {
     name: 'vtj-api-plugin',
     apply: 'serve',
@@ -55,7 +55,7 @@ const apiServerPlugin = function (options: VtjPluginOptions): Plugin {
   };
 };
 
-const linkPlugin = function (options: VtjPluginOptions): Plugin {
+const linkPlugin = function (options: DevPluginOptions): Plugin {
   let config: ResolvedConfig;
   return {
     name: 'vtj-link-plugin',
@@ -81,10 +81,10 @@ const linkPlugin = function (options: VtjPluginOptions): Plugin {
   };
 };
 
-export function createVtjPlugin(options: Partial<VtjPluginOptions> = {}) {
-  const opts: VtjPluginOptions = {
+export function createDevPlugin(options: Partial<DevPluginOptions> = {}) {
+  const opts: DevPluginOptions = {
     baseURL: '/vtj/api',
-    copy: false,
+    copy: true,
     server: true,
     link: true,
     ...options

@@ -52,22 +52,23 @@
   let timer = null;
   let isDragged = false;
   let startPosition = null;
+  const size = 50;
   const update = function (e) {
     if (dragging) {
       const x = Math.min(
         Math.max(0, e.clientX - diffX),
-        window.innerWidth - 40
+        window.innerWidth - size
       );
       const y = Math.min(
         Math.max(0, e.clientY - diffX),
-        window.innerHeight - 40
+        window.innerHeight - size
       );
 
       el.style.left = x + 'px';
       el.style.top = y + 'px';
     }
   };
-  window.addEventListener('mousedown', function (e) {
+  el.addEventListener('mousedown', function (e) {
     const rect = el.getBoundingClientRect();
     diffX = e.clientX - rect.left;
     diffY = e.clientY - rect.top;
@@ -76,6 +77,7 @@
       x: e.clientX,
       y: e.clientY
     };
+    isDragged = false;
     dragging = true;
   });
 
@@ -100,7 +102,6 @@
   });
 
   el.addEventListener('click', function (e) {
-    e.stopPropagation();
     if (!isDragged) {
       const path = window.location.pathname + '@vtj/pro/';
       window.open(path, '_blank');

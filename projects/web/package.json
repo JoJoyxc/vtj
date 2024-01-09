@@ -17,11 +17,12 @@
   },
   "dependencies": {
     "@vtj/web": "workspace:*",
-    "@vtj/pro": "workspace:*",
+    "@vtj/renderer": "workspace:*",
     "vue": "^3.4.6",
     "vue-router": "~4.2.5"
   },
   "devDependencies": {
-    "@vtj/cli": "workspace:*"
+    "@vtj/cli": "workspace:*",
+    "@vtj/dev": "workspace:*"
   }
 }

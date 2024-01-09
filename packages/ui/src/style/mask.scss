@@ -27,6 +27,12 @@
     overflow: auto;
     padding: 10px;
   }
+
+  @include when(disabled) {
+    @include e(content) {
+      height: 100%;
+    }
+  }
 }
 
 @include b(mask-brand) {

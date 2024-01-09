@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "cross-env ENV_TYPE=local vite",
-    "build": "unbuild && vue-tsc && cross-env ENV_TYPE=live vite build",
-    "unbuild": "unbuild",
+    "build": "vue-tsc && cross-env ENV_TYPE=live vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -22,29 +21,23 @@
   },
   "devDependencies": {
     "@vtj/cli": "workspace:^",
-    "unbuild": "~2.0.0",
+    "@vtj/dev": "workspace:^",
     "vue": "~3.4.6",
     "vue-router": "~4.2.5"
   },
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
-      "import": "./lib/index.mjs",
-      "require": "./lib/index.mjs"
-    },
-    "./vite": {
-      "types": "./lib/vite/index.d.ts",
-      "import": "./lib/vite/index.mjs",
-      "require": "./lib/vite/index.mjs"
-    },
-    "./*": "./*"
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    }
   },
-  "main": "./lib/index.mjs",
-  "module": "./lib/index.mjs",
-  "types": "./lib/index.d.ts",
+  "main": "./src/index.ts",
+  "module": "./src/index.ts",
+  "types": "./src/index.ts",
   "files": [
-    "lib",
-    "dist"
+    "dist",
+    "src"
   ],
   "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b",
   "publishConfig": {
