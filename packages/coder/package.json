@@ -1,38 +1,35 @@
 {
-  "name": "@vtj/dev",
+  "name": "@vtj/coder",
   "private": false,
   "version": "0.7.0",
   "type": "module",
   "scripts": {
-    "build": "unbuild",
+    "build": "vue-tsc && vite build",
     "test": "vitest run",
     "vitest": "vitest",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@vtj/node": "workspace:^",
+    "@vtj/base": "workspace:^",
     "@vtj/core": "workspace:^",
-    "@vtj/coder": "workspace:^"
+    "prettier": "~3.1.1"
   },
   "devDependencies": {
-    "@vtj/cli": "workspace:^",
-    "vite": "~5.0.9",
-    "unbuild": "~2.0.0",
-    "vitest": "~1.1.0"
+    "@vtj/cli": "workspace:^"
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./types/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.mjs"
-    },
-    "./*": "./*"
+      "require": "./dist/index.cjs"
+    }
   },
-  "main": "./dist/index.mjs",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./types/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "types"
   ],
   "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b",
   "publishConfig": {

@@ -40,6 +40,7 @@
     "build:dev": "cd packages/dev && npm run build",
     "build:node": "cd packages/node && npm run build",
     "build:core": "cd packages/core && npm run build",
+    "build:coder": "cd packages/coder && npm run build",
     "docs:dev": "cd docs && vitepress dev",
     "docs:build": "cd docs && vitepress build && cd .. && npm run typedoc",
     "docs:preview": "cd docs && vitepress preview",

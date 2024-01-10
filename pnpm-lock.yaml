@@ -213,6 +213,22 @@ importers:
         specifier: ~1.8.27
         version: 1.8.27(typescript@5.3.3)
 
+  packages/coder:
+    dependencies:
+      '@vtj/base':
+        specifier: workspace:^
+        version: link:../base
+      '@vtj/core':
+        specifier: workspace:^
+        version: link:../core
+      prettier:
+        specifier: ~3.1.1
+        version: 3.1.1
+    devDependencies:
+      '@vtj/cli':
+        specifier: workspace:^
+        version: link:../cli
+
   packages/core:
     dependencies:
       '@vtj/base':
@@ -259,6 +275,9 @@ importers:
 
   packages/dev:
     dependencies:
+      '@vtj/coder':
+        specifier: workspace:^
+        version: link:../coder
       '@vtj/core':
         specifier: workspace:^
         version: link:../core
@@ -10985,6 +11004,12 @@ packages:
 
   /preact@10.19.3:
     resolution: {integrity: sha512-nHHTeFVBTHRGxJXKkKu5hT8C/YWBkPso4/Gad6xuj5dbptt9iF9NZr9pHbPhBrnT2klheu7mHTxTZ/LjwJiEiQ==}
+
+  /prettier@3.1.1:
+    resolution: {integrity: sha512-22UbSzg8luF4UuZtzgiUOfcGM8s4tjBv6dJRT7j275NXsy2jb4aJa4NNveul5x4eqlF1wuhuR2RElK71RvmVaw==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: false
 
   /pretty-bytes@6.1.1:
     resolution: {integrity: sha512-mQUvGU6aUFQ+rNvTIAcZuWGRT9a6f6Yrg9bHs4ImKF+HZCEK+plBvnAZYSIQztknZF2qnzNtr6F8s0+IuptdlQ==}

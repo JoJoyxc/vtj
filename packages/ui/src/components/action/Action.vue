@@ -1,6 +1,6 @@
 <template>
   <div class="x-action" :class="classes">
-    <component :is="action"> </component>
+    <component :is="action"></component>
   </div>
 </template>
 
@@ -94,6 +94,7 @@
     let vnode: VNode = slots.default
       ? slots.default()[0]
       : h(markRaw(Trigger), { ...props, onClick });
+
     if (badge.value) {
       vnode = wrapBadge(vnode);
     }
@@ -103,6 +104,6 @@
     if (tooltip.value) {
       vnode = wrapTooltip(vnode);
     }
-    return markRaw(vnode);
+    return vnode;
   });
 </script>
