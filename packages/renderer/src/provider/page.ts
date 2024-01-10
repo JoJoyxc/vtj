@@ -8,9 +8,11 @@ export const PageContainer = defineComponent({
     const provider = useProvider();
     const route = useRoute();
     const id = route.params.id as string;
-    const file = provider.getPage(id);
-    const component = await provider.getRenderComponent(id);
-    useTitle(file?.title || 'VTJ');
+    const file = id ? provider.getPage(id) : provider.getHomepage();
+    const component = file ? await provider.getRenderComponent(file.id) : null;
+    if (file) {
+      useTitle(file.title || 'VTJ');
+    }
     return {
       provider,
       component,
@@ -19,6 +21,10 @@ export const PageContainer = defineComponent({
     };
   },
   render() {
-    return h(this.component, this.query);
+    if (this.component) {
+      return h(this.component, this.query);
+    } else {
+      return h('div', '页面不存在');
+    }
   }
 });

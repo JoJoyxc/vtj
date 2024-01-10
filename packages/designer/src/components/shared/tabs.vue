@@ -11,6 +11,7 @@
           :stretch="props.stretch"></XTabs>
         <div v-if="props.menus && props.menus.length" class="v-tabs__actions">
           <XAction
+            v-if="props.menus && props.menus.length"
             mode="icon"
             size="small"
             :icon="MoreFilled"
@@ -19,7 +20,7 @@
               size: 'small',
               placement: 'bottom-end'
             }"
-            :menus="menus"
+            :menus="props.menus"
             @command="handleCommand">
             <template #item="{ item }">
               <span>
@@ -61,6 +62,7 @@
   const props = withDefaults(defineProps<Props>(), {
     items: () => []
   });
+
   const emit = defineEmits(['update:modelValue', 'command', 'remove']);
 
   const currentTab = ref<string | number>(

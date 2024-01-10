@@ -10,7 +10,7 @@
       width: 40px;
       height: 40px;
       border: none;
-      z-index: 999;
+      z-index: 9999;
       cursor: pointer;
       border-radius: 50%;
       display: flex;
@@ -104,7 +104,7 @@
   el.addEventListener('click', function (e) {
     if (!isDragged) {
       const path = window.location.pathname + '@vtj/pro/';
-      window.open(path, '_blank');
+      window.open(path, 'VTJDesigner');
     }
   });
 })();

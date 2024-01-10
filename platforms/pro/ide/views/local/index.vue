@@ -11,7 +11,8 @@
     props: {
       onClick: (_project: any) => {
         const pathname = location.pathname;
-        location.href = pathname === '/@vtj/pro/' ? '/' : pathname;
+        const url = pathname === '/@vtj/pro/' ? '/' : pathname;
+        window.open(url, 'VTJProject');
       }
     }
   });

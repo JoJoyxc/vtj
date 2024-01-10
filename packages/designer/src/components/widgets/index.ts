@@ -20,6 +20,7 @@ import Defined from './defined/index.vue';
 import DataSources from './data-sources/index.vue';
 import Style from './style/index.vue';
 import Previewer from './previewer/index.vue';
+import NodePath from './node-path/index.vue';
 
 export const widgets = {
   Logo,
@@ -43,5 +44,6 @@ export const widgets = {
   Defined,
   DataSources,
   Style,
-  Previewer
+  Previewer,
+  NodePath
 };

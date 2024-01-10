@@ -6,6 +6,7 @@ import Apps from './apps.vue';
 import Workspace from './workspace.vue';
 import Settings from './settings.vue';
 import Status from './status.vue';
+import Preview from './preview.vue';
 
 export const regions = {
   EmptyRegion,
@@ -15,5 +16,6 @@ export const regions = {
   Apps,
   Workspace,
   Settings,
-  Status
+  Status,
+  Preview
 };

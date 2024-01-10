@@ -7,6 +7,7 @@ import {
   nextTick,
   provide,
   toRaw,
+  getCurrentInstance,
   type ComponentInternalInstance
 } from 'vue';
 import {
@@ -25,6 +26,7 @@ export function useContent(options: Partial<UseContentOptions>) {
   const views = new Map();
   const exclude = ref<string[]>([]);
   const dialogs = reactive<any>({});
+  const instance = getCurrentInstance();
   const dialogInstances: Record<string, any> = {};
   const { updateTab, isCurrentTab, activeHome, tabs } =
     options as UseContentOptions;
@@ -96,17 +98,22 @@ export function useContent(options: Partial<UseContentOptions>) {
     };
 
     updateTab(tab);
-    const dialog = createDialog({
-      title: tab.title,
-      icon: tab.icon,
-      modal: false,
-      resizable: true,
-      draggable: true,
-      ...tab.dialog,
-      onOpen(dialog: ComponentInternalInstance) {
-        dialogs[tab.url] = (dialog.refs.panelRef as any)?.bodyRef?.$el;
-      }
-    });
+    const dialog = createDialog(
+      {
+        title: tab.title,
+        icon: tab.icon,
+        modal: false,
+        resizable: true,
+        draggable: true,
+        maximizable: true,
+        minimizable: true,
+        ...tab.dialog,
+        onOpen(dialog: ComponentInternalInstance) {
+          dialogs[tab.url] = (dialog.refs.panelRef as any)?.bodyRef?.$el;
+        }
+      },
+      instance?.appContext
+    );
     await nextTick();
     if (isCurrentTab(tab)) {
       activeHome();

@@ -4,7 +4,7 @@ import {
   parseDeps,
   createAssetsCss,
   createAssetScripts,
-  createApis,
+  createSchemaApis,
   getRawComponent,
   logger
 } from '@vtj/renderer';
@@ -176,7 +176,7 @@ export class Simulator {
     }
 
     const { adapter, globals } = provider;
-    const apis = createApis(project.value?.apis, adapter);
+    const apis = createSchemaApis(project.value?.apis, adapter);
 
     return {
       window: cw,

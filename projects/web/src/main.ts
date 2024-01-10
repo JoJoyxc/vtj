@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import { createProvider, RemoteService } from '@vtj/renderer';
+import { createProvider, RemoteService } from '@vtj/web';
 import router from './router';
 import App from './App.vue';
 import './style/index.scss';

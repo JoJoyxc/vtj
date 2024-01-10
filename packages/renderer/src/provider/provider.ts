@@ -9,7 +9,7 @@ import {
 } from '@vtj/core';
 import { type IStaticRequest, type Jsonp, jsonp, loadScript } from '@vtj/utils';
 import { request } from './defaults';
-import { createApis } from './apis';
+import { createSchemaApis } from './apis';
 import { logger, isVuePlugin } from '../utils';
 
 import {
@@ -58,7 +58,9 @@ export class Provider {
   constructor(options: ProviderOptions) {
     const {
       service,
-      mode = ContextMode.Runtime,
+      mode = process.env.NODE_ENV === 'production'
+        ? ContextMode.Raw
+        : ContextMode.Runtime,
       dependencies,
       project = {},
       adapter = {},
@@ -75,12 +77,7 @@ export class Provider {
     }
     Object.assign(this.globals, globals);
     Object.assign(this.adapter, adapter);
-
-    if (mode === ContextMode.Runtime) {
-      this.load(project as ProjectSchema);
-    } else {
-      this.emits();
-    }
+    this.load(project as ProjectSchema);
   }
 
   async load(project: ProjectSchema) {
@@ -132,7 +129,7 @@ export class Provider {
     }
 
     if (apis) {
-      this.apis = createApis(apis, this.adapter);
+      this.apis = createSchemaApis(apis, this.adapter);
     }
     this.initRouter();
     this.emits();
@@ -151,7 +148,7 @@ export class Provider {
       router.addRoute({
         path: '/',
         name: 'VtjHomepage',
-        redirect: project.homepage
+        component: PageContainer
       });
     }
   }
@@ -207,6 +204,11 @@ export class Provider {
       }
     };
     return finder(id, pages) || null;
+  }
+  getHomepage(): PageFile | null {
+    const { homepage } = this.project || {};
+    if (!homepage) return null;
+    return this.getPage(homepage);
   }
   async getDsl(id: string) {
     const module = this.modules[`.vtj/files/${id}.json`];

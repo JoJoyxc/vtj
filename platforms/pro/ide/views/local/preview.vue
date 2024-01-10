@@ -4,14 +4,12 @@
 <script lang="ts" setup>
   import { ref, getCurrentInstance } from 'vue';
   import { useRoute } from 'vue-router';
-  import { createProvider, RemoteService } from '../../../src';
+  import { createProvider, RemoteService, ContextMode } from '../../../src';
   const service = new RemoteService();
 
   const { provider, onReady } = createProvider({
+    mode: ContextMode.Runtime,
     service,
-    project: {
-      id: 'demo'
-    },
     dependencies: {
       Vue: () => import('vue'),
       VueRouter: () => import('vue-router'),

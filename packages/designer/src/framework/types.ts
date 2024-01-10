@@ -31,7 +31,9 @@ export enum RegionType {
   // 设置区
   Settings = 'Settings',
   // 状态区
-  Status = 'Status'
+  Status = 'Status',
+  // 预览区
+  Preview = 'Preview'
 }
 /**
  * 基础器件

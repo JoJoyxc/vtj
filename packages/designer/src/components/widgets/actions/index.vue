@@ -69,9 +69,6 @@
 
   const { engine, designer } = useSelected();
   const isPreview = ref(false);
-
-  // const loading = ref(false);
-
   const refresh = () => {
     if (engine.current.value) {
       if (isPreview.value) {

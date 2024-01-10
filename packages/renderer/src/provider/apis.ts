@@ -3,7 +3,7 @@ import { type IRequestConfig, merge } from '@vtj/utils';
 import { parseExpression } from '../utils';
 
 import { type ProvideAdapter } from './provider';
-export function createApi(schema: ApiSchema, adapter: ProvideAdapter) {
+export function createSchemaApi(schema: ApiSchema, adapter: ProvideAdapter) {
   const { jsonp, request } = adapter;
   if (schema.method === 'jsonp') {
     return (query: Record<string, any> = {}) =>
@@ -28,9 +28,12 @@ export function createApi(schema: ApiSchema, adapter: ProvideAdapter) {
   }
 }
 
-export function createApis(schema: ApiSchema[] = [], adapter: ProvideAdapter) {
+export function createSchemaApis(
+  schema: ApiSchema[] = [],
+  adapter: ProvideAdapter
+) {
   return schema.reduce((apis, api) => {
-    apis[api.id] = createApi(api, adapter);
+    apis[api.id] = createSchemaApi(api, adapter);
     return apis;
   }, {} as Record<string, any>);
 }

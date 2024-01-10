@@ -12,11 +12,13 @@
   "dependencies": {
     "@vtj/utils": "workspace:^",
     "@vtj/core": "workspace:^",
+    "@vtj/ui": "workspace:^",
+    "@vtj/icons": "workspace:^",
     "zen-logger": "~1.1.4"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:^",
-    "vue": "~3.4.6",
+    "vue": "~3.4.7",
     "vue-router": "~4.2.5"
   },
   "exports": {

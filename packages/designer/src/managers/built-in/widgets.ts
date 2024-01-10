@@ -123,7 +123,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   },
   {
     name: 'Previewer',
-    region: 'Workspace',
+    region: 'Preview',
     component: widgets.Previewer,
     type: 'tab',
     closable: false,
@@ -208,5 +208,10 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
     type: 'tab',
     group: WidgetGroup.Node,
     label: '指令'
+  },
+  {
+    name: 'NodePath',
+    region: 'Status',
+    component: widgets.NodePath
   }
 ];

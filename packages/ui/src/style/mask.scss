@@ -328,6 +328,7 @@
     border-bottom: none !important;
     .el-tabs__item.is-active {
       background-color: getCssVar('bg-color');
+      border-radius: 2px;
     }
     .x-icon {
       pointer-events: none;

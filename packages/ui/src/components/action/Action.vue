@@ -38,6 +38,7 @@
   const badge = useBadge(props);
   const dropdown = useDropdown(props);
   const disabled = useDisabled(toRef(props, 'disabled'));
+
   const classes = computed(() => {
     return {
       [`x-action--${props.mode}`]: !!props.mode
@@ -60,6 +61,10 @@
   const wrapBadge = (node: VNode | VNode[]) => {
     return h(ElBadge, badge.value, () => ([] as VNode[]).concat(node));
   };
+
+  // todo: waring
+  // invoked outside of the render function: this will not track dependencies used in the slot.
+  // Invoke the slot function inside the render function
   const wrapDropdown = (node: VNode) => {
     return h(
       ElDropdown,
@@ -98,6 +103,6 @@
     if (tooltip.value) {
       vnode = wrapTooltip(vnode);
     }
-    return vnode;
+    return markRaw(vnode);
   });
 </script>

@@ -6,12 +6,12 @@
         <RegionWrapper
           ref="toolbar"
           region="Toolbar"
-          :preview="preview"></RegionWrapper>
+          :preview="isPreview"></RegionWrapper>
         <RegionWrapper ref="actions" region="Actions"></RegionWrapper>
       </el-header>
       <el-container class="v-skeleton__wrapper">
         <el-aside
-          v-if="!preview"
+          v-if="!isPreview"
           v-resizable="leftResizable"
           :width="props.leftWidth"
           class="v-skeleton__left"
@@ -22,12 +22,17 @@
         </el-aside>
         <el-main class="v-skeleton__main">
           <RegionWrapper
+            v-if="isPreview"
+            ref="preview"
+            region="Preview"
+            :preview="isPreview"></RegionWrapper>
+          <RegionWrapper
+            v-show="!isPreview"
             ref="workspace"
-            region="Workspace"
-            :preview="preview"></RegionWrapper>
+            region="Workspace"></RegionWrapper>
         </el-main>
         <el-aside
-          v-if="!preview"
+          v-if="!isPreview"
           v-show="settable"
           v-resizable="rightResizable"
           :width="props.rightWidth"
@@ -36,7 +41,7 @@
         </el-aside>
       </el-container>
       <el-footer
-        v-if="!preview"
+        v-if="!isPreview"
         class="v-skeleton__footer"
         :height="footerHeight">
         <RegionWrapper ref="status" region="Status"></RegionWrapper>
@@ -72,7 +77,7 @@
     footerHeight: '20px'
   });
 
-  const preview = ref(false);
+  const isPreview = ref(false);
   const leftWidth = ref(parseInt(props.leftWidth));
   const rightWidth = ref(parseInt(props.rightWidth));
 
@@ -107,6 +112,7 @@
   const workspace = ref();
   const settings = ref();
   const status = ref();
+  const preview = ref();
   const collapsed = ref(false);
   const settable = ref(false);
 
@@ -126,6 +132,7 @@
     settable,
     leftWidth,
     rightWidth,
-    preview
+    preview,
+    isPreview
   });
 </script>

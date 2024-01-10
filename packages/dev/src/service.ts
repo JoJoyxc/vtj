@@ -12,8 +12,10 @@ import {
   pathExistsSync,
   writeJsonSync,
   ensureFileSync,
-  removeSync
+  removeSync,
+  upperFirstCamelCase
 } from '@vtj/node';
+
 import { fail, success, type ApiRequest } from './shared';
 
 const root = resolve('./');
@@ -50,16 +52,18 @@ export async function init() {
   // 项目文件路径
   const filePath = getProjectFilePath(name);
 
+  let schema = {};
+
   // 如果已文件经存在，则直接返回文件内容
   if (pathExistsSync(filePath)) {
-    const json = readJsonSync(filePath);
-    return success(json);
+    schema = readJsonSync(filePath);
   }
 
   // 否则，创建一个新的项目文件
   const project = new ProjectModel({
+    ...schema,
     id: name,
-    name: description,
+    name: description || upperFirstCamelCase(name),
     description
   });
   const dsl = project.toDsl();

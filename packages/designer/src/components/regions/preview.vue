@@ -1,18 +1,13 @@
 <template>
-  <Tabs
-    class="v-workspace-region"
-    :items="tabs"
-    :menus="menus"
-    v-model="currentTab"
-    checkable
-    @remove="onRemove"
-    @command="onCommand">
+  <Tabs class="v-workspace-region" :items="tabs" v-model="currentTab">
     <template v-for="widget in widgets" :key="widget.name">
-      <WidgetWrapper
-        ref="widgetsRef"
-        v-if="currentTab === widget.name"
-        :region="region"
-        :widget="widget"></WidgetWrapper>
+      <KeepAlive>
+        <WidgetWrapper
+          ref="widgetsRef"
+          v-if="currentTab === widget.name"
+          :region="region"
+          :widget="widget"></WidgetWrapper>
+      </KeepAlive>
     </template>
   </Tabs>
 </template>
@@ -22,6 +17,7 @@
   import { RegionType, type TabWidget } from '../../framework';
   import { WidgetWrapper } from '../../wrappers';
   import { useRegion } from '../hooks';
+
   export interface Props {
     region: RegionType;
   }
@@ -46,36 +42,10 @@
     return items.filter((n) => !n.closable || n.checked);
   });
 
-  const menus = computed(() => {
-    return items.filter((n) => n.closable);
-  });
-
   const currentTab = ref(tabs.value[0]?.name);
 
-  const onRemove = (name: any) => {
-    const item = items.find((n) => n.name === name);
-    if (item) {
-      item.checked = false;
-    }
-    if (currentTab.value === name) {
-      currentTab.value = tabs.value[0]?.name;
-    }
-  };
-  const onCommand = (e: any) => {
-    const item = items.find((n) => n.name === e.name);
-    if (item) {
-      item.checked = !item.checked;
-      if (item.checked) {
-        currentTab.value = item.name;
-      }
-      if (!item.checked && currentTab.value === item.name) {
-        currentTab.value = tabs.value[0]?.name;
-      }
-    }
-  };
-
   defineOptions({
-    name: 'WorkspaceRegion'
+    name: 'PreviewRegion'
   });
 
   defineExpose({

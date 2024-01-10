@@ -1,5 +1,5 @@
 import { createViteConfig } from '@vtj/cli';
-import { createDevPlugin } from '@vtj/dev';
+import { createDevPlugin } from '@vtj/pro/vite';
 import proxy from './proxy.config';
 import * as envConfig from './env.config';
 

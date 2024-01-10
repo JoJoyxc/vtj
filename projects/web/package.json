@@ -1,6 +1,6 @@
 {
-  "name": "vtj-project-web",
-  "description": "",
+  "name": "vtj-web",
+  "description": "项目示例",
   "private": true,
   "version": "0.7.0",
   "type": "module",
@@ -17,12 +17,11 @@
   },
   "dependencies": {
     "@vtj/web": "workspace:*",
-    "@vtj/renderer": "workspace:*",
-    "vue": "^3.4.6",
+    "vue": "^3.4.7",
     "vue-router": "~4.2.5"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:*",
-    "@vtj/dev": "workspace:*"
+    "@vtj/pro": "workspace:*"
   }
 }

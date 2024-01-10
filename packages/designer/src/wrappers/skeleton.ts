@@ -82,12 +82,12 @@ export const SkeletonWrapper = defineComponent({
     },
     openPreview(_id: string) {
       if (this.skeletonRef) {
-        this.skeletonRef.preview = true;
+        this.skeletonRef.isPreview = true;
       }
     },
     closePreview() {
       if (this.skeletonRef) {
-        this.skeletonRef.preview = false;
+        this.skeletonRef.isPreview = false;
       }
     }
   }
