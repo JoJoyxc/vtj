@@ -92,6 +92,9 @@
         color: #fff;
         border: none;
       }
+      & + .x-icon {
+        margin-left: 0;
+      }
     }
   }
 

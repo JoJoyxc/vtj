@@ -3,7 +3,7 @@
     <template #actions>
       <XAction
         v-if="props.plus"
-        :size="($attrs.size as any)"
+        :size="$attrs.size as any"
         mode="icon"
         :icon="VtjIconPlus"
         background="hover"
@@ -11,7 +11,7 @@
         @click="onClickPlus"></XAction>
       <XAction
         v-if="props.remove"
-        :size="($attrs.size as any)"
+        :size="$attrs.size as any"
         mode="icon"
         :icon="Delete"
         background="hover"
@@ -19,7 +19,7 @@
         @click="onClickRemove"></XAction>
       <XAction
         v-if="props.save"
-        :size="($attrs.size as any)"
+        :size="$attrs.size as any"
         mode="icon"
         :icon="VtjIconSave"
         background="hover"

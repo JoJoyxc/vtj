@@ -4,5 +4,13 @@ export default createViteConfig({
   dts: true,
   version: true,
   formats: ['es', 'cjs'],
-  external: ['@vtj/base','@vtj/core','prettier']
+  external: [
+    '@vtj/base',
+    'prettier',
+    'prettier/standalone',
+    'prettier/plugins/html',
+    'prettier/plugins/babel',
+    'prettier/plugins/postcss',
+    'prettier/plugins/estree'
+  ]
 });

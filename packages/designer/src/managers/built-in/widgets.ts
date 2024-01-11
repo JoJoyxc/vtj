@@ -132,7 +132,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'Schema',
     region: 'Workspace',
-    component: widgets.EmptyWidget,
+    component: widgets.Schema,
     type: 'tab',
     closable: true,
     label: 'Schema'

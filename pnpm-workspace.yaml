@@ -2,5 +2,6 @@ packages:
   - 'packages/*'
   - 'platforms/*'
   - 'projects/*'
+  - 'create-vtj'
   - 'dev'
   - 'docs'

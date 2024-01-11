@@ -3,5 +3,12 @@
   "version": "independent",
   "useNx": true,
   "npmClient": "pnpm",
-  "packages": ["packages/*", "platforms/*", "projects/*", "dev", "docs"]
+  "packages": [
+    "packages/*",
+    "platforms/*",
+    "projects/*",
+    "create-vtj",
+    "dev",
+    "docs"
+  ]
 }

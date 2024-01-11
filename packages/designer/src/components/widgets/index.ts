@@ -21,6 +21,7 @@ import DataSources from './data-sources/index.vue';
 import Style from './style/index.vue';
 import Previewer from './previewer/index.vue';
 import NodePath from './node-path/index.vue';
+import Schema from './schema/index.vue';
 
 export const widgets = {
   Logo,
@@ -45,5 +46,6 @@ export const widgets = {
   DataSources,
   Style,
   Previewer,
-  NodePath
+  NodePath,
+  Schema
 };

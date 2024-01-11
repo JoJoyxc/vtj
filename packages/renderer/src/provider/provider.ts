@@ -98,7 +98,10 @@ export class Provider {
 
     for (const libraryName of libraryExports) {
       const raw = dependencies[libraryName];
-      if (raw) {
+      const lib = (window as any)[libraryName];
+      if (lib) {
+        library[libraryName] = lib;
+      } else if (raw) {
         (window as any)[libraryName] = library[libraryName] = await raw();
       } else {
         const urls = libraryMap[libraryName] || [];

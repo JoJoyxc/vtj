@@ -29,6 +29,8 @@ async function cleanDir(list, parentPath) {
 
 async function cleanOther() {
   await rm('.nx', { recursive: true, force: true });
+  await rm('create-vtj/dist', { recursive: true, force: true });
+  await rm('create-vtj/node_modules', { recursive: true, force: true });
   await rm('dev/dist', { recursive: true, force: true });
   await rm('dev/node_modules', { recursive: true, force: true });
   await rm('docs/dist', { recursive: true, force: true });

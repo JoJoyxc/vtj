@@ -1,5 +1,5 @@
 <template>
-  <ElBreadcrumb v-if="selected" class="v-nodepath" :separator-icon="ArrowRight">
+  <ElBreadcrumb v-if="selected" class="v-nodepath-widget" :separator-icon="ArrowRight">
     <ElBreadcrumbItem
       v-for="item in paths"
       @click="onSelected(item)"

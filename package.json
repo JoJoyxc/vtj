@@ -2,7 +2,6 @@
   "name": "vtj",
   "private": true,
   "description": "VTJ 一款基于 Vue3 + Typescript 的低代码开发工具，内置了设计器引擎、渲染器和代码生成器。",
-  "type": "module",
   "devDependencies": {
     "pnpm": "~8.14.0",
     "lerna": "~8.0.0",
@@ -37,10 +36,12 @@
     "test:designer": "cd packages/designer && npm run vitest",
     "test:renderer": "cd packages/renderer && npm run vitest",
     "build:renderer": "cd packages/renderer && npm run build",
-    "build:dev": "cd packages/dev && npm run build",
+    "dev:dev": "cd packages/dev && npm run build",
     "build:node": "cd packages/node && npm run build",
     "build:core": "cd packages/core && npm run build",
     "build:coder": "cd packages/coder && npm run build",
+    "vtj:dev": "nodemon --exec ts-node create-vtj/src/index.ts",
+    "vtj:build": "cd create-vtj && npm run build",
     "docs:dev": "cd docs && vitepress dev",
     "docs:build": "cd docs && vitepress build && cd .. && npm run typedoc",
     "docs:preview": "cd docs && vitepress preview",
@@ -59,5 +60,11 @@
   "packageManager": "^pnpm@8.10.4",
   "publishConfig": {
     "access": "public"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "create-vtj/src"
+    ],
+    "ext": "js,ts,mts,cts,mjs,cjs,json"
   }
 }

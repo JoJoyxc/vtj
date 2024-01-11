@@ -1,6 +1,6 @@
 @use '../core' as *;
 
-@include b(nodepath) {
+@include b(nodepath-widget) {
   font-size: 12px;
   padding: 0 20px;
   .el-breadcrumb__item {
