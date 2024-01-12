@@ -36,6 +36,8 @@ export interface SimulatorOptions {
 }
 
 export class Simulator {
+  private listeners: Array<() => void> = [];
+  private isReady: boolean = false;
   public contentWindow: Window | null = null;
   public renderer: Renderer | null = null;
   public designer: ShallowRef<Designer | null> = shallowRef(null);
@@ -51,6 +53,7 @@ export class Simulator {
   init(iframe: Ref<HTMLIFrameElement | undefined>, deps: Ref<Dependencie[]>) {
     watchEffect(() => {
       if (iframe.value && deps.value.length) {
+        this.isReady = false;
         this.setup(iframe.value, deps.value);
         if (this.contentWindow) {
           this.designer.value?.dispose();
@@ -105,7 +108,7 @@ export class Simulator {
        <body> 
        </body>
        <script>
-       __simulator__.ready(${JSON.stringify(libraryExports)},
+       __simulator__.emitReady(${JSON.stringify(libraryExports)},
         ${JSON.stringify(materialExports)}, 
     ${JSON.stringify(materialMapLibrary)});
      </script> 
@@ -114,7 +117,23 @@ export class Simulator {
     doc.close();
   }
 
-  ready(
+  private emits() {
+    this.isReady = true;
+    for (const listener of this.listeners) {
+      listener();
+    }
+    this.listeners = [];
+  }
+
+  ready(callback: () => void) {
+    if (this.isReady) {
+      callback();
+    } else {
+      this.listeners.push(callback);
+    }
+  }
+
+  emitReady(
     libraryExports: string[] = [],
     materialExports: string[] = [],
     materialMapLibrary: Record<string, string> = {}
@@ -137,6 +156,7 @@ export class Simulator {
     if (current.value) {
       this.renderer.render(current.value);
     }
+    this.emits();
   }
 
   createEnv(

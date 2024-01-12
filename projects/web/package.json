@@ -17,7 +17,10 @@
   },
   "dependencies": {
     "@vtj/web": "workspace:*",
-    "vue": "^3.4.7",
+    "@vtj/utils": "workspace:*",
+    "@vtj/icons": "workspace:*",
+    "@vtj/ui": "workspace:*",
+    "vue": "^3.4.10",
     "vue-router": "~4.2.5"
   },
   "devDependencies": {

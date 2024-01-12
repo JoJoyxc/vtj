@@ -18,13 +18,13 @@
     "@vtj/utils": "workspace:^",
     "@vueuse/core": "~10.7.0",
     "echarts": "~5.4.3",
-    "element-plus": "~2.5.0",
+    "element-plus": "~2.5.1",
     "@ckeditor/ckeditor5-vue": "~5.1.0",
     "@ckeditor/ckeditor5-build-classic": "~40.2.0"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:^",
-    "vue": "~3.4.7",
+    "vue": "~3.4.10",
     "vue-router": "~4.2.5"
   },
   "files": [

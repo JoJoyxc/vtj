@@ -26,12 +26,17 @@
       <VtjIconSetting></VtjIconSetting>
     </ElButton>
     <ElDivider direction="vertical"></ElDivider>
-    <ElDropdown split-button type="primary" size="small">
+    <ElDropdown
+      split-button
+      type="primary"
+      size="small"
+      @click="onPublish"
+      @command="onPublishCommand">
       <span>发布</span>
       <template #dropdown>
         <ElDropdownMenu>
           <ElDropdownItem command="current">发布页面</ElDropdownItem>
-          <ElDropdownItem command="home">整站发布</ElDropdownItem>
+          <ElDropdownItem command="project">整站发布</ElDropdownItem>
         </ElDropdownMenu>
       </template>
     </ElDropdown>
@@ -41,7 +46,6 @@
   import { ref } from 'vue';
   import {
     ElButton,
-    ElMessage,
     ElDivider,
     ElBadge,
     ElDropdown,
@@ -57,6 +61,7 @@
   import { XAction } from '@vtj/ui';
   import { delay } from '@vtj/utils';
   import { useSelected } from '../../hooks';
+  import { message } from '../../../utils';
 
   export interface Props {
     coder?: boolean;
@@ -78,13 +83,9 @@
         designer.value?.setSelected(null);
         engine.simulator.refresh();
       }
-      ElMessage.success({
-        message: '刷新完成'
-      });
+      message('刷新完成', 'success');
     } else {
-      ElMessage.warning({
-        message: '请先打开文件'
-      });
+      message('请先打开文件', 'warning');
     }
   };
 
@@ -97,9 +98,7 @@
       }
       designer.value?.setSelected(engine.current.value);
     } else {
-      ElMessage.warning({
-        message: '请先打开文件'
-      });
+      message('请先打开文件', 'warning');
     }
   };
 
@@ -115,9 +114,27 @@
       engine.skeleton?.openPreview('');
       isPreview.value = true;
     } else {
-      ElMessage.warning({
-        message: '请先打开文件'
-      });
+      message('请先打开文件', 'warning');
+    }
+  };
+
+  const onPublish = () => {
+    const project = engine.project.value;
+    if (!project) return;
+    if (project.currentFile) {
+      project.publish(project.currentFile);
+    } else {
+      message('请先打开文件', 'warning');
+    }
+  };
+
+  const onPublishCommand = (command: string) => {
+    const project = engine.project.value;
+    if (!project) return;
+    if (command === 'current') {
+      onPublish();
+    } else {
+      project.publish();
     }
   };
 

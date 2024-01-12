@@ -21,7 +21,7 @@
     "@vtj/ui": "workspace:^",
     "@vtj/materials": "workspace:^",
     "@vtj/cli": "workspace:^",
-    "vue": "~3.4.7",
+    "vue": "~3.4.10",
     "vue-router": "~4.2.5"
   },
   "exports": {

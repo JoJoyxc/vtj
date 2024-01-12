@@ -19,7 +19,7 @@
   "dependencies": {
     "@vtj/pro": "workspace:*",
     "@vtj/web": "workspace:*",
-    "vue": "~3.4.6",
+    "vue": "~3.4.10",
     "vue-router": "~4.2.5"
   },
   "devDependencies": {

@@ -5,9 +5,11 @@ import {
   type PageFile,
   type BlockFile,
   type Service,
-  type Material
+  type Material,
+  type BlockSchema
 } from '@vtj/core';
 import { type IStaticRequest, type Jsonp, jsonp, loadScript } from '@vtj/utils';
+import { ElNotification } from 'element-plus';
 import { request } from './defaults';
 import { createSchemaApis } from './apis';
 import { logger, isVuePlugin } from '../utils';
@@ -77,7 +79,10 @@ export class Provider {
     }
     Object.assign(this.globals, globals);
     Object.assign(this.adapter, adapter);
-    this.load(project as ProjectSchema);
+    // 设计模式在引擎已初始化了项目数据，这里不需要再次初始化
+    if (mode !== ContextMode.Design) {
+      this.load(project as ProjectSchema);
+    }
   }
 
   async load(project: ProjectSchema) {
@@ -213,7 +218,7 @@ export class Provider {
     if (!homepage) return null;
     return this.getPage(homepage);
   }
-  async getDsl(id: string) {
+  async getDsl(id: string): Promise<BlockSchema | null> {
     const module = this.modules[`.vtj/files/${id}.json`];
     return module ? await module() : this.service.getFile(id).catch(() => null);
   }
@@ -223,10 +228,10 @@ export class Provider {
       logger.warn(`Can not find file: ${id}`);
       return null;
     }
-    const rawPath = `.vtj/vue/${id}.vue`;
+    const rawPath = `.vtj/raw/${id}.vue`;
     const rawModule = this.modules[rawPath];
     if (rawModule) {
-      return await rawModule();
+      return (await rawModule())?.default;
     }
     const dsl = await this.getDsl(file.id);
     if (!dsl) {
@@ -268,10 +273,31 @@ export function createProvider(options: ProviderOptions) {
   };
 }
 
-export function useProvider(): Provider {
+export interface UseProviderOptions {
+  id?: string;
+  version?: string;
+}
+
+export function useProvider(options: UseProviderOptions = {}): Provider {
   const provider = inject(providerKey);
   if (!provider) {
     throw new Error('Can not find provider');
+  }
+  if (
+    provider.mode === ContextMode.Runtime &&
+    process.env.NODE_ENV === 'development'
+  ) {
+    const { id, version } = options;
+    if (id && version) {
+      (async () => {
+        const dsl = await provider.getDsl(id);
+        if (dsl?.__VERSION__ !== version)
+          ElNotification.warning({
+            title: dsl?.name,
+            message: '当前组件源码版本与运行时版本不一致，请重新发布组件'
+          });
+      })();
+    }
   }
   return provider;
 }

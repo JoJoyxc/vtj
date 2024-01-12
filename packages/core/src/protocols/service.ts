@@ -2,12 +2,19 @@ import type {
   ProjectSchema,
   BlockSchema,
   HistorySchema,
-  HistoryItem
+  HistoryItem,
+  PageFile,
+  BlockFile
 } from './schemas';
+import type { MaterialDescription } from './assets';
 
 export abstract class Service {
   public abstract init(project: ProjectSchema): Promise<ProjectSchema>;
   public abstract saveProject(project: ProjectSchema): Promise<boolean>;
+  public abstract saveMaterials(
+    project: ProjectSchema,
+    materials: Map<string, MaterialDescription>
+  ): Promise<boolean>;
   public abstract saveFile(file: BlockSchema): Promise<boolean>;
   public abstract getFile(id: string): Promise<BlockSchema>;
   public abstract removeFile(id: string): Promise<boolean>;
@@ -22,5 +29,10 @@ export abstract class Service {
   public abstract removeHistoryItem(
     fId: string,
     ids: string[]
+  ): Promise<boolean>;
+  public abstract publish(project: ProjectSchema): Promise<boolean>;
+  public abstract publishFile(
+    project: ProjectSchema,
+    file: PageFile | BlockFile
   ): Promise<boolean>;
 }

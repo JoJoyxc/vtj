@@ -11,6 +11,7 @@ import {
   type StaticPluginOption
 } from '@vtj/cli';
 import { pathExistsSync } from '@vtj/node';
+import { join } from 'path';
 import bodyParser from 'body-parser';
 import { router } from './controller';
 
@@ -19,6 +20,7 @@ export interface DevPluginOptions {
   copy: boolean;
   server: boolean;
   link: boolean | string;
+  vtjDir: string;
 }
 
 const setApis = (
@@ -81,15 +83,36 @@ const linkPlugin = function (options: DevPluginOptions): Plugin {
   };
 };
 
+const aliasPlugin = function (options: DevPluginOptions): Plugin {
+  return {
+    name: 'vtj-alias-plugin',
+    config(config) {
+      const { root = process.cwd() } = config || {};
+      const vtjDir = join(root, options.vtjDir);
+      if (config.resolve) {
+        config.resolve.alias = Object.assign(config.resolve.alias || {}, {
+          $vtj: vtjDir
+        });
+      } else {
+        config.resolve = {
+          alias: {
+            $vtj: vtjDir
+          }
+        };
+      }
+    }
+  };
+};
 export function createDevPlugin(options: Partial<DevPluginOptions> = {}) {
   const opts: DevPluginOptions = {
-    baseURL: '/vtj/api',
+    baseURL: '/vtj/local/api',
     copy: true,
     server: true,
     link: true,
+    vtjDir: '.vtj',
     ...options
   };
-  const plugins: Plugin[] = [];
+  const plugins: Plugin[] = [aliasPlugin(opts)];
   const proPath = 'node_modules/@vtj/pro/dist';
   const materialsPath1 = 'node_modules/@vtj/materials/dist';
   const materialsPath2 = 'node_modules/@vtj/pro/' + materialsPath1;

@@ -29,7 +29,7 @@ export function parseImports(
     .map(([name, values]) => {
       return `import { ${(dedupArray(values) as string[]).join(
         ','
-      )}} from '${name}'`;
+      )}} from '${name}';`;
     })
     .concat(importBlocks);
 }

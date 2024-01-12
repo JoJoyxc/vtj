@@ -1,15 +1,15 @@
 import { createApp } from 'vue';
-import { createProvider, RemoteService } from '@vtj/web';
+import { createProvider, LocalService } from '@vtj/web';
 import router from './router';
 import App from './App.vue';
 import './style/index.scss';
 const modules = import.meta.glob([
   '/.vtj/*.json',
   '/.vtj/files/*.json',
-  '/.vtj/vue/*.vue'
+  '/.vtj/raw/*.vue'
 ]);
 const app = createApp(App);
-const service = new RemoteService();
+const service = new LocalService();
 const { provider, onReady } = createProvider({
   service,
   modules,

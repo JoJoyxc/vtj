@@ -24,8 +24,11 @@ import {
   EVENT_NODE_CHANGE,
   EVENT_PROJECT_BLOCKS_CHANGE,
   EVENT_PROJECT_PAGES_CHANGE,
+  EVENT_PROJECT_DEPS_CHANGE,
   EVENT_PROJECT_CHANGE,
   EVENT_PROJECT_ACTIVED,
+  EVENT_PROJECT_PUBLISH,
+  EVENT_PROJECT_FILE_PUBLISH,
   EVENT_HISTORY_CHANGE,
   EVENT_HISTORY_LOAD,
   type Emitter,
@@ -47,6 +50,7 @@ import { SkeletonWrapper, type SkeletonWrapperInstance } from '../wrappers';
 import { depsManager } from '../managers';
 import { Simulator } from './simulator';
 import { Assets } from './assets';
+import { message } from '../utils';
 
 export const engineKey: InjectionKey<ShallowReactive<Engine>> =
   Symbol('VtjEngine');
@@ -102,6 +106,7 @@ export class Engine {
     if (dsl) {
       dsl.dependencies = depsManager.merge(dsl.dependencies || []);
       this.project.value = new ProjectModel(dsl);
+      this.saveMaterials();
       this.emits();
     }
   }
@@ -128,7 +133,10 @@ export class Engine {
     emitter.on(EVENT_PROJECT_CHANGE, (e) => this.saveProject(e));
     emitter.on(EVENT_PROJECT_BLOCKS_CHANGE, (e) => this.saveBlockFile(e));
     emitter.on(EVENT_PROJECT_PAGES_CHANGE, (e) => this.saveBlockFile(e));
+    emitter.on(EVENT_PROJECT_DEPS_CHANGE, () => this.saveMaterials());
     emitter.on(EVENT_PROJECT_ACTIVED, (e) => this.activeFile(e));
+    emitter.on(EVENT_PROJECT_PUBLISH, () => this.publish());
+    emitter.on(EVENT_PROJECT_FILE_PUBLISH, () => this.publishCurrent());
     emitter.on(EVENT_BLOCK_CHANGE, (e) => this.changeFile(e));
     emitter.on(EVENT_NODE_CHANGE, () => this.changeCurrentFile());
     emitter.on(EVENT_HISTORY_CHANGE, (e) => this.saveHistory(e));
@@ -223,6 +231,17 @@ export class Engine {
     triggerRef(this.project);
   }
 
+  private async saveMaterials() {
+    await nextTick();
+    this.simulator.ready(() => {
+      const project = this.project.value;
+      if (project) {
+        const map = this.assets.componentMap;
+        this.service.saveMaterials(project.toDsl(), map);
+      }
+    });
+  }
+
   private saveCurrentFile() {
     const current = this.current.value;
     if (current) {
@@ -272,6 +291,35 @@ export class Engine {
       const block = new BlockModel(item.dsl);
       await this.updateCurrent(block);
       triggerRef(this.history);
+    }
+  }
+
+  private async publish() {
+    const project = this.project.value;
+    if (project) {
+      const dsl = {
+        ...project.toDsl(),
+        pages: project.getPages()
+      };
+      const ret = await this.service.publish(dsl);
+      if (ret) {
+        message('整站发布成功', 'success');
+      }
+    }
+  }
+
+  private async publishCurrent() {
+    const project = this.project.value;
+    const current = project?.currentFile;
+    if (project && current) {
+      const dsl = {
+        ...project.toDsl(),
+        pages: project.getPages()
+      };
+      const ret = await this.service.publishFile(dsl, current);
+      if (ret) {
+        message('发布成功', 'success');
+      }
     }
   }
 

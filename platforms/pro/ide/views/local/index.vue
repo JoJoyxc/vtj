@@ -3,9 +3,10 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { Engine, widgetManager, RemoteService } from '../../../src';
+  import { Engine, widgetManager, LocalService } from '../../../src';
 
   const container = ref();
+  const service = new LocalService();
 
   widgetManager.set('Switcher', {
     props: {
@@ -28,7 +29,7 @@
 
   new Engine({
     container,
-    service: new RemoteService()
+    service
   });
 </script>
 <style lang="scss" scoped>

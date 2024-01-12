@@ -10,7 +10,10 @@ export default defineComponent({
   <% if(props) { %> props: { <%= props %> }, <% } %>
   <% if(emits) {%> emits: [<%= emits %>], <% } %> 
   setup(props) {
-    const provider = useProvider();
+    const provider = useProvider({
+      id: '<%= id %>',
+      version: '<%= version %>'
+    });
     const state = reactive({ <%= state %> });
     return {
       state,
@@ -23,17 +26,17 @@ export default defineComponent({
   <% if(methods) { %> methods: { <%= methods %> }, <% } %>
   <% if(watch) { %> watch: { <%= watch %> }, <% } %> <%= lifeCycles %>
 });
-`;
+`.replace(/(\n|\r|\t)/g, '');
 
 const vueTemplate = `
 <template>
-  <%= template %>
+<%= template %>
 </template>
 <script lang="ts">
-  <%= template %>
+<%= script %>
 </script>
 <style lang="scss" scoped>
-  <%= css %>
+<%= css %>
 </style>
 `;
 

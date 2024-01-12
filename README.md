@@ -22,6 +22,10 @@ VTJ 一款基于 Vue3 + Typescript 的低代码开发工具，内置了设计器
 ## 开发环境要求
 
 VTJ 使用了最新的 Vue3 生态技术栈，要求 Node 版本必须是 v20+， 建议使用 nvm 切换 Node 版本。
+开发项目工程采用`lerna` 和 `pnpm` 包管理工具，需要全局安装。
+```sh
+npm install -g lerna@latest pnpm@lastest --registry=https://registry.npmmirror.com
+```
 
 ## 贡献指南
 

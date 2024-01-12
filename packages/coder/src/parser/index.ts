@@ -11,6 +11,8 @@ import { parseTemplate } from './template';
 import { parseImports } from './imports';
 
 export interface Token {
+  id: string;
+  version: string;
   name: string;
   state: string;
   inject: string;
@@ -54,7 +56,7 @@ export function parser(
   );
 
   const blocksImport = importBlocks.map((n: any) => {
-    return `import ${n.name} from '@vtj/vue/${n.id}.vue';`;
+    return `import ${n.name} from '$vtj/raw/${n.id}.vue';`;
   });
 
   const imports = parseImports(
@@ -65,6 +67,8 @@ export function parser(
   );
 
   return {
+    id: dsl.id as string,
+    version: dsl.__VERSION__ as string,
     name: dsl.name,
     state: parseState(dsl.state).join(','),
     inject: parseInject(dsl.inject).join(','),

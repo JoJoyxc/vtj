@@ -44,6 +44,16 @@ export const EVENT_PROJECT_BLOCKS_CHANGE = 'EVENT_PROJECT_BLOCKS_CHANGE';
  */
 export const EVENT_PROJECT_APIS_CHANGE = 'EVENT_PROJECT_APIS_CHANGE';
 
+/**
+ * 项目发布
+ */
+export const EVENT_PROJECT_PUBLISH = 'EVENT_PROJECT_PUBLISH';
+
+/**
+ * 项目文件发布
+ */
+export const EVENT_PROJECT_FILE_PUBLISH = 'EVENT_PROJECT_FILE_PUBLISH';
+
 export class ProjectModel {
   id: string = '';
   name: string = '';
@@ -90,10 +100,25 @@ export class ProjectModel {
 
   toDsl() {
     const { id } = this;
-    const attrs = ProjectModel.attrs.reduce((result, current) => {
-      result[current] = (this as any)[current];
-      return result;
-    }, {} as Record<string, any>);
+    const attrs = ProjectModel.attrs.reduce(
+      (result, current) => {
+        result[current] = (this as any)[current];
+        return result;
+      },
+      {} as Record<string, any>
+    );
+    if (attrs.pages) {
+      attrs.pages = attrs.pages.map((n: PageFile) => {
+        delete n.dsl;
+        return n;
+      });
+    }
+    if (attrs.blocks) {
+      attrs.blocks = attrs.blocks.map((n: BlockFile) => {
+        delete n.dsl;
+        return n;
+      });
+    }
     return {
       __VTJ_PROJECT__: true,
       __VERSION__: timestamp().toString(),
@@ -555,6 +580,19 @@ export class ProjectModel {
         data: id
       };
       emitter.emit(EVENT_PROJECT_CHANGE, event);
+    }
+  }
+
+  publish(file?: PageFile | BlockFile) {
+    const event: ProjectModelEvent = {
+      model: this,
+      type: 'publish',
+      data: file || this
+    };
+    if (file) {
+      emitter.emit(EVENT_PROJECT_FILE_PUBLISH, event);
+    } else {
+      emitter.emit(EVENT_PROJECT_PUBLISH, event);
     }
   }
 }

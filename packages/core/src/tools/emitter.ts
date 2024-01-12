@@ -10,6 +10,8 @@ import {
   EVENT_PROJECT_PAGES_CHANGE,
   EVENT_PROJECT_BLOCKS_CHANGE,
   EVENT_PROJECT_APIS_CHANGE,
+  EVENT_PROJECT_PUBLISH,
+  EVENT_PROJECT_FILE_PUBLISH,
   EVENT_BLOCK_CHANGE,
   EVENT_NODE_CHANGE,
   EVENT_HISTORY_CHANGE,
@@ -23,6 +25,8 @@ type Events = {
   [EVENT_PROJECT_PAGES_CHANGE]: ProjectModelEvent;
   [EVENT_PROJECT_BLOCKS_CHANGE]: ProjectModelEvent;
   [EVENT_PROJECT_APIS_CHANGE]: ProjectModelEvent;
+  [EVENT_PROJECT_PUBLISH]: ProjectModelEvent;
+  [EVENT_PROJECT_FILE_PUBLISH]: ProjectModelEvent;
   [EVENT_BLOCK_CHANGE]: BlockModel;
   [EVENT_NODE_CHANGE]: NodeModel;
   [EVENT_HISTORY_CHANGE]: HistoryModelEvent;
@@ -46,4 +50,5 @@ export type ModelEventType =
   | 'delete'
   | 'clone'
   | 'clear'
-  | 'load';
+  | 'load'
+  | 'publish';

@@ -19,8 +19,8 @@
     "vant": "~4.8.2",
     "ant-design-vue": "~4.1.0",
     "echarts": "~5.4.3",
-    "element-plus": "~2.5.0",
-    "vue": "~3.4.7",
+    "element-plus": "~2.5.1",
+    "vue": "~3.4.10",
     "vue-router": "~4.2.5"
   },
   "files": [

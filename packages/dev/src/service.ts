@@ -3,9 +3,11 @@ import {
   type ProjectSchema,
   type BlockSchema,
   type HistorySchema,
-  type HistoryItem
+  type HistoryItem,
+  type MaterialDescription,
+  type PageFile,
+  type BlockFile
 } from '@vtj/core';
-
 import { resolve } from 'path';
 import {
   readJsonSync,
@@ -13,8 +15,11 @@ import {
   writeJsonSync,
   ensureFileSync,
   removeSync,
-  upperFirstCamelCase
+  outputFileSync,
+  upperFirstCamelCase,
+  timestamp
 } from '@vtj/node';
+import { generator } from '@vtj/coder';
 
 import { fail, success, type ApiRequest } from './shared';
 
@@ -23,6 +28,10 @@ const vtjDir = resolve('.vtj');
 
 const getProjectFilePath = (_name: string) => {
   return resolve(vtjDir, 'project.json');
+};
+
+const getMaterialsFilePath = (_name: string) => {
+  return resolve(vtjDir, 'materials.json');
 };
 
 const getFilePath = (id: string) => {
@@ -41,8 +50,21 @@ const getHistoryItemDir = (fId: string) => {
   return resolve(vtjDir, `histories/${fId}`);
 };
 
+const getRawFilePath = (id: string) => {
+  return resolve(vtjDir, `raw/${id}.vue`);
+};
+
+const getLogsDir = () => {
+  return resolve(vtjDir, `logs`);
+};
+
 export async function notMatch(_req: ApiRequest) {
   return fail('找不到处理程序');
+}
+
+export async function saveLogs(e: any) {
+  const name = `error-${timestamp()}.json`;
+  outputFileSync(resolve(getLogsDir(), name), JSON.stringify(e), 'utf-8');
 }
 
 export async function init() {
@@ -166,5 +188,52 @@ export async function removeHistoryItem(fId: string, ids: string[]) {
     const filePath = getHistoryItemFilePath(fId, id);
     removeSync(filePath);
   });
+  return success(true);
+}
+
+export async function saveMaterials(
+  project: ProjectSchema,
+  materials: Record<string, MaterialDescription>
+) {
+  const filePath = getMaterialsFilePath(project.id as string);
+  ensureFileSync(filePath);
+  writeJsonSync(filePath, materials);
+  return success(true);
+}
+
+export async function publishFile(
+  project: ProjectSchema,
+  file: PageFile | BlockFile,
+  componentMap?: Map<string, MaterialDescription>
+) {
+  const materialsPath = getMaterialsFilePath(project.id as string);
+  const materials = await readJsonSync(materialsPath);
+  componentMap =
+    componentMap ||
+    new Map<string, MaterialDescription>(Object.entries(materials));
+  const filePath = getFilePath(file.id as string);
+  const dsl = readJsonSync(filePath);
+  const content = await generator(dsl, componentMap, project.dependencies);
+  const rawPath = getRawFilePath(file.id as string);
+  outputFileSync(rawPath, content, 'utf-8');
+  return success(true);
+}
+
+export async function publish(project: ProjectSchema) {
+  const { pages = [], blocks = [] } = project;
+  const materialsPath = getMaterialsFilePath(project.id as string);
+  const materials = await readJsonSync(materialsPath);
+  const componentMap = new Map<string, MaterialDescription>(
+    Object.entries(materials)
+  );
+  for (const block of blocks) {
+    await publishFile(project, block, componentMap);
+  }
+  for (const page of pages) {
+    if (!page.raw) {
+      await publishFile(project, page, componentMap);
+    }
+  }
+
   return success(true);
 }

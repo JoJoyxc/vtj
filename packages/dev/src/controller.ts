@@ -54,6 +54,18 @@ const controller: Controller = {
   removeHistoryItem: async (req: ApiRequest) => {
     const { fId, ids = [] } = req.data || {};
     return service.removeHistoryItem(fId, ids);
+  },
+  saveMaterials: async (req: ApiRequest) => {
+    const { project, materials } = req.data || {};
+    return service.saveMaterials(project, materials);
+  },
+  publishFile: async (req: ApiRequest) => {
+    const { project, file } = req.data || {};
+    return service.publishFile(project, file);
+  },
+  publish: async (req: ApiRequest) => {
+    const project = req.data || {};
+    return service.publish(project);
   }
 };
 
@@ -63,6 +75,7 @@ export const router = async (req: any) => {
   try {
     return await handler(body);
   } catch (e) {
+    await service.saveLogs(e);
     return fail('异常错误', e);
   }
 };
