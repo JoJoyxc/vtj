@@ -14,7 +14,7 @@
 </template>
 <script setup lang="ts">
   import { Suspense } from 'vue';
-  import { ElConfigProvider } from 'element-plus';
+  import { ElConfigProvider, ElMessage } from 'element-plus';
   import {
     XMask,
     useMask,
@@ -45,6 +45,6 @@
   ];
 
   const onActionClick = (action: ActionProps) => {
-    console.log('onActionClick', action);
+    ElMessage.success(`click: ${action.name}`);
   };
 </script>

@@ -22,6 +22,7 @@ import Style from './style/index.vue';
 import Previewer from './previewer/index.vue';
 import NodePath from './node-path/index.vue';
 import Schema from './schema/index.vue';
+import Raw from './raw/index.vue';
 
 export const widgets = {
   Logo,
@@ -47,5 +48,6 @@ export const widgets = {
   Style,
   Previewer,
   NodePath,
-  Schema
+  Schema,
+  Raw
 };

@@ -33,13 +33,12 @@ export function parseValue(
   stringify: boolean = true,
   noThis: boolean = true
 ) {
-  const value = isJSExpression(val)
-    ? `${(val as JSExpression).value}`
-    : isJSFunction(val)
-      ? (val as JSFunction).value
-      : stringify
-        ? JSON.stringify(val)
-        : val;
+  const value = isJSCode(val)
+    ? val.value
+    : stringify
+      ? JSON.stringify(val)
+      : val;
+
   return noThis
     ? replaceThis(replaceContext(value as string))
     : replaceContext(value as string);
@@ -82,4 +81,3 @@ export function getModifiers(
   const keys = Object.keys(modifiers);
   return isToString ? keys.map((n) => '.' + n) : keys;
 }
-

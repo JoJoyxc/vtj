@@ -103,7 +103,9 @@
 
   el.addEventListener('click', function (e) {
     if (!isDragged) {
-      const path = window.location.pathname + '@vtj/pro/';
+      const section = window.location.hash.split('/');
+      const id = section.pop() || '';
+      const path = window.location.pathname + '@vtj/pro/#/local?file=' + id;
       window.open(path, 'VTJDesigner');
     }
   });

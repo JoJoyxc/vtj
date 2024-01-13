@@ -122,4 +122,8 @@ export class BaseService implements Service {
       () => false
     ));
   }
+
+  async getRaw(project: ProjectSchema, dsl: BlockSchema): Promise<string> {
+    return await this.api('getRaw', { project, dsl }).catch(() => '');
+  }
 }

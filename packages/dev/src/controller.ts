@@ -66,6 +66,10 @@ const controller: Controller = {
   publish: async (req: ApiRequest) => {
     const project = req.data || {};
     return service.publish(project);
+  },
+  getRaw: async (req: ApiRequest) => {
+    const { project, dsl } = req.data || {};
+    return service.getRaw(project, dsl);
   }
 };
 

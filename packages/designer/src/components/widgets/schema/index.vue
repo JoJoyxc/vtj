@@ -1,6 +1,7 @@
 <template>
   <Panel
     class="v-schema-widget"
+    :title="title"
     subtitle="手动修改DSL有风险，可能导致页面无法加载，请确认您的操作无误。"
     size="small"
     fit
@@ -26,6 +27,10 @@
   const dsl = computed(() =>
     JSON.stringify(current.value?.toDsl() || {}, null, 2)
   );
+
+  const title = computed(() => {
+    return current.value ? current.value.name : '';
+  });
 
   const onSave = async () => {
     const editor = editorRef.value?.getEditor();

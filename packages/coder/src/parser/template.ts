@@ -14,12 +14,12 @@ import {
 import { isPlainObject, camelCase, dedupArray } from '@vtj/base';
 import {
   isJSExpression,
-  isJSFunction,
   parseValue,
   parsePlainObjectValue,
   getModifiers,
   replaceComputedValue,
-  replaceThis
+  replaceThis,
+  isJSCode
 } from '../utils';
 
 export function parseTemplate(
@@ -56,7 +56,8 @@ export function parseTemplate(
         id as string,
         child.props,
         child.events,
-        context
+        context,
+        computedKeys
       );
 
       const directives = parseDirectives(child.directives).join(' ');
@@ -122,8 +123,9 @@ function getComponentName(
   componentMap: Map<string, MaterialDescription>,
   from?: NodeFrom
 ) {
-  const desc = componentMap.get(name);
+  if (['slot', 'component', 'template'].includes(name)) return null;
 
+  const desc = componentMap.get(name);
   if (desc && desc.alias) {
     const aliasName = desc.parent ? `${desc.parent}.${desc.alias}` : desc.alias;
     return `${name}: ${aliasName}`;
@@ -140,11 +142,14 @@ function isFromSchema(from?: NodeFrom): from is NodeFromSchema {
   return !!from && typeof from === 'object' && from.type === 'Schema';
 }
 
-function bindProp(name: string, value: unknown) {
+function bindProp(name: string, value: unknown, computedKeys: string[] = []) {
   if (typeof value === 'string') {
     return `${name}="${value}"`;
-  } else if (isJSExpression(value) || isJSFunction(value)) {
-    return `:${name}="${parseValue(value)}"`;
+  } else if (isJSCode(value)) {
+    return `:${name}="${parseValue({
+      ...value,
+      value: replaceComputedValue(value.value, computedKeys)
+    })}"`;
   } else if (isPlainObject(value)) {
     return `:${name}='{${parsePlainObjectValue(
       value as Record<string, any>
@@ -154,9 +159,9 @@ function bindProp(name: string, value: unknown) {
   }
 }
 
-function bindNodeProps(props: NodeProps = {}) {
+function bindNodeProps(props: NodeProps = {}, computedKeys: string[] = []) {
   return Object.entries(props).map(([name, value]) => {
-    return bindProp(name, value);
+    return bindProp(name, value, computedKeys);
   });
 }
 
@@ -205,12 +210,13 @@ function parsePropsAndEvents(
   id: string,
   props: NodeProps = {},
   events: NodeEvents = {},
-  context: Record<string, Set<string>>
+  context: Record<string, Set<string>> = {},
+  computedKeys: string[]
 ) {
   const { binders, handlers } = bindNodeEvents(id, events, context);
 
   return {
-    props: bindNodeProps(props).join(' '),
+    props: bindNodeProps(props, computedKeys).join(' '),
     handlers,
     binders,
     events: binders.join(' ')
@@ -238,7 +244,7 @@ function parseDirectives(directives: NodeDirective[] = []) {
   });
 
   if (vFor) {
-    const { item, index } = vFor.iterator || { item: 'item', index: 'index' };
+    const { item, index } = { item: 'item', index: 'index', ...vFor.iterator };
     result.push(`v-for="(${item}, ${index}) in ${parseValue(vFor.value)}"`);
   }
   // todo: 实现others 指令

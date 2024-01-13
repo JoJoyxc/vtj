@@ -3,6 +3,7 @@ import { createProvider, LocalService } from '@vtj/web';
 import router from './router';
 import App from './App.vue';
 import './style/index.scss';
+
 const modules = import.meta.glob([
   '/.vtj/*.json',
   '/.vtj/files/*.json',
@@ -25,5 +26,4 @@ onReady(async () => {
   app.use(router);
   app.use(provider);
   app.mount('#app');
-  console.log('VTJ provider', provider, modules);
 });

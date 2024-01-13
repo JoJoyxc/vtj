@@ -23,6 +23,7 @@ VTJ 一款基于 Vue3 + Typescript 的低代码开发工具，内置了设计器
 
 VTJ 使用了最新的 Vue3 生态技术栈，要求 Node 版本必须是 v20+， 建议使用 nvm 切换 Node 版本。
 开发项目工程采用`lerna` 和 `pnpm` 包管理工具，需要全局安装。
+
 ```sh
 npm install -g lerna@latest pnpm@lastest --registry=https://registry.npmmirror.com
 ```
@@ -39,30 +40,33 @@ npm run setup && npm run build && npm run dev
 
 ### 模块说明
 
-- packages
-  - base
-  - cli
-  - core
-  - designer
-  - icons
-  - materials
-  - node
-  - ui
-  - utils
-- platforms
-  - electron
-  - pro
-  - server
-  - uniapp
-  - web
-- projects
-  - egg
-  - electron
-  - libaray
-  - uniapp
-  - web
-- docs
-- dev
+- packages 子模块
+  - base 基础工具库，适配 Node 和 浏览器环境
+  - node Node环境基础工具库
+  - cli 项目工程脚手架及命令行工具
+  - utils 浏览器环境工具库
+  - icons 图标库
+  - ui 通用组件库
+  - core 低代码核心库，包含协议定义和模型
+  - renderer 低代码Vue渲染器
+  - materials 低代码物料库
+  - coder 代码生成器
+  - local 低代码本地开发环境辅助工具
+  - designer 低代码设计器
+- platforms 平台整合依赖包
+  - desktop 桌面平台
+  - pro 低代码开发平台
+  - server 服务器端
+  - mobile 移动端
+  - web Web端
+- apps 应用项目模板
+  - electron 桌面跨端项目
+  - libaray 类库项目
+  - uniapp 移动跨端项目
+  - app PC端项目
+- create-vtj 项目搭建工具
+- docs 文档
+- dev 开发工程
 
 ## 交流群
 

@@ -339,6 +339,29 @@ export class Engine {
       this.container = undefined;
     }
   }
+
+  async openFile(fileId?: string) {
+    const project = this.project.value;
+    const apps = this.skeleton?.getRegion('Apps');
+    const id = fileId || project?.homepage;
+    if (!project || !apps || !id) return;
+
+    const page = project.getPage(id);
+    const dsl = await this.service.getFile(id);
+    if (page && dsl) {
+      page.dsl = dsl;
+      apps.regionRef?.setActive('Pages');
+      project.active(page);
+      return;
+    }
+
+    const block = project.getBlock(id);
+    if (block && dsl) {
+      block.dsl = dsl;
+      apps.regionRef?.setActive('Blocks');
+      project.active(block);
+    }
+  }
 }
 
 export function useEngine() {

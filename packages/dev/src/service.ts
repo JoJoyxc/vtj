@@ -237,3 +237,13 @@ export async function publish(project: ProjectSchema) {
 
   return success(true);
 }
+
+export async function getRaw(project: ProjectSchema, dsl: BlockSchema) {
+  const materialsPath = getMaterialsFilePath(project.id as string);
+  const materials = await readJsonSync(materialsPath);
+  const componentMap = new Map<string, MaterialDescription>(
+    Object.entries(materials)
+  );
+  const content = await generator(dsl, componentMap, project.dependencies);
+  return success(content);
+}

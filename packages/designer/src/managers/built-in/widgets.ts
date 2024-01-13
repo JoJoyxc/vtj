@@ -135,7 +135,15 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
     component: widgets.Schema,
     type: 'tab',
     closable: true,
-    label: 'Schema'
+    label: 'DSL视图'
+  },
+  {
+    name: 'Raw',
+    region: 'Workspace',
+    component: widgets.Raw,
+    type: 'tab',
+    closable: true,
+    label: '源码视图'
   },
   {
     name: 'Docs',

@@ -35,4 +35,8 @@ export abstract class Service {
     project: ProjectSchema,
     file: PageFile | BlockFile
   ): Promise<boolean>;
+  public abstract getRaw(
+    project: ProjectSchema,
+    dsl: BlockSchema
+  ): Promise<string>;
 }
