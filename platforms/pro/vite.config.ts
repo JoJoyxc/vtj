@@ -1,7 +1,6 @@
 import { createViteConfig } from '@vtj/cli';
-import { createDevPlugin } from '@vtj/dev';
+import { createDevPlugin } from '@vtj/local';
 import { resolve, join } from 'path';
-import * as EnvConfig from './env.config';
 import proxy from './proxy.config';
 const ENV_TYPE = process.env.ENV_TYPE || 'local';
 const packagesPath = resolve('../../packages');
@@ -29,8 +28,6 @@ export default createViteConfig({
   https: false,
   legacy: false,
   proxy,
-  envConfig: EnvConfig,
-  envType: ENV_TYPE,
   alias,
   elementPlus: false,
   babel: false,

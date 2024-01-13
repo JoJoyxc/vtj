@@ -1,7 +1,7 @@
 packages:
   - 'packages/*'
   - 'platforms/*'
-  - 'projects/*'
+  - 'apps/*'
   - 'create-vtj'
   - 'dev'
   - 'docs'

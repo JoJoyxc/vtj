@@ -21,6 +21,8 @@ export interface DevPluginOptions {
   server: boolean;
   link: boolean | string;
   vtjDir: string;
+  packagesDir: string;
+  devMode: boolean;
 }
 
 const setApis = (
@@ -89,20 +91,50 @@ const aliasPlugin = function (options: DevPluginOptions): Plugin {
     config(config) {
       const { root = process.cwd() } = config || {};
       const vtjDir = join(root, options.vtjDir);
+      const packagesDir = join(root, options.packagesDir);
+      const devAlias: Record<string, string> =
+        options.devMode && process.env.NODE_ENV === 'development'
+          ? {
+              '@vtj/ui/dist/style.css': join(
+                packagesDir,
+                'ui/src/style/index.scss'
+              ),
+              '@vtj/icons/dist/style.css': join(
+                packagesDir,
+                'icons/src/style.scss'
+              ),
+              '@vtj/designer/dist/style.css': join(
+                packagesDir,
+                'designer/src/style/index.scss'
+              ),
+              '@vtj/base': join(packagesDir, 'base/src'),
+              '@vtj/utils': join(packagesDir, 'utils/src/index.ts'),
+              '@vtj/icons': join(packagesDir, 'icons/src'),
+              '@vtj/ui': join(packagesDir, 'ui/src'),
+              '@vtj/core': join(packagesDir, 'core/src'),
+              '@vtj/designer': join(packagesDir, 'designer/src'),
+              '@vtj/renderer': join(packagesDir, 'renderer/src'),
+              '@vtj/coder': join(packagesDir, 'coder/src'),
+              '@vtj/materials': join(packagesDir, 'materials/src')
+            }
+          : {};
       if (config.resolve) {
         config.resolve.alias = Object.assign(config.resolve.alias || {}, {
-          $vtj: vtjDir
+          $vtj: vtjDir,
+          ...devAlias
         });
       } else {
         config.resolve = {
           alias: {
-            $vtj: vtjDir
+            $vtj: vtjDir,
+            ...devAlias
           }
         };
       }
     }
   };
 };
+
 export function createDevPlugin(options: Partial<DevPluginOptions> = {}) {
   const opts: DevPluginOptions = {
     baseURL: '/vtj/local/api',
@@ -110,6 +142,8 @@ export function createDevPlugin(options: Partial<DevPluginOptions> = {}) {
     server: true,
     link: true,
     vtjDir: '.vtj',
+    packagesDir: '../../packages',
+    devMode: false,
     ...options
   };
   const plugins: Plugin[] = [aliasPlugin(opts)];

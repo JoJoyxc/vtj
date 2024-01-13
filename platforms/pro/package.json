@@ -13,7 +13,7 @@
     "@vtj/core": "workspace:^",
     "@vtj/designer": "workspace:^",
     "@vtj/renderer": "workspace:^",
-    "@vtj/dev": "workspace:^"
+    "@vtj/local": "workspace:^"
   },
   "devDependencies": {
     "@vtj/utils": "workspace:^",

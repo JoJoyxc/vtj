@@ -1,1 +1,1 @@
-export * from '@vtj/dev';
+export * from '@vtj/local';

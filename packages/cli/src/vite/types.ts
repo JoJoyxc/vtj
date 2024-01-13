@@ -14,16 +14,12 @@ export type ProxyConfig = Record<string, string | ProxyOptions>;
 /**
  * 环境变量配置
  */
-export type EnvConfig = Record<string, string | number | boolean>;
+export type EnvConfig = Record<string, any>;
+
 /**
  * 环境类型
  */
 export type EnvType = 'local' | 'dev' | 'sit' | 'uat' | 'pre' | 'live';
-
-/**
- * 环境变量映射
- */
-export type EnvConfigMap = Partial<Record<EnvType, EnvConfig>>;
 
 /**
  * createViteConfig函数参数
@@ -83,16 +79,6 @@ export interface CreateViteConfigOptions {
    * 代理
    */
   proxy?: ProxyConfig;
-
-  /**
-   * 环境变量配置
-   */
-  envConfig?: EnvConfigMap;
-
-  /**
-   * 当前环境类型
-   */
-  envType?: string;
 
   /**
    * Vite 服务器默认会忽略对 .git/ 和 node_modules/ 目录的监听。如果你需要对 node_modules/ 内的包进行监听
@@ -223,4 +209,9 @@ export interface CreateViteConfigOptions {
    * 生成 loading html
    */
   loading?: boolean;
+
+  /**
+   * 环境配置文件目录位置
+   */
+  envPath?: string;
 }

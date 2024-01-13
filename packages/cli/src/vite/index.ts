@@ -9,9 +9,9 @@ import { resolve } from 'path';
 import { defaults } from './defaults';
 import { createBuild } from './build';
 import { mergePlugins } from './plugins';
+import { getConfig } from './config';
 
 export * from './types';
-
 
 const createEnv = (type: string, envConfig: EnvConfig) => {
   return {
@@ -50,13 +50,9 @@ export function createViteConfig(
 ): UserConfigExport {
   const opts = Object.assign({}, defaults, options);
 
-  const define =
-    opts.envConfig && opts.envType
-      ? createEnv(
-          opts.envType,
-          opts.envConfig[opts.envType as EnvType] as EnvConfig
-        )
-      : undefined;
+  const envType: EnvType = (process.env.ENV_TYPE || 'local') as EnvType;
+  const envConfig = getConfig(opts.envPath || '/', envType);
+  const define = createEnv(envType, envConfig);
 
   const alias = {
     '@': resolve('src'),
