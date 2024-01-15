@@ -165,6 +165,9 @@ importers:
 
   dev:
     dependencies:
+      '@vtj/materials':
+        specifier: workspace:*
+        version: link:../packages/materials
       '@vtj/pro':
         specifier: workspace:*
         version: link:../platforms/pro
@@ -331,7 +334,7 @@ importers:
         specifier: ~0.8.0
         version: 0.8.0(rollup@4.9.5)
       vite:
-        specifier: ~5.0.9
+        specifier: ~5.0.11
         version: 5.0.11(@types/node@20.11.0)(sass@1.69.7)(terser@5.26.0)
       vite-plugin-dts:
         specifier: ~3.7.0
@@ -438,7 +441,7 @@ importers:
         specifier: ~2.0.0
         version: 2.0.0(sass@1.69.7)(typescript@5.3.3)
       vite:
-        specifier: ~5.0.9
+        specifier: ~5.0.11
         version: 5.0.11(@types/node@20.11.0)(sass@1.69.7)(terser@5.26.0)
       vitest:
         specifier: ~1.2.0

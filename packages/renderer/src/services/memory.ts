@@ -99,3 +99,13 @@ export class MemoryService extends BaseService {
     return Promise.resolve(true);
   }
 }
+
+let serviceInstance: MemoryService | null = null;
+
+export function createMemoryService() {
+  if (serviceInstance) return serviceInstance;
+  {
+    serviceInstance = new MemoryService();
+    return serviceInstance;
+  }
+}

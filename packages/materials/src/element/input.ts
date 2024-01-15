@@ -6,7 +6,6 @@ const Input: MaterialDescription = {
   label: '输入框',
   categoryId: 'form',
   doc: 'https://element-plus.org/zh-CN/component/input.html',
-  package: 'element-plus',
   props: [
     {
       name: 'type',

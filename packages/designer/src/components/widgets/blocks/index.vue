@@ -117,10 +117,6 @@
   };
 
   const onClick = async (file: BlockFile) => {
-    const dsl = await engine.service.getFile(file.id);
-    if (dsl) {
-      file.dsl = dsl;
-    }
     engine.project.value?.active(file);
   };
 

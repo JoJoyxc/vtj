@@ -1,6 +1,6 @@
 import { type MaybeRef, toValue, ref, computed } from 'vue';
 import { BlockModel } from '@vtj/core';
-import { Context } from '@vtj/renderer';
+import { type Context } from '@vtj/renderer';
 import { useSelected } from './useSelected';
 
 export interface BinderOption {

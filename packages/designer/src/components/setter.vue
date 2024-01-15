@@ -93,7 +93,7 @@
     VtjIconCheck,
     VtjIconRemove
   } from '@vtj/icons';
-  import { Context } from '@vtj/renderer';
+  import { type Context } from '@vtj/renderer';
   import { BlockModel } from '@vtj/core';
   import { VariableBinder } from './binders';
   import { expressionValidate, confirm } from '../utils';

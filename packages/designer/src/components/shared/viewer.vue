@@ -25,7 +25,7 @@
   import { toRaw } from 'vue';
   import { ElTree } from 'element-plus';
   import { toRawType } from '@vtj/utils';
-  import { Context } from '@vtj/renderer';
+  import { type Context } from '@vtj/renderer';
   import Item from './item.vue';
 
   export interface Props {

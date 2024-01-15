@@ -109,10 +109,6 @@
 
   const onClick = async (file: PageFile) => {
     if (file.dir) return;
-    const dsl = await engine.service.getFile(file.id);
-    if (dsl) {
-      file.dsl = dsl;
-    }
     engine.project.value?.active(file);
   };
 

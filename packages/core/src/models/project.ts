@@ -132,15 +132,13 @@ export class ProjectModel {
    * @param silent
    */
   active(file: BlockFile | PageFile, silent: boolean = false) {
-    if (file.dsl) {
-      this.currentFile = file;
-      if (!silent) {
-        emitter.emit(EVENT_PROJECT_ACTIVED, {
-          model: this,
-          type: 'update',
-          data: file
-        });
-      }
+    this.currentFile = file;
+    if (!silent) {
+      emitter.emit(EVENT_PROJECT_ACTIVED, {
+        model: this,
+        type: 'update',
+        data: file
+      });
     }
   }
   /**

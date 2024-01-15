@@ -133,7 +133,7 @@ export class Simulator {
     }
   }
 
-  emitReady(
+  async emitReady(
     libraryExports: string[] = [],
     materialExports: string[] = [],
     materialMapLibrary: Record<string, string> = {}
@@ -141,17 +141,18 @@ export class Simulator {
     this.renderer?.dispose();
     this.renderer = null;
     const cw = this.contentWindow as any;
-    const materials = materialExports.map((name: string) => {
-      return cw[name];
-    });
     const { assets, service, current } = this.engine;
 
-    assets.load(materials);
-    const env = this.createEnv(
+    const env = await this.createEnv(
       libraryExports,
       materialExports,
       materialMapLibrary
     );
+    const materials = materialExports.map((name: string) => {
+      return env.materials[name] || cw[name];
+    });
+
+    assets.load(materials);
     this.renderer = new Renderer(env, service, this.designer.value);
     if (current.value) {
       this.renderer.render(current.value);
@@ -159,16 +160,19 @@ export class Simulator {
     this.emits();
   }
 
-  createEnv(
+  async createEnv(
     libraryExports: string[] = [],
     materialExports: string[] = [],
     materialMapLibrary: Record<string, string> = {}
-  ): SimulatorEnv {
+  ): Promise<SimulatorEnv> {
     const cw = this.contentWindow as any;
     const { engine } = this;
     const { project, assets, provider } = engine;
-    const materials = materialExports.reduce((prev, cur) => {
-      prev[cur] = cw[cur];
+    const materialMap = provider.materials || {};
+    const materials = await materialExports.reduce(async (prev, cur) => {
+      prev[cur] = materialMap[cur]
+        ? (await materialMap[cur]()).default
+        : cw[cur];
       return prev;
     }, {} as any);
 

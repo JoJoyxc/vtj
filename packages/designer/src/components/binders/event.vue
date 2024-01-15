@@ -26,7 +26,7 @@
 <script lang="ts" setup>
   import { ref, reactive } from 'vue';
   import { XField } from '@vtj/ui';
-  import { Context } from '@vtj/renderer';
+  import { type Context } from '@vtj/renderer';
   import { BlockModel, type NodeEvent } from '@vtj/core';
   import { Binder } from '../shared';
   import Editor from '../editor';

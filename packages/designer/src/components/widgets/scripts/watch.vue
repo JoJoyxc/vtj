@@ -38,7 +38,7 @@
 <script lang="ts" setup>
   import { computed } from 'vue';
   import { BlockModel, type JSFunction } from '@vtj/core';
-  import { Context, JSCodeToString } from '@vtj/renderer';
+  import { type Context, JSCodeToString } from '@vtj/renderer';
   import { XField } from '@vtj/ui';
   import Group from './group.vue';
   import Editor from '../../editor';

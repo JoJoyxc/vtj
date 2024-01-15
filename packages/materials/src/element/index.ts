@@ -7,9 +7,10 @@ import { version } from '../version';
 import { setPackageName } from '../shared';
 import button from './button';
 import input from './input';
+import link from './link';
 
 const name = 'element-plus';
-const components: MaterialDescription[] = [...button, input];
+const components: MaterialDescription[] = [...button, input, link];
 
 const categories: MaterialCategory[] = [
   {

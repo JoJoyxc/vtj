@@ -4,7 +4,7 @@ import {
   type NodeSchema,
   type BlockModel,
   type NodeModel,
-  Service,
+  type Service,
   emitter,
   EVENT_BLOCK_CHANGE,
   EVENT_NODE_CHANGE
@@ -14,7 +14,7 @@ import {
   createRenderer,
   createLoader,
   ContextMode,
-  Context
+  type Context
 } from '@vtj/renderer';
 import { ElNotification } from 'element-plus';
 import { notify } from '../utils';

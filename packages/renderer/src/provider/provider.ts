@@ -35,6 +35,7 @@ export interface ProviderOptions {
   adapter?: Partial<ProvideAdapter>;
   router?: Router;
   dependencies?: Record<string, () => Promise<any>>;
+  materials?: Record<string, () => Promise<any>>;
   globals?: Record<string, any>;
 }
 
@@ -50,6 +51,7 @@ export class Provider {
   public adapter: ProvideAdapter = { request, jsonp };
   public apis: Record<string, (...args: any[]) => Promise<any>> = {};
   public dependencies: Record<string, () => Promise<any>> = {};
+  public materials: Record<string, () => Promise<any>> = {};
   public library: Record<string, any> = {};
   public service: Service;
   public project: ProjectSchema | null = null;
@@ -64,6 +66,7 @@ export class Provider {
         ? ContextMode.Raw
         : ContextMode.Runtime,
       dependencies,
+      materials,
       project = {},
       adapter = {},
       globals = {},
@@ -76,6 +79,9 @@ export class Provider {
     this.router = router;
     if (dependencies) {
       this.dependencies = dependencies;
+    }
+    if (materials) {
+      this.materials = materials;
     }
     Object.assign(this.globals, globals);
     Object.assign(this.adapter, adapter);
@@ -126,8 +132,11 @@ export class Provider {
       await loadScript(materialUrl);
     }
 
+    const materialMap = this.materials || {};
     for (const materialExport of materialExports) {
-      const material = (window as any)[materialExport] as Material;
+      const material = materialMap[materialExport]
+        ? ((await materialMap[materialExport]()).default as Material)
+        : ((window as any)[materialExport] as Material);
       const lib = (window as any)[materialMapLibrary[materialExport]];
       if (material && lib) {
         material.components.forEach((item) => {

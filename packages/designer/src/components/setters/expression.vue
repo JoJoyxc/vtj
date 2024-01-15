@@ -12,7 +12,7 @@
   import { ElInput } from 'element-plus';
   import { type JSExpression } from '@vtj/core';
   import { isJSExpression } from '@vtj/renderer';
-  import { Context } from '@vtj/renderer';
+  import { type Context } from '@vtj/renderer';
   import { expressionValidate } from '../../utils';
 
   export interface Props {

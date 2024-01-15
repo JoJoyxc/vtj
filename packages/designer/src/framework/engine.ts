@@ -18,7 +18,7 @@ import {
   ProjectModel,
   BlockModel,
   HistoryModel,
-  Service,
+  type Service,
   emitter,
   EVENT_BLOCK_CHANGE,
   EVENT_NODE_CHANGE,
@@ -40,7 +40,7 @@ import {
   type HistoryModelEvent
 } from '@vtj/core';
 import {
-  Context,
+  type Context,
   ContextMode,
   Provider,
   logger,
@@ -59,6 +59,8 @@ export interface EngineOptions {
   container: MaybeRef<HTMLElement | undefined>;
   service: Service;
   project?: Partial<ProjectSchema>;
+  dependencies?: Record<string, () => Promise<any>>;
+  materials?: Record<string, () => Promise<any>>;
   globals?: Record<string, any>;
   adapter?: ProvideAdapter;
 }
@@ -80,14 +82,23 @@ export class Engine {
   public history: Ref<HistoryModel | null> = ref(null);
   public provider: Provider;
   constructor(options: EngineOptions) {
-    const { container, service, project = {}, globals = {} } = options;
+    const {
+      container,
+      service,
+      project = {},
+      globals = {},
+      dependencies,
+      materials
+    } = options;
     this.container = container;
     this.service = service;
     this.provider = new Provider({
       mode: ContextMode.Design,
       globals,
       project,
-      service
+      service,
+      dependencies,
+      materials
     });
     this.assets = new Assets(this.service);
     this.simulator = new Simulator({
@@ -145,9 +156,15 @@ export class Engine {
 
   private async activeFile(e: ProjectModelEvent) {
     await nextTick();
-    const dsl = e.model.currentFile?.dsl;
-    if (dsl) {
-      const block = new BlockModel(dsl);
+    const file = e.model.currentFile;
+    if (file) {
+      const dsl = await this.service.getFile(file.id);
+      if (dsl) {
+        file.dsl = dsl;
+      }
+    }
+    if (file?.dsl) {
+      const block = new BlockModel(file.dsl);
       this.updateCurrent(block);
       this.initHistory(block);
     } else {

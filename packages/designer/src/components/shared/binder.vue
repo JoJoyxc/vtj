@@ -82,7 +82,7 @@
   import { ref } from 'vue';
   import { XDialog, XContainer, XForm, XPanel } from '@vtj/ui';
   import { Search } from '@vtj/icons';
-  import { Context } from '@vtj/renderer';
+  import { type Context } from '@vtj/renderer';
   import { BlockModel } from '@vtj/core';
   import {
     ElInput,

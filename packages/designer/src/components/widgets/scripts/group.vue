@@ -46,7 +46,7 @@
   import { ref, computed } from 'vue';
   import { XField } from '@vtj/ui';
   import { BlockModel } from '@vtj/core';
-  import { Context } from '@vtj/renderer';
+  import { type Context } from '@vtj/renderer';
   import { ElEmpty } from 'element-plus';
   import { Panel, Item, Binder } from '../../shared';
   import Editor from '../../editor';

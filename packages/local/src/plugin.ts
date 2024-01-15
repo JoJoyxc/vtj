@@ -114,8 +114,7 @@ const aliasPlugin = function (options: DevPluginOptions): Plugin {
               '@vtj/core': join(packagesDir, 'core/src'),
               '@vtj/designer': join(packagesDir, 'designer/src'),
               '@vtj/renderer': join(packagesDir, 'renderer/src'),
-              '@vtj/coder': join(packagesDir, 'coder/src'),
-              '@vtj/materials': join(packagesDir, 'materials/src')
+              '@vtj/coder': join(packagesDir, 'coder/src')
             }
           : {};
       if (config.resolve) {

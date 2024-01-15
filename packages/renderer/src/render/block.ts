@@ -134,28 +134,34 @@ function createProps(props: Array<string | BlockProp> = [], context: Context) {
               : n.default
           };
     })
-    .reduce((result, current) => {
-      result[current.name] = {
-        type: getDataType(current.type),
-        required: current.required,
-        default: current.default
-      };
-      return result;
-    }, {} as Record<string, any>);
+    .reduce(
+      (result, current) => {
+        result[current.name] = {
+          type: getDataType(current.type),
+          required: current.required,
+          default: current.default
+        };
+        return result;
+      },
+      {} as Record<string, any>
+    );
 }
 
 function createState(Vue: any, state: BlockState, context: Context) {
   return Vue.reactive(
-    Object.keys(state || {}).reduce((result, key: string) => {
-      let val = (state as any)[key];
-      if (isJSExpression(val)) {
-        val = context.__parseExpression(val);
-      } else if (isJSFunction(val)) {
-        val = context.__parseFunction(val);
-      }
-      result[key] = val;
-      return result;
-    }, {} as Record<string, any>)
+    Object.keys(state || {}).reduce(
+      (result, key: string) => {
+        let val = (state as any)[key];
+        if (isJSExpression(val)) {
+          val = context.__parseExpression(val);
+        } else if (isJSFunction(val)) {
+          val = context.__parseFunction(val);
+        }
+        result[key] = val;
+        return result;
+      },
+      {} as Record<string, any>
+    )
   );
 }
 
@@ -164,53 +170,65 @@ function createComputed(
   computedSchema: Record<string, JSFunction>,
   context: Context
 ) {
-  return Object.entries(computedSchema ?? {}).reduce((result, [k, v]) => {
-    result[k] = Vue.computed(context.__parseFunction(v) as any);
-    return result;
-  }, {} as Record<string, any>);
+  return Object.entries(computedSchema ?? {}).reduce(
+    (result, [k, v]) => {
+      result[k] = Vue.computed(context.__parseFunction(v) as any);
+      return result;
+    },
+    {} as Record<string, any>
+  );
 }
 
 function createMethods(methods: Record<string, JSFunction>, context: Context) {
-  return Object.entries(methods ?? {}).reduce((result, [k, v]) => {
-    result[k] = context.__parseFunction(v);
-    return result;
-  }, {} as Record<string, any>);
+  return Object.entries(methods ?? {}).reduce(
+    (result, [k, v]) => {
+      result[k] = context.__parseFunction(v);
+      return result;
+    },
+    {} as Record<string, any>
+  );
 }
 
 function createInject(Vue: any, injects: BlockInject[] = [], context: Context) {
-  return injects.reduce((result, current) => {
-    const { name, from } = current || {};
-    current.default;
-    const key = isJSExpression(from)
-      ? context.__parseExpression(from) || name
-      : from ?? name;
-    const value = isJSExpression(current.default)
-      ? context.__parseExpression(current.default)
-      : current.default ?? null;
-    result[name] = Vue.inject(key, value);
-    return result;
-  }, {} as Record<string, any>);
+  return injects.reduce(
+    (result, current) => {
+      const { name, from } = current || {};
+      current.default;
+      const key = isJSExpression(from)
+        ? context.__parseExpression(from) || name
+        : from ?? name;
+      const value = isJSExpression(current.default)
+        ? context.__parseExpression(current.default)
+        : current.default ?? null;
+      result[name] = Vue.inject(key, value);
+      return result;
+    },
+    {} as Record<string, any>
+  );
 }
 
 export function createDataSources(
   dataSources: Record<string, DataSourceSchema>,
   context: Context
 ) {
-  return Object.keys(dataSources).reduce((res, key) => {
-    const source = dataSources[key];
-    const api = context.$apis[source.ref];
-    const transform = isJSFunction(source.transform)
-      ? source.transform.value
-        ? context.__parseFunction(source.transform)
-        : undefined
-      : source.transform;
+  return Object.keys(dataSources).reduce(
+    (res, key) => {
+      const source = dataSources[key];
+      const api = context.$apis[source.ref];
+      const transform = isJSFunction(source.transform)
+        ? source.transform.value
+          ? context.__parseFunction(source.transform)
+          : undefined
+        : source.transform;
 
-    res[key] = async (...args: any[]) => {
-      const res = await api.apply(context, args);
-      return transform ? transform(res) : res;
-    };
-    return res;
-  }, {} as Record<string, DataSourceHandler>);
+      res[key] = async (...args: any[]) => {
+        const res = await api.apply(context, args);
+        return transform ? transform(res) : res;
+      };
+      return res;
+    },
+    {} as Record<string, DataSourceHandler>
+  );
 }
 
 function setWatches(Vue: any, watches: BlockWatch[] = [], context: Context) {
@@ -230,8 +248,11 @@ function createLifeCycles(
   lifeCycle: Record<string, JSFunction>,
   context: Context
 ) {
-  return Object.entries(lifeCycle ?? {}).reduce((result, [k, v]) => {
-    result[k] = context.__parseFunction(v);
-    return result;
-  }, {} as Record<string, any>);
+  return Object.entries(lifeCycle ?? {}).reduce(
+    (result, [k, v]) => {
+      result[k] = context.__parseFunction(v);
+      return result;
+    },
+    {} as Record<string, any>
+  );
 }

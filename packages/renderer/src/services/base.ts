@@ -6,7 +6,7 @@ import {
   type MaterialDescription,
   type HistorySchema,
   type HistoryItem,
-  Service
+  type Service
 } from '@vtj/core';
 import { Request } from '@vtj/utils';
 import { ElNotification } from 'element-plus';

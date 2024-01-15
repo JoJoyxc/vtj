@@ -12,7 +12,7 @@ import {
   type NodeSlot
 } from '@vtj/core';
 import { camelCase, upperFirst, isString, pick } from '@vtj/utils';
-import { Context } from './context';
+import { type Context } from './context';
 import { BUILDIN_DIRECTIVES } from '../constants';
 import { toString, isJSExpression, isJSFunction } from '../utils';
 import { defaultLoader, type BlockLoader } from './loader';

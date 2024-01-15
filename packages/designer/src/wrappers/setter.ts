@@ -1,6 +1,6 @@
 import { defineComponent, h, markRaw, type PropType } from 'vue';
 import { type MaterialSetter, type BlockPropDataType } from '@vtj/core';
-import { Context, isJSExpression, isJSFunction } from '@vtj/renderer';
+import { type Context, isJSExpression, isJSFunction } from '@vtj/renderer';
 import { BlockModel } from '@vtj/core';
 import { type Setter } from '../framework';
 import { setterManager } from '../managers';
