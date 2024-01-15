@@ -24,7 +24,7 @@
     "lodash-es": "~4.17.21",
     "numeral": "~2.0.6",
     "unbuild": "~2.0.0",
-    "vitest": "~1.1.0"
+    "vitest": "~1.2.0"
   },
   "exports": {
     ".": {

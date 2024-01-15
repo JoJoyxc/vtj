@@ -1,37 +1,9 @@
 import { createViteConfig } from '@vtj/cli';
 import { createDevPlugin } from '@vtj/local';
-import { resolve, join } from 'path';
-import proxy from './proxy.config';
-const ENV_TYPE = process.env.ENV_TYPE || 'local';
-const packagesPath = resolve('../../packages');
-
-const alias =
-  ENV_TYPE === 'local'
-    ? {
-        '@vtj/utils': join(packagesPath, 'utils/src/index.ts'),
-        '@vtj/ui/dist/style.css': join(packagesPath, 'ui/src/style/index.scss'),
-        '@vtj/icons/dist/style.css': join(packagesPath, 'icons/src/style.scss'),
-        '@vtj/designer/dist/style.css': join(
-          packagesPath,
-          'designer/src/style/index.scss'
-        ),
-        '@vtj/ui': join(packagesPath, 'ui/src'),
-        '@vtj/core': join(packagesPath, 'core/src'),
-        '@vtj/designer': join(packagesPath, 'designer/src'),
-        '@vtj/renderer': join(packagesPath, 'renderer/src')
-      }
-    : undefined;
 
 export default createViteConfig({
   base: './',
-  host: '0.0.0.0',
-  https: false,
-  legacy: false,
-  proxy,
-  alias,
   elementPlus: false,
-  babel: false,
-  emptyOutDir: true,
   dts: false,
   optimizeDeps: [
     'monaco-editor',
@@ -44,7 +16,8 @@ export default createViteConfig({
   plugins: [
     createDevPlugin({
       link: false,
-      copy: true
+      copy: true,
+      devMode: true
     })
   ]
 });

@@ -4,7 +4,7 @@
 <script lang="ts" setup>
   import { ref, getCurrentInstance } from 'vue';
   import { useRoute } from 'vue-router';
-  import { createProvider, LocalService, ContextMode } from '../../../src';
+  import { createProvider, LocalService, ContextMode } from '../../src';
   const service = new LocalService();
 
   const { provider, onReady } = createProvider({

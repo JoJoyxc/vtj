@@ -105,7 +105,7 @@
     if (!isDragged) {
       const section = window.location.hash.split('/');
       const id = section.pop() || '';
-      const path = window.location.pathname + '@vtj/pro/#/local?file=' + id;
+      const path = window.location.pathname + '@vtj/pro/#/?id=' + id;
       window.open(path, 'VTJDesigner');
     }
   });

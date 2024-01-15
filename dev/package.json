@@ -17,13 +17,14 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
-    "@vtj/pro": "workspace:*",
     "@vtj/web": "workspace:*",
+    "@vtj/pro": "workspace:*",
     "vue": "~3.4.10",
     "vue-router": "~4.2.5"
   },
   "devDependencies": {
-    "@vtj/cli": "workspace:*"
+    "@vtj/cli": "workspace:*",
+    "@vtj/local": "workspace:*"
   },
   "description": "> TODO: description",
   "author": "陈华春 <samchen08@163.com>",

@@ -3,33 +3,13 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 const routes = [
   {
     path: '/',
-    name: 'index',
-    redirect: '/local'
-  },
-  {
-    path: '/local',
-    name: 'local',
-    component: () => import('./views/local/index.vue')
-  },
-  {
-    path: '/local/preview/:id',
-    name: 'localPreview',
-    component: () => import('./views/local/preview.vue')
-  },
-  {
-    path: '/example',
-    name: 'example',
+    name: 'home',
     component: () => import('./views/index.vue')
   },
   {
-    path: '/example/setup',
-    name: 'exampleSetup',
-    component: () => import('./views/index.vue')
-  },
-  {
-    path: '/example/preview/:id',
-    name: 'examplePreview',
-    component: () => import('./views/index.vue')
+    path: '/preview/:id',
+    name: 'preview',
+    component: () => import('./views/preview.vue')
   }
 ];
 
