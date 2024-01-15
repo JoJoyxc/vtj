@@ -3,7 +3,7 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { Engine, widgetManager, StorageService } from '@vtj/pro';
+  import { Engine, widgetManager, MemoryService } from '@vtj/pro';
 
   widgetManager.set('Switcher', {
     props: {
@@ -16,7 +16,7 @@
   const container = ref();
   const engine = new Engine({
     container,
-    service: new StorageService(),
+    service: new MemoryService(),
     project: {
       id: 'demo',
       name: 'dev-project'

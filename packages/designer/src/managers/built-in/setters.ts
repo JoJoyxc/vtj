@@ -73,6 +73,14 @@ export const builtInSetters: Array<Setter> = [
     }
   },
   {
+    name: 'JSONSetter',
+    component: setters.JsonSetter,
+    type: 'Object',
+    props: {
+      type: 'JSON'
+    }
+  },
+  {
     name: 'FunctionSetter',
     component: setters.FunctionSetter,
     type: 'Function'

@@ -98,6 +98,7 @@ export class Simulator {
               margin: 0;
               min-height: 100vh;
               width: 100%;
+              height: 100%;
               background: #fff;
             }
          </style>

@@ -90,7 +90,8 @@ export function useNodeProps(
   const isExist = (name: string) => {
     return (
       commonProps.value.some((n) => n.name === name) ||
-      componentProps.value.some((n) => n.name === name)
+      componentProps.value.some((n) => n.name === name) ||
+      name === 'style'
     );
   };
 
