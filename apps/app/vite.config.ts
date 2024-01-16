@@ -5,7 +5,7 @@ export default createViteConfig({
   visualizer: false,
   plugins: [
     createDevPlugin({
-      devMode: true
+      devMode: false
     })
   ]
 });

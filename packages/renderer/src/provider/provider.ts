@@ -6,7 +6,8 @@ import {
   type BlockFile,
   type Service,
   type Material,
-  type BlockSchema
+  type BlockSchema,
+  Base
 } from '@vtj/core';
 import { type IStaticRequest, type Jsonp, jsonp, loadScript } from '@vtj/utils';
 import { ElNotification } from 'element-plus';
@@ -44,7 +45,7 @@ export interface ProvideAdapter {
   jsonp: Jsonp;
 }
 
-export class Provider {
+export class Provider extends Base {
   public mode: ContextMode;
   public globals: Record<string, any> = {};
   public modules: Record<string, () => Promise<any>> = {};
@@ -57,9 +58,8 @@ export class Provider {
   public project: ProjectSchema | null = null;
   public components: Record<string, any> = {};
   private router: Router | null = null;
-  private listeners: Array<() => void> = [];
-  private isReady: boolean = false;
   constructor(options: ProviderOptions) {
+    super();
     const {
       service,
       mode = process.env.NODE_ENV === 'production'
@@ -149,7 +149,7 @@ export class Provider {
       this.apis = createSchemaApis(apis, this.adapter);
     }
     this.initRouter();
-    this.emits();
+    this.triggerReady();
   }
 
   private initRouter() {
@@ -170,14 +170,6 @@ export class Provider {
     }
   }
 
-  private emits() {
-    this.isReady = true;
-    for (const listener of this.listeners) {
-      listener();
-    }
-    this.listeners = [];
-  }
-
   install(app: App) {
     const installed = app.config.globalProperties.installed || {};
     for (const [name, library] of Object.entries(this.library)) {
@@ -190,13 +182,6 @@ export class Provider {
     app.config.globalProperties.installed = installed;
   }
 
-  ready(callback: () => void) {
-    if (this.isReady) {
-      callback();
-    } else {
-      this.listeners.push(callback);
-    }
-  }
   getFile(id: string): PageFile | BlockFile | null {
     const { blocks = [] } = this.project || {};
     return this.getPage(id) || blocks.find((item) => item.id === id) || null;

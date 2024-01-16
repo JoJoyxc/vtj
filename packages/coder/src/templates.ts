@@ -2,7 +2,7 @@ import { template } from '@vtj/base';
 
 const scriptTemplate = `
 <%= imports %>
-import { useProvider } from '@vtj/web';
+import { useProvider } from '@vtj/renderer';
 export default defineComponent({
   name: '<%= name %>', 
   <% if(inject) { %> inject: { <%= inject %>}, <% } %>

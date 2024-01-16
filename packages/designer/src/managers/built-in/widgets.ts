@@ -148,7 +148,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'Docs',
     region: 'Workspace',
-    component: widgets.EmptyWidget,
+    component: widgets.Docs,
     type: 'tab',
     closable: true,
     label: '帮助中心'

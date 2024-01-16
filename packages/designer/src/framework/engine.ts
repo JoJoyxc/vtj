@@ -15,10 +15,10 @@ import {
   type Ref
 } from 'vue';
 import {
+  Base,
   ProjectModel,
   BlockModel,
   HistoryModel,
-  type Service,
   emitter,
   EVENT_BLOCK_CHANGE,
   EVENT_NODE_CHANGE,
@@ -31,6 +31,7 @@ import {
   EVENT_PROJECT_FILE_PUBLISH,
   EVENT_HISTORY_CHANGE,
   EVENT_HISTORY_LOAD,
+  type Service,
   type Emitter,
   type ProjectSchema,
   type BlockFile,
@@ -65,9 +66,7 @@ export interface EngineOptions {
   adapter?: ProvideAdapter;
 }
 
-export class Engine {
-  private listeners: Array<() => void> = [];
-  private isReady: boolean = false;
+export class Engine extends Base {
   public app?: App;
   public skeleton?: SkeletonWrapperInstance | null;
   public container: MaybeRef<HTMLElement | undefined>;
@@ -82,6 +81,7 @@ export class Engine {
   public history: Ref<HistoryModel | null> = ref(null);
   public provider: Provider;
   constructor(options: EngineOptions) {
+    super();
     const {
       container,
       service,
@@ -118,7 +118,7 @@ export class Engine {
       dsl.dependencies = depsManager.merge(dsl.dependencies || []);
       this.project.value = new ProjectModel(dsl);
       this.saveMaterials();
-      this.emits();
+      this.triggerReady();
     }
   }
   private render() {
@@ -131,13 +131,6 @@ export class Engine {
     } else {
       logger.warn('VTJEngine constructor param [ container ] is undefined');
     }
-  }
-  private emits() {
-    this.isReady = true;
-    for (const listener of this.listeners) {
-      listener();
-    }
-    this.listeners = [];
   }
 
   private bindEvents() {
@@ -163,6 +156,7 @@ export class Engine {
         file.dsl = dsl;
       }
     }
+
     if (file?.dsl) {
       const block = new BlockModel(file.dsl);
       this.updateCurrent(block);
@@ -253,6 +247,7 @@ export class Engine {
     this.simulator.ready(() => {
       const project = this.project.value;
       if (project) {
+        // this.assets.load([]);
         const map = this.assets.componentMap;
         this.service.saveMaterials(project.toDsl(), map);
       }
@@ -340,14 +335,6 @@ export class Engine {
     }
   }
 
-  ready(callback: () => void) {
-    if (this.isReady) {
-      callback();
-    } else {
-      this.listeners.push(callback);
-    }
-  }
-
   dispose() {
     this.emitter.all.clear();
     this.simulator.dispose();
@@ -364,19 +351,19 @@ export class Engine {
     if (!project || !apps || !id) return;
 
     const page = project.getPage(id);
-    const dsl = await this.service.getFile(id);
-    if (page && dsl) {
-      page.dsl = dsl;
+    if (page) {
       apps.regionRef?.setActive('Pages');
-      project.active(page);
-      return;
+      this.simulator.ready(() => {
+        project.active(page);
+      });
     }
 
     const block = project.getBlock(id);
-    if (block && dsl) {
-      block.dsl = dsl;
+    if (block) {
       apps.regionRef?.setActive('Blocks');
-      project.active(block);
+      this.simulator?.ready(() => {
+        project.active(block);
+      });
     }
   }
 }

@@ -13,8 +13,8 @@ export function useAssets() {
 
   const groupMap = computed(() => {
     const map: Record<string, AssetGroup> = {};
-    if (groups) {
-      groups.forEach((group) => {
+    if (groups.value) {
+      groups.value.forEach((group) => {
         map[group.name] = group;
       });
     }
@@ -22,8 +22,8 @@ export function useAssets() {
   });
 
   const tabs = computed(() => {
-    if (!groups) return [];
-    return groups.map((n) => ({
+    if (!groups.value) return [];
+    return groups.value.map((n) => ({
       label: `${n.label} (${n.count})`,
       name: n.name,
       disabled: !n.children?.length
@@ -39,12 +39,15 @@ export function useAssets() {
   });
 
   watchEffect(() => {
-    const result = tabs.value.reduce((res, current) => {
-      res[current.name] = getDefaultModelValue(
-        groupMap.value[current.name].children
-      );
-      return res;
-    }, {} as Record<string, any>);
+    const result = tabs.value.reduce(
+      (res, current) => {
+        res[current.name] = getDefaultModelValue(
+          groupMap.value[current.name].children
+        );
+        return res;
+      },
+      {} as Record<string, any>
+    );
     Object.assign(model, result);
   });
 

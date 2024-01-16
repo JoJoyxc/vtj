@@ -1,5 +1,5 @@
 import { type Ref, type ShallowRef, shallowRef, watchEffect, watch } from 'vue';
-import { type Dependencie } from '@vtj/core';
+import { type Dependencie, type Material, Base } from '@vtj/core';
 import {
   parseDeps,
   createAssetsCss,
@@ -35,14 +35,13 @@ export interface SimulatorOptions {
   engine: Engine;
 }
 
-export class Simulator {
-  private listeners: Array<() => void> = [];
-  private isReady: boolean = false;
+export class Simulator extends Base {
   public contentWindow: Window | null = null;
   public renderer: Renderer | null = null;
   public designer: ShallowRef<Designer | null> = shallowRef(null);
   public engine: Engine;
   constructor(options: SimulatorOptions) {
+    super();
     const { engine } = options;
     this.engine = engine;
 
@@ -53,7 +52,7 @@ export class Simulator {
   init(iframe: Ref<HTMLIFrameElement | undefined>, deps: Ref<Dependencie[]>) {
     watchEffect(() => {
       if (iframe.value && deps.value.length) {
-        this.isReady = false;
+        this.resetReady();
         this.setup(iframe.value, deps.value);
         if (this.contentWindow) {
           this.designer.value?.dispose();
@@ -118,22 +117,6 @@ export class Simulator {
     doc.close();
   }
 
-  private emits() {
-    this.isReady = true;
-    for (const listener of this.listeners) {
-      listener();
-    }
-    this.listeners = [];
-  }
-
-  ready(callback: () => void) {
-    if (this.isReady) {
-      callback();
-    } else {
-      this.listeners.push(callback);
-    }
-  }
-
   async emitReady(
     libraryExports: string[] = [],
     materialExports: string[] = [],
@@ -142,41 +125,32 @@ export class Simulator {
     this.renderer?.dispose();
     this.renderer = null;
     const cw = this.contentWindow as any;
-    const { assets, service, current } = this.engine;
-
-    const env = await this.createEnv(
-      libraryExports,
-      materialExports,
-      materialMapLibrary
-    );
-    const materials = materialExports.map((name: string) => {
-      return env.materials[name] || cw[name];
-    });
-
+    const { assets, service, current, provider } = this.engine;
+    const materialMap = provider.materials || {};
+    const materials: Material[] = [];
+    for (const name of materialExports) {
+      const material: Material = materialMap[name]
+        ? (await materialMap[name]()).default
+        : cw[name];
+      materials.push(material);
+    }
     assets.load(materials);
+    const env = this.createEnv(libraryExports, materialMapLibrary, materials);
     this.renderer = new Renderer(env, service, this.designer.value);
     if (current.value) {
       this.renderer.render(current.value);
     }
-    this.emits();
+    this.triggerReady();
   }
 
-  async createEnv(
+  createEnv(
     libraryExports: string[] = [],
-    materialExports: string[] = [],
-    materialMapLibrary: Record<string, string> = {}
-  ): Promise<SimulatorEnv> {
+    materialMapLibrary: Record<string, string> = {},
+    materials: Material[] = []
+  ): SimulatorEnv {
     const cw = this.contentWindow as any;
     const { engine } = this;
     const { project, assets, provider } = engine;
-    const materialMap = provider.materials || {};
-    const materials = await materialExports.reduce(async (prev, cur) => {
-      prev[cur] = materialMap[cur]
-        ? (await materialMap[cur]()).default
-        : cw[cur];
-      return prev;
-    }, {} as any);
-
     const library = libraryExports.reduce((prev, cur) => {
       prev[cur] = cw[cur];
       return prev;
@@ -185,7 +159,7 @@ export class Simulator {
     const components: Record<string, any> = {};
 
     const { groups, componentMap } = assets;
-    for (const group of groups) {
+    for (const group of groups.value) {
       const names = group.names || [];
       const lib = library[materialMapLibrary[group.library || '']];
       if (lib) {

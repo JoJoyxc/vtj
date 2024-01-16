@@ -45,9 +45,12 @@
     back?: boolean;
     remove?: boolean;
     save?: boolean;
+    header?: boolean;
   }
 
-  const props = defineProps<Props>();
+  const props = withDefaults(defineProps<Props>(), {
+    header: true
+  });
   const emit = defineEmits(['plus', 'back', 'remove', 'save']);
 
   const onClickPlus = () => {
@@ -67,12 +70,14 @@
   };
 
   const header = computed(() => {
-    return {
-      content: props.title,
-      subtitle: props.subtitle,
-      icon: props.back ? Back : undefined,
-      onClickBack: props.back ? onClickBack : undefined
-    };
+    return props.header
+      ? {
+          content: props.title,
+          subtitle: props.subtitle,
+          icon: props.back ? Back : undefined,
+          onClickBack: props.back ? onClickBack : undefined
+        }
+      : null;
   });
 
   defineOptions({

@@ -1,3 +1,4 @@
+import { ref, type Ref } from 'vue';
 import type {
   Material,
   MaterialCategory,
@@ -22,7 +23,7 @@ export interface AssetGroup {
 export class Assets {
   components: MaterialDescription[] = [];
   componentMap: Map<string, MaterialDescription> = new Map();
-  groups: AssetGroup[] = [];
+  groups: Ref<AssetGroup[]> = ref([]);
   constructor(public service: Service) {}
 
   private getCateoryComponents(
@@ -76,7 +77,7 @@ export class Assets {
         this.components = this.components.concat(pkg.components);
       }
     }
-    this.groups = this.parseGroups(packages);
+    this.groups.value = this.parseGroups(packages);
     this.componentMap = arrayToMap(this.components, 'name');
   }
 

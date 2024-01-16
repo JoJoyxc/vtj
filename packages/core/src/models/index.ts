@@ -1,3 +1,4 @@
+export * from './base';
 export * from './prop';
 export * from './event';
 export * from './directive';
