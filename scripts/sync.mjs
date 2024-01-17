@@ -5,11 +5,16 @@ const modules = [
   '@vtj/utils',
   '@vtj/icons',
   '@vtj/ui',
-  '@vtj/engine',
-  '@vtj/runtime',
-  '@vtj/ide',
-  '@vtj/assets',
-  '@vtj/deps'
+  '@vtj/designer',
+  '@vtj/matrials',
+  '@vtj/renderer',
+  '@vtj/local',
+  '@vtj/coder',
+  '@vtj/node',
+  '@vtj/base',
+  '@vtj/core',
+  '@vtj/web',
+  '@vtj/pro'
 ];
 
 const maxTimes = 60;

@@ -13,12 +13,12 @@
     "@vtj/core": "^0.7.0",
     "@vtj/designer": "^0.7.0",
     "@vtj/local": "^0.7.0",
-    "@vtj/renderer": "^0.7.0"
+    "@vtj/renderer": "^0.7.0",
+    "@vtj/materials": "^0.7.0"
   },
   "devDependencies": {
     "@vtj/cli": "^0.7.0",
     "@vtj/icons": "^0.7.0",
-    "@vtj/materials": "^0.7.0",
     "@vtj/ui": "^0.7.0",
     "@vtj/utils": "^0.7.0",
     "vue": "~3.4.14",

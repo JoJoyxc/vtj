@@ -5,9 +5,9 @@
   "version": "0.7.0",
   "type": "module",
   "scripts": {
-    "setup": "pnpm install --unsafe-perm --registry=https://registry.npmmirror.com",
+    "setup": "npm install --unsafe-perm --registry=https://registry.npmmirror.com",
     "dev": "cross-env ENV_TYPE=local vite",
-    "build": "pnpm run build:prod",
+    "build": "npm run build:prod",
     "build:dev": "vue-tsc && cross-env ENV_TYPE=dev vite build",
     "build:sit": "vue-tsc && cross-env ENV_TYPE=sit vite build",
     "build:uat": "vue-tsc && cross-env ENV_TYPE=uat vite build",
@@ -16,12 +16,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vtj/web": "workspace:*",
+    "@vtj/web": "latest",
     "vue": "^3.4.14",
     "vue-router": "~4.2.5"
   },
   "devDependencies": {
-    "@vtj/cli": "workspace:*",
-    "@vtj/pro": "workspace:*"
+    "@vtj/cli": "latest",
+    "@vtj/pro": "latest"
   }
 }

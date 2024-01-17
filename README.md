@@ -28,6 +28,14 @@ VTJ 使用了最新的 Vue3 生态技术栈，要求 Node 版本必须是 v20+�
 npm install -g lerna@latest pnpm@lastest --registry=https://registry.npmmirror.com
 ```
 
+## 快速体验
+
+VTJ 提供了项目脚手架，可快速创建新项目。 命令：
+
+```sh
+npm create vtj@latest -- -t app
+```
+
 ## 贡献指南
 
 ### 快速开始
