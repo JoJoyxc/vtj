@@ -7,11 +7,11 @@ outline: deep
 ## Demo1
 
 :::preview
-demo-preview=./demo/example.vue
+demo-preview=./examples/example.vue
 :::
 
 ## Demo2
 
 :::preview
-demo-preview=./demo/example2.vue
+demo-preview=./examples/example2.vue
 :::

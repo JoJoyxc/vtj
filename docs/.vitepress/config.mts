@@ -17,7 +17,12 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '示例', link: '/markdown-examples' }
+      { text: 'Vue.js', link: 'https://cn.vuejs.org/api/' },
+      { text: 'Element Plus', link: 'https://element-plus.org/zh-CN/' },
+      {
+        text: 'Ant Design Vue',
+        link: 'https://www.antdv.com/components/overview-cn/'
+      }
     ],
 
     sidebar: [

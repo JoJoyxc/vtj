@@ -14,7 +14,11 @@
         </span>
       </XContainer>
       <XContainer v-if="docUrl">
-        <XAction :icon="VtjIconHelp" mode="text" label="帮助"></XAction>
+        <XAction
+          @click="openDocs"
+          :icon="VtjIconHelp"
+          mode="text"
+          label="帮助"></XAction>
       </XContainer>
     </XContainer>
 
@@ -104,6 +108,17 @@
     },
     { immediate: true }
   );
+
+  const openDocs = () => {
+    if (docUrl.value) {
+      const region = engine.skeleton?.getRegion('Workspace');
+      if (region) {
+        region.regionRef.openTab('Docs', {
+          url: docUrl.value
+        });
+      }
+    }
+  };
 
   defineOptions({
     name: 'SettingsRegion'

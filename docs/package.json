@@ -13,6 +13,10 @@
     "@vitepress-demo-preview/plugin": "~1.2.2",
     "@vtj/web": "workspace:*",
     "@vtj/pro": "workspace:*",
+    "@vtj/ui": "workspace:*",
+    "@vtj/utils": "workspace:*",
+    "@vtj/icons": "workspace:*",
+    "@vtj/renderer": "workspace:*",
     "vue": "~3.4.7",
     "vue-router": "~4.2.5"
   },

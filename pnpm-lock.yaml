@@ -208,9 +208,21 @@ importers:
       '@vitepress-demo-preview/plugin':
         specifier: ~1.2.2
         version: 1.2.2(markdown-it-container@3.0.0)(vitepress@1.0.0-rc.37)(vue@3.4.14)
+      '@vtj/icons':
+        specifier: workspace:*
+        version: link:../packages/icons
       '@vtj/pro':
         specifier: workspace:*
         version: link:../platforms/pro
+      '@vtj/renderer':
+        specifier: workspace:*
+        version: link:../packages/renderer
+      '@vtj/ui':
+        specifier: workspace:*
+        version: link:../packages/ui
+      '@vtj/utils':
+        specifier: workspace:*
+        version: link:../packages/utils
       '@vtj/web':
         specifier: workspace:*
         version: link:../platforms/web

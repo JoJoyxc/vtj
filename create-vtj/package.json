@@ -2,7 +2,7 @@
   "name": "create-vtj",
   "private": false,
   "version": "0.7.0",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "build": "unbuild"
   },

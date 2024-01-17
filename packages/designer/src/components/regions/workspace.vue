@@ -12,7 +12,7 @@
         ref="widgetsRef"
         v-if="currentTab === widget.name"
         :region="region"
-        :widget="widget"></WidgetWrapper>
+        :widget="{ ...widget, props: openWidgetProps }"></WidgetWrapper>
     </template>
   </Tabs>
 </template>
@@ -37,6 +37,7 @@
         command: n.name,
         label: n.label,
         closable: !!n.closable,
+        props: n.props || {},
         checked: false
       };
     })
@@ -51,6 +52,11 @@
   });
 
   const currentTab = ref(tabs.value[0]?.name);
+
+  const openWidgetProps = computed(() => {
+    const item = items.find((n) => n.name === currentTab.value);
+    return item?.props || {};
+  });
 
   const onRemove = (name: any) => {
     const item = items.find((n) => n.name === name);
@@ -74,6 +80,15 @@
     }
   };
 
+  const openTab = (name: string, props: Record<string, any> = {}) => {
+    const item = items.find((n) => n.name === name);
+    if (item) {
+      item.props = Object.assign({}, item.props, props);
+      item.checked = true;
+      currentTab.value = item.name;
+    }
+  };
+
   defineOptions({
     name: 'WorkspaceRegion'
   });
@@ -81,6 +96,7 @@
   defineExpose({
     currentTab,
     widgets,
-    widgetsRef
+    widgetsRef,
+    openTab
   });
 </script>

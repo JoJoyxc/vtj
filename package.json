@@ -55,7 +55,7 @@
     "uitls:build": "cd packages/uitls && npm run build",
     "icons:test": "cd packages/icons && npm run vitest",
     "icons:build": "cd packages/icons && npm run build",
-    "vtj:dev": "nodemon --exec ts-node create-vtj/src/index.ts",
+    "vtj:dev": "node create-vtj/dist/index.mjs",
     "vtj:build": "cd create-vtj && npm run build",
     "docs:dev": "cd docs && vitepress dev",
     "docs:build": "cd docs && vitepress build && cd .. && npm run typedoc",
