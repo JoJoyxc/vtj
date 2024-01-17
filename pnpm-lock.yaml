@@ -150,7 +150,7 @@ importers:
   create-vtj:
     dependencies:
       '@vtj/node':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../packages/node
       cross-spawn:
         specifier: ~7.0.3
@@ -209,22 +209,22 @@ importers:
         specifier: ~1.2.2
         version: 1.2.2(markdown-it-container@3.0.0)(vitepress@1.0.0-rc.37)(vue@3.4.14)
       '@vtj/icons':
-        specifier: 0.7.0
+        specifier: ^0.7.1
         version: link:../packages/icons
       '@vtj/pro':
-        specifier: 0.7.0
+        specifier: ^0.7.1
         version: link:../platforms/pro
       '@vtj/renderer':
-        specifier: 0.7.0
+        specifier: ^0.7.1
         version: link:../packages/renderer
       '@vtj/ui':
-        specifier: 0.7.0
+        specifier: ^0.7.1
         version: link:../packages/ui
       '@vtj/utils':
-        specifier: 0.7.0
+        specifier: ^0.7.1
         version: link:../packages/utils
       '@vtj/web':
-        specifier: 0.7.0
+        specifier: ^0.7.1
         version: link:../platforms/web
       vue:
         specifier: ~3.4.7
@@ -319,7 +319,7 @@ importers:
         specifier: ~1.2.0
         version: 1.2.0(vitest@1.2.0)
       '@vtj/node':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../node
       '@vue/test-utils':
         specifier: ~2.4.3
@@ -373,55 +373,55 @@ importers:
   packages/coder:
     dependencies:
       '@vtj/base':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../base
       '@vtj/core':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../core
       prettier:
         specifier: ~3.2.1
         version: 3.2.4
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../cli
 
   packages/core:
     dependencies:
       '@vtj/base':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../base
       mitt:
         specifier: ~3.0.1
         version: 3.0.1
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../cli
 
   packages/designer:
     dependencies:
       '@vtj/core':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../core
       '@vtj/icons':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../icons
       '@vtj/renderer':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../renderer
       '@vtj/ui':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../ui
       '@vtj/utils':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../utils
       monaco-editor:
         specifier: ~0.45.0
         version: 0.45.0
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../cli
       vue:
         specifier: ~3.4.14
@@ -437,7 +437,7 @@ importers:
         version: 2.3.1(vue@3.4.14)
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../cli
       vue:
         specifier: ~3.4.14
@@ -449,17 +449,17 @@ importers:
   packages/local:
     dependencies:
       '@vtj/coder':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../coder
       '@vtj/core':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../core
       '@vtj/node':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../node
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../cli
       unbuild:
         specifier: ~2.0.0
@@ -474,16 +474,16 @@ importers:
   packages/materials:
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../cli
       '@vtj/core':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../core
       '@vtj/ui':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../ui
       '@vtj/utils':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../utils
       ant-design-vue:
         specifier: ~4.1.0
@@ -510,7 +510,7 @@ importers:
         specifier: ~11.0.4
         version: 11.0.4
       '@vtj/base':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../base
       axios:
         specifier: ~1.6.4
@@ -529,23 +529,23 @@ importers:
   packages/renderer:
     dependencies:
       '@vtj/core':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../core
       '@vtj/icons':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../icons
       '@vtj/ui':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../ui
       '@vtj/utils':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../utils
       zen-logger:
         specifier: ~1.1.4
         version: 1.1.4
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../cli
       vue:
         specifier: ~3.4.14
@@ -563,10 +563,10 @@ importers:
         specifier: ~5.1.0
         version: 5.1.0
       '@vtj/icons':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../icons
       '@vtj/utils':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../utils
       '@vueuse/core':
         specifier: ~10.7.0
@@ -579,7 +579,7 @@ importers:
         version: 2.5.1(vue@3.4.14)
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../cli
       vue:
         specifier: ~3.4.14
@@ -594,10 +594,10 @@ importers:
         specifier: ~3.0.6
         version: 3.0.6
       '@vtj/base':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../base
       '@vtj/cli':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../cli
       axios:
         specifier: ~1.6.4
@@ -615,32 +615,32 @@ importers:
   platforms/pro:
     dependencies:
       '@vtj/core':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../../packages/core
       '@vtj/designer':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../../packages/designer
       '@vtj/local':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../../packages/local
       '@vtj/materials':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../../packages/materials
       '@vtj/renderer':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../../packages/renderer
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../../packages/cli
       '@vtj/icons':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../../packages/icons
       '@vtj/ui':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../../packages/ui
       '@vtj/utils':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../../packages/utils
       vue:
         specifier: ~3.4.14
@@ -652,20 +652,20 @@ importers:
   platforms/web:
     dependencies:
       '@vtj/icons':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../../packages/icons
       '@vtj/renderer':
-        specifier: 0.7.0
+        specifier: ^0.7.1
         version: link:../../packages/renderer
       '@vtj/ui':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../../packages/ui
       '@vtj/utils':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../../packages/utils
     devDependencies:
       '@vtj/cli':
-        specifier: ^0.7.0
+        specifier: ^0.7.1
         version: link:../../packages/cli
 
 packages:
