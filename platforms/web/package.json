@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {},
   "dependencies": {
-    "@vtj/utils": "workspace:^",
-    "@vtj/icons": "workspace:^",
-    "@vtj/ui": "workspace:^",
-    "@vtj/renderer": "workspace:*"
+    "@vtj/icons": "^0.7.0",
+    "@vtj/renderer": "0.7.0",
+    "@vtj/ui": "^0.7.0",
+    "@vtj/utils": "^0.7.0"
   },
   "devDependencies": {
-    "@vtj/cli": "workspace:^"
+    "@vtj/cli": "^0.7.0"
   },
   "exports": {
     ".": {
@@ -46,7 +46,7 @@
   "files": [
     "src"
   ],
-  "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b",
+  "gitHead": "b65d1b19322cbd0721173d094db1b5ece018d980",
   "publishConfig": {
     "access": "public"
   }

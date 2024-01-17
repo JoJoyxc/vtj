@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@types/fs-extra": "~11.0.4",
-    "@vtj/base": "workspace:^",
+    "@vtj/base": "^0.7.0",
     "axios": "~1.6.4",
     "fs-extra": "~11.2.0"
   },
@@ -37,5 +37,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b"
+  "gitHead": "b65d1b19322cbd0721173d094db1b5ece018d980"
 }

@@ -7,7 +7,7 @@
     "build": "unbuild"
   },
   "dependencies": {
-    "@vtj/node": "workspace:^",
+    "@vtj/node": "^0.7.0",
     "cross-spawn": "~7.0.3",
     "kolorist": "~1.8.0",
     "minimist": "~1.2.8",
@@ -27,7 +27,7 @@
     "templates",
     "index.js"
   ],
-  "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b",
+  "gitHead": "b65d1b19322cbd0721173d094db1b5ece018d980",
   "publishConfig": {
     "access": "public"
   }

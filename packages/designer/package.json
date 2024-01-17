@@ -10,15 +10,15 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@vtj/core": "workspace:^",
-    "@vtj/icons": "workspace:^",
-    "@vtj/ui": "workspace:^",
-    "@vtj/utils": "workspace:^",
-    "@vtj/renderer": "workspace:^",
+    "@vtj/core": "^0.7.0",
+    "@vtj/icons": "^0.7.0",
+    "@vtj/renderer": "^0.7.0",
+    "@vtj/ui": "^0.7.0",
+    "@vtj/utils": "^0.7.0",
     "monaco-editor": "~0.45.0"
   },
   "devDependencies": {
-    "@vtj/cli": "workspace:^",
+    "@vtj/cli": "^0.7.0",
     "vue": "~3.4.14",
     "vue-router": "~4.2.5"
   },
@@ -40,5 +40,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b"
+  "gitHead": "b65d1b19322cbd0721173d094db1b5ece018d980"
 }

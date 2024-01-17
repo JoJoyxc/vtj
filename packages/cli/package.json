@@ -16,28 +16,28 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
-    "@vtj/node": "workspace:^",
     "@babel/core": "~7.23.7",
     "@babel/preset-env": "~7.23.8",
     "@babel/types": "~7.23.5",
     "@rollup/plugin-babel": "~6.0.4",
     "@types/babel__core": "~7.20.5",
+    "@types/body-parser": "~1.19.5",
     "@types/node": "~20.11.3",
     "@types/serve-static": "~1.15.5",
-    "@types/body-parser": "~1.19.5",
     "@vitejs/plugin-basic-ssl": "~1.1.0",
     "@vitejs/plugin-legacy": "~5.2.0",
     "@vitejs/plugin-vue": "~5.0.2",
     "@vitejs/plugin-vue-jsx": "~3.1.0",
     "@vitest/coverage-v8": "~1.2.0",
+    "@vtj/node": "^0.7.0",
     "@vue/test-utils": "~2.4.3",
+    "body-parser": "~1.20.2",
     "cross-env": "~7.0.3",
     "jsdom": "~23.2.0",
     "rollup-plugin-external-globals": "~0.9.1",
     "rollup-plugin-visualizer": "~5.12.0",
     "sass": "~1.69.7",
     "serve-static": "~1.15.0",
-    "body-parser": "~1.20.2",
     "terser": "~5.26.0",
     "typescript": "~5.3.3",
     "unbuild": "~2.0.0",
@@ -61,7 +61,7 @@
     "bin",
     "config"
   ],
-  "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b",
+  "gitHead": "b65d1b19322cbd0721173d094db1b5ece018d980",
   "publishConfig": {
     "access": "public"
   }

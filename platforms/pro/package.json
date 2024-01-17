@@ -10,17 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vtj/core": "workspace:^",
-    "@vtj/designer": "workspace:^",
-    "@vtj/renderer": "workspace:^",
-    "@vtj/local": "workspace:^"
+    "@vtj/core": "^0.7.0",
+    "@vtj/designer": "^0.7.0",
+    "@vtj/local": "^0.7.0",
+    "@vtj/renderer": "^0.7.0"
   },
   "devDependencies": {
-    "@vtj/utils": "workspace:^",
-    "@vtj/icons": "workspace:^",
-    "@vtj/ui": "workspace:^",
-    "@vtj/materials": "workspace:^",
-    "@vtj/cli": "workspace:^",
+    "@vtj/cli": "^0.7.0",
+    "@vtj/icons": "^0.7.0",
+    "@vtj/materials": "^0.7.0",
+    "@vtj/ui": "^0.7.0",
+    "@vtj/utils": "^0.7.0",
     "vue": "~3.4.14",
     "vue-router": "~4.2.5"
   },
@@ -43,7 +43,7 @@
     "dist",
     "src"
   ],
-  "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b",
+  "gitHead": "b65d1b19322cbd0721173d094db1b5ece018d980",
   "publishConfig": {
     "access": "public"
   }

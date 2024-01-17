@@ -14,16 +14,16 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@vtj/icons": "workspace:^",
-    "@vtj/utils": "workspace:^",
+    "@ckeditor/ckeditor5-build-classic": "~40.2.0",
+    "@ckeditor/ckeditor5-vue": "~5.1.0",
+    "@vtj/icons": "^0.7.0",
+    "@vtj/utils": "^0.7.0",
     "@vueuse/core": "~10.7.0",
     "echarts": "~5.4.3",
-    "element-plus": "~2.5.1",
-    "@ckeditor/ckeditor5-vue": "~5.1.0",
-    "@ckeditor/ckeditor5-build-classic": "~40.2.0"
+    "element-plus": "~2.5.1"
   },
   "devDependencies": {
-    "@vtj/cli": "workspace:^",
+    "@vtj/cli": "^0.7.0",
     "vue": "~3.4.14",
     "vue-router": "~4.2.5"
   },
@@ -45,5 +45,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b"
+  "gitHead": "b65d1b19322cbd0721173d094db1b5ece018d980"
 }

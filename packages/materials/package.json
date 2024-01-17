@@ -12,21 +12,21 @@
     "copy": "node scripts/copy.mjs"
   },
   "devDependencies": {
-    "@vtj/cli": "workspace:^",
-    "@vtj/core": "workspace:^",
-    "@vtj/ui": "workspace:^",
-    "@vtj/utils": "workspace:^",
-    "vant": "~4.8.2",
+    "@vtj/cli": "^0.7.0",
+    "@vtj/core": "^0.7.0",
+    "@vtj/ui": "^0.7.0",
+    "@vtj/utils": "^0.7.0",
     "ant-design-vue": "~4.1.0",
     "echarts": "~5.4.3",
     "element-plus": "~2.5.1",
+    "vant": "~4.8.2",
     "vue": "~3.4.14",
     "vue-router": "~4.2.5"
   },
   "files": [
     "dist"
   ],
-  "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b",
+  "gitHead": "b65d1b19322cbd0721173d094db1b5ece018d980",
   "publishConfig": {
     "access": "public"
   }

@@ -17,11 +17,11 @@
   },
   "devDependencies": {
     "@types/crypto-js": "~4.2.1",
-    "lz-string": "~1.5.0",
     "crypto-js": "~4.2.0",
     "dayjs": "~1.11.10",
     "jsencrypt": "~3.3.2",
     "lodash-es": "~4.17.21",
+    "lz-string": "~1.5.0",
     "numeral": "~2.0.6",
     "unbuild": "~2.0.0",
     "vitest": "~1.2.0"
@@ -43,5 +43,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "53b27ae2dc4309e33627a1d9354bfa12cde4263b"
+  "gitHead": "b65d1b19322cbd0721173d094db1b5ece018d980"
 }
