@@ -2,7 +2,7 @@
   "name": "@vtj/pro",
   "description": "VTJ.PRO",
   "private": false,
-  "version": "0.7.1",
+  "version": "0.7.2",
   "type": "module",
   "scripts": {
     "dev": "cross-env ENV_TYPE=local vite",
@@ -10,17 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vtj/core": "^0.7.1",
-    "@vtj/designer": "^0.7.1",
-    "@vtj/local": "^0.7.1",
-    "@vtj/materials": "^0.7.1",
-    "@vtj/renderer": "^0.7.1"
+    "@vtj/core": "^0.7.2",
+    "@vtj/designer": "^0.7.2",
+    "@vtj/local": "^0.7.2",
+    "@vtj/materials": "^0.7.2",
+    "@vtj/renderer": "^0.7.2"
   },
   "devDependencies": {
-    "@vtj/cli": "^0.7.1",
-    "@vtj/icons": "^0.7.1",
-    "@vtj/ui": "^0.7.1",
-    "@vtj/utils": "^0.7.1",
+    "@vtj/cli": "^0.7.2",
+    "@vtj/icons": "^0.7.2",
+    "@vtj/ui": "^0.7.2",
+    "@vtj/utils": "^0.7.2",
     "vue": "~3.4.14",
     "vue-router": "~4.2.5"
   },
