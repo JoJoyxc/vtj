@@ -204,10 +204,10 @@ importers:
     dependencies:
       '@vitepress-demo-preview/component':
         specifier: ~2.3.2
-        version: 2.3.2(vitepress@1.0.0-rc.37)(vue@3.4.14)
+        version: 2.3.2(vitepress@1.0.0-rc.39)(vue@3.4.14)
       '@vitepress-demo-preview/plugin':
         specifier: ~1.2.2
-        version: 1.2.2(markdown-it-container@3.0.0)(vitepress@1.0.0-rc.37)(vue@3.4.14)
+        version: 1.2.2(markdown-it-container@3.0.0)(vitepress@1.0.0-rc.39)(vue@3.4.14)
       '@vtj/icons':
         specifier: ^0.7.1
         version: link:../packages/icons
@@ -227,15 +227,15 @@ importers:
         specifier: ^0.7.1
         version: link:../platforms/web
       vue:
-        specifier: ~3.4.7
+        specifier: ~3.4.14
         version: 3.4.14(typescript@5.3.3)
       vue-router:
         specifier: ~4.2.5
         version: 4.2.5(vue@3.4.14)
     devDependencies:
       vitepress:
-        specifier: 1.0.0-rc.37
-        version: 1.0.0-rc.37(@algolia/client-search@4.22.1)(@types/node@20.11.5)(axios@1.6.5)(search-insights@2.13.0)(typescript@5.3.3)
+        specifier: 1.0.0-rc.39
+        version: 1.0.0-rc.39(@algolia/client-search@4.22.1)(@types/node@20.11.5)(axios@1.6.5)(search-insights@2.13.0)(typescript@5.3.3)
 
   packages/base:
     dependencies:
@@ -274,8 +274,8 @@ importers:
         specifier: ~2.0.0
         version: 2.0.0(sass@1.69.7)(typescript@5.3.3)
       vitest:
-        specifier: ~1.2.0
-        version: 1.2.0(@types/node@20.11.5)(jsdom@23.2.0)(sass@1.69.7)(terser@5.26.0)
+        specifier: ~1.2.1
+        version: 1.2.1(@types/node@20.11.5)(jsdom@23.2.0)(sass@1.69.7)(terser@5.27.0)
 
   packages/cli:
     dependencies:
@@ -308,7 +308,7 @@ importers:
         version: 1.1.0(vite@5.0.11)
       '@vitejs/plugin-legacy':
         specifier: ~5.2.0
-        version: 5.2.0(terser@5.26.0)(vite@5.0.11)
+        version: 5.2.0(terser@5.27.0)(vite@5.0.11)
       '@vitejs/plugin-vue':
         specifier: ~5.0.2
         version: 5.0.3(vite@5.0.11)(vue@3.4.14)
@@ -316,8 +316,8 @@ importers:
         specifier: ~3.1.0
         version: 3.1.0(vite@5.0.11)(vue@3.4.14)
       '@vitest/coverage-v8':
-        specifier: ~1.2.0
-        version: 1.2.0(vitest@1.2.0)
+        specifier: ~1.2.1
+        version: 1.2.1(vitest@1.2.1)
       '@vtj/node':
         specifier: ^0.7.1
         version: link:../node
@@ -346,8 +346,8 @@ importers:
         specifier: ~1.15.0
         version: 1.15.0
       terser:
-        specifier: ~5.26.0
-        version: 5.26.0
+        specifier: ~5.27.0
+        version: 5.27.0
       typescript:
         specifier: ~5.3.3
         version: 5.3.3
@@ -359,13 +359,13 @@ importers:
         version: 0.8.0(rollup@4.9.5)
       vite:
         specifier: ~5.0.11
-        version: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.26.0)
+        version: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.27.0)
       vite-plugin-dts:
         specifier: ~3.7.1
         version: 3.7.1(@types/node@20.11.5)(rollup@4.9.5)(typescript@5.3.3)(vite@5.0.11)
       vitest:
-        specifier: ~1.2.0
-        version: 1.2.0(@types/node@20.11.5)(jsdom@23.2.0)(sass@1.69.7)(terser@5.26.0)
+        specifier: ~1.2.1
+        version: 1.2.1(@types/node@20.11.5)(jsdom@23.2.0)(sass@1.69.7)(terser@5.27.0)
       vue-tsc:
         specifier: ~1.8.27
         version: 1.8.27(typescript@5.3.3)
@@ -466,10 +466,10 @@ importers:
         version: 2.0.0(sass@1.69.7)(typescript@5.3.3)
       vite:
         specifier: ~5.0.11
-        version: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.26.0)
+        version: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.27.0)
       vitest:
-        specifier: ~1.2.0
-        version: 1.2.0(@types/node@20.11.5)(jsdom@23.2.0)(sass@1.69.7)(terser@5.26.0)
+        specifier: ~1.2.1
+        version: 1.2.1(@types/node@20.11.5)(jsdom@23.2.0)(sass@1.69.7)(terser@5.27.0)
 
   packages/materials:
     devDependencies:
@@ -523,8 +523,8 @@ importers:
         specifier: ~2.0.0
         version: 2.0.0(sass@1.69.7)(typescript@5.3.3)
       vitest:
-        specifier: ~1.2.0
-        version: 1.2.0(@types/node@20.11.5)(jsdom@23.2.0)(sass@1.69.7)(terser@5.26.0)
+        specifier: ~1.2.1
+        version: 1.2.1(@types/node@20.11.5)(jsdom@23.2.0)(sass@1.69.7)(terser@5.27.0)
 
   packages/renderer:
     dependencies:
@@ -557,8 +557,8 @@ importers:
   packages/ui:
     dependencies:
       '@ckeditor/ckeditor5-build-classic':
-        specifier: ~40.2.0
-        version: 40.2.0
+        specifier: ~41.0.0
+        version: 41.0.0
       '@ckeditor/ckeditor5-vue':
         specifier: ~5.1.0
         version: 5.1.0
@@ -1927,236 +1927,236 @@ packages:
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  /@ckeditor/ckeditor5-adapter-ckfinder@40.2.0:
-    resolution: {integrity: sha512-YKdydg4DzaMk91saOL55KBNQE3St2NEj1E9hlk9CzHKQaHc79dYzHDNBolSE7ZmzkNJ4ToVbY7kRW5CDGfG5Rg==}
+  /@ckeditor/ckeditor5-adapter-ckfinder@41.0.0:
+    resolution: {integrity: sha512-2N5WqXNtU+5w44t9sasokIxcs1O2dyEutal10UUDdfHL6fyExMibbn0CTPSUhQBWxG8KFawbF0Nqww7BSoXD+A==}
     dependencies:
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-autoformat@40.2.0:
-    resolution: {integrity: sha512-F3w5k7ti5l6V8U07eSQ3gup3ivltRZQXdtvstBXMmTzDb2ceazNcUDLb6TKSHp5y30ETN0dRGgbhx9xiDL0TXg==}
+  /@ckeditor/ckeditor5-autoformat@41.0.0:
+    resolution: {integrity: sha512-GxAzOlSarvObBkd+qvy0/fwkNt9x0Pugy8Sh0/7bXDJIkvSXqB4Vecq2l3RA8ATIietW2mD/NYQtu53U1Y8GvQ==}
     dependencies:
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-basic-styles@40.2.0:
-    resolution: {integrity: sha512-P7jYddLnRpaR4zVCqDa8InsZ6YNRHdF0RrX6+Uz81+A1IfyfmSd+5IaiLxxdnFWQ4JlEhJutjy9vMwSmOhZocQ==}
+  /@ckeditor/ckeditor5-basic-styles@41.0.0:
+    resolution: {integrity: sha512-5BZnkL0TRbpdyY4Uwj230Aj+iQufO6He/KPlnA5fFglXKG+AyuPubXOY5P5dAX1SOMKpEZ720zSugFTVvM0ErA==}
     dependencies:
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-block-quote@40.2.0:
-    resolution: {integrity: sha512-t03Yp+MeAyQhwdGZqUlkJEx25VSiigpzkIGGOhccSaTIIZ9XcWDkrTevDhwA4Pq4Q9IRQ8Loj3KCVSBuAqkBgw==}
+  /@ckeditor/ckeditor5-block-quote@41.0.0:
+    resolution: {integrity: sha512-N3AbHpWllqYVY9/ME2NhQJhJLoZoks8r+7HdhZ7mrSPtOJVdeSN7L9X2LXLIozddQ/zqJXv1oJq5m/qMH9ruTw==}
     dependencies:
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-build-classic@40.2.0:
-    resolution: {integrity: sha512-b9zt1kU0S2Azco8mXraxj56pctHRs9y/XfdVrpFzxiRbbzyBZ42WgX1ThJNTqH6WkXCxDPYSbqPhNIvPHpuEyg==}
+  /@ckeditor/ckeditor5-build-classic@41.0.0:
+    resolution: {integrity: sha512-J4Gi1GEGDrZrgOqzKk321Q+LnQ7rTefWqg8DNof5ekRi/09iPweyNWhlSFdPIO6L7UswD7ljoetVjUoB8SqX8w==}
     dependencies:
-      '@ckeditor/ckeditor5-adapter-ckfinder': 40.2.0
-      '@ckeditor/ckeditor5-autoformat': 40.2.0
-      '@ckeditor/ckeditor5-basic-styles': 40.2.0
-      '@ckeditor/ckeditor5-block-quote': 40.2.0
-      '@ckeditor/ckeditor5-ckbox': 40.2.0
-      '@ckeditor/ckeditor5-ckfinder': 40.2.0
-      '@ckeditor/ckeditor5-cloud-services': 40.2.0
-      '@ckeditor/ckeditor5-easy-image': 40.2.0
-      '@ckeditor/ckeditor5-editor-classic': 40.2.0
-      '@ckeditor/ckeditor5-essentials': 40.2.0
-      '@ckeditor/ckeditor5-heading': 40.2.0
-      '@ckeditor/ckeditor5-image': 40.2.0
-      '@ckeditor/ckeditor5-indent': 40.2.0
-      '@ckeditor/ckeditor5-link': 40.2.0
-      '@ckeditor/ckeditor5-list': 40.2.0
-      '@ckeditor/ckeditor5-media-embed': 40.2.0
-      '@ckeditor/ckeditor5-paragraph': 40.2.0
-      '@ckeditor/ckeditor5-paste-from-office': 40.2.0
-      '@ckeditor/ckeditor5-table': 40.2.0
-      '@ckeditor/ckeditor5-typing': 40.2.0
+      '@ckeditor/ckeditor5-adapter-ckfinder': 41.0.0
+      '@ckeditor/ckeditor5-autoformat': 41.0.0
+      '@ckeditor/ckeditor5-basic-styles': 41.0.0
+      '@ckeditor/ckeditor5-block-quote': 41.0.0
+      '@ckeditor/ckeditor5-ckbox': 41.0.0
+      '@ckeditor/ckeditor5-ckfinder': 41.0.0
+      '@ckeditor/ckeditor5-cloud-services': 41.0.0
+      '@ckeditor/ckeditor5-easy-image': 41.0.0
+      '@ckeditor/ckeditor5-editor-classic': 41.0.0
+      '@ckeditor/ckeditor5-essentials': 41.0.0
+      '@ckeditor/ckeditor5-heading': 41.0.0
+      '@ckeditor/ckeditor5-image': 41.0.0
+      '@ckeditor/ckeditor5-indent': 41.0.0
+      '@ckeditor/ckeditor5-link': 41.0.0
+      '@ckeditor/ckeditor5-list': 41.0.0
+      '@ckeditor/ckeditor5-media-embed': 41.0.0
+      '@ckeditor/ckeditor5-paragraph': 41.0.0
+      '@ckeditor/ckeditor5-paste-from-office': 41.0.0
+      '@ckeditor/ckeditor5-table': 41.0.0
+      '@ckeditor/ckeditor5-typing': 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-ckbox@40.2.0:
-    resolution: {integrity: sha512-w/A3RA7qpR7Scl4hgUTt8j+oV7oD9IFPNGTpp0xoyfWEV8Ymm2NrMAvV0PAJiavYS3+FT4GO4RBOM6BvLHuV3w==}
+  /@ckeditor/ckeditor5-ckbox@41.0.0:
+    resolution: {integrity: sha512-8Q8GEs8kBArsWgbOT0c9D33T0AyUCNBcLhV2sHDs4XTg0ldxwDSCkneEJfV5da5ekgp/qacivoF8IVTzjNaHqQ==}
     dependencies:
       blurhash: 2.0.5
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
       lodash-es: 4.17.21
     dev: false
 
-  /@ckeditor/ckeditor5-ckfinder@40.2.0:
-    resolution: {integrity: sha512-kiW5TZOLHYd6hhWeDIrep8FXLo0q14b0e0Jit0XSi3z4PQfdDSRk9UuMJPkkf4EdF3PUSdMJ9bccJG76DYXzFQ==}
+  /@ckeditor/ckeditor5-ckfinder@41.0.0:
+    resolution: {integrity: sha512-IKBkRB84gbLzLMOPnigpBa0WKR0etyIQdsrbD8i7H96fTTNWC0RNxbTyeD0RIbh5/EhJqFQPSds1QnVr5XvHqA==}
     dependencies:
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-clipboard@40.2.0:
-    resolution: {integrity: sha512-8/xPH9/i86ukcEiHdmTgNuPVJeYTrivbx5ZYqycPO4Eem7VM99gIbOe7pIYpuV+klr9ymVxIHbGyTJDJ3oUO8A==}
+  /@ckeditor/ckeditor5-clipboard@41.0.0:
+    resolution: {integrity: sha512-OS0jL9s5P4uFadQYrPkRtx6+KlDkJwMLbQoeEhTpyG4BwF3zf2Q3UE+KdyvULS2er8FtxVu5bx3zeA7DtxYa9w==}
     dependencies:
-      '@ckeditor/ckeditor5-core': 40.2.0
-      '@ckeditor/ckeditor5-engine': 40.2.0
-      '@ckeditor/ckeditor5-ui': 40.2.0
-      '@ckeditor/ckeditor5-utils': 40.2.0
-      '@ckeditor/ckeditor5-widget': 40.2.0
+      '@ckeditor/ckeditor5-core': 41.0.0
+      '@ckeditor/ckeditor5-engine': 41.0.0
+      '@ckeditor/ckeditor5-ui': 41.0.0
+      '@ckeditor/ckeditor5-utils': 41.0.0
+      '@ckeditor/ckeditor5-widget': 41.0.0
       lodash-es: 4.17.21
     dev: false
 
-  /@ckeditor/ckeditor5-cloud-services@40.2.0:
-    resolution: {integrity: sha512-xrPQjFGGy1ZfXyKIMw0uzn7OIriSv13YMw0M2ZTh+V1jRN1HW9KzzNb2DlQc+6wQfRk0bq69XGLp3M296/cVTQ==}
+  /@ckeditor/ckeditor5-cloud-services@41.0.0:
+    resolution: {integrity: sha512-AfsX1ZDYBYUEXzxLiWp9Szl6LIzjNvKFSqsRrY889J2CMmA9LfAcS3tEnXeLqutb9EhcHfpPoSdQLZ3l9UpPew==}
     dependencies:
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-core@40.2.0:
-    resolution: {integrity: sha512-0fqIaN+ZhkXXA3mpBN+alycBzPMc8ruO8VrP0OnvCjowqZVS2HXC2AaXNBdxc75xGI3ScXIor7FsgFHxVJIYYQ==}
+  /@ckeditor/ckeditor5-core@41.0.0:
+    resolution: {integrity: sha512-/t4Cl8fxdrjxn4WRobJdRui4WwGUq/qsD3q5W5IzdCQyON1fr+qaDJ4popGfg+MFSNIFFF9/ip5wkgqOexYMOg==}
     dependencies:
-      '@ckeditor/ckeditor5-engine': 40.2.0
-      '@ckeditor/ckeditor5-utils': 40.2.0
+      '@ckeditor/ckeditor5-engine': 41.0.0
+      '@ckeditor/ckeditor5-utils': 41.0.0
       lodash-es: 4.17.21
     dev: false
 
-  /@ckeditor/ckeditor5-easy-image@40.2.0:
-    resolution: {integrity: sha512-bE9YHGYEY1ql5mIqZSI2fkoBA4th28M0GDaJutwJYKM3t+Bost3Zh1UfmYKE2kvYgmeLY1L3hjQpN9w7NYyLpw==}
+  /@ckeditor/ckeditor5-easy-image@41.0.0:
+    resolution: {integrity: sha512-DTMpDv4yapvT6bbBLLXvOsJdrn7G8WseIZCrCJWwnaSqH0yQvk/w30fj1MYt6m2lDMmp9Z96/wl/V7tp8QrSRw==}
     dependencies:
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-editor-classic@40.2.0:
-    resolution: {integrity: sha512-dftfDBxANOgqgQZ4SB3YTsEV/XX1u0g9jopbOBwqIABnVVa8zoGcktgFdGnLUFk51sL65baSx2z8Z1NNYdZcFQ==}
+  /@ckeditor/ckeditor5-editor-classic@41.0.0:
+    resolution: {integrity: sha512-64E/zrOs6BRSHJ34wIEtRMEOQwceK9TOWZCmXcIqjS+gH7D1O9mCgM3u8wN+Vk/LfHNXNZq/xl27nYG0tHxwww==}
     dependencies:
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
       lodash-es: 4.17.21
     dev: false
 
-  /@ckeditor/ckeditor5-engine@40.2.0:
-    resolution: {integrity: sha512-sgboUX8Ps+LcEgywyT3BeK1nzLHjNVIiZU1qvRxR3ixzIw4w2xRNXCGfESWLW5Y5rv9+ypUCrX61oLnZU64PQQ==}
+  /@ckeditor/ckeditor5-engine@41.0.0:
+    resolution: {integrity: sha512-SrzyRU4LXkgIFl614Vshciiwq76zbMt3gKR4Gi1xth2Q5jStT2V42KfUJ+aeigD0RevRcOL8X/g/oSXgKudbow==}
     dependencies:
-      '@ckeditor/ckeditor5-utils': 40.2.0
+      '@ckeditor/ckeditor5-utils': 41.0.0
       lodash-es: 4.17.21
     dev: false
 
-  /@ckeditor/ckeditor5-enter@40.2.0:
-    resolution: {integrity: sha512-GjTRaKNX8QEDJ3YYKG3GfPZfGHrcigGBxbo+1WDT7NaOsR2DA/CIZfHlAPfgJDAMV17bhWsT3gy3+oQZsExtnQ==}
+  /@ckeditor/ckeditor5-enter@41.0.0:
+    resolution: {integrity: sha512-6APFUXOsYcoDVyip2E79gWzE/bmEN1+5eY0ShxJmL4seSD7ipn8TflpGsPjqxe4+bcMBzpfYOcm2wlMxo/Nf6A==}
     dependencies:
-      '@ckeditor/ckeditor5-core': 40.2.0
-      '@ckeditor/ckeditor5-engine': 40.2.0
-      '@ckeditor/ckeditor5-utils': 40.2.0
+      '@ckeditor/ckeditor5-core': 41.0.0
+      '@ckeditor/ckeditor5-engine': 41.0.0
+      '@ckeditor/ckeditor5-utils': 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-essentials@40.2.0:
-    resolution: {integrity: sha512-7iUUy0Uwiei4yLrn145SOcyzriMeVFVc5ontQkxQE5b9alFdAc/6ZoDPZqwD7V0zi5RQ/2YsoVMRLFa4hbPfNA==}
+  /@ckeditor/ckeditor5-essentials@41.0.0:
+    resolution: {integrity: sha512-R80qtyBgPGFDaDsJAF3gqqAAnq8+kLijR1bDsAvHwRY4FN0zhdxfwQOdeIB+OCGBevyYNrJ6MFfX/LSOZj66CA==}
     dependencies:
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-heading@40.2.0:
-    resolution: {integrity: sha512-uDT1sttMy+KrKi90jnqEI43886o1wfKrROWqaMbmKOerTbIi58GNH9LvX04sf1RyHV3+3566RRmB248fsLkYjA==}
+  /@ckeditor/ckeditor5-heading@41.0.0:
+    resolution: {integrity: sha512-00axXKOHXVDquO6yvQLAmLe4fk3v/x4JK5FHaclIeFILlJvDU5X4r5J2lEK8ClaJ/2EeaLyt+Dnwk/FRpp+0IQ==}
     dependencies:
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-image@40.2.0:
-    resolution: {integrity: sha512-0Dunw1o5k2+5Q5XiWLDG1r8k9awosfIFuDZwqKJGWtDaNE4QQbJ9+iJSwiiRw2QjcGr7D3JdH7xwJZFra7kYmA==}
+  /@ckeditor/ckeditor5-image@41.0.0:
+    resolution: {integrity: sha512-p7tFXov36cQP3Y3Kyr6Q9a/5BA0Pj5Wq8q0qPb08jpdRb6TCR60WkmiIK9yzSNR3FN4sfq1PG4l4mM4M2MJqaA==}
     dependencies:
-      '@ckeditor/ckeditor5-ui': 40.2.0
-      ckeditor5: 40.2.0
+      '@ckeditor/ckeditor5-ui': 41.0.0
+      ckeditor5: 41.0.0
       lodash-es: 4.17.21
     dev: false
 
-  /@ckeditor/ckeditor5-indent@40.2.0:
-    resolution: {integrity: sha512-gSlRGoyAslB2OpqghimIY6Oiflf3Z2/MdLBzvFipU5N4X66cL29HuWZc/bOkcFzWwNeDK5LgzfLdvXNzkdv5Xw==}
+  /@ckeditor/ckeditor5-indent@41.0.0:
+    resolution: {integrity: sha512-OpwL9eyKOnQJ3Rv50/ur+fYKd6dpRuEhNUpsf39h0UNbF9i1KU+nUiIU/WLpj3uPPeFKE5DeyM4RQFJuK6oMdw==}
     dependencies:
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-link@40.2.0:
-    resolution: {integrity: sha512-/r4Ti9USdrURBX+qutvyDGOb75sNuSgtXdI8xK503EVfx5yBIi6qsYIYWoFvnGJKkLYkVo+940ilduhwzq0M7g==}
+  /@ckeditor/ckeditor5-link@41.0.0:
+    resolution: {integrity: sha512-eMnQNUbTaQSCEeZs4PT/WYpeTLeJj39wASygW+m4Cv28zs91RVhS3amXEuOfoTEp2yxaCw+wAlbAlAoOWhPQCg==}
     dependencies:
-      '@ckeditor/ckeditor5-ui': 40.2.0
-      ckeditor5: 40.2.0
+      '@ckeditor/ckeditor5-ui': 41.0.0
+      ckeditor5: 41.0.0
       lodash-es: 4.17.21
     dev: false
 
-  /@ckeditor/ckeditor5-list@40.2.0:
-    resolution: {integrity: sha512-lsQWSLSFRHRQ2AxA6vgTib9YELjF2J5jpR6H4RDW1gM//dL3FjvLxKPPN/V7rMcp15rrpSiOya+qB99l24DEpQ==}
+  /@ckeditor/ckeditor5-list@41.0.0:
+    resolution: {integrity: sha512-KBbGWY7ihhc2IpCNpYoT+mzTThpsS3X7Pz6nQHAkGC3rzrdnfPhSbTnrXqckmMfM6VQzGrXUMWnIwLMDdGfGcw==}
     dependencies:
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-media-embed@40.2.0:
-    resolution: {integrity: sha512-ORY7VebL7UTuBG/4++UxzqEKjnlZZKAFqUrIom7xXpQNfo6oJFtZLnKYwESZ6iNk7NBOAeiHEecP2tKWyFQd1g==}
+  /@ckeditor/ckeditor5-media-embed@41.0.0:
+    resolution: {integrity: sha512-x+umwDKQSB/oCB07r3cYzqWimr4XCOES+iBwFm4gIRp1Prh4DowqaEFipp6WV3goZLParFjkq9aiHaAHXcqO2g==}
     dependencies:
-      '@ckeditor/ckeditor5-ui': 40.2.0
-      ckeditor5: 40.2.0
+      '@ckeditor/ckeditor5-ui': 41.0.0
+      ckeditor5: 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-paragraph@40.2.0:
-    resolution: {integrity: sha512-NotxWP1cKvbJSY1UwdTe/Oy1NnAj9Etsi4Z7XA908EvCsNSnFtzdMhYzLhFZJ18avrQFDa7PpSKSyN3M64CbSA==}
+  /@ckeditor/ckeditor5-paragraph@41.0.0:
+    resolution: {integrity: sha512-w344YUyhk+ME1fbD0/Dm/xe92OLCMTg5IYEWBpyn20VjnWhu1DPTMJ6NWM6/aGTCZ3bxEIh0UWj4QFr+QstiVA==}
     dependencies:
-      '@ckeditor/ckeditor5-core': 40.2.0
-      '@ckeditor/ckeditor5-ui': 40.2.0
-      '@ckeditor/ckeditor5-utils': 40.2.0
+      '@ckeditor/ckeditor5-core': 41.0.0
+      '@ckeditor/ckeditor5-ui': 41.0.0
+      '@ckeditor/ckeditor5-utils': 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-paste-from-office@40.2.0:
-    resolution: {integrity: sha512-kdk7uJlSa9mvyuNAwmIfV6Kc1tfWI6DbCs19jyseA/F0vySKibb0DsBVSZ7xa5ihcjphfJvwpypWYL0BYdYKLQ==}
+  /@ckeditor/ckeditor5-paste-from-office@41.0.0:
+    resolution: {integrity: sha512-QCgLLY9k3LC4iqG9T7m1PyWPZ8c5ZzCcu/Jed3eA9ixjFVFcdL2wkAaiGug50Uw8gfclrsygBAmGrdtH2qSZ7w==}
     dependencies:
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-select-all@40.2.0:
-    resolution: {integrity: sha512-yaYCqhdMcoEH3BsilhweNdbOfuO/cexQ1r1/mYoBoW4CypIuAeq8J/3qLpvFaThmCRPzJBn1J7v2Yjs/0UnamA==}
+  /@ckeditor/ckeditor5-select-all@41.0.0:
+    resolution: {integrity: sha512-5dn8TlkygVjs3WILIBIyQrZBwZ7Ip+VS0aC7LJiNLCc1XIEZOpuP7dHph014IbW+8m7P61DK24AuuNn1J0KCRA==}
     dependencies:
-      '@ckeditor/ckeditor5-core': 40.2.0
-      '@ckeditor/ckeditor5-ui': 40.2.0
-      '@ckeditor/ckeditor5-utils': 40.2.0
+      '@ckeditor/ckeditor5-core': 41.0.0
+      '@ckeditor/ckeditor5-ui': 41.0.0
+      '@ckeditor/ckeditor5-utils': 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-table@40.2.0:
-    resolution: {integrity: sha512-yODne7az/aJ9lsuI7w476pgGV2QBoH2tOKp3JFh/e2DdHC20637LCVd0cx8sUe3zk61X/eYPY+wOiRJx/mIUqg==}
+  /@ckeditor/ckeditor5-table@41.0.0:
+    resolution: {integrity: sha512-4JTIc42eN+tfW0Sucw867PDdLD2IOajLXPJ8W1MaDjOfM+7RZZ4muCHMOf1LXk69Gfrt3cd2YrRELv3N2fjv5Q==}
     dependencies:
-      ckeditor5: 40.2.0
+      ckeditor5: 41.0.0
       lodash-es: 4.17.21
     dev: false
 
-  /@ckeditor/ckeditor5-typing@40.2.0:
-    resolution: {integrity: sha512-2E7LkmC4RHdenMUwow0EZDKxlbX00c5UHysUVT51EBGrXiJcN++0cqxQaeJzQ262oTDpk94qE5IZdGXt3ntzrw==}
+  /@ckeditor/ckeditor5-typing@41.0.0:
+    resolution: {integrity: sha512-uaIU/5X1Ffk2XZZ/3q1NyrINhxPDre8Bnb7+AvzPWtLsdimoCotpzA84h00WVYWS4B5xotrM/eV/MikQvcpRkQ==}
     dependencies:
-      '@ckeditor/ckeditor5-core': 40.2.0
-      '@ckeditor/ckeditor5-engine': 40.2.0
-      '@ckeditor/ckeditor5-utils': 40.2.0
+      '@ckeditor/ckeditor5-core': 41.0.0
+      '@ckeditor/ckeditor5-engine': 41.0.0
+      '@ckeditor/ckeditor5-utils': 41.0.0
       lodash-es: 4.17.21
     dev: false
 
-  /@ckeditor/ckeditor5-ui@40.2.0:
-    resolution: {integrity: sha512-K8oC9zrJokZD5Nl4uQjJMo8Couds0eHmfNI/go6iU4A4OAdDzph+W50QnyMed4etKnMdhvUSbnuZnPtQjnsvFA==}
+  /@ckeditor/ckeditor5-ui@41.0.0:
+    resolution: {integrity: sha512-0oLE7WQyCcNxwvSJw2gwFgrktK19aqbqzIQJpr8xrn5KfDJw7WWk53/yWye05pAphtGo1VZTOk8YG7OJMvQn2Q==}
     dependencies:
-      '@ckeditor/ckeditor5-core': 40.2.0
-      '@ckeditor/ckeditor5-utils': 40.2.0
+      '@ckeditor/ckeditor5-core': 41.0.0
+      '@ckeditor/ckeditor5-utils': 41.0.0
       color-convert: 2.0.1
       color-parse: 1.4.2
       lodash-es: 4.17.21
       vanilla-colorful: 0.7.2
     dev: false
 
-  /@ckeditor/ckeditor5-undo@40.2.0:
-    resolution: {integrity: sha512-k2VZS5x4SJtYk3zhdwHYg+D00DgD0iWR0H4qQgcWmQMFRipYvXJRixP3hSLZGJciQanPFeYcjZgxNQ+rU1s8ug==}
+  /@ckeditor/ckeditor5-undo@41.0.0:
+    resolution: {integrity: sha512-2rF8YqEDZgPa3sD1BVZxlEKxZ7bwqPVCG9f4ebLr9AYSI3DnneitAtiTlkbb2CjcPc4FAcOPFpvQyzavIpkNDg==}
     dependencies:
-      '@ckeditor/ckeditor5-core': 40.2.0
-      '@ckeditor/ckeditor5-engine': 40.2.0
-      '@ckeditor/ckeditor5-ui': 40.2.0
+      '@ckeditor/ckeditor5-core': 41.0.0
+      '@ckeditor/ckeditor5-engine': 41.0.0
+      '@ckeditor/ckeditor5-ui': 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-upload@40.2.0:
-    resolution: {integrity: sha512-AdJSKvWEQbSSyA/DfxbCHRhFN6S4ew4kuYETO57e6AS3aOuYGLBRdu9Mub7IAQcOyy1LL6ktr9u5WEOoWS2h0w==}
+  /@ckeditor/ckeditor5-upload@41.0.0:
+    resolution: {integrity: sha512-EGb88xYTyL6Xdi7pFkmhv3Zv2JrKUWvyTXGdUEmLsMqRzxV+VHkVt2HTxHERaZlOa/iY6GzkC4yHGFL+jC28/Q==}
     dependencies:
-      '@ckeditor/ckeditor5-core': 40.2.0
-      '@ckeditor/ckeditor5-ui': 40.2.0
-      '@ckeditor/ckeditor5-utils': 40.2.0
+      '@ckeditor/ckeditor5-core': 41.0.0
+      '@ckeditor/ckeditor5-ui': 41.0.0
+      '@ckeditor/ckeditor5-utils': 41.0.0
     dev: false
 
-  /@ckeditor/ckeditor5-utils@40.2.0:
-    resolution: {integrity: sha512-f+kTJBwwk7Y/LXm8pEPxBTXVlJwQrH7Levzye9zxEDB0Jtj7+brGr87o666fPmL/ATQc5M+VPhbvnk2sOv7WKg==}
+  /@ckeditor/ckeditor5-utils@41.0.0:
+    resolution: {integrity: sha512-7ITAPlFxjPtFa4HnB+zrjgEs0nfPs+QHmf1pOltfIUhpFvg5V6ImIrBvzIaf+AeU5Uf6pNVHjXnqorn9oeqRTA==}
     dependencies:
       lodash-es: 4.17.21
     dev: false
@@ -2167,21 +2167,21 @@ packages:
     requiresBuild: true
     dev: false
 
-  /@ckeditor/ckeditor5-watchdog@40.2.0:
-    resolution: {integrity: sha512-ets7o2dUR7l23G9o/RAbu+gJzUkc2Ul269E3TEhZnbQXFjshvEGK2kzuay7I+/waL3ADuYe4zuoBqsqdPoAhfg==}
+  /@ckeditor/ckeditor5-watchdog@41.0.0:
+    resolution: {integrity: sha512-S2mP2A+Zil7j7LMZqJhBTXc007gbYJD12xBpa5MQFLcUNLwYR9nj69IM5QmJV50ai0U7znkWQxJai/4BAJvL8Q==}
     dependencies:
       lodash-es: 4.17.21
     dev: false
 
-  /@ckeditor/ckeditor5-widget@40.2.0:
-    resolution: {integrity: sha512-okeUSwbnu6TUKvwBOl0YdED6Me0/vvs1ybfKZPNEJNwGl989iG0LQO4oYUye8BTCZvzCZ2cBTb1Cvnwr8KRcbg==}
+  /@ckeditor/ckeditor5-widget@41.0.0:
+    resolution: {integrity: sha512-pQomiS4wSlDs17muViabmGzcGAWR/cqtUIJswXAqlaQICdbOIX+tfA9XsZDdekrTZZxZxk+1Zh1UJ4WWK4kmSg==}
     dependencies:
-      '@ckeditor/ckeditor5-core': 40.2.0
-      '@ckeditor/ckeditor5-engine': 40.2.0
-      '@ckeditor/ckeditor5-enter': 40.2.0
-      '@ckeditor/ckeditor5-typing': 40.2.0
-      '@ckeditor/ckeditor5-ui': 40.2.0
-      '@ckeditor/ckeditor5-utils': 40.2.0
+      '@ckeditor/ckeditor5-core': 41.0.0
+      '@ckeditor/ckeditor5-engine': 41.0.0
+      '@ckeditor/ckeditor5-enter': 41.0.0
+      '@ckeditor/ckeditor5-typing': 41.0.0
+      '@ckeditor/ckeditor5-ui': 41.0.0
+      '@ckeditor/ckeditor5-utils': 41.0.0
       lodash-es: 4.17.21
     dev: false
 
@@ -2345,7 +2345,7 @@ packages:
       '@vue/compiler-sfc': 3.2.47
       '@vue/server-renderer': 3.2.47(vue@3.4.14)
       '@vue/shared': 3.2.47
-      autoprefixer: 10.4.16(postcss@8.4.33)
+      autoprefixer: 10.4.17(postcss@8.4.33)
       base64url: 3.0.1
       chokidar: 3.5.3
       compare-versions: 3.6.0
@@ -2722,7 +2722,7 @@ packages:
       '@dcloudio/uni-cli-shared': 3.0.0-3090920231225001(postcss@8.4.33)(ts-node@10.9.2)(vue@3.4.14)
       '@dcloudio/uni-shared': 3.0.0-3090920231225001
       '@rollup/pluginutils': 4.2.1
-      '@vitejs/plugin-legacy': 4.1.1(terser@5.26.0)(vite@4.5.1)
+      '@vitejs/plugin-legacy': 4.1.1(terser@5.27.0)(vite@4.5.1)
       '@vitejs/plugin-vue': 4.6.2(vite@4.5.1)(vue@3.4.14)
       '@vitejs/plugin-vue-jsx': 3.1.0(vite@4.5.1)(vue@3.4.14)
       '@vue/compiler-core': 3.2.47
@@ -2739,9 +2739,9 @@ packages:
       jsonc-parser: 3.2.0
       magic-string: 0.30.5
       picocolors: 1.0.0
-      terser: 5.26.0
+      terser: 5.27.0
       unplugin-auto-import: 0.16.7
-      vite: 4.5.1(@types/node@20.11.5)(terser@5.26.0)
+      vite: 4.5.1(@types/node@20.11.5)(terser@5.27.0)
     transitivePeerDependencies:
       - '@nuxt/kit'
       - '@vueuse/core'
@@ -4148,7 +4148,7 @@ packages:
       p-map-series: 2.1.0
       p-queue: 6.6.2
       p-reduce: 2.1.0
-      pacote: 17.0.5
+      pacote: 17.0.6
       pify: 5.0.0
       read-cmd-shim: 4.0.0
       read-package-json: 6.0.4
@@ -4913,7 +4913,7 @@ packages:
     resolution: {integrity: sha512-/l5w8BIkrpP6n1xsetx9MWPWlU6OblN5YgZZphxan0Tq4BByTCETL6lyIeY8lagalS2Nbt4F2W034KHLIiunKA==}
     dependencies:
       core-js: 3.35.0
-      nanopop: 2.3.0
+      nanopop: 2.4.0
     dev: true
 
   /@sinclair/typebox@0.27.8:
@@ -5182,10 +5182,10 @@ packages:
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0 || ^5.0.0
     dependencies:
-      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.26.0)
+      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.27.0)
     dev: false
 
-  /@vitejs/plugin-legacy@4.1.1(terser@5.26.0)(vite@4.5.1):
+  /@vitejs/plugin-legacy@4.1.1(terser@5.27.0)(vite@4.5.1):
     resolution: {integrity: sha512-um3gbVouD2Q/g19C0qpDfHwveXDCAHzs8OC3e9g6aXpKoD1H14himgs7wkMnhAynBJy7QqUoZNAXDuqN8zLR2g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -5199,13 +5199,13 @@ packages:
       magic-string: 0.30.5
       regenerator-runtime: 0.13.11
       systemjs: 6.14.3
-      terser: 5.26.0
-      vite: 4.5.1(@types/node@20.11.5)(terser@5.26.0)
+      terser: 5.27.0
+      vite: 4.5.1(@types/node@20.11.5)(terser@5.27.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@vitejs/plugin-legacy@5.2.0(terser@5.26.0)(vite@5.0.11):
+  /@vitejs/plugin-legacy@5.2.0(terser@5.27.0)(vite@5.0.11):
     resolution: {integrity: sha512-FGpxQCgyI8SHA/TkFH5vfBManyc6GYkCoYtmom924c7sKObnBE7q543RQuKK46duI4j31Nv1wg4GRNtCfsGpGQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     peerDependencies:
@@ -5219,8 +5219,8 @@ packages:
       magic-string: 0.30.5
       regenerator-runtime: 0.14.1
       systemjs: 6.14.3
-      terser: 5.26.0
-      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.26.0)
+      terser: 5.27.0
+      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.27.0)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -5235,7 +5235,7 @@ packages:
       '@babel/core': 7.23.7
       '@babel/plugin-transform-typescript': 7.23.6(@babel/core@7.23.7)
       '@vue/babel-plugin-jsx': 1.1.6(@babel/core@7.23.7)
-      vite: 4.5.1(@types/node@20.11.5)(terser@5.26.0)
+      vite: 4.5.1(@types/node@20.11.5)(terser@5.27.0)
       vue: 3.4.14(typescript@5.3.3)
     transitivePeerDependencies:
       - supports-color
@@ -5251,7 +5251,7 @@ packages:
       '@babel/core': 7.23.7
       '@babel/plugin-transform-typescript': 7.23.6(@babel/core@7.23.7)
       '@vue/babel-plugin-jsx': 1.1.6(@babel/core@7.23.7)
-      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.26.0)
+      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.27.0)
       vue: 3.4.14(typescript@5.3.3)
     transitivePeerDependencies:
       - supports-color
@@ -5264,7 +5264,7 @@ packages:
       vite: ^4.0.0 || ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.5.1(@types/node@20.11.5)(terser@5.26.0)
+      vite: 4.5.1(@types/node@20.11.5)(terser@5.27.0)
       vue: 3.4.14(typescript@5.3.3)
 
   /@vitejs/plugin-vue@5.0.3(vite@5.0.11)(vue@3.4.14):
@@ -5274,20 +5274,20 @@ packages:
       vite: ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.26.0)
+      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.27.0)
       vue: 3.4.14(typescript@5.3.3)
 
-  /@vitepress-demo-preview/component@2.3.2(vitepress@1.0.0-rc.37)(vue@3.4.14):
+  /@vitepress-demo-preview/component@2.3.2(vitepress@1.0.0-rc.39)(vue@3.4.14):
     resolution: {integrity: sha512-+GCYl3eHA7uoBGZyH2nTP1uab6pHFGEdykj5bSz4Nt2carH05xomBf18kBecuK1SncSqB7kWV/6JHT2Y349NbQ==}
     peerDependencies:
       vitepress: '*'
       vue: ^3.2.0
     dependencies:
-      vitepress: 1.0.0-rc.37(@algolia/client-search@4.22.1)(@types/node@20.11.5)(axios@1.6.5)(search-insights@2.13.0)(typescript@5.3.3)
+      vitepress: 1.0.0-rc.39(@algolia/client-search@4.22.1)(@types/node@20.11.5)(axios@1.6.5)(search-insights@2.13.0)(typescript@5.3.3)
       vue: 3.4.14(typescript@5.3.3)
     dev: false
 
-  /@vitepress-demo-preview/plugin@1.2.2(markdown-it-container@3.0.0)(vitepress@1.0.0-rc.37)(vue@3.4.14):
+  /@vitepress-demo-preview/plugin@1.2.2(markdown-it-container@3.0.0)(vitepress@1.0.0-rc.39)(vue@3.4.14):
     resolution: {integrity: sha512-Gpw5fmiv8UkYStqNRcVr235NAVrXzO6MKdeuWbqvIoKzS2uLb7nhm4aL+rlXGxKOWP+UcHnpg/fl3+brUUejTw==}
     peerDependencies:
       markdown-it-container: ^3.0.0
@@ -5297,12 +5297,12 @@ packages:
       '@flypeng/tool': 5.5.1
       markdown-it: 13.0.2
       markdown-it-container: 3.0.0
-      vitepress: 1.0.0-rc.37(@algolia/client-search@4.22.1)(@types/node@20.11.5)(axios@1.6.5)(search-insights@2.13.0)(typescript@5.3.3)
+      vitepress: 1.0.0-rc.39(@algolia/client-search@4.22.1)(@types/node@20.11.5)(axios@1.6.5)(search-insights@2.13.0)(typescript@5.3.3)
       vue: 3.4.14(typescript@5.3.3)
     dev: false
 
-  /@vitest/coverage-v8@1.2.0(vitest@1.2.0):
-    resolution: {integrity: sha512-YvX8ULTUm1+zkvkl14IqXYGxE1h13OXKPoDsxazARKlp4YLrP28hHEBdplaU7ZTN/Yn6zy6Z3JadWNRJwcmyrQ==}
+  /@vitest/coverage-v8@1.2.1(vitest@1.2.1):
+    resolution: {integrity: sha512-fJEhKaDwGMZtJUX7BRcGxooGwg1Hl0qt53mVup/ZJeznhvL5EodteVnb/mcByhEcvVWbK83ZF31c7nPEDi4LOQ==}
     peerDependencies:
       vitest: ^1.0.0
     dependencies:
@@ -5319,39 +5319,39 @@ packages:
       std-env: 3.7.0
       test-exclude: 6.0.0
       v8-to-istanbul: 9.2.0
-      vitest: 1.2.0(@types/node@20.11.5)(jsdom@23.2.0)(sass@1.69.7)(terser@5.26.0)
+      vitest: 1.2.1(@types/node@20.11.5)(jsdom@23.2.0)(sass@1.69.7)(terser@5.27.0)
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /@vitest/expect@1.2.0:
-    resolution: {integrity: sha512-H+2bHzhyvgp32o7Pgj2h9RTHN0pgYaoi26Oo3mE+dCi1PAqV31kIIVfTbqMO3Bvshd5mIrJLc73EwSRrbol9Lw==}
+  /@vitest/expect@1.2.1:
+    resolution: {integrity: sha512-/bqGXcHfyKgFWYwIgFr1QYDaR9e64pRKxgBNWNXPefPFRhgm+K3+a/dS0cUGEreWngets3dlr8w8SBRw2fCfFQ==}
     dependencies:
-      '@vitest/spy': 1.2.0
-      '@vitest/utils': 1.2.0
+      '@vitest/spy': 1.2.1
+      '@vitest/utils': 1.2.1
       chai: 4.4.1
 
-  /@vitest/runner@1.2.0:
-    resolution: {integrity: sha512-vaJkDoQaNUTroT70OhM0NPznP7H3WyRwt4LvGwCVYs/llLaqhoSLnlIhUClZpbF5RgAee29KRcNz0FEhYcgxqA==}
+  /@vitest/runner@1.2.1:
+    resolution: {integrity: sha512-zc2dP5LQpzNzbpaBt7OeYAvmIsRS1KpZQw4G3WM/yqSV1cQKNKwLGmnm79GyZZjMhQGlRcSFMImLjZaUQvNVZQ==}
     dependencies:
-      '@vitest/utils': 1.2.0
+      '@vitest/utils': 1.2.1
       p-limit: 5.0.0
       pathe: 1.1.2
 
-  /@vitest/snapshot@1.2.0:
-    resolution: {integrity: sha512-P33EE7TrVgB3HDLllrjK/GG6WSnmUtWohbwcQqmm7TAk9AVHpdgf7M3F3qRHKm6vhr7x3eGIln7VH052Smo6Kw==}
+  /@vitest/snapshot@1.2.1:
+    resolution: {integrity: sha512-Tmp/IcYEemKaqAYCS08sh0vORLJkMr0NRV76Gl8sHGxXT5151cITJCET20063wk0Yr/1koQ6dnmP6eEqezmd/Q==}
     dependencies:
       magic-string: 0.30.5
       pathe: 1.1.2
       pretty-format: 29.7.0
 
-  /@vitest/spy@1.2.0:
-    resolution: {integrity: sha512-MNxSAfxUaCeowqyyGwC293yZgk7cECZU9wGb8N1pYQ0yOn/SIr8t0l9XnGRdQZvNV/ZHBYu6GO/W3tj5K3VN1Q==}
+  /@vitest/spy@1.2.1:
+    resolution: {integrity: sha512-vG3a/b7INKH7L49Lbp0IWrG6sw9j4waWAucwnksPB1r1FTJgV7nkBByd9ufzu6VWya/QTvQW4V9FShZbZIB2UQ==}
     dependencies:
       tinyspy: 2.2.0
 
-  /@vitest/utils@1.2.0:
-    resolution: {integrity: sha512-FyD5bpugsXlwVpTcGLDf3wSPYy8g541fQt14qtzo8mJ4LdEpDKZ9mQy2+qdJm2TZRpjY5JLXihXCgIxiRJgi5g==}
+  /@vitest/utils@1.2.1:
+    resolution: {integrity: sha512-bsH6WVZYe/J2v3+81M5LDU8kW76xWObKIURpPrOXm2pjBniBu2MERI/XP60GpS4PHU3jyK50LUutOwrx4CyHUg==}
     dependencies:
       diff-sequences: 29.6.3
       estree-walker: 3.0.3
@@ -5948,8 +5948,8 @@ packages:
   /asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  /autoprefixer@10.4.16(postcss@8.4.33):
-    resolution: {integrity: sha512-7vd3UC6xKp0HLfua5IjZlcXvGAGy7cBAXTg2lyQ/8WpNhd6SiZ8Be+xm3FyBSYJx5GKcpRCzBh7RH4/0dnY+uQ==}
+  /autoprefixer@10.4.17(postcss@8.4.33):
+    resolution: {integrity: sha512-/cpVNRLSfhOtcGflT13P2794gVSgmPgTR+erw5ifnMLZb0UnSlkK4tquLmkd3BhA+nLo5tX8Cu0upUsGKvKbmg==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
@@ -6187,7 +6187,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001578
-      electron-to-chromium: 1.4.634
+      electron-to-chromium: 1.4.637
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.22.2)
 
@@ -6407,22 +6407,22 @@ packages:
     resolution: {integrity: sha512-0TNiGstbQmCFwt4akjjBg5pLRTSyj/PkWQ1ZoO2zntmg9yLqSRxwEa4iCfQLGjqhiqBfOJa7W/E8wfGrTDmlZQ==}
     dev: true
 
-  /ckeditor5@40.2.0:
-    resolution: {integrity: sha512-JaFuY/6DX1wbA6yRB2xQVMr+9W1C3HvSX4AT10ccoKBKe9OctIatekDt2ztV+cMaVHLF1wocskS/Ql9XFRy2Eg==}
+  /ckeditor5@41.0.0:
+    resolution: {integrity: sha512-b1mS43gOmoUtf/fWDYrNxSWhHQFc7Qv9JB5nnePmv1XGIYBa/Bcgp4SSXRSSVl8XfmT9Z7BbYKux0V+ZE45RIQ==}
     dependencies:
-      '@ckeditor/ckeditor5-clipboard': 40.2.0
-      '@ckeditor/ckeditor5-core': 40.2.0
-      '@ckeditor/ckeditor5-engine': 40.2.0
-      '@ckeditor/ckeditor5-enter': 40.2.0
-      '@ckeditor/ckeditor5-paragraph': 40.2.0
-      '@ckeditor/ckeditor5-select-all': 40.2.0
-      '@ckeditor/ckeditor5-typing': 40.2.0
-      '@ckeditor/ckeditor5-ui': 40.2.0
-      '@ckeditor/ckeditor5-undo': 40.2.0
-      '@ckeditor/ckeditor5-upload': 40.2.0
-      '@ckeditor/ckeditor5-utils': 40.2.0
-      '@ckeditor/ckeditor5-watchdog': 40.2.0
-      '@ckeditor/ckeditor5-widget': 40.2.0
+      '@ckeditor/ckeditor5-clipboard': 41.0.0
+      '@ckeditor/ckeditor5-core': 41.0.0
+      '@ckeditor/ckeditor5-engine': 41.0.0
+      '@ckeditor/ckeditor5-enter': 41.0.0
+      '@ckeditor/ckeditor5-paragraph': 41.0.0
+      '@ckeditor/ckeditor5-select-all': 41.0.0
+      '@ckeditor/ckeditor5-typing': 41.0.0
+      '@ckeditor/ckeditor5-ui': 41.0.0
+      '@ckeditor/ckeditor5-undo': 41.0.0
+      '@ckeditor/ckeditor5-upload': 41.0.0
+      '@ckeditor/ckeditor5-utils': 41.0.0
+      '@ckeditor/ckeditor5-watchdog': 41.0.0
+      '@ckeditor/ckeditor5-widget': 41.0.0
     dev: false
 
   /clean-stack@2.2.0:
@@ -7173,8 +7173,8 @@ packages:
       jake: 10.8.7
     dev: true
 
-  /electron-to-chromium@1.4.634:
-    resolution: {integrity: sha512-gQNahJfF5AE4MZo+pMSwmnwkzVZ+F4ZGGj4Z/MMddOXVQM0y9OHy6ts3W9SDzAJaiZM3p6eixn5ABCQ+AfXzcQ==}
+  /electron-to-chromium@1.4.637:
+    resolution: {integrity: sha512-G7j3UCOukFtxVO1vWrPQUoDk3kL70mtvjc/DC/k2o7lE0wAdq+Vwp1ipagOow+BH0uVztFysLWbkM/RTIrbK3w==}
 
   /element-plus@2.5.1(vue@3.4.14):
     resolution: {integrity: sha512-ylX9h2U125/nesPlLWgfPkI1rID9EiGROlgf0QkzBUjx+/d4w/YqS+IqZZZC5yvQPhKYu9aMDqEBzOurwn4Cnw==}
@@ -9268,7 +9268,7 @@ packages:
       p-queue: 6.6.2
       p-reduce: 2.1.0
       p-waterfall: 2.1.1
-      pacote: 17.0.5
+      pacote: 17.0.6
       pify: 5.0.0
       read-cmd-shim: 4.0.0
       read-package-json: 6.0.4
@@ -9895,7 +9895,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      autoprefixer: 10.4.16(postcss@8.4.33)
+      autoprefixer: 10.4.17(postcss@8.4.33)
       citty: 0.1.5
       cssnano: 6.0.3(postcss@8.4.33)
       defu: 6.1.4
@@ -9973,8 +9973,9 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  /nanopop@2.3.0:
-    resolution: {integrity: sha512-fzN+T2K7/Ah25XU02MJkPZ5q4Tj5FpjmIYq4rvoHX4yb16HzFdCO6JxFFn5Y/oBhQ8no8fUZavnyIv9/+xkBBw==}
+  /nanopop@2.4.0:
+    resolution: {integrity: sha512-A/mitpZitCkPq5W+iRq9p2t9Sv+zSUdu8x+eF7twkP5F0d+QUod321IDB1RQD8QRiBWnW4PdT3sF1sFt/P/g7Q==}
+    engines: {node: ^20}
     dev: true
 
   /natural-compare@1.4.0:
@@ -10485,8 +10486,8 @@ packages:
       p-reduce: 2.1.0
     dev: true
 
-  /pacote@17.0.5:
-    resolution: {integrity: sha512-TAE0m20zSDMnchPja9vtQjri19X3pZIyRpm2TJVeI+yU42leJBBDTRYhOcWFsPhaMxf+3iwQkFiKz16G9AEeeA==}
+  /pacote@17.0.6:
+    resolution: {integrity: sha512-cJKrW21VRE8vVTRskJo78c/RCvwJCn1f4qgfxL4w77SOWrTCRcmfkYHlHtS0gqpgjv3zhXflRtgsrUCX5xwNnQ==}
     engines: {node: ^16.14.0 || >=18.0.0}
     hasBin: true
     dependencies:
@@ -10884,8 +10885,8 @@ packages:
     dependencies:
       postcss: 8.4.33
 
-  /postcss-modules-local-by-default@4.0.3(postcss@8.4.33):
-    resolution: {integrity: sha512-2/u2zraspoACtrbFRnTijMiQtb4GW4BvatjaG/bCjYQo8kLTdevCUlwuBHx2sCnSyrI3x3qj4ZK1j5LQBgzmwA==}
+  /postcss-modules-local-by-default@4.0.4(postcss@8.4.33):
+    resolution: {integrity: sha512-L4QzMnOdVwRm1Qb8m4x8jsZzKAaPAgrUF1r/hjDR2Xj7R+8Zsf97jAlSQzWtKx5YNiNGN8QxmPFIc/sh+RQl+Q==}
     engines: {node: ^10 || ^12 || >= 14}
     peerDependencies:
       postcss: ^8.1.0
@@ -10923,7 +10924,7 @@ packages:
       lodash.camelcase: 4.3.0
       postcss: 8.4.33
       postcss-modules-extract-imports: 3.0.0(postcss@8.4.33)
-      postcss-modules-local-by-default: 4.0.3(postcss@8.4.33)
+      postcss-modules-local-by-default: 4.0.4(postcss@8.4.33)
       postcss-modules-scope: 3.1.0(postcss@8.4.33)
       postcss-modules-values: 4.0.0(postcss@8.4.33)
       string-hash: 1.1.3
@@ -12150,8 +12151,8 @@ packages:
       supports-hyperlinks: 2.3.0
     dev: true
 
-  /terser@5.26.0:
-    resolution: {integrity: sha512-dytTGoE2oHgbNV9nTzgBEPaqAWvcJNl66VZ0BkJqlvp71IjO8CxdBx/ykCNb47cLnCmCvRZ6ZR0tLkqvZCdVBQ==}
+  /terser@5.27.0:
+    resolution: {integrity: sha512-bi1HRwVRskAjheeYl291n3JC4GgO/Ty4z1nVs5AAsmonJulGxpSektecnNedrwK9C7vpvVtcX3cw00VSLt7U2A==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -12721,8 +12722,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite-node@1.2.0(@types/node@20.11.5)(sass@1.69.7)(terser@5.26.0):
-    resolution: {integrity: sha512-ETnQTHeAbbOxl7/pyBck9oAPZZZo+kYnFt1uQDD+hPReOc+wCjXw4r4jHriBRuVDB5isHmPXxrfc1yJnfBERqg==}
+  /vite-node@1.2.1(@types/node@20.11.5)(sass@1.69.7)(terser@5.27.0):
+    resolution: {integrity: sha512-fNzHmQUSOY+y30naohBvSW7pPn/xn3Ib/uqm+5wAJQJiqQsU0NBR78XdRJb04l4bOFKjpTWld0XAfkKlrDbySg==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     dependencies:
@@ -12730,7 +12731,7 @@ packages:
       debug: 4.3.4(supports-color@5.5.0)
       pathe: 1.1.2
       picocolors: 1.0.0
-      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.26.0)
+      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.27.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -12757,7 +12758,7 @@ packages:
       debug: 4.3.4(supports-color@5.5.0)
       kolorist: 1.8.0
       typescript: 5.3.3
-      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.26.0)
+      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.27.0)
       vue-tsc: 1.8.27(typescript@5.3.3)
     transitivePeerDependencies:
       - '@types/node'
@@ -12765,7 +12766,7 @@ packages:
       - supports-color
     dev: false
 
-  /vite@4.5.1(@types/node@20.11.5)(terser@5.26.0):
+  /vite@4.5.1(@types/node@20.11.5)(terser@5.27.0):
     resolution: {integrity: sha512-AXXFaAJ8yebyqzoNB9fu2pHoo/nWX+xZlaRwoeYUxEqBO+Zj4msE5G+BhGBll9lYEKv9Hfks52PAF2X7qDYXQA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -12797,11 +12798,11 @@ packages:
       esbuild: 0.18.20
       postcss: 8.4.33
       rollup: 3.29.4
-      terser: 5.26.0
+      terser: 5.27.0
     optionalDependencies:
       fsevents: 2.3.3
 
-  /vite@5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.26.0):
+  /vite@5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.27.0):
     resolution: {integrity: sha512-XBMnDjZcNAw/G1gEiskiM1v6yzM4GE5aMGvhWTlHAYYhxb7S3/V1s3m2LDHa8Vh6yIWYYB0iJwsEaS523c4oYA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -12834,12 +12835,12 @@ packages:
       postcss: 8.4.33
       rollup: 4.9.5
       sass: 1.69.7
-      terser: 5.26.0
+      terser: 5.27.0
     optionalDependencies:
       fsevents: 2.3.3
 
-  /vitepress@1.0.0-rc.37(@algolia/client-search@4.22.1)(@types/node@20.11.5)(axios@1.6.5)(search-insights@2.13.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-Z2X+M0id+bUdxcWxvFRUzfLyV2GtPWRcejLSMGOHRiwA1DV/dNmELKJ3U9D1HBYQK0FBzunpuQD0a2jZ7FZvJA==}
+  /vitepress@1.0.0-rc.39(@algolia/client-search@4.22.1)(@types/node@20.11.5)(axios@1.6.5)(search-insights@2.13.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-EcgoRlAAp37WOxUOYv45oxyhLrcy3Upey+mKpqW3ldsg6Ol4trPndRBk2GO0QiSvEKlb9BMerk49D/bFICN6kg==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4.3.2
@@ -12863,7 +12864,7 @@ packages:
       shikiji: 0.9.19
       shikiji-core: 0.9.19
       shikiji-transformers: 0.9.19
-      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.26.0)
+      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.27.0)
       vue: 3.4.14(typescript@5.3.3)
     transitivePeerDependencies:
       - '@algolia/client-search'
@@ -12892,8 +12893,8 @@ packages:
       - typescript
       - universal-cookie
 
-  /vitest@1.2.0(@types/node@20.11.5)(jsdom@23.2.0)(sass@1.69.7)(terser@5.26.0):
-    resolution: {integrity: sha512-Ixs5m7BjqvLHXcibkzKRQUvD/XLw0E3rvqaCMlrm/0LMsA0309ZqYvTlPzkhh81VlEyVZXFlwWnkhb6/UMtcaQ==}
+  /vitest@1.2.1(@types/node@20.11.5)(jsdom@23.2.0)(sass@1.69.7)(terser@5.27.0):
+    resolution: {integrity: sha512-TRph8N8rnSDa5M2wKWJCMnztCZS9cDcgVTQ6tsTFTG/odHJ4l5yNVqvbeDJYJRZ6is3uxaEpFs8LL6QM+YFSdA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -12918,11 +12919,11 @@ packages:
         optional: true
     dependencies:
       '@types/node': 20.11.5
-      '@vitest/expect': 1.2.0
-      '@vitest/runner': 1.2.0
-      '@vitest/snapshot': 1.2.0
-      '@vitest/spy': 1.2.0
-      '@vitest/utils': 1.2.0
+      '@vitest/expect': 1.2.1
+      '@vitest/runner': 1.2.1
+      '@vitest/snapshot': 1.2.1
+      '@vitest/spy': 1.2.1
+      '@vitest/utils': 1.2.1
       acorn-walk: 8.3.2
       cac: 6.7.14
       chai: 4.4.1
@@ -12937,8 +12938,8 @@ packages:
       strip-literal: 1.3.0
       tinybench: 2.6.0
       tinypool: 0.8.1
-      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.26.0)
-      vite-node: 1.2.0(@types/node@20.11.5)(sass@1.69.7)(terser@5.26.0)
+      vite: 5.0.11(@types/node@20.11.5)(sass@1.69.7)(terser@5.27.0)
+      vite-node: 1.2.1(@types/node@20.11.5)(sass@1.69.7)(terser@5.27.0)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less

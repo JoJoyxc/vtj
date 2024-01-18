@@ -81,6 +81,14 @@ npm run setup && npm run build && npm run dev
 
 ### Todo
 
+- `@vtj/designer` 低代码设计器
+  - 样式设置器 `StyleSetter`
+  - 数据设计器 `DataSetter`
+- `@vtj/ui` 组件库
+  - 富文本编辑器
+  - 文件上传
+  - 表格
+
 ## 交流群
 
 ![输入图片说明](dev/public/ding.jpg)

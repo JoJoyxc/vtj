@@ -12,8 +12,8 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "unbuild": "~2.0.0",
-    "vitest": "~1.2.0"
+    "unbuild": "^2.0.0",
+    "vitest": "^1.2.0"
   },
   "exports": {
     ".": {
