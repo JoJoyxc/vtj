@@ -85,17 +85,20 @@ export class BlockModel {
    * 获取DSL
    * @returns
    */
-  toDsl(): BlockSchema {
+  toDsl(version?: string): BlockSchema {
     const { __VTJ_BLOCK__, id, nodes } = this;
-    const attrs = BlockModel.normalAttrs.reduce((result, current) => {
-      result[current] = (this as any)[current];
-      return result;
-    }, {} as Record<string, any>);
+    const attrs = BlockModel.normalAttrs.reduce(
+      (result, current) => {
+        result[current] = (this as any)[current];
+        return result;
+      },
+      {} as Record<string, any>
+    );
 
     return {
       ...attrs,
       __VTJ_BLOCK__,
-      __VERSION__: timestamp().toString(),
+      __VERSION__: version || timestamp().toString(),
       id,
       nodes: nodes.map((n) => n.toDsl())
     } as BlockSchema;
@@ -289,7 +292,7 @@ export class BlockModel {
 
   /**
    * 设置插槽
-   * @param emit
+   * @param slot
    * @param silent
    */
   setSlot(slot: string, silent: boolean = false) {
@@ -306,7 +309,7 @@ export class BlockModel {
 
   /**
    * 删除插槽
-   * @param emit
+   * @param slot
    * @param silent
    */
   removeSlot(slot: string, silent: boolean = false) {

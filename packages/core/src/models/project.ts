@@ -98,7 +98,7 @@ export class ProjectModel {
     return file.type === 'page';
   }
 
-  toDsl() {
+  toDsl(version?: string) {
     const { id } = this;
     const attrs = ProjectModel.attrs.reduce(
       (result, current) => {
@@ -121,7 +121,7 @@ export class ProjectModel {
     }
     return {
       __VTJ_PROJECT__: true,
-      __VERSION__: timestamp().toString(),
+      __VERSION__: version || timestamp().toString(),
       id,
       ...attrs
     } as ProjectSchema;
@@ -371,6 +371,7 @@ export class ProjectModel {
    * @param silent
    */
   removePage(id: string, silent: boolean = false) {
+    const pageFile = this.getPage(id);
     const remover = (id: string, pages: PageFile[]): void => {
       const index = pages.findIndex((n) => n.id === id);
       if (index >= 0) {
@@ -394,7 +395,7 @@ export class ProjectModel {
       const event: ProjectModelEvent = {
         model: this,
         type: 'delete',
-        data: id
+        data: pageFile
       };
       emitter.emit(EVENT_PROJECT_PAGES_CHANGE, event);
       emitter.emit(EVENT_PROJECT_CHANGE, event);
@@ -470,6 +471,7 @@ export class ProjectModel {
    * @param silent
    */
   removeBlock(id: string, silent: boolean = false) {
+    const blockFile = this.getBlock(id);
     const blocks = this.blocks;
     const index = blocks.findIndex((n) => n.id === id);
     if (index > -1) {
@@ -484,7 +486,7 @@ export class ProjectModel {
       const event: ProjectModelEvent = {
         model: this,
         type: 'delete',
-        data: id
+        data: blockFile
       };
       emitter.emit(EVENT_PROJECT_BLOCKS_CHANGE, event);
       emitter.emit(EVENT_PROJECT_CHANGE, event);

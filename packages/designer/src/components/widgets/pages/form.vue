@@ -26,17 +26,21 @@
         <IconSetter v-model="model.icon" size="default"></IconSetter>
       </template>
     </XField>
-    <XField name="hidden" label="隐藏菜单" editor="switch"></XField>
     <XField
       :visible="{ dir: false }"
       name="mask"
       label="包含母版"
       editor="switch"></XField>
+    <XField name="hidden" label="隐藏菜单" editor="switch"></XField>
+
     <XField
       :visible="{ dir: false }"
+      :disabled="!!props.item"
+      inline
       name="raw"
       label="源码模式"
-      editor="switch"></XField>
+      editor="switch"
+      tip="页面是非低代码开发，不能在线编辑"></XField>
   </XDialogForm>
 </template>
 <script lang="ts" setup>
@@ -66,7 +70,7 @@
     name: '',
     title: '',
     icon: '',
-    mask: false,
+    mask: true,
     hidden: false,
     raw: false
   });

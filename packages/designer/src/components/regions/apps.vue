@@ -35,6 +35,7 @@
 </template>
 <script lang="ts" setup>
   import { computed, ref, KeepAlive, watch } from 'vue';
+  import { createDialog } from '@vtj/ui';
   import { WidgetWrapper } from '../../wrappers';
   import { useEngine, RegionType, type AppWidget } from '../../framework';
   import { Icon } from '../shared';
@@ -77,6 +78,12 @@
       }
     }
     if (item.openType === 'dialog') {
+      createDialog({
+        title: item.label,
+        icon: item.icon,
+        ...item.props,
+        content: item.component
+      });
     }
   };
 

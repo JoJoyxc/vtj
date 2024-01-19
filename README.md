@@ -77,7 +77,7 @@ npm run setup && npm run build && npm run dev
 - `create-vtj` 项目搭建工具
 - `docs` 文档
 - `dev` 开发工程
-- `demo` 演示项目
+- `lcdp` 在线演示项目
 
 ### Todo
 

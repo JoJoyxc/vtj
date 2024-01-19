@@ -11,17 +11,17 @@
   },
   "dependencies": {
     "@vtj/core": "^0.7.2",
-    "@vtj/designer": "^0.7.2",
     "@vtj/local": "^0.7.2",
     "@vtj/materials": "^0.7.2",
-    "@vtj/renderer": "^0.7.2"
+    "@vtj/renderer": "^0.7.2",
+    "@vtj/designer": "^0.7.2"
   },
   "devDependencies": {
     "@vtj/cli": "^0.7.2",
     "@vtj/icons": "^0.7.2",
     "@vtj/ui": "^0.7.2",
     "@vtj/utils": "^0.7.2",
-    "vue": "~3.4.14",
+    "vue": "~3.4.15",
     "vue-router": "~4.2.5"
   },
   "exports": {

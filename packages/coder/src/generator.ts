@@ -1,7 +1,8 @@
 import {
   type BlockSchema,
   type MaterialDescription,
-  type Dependencie
+  type Dependencie,
+  type PageFile
 } from '@vtj/core';
 import { cloneDeep } from '@vtj/base';
 import { tsFormatter, htmlFormatter, cssFormatter } from './formatters';
@@ -32,4 +33,20 @@ export async function generator(
     script: await tsFormatter(script, formatterDisabled)
   });
   return await htmlFormatter(vue, formatterDisabled);
+}
+
+export async function createEmptyPage(file: PageFile) {
+  const content = `
+    <template>
+      <div>
+        <h3>源码模式页面</h3>
+        <div>文件路径：/src/views/${file.id}.vue</div>
+      </div>
+    </template>
+    <script lang="ts" setup>
+    </script>
+    <style scoped lang="scss">
+    </style>
+  `;
+  return await htmlFormatter(content);
 }

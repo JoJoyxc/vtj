@@ -13,7 +13,6 @@
   widgetManager.set('Switcher', {
     props: {
       onClick: (project: ProjectModel) => {
-        console.log(project);
         const pathname = location.pathname;
         let url = pathname === '/@vtj/pro/' ? '/' : pathname;
         const file = project.currentFile;
@@ -46,7 +45,7 @@
   watch(
     () => route.query.id,
     (id) => {
-      id && engine.openFile(id as string);
+      engine.openFile(id as string);
     }
   );
 </script>

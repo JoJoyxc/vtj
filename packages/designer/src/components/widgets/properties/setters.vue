@@ -21,7 +21,7 @@
     type NodeModel,
     type BlockModel
   } from '@vtj/core';
-  import { Context } from '@vtj/renderer';
+  import { type Context } from '@vtj/renderer';
   import { Panel } from '../../shared';
   import { SetterWrapper } from '../../../wrappers';
 

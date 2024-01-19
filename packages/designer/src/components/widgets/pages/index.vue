@@ -22,7 +22,9 @@
           :actions="
             data.dir
               ? ['add', 'edit', 'remove']
-              : ['home', 'copy', 'edit', 'remove']
+              : data.raw
+                ? ['home', 'edit', 'remove']
+                : ['home', 'copy', 'edit', 'remove']
           "
           @action="onAction"
           @click="onClick(data)"
@@ -108,8 +110,14 @@
   };
 
   const onClick = async (file: PageFile) => {
-    if (file.dir) return;
-    engine.project.value?.active(file);
+    if (file.raw) {
+      message('这是源码模式页面，不能低代码设计', 'warning');
+    }
+    if (file.dir || file.raw) {
+      engine.project.value?.deactivate();
+    } else {
+      engine.project.value?.active(file);
+    }
   };
 
   const allowDrop = (_draggingNode: any, dropNode: any, type: string) => {

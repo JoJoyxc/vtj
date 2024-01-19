@@ -75,7 +75,9 @@ export const dialogProps = {
     default: 'normal'
   },
   content: {
-    type: Object as PropType<VNode | DefineComponent<any, any, any, any>>
+    type: Object as PropType<
+      VNode | DefineComponent<any, any, any, any> | Record<string, any>
+    >
   },
   src: {
     type: String

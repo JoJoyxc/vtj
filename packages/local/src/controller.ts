@@ -1,7 +1,8 @@
 import {
   type ProjectSchema,
   type BlockSchema,
-  type HistorySchema
+  type HistorySchema,
+  type PageFile
 } from '@vtj/core';
 import { type ApiRequest, type ApiResponse, fail } from './shared';
 import * as service from './service';
@@ -70,6 +71,14 @@ const controller: Controller = {
   getRaw: async (req: ApiRequest) => {
     const { project, dsl } = req.data || {};
     return service.getRaw(project, dsl);
+  },
+  createRawPage: async (req: ApiRequest) => {
+    const file = req.data as PageFile;
+    return service.createRawPage(file);
+  },
+  removeRawPage: async (req: ApiRequest) => {
+    const id = req.data as string;
+    return service.removeRawPage(id);
   }
 };
 

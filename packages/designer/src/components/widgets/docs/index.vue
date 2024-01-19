@@ -17,7 +17,7 @@
     url?: string;
   }
   const props = withDefaults(defineProps<Props>(), {
-    url: 'https://newgateway.gitee.io/vtj/docs/index.html'
+    url: 'https://newgateway.gitee.io/vtj/help/index.html'
   });
 
   const panel = ref();

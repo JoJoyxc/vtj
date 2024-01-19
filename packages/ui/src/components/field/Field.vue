@@ -34,7 +34,7 @@
       </slot>
     </template>
 
-    <div class="x-field__editor_wrap">
+    <div class="x-field__editor_wrap" :class="{ 'is-inline': props.inline }">
       <slot name="editor" :editor="slotProps">
         <component
           v-if="editor.component"
@@ -148,10 +148,10 @@
     const width = props.width
       ? getSizeValue(props.width)
       : proxy
-      ? proxy.inline && proxy.inlineColumns
-        ? `${100 / proxy.inlineColumns}%`
-        : null
-      : null;
+        ? proxy.inline && proxy.inlineColumns
+          ? `${100 / proxy.inlineColumns}%`
+          : null
+        : null;
     return {
       width
     };

@@ -39,4 +39,7 @@ export abstract class Service {
     project: ProjectSchema,
     dsl: BlockSchema
   ): Promise<string>;
+
+  public abstract createRawPage(file: PageFile): Promise<boolean>;
+  public abstract removeRawPage(id: string): Promise<boolean>;
 }

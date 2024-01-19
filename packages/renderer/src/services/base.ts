@@ -126,4 +126,12 @@ export class BaseService implements Service {
   async getRaw(project: ProjectSchema, dsl: BlockSchema): Promise<string> {
     return await this.api('getRaw', { project, dsl }).catch(() => '');
   }
+
+  async createRawPage(file: PageFile): Promise<boolean> {
+    return await this.api('createRawPage', file).catch(() => '');
+  }
+
+  async removeRawPage(id: string): Promise<boolean> {
+    return await this.api('removeRawPage', id).catch(() => '');
+  }
 }

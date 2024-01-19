@@ -1,4 +1,15 @@
+import { isUrl } from '@vtj/utils';
+
 import type { Dependencie, MaterialDescription } from '@vtj/core';
+
+export function fillBasePath(urls: string[], basePath: string) {
+  return urls.map((url) => {
+    if (isUrl(url)) {
+      return url;
+    }
+    return `${basePath}${url}`;
+  });
+}
 
 export function isCSSUrl(url: string): boolean {
   return /\.css$/.test(url);
@@ -15,7 +26,7 @@ export function createAssetsCss(css: string[] = []) {
   return css.map((url) => `<link rel="stylesheet" href="${url}" />`).join('');
 }
 
-export function parseDeps(deps: Dependencie[]) {
+export function parseDeps(deps: Dependencie[], basePath: string) {
   const packages = deps.filter((n) => !!n.enabled);
   const scripts: string[] = [];
   const css: string[] = [];
@@ -35,7 +46,7 @@ export function parseDeps(deps: Dependencie[]) {
     });
     if (library) {
       libraryExports.push(library);
-      libraryMap[library] = urls || [];
+      libraryMap[library] = fillBasePath(urls || [], basePath);
     }
     if (assetsUrl) {
       materials.push(assetsUrl);
@@ -48,9 +59,9 @@ export function parseDeps(deps: Dependencie[]) {
     }
   });
   return {
-    scripts,
-    css,
-    materials,
+    scripts: fillBasePath(scripts, basePath),
+    css: fillBasePath(css, basePath),
+    materials: fillBasePath(materials, basePath),
     libraryExports,
     materialExports,
     materialMapLibrary,

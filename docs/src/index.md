@@ -3,15 +3,16 @@
 layout: home
 
 hero:
-  name: '低代码引擎'
-  tagline: 基于 VTJ 快速打造高生产力的低代码研发平台
+  name: 'VTJ.PRO'
+  tagline: 基于 Vue3 + TypeScript 快速打造高生产力的低代码研发平台
   actions:
     - theme: brand
       text: 快速开始
       link: /guide/
     - theme: alt
       text: 在线体验
-      link: /pro/
+      link: /redirect.html?url=lcdp
+      target: new
 
 features:
   - title: 基础工具库

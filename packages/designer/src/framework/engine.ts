@@ -62,6 +62,7 @@ export interface EngineOptions {
   project?: Partial<ProjectSchema>;
   dependencies?: Record<string, () => Promise<any>>;
   materials?: Record<string, () => Promise<any>>;
+  materialPath?: string;
   globals?: Record<string, any>;
   adapter?: ProvideAdapter;
 }
@@ -88,7 +89,8 @@ export class Engine extends Base {
       project = {},
       globals = {},
       dependencies,
-      materials
+      materials,
+      materialPath = './'
     } = options;
     this.container = container;
     this.service = service;
@@ -98,11 +100,13 @@ export class Engine extends Base {
       project,
       service,
       dependencies,
-      materials
+      materials,
+      materialPath
     });
     this.assets = new Assets(this.service);
     this.simulator = new Simulator({
-      engine: this
+      engine: this,
+      materialPath
     });
     this.bindEvents();
     this.init(project as ProjectSchema);
@@ -149,8 +153,12 @@ export class Engine extends Base {
 
   private async activeFile(e: ProjectModelEvent) {
     await nextTick();
+    const project = e.model;
     const file = e.model.currentFile;
     if (file) {
+      if (project.isPageFile(file) && !!file.raw) {
+        return;
+      }
       const dsl = await this.service.getFile(file.id);
       if (dsl) {
         file.dsl = dsl;
@@ -209,12 +217,17 @@ export class Engine extends Base {
     const project = e.model;
     if (type === 'create') {
       const file = e.data as BlockFile | PageFile;
-      file.dsl && (await this.service.saveFile(file.dsl));
+      if (project.isPageFile(file) && !!file.raw) {
+        await this.service.createRawPage(file);
+        message(`源码文件已经生成：@/views/${file.id}.vue`, 'success');
+      } else {
+        file.dsl && (await this.service.saveFile(file.dsl));
+      }
     }
 
     if (type === 'update') {
       const file = e.data as BlockFile | PageFile;
-      if (project.isPageFile(file) && file.dir) {
+      if (project.isPageFile(file) && (file.dir || file.raw)) {
         return;
       }
       const dsl = await this.service.getFile(file.id);
@@ -225,9 +238,13 @@ export class Engine extends Base {
     }
 
     if (type === 'delete') {
-      const id = e.data as string;
-      await this.service.removeFile(id);
-      await this.service.removeHistory(id);
+      const file = e.data as BlockFile | PageFile;
+      if (file && project.isPageFile(file) && !!file.raw) {
+        await this.service.removeRawPage(file.id);
+      } else {
+        await this.service.removeFile(file.id);
+        await this.service.removeHistory(file.id);
+      }
     }
 
     if (type === 'clone') {
@@ -351,7 +368,7 @@ export class Engine extends Base {
     if (!project || !apps || !id) return;
 
     const page = project.getPage(id);
-    if (page) {
+    if (page && !page.raw) {
       apps.regionRef?.setActive('Pages');
       this.simulator.ready(() => {
         project.active(page);

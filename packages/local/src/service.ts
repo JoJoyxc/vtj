@@ -19,12 +19,13 @@ import {
   upperFirstCamelCase,
   timestamp
 } from '@vtj/node';
-import { generator } from '@vtj/coder';
+import { generator, createEmptyPage } from '@vtj/coder';
 
 import { fail, success, type ApiRequest } from './shared';
 
 const root = resolve('./');
 const vtjDir = resolve('.vtj');
+const viewsDir = resolve('src/views');
 
 const getProjectFilePath = (_name: string) => {
   return resolve(vtjDir, 'project.json');
@@ -54,6 +55,10 @@ const getRawFilePath = (id: string) => {
   return resolve(vtjDir, `raw/${id}.vue`);
 };
 
+const getRawPagePath = (id: string) => {
+  return resolve(viewsDir, `${id}.vue`);
+};
+
 const getLogsDir = () => {
   return resolve(vtjDir, `logs`);
 };
@@ -74,13 +79,12 @@ export async function init() {
   // 项目文件路径
   const filePath = getProjectFilePath(name);
 
-  let schema = {};
+  let schema: ProjectSchema = {} as ProjectSchema;
 
   // 如果已文件经存在，则直接返回文件内容
   if (pathExistsSync(filePath)) {
     schema = readJsonSync(filePath);
   }
-
   // 否则，创建一个新的项目文件
   const project = new ProjectModel({
     ...schema,
@@ -88,7 +92,7 @@ export async function init() {
     name: description || upperFirstCamelCase(name),
     description
   });
-  const dsl = project.toDsl();
+  const dsl = project.toDsl(schema.__VERSION__);
   ensureFileSync(filePath);
   writeJsonSync(filePath, dsl);
   return success(dsl);
@@ -246,4 +250,20 @@ export async function getRaw(project: ProjectSchema, dsl: BlockSchema) {
   );
   const content = await generator(dsl, componentMap, project.dependencies);
   return success(content);
+}
+
+export async function createRawPage(file: PageFile) {
+  const filePath = getRawPagePath(file.id as string);
+  const page = await createEmptyPage(file);
+  outputFileSync(filePath, page, 'utf-8');
+  return success(true);
+}
+export async function removeRawPage(id: string) {
+  const filePath = getRawPagePath(id);
+  if (pathExistsSync(filePath)) {
+    removeSync(filePath);
+    return success(true);
+  } else {
+    return fail('文件不存在');
+  }
 }

@@ -38,7 +38,7 @@
         label: n.label,
         closable: !!n.closable,
         props: n.props || {},
-        checked: false
+        checked: !n.closable
       };
     })
   );
@@ -48,7 +48,12 @@
   });
 
   const menus = computed(() => {
-    return items.filter((n) => n.closable);
+    return items.map((n) => {
+      return {
+        ...n,
+        disabled: !n.closable
+      };
+    });
   });
 
   const currentTab = ref(tabs.value[0]?.name);
@@ -69,7 +74,7 @@
   };
   const onCommand = (e: any) => {
     const item = items.find((n) => n.name === e.name);
-    if (item) {
+    if (item && item.closable) {
       item.checked = !item.checked;
       if (item.checked) {
         currentTab.value = item.name;

@@ -38,6 +38,7 @@ export interface ProviderOptions {
   dependencies?: Record<string, () => Promise<any>>;
   materials?: Record<string, () => Promise<any>>;
   globals?: Record<string, any>;
+  materialPath?: string;
 }
 
 export interface ProvideAdapter {
@@ -58,6 +59,7 @@ export class Provider extends Base {
   public project: ProjectSchema | null = null;
   public components: Record<string, any> = {};
   private router: Router | null = null;
+  private materialPath: string = './';
   constructor(options: ProviderOptions) {
     super();
     const {
@@ -71,12 +73,14 @@ export class Provider extends Base {
       adapter = {},
       globals = {},
       modules = {},
-      router = null
+      router = null,
+      materialPath = './'
     } = options;
     this.mode = mode;
     this.modules = modules;
     this.service = service;
     this.router = router;
+    this.materialPath = materialPath;
     if (dependencies) {
       this.dependencies = dependencies;
     }
@@ -98,14 +102,14 @@ export class Provider extends Base {
       throw new Error('project is null');
     }
     const { dependencies: deps = [], apis } = this.project as ProjectSchema;
-    const { dependencies, library, components } = this;
+    const { dependencies, library, components, materialPath } = this;
     const {
       libraryExports,
       libraryMap,
       materials,
       materialExports,
       materialMapLibrary
-    } = parseDeps(deps);
+    } = parseDeps(deps, materialPath);
 
     for (const libraryName of libraryExports) {
       const raw = dependencies[libraryName];
@@ -222,11 +226,15 @@ export class Provider extends Base {
       logger.warn(`Can not find file: ${id}`);
       return null;
     }
-    const rawPath = `.vtj/raw/${id}.vue`;
+    const rawPath =
+      file.type === 'page' && !!(file as PageFile).raw
+        ? `/src/views/${id}.vue`
+        : `.vtj/raw/${id}.vue`;
     const rawModule = this.modules[rawPath];
     if (rawModule) {
       return (await rawModule())?.default;
     }
+
     const dsl = await this.getDsl(file.id);
     if (!dsl) {
       logger.warn(`Can not find dsl: ${id}`);

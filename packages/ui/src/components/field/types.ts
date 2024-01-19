@@ -158,6 +158,13 @@ export const fieldProps = {
    */
   tip: {
     type: String
+  },
+
+  /**
+   * 表单项内容采用inline布局
+   */
+  inline: {
+    type: Boolean
   }
 };
 

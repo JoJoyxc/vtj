@@ -24,6 +24,7 @@ import NodePath from './node-path/index.vue';
 import Schema from './schema/index.vue';
 import Raw from './raw/index.vue';
 import Docs from './docs/index.vue';
+import About from './about/index.vue';
 
 export const widgets = {
   Logo,
@@ -51,5 +52,6 @@ export const widgets = {
   NodePath,
   Schema,
   Raw,
-  Docs
+  Docs,
+  About
 };

@@ -107,11 +107,15 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
   {
     name: 'About',
     region: 'Apps',
-    component: widgets.EmptyWidget,
+    component: widgets.About,
     type: 'app',
     openType: 'dialog',
     icon: VtjIconInfo,
-    label: '关于'
+    label: '关于',
+    props: {
+      width: 500,
+      height: 300
+    }
   },
   {
     name: 'Designer',

@@ -19,10 +19,18 @@ export interface DevPluginOptions {
   baseURL: string;
   copy: boolean;
   server: boolean;
+  staticBase: string;
   link: boolean | string;
+  linkOptions: LinkOptions | null;
   vtjDir: string;
   packagesDir: string;
   devMode: boolean;
+}
+
+export interface LinkOptions {
+  entry?: string;
+  href?: string;
+  serveOnly?: boolean;
 }
 
 const setApis = (
@@ -60,24 +68,35 @@ const apiServerPlugin = function (options: DevPluginOptions): Plugin {
 };
 
 const linkPlugin = function (options: DevPluginOptions): Plugin {
+  const {
+    entry = '/index.html',
+    href = '',
+    serveOnly = true
+  } = options.linkOptions || {};
   let config: ResolvedConfig;
   return {
     name: 'vtj-link-plugin',
-    apply: 'serve',
+    apply: serveOnly ? 'serve' : undefined,
     configResolved(resolvedConfig: ResolvedConfig) {
       config = resolvedConfig;
     },
-    transformIndexHtml(html) {
+    transformIndexHtml(html, ctx) {
       if (html.includes('VTJ-LINK')) {
         return html;
       }
       if (options.link) {
+        if (ctx.path !== entry) {
+          return html;
+        }
         const link =
           typeof options.link === 'string' ? options.link : '@vtj/pro/link.js';
         const url = `${config.base}${link}`;
         return html.replace(
           /<\/body>/,
-          `<script src="${url}"></script></body>`
+          `
+          <script>window.__VTJ_LINK__ = { href: '${href}' }</script>
+          <script src="${url}"></script></body>
+          `
         );
       }
       return html;
@@ -139,7 +158,9 @@ export function createDevPlugin(options: Partial<DevPluginOptions> = {}) {
     baseURL: '/vtj/local/api',
     copy: true,
     server: true,
+    staticBase: '/',
     link: true,
+    linkOptions: null,
     vtjDir: '.vtj',
     packagesDir: '../../packages',
     devMode: false,
@@ -181,20 +202,22 @@ export function createDevPlugin(options: Partial<DevPluginOptions> = {}) {
     plugins.push(apiServerPlugin(opts));
     // 静态资源服务
     const staticOptions: StaticPluginOption[] = [];
+
     if (pathExistsSync(proPath)) {
       staticOptions.push({
-        path: '/@vtj/pro',
+        path: `${opts.staticBase}@vtj/pro`,
         dir: proPath
       });
     }
+
     if (pathExistsSync(materialsPath1)) {
       staticOptions.push({
-        path: '/@vtj/materials',
+        path: `${opts.staticBase}@vtj/materials`,
         dir: materialsPath1
       });
     } else if (pathExistsSync(materialsPath2)) {
       staticOptions.push({
-        path: '/@vtj/materials',
+        path: `${opts.staticBase}@vtj/materials`,
         dir: materialsPath2
       });
     } else {

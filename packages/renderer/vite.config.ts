@@ -9,7 +9,7 @@ export default createViteConfig({
     'vue-router',
     '@vtj/base',
     '@vtj/core',
-    '@vtj/ui',
+    // '@vtj/ui',
     '@vtj/utils',
     '@vtj/icons',
     '@vueuse/core',

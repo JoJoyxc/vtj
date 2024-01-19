@@ -6,6 +6,6 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    ".vitepress/*"
+    ".vitepress"
   ]
 }

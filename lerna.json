@@ -9,6 +9,7 @@
     "apps/*",
     "create-vtj",
     "dev",
-    "docs"
+    "docs",
+    "lcdp"
   ]
 }

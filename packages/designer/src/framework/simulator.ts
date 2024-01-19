@@ -33,6 +33,7 @@ export interface SimulatorEnv {
 
 export interface SimulatorOptions {
   engine: Engine;
+  materialPath: string;
 }
 
 export class Simulator extends Base {
@@ -40,10 +41,12 @@ export class Simulator extends Base {
   public renderer: Renderer | null = null;
   public designer: ShallowRef<Designer | null> = shallowRef(null);
   public engine: Engine;
+  public materialPath: string;
   constructor(options: SimulatorOptions) {
     super();
-    const { engine } = options;
+    const { engine, materialPath } = options;
     this.engine = engine;
+    this.materialPath = materialPath;
 
     watch(this.engine.current, () => {
       this.refresh();
@@ -82,7 +85,7 @@ export class Simulator extends Base {
       libraryExports,
       materialExports,
       materialMapLibrary
-    } = parseDeps(deps);
+    } = parseDeps(deps, this.materialPath);
     doc.open();
     doc.write(`
      <!DOCTYPE html>

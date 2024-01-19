@@ -58,14 +58,19 @@
     "vtj:dev": "node create-vtj/dist/index.mjs",
     "vtj:build": "cd create-vtj && npm run build",
     "docs:dev": "cd docs && vitepress dev",
-    "docs:build": "cd docs && vitepress build && cd .. && npm run typedoc",
+    "docs:build": "cd docs && npm run docs:build",
+    "docs:gitee": "cd docs && npm run build:gitee",
     "docs:preview": "cd docs && vitepress preview",
     "pro:dev": "cd platforms/pro && npm run dev",
     "pro:build": "cd platforms/pro && npm run build",
     "pro:preview": "cd platforms/pro && npm run preview",
     "app:dev": "cd apps/app && npm run dev",
     "app:build": "cd apps/app  && npm run build",
-    "app:preview": "cd apps/app && npm run preview"
+    "app:preview": "cd apps/app && npm run preview",
+    "lcdp:dev": "cd lcdp && npm run dev",
+    "lcdp:build": "cd lcdp  && npm run build",
+    "lcdp:gitee": "cd lcdp  && npm run build:gitee",
+    "lcdp:preview": "cd lcdp && npm run preview"
   },
   "engines": {
     "node": ">=20.0.0",

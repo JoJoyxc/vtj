@@ -7,7 +7,9 @@ export function useHistory() {
   const designer = computed<Designer | null>(
     () => engine.simulator.designer.value
   );
-  const history = computed(() => engine.history.value);
+  const history = computed(() =>
+    engine.current.value ? engine.history.value : null
+  );
   const total = computed(() => history.value?.items.length || 0);
 
   const forward = () => {
