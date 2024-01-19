@@ -11,7 +11,7 @@ hero:
       link: /guide/
     - theme: alt
       text: 在线体验
-      link: /redirect.html?url=lcdp
+      link: /redirect.html
       target: new
 
 features:

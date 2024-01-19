@@ -1,5 +1,7 @@
-<script lang="ts">
-    // location.href = '/lcdp'
+<script setup>
+import Redirect from '../.vitepress/components/redirect.vue'
 </script>
 
-# redirect
+<ClientOnly>
+  <Redirect />
+</ClientOnly>
