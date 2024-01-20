@@ -286,7 +286,6 @@ export function useProvider(options: UseProviderOptions = {}): Provider {
     throw new Error('Can not find provider');
   }
   if (
-    provider.mode === ContextMode.Runtime &&
     process.env.NODE_ENV === 'development'
   ) {
     const { id, version } = options;

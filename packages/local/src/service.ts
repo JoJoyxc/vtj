@@ -131,6 +131,10 @@ export async function removeFile(id: string) {
   const filePath = getFilePath(id);
   if (pathExistsSync(filePath)) {
     removeSync(filePath);
+    const rawPath = getRawFilePath(id as string);
+    if (pathExistsSync(rawPath)) {
+      removeSync(rawPath);
+    }
     return success(true);
   } else {
     return fail('文件不存在');
