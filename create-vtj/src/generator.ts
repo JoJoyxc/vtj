@@ -13,12 +13,12 @@ export interface IGeneratorOptions {
   name: string;
 }
 
-export function createLibrary(options: IGeneratorOptions) {
+export function createProject(options: IGeneratorOptions) {
   copySync(options.template, options.root, { filter: () => true });
   const pkg = readJsonSync(join(options.root, 'package.json'));
   pkg.name = options.name;
   writeJsonSync(join(options.root, 'package.json'), pkg, { spaces: 2 });
-  const gitignore = join(options.template, '.gitignore');
+  const gitignore = join(options.template, '../_gitignore');
   if (pathExistsSync(gitignore)) {
     outputFile(
       join(options.root, '.gitignore'),
@@ -27,16 +27,30 @@ export function createLibrary(options: IGeneratorOptions) {
   }
 }
 
-export function createApp(options: IGeneratorOptions) {
-  copySync(options.template, options.root, { filter: () => true });
-  const pkg = readJsonSync(join(options.root, 'package.json'));
-  pkg.name = options.name;
-  writeJsonSync(join(options.root, 'package.json'), pkg, { spaces: 2 });
-  const gitignore = join(options.template, '.gitignore');
-  if (pathExistsSync(gitignore)) {
-    outputFile(
-      join(options.root, '.gitignore'),
-      readFileSync(gitignore, 'utf-8')
-    );
-  }
-}
+// export function createLibrary(options: IGeneratorOptions) {
+//   copySync(options.template, options.root, { filter: () => true });
+//   const pkg = readJsonSync(join(options.root, 'package.json'));
+//   pkg.name = options.name;
+//   writeJsonSync(join(options.root, 'package.json'), pkg, { spaces: 2 });
+//   const gitignore = join(options.template, '.gitignore');
+//   if (pathExistsSync(gitignore)) {
+//     outputFile(
+//       join(options.root, '.gitignore'),
+//       readFileSync(gitignore, 'utf-8')
+//     );
+//   }
+// }
+
+// export function createApp(options: IGeneratorOptions) {
+//   copySync(options.template, options.root, { filter: () => true });
+//   const pkg = readJsonSync(join(options.root, 'package.json'));
+//   pkg.name = options.name;
+//   writeJsonSync(join(options.root, 'package.json'), pkg, { spaces: 2 });
+//   const gitignore = join(options.template, '.gitignore');
+//   if (pathExistsSync(gitignore)) {
+//     outputFile(
+//       join(options.root, '.gitignore'),
+//       readFileSync(gitignore, 'utf-8')
+//     );
+//   }
+// }
