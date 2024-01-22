@@ -73,13 +73,11 @@ function getComputedHelper(name: string, helpr?: DesignHelper | null) {
   if (!helpr) return null;
   const { left, top, width, height } =
     name === 'dropping' ? getDropRect(helpr) : helpr.rect;
-  const leftOffset = left < 0 ? -left : 0;
-  const topOffset = top < 0 ? -top : 0;
   const style: Record<string, any> = {
-    left: `${left < 0 ? 0 : left}px`,
-    top: `${top < 0 ? 0 : top}px`,
-    width: `${width - leftOffset}px`,
-    height: `${height - topOffset}px`,
+    left: `${left}px`,
+    top: `${top}px`,
+    width: `${width}px`,
+    height: `${height}px`,
     visibility: width || height ? 'visible' : 'hidden'
   };
   return {
