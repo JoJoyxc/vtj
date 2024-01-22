@@ -1,14 +1,15 @@
 import { createApp } from 'vue';
-import { createProvider, LocalService, modules } from '@vtj/web';
+import { createProvider, LocalService, createModules } from '@vtj/web';
 import router from './router';
 import App from './App.vue';
 import './style/index.scss';
 
 const app = createApp(App);
 const service = new LocalService();
+
 const { provider, onReady } = createProvider({
+  modules: createModules(),
   service,
-  modules,
   router,
   dependencies: {
     Vue: () => import('vue'),

@@ -1,13 +1,14 @@
-export const modules =
-  process.env.NODE_ENV === 'production'
-    ? import.meta.glob([
-        '/.vtj/project.json',
-        '/.vtj/raw/*.vue',
-        '/src/views/*.vue'
-      ])
-    : import.meta.glob([
-        '/.vtj/project.json',
-        '/.vtj/files/*.json',
-        '/.vtj/raw/*.vue',
-        '/src/views/*.vue'
-      ]);
+import { ContextMode } from './renderer';
+
+
+export function createModules(mode: ContextMode = ContextMode.Runtime) {
+  if (mode === ContextMode.Runtime || process.env.NODE_ENV === 'development') {
+    return import.meta.glob([
+      '/.vtj/projects/*.json',
+      '/.vtj/files/*.json',
+      '/.vtj/vue/*.vue'
+    ]);
+  } else {
+    return import.meta.glob(['/.vtj/projects/*.json', '/.vtj/vue/*.vue']);
+  }
+}
