@@ -7,9 +7,10 @@ import { version } from '../version';
 import { setPackageName } from '../shared';
 import test from './test';
 import icon from './icon';
+import container from './container';
 
 const name = '@vtj/ui';
-const components: MaterialDescription[] = [test, icon];
+const components: MaterialDescription[] = [test, icon, container];
 
 const categories: MaterialCategory[] = [
   {

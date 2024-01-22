@@ -33,8 +33,8 @@
             data.model.locked
               ? VtjIconLock
               : data.model.invisible
-              ? VtjIconInvisible
-              : undefined
+                ? VtjIconInvisible
+                : undefined
           "
           :title="data.label"
           :subtitle="data.type"
@@ -141,6 +141,7 @@
   };
 
   const refreshTree = () => {
+    console.log('refreshTree');
     tree.value = createTree();
   };
 
@@ -320,5 +321,5 @@
     }
   };
 
-  watch(current, refreshTree, { immediate: true, deep: true });
+  watch(engine.changed, refreshTree, { immediate: true });
 </script>
