@@ -1,5 +1,4 @@
 import type { MaterialDescription } from '@vtj/core';
-// import { size } from '../shared';
 
 const desc: MaterialDescription = {
   name: 'XContainer',

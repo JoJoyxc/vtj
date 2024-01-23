@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@vtj/cli": "^0.7.4",
-    "vitepress": "1.0.0-rc.39"
+    "vitepress": "1.0.0-rc.40"
   },
   "gitHead": "b65d1b19322cbd0721173d094db1b5ece018d980"
 }

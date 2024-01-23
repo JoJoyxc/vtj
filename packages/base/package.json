@@ -16,7 +16,7 @@
     "reflect-metadata": "~0.2.1"
   },
   "devDependencies": {
-    "@types/crypto-js": "~4.2.1",
+    "@types/crypto-js": "~4.2.2",
     "crypto-js": "~4.2.0",
     "dayjs": "~1.11.10",
     "jsencrypt": "~3.3.2",

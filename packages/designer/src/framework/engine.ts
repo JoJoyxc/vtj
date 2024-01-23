@@ -84,7 +84,7 @@ export class Engine extends Base {
   /**
    * 当current变化时，更新该值，用于通知组件更新
    */
-  public changed: Ref<Symbol> = ref(Symbol());
+  public changed: Ref<symbol> = ref(Symbol());
   constructor(options: EngineOptions) {
     super();
     const {

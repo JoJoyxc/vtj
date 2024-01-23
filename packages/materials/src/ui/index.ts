@@ -8,9 +8,15 @@ import { setPackageName } from '../shared';
 import test from './test';
 import icon from './icon';
 import container from './container';
+import action from './action';
 
 const name = '@vtj/ui';
-const components: MaterialDescription[] = [test, icon, container];
+const components: MaterialDescription[] = [
+  test,
+  icon,
+  container,
+  action
+].flat();
 
 const categories: MaterialCategory[] = [
   {

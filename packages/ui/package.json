@@ -20,7 +20,7 @@
     "@vtj/utils": "^0.7.6",
     "@vueuse/core": "~10.7.0",
     "echarts": "~5.4.3",
-    "element-plus": "~2.5.2"
+    "element-plus": "~2.5.3"
   },
   "devDependencies": {
     "@vtj/cli": "^0.7.4",

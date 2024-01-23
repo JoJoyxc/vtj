@@ -1,6 +1,7 @@
 <template>
   <Panel class="v-outline-widget" title="大纲树">
     <ElTree
+      :key="engine.changed.value"
       :data="tree"
       node-key="id"
       default-expand-all
@@ -48,7 +49,7 @@
   </Panel>
 </template>
 <script lang="ts" setup>
-  import { computed, watch, ref, type Ref } from 'vue';
+  import { computed, watch, ref, nextTick, type Ref } from 'vue';
   import { ElTree, ElMessage } from 'element-plus';
   import {
     type NodeModel,
@@ -140,9 +141,12 @@
     return root;
   };
 
-  const refreshTree = () => {
-    console.log('refreshTree');
+  const refreshTree = async () => {
     tree.value = createTree();
+    if (selected.value?.model) {
+      await nextTick();
+      designer.value?.setSelected(selected.value.model);
+    }
   };
 
   const currentNodeKey = computed(() => {
