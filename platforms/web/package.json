@@ -1,14 +1,14 @@
 {
   "name": "@vtj/web",
   "private": false,
-  "version": "0.7.9",
+  "version": "0.7.10",
   "type": "module",
   "scripts": {},
   "dependencies": {
-    "@vtj/icons": "^0.7.9",
-    "@vtj/renderer": "^0.7.9",
-    "@vtj/ui": "^0.7.9",
-    "@vtj/utils": "^0.7.9"
+    "@vtj/icons": "^0.7.10",
+    "@vtj/renderer": "^0.7.10",
+    "@vtj/ui": "^0.7.10",
+    "@vtj/utils": "^0.7.10"
   },
   "devDependencies": {
     "@vtj/cli": "^0.7.7"

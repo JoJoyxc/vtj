@@ -1,6 +1,6 @@
 {
   "name": "@vtj/mobile",
-  "version": "0.7.9",
+  "version": "0.7.10",
   "private": false,
   "scripts": {
     "dev:app": "uni -p app",
@@ -48,8 +48,11 @@
     "@vtj/utils": "workspace:*"
   },
   "devDependencies": {
+    "@dcloudio/types": "~3.4.7",
     "@dcloudio/uni-app": "3.0.0-3090920231225001",
     "@dcloudio/uni-app-plus": "3.0.0-3090920231225001",
+    "@dcloudio/uni-automator": "3.0.0-3090920231225001",
+    "@dcloudio/uni-cli-shared": "3.0.0-3090920231225001",
     "@dcloudio/uni-components": "3.0.0-3090920231225001",
     "@dcloudio/uni-h5": "3.0.0-3090920231225001",
     "@dcloudio/uni-mp-alipay": "3.0.0-3090920231225001",
@@ -61,11 +64,8 @@
     "@dcloudio/uni-mp-toutiao": "3.0.0-3090920231225001",
     "@dcloudio/uni-mp-weixin": "3.0.0-3090920231225001",
     "@dcloudio/uni-quickapp-webview": "3.0.0-3090920231225001",
-    "@dcloudio/uni-ui": "~1.5.0",
-    "@dcloudio/types": "~3.4.7",
-    "@dcloudio/uni-automator": "3.0.0-3090920231225001",
-    "@dcloudio/uni-cli-shared": "3.0.0-3090920231225001",
     "@dcloudio/uni-stacktracey": "3.0.0-3090920231225001",
+    "@dcloudio/uni-ui": "~1.5.0",
     "@dcloudio/vite-plugin-uni": "3.0.0-3090920231225001",
     "@vtj/cli": "workspace:*",
     "@vue/runtime-core": "~3.4.15",
