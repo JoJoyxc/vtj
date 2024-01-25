@@ -44,8 +44,8 @@
     "build": "vtj rm ./lib && vtj copy ./src/mui ./lib/mui"
   },
   "dependencies": {
-    "@vtj/icons": "workspace:*",
-    "@vtj/utils": "workspace:*"
+    "@vtj/icons": "0.7.10",
+    "@vtj/utils": "0.7.10"
   },
   "devDependencies": {
     "@dcloudio/types": "~3.4.7",
@@ -67,7 +67,7 @@
     "@dcloudio/uni-stacktracey": "3.0.0-3090920231225001",
     "@dcloudio/uni-ui": "~1.5.0",
     "@dcloudio/vite-plugin-uni": "3.0.0-3090920231225001",
-    "@vtj/cli": "workspace:*",
+    "@vtj/cli": "0.7.7",
     "@vue/runtime-core": "~3.4.15",
     "vite": "~5.0.12",
     "vue": "~3.4.15",
@@ -78,5 +78,6 @@
   ],
   "main": "./lib/mui/index.ts",
   "module": "./lib/mui/index.ts",
-  "types": "./lib/mui/index.ts"
+  "types": "./lib/mui/index.ts",
+  "gitHead": "6c54f72d57ad363d1ed75a36f25aed10d6b6a262"
 }
