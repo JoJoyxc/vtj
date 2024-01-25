@@ -3,16 +3,16 @@
     <image class="logo" src="/static/logo.png" />
     <view class="text-area">
       <text class="title">{{ title }} </text>
+      <VtjIconWindowMax></VtjIconWindowMax>
       <x-test></x-test>
-      <VtjIconApi></VtjIconApi>
     </view>
   </view>
 </template>
 
 <script setup lang="ts">
   import { ref } from 'vue';
-  import { VtjIconApi } from '@vtj/mobile';
   const title = ref('Hello');
+  import { VtjIconWindowMax } from '@/mui';
 </script>
 
 <style lang="scss" scoped>
