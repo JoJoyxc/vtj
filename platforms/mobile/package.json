@@ -37,11 +37,11 @@
     "build:quickapp-webview": "uni build -p quickapp-webview",
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
-    "type-check": "vue-tsc --noEmit",
+    "check": "vue-tsc --noEmit",
     "preview:h5": "cross-env VITE_CJS_IGNORE_WARNING=true PREVIEW=true vite preview",
     "dev": "cross-env ENV_TYPE=local npm run dev:h5",
     "preview": "npm run preview:h5",
-    "build": "vtj rm ./lib && vtj copy ./src/mui ./lib/mui"
+    "build": "npm run check && vtj rm ./lib && vtj copy ./src/mui ./lib/mui"
   },
   "dependencies": {
     "@vtj/icons": "0.7.10",

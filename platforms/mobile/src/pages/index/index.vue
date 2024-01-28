@@ -3,16 +3,24 @@
     <image class="logo" src="/static/logo.png" />
     <view class="text-area">
       <text class="title">{{ title }} </text>
-      <VtjIconWindowMax></VtjIconWindowMax>
-      <x-test></x-test>
     </view>
   </view>
 </template>
 
 <script setup lang="ts">
+  import { callExampleApi } from '@/api';
   import { ref } from 'vue';
   const title = ref('Hello');
-  import { VtjIconWindowMax } from '@/mui';
+
+  callExampleApi({
+    id: 1
+  })
+    .then((res) => {
+      console.log('success', res);
+    })
+    .catch((err) => {
+      console.log('error', err);
+    });
 </script>
 
 <style lang="scss" scoped>

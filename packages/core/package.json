@@ -10,8 +10,7 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@vtj/base": "^0.7.3",
-    "mitt": "~3.0.1"
+    "@vtj/base": "^0.7.3"
   },
   "devDependencies": {
     "@vtj/cli": "^0.7.7"

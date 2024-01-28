@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@types/crypto-js": "~4.2.2",
+    "mitt": "~3.0.1",
     "crypto-js": "~4.2.0",
     "dayjs": "~1.11.10",
     "jsencrypt": "~3.3.2",

@@ -3,6 +3,7 @@
   "version": "0.7.0",
   "private": true,
   "scripts": {
+    "setup": "npm install --force --registry=https://registry.npmmirror.com",
     "dev:app": "uni -p app",
     "dev:app-android": "uni -p app-android",
     "dev:app-ios": "uni -p app-ios",

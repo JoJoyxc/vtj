@@ -13,8 +13,7 @@
     "@vtj/core": "^0.7.10",
     "@vtj/icons": "^0.7.10",
     "@vtj/ui": "^0.7.10",
-    "@vtj/utils": "^0.7.10",
-    "zen-logger": "~1.1.4"
+    "@vtj/utils": "^0.7.10"
   },
   "devDependencies": {
     "@vtj/cli": "^0.7.7",
