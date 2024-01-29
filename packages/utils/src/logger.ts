@@ -41,10 +41,10 @@ function getLogArgs(args: any[], bizName: string) {
 function parseLogConf(
   logConf: any,
   options: Options
-): { targetLevel: string; targetBizName: string } {
+): { targetLevel: LoggerLevel; targetBizName: string } {
   if (!logConf) {
     return {
-      targetLevel: options.level as string,
+      targetLevel: options.level as LoggerLevel,
       targetBizName: options.bizName as string
     };
   }
@@ -67,8 +67,10 @@ const defaultOptions: Options = {
 };
 
 class Logger {
+  config: { targetLevel: LoggerLevel; targetBizName: string };
+  options: Options;
   constructor(options: Options) {
-    options = { ...defaultOptions, ...options };
+    this.options = { ...defaultOptions, ...options };
     const _location = typeof location !== 'undefined' ? location : ({} as any);
     // __logConf__ 格式为 logLevel[:bizName]
     //   1. log|warn|debug|error
@@ -77,16 +79,27 @@ class Logger {
     const logConf = (/__(?:logConf|logLevel)__=([^#/&]*)/.exec(
       _location.href
     ) || [])[1];
-    const { targetLevel, targetBizName } = parseLogConf(logConf, options);
-
-    for (const logLevel in levels) {
-      (this as any)[logLevel] = record(
-        logLevel as LoggerLevel,
-        targetLevel as LoggerLevel,
-        options.bizName as string,
-        targetBizName as string
-      );
-    }
+    this.config = parseLogConf(logConf, options);
+  }
+  private _log(level: LoggerLevel): any {
+    const { targetLevel, targetBizName } = this.config;
+    const { bizName } = this.options;
+    return record(level, targetLevel, bizName as string, targetBizName);
+  }
+  debug(...args: any | any[]): any {
+    return this._log('debug')(...args);
+  }
+  log(...args: any | any[]): any {
+    return this._log('log')(...args);
+  }
+  info(...args: any | any[]): any {
+    return this._log('info')(...args);
+  }
+  warn(...args: any | any[]): any {
+    return this._log('warn')(...args);
+  }
+  error(...args: any | any[]): any {
+    return this._log('warn')(...args);
   }
 }
 

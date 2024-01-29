@@ -51,9 +51,21 @@ importers:
       '@vtj/cli':
         specifier: workspace:*
         version: link:../../packages/cli
+      '@vtj/icons':
+        specifier: workspace:*
+        version: link:../../packages/icons
       '@vtj/pro':
         specifier: workspace:*
         version: link:../../platforms/pro
+      '@vtj/renderer':
+        specifier: workspace:*
+        version: link:../../packages/renderer
+      '@vtj/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@vtj/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
 
   apps/library:
     dependencies:
