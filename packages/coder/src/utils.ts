@@ -25,7 +25,9 @@ export function replaceThis(content: string) {
 }
 
 export function replaceContext(content: string) {
-  return content.replace(new RegExp('this.context.', 'g'), '');
+  return content
+    .replace(new RegExp('this.context?.', 'g'), '')
+    .replace(new RegExp('this.context.', 'g'), '');
 }
 
 export function parseValue(
