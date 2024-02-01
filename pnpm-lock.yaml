@@ -186,6 +186,9 @@ importers:
 
   dev:
     dependencies:
+      '@vtj/icons':
+        specifier: workspace:*
+        version: link:../packages/icons
       '@vtj/materials':
         specifier: workspace:*
         version: link:../packages/materials

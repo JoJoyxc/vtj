@@ -1,57 +1,24 @@
 <template>
-  <Panel
-    class="v-css-widget v-sub-panel"
-    title="style"
-    size="small"
-    fit
-    save
-    @save="onSave">
-    <Editor
-      ref="editorRef"
-      :model-value="style"
-      height="100%"
-      lang="json"
-      dark
-      @blur="saveStyle"></Editor>
-  </Panel>
+  <XContainer class="v-style-widget" direction="column" fit>
+    <Panel title="布局" class="v-sub-panel" size="small" :fit="false"></Panel>
+    <Panel title="间距" class="v-sub-panel" size="small" :fit="false"></Panel>
+    <Panel title="尺寸" class="v-sub-panel" size="small" :fit="false"></Panel>
+    <Panel title="定位" class="v-sub-panel" size="small" :fit="false"></Panel>
+    <Panel title="文本" class="v-sub-panel" size="small" :fit="false"></Panel>
+    <Panel title="背景" class="v-sub-panel" size="small" :fit="false"></Panel>
+    <Panel title="边框" class="v-sub-panel" size="small" :fit="false"></Panel>
+    <Panel
+      title="效果"
+      class="v-sub-panel"
+      size="small"
+      :fit="false"
+      grow></Panel>
+  </XContainer>
 </template>
 <script lang="ts" setup>
-  import { ref, computed } from 'vue';
-  import { isBlock } from '@vtj/core';
+  import { XContainer } from '@vtj/ui';
   import { Panel } from '../../shared';
-  import Editor from '../../editor';
-  import { useSelected } from '../../hooks';
-  import { message, notify } from '../../../utils';
-
   defineOptions({
     name: 'StyleWidget'
   });
-  const { selected } = useSelected();
-
-  const editorRef = ref();
-
-  const node = computed(() => {
-    const model = selected.value?.model || null;
-    return isBlock(model) ? null : model;
-  });
-
-  const style = computed(() =>
-    JSON.stringify(node.value?.getPropValue('style') || {}, null, 2)
-  );
-
-  const saveStyle = (value: string) => {
-    try {
-      const json = JSON.parse(value);
-      node.value?.setProp('style', json);
-    } catch (e) {
-      notify('JSON格式错误');
-    }
-  };
-
-  const onSave = () => {
-    const editor = editorRef.value?.getEditor();
-    const value = editor.getValue();
-    saveStyle(value);
-    message('保存成功');
-  };
 </script>

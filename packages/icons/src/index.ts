@@ -28,4 +28,4 @@ const icons: Record<string, any> = {
 //   (app as any).__VTJ_ICONS_INSTALLED__ = true;
 // };
 
-export { icons, iconfont };
+export { icons, iconfont, svgIcons };

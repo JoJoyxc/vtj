@@ -20,7 +20,7 @@ export default createViteConfig({
     createDevTools({
       link: false,
       copy: false,
-      devMode: true,
+      devMode: false,
       packagesDir: '../packages'
     })
   ]

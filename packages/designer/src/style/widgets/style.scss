@@ -1,0 +1,11 @@
+@use '../core' as *;
+
+@include b(style-widget) {
+  @include e(collapse) {
+    --el-collapse-header-height: 30px;
+
+    .el-collapse-item__header {
+      padding-left: 10px;
+    }
+  }
+}
