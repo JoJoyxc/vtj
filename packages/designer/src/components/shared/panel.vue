@@ -3,12 +3,20 @@
     <template #actions>
       <XAction
         v-if="props.plus"
-        :size="$attrs.size as any"
+        :size="($attrs as any).size"
         mode="icon"
         :icon="VtjIconPlus"
         background="hover"
         title="新增"
         @click="onClickPlus"></XAction>
+      <XAction
+        v-if="props.edit"
+        :size="($attrs as any).size"
+        mode="icon"
+        :icon="EditPen"
+        background="hover"
+        title="编辑"
+        @click="onClickEdit"></XAction>
       <XAction
         v-if="props.remove"
         :size="$attrs.size as any"
@@ -36,13 +44,14 @@
 <script lang="ts" setup>
   import { computed } from 'vue';
   import { XPanel, XAction } from '@vtj/ui';
-  import { VtjIconPlus, Back, Delete, VtjIconSave } from '@vtj/icons';
+  import { VtjIconPlus, Back, Delete, VtjIconSave, EditPen } from '@vtj/icons';
 
   export interface Props {
     title?: string;
     subtitle?: string;
     plus?: boolean;
     back?: boolean;
+    edit?: boolean;
     remove?: boolean;
     save?: boolean;
     header?: boolean;
@@ -51,10 +60,14 @@
   const props = withDefaults(defineProps<Props>(), {
     header: true
   });
-  const emit = defineEmits(['plus', 'back', 'remove', 'save']);
+  const emit = defineEmits(['plus', 'back', 'remove', 'save', 'edit']);
 
   const onClickPlus = () => {
     emit('plus');
+  };
+
+  const onClickEdit = () => {
+    emit('edit');
   };
 
   const onClickBack = () => {

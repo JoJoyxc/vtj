@@ -7,6 +7,9 @@ import ColorSetter from './color.vue';
 import IconSetter from './icon.vue';
 import JsonSetter from './json.vue';
 import FunctionSetter from './function.vue';
+import RadioSetter from './radio.vue';
+import TagSetter from './tag.vue';
+import SizeSetter from './size.vue';
 
 export const setters = {
   StringSetter,
@@ -17,5 +20,8 @@ export const setters = {
   ColorSetter,
   IconSetter,
   JsonSetter,
-  FunctionSetter
+  FunctionSetter,
+  RadioSetter,
+  TagSetter,
+  SizeSetter
 };

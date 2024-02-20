@@ -10,9 +10,9 @@
 </template>
 <script lang="ts" setup>
   import { XIcon } from '@vtj/web';
-  import * as icons from '@vtj/icons/svg';
+  import { assets } from '@vtj/icons';
 
-  const iconsArray = Object.entries(icons);
+  const iconsArray = Object.entries(assets);
 </script>
 
 <style lang="scss" scoped>

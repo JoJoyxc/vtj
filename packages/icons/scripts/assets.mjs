@@ -36,6 +36,6 @@ export {
 }
 `;
 
-outputFileSync(resolve('dist/svg.ts'), content, 'utf-8');
+outputFileSync(resolve('src/assets.ts'), content, 'utf-8');
 
 console.log('assets build complete.');

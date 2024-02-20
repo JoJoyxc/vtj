@@ -14,7 +14,7 @@
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "~41.0.0",
+    "@ckeditor/ckeditor5-build-classic": "~41.1.0",
     "@ckeditor/ckeditor5-vue": "~5.1.0",
     "@vtj/icons": "^0.7.14",
     "@vtj/utils": "^0.7.14",

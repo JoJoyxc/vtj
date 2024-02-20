@@ -1,6 +1,7 @@
 @use 'core' as *;
 
 @include b(setter) {
+  align-items: center;
   .el-form-item__label {
     .el-tooltip__trigger {
       border-bottom: 1px dashed var(--el-color-primary);
@@ -125,6 +126,49 @@
   @include when(active) {
     .el-input__suffix {
       color: var(--el-color-primary);
+    }
+  }
+}
+
+@include b(radio-setter) {
+  position: relative;
+  top: -1px;
+
+  .is-active {
+    .x-icon img {
+      filter: invert(1);
+    }
+  }
+}
+
+@include b(tag-setter) {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2px;
+  border: 1px solid var(--el-border-color-lighter);
+  border-radius: 4px;
+  .is-active {
+    .x-icon img {
+      filter: invert(1);
+    }
+  }
+  > span {
+    padding: 0 5px;
+    margin: 0 5px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    @include when(active) {
+      background-color: var(--el-color-primary);
+      color: #fff;
+    }
+    .x-icon {
+      position: relative;
+      top: -1px;
     }
   }
 }
