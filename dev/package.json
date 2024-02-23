@@ -20,8 +20,9 @@
     "@vtj/materials": "workspace:*",
     "@vtj/pro": "workspace:*",
     "@vtj/web": "workspace:*",
+    "@vtj/icons": "workspace:*",
     "vue": "~3.4.15",
-    "vue-router": "~4.2.5"
+    "vue-router": "~4.3.0"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:*",
