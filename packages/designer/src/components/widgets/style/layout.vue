@@ -1,49 +1,53 @@
 <template>
-  <Panel title="布局" class="v-sub-panel" size="small" :fit="false">
+  <Panel title="布局" class="v-sub-panel" size="small" :fit="false" collapsable>
     <ElForm size="small" label-width="80px">
       <SetterWrapper
         name="display"
         label="排布"
-        :value="2"
         :setters="{ name: 'TagSetter' }"
         :options="options"
         :variable="false"
+        :value="props.styleJson.display"
         @change="onDisplayChange"></SetterWrapper>
       <template v-if="isFlex">
         <SetterWrapper
           name="flex-direction"
           label="主轴方向"
-          :value="2"
           :setters="{ name: 'TagSetter' }"
           :options="flexDirectionOptions"
-          :variable="false"></SetterWrapper>
+          :variable="false"
+          :value="props.styleJson['flex-direction']"
+          @change="props.setStyle"></SetterWrapper>
         <SetterWrapper
           name="justify-content"
           label="主轴对齐"
-          :value="2"
           :setters="{ name: 'TagSetter' }"
           :options="justifyOptions"
-          :variable="false"></SetterWrapper>
+          :variable="false"
+          :value="props.styleJson['justify-content']"
+          @change="props.setStyle"></SetterWrapper>
         <SetterWrapper
           name="align-items"
           label="辅轴对齐"
-          :value="2"
           :setters="{ name: 'TagSetter' }"
           :options="flexAlignItemsOptions"
-          :variable="false"></SetterWrapper>
+          :variable="false"
+          :value="props.styleJson['align-items']"
+          @change="props.setStyle"></SetterWrapper>
         <SetterWrapper
           name="flex-wrap"
           label="换行模式"
-          :value="2"
           :setters="{ name: 'TagSetter' }"
           :options="flexWrapOptions"
-          :variable="false"></SetterWrapper>
+          :variable="false"
+          :value="props.styleJson['flex-wrap']"
+          @change="props.setStyle"></SetterWrapper>
       </template>
     </ElForm>
   </Panel>
 </template>
 <script lang="ts" setup>
-  import { ref } from 'vue';
+  import { ref, watch } from 'vue';
   import { ElForm } from 'element-plus';
   import {
     IconDisplayBlock,
@@ -69,7 +73,22 @@
   import { Panel } from '../../shared';
   import { SetterWrapper } from '../../../wrappers';
 
+  export interface Props {
+    styleJson: Record<string, any>;
+    setStyle: (name: string, value?: any) => void;
+  }
+
+  const props = defineProps<Props>();
+
   const isFlex = ref();
+
+  watch(
+    () => props.styleJson.display,
+    (val) => {
+      isFlex.value = val === 'flex';
+    },
+    { immediate: true }
+  );
 
   const options = [
     {
@@ -195,6 +214,12 @@
 
   const onDisplayChange = (_name: string, val: string) => {
     isFlex.value = val === 'flex';
-    console.log('onDisplayChange', val);
+    props.setStyle('display', val);
+    if (!isFlex.value) {
+      props.setStyle('flex-direction', undefined);
+      props.setStyle('justify-content', undefined);
+      props.setStyle('align-items', undefined);
+      props.setStyle('flex-wrap', undefined);
+    }
   };
 </script>

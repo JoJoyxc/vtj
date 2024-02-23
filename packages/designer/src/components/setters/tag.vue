@@ -8,7 +8,7 @@
         'is-active': props.modelValue === item.value
       }"
       @click="onClick(item)">
-      <XIcon v-if="item.svg" :src="item.svg"></XIcon>
+      <XIcon v-if="item.svg" :src="item.svg" :size="16"></XIcon>
       <template v-else>{{ item.label }}</template>
     </span>
   </div>
@@ -27,8 +27,13 @@
   const emit = defineEmits(['update:modelValue', 'change']);
 
   const onClick = (item: any) => {
-    emit('update:modelValue', item.value);
-    emit('change', item.value);
+    if (item.value === props.modelValue) {
+      emit('update:modelValue', undefined);
+      emit('change', undefined);
+    } else {
+      emit('update:modelValue', item.value);
+      emit('change', item.value);
+    }
   };
 
   defineOptions({

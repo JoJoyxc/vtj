@@ -17,11 +17,11 @@
     "@vtj/ui": "^0.7.14",
     "@vtj/utils": "^0.7.14",
     "ant-design-vue": "~4.1.0",
-    "echarts": "~5.4.3",
+    "echarts": "~5.5.0",
     "element-plus": "~2.5.3",
     "vant": "~4.8.3",
     "vue": "~3.4.15",
-    "vue-router": "~4.2.5"
+    "vue-router": "~4.3.0"
   },
   "files": [
     "dist"

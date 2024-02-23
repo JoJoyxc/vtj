@@ -9,6 +9,7 @@
         v-model="currentUnit"
         :size="($attrs as any).size"
         :style="{ width: `${props.appendWidth}px` }"
+        v-bind="$props.selectProps"
         @change="onUnitChange">
         <ElOption
           v-for="option in unitOptions"

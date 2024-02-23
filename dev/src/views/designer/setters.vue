@@ -1,10 +1,9 @@
 <template>
   <div>
-    <div>
+    <ElForm label-width="100px">
       <SetterWrapper
         name="test"
         label="排布"
-        label-width="100px"
         :value="2"
         :setters="{ name: 'RadioSetter' }"
         :options="options"
@@ -13,25 +12,49 @@
       <SetterWrapper
         name="test"
         label="排布"
-        label-width="100px"
         :value="2"
-        :setters="{ name: 'RadioSetter' }"
+        :setters="{ name: 'TagSetter' }"
         :options="options"
+        :variable="true"
+        @change="onChange"></SetterWrapper>
+
+      <SetterWrapper
+        name="image"
+        label="图片"
+        :setters="['ImageSetter', 'StringSetter']"
+        :variable="true"
+        @change="onChange"></SetterWrapper>
+
+      <SetterWrapper
+        name="border"
+        label="SectionSetter"
+        :setters="{ name: 'SectionSetter', props: { sections: 2 } }"
+        :variable="true"
+        @change="onChange"></SetterWrapper>
+
+      <SetterWrapper
+        name="Slider"
+        label="Slider"
+        :value="2"
+        :setters="{ name: 'SliderSetter' }"
         :variable="true"
         @change="onChange"></SetterWrapper>
       <SetterWrapper
-        name="test"
-        label="排布"
-        label-width="100px"
-        :value="2"
-        :setters="{ name: 'RadioSetter' }"
-        :options="options"
+        name="RangeSetter"
+        label="RangeSetter"
+        :value="[10, 50]"
+        :setters="{ name: 'RangeSetter' }"
         :variable="true"
         @change="onChange"></SetterWrapper>
-    </div>
+    </ElForm>
+
+    <div
+      :style="`width: 200px; height: 100px; background-image: url(${imgUrl})`"></div>
   </div>
 </template>
 <script lang="ts" setup>
+  import { ElForm } from 'element-plus';
+  import { ref } from 'vue';
   import { SetterWrapper } from '@vtj/pro';
   import {
     IconDisplayBlock,
@@ -40,6 +63,8 @@
     IconDisplayInline,
     IconEyeInvisible
   } from '@vtj/icons';
+
+  const imgUrl = ref('');
 
   const options = [
     {
@@ -71,5 +96,6 @@
 
   const onChange = (n: string, v: any) => {
     console.log('change', n, v);
+    // imgUrl.value = v;
   };
 </script>

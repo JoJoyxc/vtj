@@ -10,6 +10,9 @@ import FunctionSetter from './function.vue';
 import RadioSetter from './radio.vue';
 import TagSetter from './tag.vue';
 import SizeSetter from './size.vue';
+import ImageSetter from './image.vue';
+import SectionSetter from './section.vue';
+import SliderSetter from './slider.vue';
 
 export const setters = {
   StringSetter,
@@ -23,5 +26,8 @@ export const setters = {
   FunctionSetter,
   RadioSetter,
   TagSetter,
-  SizeSetter
+  SizeSetter,
+  ImageSetter,
+  SectionSetter,
+  SliderSetter
 };

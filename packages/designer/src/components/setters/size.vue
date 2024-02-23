@@ -3,7 +3,7 @@
     clearable
     :unit="unit"
     :with-unit="!!unit"
-    :model-value="props.modelValue"
+    v-model="modelValue"
     @change="onChange"
     v-bind="$attrs">
   </XInputUnit>
@@ -21,16 +21,22 @@
   const isPx = ref(true);
   const unit = computed(() => (isPx.value ? 'px' : undefined));
 
+  const modelValue = ref(props.modelValue);
+
   const onChange = (val: any) => {
     isPx.value = !!Number(val);
-    emit('change', isPx.value ? val + 'px' : val);
   };
+
+  watch(modelValue, (v: any) => {
+    emit('change', v);
+  });
 
   watch(
     () => props.modelValue,
     (v) => {
       if (v) {
-        isPx.value = !!Number(v);
+        isPx.value = v.endsWith('px');
+        modelValue.value = v;
       }
     },
     { immediate: true }

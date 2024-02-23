@@ -99,5 +99,28 @@ export const builtInSetters: Array<Setter> = [
     name: 'SizeSetter',
     component: setters.SizeSetter,
     type: 'String'
+  },
+  {
+    name: 'ImageSetter',
+    component: setters.ImageSetter,
+    type: 'String'
+  },
+  {
+    name: 'SectionSetter',
+    component: setters.SectionSetter,
+    type: 'String'
+  },
+  {
+    name: 'SliderSetter',
+    component: setters.SliderSetter,
+    type: 'Number'
+  },
+  {
+    name: 'RangeSetter',
+    component: setters.SliderSetter,
+    type: 'Array',
+    props: {
+      range: true
+    }
   }
 ];

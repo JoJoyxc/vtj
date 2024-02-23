@@ -26,6 +26,9 @@ export const inputUnitProps = {
   },
   modelValue: {
     type: [String, Number]
+  },
+  selectProps: {
+    type: Object as PropType<Record<string, any>>
   }
 };
 

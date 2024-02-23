@@ -1,5 +1,5 @@
 <template>
-  <Panel title="间距" class="v-sub-panel" size="small" :fit="false">
+  <Panel title="间距" class="v-sub-panel" size="small" :fit="false" collapsable>
     <div class="v-style-widget__spacing" ref="container">
       <div class="spacing-wrap">
         <div class="spacing-max-icon">
@@ -12,7 +12,6 @@
             <g>
               <g>
                 <path
-                  cursor="n-resize"
                   mode="delta"
                   fill="currentColor"
                   :d="`
@@ -24,13 +23,12 @@
                   data-automation-id="margin-top-button"
                   aria-label="Margin top button"
                   class="tb-path-color"
-                  style="cursor: n-resize"></path>
+                  @click="showInput('margin-top')"></path>
               </g>
             </g>
             <g>
               <g>
                 <path
-                  cursor="e-resize"
                   mode="delta"
                   fill="currentColor"
                   :d="`
@@ -42,13 +40,12 @@
                   data-automation-id="margin-right-button"
                   aria-label="Margin right button"
                   class="lr-path-color"
-                  style="cursor: e-resize"></path>
+                  @click="showInput('margin-right')"></path>
               </g>
             </g>
             <g>
               <g>
                 <path
-                  cursor="s-resize"
                   mode="delta"
                   fill="currentColor"
                   :d="`
@@ -60,13 +57,12 @@
                   data-automation-id="margin-bottom-button"
                   aria-label="Margin bottom button"
                   class="tb-path-color"
-                  style="cursor: s-resize"></path>
+                  @click="showInput('margin-bottom')"></path>
               </g>
             </g>
             <g>
               <g>
                 <path
-                  cursor="w-resize"
                   mode="delta"
                   fill="currentColor"
                   :d="`
@@ -78,7 +74,7 @@
                   data-automation-id="margin-left-button"
                   aria-label="Margin left button"
                   class="lr-path-color"
-                  style="cursor: w-resize"></path>
+                  @click="showInput('margin-left')"></path>
               </g>
             </g>
             <clipPath id="margin-outer">
@@ -127,24 +123,28 @@
               style="pointer-events: none; stroke-width: 2px"></rect>
           </svg>
           <div
-            class="spacing-edit margin-top is-setting"
+            class="spacing-edit margin-top"
+            :class="{ 'is-setting': props.styleJson['margin-top'] }"
             @click="showInput('margin-top')">
-            0
+            {{ props.styleJson['margin-top'] || '-' }}
           </div>
           <div
             class="spacing-edit margin-right"
+            :class="{ 'is-setting': props.styleJson['margin-right'] }"
             @click="showInput('margin-right')">
-            0
+            {{ props.styleJson['margin-right'] || '-' }}
           </div>
           <div
             class="spacing-edit margin-bottom"
+            :class="{ 'is-setting': props.styleJson['margin-bottom'] }"
             @click="showInput('margin-bottom')">
-            0
+            {{ props.styleJson['margin-bottom'] || '-' }}
           </div>
           <div
             class="spacing-edit margin-left"
+            :class="{ 'is-setting': props.styleJson['margin-left'] }"
             @click="showInput('margin-left')">
-            0
+            {{ props.styleJson['margin-left'] || '-' }}
           </div>
         </div>
         <div ref="inner" class="spacing-min-icon">
@@ -157,7 +157,6 @@
             <g>
               <g>
                 <path
-                  cursor="s-resize"
                   mode="delta"
                   fill="currentColor"
                   :d="`
@@ -169,13 +168,12 @@
                   data-automation-id="padding-top-button"
                   aria-label="Padding top button"
                   class="tb-path-color"
-                  style="cursor: s-resize"></path>
+                  @click="showInput('padding-top')"></path>
               </g>
             </g>
             <g>
               <g>
                 <path
-                  cursor="w-resize"
                   mode="delta"
                   fill="currentColor"
                   :d="`
@@ -187,13 +185,12 @@
                   data-automation-id="padding-right-button"
                   aria-label="Padding right button"
                   class="lr-path-color"
-                  style="cursor: w-resize"></path>
+                  @click="showInput('padding-right')"></path>
               </g>
             </g>
             <g>
               <g>
                 <path
-                  cursor="n-resize"
                   mode="delta"
                   fill="currentColor"
                   :d="`
@@ -205,13 +202,12 @@
                   data-automation-id="padding-bottom-button"
                   aria-label="Padding bottom button"
                   class="tb-path-color"
-                  style="cursor: n-resize"></path>
+                  @click="showInput('padding-bottom')"></path>
               </g>
             </g>
             <g>
               <g>
                 <path
-                  cursor="e-resize"
                   mode="delta"
                   fill="currentColor"
                   :d="`
@@ -223,7 +219,7 @@
                   data-automation-id="padding-left-button"
                   aria-label="Padding left button"
                   class="lr-path-color"
-                  style="cursor: e-resize"></path>
+                  @click="showInput('padding-left')"></path>
               </g>
             </g>
             <clipPath id="padding-outer">
@@ -273,23 +269,27 @@
           </svg>
           <div
             class="spacing-edit padding-top"
+            :class="{ 'is-setting': props.styleJson['padding-top'] }"
             @click="showInput('padding-top')">
-            0
+            {{ props.styleJson['padding-top'] || '-' }}
           </div>
           <div
             class="spacing-edit padding-right"
+            :class="{ 'is-setting': props.styleJson['padding-right'] }"
             @click="showInput('padding-right')">
-            0
+            {{ props.styleJson['padding-right'] || '-' }}
           </div>
           <div
             class="spacing-edit padding-bottom"
+            :class="{ 'is-setting': props.styleJson['padding-bottom'] }"
             @click="showInput('padding-bottom')">
-            0
+            {{ props.styleJson['padding-bottom'] || '-' }}
           </div>
           <div
             class="spacing-edit padding-left"
+            :class="{ 'is-setting': props.styleJson['padding-left'] }"
             @click="showInput('padding-left')">
-            0
+            {{ props.styleJson['padding-left'] || '-' }}
           </div>
         </div>
         <svg
@@ -328,7 +328,9 @@
       <SpacingInput
         v-if="inputVisible"
         :name="currentName"
-        @close="onClose"></SpacingInput>
+        v-model="currentValue"
+        @close="onClose"
+        @submit="props.setStyle"></SpacingInput>
     </div>
   </Panel>
 </template>
@@ -338,21 +340,32 @@
   import { Panel } from '../../shared';
   import SpacingInput from './spacing-input.vue';
 
+  export interface Props {
+    styleJson: Record<string, any>;
+    setStyle: (name: string, value?: any) => void;
+  }
+
+  const props = defineProps<Props>();
+
   const container = ref();
   const inner = ref();
   const { width, height } = useElementSize(container);
   const { width: innerWidth, height: innerHeight } = useElementSize(inner);
   const inputVisible = ref(false);
-  const currentName = ref('');
+  const currentName = ref();
+  const currentValue = ref();
   const borderWidth = 36;
   const borderHeight = 24;
 
   const onClose = () => {
     inputVisible.value = false;
+    currentName.value = undefined;
+    currentValue.value = undefined;
   };
 
   const showInput = (name: string) => {
     currentName.value = name;
+    currentValue.value = props.styleJson[name];
     inputVisible.value = true;
   };
 </script>

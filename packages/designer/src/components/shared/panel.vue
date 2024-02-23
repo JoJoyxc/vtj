@@ -1,5 +1,10 @@
 <template>
-  <XPanel class="v-panel" :border="false" :header="header" fit>
+  <XPanel
+    class="v-panel"
+    :class="classes"
+    :border="false"
+    :header="header"
+    fit>
     <template #actions>
       <XAction
         v-if="props.plus"
@@ -19,7 +24,7 @@
         @click="onClickEdit"></XAction>
       <XAction
         v-if="props.remove"
-        :size="$attrs.size as any"
+        :size="($attrs as any).size"
         mode="icon"
         :icon="Delete"
         background="hover"
@@ -27,12 +32,31 @@
         @click="onClickRemove"></XAction>
       <XAction
         v-if="props.save"
-        :size="$attrs.size as any"
+        :size="($attrs as any).size"
         mode="icon"
         :icon="VtjIconSave"
         background="hover"
         title="保存"
         @click="onClickSave"></XAction>
+
+      <XAction
+        v-if="props.collapsable"
+        v-show="collapsed"
+        :size="($attrs as any).size"
+        mode="icon"
+        :icon="ArrowDown"
+        background="hover"
+        title="展开"
+        @click="setCollapsed(false)"></XAction>
+      <XAction
+        v-if="props.collapsable"
+        v-show="!collapsed"
+        :size="($attrs as any).size"
+        mode="icon"
+        :icon="ArrowUp"
+        background="hover"
+        title="收起"
+        @click="setCollapsed(true)"></XAction>
       <slot name="actions"></slot>
     </template>
     <slot></slot>
@@ -42,9 +66,17 @@
   </XPanel>
 </template>
 <script lang="ts" setup>
-  import { computed } from 'vue';
+  import { ref, computed } from 'vue';
   import { XPanel, XAction } from '@vtj/ui';
-  import { VtjIconPlus, Back, Delete, VtjIconSave, EditPen } from '@vtj/icons';
+  import {
+    VtjIconPlus,
+    Back,
+    Delete,
+    VtjIconSave,
+    EditPen,
+    ArrowDown,
+    ArrowUp
+  } from '@vtj/icons';
 
   export interface Props {
     title?: string;
@@ -55,12 +87,21 @@
     remove?: boolean;
     save?: boolean;
     header?: boolean;
+    collapsable?: boolean;
   }
 
   const props = withDefaults(defineProps<Props>(), {
     header: true
   });
   const emit = defineEmits(['plus', 'back', 'remove', 'save', 'edit']);
+
+  const collapsed = ref(false);
+
+  const classes = computed(() => {
+    return {
+      'is-collapsed': !!collapsed.value
+    };
+  });
 
   const onClickPlus = () => {
     emit('plus');
@@ -88,10 +129,19 @@
           content: props.title,
           subtitle: props.subtitle,
           icon: props.back ? Back : undefined,
-          onClickBack: props.back ? onClickBack : undefined
+          onClickBack: props.back ? onClickBack : undefined,
+          onClick: props.collapsable
+            ? () => {
+                collapsed.value = !collapsed.value;
+              }
+            : undefined
         }
       : null;
   });
+
+  const setCollapsed = (value: boolean) => {
+    collapsed.value = value;
+  };
 
   defineOptions({
     name: 'VPanel'
