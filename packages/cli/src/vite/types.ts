@@ -268,4 +268,9 @@ export interface CreateUniappViteConfigOptions {
    * 插件
    */
   plugins?: PluginOption[];
+
+  /**
+   * 别名
+   */
+  alias?: Record<string, string>;
 }

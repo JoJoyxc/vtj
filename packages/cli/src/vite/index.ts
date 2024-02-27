@@ -105,6 +105,11 @@ export function createUniappViteConfig(
     options
   );
 
+  const alias = {
+    '@': resolve('src'),
+    ...opts.alias
+  };
+
   const server = createServer(
     opts.port as number,
     opts.proxy,
@@ -130,6 +135,9 @@ export function createUniappViteConfig(
   }
 
   const config: UserConfig = {
+    resolve: {
+      alias
+    },
     server,
     preview,
     plugins,
