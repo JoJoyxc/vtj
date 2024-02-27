@@ -1,20 +1,20 @@
 {
   "name": "@vtj/web",
   "private": false,
-  "version": "0.7.15",
+  "version": "0.7.16",
   "type": "module",
   "scripts": {
     "check": "vue-tsc --noEmit",
     "build": "npm run check"
   },
   "dependencies": {
-    "@vtj/icons": "^0.7.15",
-    "@vtj/renderer": "^0.7.15",
-    "@vtj/ui": "^0.7.15",
-    "@vtj/utils": "^0.7.15"
+    "@vtj/icons": "^0.7.16",
+    "@vtj/renderer": "^0.7.16",
+    "@vtj/ui": "^0.7.16",
+    "@vtj/utils": "^0.7.16"
   },
   "devDependencies": {
-    "@vtj/cli": "^0.7.11"
+    "@vtj/cli": "^0.7.12"
   },
   "exports": {
     ".": {
