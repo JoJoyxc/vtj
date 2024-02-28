@@ -216,6 +216,11 @@ export interface CreateViteConfigOptions {
    * 环境配置文件目录位置
    */
   envPath?: string;
+
+  /**
+   * 开启 nodePolyfills
+   */
+  node?: boolean;
 }
 
 export interface CreateUniappViteConfigOptions {
@@ -273,4 +278,14 @@ export interface CreateUniappViteConfigOptions {
    * 别名
    */
   alias?: Record<string, string>;
+
+  /**
+   * 不打包的依赖
+   */
+  external?: string[];
+
+  /**
+   * 开启 nodePolyfills
+   */
+  node?: boolean;
 }

@@ -7,6 +7,7 @@ import type {
   ProxyConfig
 } from './types';
 import { resolve } from 'path';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import { defaults } from './defaults';
 import { createBuild } from './build';
 import { mergePlugins } from './plugins';
@@ -132,6 +133,10 @@ export function createUniappViteConfig(
 
   if (opts.https) {
     plugins.push(basicSsl() as PluginOption);
+  }
+
+  if (opts.node) {
+    plugins.push(nodePolyfills());
   }
 
   if (opts.plugins) {
