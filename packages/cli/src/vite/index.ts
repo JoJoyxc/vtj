@@ -107,6 +107,10 @@ export function createUniappViteConfig(
 
   const alias = {
     '@': resolve('src'),
+    'axios/lib/core/settle': resolve('node_modules/axios/lib/core/settle'),
+    'axios/lib/helpers/buildURL': resolve(
+      'node_modules/axios/lib/helpers/buildURL'
+    ),
     ...opts.alias
   };
 

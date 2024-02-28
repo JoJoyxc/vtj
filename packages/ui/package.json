@@ -18,7 +18,7 @@
     "@ckeditor/ckeditor5-vue": "~5.1.0",
     "@vtj/icons": "^0.7.16",
     "@vtj/utils": "^0.7.16",
-    "@vueuse/core": "~10.8.0",
+    "@vueuse/core": "~10.9.0",
     "echarts": "~5.5.0",
     "element-plus": "~2.5.3"
   },

@@ -37,6 +37,8 @@ const adapter: AxiosAdapter = (config: InternalAxiosRequestConfig) => {
   });
 };
 
+let isLoading = false;
+
 const defaults: IRequestConfig = {
   settings: {
     validSuccess: true,
@@ -49,6 +51,22 @@ const defaults: IRequestConfig = {
         title: msg,
         icon: 'none'
       });
+    },
+    showLoading: () => {
+      if (isLoading) {
+        isLoading = false;
+        uni.hideLoading();
+      }
+      uni.showLoading({
+        success: () => {
+          isLoading = true;
+        }
+      });
+    },
+    hideLoading: () => {
+      if (!isLoading) return;
+      uni.hideLoading();
+      isLoading = false;
     }
   },
   adapter
