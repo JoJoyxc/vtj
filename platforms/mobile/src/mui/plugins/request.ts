@@ -29,6 +29,7 @@ const adapter: AxiosAdapter = (config: InternalAxiosRequestConfig) => {
           status: statusCode,
           errMsg,
           header,
+          headers: header,
           config
         };
         settle(resolve, reject, res);
@@ -43,6 +44,7 @@ const defaults: IRequestConfig = {
   settings: {
     validSuccess: true,
     failMessage: true,
+    originResponse: true,
     validate: (res: AxiosResponse) => {
       return res.data?.code === 0;
     },

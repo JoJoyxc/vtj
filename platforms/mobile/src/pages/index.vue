@@ -1,27 +1,18 @@
 <template>
-  <view class="content">
-    <image class="logo" src="/static/logo.png" />
-    <view class="text-area">
-      <text class="title">{{ title }} </text>
-    </view>
+  <view class="test-list">
+    <uni-section title="组件" type="line">
+      <uni-list>
+        <uni-list-item
+          title="XContextMenu"
+          right-text="上下文菜单"
+          clickable
+          to="/pages/components/context-menu"></uni-list-item>
+      </uni-list>
+    </uni-section>
   </view>
 </template>
 
-<script setup lang="ts">
-  import { callExampleApi } from '@/api';
-  import { ref } from 'vue';
-  const title = ref('Hello');
-
-  callExampleApi({
-    id: 1
-  })
-    .then((res) => {
-      console.log('success', res);
-    })
-    .catch((err) => {
-      console.log('error', err);
-    });
-</script>
+<script setup lang="ts"></script>
 
 <style lang="scss" scoped>
   .content {

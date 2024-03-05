@@ -8,9 +8,15 @@
   },
   "pages": [
     {
-      "path": "pages/index/index",
+      "path": "pages/index",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationBarTitleText": "VTJ Mobile"
+      }
+    },
+    {
+      "path": "pages/components/context-menu",
+      "style": {
+        "navigationBarTitleText": "XContextMenu"
       }
     }
   ],
