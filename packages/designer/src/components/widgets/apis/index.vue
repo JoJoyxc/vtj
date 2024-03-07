@@ -149,7 +149,7 @@
     return project.value?.apis || [];
   });
 
-  const { project, engine } = useProject();
+  const { project } = useProject();
 
   const createEmptyFormModel = () => {
     return {
