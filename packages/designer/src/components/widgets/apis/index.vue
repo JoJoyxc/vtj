@@ -8,7 +8,7 @@
       :subtitle="item.label"
       :model-value="item"
       :tag="item.method?.toUpperCase()"
-      :tag-type="(tagTypeMap[item.method || 'get'] as any)"
+      :tag-type="tagTypeMap[item.method || 'get'] as any"
       background
       :actions="['edit', 'remove']"
       @click="onEdit(item)"
@@ -149,7 +149,7 @@
     return project.value?.apis || [];
   });
 
-  const { project } = useProject();
+  const { project, engine } = useProject();
 
   const createEmptyFormModel = () => {
     return {
@@ -246,6 +246,7 @@
       return false;
     }
     project.value?.setApi(data);
+
     return true;
   };
 </script>
