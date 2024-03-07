@@ -48,9 +48,9 @@ cd vtj
 npm run setup && npm run build && npm run app:dev
 ```
 
-首次启动需要执行初始化：`npm run setup && npm run build`
-重启开发环境：`npm run app:dev`
-清理项目：`npm run clean` 清理后需要重新执行初始化
+- 首次启动需要执行初始化：`npm run setup && npm run build`
+- 重启开发环境：`npm run app:dev`
+- 清理项目：`npm run clean` 清理后需要重新执行初始化
 
 ### 模块说明
 
