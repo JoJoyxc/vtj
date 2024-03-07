@@ -1,19 +1,17 @@
 <template>
   <view class="view" @longpress.native="onLongPress">
-    <uni-section title="基础用法" type="line">
-      长按触发
-
-      <XContextMenu
-        v-model="visible"
-        :position="position"
-        :items="items"
-        @click="onClick"></XContextMenu>
-    </uni-section>
+    <text>长按触发</text>
+    <XContextMenu
+      v-model="visible"
+      :position="position"
+      :items="items"
+      @click="onClick"></XContextMenu>
+    <VtjIconTeam></VtjIconTeam>
   </view>
 </template>
 <script lang="ts" setup>
   import { ref, reactive } from 'vue';
-  import { XContextMenu } from '@/mui';
+  import { XContextMenu, VtjIconTeam } from '@/mui';
 
   const visible = ref(false);
   const position = ref();

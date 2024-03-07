@@ -18,7 +18,7 @@
     "@vtj/utils": "^0.7.19",
     "ant-design-vue": "~4.1.0",
     "echarts": "~5.5.0",
-    "element-plus": "~2.5.3",
+    "element-plus": "~2.6.0",
     "vant": "~4.8.3",
     "vue": "~3.4.15",
     "vue-router": "~4.3.0"

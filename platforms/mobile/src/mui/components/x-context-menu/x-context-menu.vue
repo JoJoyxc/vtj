@@ -3,23 +3,34 @@
     v-if="props.modelValue"
     ref="elRef"
     class="x-context-menu"
-    :style="styles">
-    <uni-list class="x-context-menu__list">
+    @tap.stop="onMaskTap"
+    @longpress.stop="onMaskTap">
+    <uni-list
+      class="x-context-menu__list"
+      :class="{ 'has-icon': hasIcon }"
+      :style="styles">
       <uni-list-item
         class="x-context-menu__item"
         v-for="item in props.items"
         :key="item.title"
         :title="item.title"
         :disabled="item.disabled"
-        @click="onClick(item)"
-        clickable></uni-list-item>
+        @tap="onClick(item)"
+        @longpress.stop
+        clickable>
+        <template v-if="hasIcon" #header>
+          <uni-icons
+            class="x-context-menu__icon"
+            v-bind="getIcon(item.icon)"
+            size="20" />
+        </template>
+      </uni-list-item>
     </uni-list>
   </view>
 </template>
 <script lang="ts" setup>
   import { nextTick, reactive, watch, computed, ref } from 'vue';
-  import { onClickOutside } from '@vueuse/core';
-  import { type ContextMenuItem } from './types';
+  import type { ContextMenuItem, ContextMenuIcon } from './types';
   import { contextMenuProps } from './props';
 
   const props = defineProps(contextMenuProps);
@@ -44,13 +55,13 @@
   const initState = () => {
     const query = uni.createSelectorQuery().in(this);
     query
-      .select('.x-context-menu')
+      .select('.x-context-menu__list')
       .boundingClientRect()
       .exec((e: UniApp.NodeInfo[]) => {
         const [el] = e;
         Object.assign(state, {
-          width: el.width || 0,
-          height: el.height || 0
+          width: el?.width || 0,
+          height: el?.height || 0
         });
       });
     const info = uni.getSystemInfoSync();
@@ -87,6 +98,20 @@
     };
   });
 
+  const hasIcon = computed(() => {
+    return props.items.some((item) => !!item.icon);
+  });
+
+  const getIcon = (
+    icon: string | ContextMenuIcon = { type: 'none' }
+  ): Record<string, any> => {
+    return typeof icon === 'string'
+      ? {
+          type: icon
+        }
+      : icon;
+  };
+
   watch(
     () => props.modelValue,
     async (v) => {
@@ -107,18 +132,25 @@
     emit('update:modelValue', false);
   };
 
-  onClickOutside(elRef, () => {
+  const onMaskTap = () => {
     emit('update:modelValue', false);
-  });
+  };
 </script>
 <style lang="scss" scoped>
   .x-context-menu {
     position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 9999;
-    top: 80px;
-    left: 20px;
+  }
+  .x-context-menu__list {
+    position: absolute;
     box-shadow: 0 0 10px $uni-bg-color-mask;
-    visibility: visible;
-    display: inline-block;
+  }
+  .x-context-menu__icon {
+    width: 20px;
+    margin-right: 10px;
   }
 </style>

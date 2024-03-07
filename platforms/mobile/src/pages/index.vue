@@ -3,16 +3,35 @@
     <uni-section title="组件" type="line">
       <uni-list>
         <uni-list-item
-          title="XContextMenu"
-          right-text="上下文菜单"
+          v-for="item in components"
+          :title="item.title"
+          :right-text="item.rightText"
           clickable
-          to="/pages/components/context-menu"></uni-list-item>
+          :to="item.path"></uni-list-item>
       </uni-list>
     </uni-section>
   </view>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  const components = [
+    {
+      title: 'XIcon',
+      rightText: '图标',
+      path: '/pages/components/icon'
+    },
+    {
+      title: 'XContextMenu',
+      rightText: '上下文菜单',
+      path: '/pages/components/context-menu'
+    },
+    {
+      title: 'XImageViewer',
+      rightText: '图片预览器',
+      path: '/pages/components/image-viewer'
+    }
+  ];
+</script>
 
 <style lang="scss" scoped>
   .content {

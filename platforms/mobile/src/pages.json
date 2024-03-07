@@ -14,9 +14,27 @@
       }
     },
     {
+      "path": "pages/components/icon",
+      "style": {
+        "navigationBarTitleText": "XIcon"
+      }
+    },
+    {
       "path": "pages/components/context-menu",
       "style": {
         "navigationBarTitleText": "XContextMenu"
+      }
+    },
+    {
+      "path": "pages/components/image-viewer",
+      "style": {
+        "navigationBarTitleText": "XImageViewer"
+      }
+    },
+    {
+      "path": "pages/components/test",
+      "style": {
+        "navigationBarTitleText": "Test"
       }
     }
   ],
