@@ -7,7 +7,7 @@
     "dev:app-android": "uni -p app-android",
     "dev:app-ios": "uni -p app-ios",
     "dev:custom": "uni -p",
-    "dev:h5": "cross-env VITE_CJS_IGNORE_WARNING=true uni --force",
+    "dev:h5": "cross-env VITE_CJS_IGNORE_WARNING=true uni --force -- --trace-warnings",
     "dev:h5:ssr": "uni --ssr",
     "dev:mp-alipay": "uni -p mp-alipay",
     "dev:mp-baidu": "uni -p mp-baidu",
