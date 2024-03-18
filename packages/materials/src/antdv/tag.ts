@@ -51,14 +51,14 @@ const components: MaterialDescription[] = [
     doc: 'https://www.antdv.com/components/tag-cn',
     props: [
       {
-        name: 'checked(v-model)',
-        label: 'checked(v-model)',
+        name: 'checked',
+        label: 'checked',
         title: '设置标签的选中状态',
         setters: 'BooleanSetter',
         defaultValue: false
       }
     ],
-    events: ['change']
+    events: ['change', 'update:checked']
   }
 ];
 export default components;

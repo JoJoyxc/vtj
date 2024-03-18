@@ -16,8 +16,8 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'activeKey(v-model)',
-        label: 'activeKey(v-model)',
+        name: 'activeKey',
+        label: 'activeKey',
         title: '当前激活 tab 面板的 key',
         setters: ['StringSetter', 'NumberSetter', 'ArraySetter']
       },
@@ -63,12 +63,12 @@ const components: MaterialDescription[] = [
         defaultValue: false
       }
     ],
-    events: ['change'],
+    events: ['change', 'update:activeKey'],
     slots: ['expandIcon']
   },
   {
     name: 'ACollapsePanel',
-    alias: 'CollapsePanel',
+    alias: 'Panel',
     parent: 'Collapse',
     label: '折叠面板项',
     categoryId: 'data',

@@ -46,7 +46,7 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'ASkeletonAvatar',
-    alias: 'SkeletonAvatar',
+    alias: 'Avatar',
     parent: 'Skeleton',
     label: '头像骨架屏',
     categoryId: 'feedback',
@@ -70,7 +70,7 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'ASkeletonButton',
-    alias: 'SkeletonButton',
+    alias: 'Button',
     parent: 'Skeleton',
     label: '按钮骨架屏',
     categoryId: 'feedback',
@@ -108,7 +108,7 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'ASkeletonInput',
-    alias: 'SkeletonInput',
+    alias: 'Input',
     parent: 'Skeleton',
     label: '输入框骨架屏',
     categoryId: 'feedback',

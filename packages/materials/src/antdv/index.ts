@@ -35,7 +35,7 @@ import radio from './radio';
 import rate from './rate';
 import select from './select';
 import slider from './slider';
-// import  switch from './switch';
+import Switch from './switch';
 // ! switch
 import timePicker from './timePicker';
 import transfer from './transfer';
@@ -111,7 +111,7 @@ const components: MaterialDescription[] = [
   ...rate,
   ...select,
   ...slider,
-  // ...switch,
+  ...Switch,
   ...timePicker,
   ...transfer,
   ...treeSelect,

@@ -106,14 +106,14 @@ const components: MaterialDescription[] = [
         defaultValue: 'text'
       },
       {
-        name: 'value(v-model)',
-        label: 'value(v-model)',
+        name: 'value',
+        label: 'value',
         title: '输入框内容',
         setters: 'StringSetter',
         defaultValue: 'text'
       }
     ],
-    events: ['change', 'pressEnter'],
+    events: ['change', 'pressEnter', 'update:value'],
     slots: ['addonAfter', 'addonBefore', 'clearIcon', 'prefix', 'suffix']
   },
   {
@@ -157,8 +157,8 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'value(v-model)',
-        label: 'value(v-model)',
+        name: 'value',
+        label: 'value',
         title: '输入框内容',
         setters: 'StringSetter'
       }
@@ -167,7 +167,8 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'AInputSearch',
-    alias: 'InputSearch',
+    alias: 'Search',
+    parent: 'Input',
     label: '搜索框',
     categoryId: 'input',
     doc: 'https://www.antdv.com/components/input-cn',
@@ -184,9 +185,48 @@ const components: MaterialDescription[] = [
         label: 'loading',
         title: '搜索 loading',
         setters: 'BooleanSetter'
+      },
+      {
+        name: 'allowClear',
+        label: 'allowClear',
+        title: '可以点击清除图标删除内容',
+        setters: 'BooleanSetter'
+      },
+      {
+        name: 'autosize',
+        label: 'autosize',
+        title:
+          '自适应内容高度，可设置为 true | false 或对象：{ minRows: 2, maxRows: 6 }',
+        setters: ['BooleanSetter', 'ObjectSetter'] //?? 	boolean|object
+      },
+      {
+        name: 'defaultValue',
+        label: 'defaultValue',
+        title: '输入框默认内容',
+        setters: 'StringSetter'
+      },
+      {
+        name: 'bordered',
+        label: 'bordered',
+        title: '是否有边框',
+        setters: 'BooleanSetter',
+        defaultValue: true
+      },
+      {
+        name: 'showCount',
+        label: 'showCount',
+        title: '是否展示字数',
+        setters: 'BooleanSetter',
+        defaultValue: false
+      },
+      {
+        name: 'value',
+        label: 'value',
+        title: '输入框内容',
+        setters: 'StringSetter'
       }
     ],
-    events: ['search'],
+    events: ['search', 'update:value'],
     slots: ['enterButton']
   },
   {
@@ -232,14 +272,15 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'AInputPassword',
-    alias: 'InputPassword',
+    alias: 'Password',
+    parent: 'Input',
     label: '密码输入框',
     categoryId: 'input',
     doc: 'https://www.antdv.com/components/input-cn',
     props: [
       {
-        name: 'visible(v-model)',
-        label: 'visible(v-model)',
+        name: 'visible',
+        label: 'visible',
         title: '密码是否可见',
         setters: 'BooleanSetter',
         defaultValue: false

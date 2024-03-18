@@ -45,7 +45,8 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'ABreadcrumbItem',
-    alias: 'BreadcrumbItem',
+    alias: 'Item',
+    parent: 'Breadcrumb',
     label: '面包屑项',
     categoryId: 'nav',
     doc: 'https://www.antdv.com/components/breadcrumb-cn',
@@ -65,6 +66,14 @@ const components: MaterialDescription[] = [
     ],
     events: ['click'],
     snippet: { children: 'BreadcrumbItem' }
+  },
+  {
+    name: 'ABreadcrumbSeparator',
+    alias: 'Separator',
+    parent: 'Breadcrumb',
+    label: '面包屑分隔符',
+    categoryId: 'nav',
+    doc: 'https://www.antdv.com/components/breadcrumb-cn'
   }
 ];
 export default components;

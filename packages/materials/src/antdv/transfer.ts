@@ -94,8 +94,8 @@ const components: MaterialDescription[] = [
         setters: 'FunctionSetter' //??	VueNode | ((info: { selectedCount: number; totalCount: number }) => VueNode);
       },
       {
-        name: 'selectedKeys(v-model)',
-        label: 'selectedKeys(v-model)',
+        name: 'selectedKeys',
+        label: 'selectedKeys',
         title: '设置哪些项应该被选中',
         setters: 'ArraySetter', //??	string[]
         defaultValue: []
@@ -122,8 +122,8 @@ const components: MaterialDescription[] = [
         options: ['error', 'warning']
       },
       {
-        name: 'targetKeys(v-model)',
-        label: 'targetKeys(v-model)',
+        name: 'targetKeys',
+        label: 'targetKeys',
         title: '显示在右侧框数据的 key 集合',
         setters: 'ArraySetter',
         defaultValue: []
@@ -136,7 +136,14 @@ const components: MaterialDescription[] = [
         defaultValue: ['', '']
       }
     ],
-    events: ['change', 'scroll', 'search', 'selectChange'],
+    events: [
+      'change',
+      'scroll',
+      'search',
+      'selectChange',
+      'update:selectedKeys',
+      'update:targetKeys'
+    ],
     slots: ['footer', 'render', 'selectAllLabels']
   }
 ];

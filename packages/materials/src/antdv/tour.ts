@@ -78,7 +78,7 @@ const components: MaterialDescription[] = [
         defaultValue: 1001
       }
     ],
-    events: ['close', 'finish', 'change'],
+    events: ['close', 'finish', 'change', 'update:current'],
     slots: ['indicatorsRender']
   },
   {

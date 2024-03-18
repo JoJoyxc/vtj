@@ -55,7 +55,7 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'ASpaceCompact',
-    alias: 'SpaceCompact',
+    alias: 'Compact',
     parent: 'Space',
     label: '紧凑间距',
     categoryId: 'layout',

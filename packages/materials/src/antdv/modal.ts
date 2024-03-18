@@ -142,8 +142,8 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter'
       },
       {
-        name: 'open(v-model)',
-        label: 'open(v-model)',
+        name: 'open',
+        label: 'open',
         title: '对话框是否可见',
         setters: 'BooleanSetter',
         defaultValue: false
@@ -169,7 +169,7 @@ const components: MaterialDescription[] = [
         defaultValue: 1000
       }
     ],
-    events: ['cancel', 'ok'],
+    events: ['cancel', 'ok', 'update:open'],
     slots: ['cancelText', 'closeIcon', 'footer', 'okText', 'title']
   }
 ];

@@ -1,5 +1,5 @@
 import type { MaterialDescription } from '@vtj/core';
-
+import { mockTreeData } from '../shared';
 const components: MaterialDescription[] = [
   {
     name: 'ACascader',
@@ -28,12 +28,6 @@ const components: MaterialDescription[] = [
         title: '是否有边框',
         setters: 'BooleanSetter',
         defaultValue: true
-      },
-      {
-        name: 'clearIcon',
-        label: 'clearIcon',
-        title: '自定义的选择框清空图标'
-        // setters: '' //?? slot
       },
       {
         name: 'changeOnSelect',
@@ -74,14 +68,8 @@ const components: MaterialDescription[] = [
         name: 'dropdownStyle',
         label: 'dropdownStyle',
         title: '自定义浮层样式',
-        setters: 'ObjectSetter', //?? 	CSSProperties
+        setters: 'ObjectSetter',
         defaultValue: {}
-      },
-      {
-        name: 'expandIcon',
-        label: 'expandIcon',
-        title: '自定义次级菜单展开图标'
-        // setters: '' //?? 	slot
       },
       {
         name: 'expandTrigger',
@@ -95,8 +83,8 @@ const components: MaterialDescription[] = [
         name: 'fieldNames',
         label: 'fieldNames',
         title: '自定义 options 中 label value children 的字段',
-        setters: 'ObjectSetter', //	?? object
-        defaultValue: { label: 'label', value: 'value', children: 'children' } //?? 	{ label: 'label', value: 'value', children: 'children' }
+        setters: 'ObjectSetter',
+        defaultValue: { label: 'label', value: 'value', children: 'children' }
       },
       {
         name: 'getPopupContainer',
@@ -173,11 +161,6 @@ const components: MaterialDescription[] = [
         defaultValue: 'Cascader.SHOW_PARENT'
       },
       {
-        name: 'removeIcon',
-        label: 'removeIcon',
-        title: '自定义的多选框清除图标'
-      },
-      {
         name: 'searchValue',
         label: 'searchValue',
         title: '设置搜索的值，需要与 showSearch 配合使用',
@@ -212,13 +195,8 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter'
       },
       {
-        name: 'tagRender',
-        label: 'tagRender',
-        title: '自定义 tag 内容，多选时生效'
-      },
-      {
-        name: 'value(v-model)',
-        label: 'value(v-model)',
+        name: 'value',
+        label: 'value',
         title: '指定选中项',
         setters: 'ArraySetter'
       }
@@ -232,7 +210,14 @@ const components: MaterialDescription[] = [
       'removeIcon',
       'suffixIcon',
       'tagRender'
-    ]
+    ],
+    snippet: {
+      // props: {
+      //   options: mockTreeData(),
+      //   props: {},
+      //   value: []
+      // }
+    }
   }
 ];
 export default components;

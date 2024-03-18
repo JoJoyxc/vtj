@@ -67,7 +67,7 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'AStatisticCountdown',
-    alias: 'StatisticCountdown',
+    alias: 'Countdown',
     parent: 'Statistic',
     label: '统计倒计数值',
     categoryId: 'data',

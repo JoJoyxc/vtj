@@ -116,14 +116,14 @@ const components: MaterialDescription[] = [
         defaultValue: 'hover'
       },
       {
-        name: 'open(v-model)',
-        label: 'open(v-model)',
+        name: 'open',
+        label: 'open',
         title: '用于手动控制浮层显隐',
         setters: 'BooleanSetter',
         defaultValue: false
       }
     ],
-    events: ['openChange'],
+    events: ['openChange', 'update:open'],
     slots: ['title']
   }
 ];

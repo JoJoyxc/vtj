@@ -87,8 +87,8 @@ const components: MaterialDescription[] = [
         defaultValue: 1
       },
       {
-        name: 'value(v-model)',
-        label: 'value(v-model)',
+        name: 'value',
+        label: 'value',
         title:
           '设置当前取值。当 range 为 false 时，使用 number，否则用 [number, number]',
         setters: ['NumberSetter', 'NumberArraySetter']
@@ -128,7 +128,7 @@ const components: MaterialDescription[] = [
         setters: 'FunctionSetter'
       }
     ],
-    events: ['change', 'afterChange'],
+    events: ['change', 'afterChange', 'update:value'],
     slots: ['mark']
   }
 ];

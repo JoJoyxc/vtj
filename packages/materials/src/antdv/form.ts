@@ -113,11 +113,50 @@ const components: MaterialDescription[] = [
         setters: 'ObjectSetter'
       }
     ],
-    events: ['finish', 'finishFailed', 'submit', 'validate']
+    events: ['finish', 'finishFailed', 'submit', 'validate'],
+    snippet: {
+      children: [
+        {
+          name: 'AFormItem',
+          props: {
+            label: 'Username',
+            name: 'username',
+            rules: [{ required: true, message: 'Please input your username!' }]
+          },
+          children: [{ name: 'AInput' }]
+        },
+        {
+          name: 'AFormItem',
+          props: {
+            label: 'Password',
+            name: 'password',
+            rules: [{ required: true, message: 'Please input your username!' }]
+          },
+          children: [{ name: 'AInputPassword' }]
+        },
+        {
+          name: 'AFormItem',
+          props: {
+            name: 'remember',
+            wrapperCol: '{ offset: 8, span: 16 }'
+          },
+          children: [{ name: 'ACheckbox', children: 'Remember me' }]
+        },
+        {
+          name: 'AFormItem',
+          props: {
+            wrapperCol: '{ offset: 8, span: 16 }'
+          },
+          children: [
+            { name: 'AButton', props: { type: 'primary' }, children: 'Submit' }
+          ]
+        }
+      ]
+    }
   },
   {
     name: 'AFormItem',
-    alias: 'FormItem',
+    alias: 'Item',
     label: '表单项',
     parent: 'Form',
     categoryId: 'input',
@@ -235,8 +274,17 @@ const components: MaterialDescription[] = [
         setters: 'ObjectSetter'
       }
     ],
-    events: ['finish', 'finishFailed', 'submit', 'validate'],
-    slots: ['extra', 'help', 'label', 'tooltip']
+    slots: ['extra', 'help', 'label', 'tooltip'],
+    snippet: {
+      props: {
+        label: '表单项'
+      },
+      children: [
+        {
+          name: 'AInput'
+        }
+      ]
+    }
   }
 ];
 export default components;

@@ -3,14 +3,14 @@ import type { MaterialDescription } from '@vtj/core';
 const components: MaterialDescription[] = [
   {
     name: 'APagination',
-    alias: 'Pagination ',
+    alias: 'Pagination',
     label: '分页',
     categoryId: 'nav',
     doc: 'https://www.antdv.com/components/pagination-cn',
     props: [
       {
-        name: 'current(v-model)',
-        label: 'current(v-model)',
+        name: 'current',
+        label: 'current',
         title: '当前页数',
         setters: 'NumberSetter'
       },
@@ -38,11 +38,11 @@ const components: MaterialDescription[] = [
         name: 'itemRender',
         label: 'itemRender',
         title: '用于自定义页码的结构，可用于优化 SEO',
-        setters: 'FunctionSetter' //?? 	({page, type: 'page' | 'prev' | 'next', originalElement}) => vNode | v-slot
+        setters: 'FunctionSetter'
       },
       {
-        name: 'pageSize(v-model)',
-        label: 'pageSize(v-model)',
+        name: 'pageSize',
+        label: 'pageSize',
         title: '每页条数',
         setters: 'NumberSetter'
       },
@@ -83,7 +83,7 @@ const components: MaterialDescription[] = [
         name: 'showTotal',
         label: 'showTotal',
         title: '用于显示数据总量和当前数据顺序',
-        setters: 'FunctionSetter' //?? Function(total, range)
+        setters: 'FunctionSetter'
       },
       {
         name: 'simple',
@@ -106,7 +106,16 @@ const components: MaterialDescription[] = [
         defaultValue: 0
       }
     ],
-    events: ['change', 'showSizeChange']
+    events: ['change', 'showSizeChange', 'update:current', 'update:pageSize'],
+    snippet: {
+      name: 'APagination',
+      props: {
+        total: 1000,
+        showLessItems: true,
+        showQuickJumper: true,
+        showSizeChanger: true
+      }
+    }
   }
 ];
 export default components;

@@ -173,8 +173,8 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter' //?? string | slot
       },
       {
-        name: 'open(v-model)',
-        label: 'open(v-model)',
+        name: 'open',
+        label: 'open',
         title: 'Drawer 是否可见',
         setters: 'BooleanSetter'
       },
@@ -193,7 +193,7 @@ const components: MaterialDescription[] = [
         defaultValue: 1000
       }
     ],
-    events: ['afterOpenChange', 'close'],
+    events: ['afterOpenChange', 'close', 'update:open'],
     slots: ['closeIcon', 'extra', 'footer', 'title']
   }
 ];

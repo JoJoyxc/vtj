@@ -104,7 +104,7 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'AListItem',
-    alias: 'ListItem',
+    alias: 'Item',
     parent: 'List',
     label: '列表项',
     categoryId: 'data',
@@ -128,8 +128,8 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'AListItemMeta',
-    alias: 'ListItemMeta',
-    parent: 'List',
+    alias: 'Meta',
+    parent: 'ListItem',
     label: '列表项meta',
     categoryId: 'data',
     doc: 'https://www.antdv.com/components/list-cn',

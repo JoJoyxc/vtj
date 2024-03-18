@@ -36,8 +36,8 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'checkedKeys(v-model)',
-        label: 'checkedKeys(v-model)',
+        name: 'checkedKeys',
+        label: 'checkedKeys',
         title:
           '（受控）选中复选框的树节点（注意：父子节点有关联，如果传入父节点 key，则子节点自动选中；相应当子节点 key 都传入，父节点也自动选中。当设置checkable和checkStrictly，它是一个有checked和halfChecked属性的对象，并且父子节点的选中与否不再关联',
         setters: ['ArraySetter', 'ObjectSetter'], //??  string[] | number[] | {checked: string[] | number[], halfChecked: string[] | number[]}
@@ -73,8 +73,8 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'expandedKeys(v-model)',
-        label: 'expandedKeys(v-model)',
+        name: 'expandedKeys',
+        label: 'expandedKeys',
         title: '（受控）展开指定的树节点',
         setters: ['StringArraySetter', 'NumberArraySetter'],
         defaultValue: []
@@ -127,8 +127,8 @@ const components: MaterialDescription[] = [
         defaultValue: true
       },
       {
-        name: 'selectedKeys(v-model)',
-        label: 'selectedKeys(v-model)',
+        name: 'selectedKeys',
+        label: 'selectedKeys',
         title: '（受控）设置选中的树节点',
         setters: ['StringArraySetter', 'NumberArraySetter']
       },
@@ -183,7 +183,10 @@ const components: MaterialDescription[] = [
       'expand',
       'load',
       'rightClick',
-      'select'
+      'select',
+      'update:checkedKeys',
+      'update:expandedKeys',
+      'update:selectedKeys'
     ],
     slots: ['switcherIcon', 'title']
   }

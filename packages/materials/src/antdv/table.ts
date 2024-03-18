@@ -86,8 +86,8 @@ const components: MaterialDescription[] = [
         title: '自定义空数据时的显示内容'
       },
       {
-        name: 'expandedRowKeys(v-model)',
-        label: 'expandedRowKeys(v-model)',
+        name: 'expandedRowKeys',
+        label: 'expandedRowKeys',
         title: '展开的行，控制属性',
         setters: 'ArraySetter' //?? string[]
       },
@@ -281,7 +281,13 @@ const components: MaterialDescription[] = [
         setters: 'FunctionSetter' //??Function({ text, column, record, index }) => any，此处的 text 是经过其它定义单元格 api 处理后的数据，有可能是 VNode | string | number 类型
       }
     ],
-    events: ['change', 'expand', 'expandedRowsChange', 'resizeColumn'],
+    events: [
+      'change',
+      'expand',
+      'expandedRowsChange',
+      'resizeColumn',
+      'update:expandedRowKeys'
+    ],
     slots: [
       'bodyCell',
       'customFilterDropdown',

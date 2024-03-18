@@ -82,7 +82,8 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'ABadgeRibbon',
-    alias: 'BadgeRibbon',
+    alias: 'Ribbon',
+    parent: 'Badge',
     label: '徽标缎带',
     categoryId: 'data',
     doc: 'https://www.antdv.com/components/badge-cn',

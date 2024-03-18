@@ -9,8 +9,8 @@ const components: MaterialDescription[] = [
     doc: 'https://www.antdv.com/components/tabs-cn',
     props: [
       {
-        name: 'activeKey(v-model)',
-        label: 'activeKey(v-model)',
+        name: 'activeKey',
+        label: 'activeKey',
         title: '当前激活 tab 面板的 key',
         setters: 'StringSetter'
       },
@@ -78,7 +78,7 @@ const components: MaterialDescription[] = [
         defaultValue: 'line'
       }
     ],
-    events: ['change', 'edit', 'tabClick', 'tabScroll']
+    events: ['change', 'edit', 'tabClick', 'tabScroll', 'update:activeKey']
   },
   {
     name: 'ATabPane',

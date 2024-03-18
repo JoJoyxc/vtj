@@ -150,8 +150,8 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter'
       },
       {
-        name: 'searchValue(v-model)',
-        label: 'searchValue(v-model)',
+        name: 'searchValue',
+        label: 'searchValue',
         title: '搜索框的值，可以通过 search 事件获取用户输入',
         setters: 'StringSetter'
       },
@@ -250,8 +250,8 @@ const components: MaterialDescription[] = [
         setters: 'ArraySetter'
       },
       {
-        name: 'treeExpandedKeys(v-model)',
-        label: 'treeExpandedKeys(v-model)',
+        name: 'treeExpandedKeys',
+        label: 'treeExpandedKeys',
         title: '设置展开的树节点',
         setters: 'ArraySetter'
       },
@@ -292,8 +292,8 @@ const components: MaterialDescription[] = [
         defaultValue: 'title'
       },
       {
-        name: 'value(v-model)',
-        label: 'value(v-model)',
+        name: 'value',
+        label: 'value',
         title: '指定当前选中的条目',
         setters: ['StringSetter', 'StringArraySetter']
       },
@@ -319,7 +319,10 @@ const components: MaterialDescription[] = [
       'searchPlaceholder',
       'suffixIcon',
       'tagRender',
-      'title'
+      'title',
+      'update:searchValue',
+      'update:treeExpandedKeys',
+      'update:value'
     ]
   }
 ];

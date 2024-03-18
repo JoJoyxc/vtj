@@ -2,8 +2,8 @@ import type { MaterialDescription } from '@vtj/core';
 
 const components: MaterialDescription[] = [
   {
-    name: 'AAutoComplete ',
-    alias: 'AutoComplete ',
+    name: 'AAutoComplete',
+    alias: 'AutoComplete',
     label: '自动补全输入框',
 
     categoryId: 'input',
@@ -139,9 +139,16 @@ const components: MaterialDescription[] = [
       'focus',
       'search',
       'select',
-      'clear'
+      'clear',
+      'update:value'
     ],
-    slots: ['clearIcon', 'default', 'option', 'placeholder']
+    slots: ['clearIcon', 'default', 'option', 'placeholder'],
+    snippet: {
+      props: {
+        placeholder: 'input here',
+        style: { width: '200px' }
+      }
+    }
   }
 ];
 export default components;

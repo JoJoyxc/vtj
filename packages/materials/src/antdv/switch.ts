@@ -16,8 +16,8 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'checked(v-model)',
-        label: 'checked(v-model)',
+        name: 'checked',
+        label: 'checked',
         title: '指定当前是否选中',
         setters: 'BooleanSetter', //?? checkedValue | unCheckedValue
         defaultValue: false
@@ -71,7 +71,7 @@ const components: MaterialDescription[] = [
         defaultValue: false
       }
     ],
-    events: ['change', 'click'],
+    events: ['change', 'click', 'update:checked'],
     slots: ['checkedChildren', 'unCheckedChildren']
   }
 ];

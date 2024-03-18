@@ -40,7 +40,8 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'ATimelineItem',
-    alias: 'TimelineItem',
+    alias: 'Item',
+    parent: 'Timeline',
     label: '时间轴项',
     categoryId: 'data',
     doc: 'https://www.antdv.com/components/timeline-cn',

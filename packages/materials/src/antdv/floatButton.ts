@@ -93,16 +93,17 @@ const components: MaterialDescription[] = [
         options: ['click', 'hover']
       },
       {
-        name: 'open(v-model)',
-        label: 'open(v-model)',
+        name: 'open',
+        label: 'open',
         title: '受控展开',
         setters: 'BooleanSetter'
       }
     ],
-    events: ['openChange', 'click']
+    events: ['openChange', 'click', 'update:open']
   },
   {
     name: 'ABackTop',
+    alias: 'BackTop',
     parent: 'FloatButton',
     label: '悬浮回到顶部',
     categoryId: 'other',

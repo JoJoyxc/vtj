@@ -13,14 +13,12 @@ const components: MaterialDescription[] = [
         label: 'avatar',
         title: '标题栏旁的头像',
         setters: 'ObjectSetter'
-        //  ?? avatar props
       },
       {
         name: 'backIcon',
         label: 'backIcon',
         title: '自定义 back icon ，如果为 false 不渲染 back icon',
-        setters: 'StringSetter' // slot
-        // defaultValue: '' // <ArrowLeft /> //??
+        setters: 'StringSetter'
       },
       {
         name: 'breadcrumb',
@@ -63,11 +61,25 @@ const components: MaterialDescription[] = [
         name: 'title',
         label: 'title',
         title: '自定义标题文字',
-        setters: ['StringSetter'] // slot
+        setters: 'StringSetter' // slot
       }
     ],
     events: ['back'],
-    slots: ['backIcon', 'extra', 'footer', 'subTitle', 'title']
+    slots: ['backIcon', 'extra', 'footer', 'subTitle', 'title'],
+    snippet: {
+      name: 'APageHeader',
+      props: {
+        title: 'Title',
+        subTitle: 'This is a subtitle',
+        style: { border: '1px solid rgb(235, 237, 240)' }
+      },
+      children: [
+        {
+          name: 'component',
+          slot: 'backIcon'
+        }
+      ]
+    }
   }
 ];
 export default components;

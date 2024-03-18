@@ -96,8 +96,8 @@ const components: MaterialDescription[] = [
         defaultValue: 1
       },
       {
-        name: 'open(v-model)',
-        label: 'open(v-model)',
+        name: 'open',
+        label: 'open',
         title: '面板是否打开',
         setters: 'BooleanSetter',
         defaultValue: false
@@ -167,8 +167,8 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'value(v-model)',
-        label: 'value(v-model)',
+        name: 'value',
+        label: 'value',
         title: '当前时间',
         setters: 'StringSetter'
       },
@@ -180,7 +180,7 @@ const components: MaterialDescription[] = [
         setters: ['StringSetter', 'ObjectSetter'] //??
       }
     ],
-    events: ['change', 'openChange'],
+    events: ['change', 'openChange', 'update:open', 'update:value'],
     slots: ['clearIcon', 'renderExtraFooter', 'suffixIcon']
   },
   {

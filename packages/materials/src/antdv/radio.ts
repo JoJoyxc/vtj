@@ -16,8 +16,8 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'checked(v-model)',
-        label: 'checked(v-model)',
+        name: 'checked',
+        label: 'checked',
         title: '指定当前是否选中',
         setters: 'BooleanSetter',
         defaultValue: false
@@ -35,7 +35,9 @@ const components: MaterialDescription[] = [
         title: '根据 value 进行比较，判断是否选中',
         setters: 'AnySetter' //! any
       }
-    ]
+    ],
+    events: ['update:checked'],
+    snippet: { children: 'radio' }
   },
   {
     name: 'ARadioButton',
@@ -53,8 +55,8 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'checked(v-model)',
-        label: 'checked(v-model)',
+        name: 'checked',
+        label: 'checked',
         title: '指定当前是否选中',
         setters: 'BooleanSetter',
         defaultValue: false
@@ -72,7 +74,37 @@ const components: MaterialDescription[] = [
         title: '根据 value 进行比较，判断是否选中',
         setters: 'AnySetter'
       }
-    ]
+    ],
+    events: ['update:checked'],
+    snippet: {
+      props: { size: 'large', value: 'value1' },
+      children: [
+        {
+          name: 'ARadioButton',
+          children: 'Hangzhou',
+          props: {
+            value: 'a',
+            style: { padding: '5px', border: '1px solid red' }
+          }
+        },
+        {
+          name: 'ARadioButton',
+          children: 'Shanghai',
+          props: {
+            value: 'b',
+            style: { padding: '5px', border: '1px solid red' }
+          }
+        },
+        {
+          name: 'ARadioButton',
+          children: 'Beijing',
+          props: {
+            value: 'c',
+            style: { padding: '5px', border: '1px solid red' }
+          }
+        }
+      ]
+    }
   },
   {
     name: 'ARadioGroup',
@@ -126,13 +158,20 @@ const components: MaterialDescription[] = [
         defaultValue: 'default'
       },
       {
-        name: 'value(v-model)',
-        label: 'value(v-model)',
+        name: 'value',
+        label: 'value',
         title: '用于设置当前选中的值',
         setters: 'anySetter'
       }
     ],
-    events: ['change']
+    events: ['change', 'update:value'],
+    snippet: {
+      children: [
+        { name: 'ARadio', children: 'radio1' },
+        { name: 'ARadio', children: 'radio2' },
+        { name: 'ARadio', children: 'radio3' }
+      ]
+    }
   }
 ];
 export default components;

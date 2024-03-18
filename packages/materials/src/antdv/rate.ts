@@ -62,8 +62,18 @@ const components: MaterialDescription[] = [
         setters: 'NumberSetter'
       }
     ],
-    events: ['blur', 'change', 'focus', 'hoverChange', 'keydown'],
-    slots: ['character']
+    events: [
+      'blur',
+      'change',
+      'focus',
+      'hoverChange',
+      'keydown',
+      'update:value'
+    ],
+    slots: ['character'],
+    snippet: {
+      props: { value: 2 }
+    }
   }
 ];
 export default components;

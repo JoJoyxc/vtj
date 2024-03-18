@@ -284,8 +284,8 @@ const components: MaterialDescription[] = [
         setters: 'ArraySetter' //??  string[]
       },
       {
-        name: 'value(v-model)',
-        label: 'value(v-model)',
+        name: 'value',
+        label: 'value',
         title: '指定当前选中的条目',
         setters: ['StringSetter', 'NumberSetter', 'ArraySetter'] //?? 	string|string[]|number|number[]
       },
@@ -308,7 +308,8 @@ const components: MaterialDescription[] = [
       'mouseleave',
       'popupScroll',
       'search',
-      'select'
+      'select',
+      'update:value'
     ],
     slots: [
       'clearIcon',
@@ -320,11 +321,37 @@ const components: MaterialDescription[] = [
       'removeIcon',
       'suffixIcon',
       'tagRender'
-    ]
+    ],
+    snippet: {
+      props: { style: { width: '120px' }, value: 'lucy' },
+      children: [
+        {
+          name: 'ASelectOption',
+          children: 'Jack',
+          props: { value: 'jack' }
+        },
+        {
+          name: 'ASelectOption',
+          children: 'Lucy',
+          props: { value: 'lucy' }
+        },
+        {
+          name: 'ASelectOption',
+          children: 'Disabled',
+          props: { value: 'disabled', disabled: true }
+        },
+        {
+          name: 'ASelectOption',
+          children: 'Wendy',
+          props: { value: 'wendy' }
+        }
+      ]
+    }
   },
   {
     name: 'ASelectOption',
     alias: 'SelectOption',
+    parent: 'Select',
     label: '选择器项',
     categoryId: 'input',
     doc: 'https://www.antdv.com/components/select-cn',
@@ -361,11 +388,15 @@ const components: MaterialDescription[] = [
         title: '默认根据此属性值进行筛选',
         setters: ['StringSetter', 'NumberSetter']
       }
-    ]
+    ],
+    snippet: {
+      props: { value: 'ASelectOption' }
+    }
   },
   {
     name: 'ASelectOptGroup',
     alias: 'ASelectOptGroup',
+    parent: 'Select',
     label: '选择器组',
     categoryId: 'input',
     doc: 'https://www.antdv.com/components/select-cn',
@@ -383,7 +414,26 @@ const components: MaterialDescription[] = [
         // defaultValue: '' //?? 无
       }
     ],
-    slots: ['label']
+    slots: ['label'],
+    snippet: {
+      children: [
+        {
+          name: 'template',
+          slot: 'label',
+          children: [
+            {
+              name: 'component',
+              props: {
+                is: 'span'
+              },
+              children: 'Manager'
+            }
+          ]
+        },
+        { name: 'ASelectOption', children: 'Jack', props: { value: 'jack' } },
+        { name: 'ASelectOption', children: 'Lucy', props: { value: 'lucy' } }
+      ]
+    }
   }
 ];
 export default components;

@@ -9,8 +9,8 @@ const components: MaterialDescription[] = [
     doc: 'https://www.antdv.com/components/steps-cn',
     props: [
       {
-        name: 'current (v-model)',
-        label: 'current (v-model)',
+        name: 'current',
+        label: 'current',
         title:
           '指定当前步骤，从 0 开始记数。在子 Step 元素中，可以通过 status 属性覆盖状态',
         setters: 'NumberSetter',
@@ -84,8 +84,28 @@ const components: MaterialDescription[] = [
         defaultValue: []
       }
     ],
-    events: ['change'],
-    slots: ['progressDot']
+    events: ['change', 'update:current'],
+    slots: ['progressDot'],
+    snippet: {
+      props: {
+        current: 1,
+        items: [
+          {
+            title: 'Finished',
+            description: 'This is a description.'
+          },
+          {
+            title: 'In Progress',
+            description: 'This is a description.',
+            subTitle: 'Left 00:00:08'
+          },
+          {
+            title: 'Waiting',
+            description: 'This is a description.'
+          }
+        ]
+      }
+    }
   },
   {
     name: 'AStep',
@@ -136,7 +156,13 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter' //
       }
     ],
-    slots: ['description', 'icon', 'subTitle', 'title']
+    slots: ['description', 'icon', 'subTitle', 'title'],
+    snippet: {
+      props: {
+        title: '步骤',
+        description: '步骤的详情描述'
+      }
+    }
   }
 ];
 export default components;

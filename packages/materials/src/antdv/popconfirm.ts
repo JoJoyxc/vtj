@@ -86,8 +86,8 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter' //?? 	string|slot
       },
       {
-        name: 'open (v-model)',
-        label: 'open (v-model)',
+        name: 'open ',
+        label: 'open ',
         title: '是否显示',
         setters: 'BooleanSetter'
       },
@@ -193,14 +193,14 @@ const components: MaterialDescription[] = [
         defaultValue: 'hover'
       },
       {
-        name: 'open(v-model)',
-        label: 'open(v-model)',
+        name: 'open',
+        label: 'open',
         title: '用于手动控制浮层显隐',
         setters: 'BooleanSetter',
         defaultValue: false
       }
     ],
-    events: ['cancel', 'confirm', 'openChange'],
+    events: ['cancel', 'confirm', 'openChange', 'update:open'],
     slots: [
       'cancelButton',
       'cancelText',

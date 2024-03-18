@@ -16,8 +16,8 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'checked(v-model)',
-        label: 'checked(v-model)',
+        name: 'checked',
+        label: 'checked',
         title: '指定当前是否选中',
         setters: 'BooleanSetter',
         defaultValue: false
@@ -43,14 +43,9 @@ const components: MaterialDescription[] = [
         setters: ['BooleanSetter', 'StringSetter', 'NumberSetter']
       }
     ],
-    events: ['change'],
+    events: ['change', 'update:checked'],
     snippet: {
-      children: [
-        {
-          name: 'ACheckbox',
-          children: 'checkbox'
-        }
-      ]
+      children: 'checkbox'
     }
   },
   {
@@ -83,29 +78,22 @@ const components: MaterialDescription[] = [
         defaultValue: []
       },
       {
-        name: 'value(v-model)',
-        label: 'value(v-model)',
+        name: 'value',
+        label: 'value',
         title: '指定选中的选项',
         setters: 'ArraySetter',
         defaultValue: []
       }
     ],
-    events: ['change'],
+    events: ['change', 'update:value'],
     snippet: {
-      children: [
-        {
-          name: 'ACheckbox',
-          children: 'checkbox1'
-        },
-        {
-          name: 'ACheckbox',
-          children: 'checkbox2'
-        },
-        {
-          name: 'ACheckbox',
-          children: 'checkbox3'
-        }
-      ]
+      props: {
+        options: [
+          { label: 'Apple', value: 'Apple' },
+          { label: 'Pear', value: 'Pear' },
+          { label: 'Orange', value: 'Orange' }
+        ]
+      }
     }
   }
 ];

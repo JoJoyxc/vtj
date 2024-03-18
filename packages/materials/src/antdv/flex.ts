@@ -124,8 +124,7 @@ const components: MaterialDescription[] = [
         label: 'component',
         title: '自定义元素类型'
       }
-    ],
-    slots: ['component']
+    ]
   }
 ];
 

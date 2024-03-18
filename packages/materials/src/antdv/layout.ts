@@ -32,7 +32,7 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'ALayoutHeader',
-    alias: 'LayoutHeader',
+    alias: 'Header',
     parent: 'Layout',
     label: '顶栏容器',
     categoryId: 'layout',
@@ -40,7 +40,7 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'ALayoutContent',
-    alias: 'LayoutContent',
+    alias: 'Content',
     parent: 'Layout',
     label: '主要内容容器',
     categoryId: 'layout',
@@ -48,7 +48,7 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'ALayoutFooter',
-    alias: 'LayoutFooter',
+    alias: 'Footer',
     parent: 'Layout',
     label: '底栏容器',
     categoryId: 'layout',
@@ -56,7 +56,7 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'ALayoutSider',
-    alias: 'LayoutSider',
+    alias: 'Sider',
     parent: 'Layout',
     label: '侧边栏容器',
     categoryId: 'layout',
@@ -75,8 +75,8 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter'
       },
       {
-        name: 'collapsed(v-model)',
-        label: 'collapsed(v-model)',
+        name: 'collapsed',
+        label: 'collapsed',
         title: '当前收起状态',
         setters: 'BooleanSetter'
       },
@@ -126,7 +126,7 @@ const components: MaterialDescription[] = [
         name: 'trigger',
         label: 'trigger',
         title: '自定义 trigger，设置为 null 时隐藏 trigger',
-        setters: 'StringSetter' 
+        setters: 'StringSetter'
       },
       {
         name: 'width',
@@ -142,7 +142,7 @@ const components: MaterialDescription[] = [
         setters: 'ObjectSetter'
       }
     ],
-    events: ['breakpoint', 'collapse'],
+    events: ['breakpoint', 'collapse', 'update:collapsed'],
     slots: ['trigger']
   }
 ];

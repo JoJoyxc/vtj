@@ -141,13 +141,13 @@ const components: MaterialDescription[] = [
         title: '自定义下箭头图标'
       },
       {
-        name: 'value(v-model)',
-        label: 'value(v-model)',
+        name: 'value',
+        label: 'value',
         title: '当前值',
         setters: 'NumberSetter'
       }
     ],
-    events: ['change', 'pressEnter', 'step'],
+    events: ['change', 'pressEnter', 'step', 'update:value'],
     slots: ['addonAfter', 'addonBefore', 'prefix', 'upIcon', 'downIcon']
   }
 ];

@@ -1,10 +1,11 @@
 import type { MaterialDescription } from '@vtj/core';
+
 const components: MaterialDescription[] = [
   {
     name: 'ADropdown',
     alias: 'Dropdown',
     label: '下拉菜单',
-    categoryId: 'Navigation',
+    categoryId: 'nav',
     doc: 'https://www.antdv.com/components/button-cn',
     props: [
       {
@@ -80,19 +81,63 @@ const components: MaterialDescription[] = [
         defaultValue: ['hover']
       },
       {
-        name: 'open(v-model)',
-        label: 'open(v-model)',
+        name: 'open',
+        label: 'open',
         title: '菜单是否显示',
         setters: 'BooleanSetter'
       }
     ],
-    events: ['openChange']
+    events: ['openChange', 'update:open'],
+    slots: ['overlay'],
+    snippet: {
+      name: 'ADropdownButton',
+      children: [
+        {
+          name: 'AButton',
+          children: [
+            {
+              name: 'component',
+              props: {
+                is: 'span'
+              },
+              children: '下拉菜单'
+            },
+            {
+              name: 'component',
+              props: {
+                is: 'span'
+              },
+              children: ' V'
+            }
+          ]
+        },
+        {
+          name: 'AMenu',
+          slot: 'overlay',
+          children: [
+            {
+              name: 'AMenuItem',
+              children: 'Action 1'
+            },
+            {
+              name: 'AMenuItem',
+              children: 'Action 2'
+            },
+            {
+              name: 'AMenuItem',
+              children: 'Action 3'
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     name: 'ADropdownButton',
-    alias: 'DropdownButton',
+    alias: 'Button',
+    parent: 'Dropdown',
     label: '下拉菜单按钮',
-    categoryId: 'Navigation',
+    categoryId: 'nav',
     doc: 'https://www.antdv.com/components/button-cn',
     props: [
       {
@@ -114,9 +159,10 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'overlay(v-slot)',
-        label: 'overlay(v-slot)',
-        title: '菜单' //?? Menu
+        name: 'overlay',
+        label: 'overlay',
+        title: '菜单',
+        setters: 'ObjectSetter' //?? Menu
       },
       {
         name: 'placement',
@@ -155,14 +201,32 @@ const components: MaterialDescription[] = [
         defaultValue: 'default'
       },
       {
-        name: 'open(v-model)',
-        label: 'open(v-model)',
+        name: 'open',
+        label: 'open',
         title: '菜单是否显示',
         setters: ['BooleanSetter']
       }
     ],
-    events: ['click', 'openChange'],
-    slots: ['icon']
+    events: ['click', 'openChange', 'update:open'],
+    slots: ['icon', 'overlay'],
+    snippet: {
+      name: 'button',
+      children: [
+        { name: 'a', children: 'Dropdown' },
+        {
+          name: 'AMenu',
+          slot: 'overlay',
+          props: {
+            mode: 'vertical'
+          },
+          children: [
+            { name: 'AMenuItem', children: '1st menu item' },
+            { name: 'AMenuItem', children: '2nd menu item' },
+            { name: 'AMenuItem', children: '3rd menu item' }
+          ]
+        }
+      ]
+    }
   }
 ];
 export default components;

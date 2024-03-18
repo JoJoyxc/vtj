@@ -40,8 +40,8 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'ATypographyText',
-    alias: 'TypographyText',
-    parent: 'TypographyParagraph',
+    alias: 'Text',
+    parent: 'Typography',
     label: '文本内容',
     categoryId: 'base',
     doc: 'https://www.antdv.com/components/button-cn',
@@ -54,8 +54,8 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'content(v-model)',
-        label: 'content(v-model)',
+        name: 'content',
+        label: 'content',
         title: '当使用 ellipsis 或 editable 时，使用 content 代替 children',
         setters: 'StringSetter'
       },
@@ -133,11 +133,12 @@ const components: MaterialDescription[] = [
     snippet: {
       children:
         'uniform the user interface specs for internal background projects, lower the unnecessary cost of design differences and implementation and liberate the resources of design and front-end development.'
-    }
+    },
+    events: ['update:content']
   },
   {
     name: 'ATypographyTitle',
-    alias: 'TypographyTitle',
+    alias: 'Title',
     parent: 'Typography',
     label: '文本标题',
     categoryId: 'base',
@@ -151,8 +152,8 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'content(v-model)',
-        label: 'content(v-model)',
+        name: 'content',
+        label: 'content',
         title: '当使用 ellipsis 或 editable 时，使用 content 代替 children',
         setters: 'StringSetter'
       },
@@ -195,8 +196,9 @@ const components: MaterialDescription[] = [
         name: 'level',
         label: 'level',
         title: '重要程度，相当于 h1、h2、h3、h4、h5',
-        setters: 'SelectSetter',
-        options: ['1', '2', '3', '4', '5'], //?? number: 1, 2, 3, 4, 5
+        setters: ['SelectSetter', 'NumberSetter'],
+        //?? number: 1, 2, 3, 4, 5
+        options: [{ label: 'H1', value: 1 }],
         defaultValue: 1
       },
       {
@@ -223,11 +225,12 @@ const components: MaterialDescription[] = [
     ],
     snippet: {
       children: 'Introduction'
-    }
+    },
+    events: ['update:content']
   },
   {
     name: 'ATypographyParagraph',
-    alias: 'TypographyParagraph',
+    alias: 'Paragraph',
     parent: 'Typography',
     label: '文本段落',
     categoryId: 'base',
@@ -241,8 +244,8 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'content(v-model)',
-        label: 'content(v-model)',
+        name: 'content',
+        label: 'content',
         title: '当使用 ellipsis 或 editable 时，使用 content 代替 children',
         setters: 'StringSetter'
       },
@@ -328,7 +331,18 @@ const components: MaterialDescription[] = [
           ]
         }
       ]
-    }
+    },
+    events: ['update:content'],
+    // todo
+    slots: [
+      'copyableIcon',
+      'copyableTooltip',
+      'editableIcon',
+      'editableTooltip',
+      'ellipsisSymbol',
+      'ellipsisTooltip',
+      'enterEnterIcon'
+    ]
   }
 ];
 

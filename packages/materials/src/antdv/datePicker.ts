@@ -226,13 +226,13 @@ const components: MaterialDescription[] = [
         defaultValue: true
       },
       {
-        name: 'value(v-model)',
-        label: 'value(v-model)',
+        name: 'value',
+        label: 'value',
         title: '日期',
         setters: 'FunctionSetter' //?? 	dayjs
       }
     ],
-    events: ['openChange', 'panelChange', 'change', 'ok'],
+    events: ['openChange', 'panelChange', 'change', 'ok', 'update:value'],
     slots: [
       'dateRender',
       'nextIcon',
@@ -494,13 +494,20 @@ const components: MaterialDescription[] = [
         // defaultValue: [dayjs(), dayjs()] //?? [dayjs(), dayjs()],
       },
       {
-        name: 'value(v-model)',
-        label: 'value(v-model)',
+        name: 'value',
+        label: 'value',
         title: '日期',
         setters: 'ArraySetter' //?? 	dayjs[]
       }
     ],
-    events: ['openChange', 'panelChange', 'calendarChange', 'change', 'ok'],
+    events: [
+      'openChange',
+      'panelChange',
+      'calendarChange',
+      'change',
+      'ok',
+      'update:value'
+    ],
     slots: [
       'dateRender',
       'nextIcon',

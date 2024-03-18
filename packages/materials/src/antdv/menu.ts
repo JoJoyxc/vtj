@@ -50,8 +50,8 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'openKeys(v-model)',
-        label: 'openKeys(v-model)',
+        name: 'openKeys',
+        label: 'openKeys',
         title: '当前展开的 SubMenu 菜单项 key 数组',
         setters: 'ArraySetter'
       },
@@ -70,8 +70,8 @@ const components: MaterialDescription[] = [
         defaultValue: true
       },
       {
-        name: 'selectedKeys(v-model)',
-        label: 'selectedKeys(v-model)',
+        name: 'selectedKeys',
+        label: 'selectedKeys',
         title: '当前选中的菜单项 key 数组',
         setters: 'ArraySetter'
       },
@@ -106,12 +106,23 @@ const components: MaterialDescription[] = [
         defaultValue: 'hover'
       }
     ],
-    events: ['click', 'deselect', 'openChange', 'select'],
-    slots: ['overflowedIndicator']
+    events: [
+      'click',
+      'deselect',
+      'openChange',
+      'select',
+      'update:openKeys',
+      'update:selectedKeys'
+    ],
+    slots: ['overflowedIndicator'],
+    snippet: {
+      children: [],
+      props: {}
+    }
   },
   {
     name: 'AMenuItem',
-    alias: 'MenuItem',
+    alias: 'Item',
     parent: 'Menu',
     label: '导航菜单项',
     categoryId: 'nav',
@@ -142,23 +153,17 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter'
       }
     ],
-    slots: ['title']
+    slots: ['icon', 'title'],
+    snippet: {}
   },
   {
-    name: 'AMenuItemType',
-    alias: 'MenuItemType',
-    parent: 'MenuItem',
-    label: '导航菜单项类型',
+    name: 'AMenuSubMenu',
+    alias: 'SubMenu',
+    parent: 'Menu',
+    label: '导航子菜单',
     categoryId: 'nav',
     doc: 'https://www.antdv.com/components/menu-cn',
     props: [
-      {
-        name: 'danger',
-        label: 'danger',
-        title: '展示错误状态样式',
-        setters: 'BooleanSetter',
-        defaultValue: false
-      },
       {
         name: 'disabled',
         label: 'disabled',
@@ -167,32 +172,76 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
+        name: 'expandIcon',
+        label: 'expandIcon',
+        title: '自定义 Menu 展开收起图标'
+      },
+      {
         name: 'icon',
         label: 'icon',
-        title: '菜单图标',
-        setters: 'FunctionSetter'
-        //?? 	VueNode|(item: MenuItemType)=>VueNode
+        title: '菜单图标'
       },
       {
         name: 'key',
         label: 'key',
-        title: 'item 的唯一标志',
+        title: '唯一标志, 必填',
         setters: ['StringSetter', 'NumberSetter']
       },
       {
-        name: 'label',
-        label: 'label',
-        title: '菜单项标题'
-        // setters: '' //?? VueNode
+        name: 'popupClassName',
+        label: 'popupClassName',
+        title: '子菜单样式',
+        setters: 'StringSetter'
+      },
+      {
+        name: 'popupOffset',
+        label: 'popupOffset',
+        title: '子菜单偏移量，mode="inline" 时无效',
+        setters: 'ArraySetter'
       },
       {
         name: 'title',
         label: 'title',
-        title: '设置收缩时展示的悬浮标题',
-        setters: ['StringSetter']
+        title: '子菜单项值',
+        setters: 'StringSetter'
       }
     ],
-    slots: ['icon', 'label']
+    events: ['titleClick'],
+    slots: ['expandIcon', 'icon', 'title']
+  },
+  {
+    name: 'AMenuItemGroup',
+    alias: 'ItemGroup',
+    parent: 'Menu',
+    label: '导航菜单项组',
+    categoryId: 'nav',
+    doc: 'https://www.antdv.com/components/menu-cn',
+    props: [
+      {
+        name: 'title',
+        label: 'title',
+        title: '分组标题',
+        setters: 'StringSetter'
+      }
+    ],
+    slots: ['title']
+  },
+  {
+    name: 'AMenuDivider',
+    alias: 'Divider',
+    parent: 'Menu',
+    label: '菜单项分割线',
+    categoryId: 'nav',
+    doc: 'https://www.antdv.com/components/menu-cn',
+    props: [
+      {
+        name: 'dashed',
+        label: 'dashed',
+        title: '是否虚线',
+        setters: 'BooleanSetter',
+        defaultValue: false
+      }
+    ]
   }
 ];
 export default components;

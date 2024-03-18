@@ -62,8 +62,8 @@ const components: MaterialDescription[] = [
         setters: 'ArraySetter' //?? 	[dayjs, dayjs]
       },
       {
-        name: 'value(v-model)',
-        label: 'value(v-model)',
+        name: 'value',
+        label: 'value',
         title: '展示日期',
         setters: 'FunctionSetter' //?? dayjs
       },
@@ -75,7 +75,7 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter'
       }
     ],
-    events: ['change', 'panelChange', 'select'],
+    events: ['change', 'panelChange', 'select', 'update:value'],
     slots: [
       'dateCellRender',
       'dateFullCellRender',

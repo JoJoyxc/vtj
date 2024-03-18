@@ -99,7 +99,7 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'ACardGrid',
-    alias: 'CardGrid',
+    alias: 'Grid',
     parent: 'Card',
     label: '网格型内嵌卡片',
     categoryId: 'data',
@@ -107,7 +107,7 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'ACardMeta',
-    alias: 'CardMeta',
+    alias: 'Meta',
     parent: 'Card',
     label: 'meta卡片',
     categoryId: 'data',
