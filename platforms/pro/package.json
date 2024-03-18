@@ -2,7 +2,7 @@
   "name": "@vtj/pro",
   "description": "VTJ.PRO",
   "private": false,
-  "version": "0.7.14",
+  "version": "0.7.26",
   "type": "module",
   "scripts": {
     "dev": "cross-env ENV_TYPE=local vite",
@@ -10,30 +10,30 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vtj/core": "^0.7.14",
-    "@vtj/designer": "^0.7.14",
-    "@vtj/local": "^0.7.14",
-    "@vtj/materials": "^0.7.14",
-    "@vtj/renderer": "^0.7.14"
+    "@vtj/core": "^0.7.26",
+    "@vtj/designer": "^0.7.26",
+    "@vtj/local": "^0.7.26",
+    "@vtj/materials": "^0.7.26",
+    "@vtj/renderer": "^0.7.26"
   },
   "devDependencies": {
-    "@vtj/cli": "^0.7.10",
-    "@vtj/icons": "^0.7.14",
-    "@vtj/ui": "^0.7.14",
-    "@vtj/utils": "^0.7.14",
+    "@vtj/cli": "^0.7.18",
+    "@vtj/icons": "^0.7.26",
+    "@vtj/ui": "^0.7.26",
+    "@vtj/utils": "^0.7.26",
     "vue": "~3.4.15",
-    "vue-router": "~4.2.5"
+    "vue-router": "~4.3.0"
   },
   "exports": {
-    ".": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts",
-      "require": "./src/index.ts"
-    },
     "./vite": {
       "types": "./src/vite.d.ts",
       "import": "./src/vite.mjs",
       "require": "./src/vite.mjs"
+    },
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
     }
   },
   "main": "./src/index.ts",
