@@ -13,12 +13,12 @@
   "dependencies": {
     "@types/fs-extra": "~11.0.4",
     "@vtj/base": "^0.7.6",
-    "axios": "~1.6.4",
+    "axios": "~1.6.8",
     "fs-extra": "~11.2.0"
   },
   "devDependencies": {
     "unbuild": "~2.0.0",
-    "vitest": "~1.3.0"
+    "vitest": "~1.4.0"
   },
   "exports": {
     ".": {
