@@ -34,6 +34,11 @@
       title: 'XAvatar',
       rightText: '头像',
       path: '/pages/components/avatar'
+    },
+    {
+      title: 'XLoading',
+      rightText: '加载中',
+      path: '/pages/components/loading'
     }
   ];
 </script>

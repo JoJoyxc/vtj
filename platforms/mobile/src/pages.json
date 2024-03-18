@@ -38,6 +38,12 @@
       }
     },
     {
+      "path": "pages/components/loading",
+      "style": {
+        "navigationBarTitleText": "XLoading"
+      }
+    },
+    {
       "path": "pages/components/test",
       "style": {
         "navigationBarTitleText": "Test"
