@@ -30,11 +30,6 @@ const components: MaterialDescription[] = [
         defaultValue: true
       },
       {
-        name: 'clearIcon',
-        label: 'clearIcon',
-        title: '自定义的清除图标'
-      },
-      {
         name: 'clearText',
         label: 'clearText',
         title: '清除按钮的提示文案',
@@ -130,11 +125,6 @@ const components: MaterialDescription[] = [
         setters: 'ObjectSetter' //?? object
       },
       {
-        name: 'renderExtraFooter',
-        label: 'renderExtraFooter',
-        title: '选择框底部显示自定义的内容'
-      },
-      {
         name: 'secondStep',
         label: 'secondStep',
         title: '秒选项间隔',
@@ -153,11 +143,6 @@ const components: MaterialDescription[] = [
         title: '设置校验状态',
         setters: 'SelectSetter',
         options: ['error', 'warning']
-      },
-      {
-        name: 'suffixIcon',
-        label: 'suffixIcon',
-        title: '自定义的选择框后缀图标'
       },
       {
         name: 'use12Hours',
@@ -270,11 +255,6 @@ const components: MaterialDescription[] = [
         options: ['time', 'date', 'month', 'year', 'decade']
       },
       {
-        name: 'nextIcon',
-        label: 'nextIcon',
-        title: '自定义下一个图标'
-      },
-      {
         name: 'open',
         label: 'open',
         title: '控制弹层是否展开',
@@ -310,11 +290,6 @@ const components: MaterialDescription[] = [
         defaultValue: {}
       },
       {
-        name: 'prevIcon',
-        label: 'prevIcon',
-        title: '自定义上一个图标'
-      },
-      {
         name: 'presets',
         label: 'presets',
         title: '预设时间范围快捷选择',
@@ -333,21 +308,6 @@ const components: MaterialDescription[] = [
         title: '设置校验状态',
         setters: 'SelectSetter',
         options: ['error', 'warning']
-      },
-      {
-        name: 'suffixIcon',
-        label: 'suffixIcon',
-        title: '自定义的选择框后缀图标'
-      },
-      {
-        name: 'superNextIcon',
-        label: 'superNextIcon',
-        title: '	自定义 << 切换图标'
-      },
-      {
-        name: 'superPrevIcon',
-        label: 'superPrevIcon',
-        title: '	自定义 >> 切换图标'
       },
       {
         name: 'valueFormat',

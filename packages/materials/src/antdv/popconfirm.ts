@@ -9,11 +9,6 @@ const components: MaterialDescription[] = [
     doc: 'https://www.antdv.com/components/popconfirm-cn',
     props: [
       {
-        name: 'cancelButton',
-        label: 'cancelButton',
-        title: '完全自定义取消按钮'
-      },
-      {
         name: 'cancelButtonProps',
         label: 'cancelButtonProps',
         title: 'cancel 按钮 props',
@@ -32,19 +27,6 @@ const components: MaterialDescription[] = [
         title: '点击 Popconfirm 子元素是否弹出气泡确认框',
         setters: 'BooleanSetter',
         defaultValue: false
-      },
-      {
-        name: 'icon',
-        label: 'icon',
-        title: '自定义弹出气泡 Icon 图标',
-        setters: 'StringSetter', //?? vNode
-        defaultValue: '<Icon type="exclamation-circle" />'
-      },
-      {
-        name: 'okButton',
-        label: 'okButton',
-        title: '完全自定义确认按钮',
-        setters: 'StringSetter' //??  slot
       },
       {
         name: 'okButtonProps',

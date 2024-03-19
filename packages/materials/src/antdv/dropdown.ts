@@ -147,11 +147,6 @@ const components: MaterialDescription[] = [
         setters: 'BooleanSetter'
       },
       {
-        name: 'icon',
-        label: 'icon',
-        title: '右侧的 icon'
-      },
-      {
         name: 'loading',
         label: 'loading',
         title: '设置按钮载入状态',

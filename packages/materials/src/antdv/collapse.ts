@@ -82,12 +82,6 @@ const components: MaterialDescription[] = [
         options: ['header', 'disabled']
       },
       {
-        name: 'extra',
-        label: 'extra',
-        title: '自定义渲染每个面板右上角的内容'
-        // setters: 'StringSetter' //?? 	VNode | slot
-      },
-      {
         name: 'forceRender',
         label: 'forceRender',
         title: '被隐藏时是否渲染 DOM 结构',

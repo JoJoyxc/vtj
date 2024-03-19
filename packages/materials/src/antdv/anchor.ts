@@ -74,7 +74,8 @@ const components: MaterialDescription[] = [
       {
         name: 'items',
         label: 'items',
-        title: '数据化配置选项内容，支持通过 children 嵌套'
+        title: '数据化配置选项内容，支持通过 children 嵌套',
+        setters: 'ArraySetter'
       },
       {
         name: 'direction',
@@ -83,13 +84,9 @@ const components: MaterialDescription[] = [
         setters: 'SelectSetter',
         options: ['vertical', 'horizontal'],
         defaultValue: 'vertical'
-      },
-      {
-        name: 'customTitle',
-        label: 'customTitle',
-        title: '使用插槽自定义选项 title'
       }
-    ]
+    ],
+    slots: ['customTitle']
   },
   {
     name: 'AAnchorItem',
@@ -121,6 +118,12 @@ const components: MaterialDescription[] = [
         label: 'title',
         title: '文字内容',
         setters: 'FunctionSetter' //?? VueNode | (item: AnchorItem) => VueNode
+      },
+      {
+        name: 'children',
+        label: 'children',
+        title: '嵌套的 Anchor Link，注意：水平方向该属性不支持',
+        setters: 'ArraySetter'
       }
     ],
     events: ['change', 'click'],

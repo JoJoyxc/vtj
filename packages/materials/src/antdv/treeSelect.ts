@@ -111,12 +111,6 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'notFoundContent',
-        label: 'notFoundContent',
-        title: '当下拉列表为空时显示的内容',
-        defaultValue: 'Not Found'
-      },
-      {
         name: 'placeholder',
         label: 'placeholder',
         title: '选择框默认文字',
@@ -189,21 +183,6 @@ const components: MaterialDescription[] = [
         title: '设置校验状态',
         setters: 'SelectSetter',
         options: ['error', 'warning']
-      },
-      {
-        name: 'suffixIcon',
-        label: 'suffixIcon',
-        title: '自定义的选择框后缀图标'
-      },
-      {
-        name: 'tagRender',
-        label: 'tagRender',
-        title: '自定义 tag 内容，多选时生效'
-      },
-      {
-        name: 'title',
-        label: 'title',
-        title: '自定义标题'
       },
       {
         name: 'treeCheckable',

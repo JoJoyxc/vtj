@@ -38,16 +38,6 @@ const components: MaterialDescription[] = [
         defaultValue: true
       },
       {
-        name: 'clearIcon',
-        label: 'clearIcon',
-        title: '使用插槽自定义清除按钮'
-      },
-      {
-        name: 'default',
-        label: 'default',
-        title: '自定义输入框'
-      },
-      {
         name: 'defaultActiveFirstOption',
         label: 'defaultActiveFirstOption',
         title: '是否默认高亮第一个选项。',
@@ -100,11 +90,6 @@ const components: MaterialDescription[] = [
         label: 'open',
         title: '是否展开下拉菜单',
         setters: 'BooleanSetter'
-      },
-      {
-        name: 'option',
-        label: 'option',
-        title: '通过 option 插槽，自定义节点'
       },
       {
         name: 'options',

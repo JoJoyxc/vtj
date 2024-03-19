@@ -9,11 +9,6 @@ const components: MaterialDescription[] = [
     doc: 'https://www.antdv.com/components/table-cn',
     props: [
       {
-        name: 'bodyCell',
-        label: 'bodyCell',
-        title: '个性化单元格'
-      },
-      {
         name: 'bordered',
         label: 'bordered',
         title: '是否展示外边框和列边框',
@@ -38,16 +33,6 @@ const components: MaterialDescription[] = [
         label: 'components',
         title: '覆盖默认的 table 元素',
         setters: 'ObjectSetter' //?? object
-      },
-      {
-        name: 'customFilterDropdown',
-        label: 'customFilterDropdown',
-        title: '自定义筛选菜单，需要配合 column.customFilterDropdown 使用'
-      },
-      {
-        name: 'customFilterIcon',
-        label: 'customFilterIcon',
-        title: '自定义筛选图标'
       },
       {
         name: 'customHeaderRow',
@@ -81,11 +66,6 @@ const components: MaterialDescription[] = [
         setters: 'ArraySetter' //?? 	string[]
       },
       {
-        name: 'emptyText',
-        label: 'emptyText',
-        title: '自定义空数据时的显示内容'
-      },
-      {
         name: 'expandedRowKeys',
         label: 'expandedRowKeys',
         title: '展开的行，控制属性',
@@ -103,11 +83,6 @@ const components: MaterialDescription[] = [
         title: '控制展开图标是否固定，可选 true left right',
         setters: ['BooleanSetter', 'StringSetter'], //?? boolean | string
         defaultValue: false
-      },
-      {
-        name: 'expandColumnTitle',
-        label: 'expandColumnTitle',
-        title: '自定义展开列表头'
       },
       {
         name: 'expandIcon',
@@ -133,11 +108,6 @@ const components: MaterialDescription[] = [
         label: 'getPopupContainer',
         title: '设置表格内各类浮层的渲染节点，如筛选菜单',
         setters: 'FunctionSetter'
-      },
-      {
-        name: 'headerCell',
-        label: 'headerCell',
-        title: '个性化头部单元格'
       },
       {
         name: 'indentSize',
@@ -247,24 +217,18 @@ const components: MaterialDescription[] = [
         setters: ['BooleanSetter', 'ObjectSetter'] //?? 	boolean | {offsetHeader?: number, offsetScroll?: number, getContainer?: () => HTMLElement}
       },
       {
-        name: 'summary',
-        label: 'summary',
-        title: '总结栏'
-      },
-      {
         name: 'tableLayout',
         label: 'tableLayout',
         title:
           '表格元素的 table-layout 属性，设为 fixed 表示内容不会影响列的布局',
         setters: 'SelectSetter', //?? 	- | 'auto' | 'fixed'
-        options: ['-', 'auto', 'fixed'],
-        defaultValue: '' //?? 固定表头/列或使用了 column.ellipsis 时，默认值为 fixed
+        options: ['-', 'auto', 'fixed']
       },
       {
         name: 'title',
         label: 'title',
         title: '表格标题',
-        setters: 'Function(currentPageData)|v-slot:title="currentPageData"'
+        setters: 'FunctionSetter'
       },
       {
         name: 'transformCellText',

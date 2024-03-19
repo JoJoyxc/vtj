@@ -40,11 +40,6 @@ const components: MaterialDescription[] = [
         label: 'value',
         title: '当前选中的值',
         setters: ['StringSetter', 'NumberSetter']
-      },
-      {
-        name: 'label',
-        label: 'label',
-        title: '使用插槽自定义 label'
       }
     ],
     events: ['change'],

@@ -34,11 +34,6 @@ const components: MaterialDescription[] = [
         defaultValue: true
       },
       {
-        name: 'clearIcon',
-        label: 'clearIcon',
-        title: '自定义清除图标 （allowClear 为 true 时生效）'
-      },
-      {
         name: 'defaultValue',
         label: 'defaultValue',
         title: '输入框默认内容',
@@ -284,11 +279,6 @@ const components: MaterialDescription[] = [
         title: '密码是否可见',
         setters: 'BooleanSetter',
         defaultValue: false
-      },
-      {
-        name: 'iconRender',
-        label: 'iconRender',
-        title: '自定义切换按钮'
       },
       {
         name: 'visibilityToggle',

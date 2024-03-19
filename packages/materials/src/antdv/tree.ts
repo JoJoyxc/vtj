@@ -148,16 +148,6 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'switcherIcon',
-        label: 'switcherIcon',
-        title: '自定义树节点的展开/折叠图标'
-      },
-      {
-        name: 'title',
-        label: 'title',
-        title: '自定义标题'
-      },
-      {
         name: 'treeData',
         label: 'treeData',
         title:

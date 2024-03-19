@@ -16,20 +16,10 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'closeIcon',
-        label: 'closeIcon',
-        title: '自定义关闭按钮'
-      },
-      {
         name: 'color',
         label: 'color',
         title: '标签色',
         setters: 'StringSetter'
-      },
-      {
-        name: 'icon',
-        label: 'icon',
-        title: '设置图标'
       },
       {
         name: 'bordered',

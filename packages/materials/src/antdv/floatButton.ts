@@ -9,11 +9,6 @@ const components: MaterialDescription[] = [
     doc: 'https://www.antdv.com/components/float-button-cn',
     props: [
       {
-        name: 'icon',
-        label: 'icon',
-        title: '自定义图标'
-      },
-      {
         name: 'description',
         label: 'description',
         title: '文字及其它内容',

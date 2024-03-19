@@ -9,16 +9,6 @@ const components: MaterialDescription[] = [
     doc: 'https://www.antdv.com/components/result-cn',
     props: [
       {
-        name: 'extra',
-        label: 'extra',
-        title: '操作区'
-      },
-      {
-        name: 'icon',
-        label: 'icon',
-        title: '自定义 icon'
-      },
-      {
         name: 'status',
         label: 'status',
         title: '结果的状态,决定图标和颜色',

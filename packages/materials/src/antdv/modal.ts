@@ -49,11 +49,6 @@ const components: MaterialDescription[] = [
         defaultValue: true
       },
       {
-        name: 'closeIcon',
-        label: 'closeIcon',
-        title: '自定义关闭图标'
-      },
-      {
         name: 'confirmLoading',
         label: 'confirmLoading',
         title: '确定按钮 loading',

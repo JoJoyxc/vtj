@@ -30,11 +30,6 @@ const components: MaterialDescription[] = [
         defaultValue: true
       },
       {
-        name: 'dateRender',
-        label: 'dateRender',
-        title: '自定义日期单元格的内容'
-      },
-      {
         name: 'disabled',
         label: 'disabled',
         title: '禁用',
@@ -87,11 +82,6 @@ const components: MaterialDescription[] = [
         options: ['time', 'date', 'month', 'year', 'decade']
       },
       {
-        name: 'nextIcon',
-        label: 'nextIcon',
-        title: '自定义下一个图标'
-      },
-      {
         name: 'open',
         label: 'open',
         title: '控制弹层是否展开',
@@ -127,11 +117,6 @@ const components: MaterialDescription[] = [
         defaultValue: {}
       },
       {
-        name: 'prevIcon',
-        label: 'prevIcon',
-        title: '自定义上一个图标'
-      },
-      {
         name: 'presets',
         label: 'presets',
         title: '预设时间范围快捷选择',
@@ -150,21 +135,6 @@ const components: MaterialDescription[] = [
         title: '设置校验状态',
         setters: 'SelectSetter',
         options: ['error', 'warning']
-      },
-      {
-        name: 'suffixIcon',
-        label: 'suffixIcon',
-        title: '自定义的选择框后缀图标'
-      },
-      {
-        name: 'superNextIcon',
-        label: 'superNextIcon',
-        title: '	自定义 << 切换图标'
-      },
-      {
-        name: 'superPrevIcon',
-        label: 'superPrevIcon',
-        title: '	自定义 >> 切换图标'
       },
       {
         name: 'valueFormat',
@@ -193,12 +163,6 @@ const components: MaterialDescription[] = [
         defaultValue: 'YYYY-MM-DD'
       },
       {
-        name: 'renderExtraFooter',
-        label: 'renderExtraFooter',
-        title: '在面板中添加额外的页脚'
-        // setters: '' //?? 	v-slot:renderExtraFooter="mode"
-      },
-      {
         name: 'showNow',
         label: 'showNow',
         title: '当设定了 showTime 的时候，面板是否显示“此刻”按钮',
@@ -216,7 +180,6 @@ const components: MaterialDescription[] = [
         label: 'showTime.defaultValue',
         title: '设置用户选择日期时默认的时分秒',
         setters: 'FunctionSetter' //?? 	dayjs
-        // defaultValue: 'dayjs()' //??
       },
       {
         name: 'showToday',
@@ -329,11 +292,6 @@ const components: MaterialDescription[] = [
         options: ['time', 'date', 'month', 'year', 'decade']
       },
       {
-        name: 'nextIcon',
-        label: 'nextIcon',
-        title: '自定义下一个图标'
-      },
-      {
         name: 'open',
         label: 'open',
         title: '控制弹层是否展开',
@@ -369,11 +327,6 @@ const components: MaterialDescription[] = [
         defaultValue: {}
       },
       {
-        name: 'prevIcon',
-        label: 'prevIcon',
-        title: '自定义上一个图标'
-      },
-      {
         name: 'presets',
         label: 'presets',
         title: '预设时间范围快捷选择',
@@ -394,40 +347,18 @@ const components: MaterialDescription[] = [
         options: ['error', 'warning']
       },
       {
-        name: 'suffixIcon',
-        label: 'suffixIcon',
-        title: '自定义的选择框后缀图标'
-      },
-      {
-        name: 'superNextIcon',
-        label: 'superNextIcon',
-        title: '	自定义 << 切换图标'
-      },
-      {
-        name: 'superPrevIcon',
-        label: 'superPrevIcon',
-        title: '	自定义 >> 切换图标'
-      },
-      {
         name: 'valueFormat',
         label: 'valueFormat',
         title:
           '可选，绑定值的格式，对 value、defaultValue、defaultPickerValue 起作用。不指定则绑定值为 dayjs 对象',
         setters: 'StringSetter'
       },
-      //
       {
         name: 'allowEmpty',
         label: 'allowEmpty',
         title: '允许起始项部分为空',
         setters: ['BooleanSetter', 'BooleanSetter'],
         defaultValue: [false, false]
-      },
-      {
-        name: 'dateRender',
-        label: 'dateRender',
-        title: '自定义日期单元格的内容'
-        // setters: '' //?? 	v-slot:dateRender="{current: dayjs, today: dayjs, info: { range: start | end }}"
       },
       {
         name: 'defaultPickerValue',
@@ -465,12 +396,6 @@ const components: MaterialDescription[] = [
         label: 'ranges',
         title: '预设时间范围快捷选择',
         setters: 'ObjectSetter' //??  	{ [range: string]: dayjs[] } | { [range: string]: () => dayjs[] }
-      },
-      {
-        name: 'renderExtraFooter',
-        label: 'renderExtraFooter',
-        title: '在面板中添加额外的页脚'
-        // setters: '' //??  	v-slot:renderExtraFooter="mode"
       },
       {
         name: 'separator',

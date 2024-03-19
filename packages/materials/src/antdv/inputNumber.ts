@@ -9,16 +9,6 @@ const components: MaterialDescription[] = [
     doc: 'https://www.antdv.com/components/input-number-cn',
     props: [
       {
-        name: 'addonAfter',
-        label: 'addonAfter',
-        title: '带标签的 input，设置后置标签'
-      },
-      {
-        name: 'addonBefore',
-        label: 'addonBefore',
-        title: '带标签的 input，设置前置标签'
-      },
-      {
         name: 'autofocus',
         label: 'autofocus',
         title: '自动获取焦点',
@@ -98,11 +88,6 @@ const components: MaterialDescription[] = [
         setters: 'NumberSetter'
       },
       {
-        name: 'prefix',
-        label: 'prefix',
-        title: '带有前缀图标的 input'
-      },
-      {
         name: 'size',
         label: 'size',
         title: '输入框大小',
@@ -129,16 +114,6 @@ const components: MaterialDescription[] = [
           '字符值模式，开启后支持高精度小数。同时 change 事件将返回 string 类型',
         setters: 'BooleanSetter',
         defaultValue: 1
-      },
-      {
-        name: 'upIcon',
-        label: 'upIcon',
-        title: '自定义上箭头图标'
-      },
-      {
-        name: 'downIcon',
-        label: 'downIcon',
-        title: '自定义下箭头图标'
       },
       {
         name: 'value',

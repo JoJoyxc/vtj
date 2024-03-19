@@ -33,11 +33,6 @@ const components: MaterialDescription[] = [
         defaultValue: 'small'
       },
       {
-        name: 'split',
-        label: 'split',
-        title: '设置拆分'
-      },
-      {
         name: 'wrap',
         label: 'wrap',
         title: '是否自动换行，仅在 horizontal 时有效',

@@ -102,21 +102,6 @@ const components: MaterialDescription[] = [
         defaultValue: true
       },
       {
-        name: 'cover',
-        label: 'cover',
-        title: '展示的图片或者视频'
-      },
-      {
-        name: 'title',
-        label: 'title',
-        title: '标题'
-      },
-      {
-        name: 'description',
-        label: 'description',
-        title: '主要描述部分'
-      },
-      {
         name: 'placement',
         label: 'placement',
         title: '引导卡片相对于目标元素的位置',

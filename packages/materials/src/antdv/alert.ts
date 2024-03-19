@@ -9,11 +9,6 @@ const components: MaterialDescription[] = [
     doc: 'https://www.antdv.com/components/alert-cn',
     props: [
       {
-        name: 'action',
-        label: 'action',
-        title: '自定义操作项'
-      },
-      {
         name: 'afterClose',
         label: 'afterClose',
         title: '关闭动画结束后触发的回调函数',
@@ -33,11 +28,6 @@ const components: MaterialDescription[] = [
         setters: 'BooleanSetter'
       },
       {
-        name: 'closeIcon',
-        label: 'closeIcon',
-        title: '自定义关闭 Icon'
-      },
-      {
         name: 'closeText',
         label: 'closeText',
         title: '自定义关闭按钮',
@@ -48,12 +38,6 @@ const components: MaterialDescription[] = [
         label: 'description',
         title: '警告提示的辅助性文字介绍',
         setters: 'StringSetter'
-      },
-      {
-        name: 'icon',
-        label: 'icon',
-        title: '自定义图标，showIcon 为 true 时有效'
-        // setters: 'StringSetter' //?? vNode
       },
       {
         name: 'message',

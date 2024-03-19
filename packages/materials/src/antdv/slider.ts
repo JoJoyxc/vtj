@@ -38,11 +38,6 @@ const components: MaterialDescription[] = [
         defaultValue: true
       },
       {
-        name: 'mark',
-        label: 'mark',
-        title: '自定义刻度标记'
-      },
-      {
         name: 'marks',
         label: 'marks',
         title:

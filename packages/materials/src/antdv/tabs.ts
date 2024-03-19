@@ -54,8 +54,8 @@ const components: MaterialDescription[] = [
         name: 'tabBarGutter',
         label: 'tabBarGutter',
         title: 'tabs 之间的间隙',
-        setters: 'NumberSetter',
-        defaultValue: 0 //?? 无
+        setters: 'NumberSetter'
+        // defaultValue: 0 //?? 无
       },
       {
         name: 'tabBarStyle',
@@ -78,7 +78,8 @@ const components: MaterialDescription[] = [
         defaultValue: 'line'
       }
     ],
-    events: ['change', 'edit', 'tabClick', 'tabScroll', 'update:activeKey']
+    events: ['change', 'edit', 'tabClick', 'tabScroll', 'update:activeKey'],
+    slots: ['addIcon', 'leftExtra', 'moreIcon', 'renderTabBar', 'rightExtra']
   },
   {
     name: 'ATabPane',

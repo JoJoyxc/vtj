@@ -114,11 +114,6 @@ const components: MaterialDescription[] = [
         defaultValue: 'number'
       },
       {
-        name: 'label',
-        label: 'label',
-        title: '选项的标题'
-      },
-      {
         name: 'disabled',
         label: 'disabled',
         title: '是否可选',

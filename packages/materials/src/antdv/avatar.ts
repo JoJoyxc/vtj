@@ -36,11 +36,6 @@ const components: MaterialDescription[] = [
         defaultValue: 4
       },
       {
-        name: 'icon',
-        label: 'icon',
-        title: '设置头像的图标类型，可设为 Icon 的 type 或 VNode'
-      },
-      {
         name: 'loadError',
         label: 'loadError',
         title: '图片加载失败的事件，返回 false 会关闭组件默认的 fallback 行为',

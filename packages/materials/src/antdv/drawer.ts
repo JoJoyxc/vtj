@@ -35,11 +35,6 @@ const components: MaterialDescription[] = [
         defaultValue: true
       },
       {
-        name: 'closeIcon',
-        label: 'closeIcon',
-        title: '自定义关闭图标'
-      },
-      {
         name: 'contentWrapperStyle',
         label: 'contentWrapperStyle',
         title: '可用于设置 Drawer 包裹内容部分的样式',
@@ -51,16 +46,6 @@ const components: MaterialDescription[] = [
         title: '关闭时销毁 Drawer 里的子元素',
         setters: 'BooleanSetter',
         defaultValue: false
-      },
-      {
-        name: 'extra',
-        label: 'extra',
-        title: '抽屉右上角的操作区域'
-      },
-      {
-        name: 'footer',
-        label: 'footer',
-        title: '抽屉的页脚'
       },
       {
         name: 'footerStyle',

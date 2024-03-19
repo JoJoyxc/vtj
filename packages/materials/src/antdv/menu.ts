@@ -56,13 +56,6 @@ const components: MaterialDescription[] = [
         setters: 'ArraySetter'
       },
       {
-        name: 'overflowedIndicator',
-        label: 'overflowedIndicator',
-        title: '用于自定义 Menu 水平空间不足时的省略收缩的图标'
-        // setters: ,    // ?? slot
-        // defaultValue: , // ?? 	<EllipsisOutlined />
-      },
-      {
         name: 'selectable',
         label: 'selectable',
         title: '是否允许选中',
@@ -136,11 +129,6 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'icon',
-        label: 'icon',
-        title: '菜单图标'
-      },
-      {
         name: 'key',
         label: 'key',
         title: 'item 的唯一标志',
@@ -170,16 +158,6 @@ const components: MaterialDescription[] = [
         title: '是否禁用',
         setters: 'BooleanSetter',
         defaultValue: false
-      },
-      {
-        name: 'expandIcon',
-        label: 'expandIcon',
-        title: '自定义 Menu 展开收起图标'
-      },
-      {
-        name: 'icon',
-        label: 'icon',
-        title: '菜单图标'
       },
       {
         name: 'key',

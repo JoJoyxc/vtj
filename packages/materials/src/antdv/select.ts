@@ -37,12 +37,6 @@ const components: MaterialDescription[] = [
         defaultValue: true
       },
       {
-        name: 'clearIcon',
-        label: 'clearIcon',
-        title: '自定义的多选框清空图标'
-        // setters: '' //?? VNode | slot
-      },
-      {
         name: 'defaultActiveFirstOption',
         label: 'defaultActiveFirstOption',
         title: '是否默认高亮第一个选项',
@@ -157,12 +151,6 @@ const components: MaterialDescription[] = [
         setters: 'NumberSetter'
       },
       {
-        name: 'menuItemSelectedIcon',
-        label: 'menuItemSelectedIcon',
-        title: '自定义当前选中的条目图标'
-        // setters: '' //?? 	VNode | slot
-      },
-      {
         name: 'mode',
         label: 'mode',
         title: '设置 Select 的模式为多选或标签',
@@ -181,12 +169,6 @@ const components: MaterialDescription[] = [
         label: 'open',
         title: '是否展开下拉菜单',
         setters: 'BooleanSetter'
-      },
-      {
-        name: 'option',
-        label: 'option',
-        title: '通过 option 插槽，自定义节点'
-        // setters: '' //??   v-slot:option="{value, label, [disabled, key, title]}",
       },
       {
         name: 'optionFilterProp',
@@ -225,12 +207,6 @@ const components: MaterialDescription[] = [
         defaultValue: 'bottomLeft'
       },
       {
-        name: 'removeIcon',
-        label: 'removeIcon',
-        title: '自定义的多选框清除图标'
-        // setters: 'StringSetter' //?? 	VNode | slot
-      },
-      {
         name: 'searchValue',
         label: 'searchValue',
         title: '控制搜索文本',
@@ -264,12 +240,6 @@ const components: MaterialDescription[] = [
         title: '设置校验状态',
         setters: 'SelectSetter',
         options: ['error', 'warning']
-      },
-      {
-        name: 'suffixIcon',
-        label: 'suffixIcon',
-        title: '自定义的选择框后缀图标'
-        // setters: 'StringSetter' //?? VNode | slot
       },
       {
         name: 'tagRender',

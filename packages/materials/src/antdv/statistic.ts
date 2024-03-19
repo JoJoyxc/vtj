@@ -15,11 +15,6 @@ const components: MaterialDescription[] = [
         defaultValue: '.'
       },
       {
-        name: 'formatter',
-        label: 'formatter',
-        title: '自定义数值展示'
-      },
-      {
         name: 'groupSeparator',
         label: 'groupSeparator',
         title: '设置千分位标识符',

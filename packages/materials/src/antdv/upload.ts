@@ -53,11 +53,6 @@ const components: MaterialDescription[] = [
         setters: 'BooleanSetter'
       },
       {
-        name: 'downloadIcon',
-        label: 'downloadIcon',
-        title: '自定义下载 icon'
-      },
-      {
         name: 'fileList',
         label: 'fileList',
         title: '已经上传的文件列表（受控）',
@@ -70,20 +65,10 @@ const components: MaterialDescription[] = [
         setters: 'ObjectSetter'
       },
       {
-        name: 'iconRender',
-        label: 'iconRender',
-        title: '自定义显示 icon'
-      },
-      {
         name: 'isImageUrl',
         label: 'isImageUrl',
         title: '自定义缩略图是否使用 <img /> 标签进行显示',
         setters: 'FunctionSetter'
-      },
-      {
-        name: 'itemRender',
-        label: 'itemRender',
-        title: '自定义上传列表项'
       },
       {
         name: 'listType',
@@ -133,11 +118,6 @@ const components: MaterialDescription[] = [
         label: 'previewFile',
         title: '自定义文件预览逻辑',
         setters: 'FunctionSetter'
-      },
-      {
-        name: 'previewIcon',
-        label: 'previewIcon',
-        title: '自定义预览 icon'
       },
       {
         name: 'progress',

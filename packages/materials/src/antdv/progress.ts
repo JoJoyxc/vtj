@@ -81,6 +81,7 @@ const components: MaterialDescription[] = [
         setters: ['NumberSetter', 'ArraySetter', 'small', 'default'], //?? 	number | [number, number] | "small" | "default"
         defaultValue: 'default'
       },
+      // !
       //?? type="line"
       {
         name: 'steps',

@@ -9,16 +9,6 @@ const components: MaterialDescription[] = [
     doc: 'https://www.antdv.com/components/calandar-cn',
     props: [
       {
-        name: 'dateCellRender',
-        label: 'dateCellRender',
-        title: '作用域插槽，用来自定义渲染日期单元格，返回内容会被追加到单元格'
-      },
-      {
-        name: 'dateFullCellRender',
-        label: 'dateFullCellRender',
-        title: '作用域插槽，自定义渲染日期单元格，返回内容覆盖单元格'
-      },
-      {
         name: 'disabledDate',
         label: 'disabledDate',
         title: '不可选择的日期',
@@ -30,11 +20,6 @@ const components: MaterialDescription[] = [
         title: '是否全屏显示',
         setters: 'BooleanSetter',
         defaultValue: true
-      },
-      {
-        name: 'headerRender',
-        label: 'headerRender',
-        title: '自定义头部内容'
       },
       {
         name: 'locale',
@@ -49,11 +34,6 @@ const components: MaterialDescription[] = [
         setters: 'SelectSetter',
         options: ['month', 'year'],
         defaultValue: 'month'
-      },
-      {
-        name: 'monthCellRender',
-        label: 'monthCellRender',
-        title: '作用域插槽，自定义渲染月单元格，返回内容会被追加到单元格'
       },
       {
         name: 'validRange',
