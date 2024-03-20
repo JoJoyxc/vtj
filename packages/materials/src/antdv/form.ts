@@ -156,9 +156,9 @@ const components: MaterialDescription[] = [
   },
   {
     name: 'AFormItem',
-    alias: 'Item',
+    alias: 'AFormItem',
     label: '表单项',
-    parent: 'Form',
+    parent: 'Form', // !
     categoryId: 'input',
     doc: 'https://www.antdv.com/components/form-cn',
     props: [

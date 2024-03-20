@@ -12,7 +12,7 @@ const components: MaterialDescription[] = [
         name: 'format',
         label: 'format',
         title: '内容的模板函数',
-        setters: 'FunctionSetter' //?? 	function(percent, successPercent)
+        setters: 'FunctionSetter'
       },
       {
         name: 'percent',
@@ -45,14 +45,14 @@ const components: MaterialDescription[] = [
         label: 'strokeLinecap',
         title: '进度条的样式',
         setters: 'SelectSetter',
-        options: ['round', 'butt', 'square'], //?? round | butt | square，区别详见 stroke-linecap
+        options: ['round', 'butt', 'square'],
         defaultValue: 'round'
       },
       {
         name: 'success',
         label: 'success',
         title: '成功进度条相关配置',
-        setters: 'ObjectSetter' //?? 	{ percent: number, strokeColor: string }
+        setters: 'ObjectSetter'
       },
       {
         name: 'title',
@@ -81,7 +81,6 @@ const components: MaterialDescription[] = [
         setters: ['NumberSetter', 'ArraySetter', 'small', 'default'], //?? 	number | [number, number] | "small" | "default"
         defaultValue: 'default'
       },
-      // !
       //?? type="line"
       {
         name: 'steps',
@@ -97,12 +96,12 @@ const components: MaterialDescription[] = [
         setters: ['StringSetter', 'ArraySetter', 'ObjectSetter'] //?? 	string | string[] | { from: string; to: string; direction: string }
       },
       //?? type="circle"
-      {
-        name: 'strokeColor',
-        label: 'strokeColor',
-        title: '圆形进度条线的色彩，传入 object 时为渐变',
-        setters: ['StringSetter', 'ObjectSetter'] //?? string | object
-      },
+      // {
+      //   name: 'strokeColor',
+      //   label: 'strokeColor',
+      //   title: '圆形进度条线的色彩，传入 object 时为渐变',
+      //   setters: ['StringSetter', 'ObjectSetter'] //?? string | object
+      // },
       {
         name: 'strokeWidth',
         label: 'strokeWidth',
@@ -125,15 +124,20 @@ const components: MaterialDescription[] = [
         setters: 'SelectSetter',
         options: ['top', 'bottom', 'left', 'right'],
         defaultValue: 'bottom'
-      },
-      {
-        name: 'strokeWidth',
-        label: 'strokeWidth',
-        title: '仪表盘进度条线的宽度，单位是进度条画布宽度的百分比',
-        setters: 'NumberSetter',
-        defaultValue: 6
       }
-    ]
+      // {
+      //   name: 'strokeWidth',
+      //   label: 'strokeWidth',
+      //   title: '仪表盘进度条线的宽度，单位是进度条画布宽度的百分比',
+      //   setters: 'NumberSetter',
+      //   defaultValue: 6
+      // }
+    ],
+    snippet: {
+      props: {
+        percent: 40
+      }
+    }
   }
 ];
 export default components;

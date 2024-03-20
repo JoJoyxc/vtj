@@ -29,7 +29,19 @@ const components: MaterialDescription[] = [
         setters: 'FunctionSetter'
       }
     ],
-    events: ['change']
+    events: ['change'],
+    snippet: {
+      props: {
+        offsetTop: '30'
+      },
+      children: [
+        {
+          name: 'AButton',
+          props: { type: 'primary' },
+          children: 'Affix Button'
+        }
+      ]
+    }
   }
 ];
 export default components;

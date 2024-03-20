@@ -72,7 +72,41 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter' //?? 	string | VNode | slot
       }
     ],
-    slots: ['extra', 'title']
+    slots: ['extra', 'title'],
+    snippet: {
+      props: {
+        title: 'User Info'
+      },
+      children: [
+        {
+          name: 'ADescriptionsItem',
+          props: { label: 'UserName' },
+          children: 'chenshuishui'
+        },
+        {
+          name: 'ADescriptionsItem',
+          props: { label: 'Telephone' },
+          children: '18912345678'
+        },
+        {
+          name: 'ADescriptionsItem',
+          props: { label: 'Live' },
+          children: 'HongKong'
+        },
+        {
+          name: 'ADescriptionsItem',
+          props: { label: 'Remark' },
+          children: 'empty'
+        },
+        {
+          name: 'ADescriptionsItem',
+          props: {
+            label: 'Address'
+          },
+          children: '弥敦道9号, HongKong, China'
+        }
+      ]
+    }
   },
   {
     name: 'ADescriptionsItem',
@@ -107,7 +141,13 @@ const components: MaterialDescription[] = [
         defaultValue: 1
       }
     ],
-    slots: ['label']
+    slots: ['label'],
+    snippet: {
+      props: {
+        label: 'Address'
+      },
+      children: '弥敦道9号, HongKong, China'
+    }
   }
 ];
 export default components;

@@ -79,7 +79,39 @@ const components: MaterialDescription[] = [
       }
     ],
     events: ['change', 'edit', 'tabClick', 'tabScroll', 'update:activeKey'],
-    slots: ['addIcon', 'leftExtra', 'moreIcon', 'renderTabBar', 'rightExtra']
+    slots: ['addIcon', 'leftExtra', 'moreIcon', 'renderTabBar', 'rightExtra'],
+    snippet: {
+      props: {
+        activeKey: '1',
+        centered: true
+      },
+      children: [
+        {
+          name: 'ATabPane',
+          props: {
+            key: '1',
+            tab: 'Tab 1'
+          },
+          children: 'Content of Tab Pane 1'
+        },
+        {
+          name: 'ATabPane',
+          props: {
+            key: '2',
+            tab: 'Tab 2'
+          },
+          children: 'Content of Tab Pane 2'
+        },
+        {
+          name: 'ATabPane',
+          props: {
+            key: '3',
+            tab: 'Tab 3'
+          },
+          children: 'Content of Tab Pane 3'
+        }
+      ]
+    }
   },
   {
     name: 'ATabPane',
@@ -109,7 +141,14 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter'
       }
     ],
-    slots: ['closeIcon', 'tab']
+    slots: ['closeIcon', 'tab'],
+    snippet: {
+      props: {
+        key: '1',
+        tab: 'Tab 1'
+      },
+      children: 'Content of Tab Pane 1'
+    }
   }
 ];
 export default components;

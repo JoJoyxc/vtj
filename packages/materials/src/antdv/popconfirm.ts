@@ -191,7 +191,15 @@ const components: MaterialDescription[] = [
       'okText',
       'title',
       'description'
-    ]
+    ],
+    snippet: {
+      props: {
+        title: 'Are you sure delete this task?',
+        okText: 'yes',
+        cancelText: 'No'
+      },
+      children: [{ name: 'a', children: '气泡确认框' }]
+    }
   }
 ];
 export default components;

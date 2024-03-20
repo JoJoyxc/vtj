@@ -30,7 +30,10 @@ const components: MaterialDescription[] = [
       }
     ],
     events: ['close'],
-    slots: ['closeIcon', 'icon']
+    slots: ['closeIcon', 'icon'],
+    snippet: {
+      children: 'Tag'
+    }
   },
   {
     name: 'ACheckableTag',
@@ -48,7 +51,22 @@ const components: MaterialDescription[] = [
         defaultValue: false
       }
     ],
-    events: ['change', 'update:checked']
+    events: ['change', 'update:checked'],
+    snippet: {
+      children: 'checkTag',
+      props: {
+        checked: true
+      },
+      directives: [
+        {
+          name: 'vFor',
+          value: {
+            type: 'JSExpression',
+            value: '4'
+          }
+        }
+      ]
+    }
   }
 ];
 export default components;

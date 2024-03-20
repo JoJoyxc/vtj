@@ -58,7 +58,13 @@ const components: MaterialDescription[] = [
         setters: 'ObjectSetter' //?? style
       }
     ],
-    slots: ['formatter', 'prefix', 'suffix', 'title']
+    slots: ['formatter', 'prefix', 'suffix', 'title'],
+    snippet: {
+      props: {
+        title: 'Active Users',
+        value: '112893'
+      }
+    }
   },
   {
     name: 'AStatisticCountdown',
@@ -107,7 +113,13 @@ const components: MaterialDescription[] = [
       }
     ],
     events: ['finish'],
-    slots: ['prefix', 'suffix', 'title']
+    slots: ['prefix', 'suffix', 'title'],
+    snippet: {
+      props: {
+        title: 'countDown',
+        value: 1791998311585
+      }
+    }
   }
 ];
 export default components;

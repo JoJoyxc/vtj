@@ -79,7 +79,29 @@ const components: MaterialDescription[] = [
       }
     ],
     events: ['close', 'finish', 'change', 'update:current'],
-    slots: ['indicatorsRender']
+    slots: ['indicatorsRender'],
+    snippet: {
+      props: {
+        open: true,
+        steps: [
+          {
+            title: 'Center',
+            description: 'Displayed in the center of screen.',
+            target: null
+          },
+          {
+            title: 'Center',
+            description: 'On the right of target.',
+            target: null
+          },
+          {
+            title: 'Center',
+            description: 'On the top of target.',
+            target: null
+          }
+        ]
+      }
+    }
   },
   {
     name: 'ATourSteps ',

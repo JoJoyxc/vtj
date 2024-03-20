@@ -59,7 +59,13 @@ const components: MaterialDescription[] = [
       }
     ],
     events: ['error'],
-    slots: ['placeholder', 'previewMask']
+    slots: ['placeholder', 'previewMask'],
+    snippet: {
+      props: {
+        width: '200px',
+        src: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
+      }
+    }
   }
 ];
 export default components;

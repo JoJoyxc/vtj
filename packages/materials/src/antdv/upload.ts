@@ -2,8 +2,8 @@ import type { MaterialDescription } from '@vtj/core';
 
 const components: MaterialDescription[] = [
   {
-    name: 'AUpload ',
-    alias: 'Upload ',
+    name: 'AUpload',
+    alias: 'Upload',
     label: '上传',
     categoryId: 'input',
     doc: 'https://www.antdv.com/components/upload-cn',
@@ -162,7 +162,22 @@ const components: MaterialDescription[] = [
       'itemRender',
       'previewIcon',
       'removeIcon'
-    ]
+    ],
+    snippet: {
+      props: {
+        fileList: [],
+        name: 'file',
+        headers: { authorization: 'authorization-text' },
+        action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76'
+      },
+      children: [
+        {
+          name: 'AButton',
+          // children: [{ name: 'uploadOutlined' }]
+          children: 'Click to Upload'
+        }
+      ]
+    }
   }
 ];
 export default components;

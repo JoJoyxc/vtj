@@ -69,7 +69,13 @@ const components: MaterialDescription[] = [
       'description',
       'icon',
       'message'
-    ]
+    ],
+    snippet: {
+      props: {
+        message: 'Success Text',
+        type: 'success'
+      }
+    }
   }
 ];
 export default components;

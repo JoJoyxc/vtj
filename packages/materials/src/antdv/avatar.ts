@@ -70,7 +70,15 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter'
       }
     ],
-    slots: ['icon']
+    slots: ['icon'], //!
+    snippet: {
+      props: {
+        size: '64'
+      },
+      children: [
+        { name: 'Template', slot: 'icon', children: [{ name: 'UserOutlined' }] }
+      ]
+    }
   },
   {
     name: 'AAvatarGroup',
@@ -124,7 +132,41 @@ const components: MaterialDescription[] = [
         options: ['circle', 'square'],
         defaultValue: 'circle'
       }
-    ]
+    ],
+    snippet: {
+      children: [
+        {
+          name: 'AAvatar',
+          props: {
+            size: 64,
+            src: 'https://xsgames.co/randomusers/avatar.php?g=pixel&key=1'
+          }
+        },
+        {
+          name: 'AAvatar',
+          children: 'CC',
+          props: {
+            size: 64
+          }
+        },
+        {
+          name: 'ATooltip',
+          props: {
+            title: 'Ant User',
+            placement: 'top',
+            children: [
+              {
+                name: 'AAvatar',
+                props: {
+                  style: { backgroundColor: '#87d068' },
+                  src: 'https://xsgames.co/randomusers/avatar.php?g=pixel&key=1'
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
   }
 ];
 export default components;

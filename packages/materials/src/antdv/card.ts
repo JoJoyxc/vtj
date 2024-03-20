@@ -95,7 +95,25 @@ const components: MaterialDescription[] = [
       'extra',
       'tabBarExtraContent',
       'title'
-    ]
+    ],
+    snippet: {
+      props: {
+        title: 'Default size card',
+        style: { width: '300px' }
+      },
+      children: [
+        {
+          name: '',
+          slot: 'extra',
+          children: [
+            { name: 'component', props: { is: 'a' }, children: 'more' }
+          ]
+        },
+        { name: 'component', props: { is: 'p' }, children: 'card content' },
+        { name: 'component', props: { is: 'p' }, children: 'card content' },
+        { name: 'component', props: { is: 'p' }, children: 'card content' }
+      ]
+    }
   },
   {
     name: 'ACardGrid',
@@ -103,7 +121,13 @@ const components: MaterialDescription[] = [
     parent: 'Card',
     label: '网格型内嵌卡片',
     categoryId: 'data',
-    doc: 'https://www.antdv.com/components/card-cn'
+    doc: 'https://www.antdv.com/components/card-cn',
+    snippet: {
+      props: {
+        style: { width: '25%', textAline: 'center' }
+      },
+      children: 'content'
+    }
   },
   {
     name: 'ACardMeta',

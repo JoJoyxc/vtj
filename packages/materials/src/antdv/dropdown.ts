@@ -154,12 +154,6 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'overlay',
-        label: 'overlay',
-        title: '菜单',
-        setters: 'ObjectSetter' //?? Menu
-      },
-      {
         name: 'placement',
         label: 'placement',
         title: '菜单弹出位置',

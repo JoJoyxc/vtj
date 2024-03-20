@@ -118,13 +118,9 @@ const components: MaterialDescription[] = [
         setters: 'SelectSetter',
         options: ['small', 'middle', 'large', 'string', 'number'],
         defaultValue: 'normal'
-      },
-      {
-        name: 'component',
-        label: 'component',
-        title: '自定义元素类型'
       }
-    ]
+    ],
+    slots: ['component']
   }
 ];
 

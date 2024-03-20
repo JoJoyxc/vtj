@@ -179,7 +179,22 @@ const components: MaterialDescription[] = [
       }
     ],
     events: ['afterOpenChange', 'close', 'update:open'],
-    slots: ['closeIcon', 'extra', 'footer', 'title']
+    slots: ['closeIcon', 'extra', 'footer', 'title'],
+    snippet: {
+      props: {
+        open: true,
+        style: {
+          color: 'red'
+        },
+        title: 'Basic Drawer',
+        placement: 'right'
+      },
+      children: [
+        { name: 'p', children: 'Some contents...' },
+        { name: 'p', children: 'Some contents...' },
+        { name: 'p', children: 'Some contents...' }
+      ]
+    }
   }
 ];
 export default components;

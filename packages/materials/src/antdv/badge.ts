@@ -78,7 +78,11 @@ const components: MaterialDescription[] = [
         defaultValue: 'count'
       }
     ],
-    slots: ['count']
+    slots: ['count'],
+    snippet: {
+      props: { count: 5 },
+      children: [{ name: 'AAvatar', props: { shape: 'square', size: 'large' } }]
+    }
   },
   {
     name: 'ABadgeRibbon',
@@ -109,7 +113,17 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter' //?? string | VNode | slot
       }
     ],
-    slots: ['text']
+    slots: ['text'],
+    snippet: {
+      props: { text: 'Hippies' },
+      children: [
+        {
+          name: 'ACard',
+          props: { title: 'Pushes open the window', size: 'small' },
+          children: 'and raises the spyglass.'
+        }
+      ]
+    }
   }
 ];
 export default components;

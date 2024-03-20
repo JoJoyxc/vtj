@@ -36,7 +36,21 @@ const components: MaterialDescription[] = [
         defaultValue: false
       }
     ],
-    slots: ['pending', 'pendingDot']
+    slots: ['pending', 'pendingDot'],
+    snippet: {
+      children: [
+        { name: 'ATimelineItem', children: 'Create a services site 2015-09-01' }
+      ],
+      directives: [
+        {
+          name: 'vFor',
+          value: {
+            type: 'JSExpression',
+            value: '4'
+          }
+        }
+      ]
+    }
   },
   {
     name: 'ATimelineItem',
@@ -73,7 +87,10 @@ const components: MaterialDescription[] = [
         options: ['left', 'right']
       }
     ],
-    slots: ['dot', 'label']
+    slots: ['dot', 'label'],
+    snippet: {
+      children: '创建服务现场 2015-09-01'
+    }
   }
 ];
 export default components;

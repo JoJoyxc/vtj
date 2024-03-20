@@ -86,11 +86,48 @@ const components: MaterialDescription[] = [
         defaultValue: 'vertical'
       }
     ],
-    slots: ['customTitle']
+    slots: ['customTitle'],
+    snippet: {
+      props: {
+        direction: 'horizontal',
+        items: [
+          {
+            key: 'horizontally-part-1',
+            href: '#horizontally-part-1',
+            title: 'Part 1'
+          },
+          {
+            key: 'horizontally-part-2',
+            href: '#horizontally-part-2',
+            title: 'Part 2'
+          },
+          {
+            key: 'horizontally-part-3',
+            href: '#horizontally-part-3',
+            title: 'Part 3'
+          },
+          {
+            key: 'horizontally-part-4',
+            href: '#horizontally-part-4',
+            title: 'Part 4'
+          },
+          {
+            key: 'horizontally-part-5',
+            href: '#horizontally-part-5',
+            title: 'Part 5'
+          },
+          {
+            key: 'horizontally-part-6',
+            href: '#horizontally-part-6',
+            title: 'Part 6'
+          }
+        ]
+      }
+    }
   },
   {
     name: 'AAnchorItem',
-    alias: 'AnchorItem',
+    alias: '锚点项',
     parent: 'Anchor',
     categoryId: 'nav',
     doc: 'https://www.antdv.com/components/anchor-cn',

@@ -80,7 +80,12 @@ const components: MaterialDescription[] = [
         defaultValue: 'active'
       }
     ],
-    events: ['refresh']
+    events: ['refresh'],
+    snippet: {
+      props: {
+        value: '哈哈哈哈'
+      }
+    }
   }
 ];
 export default components;

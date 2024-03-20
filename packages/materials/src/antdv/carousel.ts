@@ -64,7 +64,86 @@ const components: MaterialDescription[] = [
         title: '切换面板的回调',
         setters: 'FunctionSetter' //?? function(current)
       }
-    ]
+    ],
+    snippet: {
+      props: {
+        autoplay: true
+      },
+      children: [
+        {
+          name: 'div',
+          children: [
+            {
+              name: 'h1',
+              children: '1',
+              props: {
+                style: {
+                  backgroundColor: '#364d79',
+                  height: '200px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }
+              }
+            }
+          ]
+        },
+        {
+          name: 'div',
+          children: [
+            {
+              name: 'h1',
+              children: '2',
+              props: {
+                style: {
+                  backgroundColor: '#364d79',
+                  height: '200px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }
+              }
+            }
+          ]
+        },
+        {
+          name: 'div',
+          children: [
+            {
+              name: 'h1',
+              children: '3',
+              props: {
+                style: {
+                  backgroundColor: '#364d79',
+                  height: '200px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }
+              }
+            }
+          ]
+        },
+        {
+          name: 'div',
+          children: [
+            {
+              name: 'h1',
+              children: '4',
+              props: {
+                style: {
+                  backgroundColor: '#364d79',
+                  height: '200px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center'
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
   }
 ];
 export default components;

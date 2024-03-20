@@ -111,8 +111,8 @@ const components: MaterialDescription[] = [
         options: ['error', 'warning']
       },
       {
-        name: 'v-model:value',
-        label: 'v-model:value',
+        name: 'value',
+        label: 'value',
         title: '指定当前选中的条目',
         setters: ['StringSetter', 'ArraySetter', 'ObjectSetter']
       }

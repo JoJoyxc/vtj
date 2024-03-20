@@ -1,4 +1,5 @@
 import type { MaterialDescription } from '@vtj/core';
+
 const components: MaterialDescription[] = [
   {
     name: 'APopover',
@@ -128,7 +129,23 @@ const components: MaterialDescription[] = [
         defaultValue: false
       }
     ],
-    slots: ['content', 'title']
+    slots: ['content', 'title'],
+    snippet: {
+      props: {
+        title: 'Title'
+      },
+      slot: 'content',
+      children: [
+        {
+          name: 'Template',
+          children: [
+            { name: 'p', children: 'Content' },
+            { name: 'p', children: 'Content' }
+          ]
+        },
+        { name: 'AButton', props: { type: 'primary' }, children: 'Hover me' }
+      ]
+    }
   }
 ];
 export default components;

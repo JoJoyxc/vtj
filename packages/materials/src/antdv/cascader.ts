@@ -201,7 +201,7 @@ const components: MaterialDescription[] = [
         setters: 'ArraySetter'
       }
     ],
-    events: ['change', 'dropdownVisibleChange', 'search'],
+    events: ['change', 'dropdownVisibleChange', 'search', 'update:value'],
     slots: [
       'clearIcon',
       'expandIcon',
@@ -212,11 +212,11 @@ const components: MaterialDescription[] = [
       'tagRender'
     ],
     snippet: {
-      // props: {
-      //   options: mockTreeData(),
-      //   props: {},
-      //   value: []
-      // }
+      props: {
+        options: mockTreeData(),
+        props: {},
+        value: []
+      }
     }
   }
 ];

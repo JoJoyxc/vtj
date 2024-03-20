@@ -37,9 +37,16 @@ const components: MaterialDescription[] = [
     snippet: {
       children: [
         { name: 'BreadcrumbItem', children: 'Home' },
+        { name: 'ABreadcrumbSeparator' },
         { name: 'BreadcrumbItem', children: 'Application Center' },
+        { name: 'ABreadcrumbSeparator' },
         { name: 'BreadcrumbItem', children: 'Application List' },
-        { name: 'BreadcrumbItem', children: 'An Application' }
+        { name: 'ABreadcrumbSeparator' },
+        {
+          name: 'BreadcrumbItem',
+          props: { style: { fontWeight: '700', color: '#000' } },
+          children: 'An Application'
+        }
       ]
     }
   },
@@ -65,7 +72,7 @@ const components: MaterialDescription[] = [
       }
     ],
     events: ['click'],
-    snippet: { children: 'BreadcrumbItem' }
+    snippet: { children: '面包屑项' }
   },
   {
     name: 'ABreadcrumbSeparator',

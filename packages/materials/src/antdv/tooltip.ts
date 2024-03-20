@@ -2,10 +2,10 @@ import type { MaterialDescription } from '@vtj/core';
 
 const components: MaterialDescription[] = [
   {
-    name: 'AButton',
-    alias: 'Button',
-    label: '按钮',
-    categoryId: 'base',
+    name: 'ATooltip',
+    alias: 'Tooltip',
+    label: '文字提示',
+    categoryId: 'data',
     doc: 'https://www.antdv.com/components/button-cn',
     props: [
       {
@@ -124,7 +124,10 @@ const components: MaterialDescription[] = [
       }
     ],
     events: ['openChange', 'update:open'],
-    slots: ['title']
+    slots: ['title'],
+    snippet: {
+      children: [{ name: 'Template', slot: 'title', children: 'prompt text' }]
+    }
   }
 ];
 export default components;

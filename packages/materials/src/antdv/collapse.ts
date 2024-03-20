@@ -64,7 +64,47 @@ const components: MaterialDescription[] = [
       }
     ],
     events: ['change', 'update:activeKey'],
-    slots: ['expandIcon']
+    slots: ['expandIcon'],
+    snippet: {
+      props: {
+        activeKey: '1'
+      },
+      children: [
+        {
+          name: 'ACollapsePanel',
+          props: { key: '1', header: 'This is panel header 1' },
+          children: [
+            {
+              name: 'p',
+              children:
+                'A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.'
+            }
+          ]
+        },
+        {
+          name: 'ACollapsePanel',
+          props: { key: '2', header: 'This is panel header 2' },
+          children: [
+            {
+              name: 'p',
+              children:
+                'A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.'
+            }
+          ]
+        },
+        {
+          name: 'ACollapsePanel',
+          props: { key: '3', header: 'This is panel header 3' },
+          children: [
+            {
+              name: 'p',
+              children:
+                'A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.'
+            }
+          ]
+        }
+      ]
+    }
   },
   {
     name: 'ACollapsePanel',
@@ -108,7 +148,19 @@ const components: MaterialDescription[] = [
         defaultValue: true
       }
     ],
-    slots: ['extra', 'header']
+    slots: ['extra', 'header'],
+    snippet: {
+      props: {
+        header: 'This is panel header'
+      },
+      children: [
+        {
+          name: 'p',
+          children:
+            'A dog is a type of domesticated animal.Known for its loyalty and faithfulness,it can be found as a welcome guest in many households across the world.'
+        }
+      ]
+    }
   }
 ];
 export default components;

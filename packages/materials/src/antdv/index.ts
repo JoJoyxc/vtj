@@ -12,13 +12,13 @@ import typography from './typography';
 import divider from './divider';
 import flex from './flex';
 import grid from './grid';
-import layout from './layout';
+import layout from './layout'; //
 import space from './space';
 // * nav
 import anchor from './anchor';
 import breadcrumb from './breadcrumb';
 import dropdown from './dropdown';
-import menu from './menu';
+import menu from './menu'; // todo
 import pageHeader from './pageHeader';
 import pagination from './pagination';
 import steps from './steps';
@@ -27,7 +27,7 @@ import autocomplete from './autocomplete';
 import cascader from './cascader';
 import checkbox from './checkbox';
 import datePicker from './datePicker';
-import form from './form';
+import form from './form'; //todo
 import input from './input';
 import inputNumber from './inputNumber';
 import mentions from './mentions';
@@ -36,23 +36,22 @@ import rate from './rate';
 import select from './select';
 import slider from './slider';
 import Switch from './switch';
-// ! switch
 import timePicker from './timePicker';
 import transfer from './transfer';
-import treeSelect from './treeSelect';
-import upload from './upload';
+import treeSelect from './treeSelect'; // todo
+import upload from './upload'; // todo template > slot 多了一层
 // * data
 import avatar from './avatar';
 import badge from './badge';
 import calendar from './calendar';
-import card from './card';
+import card from './card'; // todo template > slot 多了一层
 import carousel from './carousel';
 import collapse from './collapse';
 import comment from './comment';
 import descriptions from './description';
 import empty from './empty';
 import image from './image';
-import list from './list';
+import list from './list'; // todo template > slot 多了一层
 import popover from './popover';
 import qrCode from './qrCode';
 import segmented from './segmented';

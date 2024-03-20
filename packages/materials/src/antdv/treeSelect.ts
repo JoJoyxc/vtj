@@ -289,7 +289,10 @@ const components: MaterialDescription[] = [
       'dropdownVisibleChange',
       'search',
       'select',
-      'treeExpand'
+      'treeExpand',
+      'update:searchValue',
+      'update:treeExpandedKeys',
+      'update:value'
     ],
     slots: [
       'maxTagPlaceholder',
@@ -298,11 +301,58 @@ const components: MaterialDescription[] = [
       'searchPlaceholder',
       'suffixIcon',
       'tagRender',
-      'title',
-      'update:searchValue',
-      'update:treeExpandedKeys',
-      'update:value'
-    ]
+      'title'
+    ],
+    snippet: {
+      //  ! 选中没值
+      props: {
+        value: '',
+        dropdownStyle: { maxHeight: '400px', overflow: 'auto' },
+        placeholder: 'please select',
+        treeDefaultExpandAll: true,
+        allowClear: true,
+        style: {
+          width: '100%'
+        },
+        treeData: [
+          {
+            label: 'root 1',
+            value: 'root 1',
+            children: [
+              {
+                label: 'parent 1',
+                value: 'parent 1',
+                children: [
+                  {
+                    label: 'parent 1-0',
+                    value: 'parent 1-0',
+                    children: [
+                      {
+                        label: 'my leaf',
+                        value: 'leaf1'
+                      },
+                      {
+                        label: 'your leaf',
+                        value: 'leaf2'
+                      }
+                    ]
+                  },
+                  {
+                    label: 'parent 1-1',
+                    value: 'parent 1-1'
+                  }
+                ]
+              },
+              {
+                label: 'parent 2',
+                value: 'parent 2'
+              }
+            ]
+          }
+        ],
+        treeNodeFilterProp: 'label'
+      }
+    }
   }
 ];
 export default components;

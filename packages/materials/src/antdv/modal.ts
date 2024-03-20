@@ -165,7 +165,18 @@ const components: MaterialDescription[] = [
       }
     ],
     events: ['cancel', 'ok', 'update:open'],
-    slots: ['cancelText', 'closeIcon', 'footer', 'okText', 'title']
+    slots: ['cancelText', 'closeIcon', 'footer', 'okText', 'title'],
+    snippet: {
+      props: {
+        open: true,
+        title: 'Basic Modal'
+      },
+      children: [
+        { name: 'p', children: 'Some contents...' },
+        { name: 'p', children: 'Some contents...' },
+        { name: 'p', children: 'Some contents...' }
+      ]
+    }
   }
 ];
 export default components;

@@ -2,8 +2,8 @@ import type { MaterialDescription } from '@vtj/core';
 
 const components: MaterialDescription[] = [
   {
-    name: 'AWaterMark',
-    alias: 'WaterMark',
+    name: 'AWatermark',
+    alias: 'Watermark',
     label: '水印',
     categoryId: 'other',
     doc: 'https://www.antdv.com/components/watermark-cn',
@@ -68,7 +68,11 @@ const components: MaterialDescription[] = [
         title: '水印距离容器左上角的偏移量，默认为 gap/2',
         setters: 'ArraySetter'
       }
-    ]
+    ],
+    snippet: {
+      props: { content: 'VTJ' },
+      children: [{ name: 'div', props: { style: { height: '500px' } } }]
+    }
   }
 ];
 
