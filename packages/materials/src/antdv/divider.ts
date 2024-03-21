@@ -45,7 +45,16 @@ const components: MaterialDescription[] = [
         options: ['vertical', 'horizontal'],
         defaultValue: 'horizontal'
       }
-    ]
+    ],
+    snippet: {
+      props: {
+        style: {
+          width: '100%',
+          height: '2px',
+          backgroundColor: '#7cb305'
+        }
+      }
+    }
   }
 ];
 

@@ -1,4 +1,5 @@
 import type { MaterialDescription } from '@vtj/core';
+import { headerStyle, contentStyle, siderStyle, footerStyle } from '../shared';
 
 const components: MaterialDescription[] = [
   {
@@ -28,7 +29,26 @@ const components: MaterialDescription[] = [
         title: '指定样式',
         setters: 'ObjectSetter'
       }
-    ]
+    ],
+    snippet: {
+      children: [
+        {
+          name: 'ALayoutHeader',
+          children: 'header',
+          props: { style: { ...headerStyle } }
+        },
+        {
+          name: 'ALayoutContent',
+          children: 'content',
+          props: { style: { ...contentStyle } }
+        },
+        {
+          name: 'ALayoutFooter',
+          children: 'footer',
+          props: { style: { ...footerStyle } }
+        }
+      ]
+    }
   },
   {
     name: 'ALayoutHeader',
@@ -36,7 +56,11 @@ const components: MaterialDescription[] = [
     parent: 'Layout',
     label: '顶栏容器',
     categoryId: 'layout',
-    doc: 'https://www.antdv.com/components/layout-cn#components-layout-demo-fixed'
+    doc: 'https://www.antdv.com/components/layout-cn#components-layout-demo-fixed',
+    snippet: {
+      children: 'header',
+      props: { style: { ...headerStyle } }
+    }
   },
   {
     name: 'ALayoutContent',
@@ -44,7 +68,11 @@ const components: MaterialDescription[] = [
     parent: 'Layout',
     label: '主要内容容器',
     categoryId: 'layout',
-    doc: 'https://www.antdv.com/components/layout-cn#components-layout-demo-fixed'
+    doc: 'https://www.antdv.com/components/layout-cn#components-layout-demo-fixed',
+    snippet: {
+      children: 'content',
+      props: { style: { ...contentStyle } }
+    }
   },
   {
     name: 'ALayoutFooter',
@@ -52,7 +80,11 @@ const components: MaterialDescription[] = [
     parent: 'Layout',
     label: '底栏容器',
     categoryId: 'layout',
-    doc: 'https://www.antdv.com/components/layout-cn#components-layout-demo-fixed'
+    doc: 'https://www.antdv.com/components/layout-cn#components-layout-demo-fixed',
+    snippet: {
+      children: 'footer',
+      props: { style: { ...footerStyle } }
+    }
   },
   {
     name: 'ALayoutSider',
@@ -143,7 +175,11 @@ const components: MaterialDescription[] = [
       }
     ],
     events: ['breakpoint', 'collapse', 'update:collapsed'],
-    slots: ['trigger']
+    slots: ['trigger'],
+    snippet: {
+      children: 'sider',
+      props: { style: { ...siderStyle } }
+    }
   }
 ];
 

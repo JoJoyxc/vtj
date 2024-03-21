@@ -42,9 +42,36 @@ const components: MaterialDescription[] = [
     ],
     slots: ['split'],
     snippet: {
+      props: {
+        style: {
+          width: '100%'
+        }
+      },
       children: [
-        { name: 'Button', props: { type: 'primary' }, children: 'Button1' },
-        { name: 'Button', props: { type: 'danger' }, children: 'Button2' }
+        {
+          name: 'ACard',
+          children: [
+            { name: 'component', props: { is: 'p' }, children: 'List item' }
+          ],
+          directives: [
+            {
+              name: 'vFor',
+              value: {
+                type: 'JSExpression',
+                value: '2'
+              }
+            }
+          ]
+        }
+      ],
+      directives: [
+        {
+          name: 'vFor',
+          value: {
+            type: 'JSExpression',
+            value: '2'
+          }
+        }
       ]
     }
   },
@@ -81,29 +108,35 @@ const components: MaterialDescription[] = [
       }
     ],
     snippet: {
+      props: {
+        style: {
+          width: '100%'
+        }
+      },
       children: [
         {
-          name: 'input',
-          props: { style: { width: '20%' }, defaultValue: '7259' }
-        },
+          name: 'ACard',
+          children: [
+            { name: 'component', props: { is: 'p' }, children: 'List item' }
+          ],
+          directives: [
+            {
+              name: 'vFor',
+              value: {
+                type: 'JSExpression',
+                value: '4'
+              }
+            }
+          ]
+        }
+      ],
+      directives: [
         {
-          name: 'input',
-          props: { style: { width: '30%' }, defaultValue: '9527' }
-        },
-        {
-          name: 'button',
-          props: { type: 'primary' },
-          children: 'Button 1'
-        },
-        {
-          name: 'button',
-          props: { type: 'primary' },
-          children: 'Button 2'
-        },
-        {
-          name: 'button',
-          props: { type: 'primary' },
-          children: 'Button 3'
+          name: 'vFor',
+          value: {
+            type: 'JSExpression',
+            value: '4'
+          }
         }
       ]
     }

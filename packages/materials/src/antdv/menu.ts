@@ -32,7 +32,7 @@ const components: MaterialDescription[] = [
         name: 'items',
         label: 'items',
         title: '菜单内容',
-        setters: 'ArraySetter' //?? ItemType[]
+        setters: 'ArraySetter'
       },
       {
         name: 'mode',
@@ -109,11 +109,10 @@ const components: MaterialDescription[] = [
     ],
     slots: ['overflowedIndicator'],
     snippet: {
-      //!
       props: {
         selectedKeys: ['mail'],
         mode: 'horizontal',
-        item: [
+        items: [
           {
             key: 'mail',
             label: 'Navigation One',
@@ -197,7 +196,14 @@ const components: MaterialDescription[] = [
       }
     ],
     slots: ['icon', 'title'],
-    snippet: {}
+    snippet: {
+      children: '菜单项',
+      props: {
+        key: 'key',
+        label: 'Navigation One',
+        title: 'Navigation One'
+      }
+    }
   },
   {
     name: 'AMenuSubMenu',
@@ -240,7 +246,10 @@ const components: MaterialDescription[] = [
       }
     ],
     events: ['titleClick'],
-    slots: ['expandIcon', 'icon', 'title']
+    slots: ['expandIcon', 'icon', 'title'],
+    snippet: {
+      //? children 只能为 AMenuItem
+    }
   },
   {
     name: 'AMenuItemGroup',
@@ -257,7 +266,10 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter'
       }
     ],
-    slots: ['title']
+    slots: ['title'],
+    snippet: {
+      //? children 只能为 AMenuItem
+    }
   },
   {
     name: 'AMenuDivider',

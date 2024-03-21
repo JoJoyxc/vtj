@@ -360,7 +360,8 @@ const components: MaterialDescription[] = [
       }
     ],
     snippet: {
-      props: { value: 'ASelectOption' }
+      children: 'SelectOption',
+      props: { value: 'SelectOption' }
     }
   },
   {

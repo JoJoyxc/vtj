@@ -83,6 +83,7 @@ const components: MaterialDescription[] = [
     snippet: {
       props: {
         open: true,
+        current: 0,
         steps: [
           {
             title: 'Center',

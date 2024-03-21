@@ -120,7 +120,37 @@ const components: MaterialDescription[] = [
         defaultValue: 'normal'
       }
     ],
-    slots: ['component']
+    slots: ['component'],
+    snippet: {
+      props: {
+        vertical: false,
+        gap: 'middle'
+      },
+      children: [
+        {
+          name: 'component',
+          props: {
+            is: 'div',
+            style: {
+              width: '25%',
+              height: '54px',
+              color: '#fff',
+              background: '#23272e'
+            }
+          },
+          children: 'flex item',
+          directives: [
+            {
+              name: 'vFor',
+              value: {
+                type: 'JSExpression',
+                value: '4'
+              }
+            }
+          ]
+        }
+      ]
+    }
   }
 ];
 
