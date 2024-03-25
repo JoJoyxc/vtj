@@ -124,7 +124,10 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter'
       }
     ],
-    slots: ['actions', 'extra']
+    slots: ['actions', 'extra'],
+    snippet: {
+      children: 'a list item'
+    }
   },
   {
     name: 'AListItemMeta',
@@ -153,7 +156,13 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter'
       }
     ],
-    slots: ['avatar', 'description', 'title']
+    slots: ['avatar', 'description', 'title'],
+    snippet: {
+      props: {
+        description:
+          'Ant Design, a design language for background applications, is refined by Ant UED Team'
+      }
+    }
   }
 ];
 export default components;

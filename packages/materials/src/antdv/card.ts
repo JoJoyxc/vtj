@@ -101,13 +101,12 @@ const components: MaterialDescription[] = [
         title: 'Default size card',
         style: { width: '300px' }
       },
+      slot: 'extra',
       children: [
         {
-          name: '',
-          slot: 'extra',
-          children: [
-            { name: 'component', props: { is: 'a' }, children: 'more' }
-          ]
+          name: 'a',
+          slot: { name: 'extra' },
+          children: 'more'
         },
         { name: 'component', props: { is: 'p' }, children: 'card content' },
         { name: 'component', props: { is: 'p' }, children: 'card content' },

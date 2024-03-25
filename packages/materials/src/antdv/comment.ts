@@ -39,7 +39,8 @@ const components: MaterialDescription[] = [
         setters: ['StringSetter'] //?? 	string|slot
       }
     ],
-    slots: ['actions', 'author', 'avatar', 'content', 'datetime']
+    slots: ['actions', 'author', 'avatar', 'content', 'datetime'],
+    snippet: {}
   }
 ];
 export default components;

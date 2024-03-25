@@ -387,19 +387,12 @@ const components: MaterialDescription[] = [
     ],
     slots: ['label'],
     snippet: {
+      slot: 'label',
       children: [
         {
-          name: 'template',
-          slot: 'label',
-          children: [
-            {
-              name: 'component',
-              props: {
-                is: 'span'
-              },
-              children: 'Manager'
-            }
-          ]
+          name: 'span',
+          slot: { name: 'label' },
+          children: 'Manager'
         },
         { name: 'ASelectOption', children: 'Jack', props: { value: 'jack' } },
         { name: 'ASelectOption', children: 'Lucy', props: { value: 'lucy' } }

@@ -66,11 +66,6 @@ const components: MaterialDescription[] = [
         defaultValue: true
       },
       {
-        name: 'indicatorsRender',
-        label: 'indicatorsRender',
-        title: '自定义指示器'
-      },
-      {
         name: 'zIndex',
         label: 'zIndex',
         title: 'Tour 的层级',
