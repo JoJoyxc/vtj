@@ -18,7 +18,7 @@ import space from './space';
 import anchor from './anchor';
 import breadcrumb from './breadcrumb';
 import dropdown from './dropdown';
-import menu from './menu'; // todo 错误
+import menu from './menu'; // todo
 import pageHeader from './pageHeader';
 import pagination from './pagination';
 import steps from './steps';
@@ -27,7 +27,7 @@ import autocomplete from './autocomplete';
 import cascader from './cascader';
 import checkbox from './checkbox';
 import datePicker from './datePicker';
-import form from './form'; //todo  ?? 错误 label 显示不出
+import form from './form';
 import input from './input';
 import inputNumber from './inputNumber';
 import mentions from './mentions';

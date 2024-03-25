@@ -138,14 +138,14 @@ const components: MaterialDescription[] = [
           name: 'AFormItem',
           props: {
             name: 'remember',
-            wrapperCol: '{ offset: 8, span: 16 }'
+            wrapperCol: { offset: 8, span: 16 }
           },
           children: [{ name: 'ACheckbox', children: 'Remember me' }]
         },
         {
           name: 'AFormItem',
           props: {
-            wrapperCol: '{ offset: 8, span: 16 }'
+            wrapperCol: { offset: 8, span: 16 }
           },
           children: [
             { name: 'AButton', props: { type: 'primary' }, children: 'Submit' }
@@ -157,7 +157,7 @@ const components: MaterialDescription[] = [
   {
     name: 'AFormItem',
     alias: 'Item',
-    // parent: 'Form',
+    parent: 'Form',
     label: '表单项',
     categoryId: 'input',
     doc: 'https://www.antdv.com/components/form-cn',
