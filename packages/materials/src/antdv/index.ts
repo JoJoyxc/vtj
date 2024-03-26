@@ -18,7 +18,7 @@ import space from './space';
 import anchor from './anchor';
 import breadcrumb from './breadcrumb';
 import dropdown from './dropdown';
-import menu from './menu'; // todo
+import menu from './menu'; // todo 除了 menu
 import pageHeader from './pageHeader';
 import pagination from './pagination';
 import steps from './steps';
@@ -33,12 +33,12 @@ import inputNumber from './inputNumber';
 import mentions from './mentions';
 import radio from './radio';
 import rate from './rate';
-import select from './select'; // todo  ==> selectOption selectOptionGroup => 错误
+import select from './select'; // todo  ASelectOption  ASelectOptGroup 放的位置?
 import slider from './slider';
 import Switch from './switch';
 import timePicker from './timePicker';
 import transfer from './transfer';
-import treeSelect from './treeSelect'; // todo  选中没值
+import treeSelect from './treeSelect';
 import upload from './upload';
 // * data
 import avatar from './avatar';
@@ -47,7 +47,7 @@ import calendar from './calendar';
 import card from './card';
 import carousel from './carousel';
 import collapse from './collapse';
-import comment from './comment'; //todo
+import comment from './comment'; //todo actions 中的 图标
 import descriptions from './description';
 import empty from './empty';
 import image from './image';

@@ -40,7 +40,123 @@ const components: MaterialDescription[] = [
       }
     ],
     slots: ['actions', 'author', 'avatar', 'content', 'datetime'],
-    snippet: {}
+    snippet: {
+      slot: 'actions',
+      children: [
+        // 图标
+        // {
+        //   name: 'span',
+        //   slot: { name: 'actions' },
+        //   props: { key: 'comment-basic-like' },
+        //   children: [
+        //     {
+        //       name: 'ATooltip',
+        //       props: { title: 'Like' },
+        //       children: [
+        //         {
+        //           name: 'template',
+        //           directives: [
+        //             {
+        //               name: 'vIf',
+        //               value: {
+        //                 type: 'JSExpression',
+        //                 value: 'action === "liked"'
+        //               }
+        //             }
+        //           ],
+        //           children: [{ name: 'LikeFilled' }]
+        //         },
+        //         {
+        //           name: 'template',
+        //           directives: [
+        //             {
+        //               name: 'vElse',
+        //               value: {
+        //                 type: 'JSExpression',
+        //                 value: 'action === "liked"'
+        //               }
+        //             }
+        //           ],
+        //           children: [{ name: 'LikeOutlined' }]
+        //         }
+        //       ]
+        //     },
+        //     {
+        //       name: 'span',
+        //       props: { style: { paddingLeft: '8px', cursor: 'auto' } },
+        //       children: '0'
+        //     }
+        //   ]
+        // },
+        // {
+        //   name: 'span',
+        //   slot: { name: 'actions' },
+        //   props: { key: 'comment-basic-dislike' },
+        //   children: [
+        //     {
+        //       name: 'ATooltip',
+        //       props: { title: 'Dislike' },
+        //       children: [
+        //         {
+        //           name: 'template',
+        //           directives: [
+        //             {
+        //               name: 'vIf',
+        //               value: {
+        //                 type: 'JSExpression',
+        //                 value: 'action === "disliked"'
+        //               }
+        //             }
+        //           ],
+        //           children: [{ name: 'DislikeFilled' }]
+        //         },
+        //         {
+        //           name: 'template',
+        //           directives: [
+        //             {
+        //               name: 'vElse',
+        //               value: {
+        //                 type: 'JSExpression',
+        //                 value: 'action === "disliked"'
+        //               }
+        //             }
+        //           ],
+        //           children: [{ name: 'DislikeOutlined' }]
+        //         }
+        //       ]
+        //     },
+        //     {
+        //       name: 'span',
+        //       props: { style: { paddingLeft: '8px', cursor: 'auto' } },
+        //       children: '0'
+        //     }
+        //   ]
+        // },
+        {
+          name: 'p',
+          slot: { name: 'content' },
+          children:
+            'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.'
+        },
+        { name: 'a', slot: { name: 'author' }, children: 'Han Solo' },
+        {
+          name: 'AAvatar',
+          slot: { name: 'avatar' },
+          props: {
+            src: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
+            alt: 'Han Solo'
+          }
+        },
+        {
+          name: 'ATooltip',
+          slot: { name: 'datetime' },
+          props: {
+            title: 'dayjs().format("YYYY-MM-DD HH:mm:ss")'
+          },
+          children: [{ name: 'span', children: '一个小时前' }]
+        }
+      ]
+    }
   }
 ];
 export default components;

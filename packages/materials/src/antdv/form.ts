@@ -130,7 +130,7 @@ const components: MaterialDescription[] = [
           props: {
             label: 'Password',
             name: 'password',
-            rules: [{ required: true, message: 'Please input your username!' }]
+            rules: [{ required: true, message: 'Please input your password!' }]
           },
           children: [{ name: 'AInputPassword' }]
         },

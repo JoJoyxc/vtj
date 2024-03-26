@@ -249,6 +249,16 @@ const components: MaterialDescription[] = [
     snippet: {
       //Menu.SubMenu 的子元素必须是 MenuItem 或者 SubMenu.
       //SubMenu 必须传递 key，如不传递，该 SubMenu 下子元素将提前渲染，而且部分场景无法进行有效高亮。
+      children: [
+        {
+          name: 'AMenuItem',
+          children: '菜单项',
+          props: {
+            key: 'key',
+            title: 'Navigation One -- AMenuItem'
+          }
+        }
+      ]
     }
   },
   {
@@ -269,6 +279,16 @@ const components: MaterialDescription[] = [
     slots: ['title'],
     snippet: {
       //? children 只能为 AMenuItem
+      children: [
+        {
+          name: 'AMenuItem',
+          children: '菜单项',
+          props: {
+            key: 'key',
+            title: 'Navigation One -- AMenuItem'
+          }
+        }
+      ]
     }
   },
   {
