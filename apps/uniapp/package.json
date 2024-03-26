@@ -60,10 +60,10 @@
     "@dcloudio/uni-mp-toutiao": "3.0.0-3090920231225001",
     "@dcloudio/uni-mp-weixin": "3.0.0-3090920231225001",
     "@dcloudio/uni-quickapp-webview": "3.0.0-3090920231225001",
-    "@dcloudio/uni-ui": "~1.5.2",
+    "@dcloudio/uni-ui": "~1.5.3",
     "@vtj/mobile": "workspace:*",
     "vue": "~3.4.15",
-    "vue-i18n": "~9.9.0"
+    "vue-i18n": "~9.10.2"
   },
   "devDependencies": {
     "@dcloudio/types": "~3.4.7",
