@@ -72,7 +72,7 @@ const components: MaterialDescription[] = [
         name: 'value',
         label: 'value',
         title: '根据 value 进行比较，判断是否选中',
-        setters: 'AnySetter'
+        setters: 'AnySetter' //!
       }
     ],
     events: ['update:checked'],
@@ -161,7 +161,7 @@ const components: MaterialDescription[] = [
         name: 'value',
         label: 'value',
         title: '用于设置当前选中的值',
-        setters: 'anySetter'
+        setters: 'anySetter' //!
       }
     ],
     events: ['change', 'update:value'],

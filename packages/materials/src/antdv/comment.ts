@@ -12,31 +12,31 @@ const components: MaterialDescription[] = [
         name: 'actions',
         label: 'actions',
         title: '在评论内容下面呈现的操作项列表',
-        setters: ['ArraySetter', 'StringSetter'] //?? 	Array|slot
+        setters: 'ArraySetter'
       },
       {
         name: 'author',
         label: 'author',
         title: '要显示为注释作者的元素',
-        setters: ['StringSetter'] //?? 	string|slot
+        setters: 'StringSetter'
       },
       {
         name: 'avatar',
         label: 'avatar',
         title: '要显示为评论头像的元素 - 通常是 antd Avatar 或者 src',
-        setters: ['StringSetter'] //?? 	string|slot
+        setters: 'StringSetter'
       },
       {
         name: 'content',
         label: 'content',
         title: '评论的主要内容',
-        setters: ['StringSetter'] //?? 	string|slot
+        setters: 'StringSetter'
       },
       {
         name: 'datetime',
         label: 'datetime',
         title: '展示时间描述',
-        setters: ['StringSetter'] //?? 	string|slot
+        setters: 'StringSetter'
       }
     ],
     slots: ['actions', 'author', 'avatar', 'content', 'datetime'],
@@ -153,7 +153,7 @@ const components: MaterialDescription[] = [
           props: {
             title: 'dayjs().format("YYYY-MM-DD HH:mm:ss")'
           },
-          children: [{ name: 'span', children: '一个小时前' }]
+          children: [{ name: 'span', children: '几秒前' }]
         }
       ]
     }

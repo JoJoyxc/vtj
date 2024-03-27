@@ -70,7 +70,7 @@ const components: MaterialDescription[] = [
         setters: 'StringSetter'
       }
     ],
-    slots: ['icon'], //!
+    slots: ['icon'],
     snippet: {
       props: {
         size: '64'

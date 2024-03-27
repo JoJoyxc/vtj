@@ -23,8 +23,8 @@ const components: MaterialDescription[] = [
         defaultValue: false
       },
       {
-        name: 'orientationMargin	',
-        label: 'orientationMargin	',
+        name: 'orientationMargin',
+        label: 'orientationMargin',
         title:
           '标题和最近 left/right 边框之间的距离，去除了分割线，同时 orientation 必须为 left 或 right',
         setters: 'SelectSetter',
