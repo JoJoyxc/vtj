@@ -8,7 +8,7 @@
       :subtitle="item.label"
       :model-value="item"
       :tag="item.method?.toUpperCase()"
-      :tag-type="tagTypeMap[item.method || 'get'] as any"
+      :tag-type="(tagTypeMap as any)[item.method || 'get']"
       background
       :actions="['edit', 'remove']"
       @click="onEdit(item)"
@@ -34,7 +34,7 @@
             required
             editor="radio"
             :options="methods"
-            :props="{ button: true }"></XField>
+            :props="{ button: true}"></XField>
           <XField
             name="name"
             label="接口名称"
@@ -125,6 +125,7 @@
         </XContainer>
       </XContainer>
     </XDialogForm>
+    <DialogForm></DialogForm>
   </Panel>
 </template>
 <script lang="ts" setup>
@@ -132,6 +133,7 @@
   import { XDialogForm, XField, XContainer } from '@vtj/ui';
   import { cloneDeep } from '@vtj/utils';
   import { ElEmpty } from 'element-plus';
+  import DialogForm from './form.vue';
   import { Panel, Item } from '../../shared';
   import { useProject } from '../../hooks';
   import Editor from '../../editor';

@@ -53,6 +53,21 @@ export interface ApiSchema {
    * jsonp请求配置
    */
   jsonpOptions?: Record<string, any>;
+
+  /**
+   * 模拟数据模板
+   */
+  mockTemplate?: MockField[] | JSFunction;
+}
+
+/**
+ * 模拟数据模板字段配置
+ * @see http://mockjs.com/0.1/#%E6%95%B0%E6%8D%AE%E6%A8%A1%E6%9D%BF%E5%AE%9A%E4%B9%89
+ */
+export interface MockField {
+  name: string;
+  rule?: string;
+  value: any;
 }
 
 /**
