@@ -207,6 +207,7 @@ const components: MaterialDescription[] = [
   {
     name: 'AMenuSubMenu',
     alias: 'SubMenu',
+    childIncludes: ['AMenuItem', 'AMenuSubMenu'],
     parent: 'Menu',
     label: '导航子菜单',
     categoryId: 'nav',
@@ -264,6 +265,7 @@ const components: MaterialDescription[] = [
   {
     name: 'AMenuItemGroup',
     alias: 'ItemGroup',
+    childIncludes: ['AMenuItem'],
     parent: 'Menu',
     label: '导航菜单项组',
     categoryId: 'nav',

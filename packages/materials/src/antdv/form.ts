@@ -103,7 +103,7 @@ const components: MaterialDescription[] = [
         name: 'validateTrigger',
         label: 'validateTrigger',
         title: '统一设置字段校验规则',
-        setters: ['StringSetter', 'StringArraySetter'],
+        setters: ['StringSetter', 'ArraySetter'],
         defaultValue: 'change'
       },
       {

@@ -274,7 +274,7 @@ const components: MaterialDescription[] = [
         name: 'value',
         label: 'value',
         title: '指定当前选中的条目',
-        setters: ['StringSetter', 'StringArraySetter']
+        setters: ['StringSetter', 'ArraySetter']
       },
       {
         name: 'virtual',
