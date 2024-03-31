@@ -32,7 +32,7 @@
     "build": "lerna run --no-private build",
     "coverage": "lerna run --no-private coverage",
     "typedoc": "typedoc --plugin typedoc-plugin-markdown",
-    "ci": "git add . && git commit -m \"ci: commit \" && git push",
+    "ci": "git add . && git commit -m \"ci: 👷commit \" && git push",
     "commit": "git-cz",
     "prepare": "husky install",
     "prerelease": "lerna version prerelease --yes && npm run test && npm run build && npm run ci && lerna publish from-package --dist-tag test --no-private --yes && pnpm run sync",
