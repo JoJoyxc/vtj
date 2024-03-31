@@ -105,3 +105,5 @@ npm run setup && npm run build && npm run app:dev
 ## 交流群
 
 ![输入图片说明](dev/public/1709807457504.png)
+
+- test ci
