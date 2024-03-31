@@ -27,9 +27,12 @@
         </XForm>
 
         <template #footer>
-          <XContainer justify="flex-end">
-            <ElButton>取消</ElButton>
-            <ElButton type="primary">保存</ElButton>
+          <XContainer justify="space-between">
+            <ElButton type="warning">预览</ElButton>
+            <div>
+              <ElButton>取消</ElButton>
+              <ElButton type="primary">保存</ElButton>
+            </div>
           </XContainer>
         </template>
       </XPanel>
