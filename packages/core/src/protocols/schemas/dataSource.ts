@@ -57,7 +57,12 @@ export interface ApiSchema {
   /**
    * 模拟数据模板
    */
-  mockTemplate?: Record<string, any> | JSFunction;
+  mockTemplate?: JSFunction;
+
+  /**
+   * 是否开启模拟数据
+   */
+  mock?: boolean;
 }
 
 /**

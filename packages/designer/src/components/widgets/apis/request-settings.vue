@@ -36,16 +36,20 @@
       :props="{ button: true }"></XField>
     <XField
       size="small"
-      name="settings.headers.value"
+      name="headers.value"
       label="请求头配置"
       tip="支持 JSExpression 或 JSFunction">
       <template #editor>
-        <Editor dark height="200px"></Editor>
+        <Editor
+          dark
+          height="260px"
+          v-model="currentModel.headers.value"></Editor>
       </template>
     </XField>
   </div>
 </template>
 <script lang="ts" setup>
+  import { inject } from 'vue';
   import { XContainer, XField } from '@vtj/ui';
   import Editor from '../../editor';
   const typeOptions = [
@@ -62,4 +66,6 @@
       value: 'data'
     }
   ];
+
+  const currentModel = inject('currentModel', null) as any;
 </script>

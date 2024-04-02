@@ -1,22 +1,37 @@
 <template>
   <div>
+    <XField
+      size="small"
+      name="mock"
+      label="开启模拟数据"
+      editor="switch"></XField>
     <XContainer justify="space-between">
-      <ElRadioGroup model-value="1" size="small">
-        <ElRadioButton label="1">JSON模式</ElRadioButton>
-        <ElRadioButton label="2">函数模式</ElRadioButton>
-      </ElRadioGroup>
-      <XAction :icon="VtjIconHelp" mode="text" label="帮助"></XAction>
+      <span>模拟数据模板</span>
+      <XAction
+        :icon="VtjIconHelp"
+        mode="text"
+        label="帮助"
+        @click="help"></XAction>
     </XContainer>
-    <XField size="small" name="settings.headers.value" label=" ">
+    <XField size="small" name="mockTemplate.value" label=" ">
       <template #editor>
-        <Editor dark height="420px" lang="json"></Editor>
+        <Editor
+          dark
+          height="350px"
+          lang="typescript"
+          v-model="currentModel.mockTemplate.value"></Editor>
       </template>
     </XField>
   </div>
 </template>
 <script lang="ts" setup>
-  import { ElRadioGroup, ElRadioButton } from 'element-plus';
+  import { inject } from 'vue';
   import { XContainer, XField, XAction } from '@vtj/ui';
   import { VtjIconHelp } from '@vtj/icons';
   import Editor from '../../editor';
+  const currentModel = inject('currentModel', null) as any;
+
+  const help = () => {
+    window.open('https://vtj.pro/help/mock.html');
+  };
 </script>
