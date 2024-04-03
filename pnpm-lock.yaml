@@ -242,22 +242,22 @@ importers:
         specifier: ~1.2.3
         version: 1.2.3(markdown-it-container@3.0.0)(vitepress@1.0.2)(vue@3.4.21)
       '@vtj/icons':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../packages/icons
       '@vtj/pro':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../platforms/pro
       '@vtj/renderer':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../packages/renderer
       '@vtj/ui':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../packages/ui
       '@vtj/utils':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../packages/utils
       '@vtj/web':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../platforms/web
       vue:
         specifier: ~3.4.14
@@ -443,7 +443,7 @@ importers:
         specifier: ^0.7.8
         version: link:../base
       '@vtj/core':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../core
       prettier:
         specifier: ~3.2.1
@@ -466,19 +466,19 @@ importers:
   packages/designer:
     dependencies:
       '@vtj/core':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../core
       '@vtj/icons':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../icons
       '@vtj/renderer':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../renderer
       '@vtj/ui':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../ui
       '@vtj/utils':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../utils
       mockjs:
         specifier: ~1.1.0
@@ -519,10 +519,10 @@ importers:
   packages/local:
     dependencies:
       '@vtj/coder':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../coder
       '@vtj/core':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../core
       '@vtj/node':
         specifier: ^0.7.8
@@ -547,13 +547,13 @@ importers:
         specifier: ^0.7.21
         version: link:../cli
       '@vtj/core':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../core
       '@vtj/ui':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../ui
       '@vtj/utils':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../utils
       ant-design-vue:
         specifier: ~4.1.0
@@ -599,16 +599,16 @@ importers:
   packages/renderer:
     dependencies:
       '@vtj/core':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../core
       '@vtj/icons':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../icons
       '@vtj/ui':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../ui
       '@vtj/utils':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../utils
       mockjs:
         specifier: ~1.1.0
@@ -633,10 +633,10 @@ importers:
         specifier: ~5.1.0
         version: 5.1.0
       '@vtj/icons':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../icons
       '@vtj/utils':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../utils
       '@vueuse/core':
         specifier: ~10.9.0
@@ -686,10 +686,10 @@ importers:
   platforms/mobile:
     dependencies:
       '@vtj/icons':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../../packages/icons
       '@vtj/utils':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../../packages/utils
     devDependencies:
       '@dcloudio/types':
@@ -771,32 +771,32 @@ importers:
   platforms/pro:
     dependencies:
       '@vtj/core':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../../packages/core
       '@vtj/designer':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../../packages/designer
       '@vtj/local':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../../packages/local
       '@vtj/materials':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../../packages/materials
       '@vtj/renderer':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../../packages/renderer
     devDependencies:
       '@vtj/cli':
         specifier: ^0.7.21
         version: link:../../packages/cli
       '@vtj/icons':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../../packages/icons
       '@vtj/ui':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../../packages/ui
       '@vtj/utils':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../../packages/utils
       vue:
         specifier: ~3.4.15
@@ -808,16 +808,16 @@ importers:
   platforms/web:
     dependencies:
       '@vtj/icons':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../../packages/icons
       '@vtj/renderer':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../../packages/renderer
       '@vtj/ui':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../../packages/ui
       '@vtj/utils':
-        specifier: ^0.7.31
+        specifier: ^0.7.32
         version: link:../../packages/utils
     devDependencies:
       '@vtj/cli':
@@ -5248,11 +5248,67 @@ packages:
       picomatch: 2.3.1
       rollup: 4.14.0
 
+  /@rollup/rollup-android-arm-eabi@4.14.0:
+    resolution: {integrity: sha512-jwXtxYbRt1V+CdQSy6Z+uZti7JF5irRKF8hlKfEnF/xJpcNGuuiZMBvuoYM+x9sr9iWGnzrlM0+9hvQ1kgkf1w==}
+    cpu: [arm]
+    os: [android]
+    requiresBuild: true
+    optional: true
+
+  /@rollup/rollup-android-arm64@4.14.0:
+    resolution: {integrity: sha512-fI9nduZhCccjzlsA/OuAwtFGWocxA4gqXGTLvOyiF8d+8o0fZUeSztixkYjcGq1fGZY3Tkq4yRvHPFxU+jdZ9Q==}
+    cpu: [arm64]
+    os: [android]
+    requiresBuild: true
+    optional: true
+
+  /@rollup/rollup-darwin-arm64@4.14.0:
+    resolution: {integrity: sha512-BcnSPRM76/cD2gQC+rQNGBN6GStBs2pl/FpweW8JYuz5J/IEa0Fr4AtrPv766DB/6b2MZ/AfSIOSGw3nEIP8SA==}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    optional: true
+
+  /@rollup/rollup-darwin-x64@4.14.0:
+    resolution: {integrity: sha512-LDyFB9GRolGN7XI6955aFeI3wCdCUszFWumWU0deHA8VpR3nWRrjG6GtGjBrQxQKFevnUTHKCfPR4IvrW3kCgQ==}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    optional: true
+
+  /@rollup/rollup-linux-arm-gnueabihf@4.14.0:
+    resolution: {integrity: sha512-ygrGVhQP47mRh0AAD0zl6QqCbNsf0eTo+vgwkY6LunBcg0f2Jv365GXlDUECIyoXp1kKwL5WW6rsO429DBY/bA==}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    optional: true
+
+  /@rollup/rollup-linux-arm64-gnu@4.14.0:
+    resolution: {integrity: sha512-x+uJ6MAYRlHGe9wi4HQjxpaKHPM3d3JjqqCkeC5gpnnI6OWovLdXTpfa8trjxPLnWKyBsSi5kne+146GAxFt4A==}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    optional: true
+
+  /@rollup/rollup-linux-arm64-musl@4.14.0:
+    resolution: {integrity: sha512-nrRw8ZTQKg6+Lttwqo6a2VxR9tOroa2m91XbdQ2sUUzHoedXlsyvY1fN4xWdqz8PKmf4orDwejxXHjh7YBGUCA==}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    optional: true
+
   /@rollup/rollup-linux-powerpc64le-gnu@4.14.0:
     resolution: {integrity: sha512-xV0d5jDb4aFu84XKr+lcUJ9y3qpIWhttO3Qev97z8DKLXR62LC3cXT/bMZXrjLF9X+P5oSmJTzAhqwUbY96PnA==}
     cpu: [ppc64le]
     os: [linux]
     libc: [glibc]
+    requiresBuild: true
+    optional: true
+
+  /@rollup/rollup-linux-riscv64-gnu@4.14.0:
+    resolution: {integrity: sha512-SDDhBQwZX6LPRoPYjAZWyL27LbcBo7WdBFWJi5PI9RPCzU8ijzkQn7tt8NXiXRiFMJCVpkuMkBf4OxSxVMizAw==}
+    cpu: [riscv64]
+    os: [linux]
     requiresBuild: true
     optional: true
 
@@ -5277,6 +5333,20 @@ packages:
     cpu: [x64]
     os: [linux]
     libc: [musl]
+    requiresBuild: true
+    optional: true
+
+  /@rollup/rollup-win32-arm64-msvc@4.14.0:
+    resolution: {integrity: sha512-Fq52EYb0riNHLBTAcL0cun+rRwyZ10S9vKzhGKKgeD+XbwunszSY0rVMco5KbOsTlwovP2rTOkiII/fQ4ih/zQ==}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    optional: true
+
+  /@rollup/rollup-win32-ia32-msvc@4.14.0:
+    resolution: {integrity: sha512-e/PBHxPdJ00O9p5Ui43+vixSgVf4NlLsmV6QneGERJ3lnjIua/kim6PRFe3iDueT1rQcgSkYP8ZBBXa/h4iPvw==}
+    cpu: [ia32]
+    os: [win32]
     requiresBuild: true
     optional: true
 
@@ -12919,10 +12989,20 @@ packages:
     dependencies:
       '@types/estree': 1.0.5
     optionalDependencies:
+      '@rollup/rollup-android-arm-eabi': 4.14.0
+      '@rollup/rollup-android-arm64': 4.14.0
+      '@rollup/rollup-darwin-arm64': 4.14.0
+      '@rollup/rollup-darwin-x64': 4.14.0
+      '@rollup/rollup-linux-arm-gnueabihf': 4.14.0
+      '@rollup/rollup-linux-arm64-gnu': 4.14.0
+      '@rollup/rollup-linux-arm64-musl': 4.14.0
       '@rollup/rollup-linux-powerpc64le-gnu': 4.14.0
+      '@rollup/rollup-linux-riscv64-gnu': 4.14.0
       '@rollup/rollup-linux-s390x-gnu': 4.14.0
       '@rollup/rollup-linux-x64-gnu': 4.14.0
       '@rollup/rollup-linux-x64-musl': 4.14.0
+      '@rollup/rollup-win32-arm64-msvc': 4.14.0
+      '@rollup/rollup-win32-ia32-msvc': 4.14.0
       '@rollup/rollup-win32-x64-msvc': 4.14.0
       fsevents: 2.3.3
 
