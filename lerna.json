@@ -15,13 +15,13 @@
   "command": {
     "publish": {
       "ignoreChanges": ["**/*.md"],
-      "message": "release: 🏹 publish",
+      "message": "build: 📦 release",
       "conventionalCommits": true,
       "exec": "npx commitlint --from $LERNA_PACKAGE_NAME"
     },
     "version": {
       "ignoreChanges": ["**/*.md"],
-      "message": "release: 🏹 version",
+      "message": "build: 📦 release",
       "conventionalCommits": true,
       "exec": "npx commitlint --from $LERNA_PACKAGE_NAME"
     }
