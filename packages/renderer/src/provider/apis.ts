@@ -59,11 +59,30 @@ export function mockApis(schemas: ApiSchema[] = []) {
 }
 
 export interface MockCallbackOptions {
+  /**
+   * 请求url
+   */
   url: string;
+  /**
+   * 请求方法类型
+   */
   type: string;
+  /**
+   * 发送数据 playload
+   */
   body: string | FormData;
+  /**
+   * url路径参数，/api/:id  =>  {id}
+   */
   query?: Record<string, any>;
+  /**
+   * url 查询参数，/api/332?name=abc => {name:'abc}
+   */
   params?: Record<string, any>;
+
+  /**
+   * 发送数据， body 转 json
+   */
   data?: any;
 }
 

@@ -174,7 +174,7 @@ export class Provider extends Base {
     if (apis) {
       this.apis = createSchemaApis(apis, this.adapter);
       mockCleanup();
-      if (project.config?.mock) {
+      if (this.project.config?.mock) {
         mockApis(apis);
       }
     }

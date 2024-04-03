@@ -37,6 +37,7 @@
             <div>
               <ElButton
                 v-if="currentTab === 'mock'"
+                :disabled="!props.project?.config?.mock"
                 type="warning"
                 @click="onPreview">
                 预览
@@ -185,7 +186,13 @@
         {},
         true
       );
-      const json = Mock.mock(handler({ url: currentModel.value?.url }));
+      const { url, method } = currentModel.value;
+      const json = Mock.mock(
+        handler({
+          url,
+          type: method
+        })
+      );
       mockResult.value = JSON.stringify(json, null, 2);
       showPreview.value = true;
     }
