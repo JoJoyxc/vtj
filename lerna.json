@@ -11,5 +11,17 @@
     "dev",
     "docs",
     "lcdp"
-  ]
+  ],
+  "command": {
+    "publish": {
+      "message": "release: 🏹 publish",
+      "conventionalCommits": true,
+      "exec": "npx commitlint --from $LERNA_PACKAGE_NAME"
+    },
+    "version": {
+      "message": "release: 🏹 version",
+      "conventionalCommits": true,
+      "exec": "npx commitlint --from $LERNA_PACKAGE_NAME"
+    }
+  }
 }
