@@ -85,7 +85,7 @@ export const builtInDeps: Dependencie[] = [
     version: 'latest',
     library: 'antd',
     urls: [
-      '@vtj/materials/deps/ant-design-vue/rest.css',
+      '@vtj/materials/deps/ant-design-vue/reset.css',
       '@vtj/materials/deps/ant-design-vue/dayjs/dayjs.min.js',
       '@vtj/materials/deps/ant-design-vue/dayjs/plugin/customParseFormat.js',
       '@vtj/materials/deps/ant-design-vue/dayjs/plugin/weekday.js',
