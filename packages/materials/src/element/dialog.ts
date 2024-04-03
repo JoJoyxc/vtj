@@ -175,9 +175,6 @@ const components: MaterialDescription = {
       name: 'header'
     },
     {
-      name: 'title'
-    },
-    {
       name: 'footer'
     }
   ],
