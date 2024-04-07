@@ -25,7 +25,8 @@
   "devDependencies": {
     "@vtj/cli": "^0.7.21",
     "vue": "~3.4.15",
-    "vue-router": "~4.3.0"
+    "vue-router": "~4.3.0",
+    "qrcode":"~1.5.3"
   },
   "files": [
     "dist",
