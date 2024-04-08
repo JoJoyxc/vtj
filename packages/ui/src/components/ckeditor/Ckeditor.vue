@@ -1,26 +1,25 @@
 <template>
   <div class="x-ckeditor" :class="classes">
-    <CKEditor
-      ref="ckeditor"
+    <component
+      v-if="ckeditor?.CKEditor"
+      :is="ckeditor.CKEditor"
       :disabled="!props.editable || props.disabled"
-      :editor="ClassicEditor"
+      :editor="ckeditor.ClassicEditor"
       :config="config"
       :model-value="content"
       @input="onInput"
       @focus="onFocus"
       @blur="onBlur"
-      @ready="onReady"></CKEditor>
+      @ready="onReady"></component>
   </div>
 </template>
 <script lang="ts" setup>
   import { ref, computed, watch } from 'vue';
-  import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-  import CKEditorVue from '@ckeditor/ckeditor5-vue';
-  import '@ckeditor/ckeditor5-build-classic/build/translations/zh-cn.js';
   import { ckeditorProps, type CKEditorEmits } from './types';
   import { ImageUploadAdapter } from './ImageUploadAdapter';
   import { useAdapter } from '../../adapter';
-  const CKEditor = CKEditorVue.component;
+  import { useCkLoader } from './loader';
+  const ckeditor = useCkLoader();
 
   defineOptions({
     name: 'XCKEditor'
