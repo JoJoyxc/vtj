@@ -14,9 +14,6 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^19.1.0
         version: 19.1.0
-      '@types/qrcode':
-        specifier: ^1.5.5
-        version: 1.5.5
       axios:
         specifier: ~1.6.4
         version: 1.6.8
@@ -635,6 +632,9 @@ importers:
       '@ckeditor/ckeditor5-vue':
         specifier: ~5.1.0
         version: 5.1.0
+      '@types/qrcode':
+        specifier: ^1.5.5
+        version: 1.5.5
       '@vtj/icons':
         specifier: ^0.7.32
         version: link:../icons
@@ -5757,7 +5757,7 @@ packages:
     resolution: {integrity: sha512-CdfBi/e3Qk+3Z/fXYShipBT13OJ2fDO2Q2w5CIP5anLTLIndQG9z6P1cnm+8zCWSpm5dnxMFd/uREtb0EXuQzg==}
     dependencies:
       '@types/node': 20.12.5
-    dev: true
+    dev: false
 
   /@types/resolve@1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
