@@ -1,16 +1,16 @@
 <template>
   <div style="height: 100%">
-    <XCkeditor
+    <XCKEditor
       v-model="content"
       :uploader="uploader"
-      :border="false"></XCkeditor>
+      :border="false"></XCKEditor>
     <hr />
-    <XCkeditor v-model="content" :editable="false"></XCkeditor>
+    <XCKEditor v-model="content" :editable="false"></XCKEditor>
   </div>
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { XCkeditor } from '@vtj/web';
+  import { XCKEditor } from '@vtj/web';
   const content = ref('');
 
   const uploader = async (file: File) => {

@@ -1,7 +1,7 @@
 import { type PropType } from 'vue';
 import type { ComponentPropsType } from '../shared';
 
-export type CkeditorImageUploder = (file: File) => Promise<string>;
+export type CKEditorImageUploder = (file: File) => Promise<string>;
 
 export const ckeditorProps = {
   /**
@@ -32,13 +32,13 @@ export const ckeditorProps = {
     default: true
   },
   uploader: {
-    type: Function as PropType<CkeditorImageUploder>
+    type: Function as PropType<CKEditorImageUploder>
   }
 };
 
-export type CkeditorProps = ComponentPropsType<typeof ckeditorProps>;
+export type CKEditorProps = ComponentPropsType<typeof ckeditorProps>;
 
-export type CkeditorEmits = {
+export type CKEditorEmits = {
   'update:modelValue': [value?: string];
   change: [value?: string];
   blur: [value: string, e: any];

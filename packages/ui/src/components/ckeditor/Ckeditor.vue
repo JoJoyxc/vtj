@@ -17,14 +17,19 @@
   import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
   import CKEditorVue from '@ckeditor/ckeditor5-vue';
   import '@ckeditor/ckeditor5-build-classic/build/translations/zh-cn.js';
-  import { ckeditorProps, type CkeditorEmits } from './types';
+  import { ckeditorProps, type CKEditorEmits } from './types';
   import { ImageUploadAdapter } from './ImageUploadAdapter';
+  import { useAdapter } from '../../adapter';
   const CKEditor = CKEditorVue.component;
 
-  const props = defineProps(ckeditorProps);
-  const emit = defineEmits<CkeditorEmits>();
-  const content = ref(props.modelValue);
+  defineOptions({
+    name: 'XCKEditor'
+  });
 
+  const props = defineProps(ckeditorProps);
+  const emit = defineEmits<CKEditorEmits>();
+  const content = ref(props.modelValue);
+  const adapter = useAdapter();
   const config = {
     language: 'zh-cn',
     mediaEmbed: {
@@ -73,7 +78,7 @@
     ckeditor.plugins.get('FileRepository').createUploadAdapter = (
       loader: any
     ) => {
-      return new ImageUploadAdapter(loader, props.uploader);
+      return new ImageUploadAdapter(loader, props.uploader ?? adapter.uploader);
     };
     emit('ready', ckeditor);
   };

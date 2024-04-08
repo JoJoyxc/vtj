@@ -13,7 +13,7 @@ export default createViteConfig({
         'vue',
         'vue-router',
         'element-plus',
-        '@element-plus/icons-vue', 
+        '@element-plus/icons-vue',
         '@vtj/utils',
         '@vtj/icons',
         'echarts'
@@ -26,7 +26,10 @@ export default createViteConfig({
         '@vueuse/core',
         '@vtj/utils',
         '@vtj/icons',
-        'echarts'
+        'echarts',
+        '@ckeditor/ckeditor5-build-classic',
+        '@ckeditor/ckeditor5-vue',
+        '@ckeditor/ckeditor5-build-classic/build/translations/zh-cn.js'
       ],
   externalGlobals: isUmd
     ? {
@@ -39,5 +42,5 @@ export default createViteConfig({
         echarts: 'echarts'
       }
     : undefined,
-  formats: isUmd ? ['umd', 'iife'] : ['es', 'cjs']
+  formats: isUmd ? ['umd'] : ['es']
 });

@@ -1,4 +1,4 @@
-import type { DefineComponent } from 'vue';
+import { type DefineComponent } from 'vue';
 import {
   XIcon,
   XMenu,
@@ -19,7 +19,7 @@ import {
   XStartup,
   XTest,
   XInputUnit,
-  XCkeditor
+  XCKEditor
 } from './components';
 
 export const components = [
@@ -42,5 +42,5 @@ export const components = [
   XStartup,
   XTest,
   XInputUnit,
-  XCkeditor
+  XCKEditor
 ] as DefineComponent<any, any, any, any>[];

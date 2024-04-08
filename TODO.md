@@ -52,7 +52,7 @@
 # UI
 
 - XQrcode 二维码 https://github.com/rx-ts/vue/blob/master/packages/vue-qrcode/index.ts
-- XCkeditor 富文本编辑器
+- ~~XCKEditor 富文本编辑器~~
 - XAttachment 附件管理（upload/viewer）
 - XCondition 查询条件表单
 - XFilterBar 筛选栏

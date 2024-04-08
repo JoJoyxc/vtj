@@ -1,25 +1,10 @@
-import { type CkeditorImageUploder } from './types';
-
-function fileToBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    if (!window.FileReader) {
-      return reject(new Error('浏览器不支持FileReader'));
-    }
-    const reader = new FileReader();
-    reader.onload = function () {
-      resolve(reader.result as string);
-    };
-    reader.onerror = function (e) {
-      reject(e);
-    };
-    reader.readAsDataURL(file);
-  });
-}
+import { type CKEditorImageUploder } from './types';
+import { fileToBase64 } from '@vtj/utils';
 
 export class ImageUploadAdapter {
   constructor(
     public loader: any,
-    public uploader: CkeditorImageUploder = fileToBase64
+    public uploader: CKEditorImageUploder = fileToBase64
   ) {}
   async upload() {
     const loader = this.loader;
