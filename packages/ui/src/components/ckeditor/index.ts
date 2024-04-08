@@ -1,3 +1,7 @@
-import XCKEditor from './Ckeditor.vue';
-export { XCKEditor };
+import { defineAsyncComponent } from 'vue';
+
+export const XCKEditor = defineAsyncComponent(
+  async () => (await import('./Ckeditor.vue')).default
+);
+
 export * from './types';
