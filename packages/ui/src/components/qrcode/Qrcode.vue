@@ -1,6 +1,6 @@
 <template>
-  <div class="x-qrcode">
-    <img class="x-qrcode" ref="qrcodeRef" v-bind="attrs" :src="dataUrlRef" />
+  <div class="x-qrcode" ref="qrcodeRef">
+    <img class="x-qrcode__qrcode" v-bind="attrs" :src="dataUrlRef" />
 
     <div class="x-qrcode__mask" v-if="!props.timeout">
       <slot name="logo">
@@ -10,7 +10,6 @@
         </div>
       </slot>
       <slot name="tip">
-        <!-- 默认内容 -->
         <p class="x-qrcode__tip">二维码已失效请刷新居重试</p>
       </slot>
     </div>
