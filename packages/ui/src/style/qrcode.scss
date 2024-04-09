@@ -15,7 +15,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: seagreen;
+    color: var(--el-color-success-dark-2);
   }
 
   @include e(logo) {
@@ -26,7 +26,7 @@
   }
 
   @include e(tip) {
-    color: #000;
+    color: var(--el-color-black);
     width: 90px;
   }
 }
