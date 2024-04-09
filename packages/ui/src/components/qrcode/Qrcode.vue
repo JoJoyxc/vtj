@@ -1,15 +1,27 @@
 <template>
-  <img
-    class="x-qrcode"
-    ref="qrcodeRef"
-    :style="styleComputed"
-    :src="dataUrlRef" />
+  <div class="x-qrcode">
+    <img class="x-qrcode" ref="qrcodeRef" v-bind="attrs" :src="dataUrlRef" />
+
+    <div class="x-qrcode__mask" v-if="!props.timeout">
+      <slot name="logo">
+        <div class="x-qrcode__logo" @click="handleRefresh">
+          <XIcon :icon="Refresh" :size="40"></XIcon>
+          <p>刷新</p>
+        </div>
+      </slot>
+      <slot name="tip">
+        <!-- 默认内容 -->
+        <p class="x-qrcode__tip">二维码已失效请刷新居重试</p>
+      </slot>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-  import { ref, computed, watch, useAttrs } from 'vue';
-  import { qrcodeProps, type QrcodeEmits, type QRCodeValue } from './types';
-  import { getSizeValue } from '../../utils';
+  import { ref, watch, useAttrs } from 'vue';
+  import { XIcon } from '../icon';
+  import { Refresh } from '@vtj/icons';
+  import { qrcodeProps, type QrcodeEmits } from './types';
   import QRCode from 'qrcode';
 
   defineOptions({
@@ -19,14 +31,15 @@
   const props = defineProps(qrcodeProps);
   const emit = defineEmits<QrcodeEmits>();
   const attrs = useAttrs();
-  console.log(attrs);
 
   // ---
-  const dataUrlRef = ref<string>('哈哈的哈哈哈');
-  const toDataURL = () => {
+  const dataUrlRef = ref<string>();
+  const toDataURL = async () => {
     const { quality, value, ...rest } = props;
+    const typeValue = typeof value === 'function' ? await value() : value;
+
     QRCode.toDataURL(
-      value as QRCodeValue,
+      typeValue,
       Object.assign(rest, quality == null || { renderOptions: { quality } })
     )
       .then((dataUrl) => {
@@ -37,17 +50,15 @@
         console.log(err);
       });
   };
+
+  const handleRefresh = () => {
+    emit('refresh');
+  };
+
   watch(props, toDataURL, { immediate: true });
 
   // 组件
   const qrcodeRef = ref();
-  // 样式
-  const styleComputed = computed(() => {
-    return {
-      width: getSizeValue(props.width ?? 400),
-      scale: getSizeValue(props.scale)
-    };
-  });
   //暴露组件
   defineExpose({
     qrcodeRef

@@ -3,11 +3,11 @@ import type { ComponentPropsType } from '../shared';
 import type {
   QRCodeErrorCorrectionLevel,
   QRCodeMaskPattern,
-  QRCodeSegment,
   QRCodeToDataURLOptions,
   QRCodeToDataURLOptionsJpegWebp,
   QRCodeToSJISFunc
 } from 'qrcode';
+
 export const LEVELS = [
   'low',
   'medium',
@@ -25,7 +25,7 @@ export const MODES = ['alphanumeric', 'numeric', 'kanji', 'byte'] as const;
 
 export type { QRCodeSegment } from 'qrcode';
 
-export type QRCodeValue = QRCodeSegment[] | string;
+export type QRCodeValue = string | (() => Promise<string>);
 
 export const TYPES = ['image/png', 'image/jpeg', 'image/webp'] as const;
 
@@ -105,51 +105,23 @@ export const qrcodeProps = {
   },
   // 品质 quality
   quality: {
-    type: Number,
-    validator: (quality: number) =>
-      quality === Number.parseFloat(String(quality)) &&
-      quality >= 0 &&
-      quality <= 1,
-    required: false
+    type: Number
   },
   // 值 value
   value: {
     type: [String, Array] as PropType<QRCodeValue>,
-    required: true,
-    validator(value: QRCodeValue) {
-      if (typeof value === 'string') {
-        return true;
-      }
-      // if (typeof value === 'object') {
-      //   value.every(
-      //     (it) =>
-      //       typeof it.data === 'string' &&
-      //       'mode' in it &&
-      //       it.mode &&
-      //       MODES.includes(it.mode)
-      //   );
-      // }
-      return value.every(
-        (it) =>
-          typeof it.data === 'string' &&
-          'mode' in it &&
-          it.mode &&
-          MODES.includes(it.mode)
-      );
-    }
-  }
+    default: ''
+  },
   // 超时时间  毫秒
-  // timeout: {
-  //   type: Number,
-  //   validator(value: number) {
-  //     return value / 1000;
-  //   },
-  //   default: 0
-  // }
+  timeout: {
+    type: Number,
+    default: 0
+  }
 };
 
 export type qrcodeProps = ComponentPropsType<typeof qrcodeProps>;
 
 export type QrcodeEmits = {
   change: [dataUrl: string];
+  refresh: [];
 };
