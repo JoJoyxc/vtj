@@ -48,7 +48,7 @@ export const qrcodeProps = {
       version <= MAX_QR_VERSION
   },
   /**
-   * 错误收集水平  errorCorrectionLevel
+   * 纠错级别  errorCorrectionLevel
    */
   errorCorrectionLevel: {
     type: String as PropType<QRCodeErrorCorrectionLevel>,

@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, useAttrs, onMounted } from 'vue';
+  import { ref, watch, useAttrs, onMounted, onUnmounted } from 'vue';
   import { XIcon } from '../icon';
   import { Refresh } from '@vtj/icons';
   import { qrcodeProps, type qrcodeEmits } from './types';
@@ -32,22 +32,30 @@
   const attrs = useAttrs();
 
   const isTimeout = ref<boolean>(false);
-  // 计时器 判断是否超时
-  const timer = () => {
+
+  const timer = (): void => {
     isTimeout.value = false;
-    setTimeout(() => {
-      isTimeout.value = true;
-    }, props.timeout / 1000);
+    timeout();
   };
 
-  onMounted(() => {
-    timer();
-  });
+  let timeout = () =>
+    setTimeout(() => {
+      isTimeout.value = true;
+    }, props.timeout);
 
   const handleRefresh = () => {
     emit('refresh');
+    clearTimeout(timeout());
     timer();
   };
+
+  onMounted(() => {
+    if (props.timeout > 0) timer();
+  });
+
+  onUnmounted(() => {
+    clearTimeout(timeout());
+  });
 
   // 保存 qrcode 的值 value  props.value
   const qrcodeValue = ref<string>();
