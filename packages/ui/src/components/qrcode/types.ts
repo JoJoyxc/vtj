@@ -52,7 +52,8 @@ export const qrcodeProps = {
    */
   errorCorrectionLevel: {
     type: String as PropType<QRCodeErrorCorrectionLevel>,
-    validator: (level: QRCodeErrorCorrectionLevel) => LEVELS.includes(level)
+    validator: (level: QRCodeErrorCorrectionLevel) => LEVELS.includes(level),
+    default: 'M'
   },
   /**
    * 面罩模式   maskPattern
@@ -105,7 +106,8 @@ export const qrcodeProps = {
   },
   // 品质 quality
   quality: {
-    type: Number
+    type: Number,
+    default: 0.92
   },
   // 值 value
   value: {
