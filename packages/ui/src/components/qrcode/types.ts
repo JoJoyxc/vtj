@@ -118,12 +118,16 @@ export const qrcodeProps = {
   timeout: {
     type: Number,
     default: 0
+  },
+  // tip
+  tip: {
+    type: String,
+    default: '二维码已失效请刷新居重试'
   }
 };
 
 export type qrcodeProps = ComponentPropsType<typeof qrcodeProps>;
 
-export type QrcodeEmits = {
-  change: [dataUrl: string];
+export type qrcodeEmits = {
   refresh: [];
 };

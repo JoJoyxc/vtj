@@ -1,7 +1,4 @@
 <template>
-  <button @click="handleChangeValue('哈哈哈哈')">测试改变 value的值</button>
-  <button @click="handleRefresh(1000)">测试改变 timeout的值为1000</button>
-  <button @click="handleRefresh(0)">测试改变 timeout的值为0</button>
   <div style="height: 100%">
     <XQrcode
       :value="dataUrl"
@@ -21,17 +18,13 @@
 
   const dataUrl = ref('二维码数据');
 
-  const timeoutValue = ref(100);
+  const timeoutValue = ref<number>(3000000);
 
   const onDataUrlChange = (val: string) => {
     dataUrl.value = val;
   };
 
-  const handleChangeValue = (val: string) => {
-    dataUrl.value = val;
-  };
-
-  const handleRefresh = (time: number = 1000) => {
+  const handleRefresh = (time: number = 3000000) => {
     timeoutValue.value = time;
   };
 </script>

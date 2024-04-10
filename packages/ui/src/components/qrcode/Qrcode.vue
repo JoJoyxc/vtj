@@ -1,8 +1,8 @@
 <template>
   <div class="x-qrcode" ref="qrcodeRef">
-    <img class="x-qrcode__qrcode" v-bind="attrs" :src="dataUrlRef" />
+    <img class="x-qrcode__qrcode" v-bind="attrs" :src="qrcodeValue" />
 
-    <div class="x-qrcode__mask" v-if="!props.timeout">
+    <div class="x-qrcode__mask" v-if="qrcodeValue && isTimeout">
       <slot name="logo">
         <div class="x-qrcode__logo" @click="handleRefresh">
           <XIcon :icon="Refresh" :size="40"></XIcon>
@@ -10,17 +10,17 @@
         </div>
       </slot>
       <slot name="tip">
-        <p class="x-qrcode__tip">二维码已失效请刷新居重试</p>
+        <p class="x-qrcode__tip">{{ props.tip }}</p>
       </slot>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, useAttrs } from 'vue';
+  import { ref, watch, useAttrs, onMounted } from 'vue';
   import { XIcon } from '../icon';
   import { Refresh } from '@vtj/icons';
-  import { qrcodeProps, type QrcodeEmits } from './types';
+  import { qrcodeProps, type qrcodeEmits } from './types';
   import QRCode from 'qrcode';
 
   defineOptions({
@@ -28,11 +28,29 @@
   });
 
   const props = defineProps(qrcodeProps);
-  const emit = defineEmits<QrcodeEmits>();
+  const emit = defineEmits<qrcodeEmits>();
   const attrs = useAttrs();
 
-  // ---
-  const dataUrlRef = ref<string>();
+  const isTimeout = ref<boolean>(false);
+  // 计时器 判断是否超时
+  const timer = () => {
+    isTimeout.value = false;
+    setTimeout(() => {
+      isTimeout.value = true;
+    }, props.timeout / 1000);
+  };
+
+  onMounted(() => {
+    timer();
+  });
+
+  const handleRefresh = () => {
+    emit('refresh');
+    timer();
+  };
+
+  // 保存 qrcode 的值 value  props.value
+  const qrcodeValue = ref<string>();
   const toDataURL = async () => {
     const { quality, value, ...rest } = props;
     const typeValue = typeof value === 'function' ? await value() : value;
@@ -42,16 +60,11 @@
       Object.assign(rest, quality == null || { renderOptions: { quality } })
     )
       .then((dataUrl) => {
-        dataUrlRef.value = dataUrl;
-        emit('change', dataUrl);
+        qrcodeValue.value = dataUrl;
       })
       .catch((err: unknown) => {
         console.log(err);
       });
-  };
-
-  const handleRefresh = () => {
-    emit('refresh');
   };
 
   watch(props, toDataURL, { immediate: true });
