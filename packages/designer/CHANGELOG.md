@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.34](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.7.33...@vtj/designer@0.7.34) (2024-04-10)
+
+
+### Bug Fixes
+
+* 🐛 designer about ([0c17f56](https://gitee.com/newgateway/vtj/commits/0c17f56644bbf9f3af974b838917ae5d82881bcd))
+
+
+
+
+
+
+## [0.7.33](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.7.32...@vtj/designer@0.7.33) (2024-04-08)
+
+
+### Bug Fixes
+
+* 🐛 ant-design-vue reset.css path error ([add106d](https://gitee.com/newgateway/vtj/commits/add106dfb13ddb57b3247bbd2683e862c48aecd1))
+* 🐛 deps merge ([8c5670b](https://gitee.com/newgateway/vtj/commits/8c5670b2caa4a2c594a7af0e25c0ece9fafb16e6))
+
+
+### Features
+
+* ✨ 设计器支持ckeditor ([5225869](https://gitee.com/newgateway/vtj/commits/522586927c1ef13ff7e1c02b5df962092805f4a0))
+
+
+
+
+
+
 ## [0.7.32](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.7.31...@vtj/designer@0.7.32) (2024-04-03)
 
 

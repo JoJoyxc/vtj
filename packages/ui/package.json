@@ -1,7 +1,7 @@
 {
   "name": "@vtj/ui",
   "private": false,
-  "version": "0.7.32",
+  "version": "0.7.34",
   "type": "module",
   "scripts": {
     "build": "vue-tsc && vite build && npm run build:umd",
@@ -17,8 +17,8 @@
     "@ckeditor/ckeditor5-build-classic": "~41.2.1",
     "@ckeditor/ckeditor5-vue": "~5.1.0",
     "@types/qrcode": "^1.5.5",
-    "@vtj/icons": "^0.7.32",
-    "@vtj/utils": "^0.7.32",
+    "@vtj/icons": "^0.7.34",
+    "@vtj/utils": "^0.7.34",
     "@vueuse/core": "~10.9.0",
     "echarts": "~5.5.0",
     "element-plus": "~2.6.2"
@@ -41,7 +41,7 @@
     ".": {
       "types": "./types/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.umd.js"
     }
   },
   "publishConfig": {

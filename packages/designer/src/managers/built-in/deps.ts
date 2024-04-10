@@ -57,20 +57,24 @@ export const builtInDeps: Dependencie[] = [
     official: true,
     enabled: true
   },
-  {
-    package: 'echarts',
-    version: 'latest',
-    library: 'echarts',
-    urls: ['@vtj/materials/deps/echarts/echarts.min.js'],
-    required: false,
-    official: true,
-    enabled: true
-  },
+  // {
+  //   package: 'echarts',
+  //   version: 'latest',
+  //   library: 'echarts',
+  //   urls: ['@vtj/materials/deps/echarts/echarts.min.js'],
+  //   required: false,
+  //   official: true,
+  //   enabled: true
+  // },
   {
     package: '@vtj/ui',
     version: 'latest',
     library: 'VtjUI',
     urls: [
+      '@vtj/materials/deps/echarts/echarts.min.js',
+      '@vtj/materials/deps/@ckeditor/ckeditor5-build-classic/ckeditor.js',
+      '@vtj/materials/deps/@ckeditor/ckeditor5-build-classic/zh-cn.js',
+      '@vtj/materials/deps/@ckeditor/ckeditor5-vue/ckeditor.js',
       '@vtj/materials/deps/@vtj/ui/style.css',
       '@vtj/materials/deps/@vtj/ui/index.umd.js'
     ],
