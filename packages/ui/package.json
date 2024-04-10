@@ -16,7 +16,6 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "~41.2.1",
     "@ckeditor/ckeditor5-vue": "~5.1.0",
-    "@types/qrcode": "^1.5.5",
     "@vtj/icons": "^0.7.34",
     "@vtj/utils": "^0.7.34",
     "@vueuse/core": "~10.9.0",
@@ -24,6 +23,7 @@
     "element-plus": "~2.6.2"
   },
   "devDependencies": {
+    "@types/qrcode": "^1.5.5",
     "@vtj/cli": "^0.7.21",
     "qrcode": "~1.5.3",
     "vue": "~3.4.15",
