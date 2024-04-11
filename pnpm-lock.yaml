@@ -632,9 +632,6 @@ importers:
       '@ckeditor/ckeditor5-vue':
         specifier: ~5.1.0
         version: 5.1.0
-      '@types/qrcode':
-        specifier: ^1.5.5
-        version: 1.5.5
       '@vtj/icons':
         specifier: ^0.7.34
         version: link:../icons
@@ -651,6 +648,9 @@ importers:
         specifier: ~2.6.2
         version: 2.6.3(vue@3.4.21)
     devDependencies:
+      '@types/qrcode':
+        specifier: ^1.5.5
+        version: 1.5.5
       '@vtj/cli':
         specifier: ^0.7.21
         version: link:../cli
@@ -5759,8 +5759,8 @@ packages:
   /@types/qrcode@1.5.5:
     resolution: {integrity: sha512-CdfBi/e3Qk+3Z/fXYShipBT13OJ2fDO2Q2w5CIP5anLTLIndQG9z6P1cnm+8zCWSpm5dnxMFd/uREtb0EXuQzg==}
     dependencies:
-      '@types/node': 20.12.5
-    dev: false
+      '@types/node': 20.12.7
+    dev: true
 
   /@types/resolve@1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
