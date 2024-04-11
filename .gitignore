@@ -50,3 +50,5 @@ lib
 
 # pro
 /platforms/pro/public/@vtj
+
+/scripts/ssh.mjs
