@@ -24,7 +24,7 @@
 - 设计器属性设置，禁用已绑定了双向绑定的属性设置器
 - 设计视图禁用组件鼠标事件
 - 画布支持组件拖拽
-- ssh发布阿里云
+- ~~ssh发布阿里云~~
 - 依赖管理增加重置内置依赖项功能
 
 # 定制版
@@ -53,7 +53,7 @@
 # UI
 
 - XQrcode 二维码 https://github.com/rx-ts/vue/blob/master/packages/vue-qrcode/index.ts
-- ~~XCKEditor 富文本编辑器~~
+- XImageCodeInput 图形验证码输入框
 - XSmsCodeInput 短信验证码输入框
 - XAttachment 附件管理（upload/viewer）
 - XCondition 查询条件表单

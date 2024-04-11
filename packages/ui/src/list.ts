@@ -19,7 +19,8 @@ import {
   XStartup,
   XTest,
   XInputUnit,
-  XCKEditor
+  XCKEditor,
+  XSmsCodeInput
 } from './components';
 
 export const components = [
@@ -42,5 +43,6 @@ export const components = [
   XStartup,
   XTest,
   XInputUnit,
-  XCKEditor
+  XCKEditor,
+  XSmsCodeInput
 ] as DefineComponent<any, any, any, any>[];
