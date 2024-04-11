@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, useAttrs, onMounted, onUnmounted } from 'vue';
+  import { ref, watch, useAttrs, onUnmounted } from 'vue';
   import { XIcon } from '../icon';
   import { Refresh } from '@vtj/icons';
   import { qrcodeProps, type qrcodeEmits } from './types';
@@ -33,28 +33,25 @@
 
   const isTimeout = ref<boolean>(false);
 
-  const timer = (): void => {
+  let timer: any;
+  const refreshTimeout = (): void => {
     isTimeout.value = false;
-    timeout();
-  };
-
-  let timeout = () =>
-    setTimeout(() => {
+    timer = setTimeout(() => {
       isTimeout.value = true;
     }, props.timeout);
-
-  const handleRefresh = () => {
-    emit('refresh');
-    clearTimeout(timeout());
-    timer();
   };
 
-  onMounted(() => {
-    if (props.timeout > 0) timer();
-  });
+  const handleRefresh = () => {
+    clearTimeout(timer as unknown as number);
+    emit('refresh');
+    toDataURL();
+    refreshTimeout();
+  };
+
+  if (props.timeout > 0) refreshTimeout();
 
   onUnmounted(() => {
-    clearTimeout(timeout());
+    clearTimeout(timer as unknown as number);
   });
 
   // 保存 qrcode 的值 value  props.value
@@ -62,7 +59,6 @@
   const toDataURL = async () => {
     const { quality, value, ...rest } = props;
     const typeValue = typeof value === 'function' ? await value() : value;
-
     QRCode.toDataURL(
       typeValue,
       Object.assign(rest, quality == null || { renderOptions: { quality } })
