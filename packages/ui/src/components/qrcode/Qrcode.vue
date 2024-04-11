@@ -3,15 +3,16 @@
     <img class="x-qrcode__qrcode" v-bind="attrs" :src="qrcodeValue" />
 
     <div class="x-qrcode__mask" v-if="qrcodeValue && isTimeout">
-      <slot name="logo">
-        <div class="x-qrcode__logo" @click="handleRefresh">
+      <div class="x-qrcode__logo" @click="handleRefresh">
+        <slot name="logo">
           <XIcon :icon="Refresh" :size="40"></XIcon>
           <p>刷新</p>
-        </div>
-      </slot>
-      <slot name="tip">
-        <p class="x-qrcode__tip">{{ props.tip }}</p>
-      </slot>
+        </slot>
+      </div>
+
+      <div class="x-qrcode__tip">
+        <slot name="tip">{{ props.tip }}</slot>
+      </div>
     </div>
   </div>
 </template>
@@ -57,7 +58,8 @@
   // 保存 qrcode 的值 value  props.value
   const qrcodeValue = ref<string>();
   const toDataURL = async () => {
-    const { quality, value, ...rest } = props;
+    const { quality, value, darkColor, lightColor, ...rest } = props;
+    rest.color = { dark: darkColor, light: lightColor };
     const typeValue = typeof value === 'function' ? await value() : value;
     QRCode.toDataURL(
       typeValue,

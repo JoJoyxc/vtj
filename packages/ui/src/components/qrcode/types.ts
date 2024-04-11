@@ -1,27 +1,9 @@
 import type { PropType } from 'vue';
 import type { ComponentPropsType } from '../shared';
 import type {
-  QRCodeErrorCorrectionLevel,
-  QRCodeMaskPattern,
   QRCodeToDataURLOptions,
-  QRCodeToDataURLOptionsJpegWebp,
-  QRCodeToSJISFunc
+  QRCodeToDataURLOptionsJpegWebp
 } from 'qrcode';
-
-export const LEVELS = [
-  'low',
-  'medium',
-  'quartile',
-  'high',
-  'L',
-  'M',
-  'Q',
-  'H'
-] as const;
-
-export const MASK_PATTERNS = [0, 1, 2, 3, 4, 5, 6, 7] as const;
-
-export const MODES = ['alphanumeric', 'numeric', 'kanji', 'byte'] as const;
 
 export type { QRCodeSegment } from 'qrcode';
 
@@ -34,36 +16,7 @@ export type QRCodeProps = Omit<QRCodeToDataURLOptions, 'renderOptions'> &
     value: QRCodeValue;
   };
 
-const MAX_QR_VERSION = 40;
-
 export const qrcodeProps = {
-  /**
-   * 版本 version
-   */
-  version: {
-    type: Number,
-    validator: (version: number) =>
-      version === Number.parseInt(String(version), 10) &&
-      version >= 1 &&
-      version <= MAX_QR_VERSION
-  },
-  /**
-   * 纠错级别  errorCorrectionLevel
-   */
-  errorCorrectionLevel: {
-    type: String as PropType<QRCodeErrorCorrectionLevel>,
-    validator: (level: QRCodeErrorCorrectionLevel) => LEVELS.includes(level),
-    default: 'M'
-  },
-  /**
-   * 面罩模式   maskPattern
-   */
-  maskPattern: {
-    type: Number as PropType<QRCodeMaskPattern>,
-    validator: (maskPattern: QRCodeMaskPattern) =>
-      MASK_PATTERNS.includes(maskPattern)
-  },
-  toSJISFunc: Function as PropType<QRCodeToSJISFunc>,
   /**
    * 外边距 margin
    */
@@ -82,27 +35,26 @@ export const qrcodeProps = {
    *  宽度 width
    */
   width: {
-    type: Number,
-    default: 400
+    type: Number
   },
-  /**
-   *  颜色 color
-   */
+  // color
   color: {
-    type: Object,
-    validator: (color: QRCodeProps['color']) =>
-      (['dark', 'light'] as const).every((c) =>
-        ['string', 'undefined'].includes(typeof color![c])
-      ),
-    required: true
+    type: Object
   },
   /**
-   *  类型 type
+   * dark color
    */
-  type: {
-    type: String as PropType<QRCodeProps['type']>,
-    validator: (type: QRCodeProps['type']) => TYPES.includes(type!),
-    required: true
+  darkColor: {
+    type: String,
+    default: '#000000ff'
+  },
+
+  /**
+   * dark color
+   */
+  lightColor: {
+    type: String,
+    default: '#ffffffff'
   },
   // 品质 quality
   quality: {

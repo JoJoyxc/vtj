@@ -3,8 +3,7 @@
   <div style="height: 100%">
     <XQrcode
       :value="dataUrl"
-      type="image/png"
-      :color="{ dark: '#000000ff', light: '#ffffffff' }"
+      :width="400"
       :timeout="timeoutValue"
       @refresh="handleRefresh">
     </XQrcode>
