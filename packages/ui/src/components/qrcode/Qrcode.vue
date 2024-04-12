@@ -1,5 +1,5 @@
 <template>
-  <div class="x-qrcode" ref="qrcodeRef">
+  <div class="x-qrcode" ref="qrcodeRef" v-loading="isLoading">
     <img class="x-qrcode__qrcode" v-bind="attrs" :src="qrcodeValue" />
 
     <!-- 蒙层 -->
@@ -15,20 +15,16 @@
         <slot name="tip">{{ props.tip }}</slot>
       </div>
     </div>
-
-    <!-- loading  -->
-    <div class="x-qrcode__loading" v-if="isLoading">
-      <XIcon :icon="Loading" :size="60"></XIcon>
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { ref, watch, useAttrs, onUnmounted } from 'vue';
   import { XIcon } from '../icon';
-  import { Loading, Refresh } from '@vtj/icons';
+  import { Refresh } from '@vtj/icons';
   import { qrcodeProps, type qrcodeEmits } from './types';
   import QRCode from 'qrcode';
+  import { vLoading } from 'element-plus';
 
   defineOptions({
     name: 'XQrcode'
@@ -39,22 +35,22 @@
   const attrs = useAttrs();
 
   const isTimeout = ref<boolean>(false);
-  const isLoading = ref<boolean>(false);
+  const isLoading = ref<boolean>(true);
 
   let timer: any;
   const refreshTimeout = (): void => {
+    isLoading.value = false; // 移除 loading
     timer = setTimeout(() => {
       isTimeout.value = true;
     }, props.timeout);
   };
 
-  const handleRefresh = () => {
-    clearTimeout(timer as unknown as number); // 移除定时器
-    emit('refresh'); //触发更新
+  const handleRefresh = async () => {
     isTimeout.value = false; //移除 刷新蒙层
     isLoading.value = true; //展示 loading
-    toDataURL(); // 加载数据
-    isLoading.value = false; // 移除 loading
+    clearTimeout(timer as unknown as number); // 移除定时器
+    emit('refresh'); //触发更新timeout
+    await toDataURL(); // 加载数据
     refreshTimeout(); //重新定时
   };
 

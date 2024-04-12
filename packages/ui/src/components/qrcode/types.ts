@@ -63,7 +63,7 @@ export const qrcodeProps = {
   },
   // 值 value
   value: {
-    type: [String, Array] as PropType<QRCodeValue>,
+    type: [String, Function] as PropType<QRCodeValue>,
     default: ''
   },
   // 超时时间  毫秒
