@@ -4,8 +4,10 @@ import {
   type HistorySchema,
   type PageFile
 } from '@vtj/core';
+import formidable from 'formidable';
 import { type ApiRequest, type ApiResponse, fail } from './shared';
 import * as service from './service';
+import { resolve } from 'path';
 
 export interface Controller {
   [index: string]: (req: ApiRequest) => Promise<ApiResponse>;
@@ -95,4 +97,22 @@ export const router = async (req: any) => {
     await service.saveLogs(info);
     return fail('异常错误', e);
   }
+};
+
+export const uploader = async (req: any) => {
+  const form = formidable({
+    keepExtensions: true,
+    multiples: true,
+    createDirsFromUploads: true,
+    // filename: (name: string, ext: string) => `${name}${ext}`,
+    uploadDir: resolve('.vtj/static')
+  });
+  return await new Promise((reslove, inject) => {
+    form.parse(req, (err, fields, files) => {
+      if (err) {
+        inject(fail('异常错误', err));
+      }
+      reslove({ fields, files });
+    });
+  });
 };

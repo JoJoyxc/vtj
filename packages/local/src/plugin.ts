@@ -13,7 +13,7 @@ import {
 import { pathExistsSync } from '@vtj/node';
 import { join } from 'path';
 import bodyParser from 'body-parser';
-import { router } from './controller';
+import { router, uploader } from './controller';
 
 export interface DevToolsOptions {
   baseURL: string;
@@ -26,6 +26,7 @@ export interface DevToolsOptions {
   packagesDir: string;
   devMode: boolean;
   hm?: string;
+  uploader?: string;
 }
 
 export interface LinkOptions {
@@ -44,7 +45,10 @@ const setApis = (
   server.middlewares.use(async (req, res, next) => {
     const reqUrl = req.url || '';
     if (reqUrl.startsWith(options.baseURL)) {
-      const data = await router(req);
+      const isUpload = reqUrl.startsWith(
+        `${options.baseURL}${options.uploader}`
+      );
+      const data = isUpload ? await uploader(req) : await router(req);
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify(data));
     } else {
@@ -190,6 +194,7 @@ export function createDevTools(options: Partial<DevToolsOptions> = {}) {
     packagesDir: '../../packages',
     devMode: false,
     hm: '42f2469b4aa27c3f8978f634c0c19d24',
+    uploader: '/uploader',
     ...options
   };
   const plugins: Plugin[] = [aliasPlugin(opts)];
