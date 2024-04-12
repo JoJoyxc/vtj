@@ -222,6 +222,12 @@ export interface CreateViteConfigOptions {
    * 开启 nodePolyfills
    */
   node?: boolean | PolyfillOptions;
+
+  /**
+   * 类库导出名称模式， 默认 auto
+   * https://rollupjs.org/configuration-options/#output-exports
+   */
+  exports?: 'auto' | 'default' | 'named' | 'none';
 }
 
 export interface CreateUniappViteConfigOptions {
