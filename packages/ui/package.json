@@ -23,6 +23,7 @@
     "element-plus": "~2.6.2"
   },
   "devDependencies": {
+    "@types/qrcode": "^1.5.5",
     "@vtj/cli": "^0.7.21",
     "qrcode": "~1.5.3",
     "vue": "~3.4.15",

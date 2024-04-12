@@ -651,6 +651,9 @@ importers:
         specifier: ~2.6.2
         version: 2.6.3(vue@3.4.21)
     devDependencies:
+      '@types/qrcode':
+        specifier: ^1.5.5
+        version: 1.5.5
       '@vtj/cli':
         specifier: ^0.7.21
         version: link:../cli
@@ -5757,6 +5760,12 @@ packages:
     dependencies:
       '@types/node': 20.12.7
       kleur: 3.0.3
+    dev: true
+
+  /@types/qrcode@1.5.5:
+    resolution: {integrity: sha512-CdfBi/e3Qk+3Z/fXYShipBT13OJ2fDO2Q2w5CIP5anLTLIndQG9z6P1cnm+8zCWSpm5dnxMFd/uREtb0EXuQzg==}
+    dependencies:
+      '@types/node': 20.12.7
     dev: true
 
   /@types/resolve@1.20.2:
