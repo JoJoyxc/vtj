@@ -143,6 +143,15 @@ export function createUniappViteConfig(
     plugins.push(...opts.plugins);
   }
 
+  if (opts.buildEnd) {
+    plugins.push({
+      name: 'vtj-build-end-plugin',
+      buildStart(err: any) {
+        opts.buildEnd && opts.buildEnd(err);
+      }
+    });
+  }
+
   const config: UserConfig = {
     resolve: {
       alias

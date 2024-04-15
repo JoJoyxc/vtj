@@ -228,6 +228,13 @@ export interface CreateViteConfigOptions {
    * https://rollupjs.org/configuration-options/#output-exports
    */
   exports?: 'auto' | 'default' | 'named' | 'none';
+
+  /**
+   * 编译完成时触发回调函数
+   * @param error
+   * @returns
+   */
+  buildEnd?: (error?: any) => void;
 }
 
 export interface CreateUniappViteConfigOptions {
@@ -295,4 +302,11 @@ export interface CreateUniappViteConfigOptions {
    * 开启 nodePolyfills
    */
   node?: boolean | PolyfillOptions;
+
+  /**
+   * 编译完成时触发回调函数
+   * @param error
+   * @returns
+   */
+  buildEnd?: (error?: any) => void;
 }
