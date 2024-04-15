@@ -6,7 +6,8 @@ import {
   type MaterialDescription,
   type HistorySchema,
   type HistoryItem,
-  type Service
+  type Service,
+  type StaticFileInfo
 } from '@vtj/core';
 import { Request } from '@vtj/utils';
 import { ElNotification } from 'element-plus';
@@ -29,7 +30,7 @@ const request = new Request({
 });
 
 const createApi = (url: string = '/vtj/local/repository/${type}.json') => {
-  return (type: string, data: any) => {
+  return (type: string, data?: any) => {
     return request.send({
       url,
       method: 'post',
@@ -42,10 +43,27 @@ const createApi = (url: string = '/vtj/local/repository/${type}.json') => {
   };
 };
 
+const createUploader = (url: string = '/vtj/local/repository/uploader') => {
+  return (files: File[]) => {
+    return request.send({
+      url,
+      method: 'post',
+      data: {
+        files
+      },
+      settings: {
+        type: 'data'
+      }
+    });
+  };
+};
+
 export class BaseService implements Service {
   protected api: (type: string, data: any) => Promise<any>;
+  protected uploader: (files: File[]) => Promise<StaticFileInfo[]>;
   constructor() {
     this.api = createApi();
+    this.uploader = createUploader();
   }
 
   async init(project: ProjectSchema): Promise<ProjectSchema> {
@@ -136,5 +154,19 @@ export class BaseService implements Service {
 
   async removeRawPage(id: string): Promise<boolean> {
     return await this.api('removeRawPage', id).catch(() => '');
+  }
+
+  async uploadStaticFiles(files: File[]): Promise<StaticFileInfo[]> {
+    return await this.uploader(files).catch(() => []);
+  }
+  async getStaticFiles(): Promise<StaticFileInfo[]> {
+    const res = await this.api('getStaticFiles', undefined).catch(() => []);
+    return res as StaticFileInfo[];
+  }
+  async removeStaticFile(name: string): Promise<boolean> {
+    return await this.api('removeStaticFile', name).catch(() => '');
+  }
+  async clearStaticFiles(): Promise<boolean> {
+    return await this.api('clearStaticFiles', undefined).catch(() => '');
   }
 }

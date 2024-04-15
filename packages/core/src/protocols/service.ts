@@ -7,6 +7,7 @@ import type {
   BlockFile
 } from './schemas';
 import type { MaterialDescription } from './assets';
+import type { StaticFileInfo } from './shared';
 
 export abstract class Service {
   public abstract init(project: ProjectSchema): Promise<ProjectSchema>;
@@ -42,4 +43,9 @@ export abstract class Service {
 
   public abstract createRawPage(file: PageFile): Promise<boolean>;
   public abstract removeRawPage(id: string): Promise<boolean>;
+
+  public abstract uploadStaticFiles(files: File[]): Promise<StaticFileInfo[]>;
+  public abstract getStaticFiles(): Promise<StaticFileInfo[]>;
+  public abstract removeStaticFile(name: string): Promise<boolean>;
+  public abstract clearStaticFiles(): Promise<boolean>;
 }
