@@ -7,10 +7,14 @@ import {
 import formidable from 'formidable';
 import { type ApiRequest, type ApiResponse, fail } from './shared';
 import * as service from './service';
+import type { DevToolsOptions } from './plugin';
 import { resolve } from 'path';
 
 export interface Controller {
-  [index: string]: (req: ApiRequest) => Promise<ApiResponse>;
+  [index: string]: (
+    req: ApiRequest,
+    opts?: DevToolsOptions
+  ) => Promise<ApiResponse>;
 }
 
 const controller: Controller = {
@@ -81,38 +85,59 @@ const controller: Controller = {
   removeRawPage: async (req: ApiRequest) => {
     const id = req.data as string;
     return service.removeRawPage(id);
-  }
-};
+  },
+  getStaticFiles: async (_req: ApiRequest, opts?: DevToolsOptions) => {
+    return service.getStaticFiles(opts as any);
+  },
+  removeStaticFile: async (req: ApiRequest, opts?: DevToolsOptions) => {
+    const name = req.data as string;
+    return service.removeStaticFile(name, opts as any);
+  },
+  clearStaticFiles: async (_req: ApiRequest, opts?: DevToolsOptions) => {
+    return service.clearStaticFiles(opts as any);
+  },
 
-export const router = async (req: any) => {
-  const body: ApiRequest = req.body || {};
-  const handler = controller[body.type] || controller.notMatch;
-  try {
-    return await handler(body);
-  } catch (e) {
-    const info = {
-      input: body,
-      error: e
-    };
-    await service.saveLogs(info);
-    return fail('异常错误', e);
-  }
-};
-
-export const uploader = async (req: any) => {
-  const form = formidable({
-    keepExtensions: true,
-    multiples: true,
-    createDirsFromUploads: true,
-    // filename: (name: string, ext: string) => `${name}${ext}`,
-    uploadDir: resolve('.vtj/static')
-  });
-  return await new Promise((reslove, inject) => {
-    form.parse(req, (err, fields, files) => {
-      if (err) {
-        inject(fail('异常错误', err));
-      }
-      reslove({ fields, files });
+  uploader: async (req: any, opts?: DevToolsOptions) => {
+    if (!opts) return fail('异常错误');
+    const uploadDir = resolve(opts.staticDir, opts.vtjDir);
+    const form = formidable({
+      keepExtensions: true,
+      multiples: true,
+      createDirsFromUploads: true,
+      uploadDir
     });
-  });
+    return await new Promise<ApiResponse>((reslove) => {
+      form.parse(req, (err, _fields, files) => {
+        if (err) {
+          reslove(fail('异常错误', err));
+          return;
+        }
+        const tempFiles = files.files || [];
+        const result = service.uploadStaticFiles(tempFiles, opts as any);
+        reslove(result);
+      });
+    });
+  }
+};
+
+export const router = async (req: any, opts: DevToolsOptions) => {
+  const body: ApiRequest = req.body || {};
+  const reqUrl = req.url || '';
+  const uploaderPath = `${opts.baseURL}${opts.uploader}`;
+  const isUploader = reqUrl.startsWith(uploaderPath);
+  if (isUploader) {
+    return await controller.uploader(req, opts);
+  } else {
+    const handler = controller[body.type] || controller.notMatch;
+    try {
+      return await handler(body, opts);
+    } catch (e) {
+      const info = {
+        input: body,
+        error: e
+      };
+      await service.saveLogs(info);
+      return fail('异常错误', e);
+    }
+  }
 };

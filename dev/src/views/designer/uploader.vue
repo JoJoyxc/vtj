@@ -5,9 +5,7 @@
       enctype="multipart/form-data"
       method="post">
       <div>Text field title: <input type="text" name="title" /></div>
-      <div>
-        File: <input type="file" name="someExpressFiles" multiple="true" />
-      </div>
+      <div>File: <input type="file" name="files" multiple="true" /></div>
       <input type="submit" value="Upload" />
     </form>
   </div>
