@@ -192,7 +192,7 @@ export function createDevTools(options: Partial<DevToolsOptions> = {}) {
     vtjDir: '.vtj',
     packagesDir: '../../packages',
     devMode: false,
-    uploader: '/uploader',
+    uploader: '/uploader.json',
     hm: '42f2469b4aa27c3f8978f634c0c19d24',
     ...options
   };

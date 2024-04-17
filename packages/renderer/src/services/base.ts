@@ -43,13 +43,16 @@ const createApi = (url: string = '/vtj/local/repository/${type}.json') => {
   };
 };
 
-const createUploader = (url: string = '/vtj/local/repository/uploader') => {
-  return (files: File[]) => {
+const createUploader = (
+  url: string = '/vtj/local/repository/uploader.json'
+) => {
+  return (files: File[], projectId: string) => {
     return request.send({
       url,
       method: 'post',
       data: {
-        files
+        files,
+        projectId
       },
       settings: {
         type: 'data'
@@ -60,7 +63,10 @@ const createUploader = (url: string = '/vtj/local/repository/uploader') => {
 
 export class BaseService implements Service {
   protected api: (type: string, data: any) => Promise<any>;
-  protected uploader: (files: File[]) => Promise<StaticFileInfo[]>;
+  protected uploader: (
+    files: File[],
+    projectId: string
+  ) => Promise<StaticFileInfo[]>;
   constructor() {
     this.api = createApi();
     this.uploader = createUploader();
@@ -156,17 +162,22 @@ export class BaseService implements Service {
     return await this.api('removeRawPage', id).catch(() => '');
   }
 
-  async uploadStaticFiles(files: File[]): Promise<StaticFileInfo[]> {
-    return await this.uploader(files).catch(() => []);
+  async uploadStaticFiles(
+    files: File[],
+    projectId: string
+  ): Promise<StaticFileInfo[]> {
+    return await this.uploader(files, projectId).catch(() => []);
   }
-  async getStaticFiles(): Promise<StaticFileInfo[]> {
-    const res = await this.api('getStaticFiles', undefined).catch(() => []);
+  async getStaticFiles(projectId: string): Promise<StaticFileInfo[]> {
+    const res = await this.api('getStaticFiles', projectId).catch(() => []);
     return res as StaticFileInfo[];
   }
-  async removeStaticFile(name: string): Promise<boolean> {
-    return await this.api('removeStaticFile', name).catch(() => '');
+  async removeStaticFile(name: string, projectId: string): Promise<boolean> {
+    return await this.api('removeStaticFile', { name, projectId }).catch(
+      () => ''
+    );
   }
-  async clearStaticFiles(): Promise<boolean> {
-    return await this.api('clearStaticFiles', undefined).catch(() => '');
+  async clearStaticFiles(projectId: string): Promise<boolean> {
+    return await this.api('clearStaticFiles', projectId).catch(() => '');
   }
 }

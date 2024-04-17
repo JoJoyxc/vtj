@@ -1,1 +1,89 @@
 @use 'core' as *;
+
+@include b(attachment) {
+  .el-upload-list__item-name {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    padding: 3px 5px;
+    background-color: var(--el-mask-color);
+    color: var(--el-text-color-regular);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    cursor: default !important;
+    &:hover {
+      color: var(--el-text-color-regular) !important;
+    }
+  }
+  .el-upload-list__item {
+    &:hover {
+      .el-upload-list__item-name {
+        display: block !important;
+      }
+    }
+  }
+
+  .el-upload-list__item-thumbnail {
+    &.is-icon {
+      padding: 24px;
+    }
+  }
+
+  @include e(item) {
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    @include when('selected') {
+      background-color: var(--el-color-primary-light-8);
+      border: 2px solid var(--el-color-primary);
+      border-radius: 6px;
+    }
+  }
+
+  @include e(upload) {
+    width: 100%;
+    height: 100%;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--el-text-color-regular);
+  }
+
+  @include when(disabled) {
+    .el-upload {
+      display: none;
+    }
+  }
+
+  @include when(pointer) {
+    .el-upload-list__item {
+      cursor: pointer;
+    }
+    .el-upload-list__item-actions {
+      cursor: pointer !important;
+    }
+  }
+
+  @include when(small) {
+    .el-upload-list--picture-card {
+      --el-upload-list-picture-card-size: 100px;
+    }
+    .el-upload--picture-card {
+      --el-upload-picture-card-size: 100px;
+    }
+  }
+
+  @include when(large) {
+    .el-upload-list--picture-card {
+      --el-upload-list-picture-card-size: 200px;
+    }
+    .el-upload--picture-card {
+      --el-upload-picture-card-size: 200px;
+    }
+  }
+}

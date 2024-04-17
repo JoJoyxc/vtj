@@ -69,3 +69,9 @@
 - XPrint
 - XOrgPicker 组织架构
 - XConfigPage 配置化页面
+
+# 里程碑
+
+- v0.8 远程区块、资源管理
+- v0.9 物料市场、配套后端服务
+- v1.0 完善UI、完整在线LCDP示例、文档

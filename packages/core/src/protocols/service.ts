@@ -44,8 +44,14 @@ export abstract class Service {
   public abstract createRawPage(file: PageFile): Promise<boolean>;
   public abstract removeRawPage(id: string): Promise<boolean>;
 
-  public abstract uploadStaticFiles(files: File[]): Promise<StaticFileInfo[]>;
-  public abstract getStaticFiles(): Promise<StaticFileInfo[]>;
-  public abstract removeStaticFile(name: string): Promise<boolean>;
-  public abstract clearStaticFiles(): Promise<boolean>;
+  public abstract uploadStaticFiles(
+    files: File[],
+    projectId: string
+  ): Promise<StaticFileInfo[]>;
+  public abstract getStaticFiles(projectId: string): Promise<StaticFileInfo[]>;
+  public abstract removeStaticFile(
+    name: string,
+    projectId: string
+  ): Promise<boolean>;
+  public abstract clearStaticFiles(projectId: string): Promise<boolean>;
 }

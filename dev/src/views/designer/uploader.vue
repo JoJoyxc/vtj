@@ -1,7 +1,7 @@
 <template>
   <div>
     <form
-      action="/vtj/local/repository/uploader"
+      action="/vtj/local/repository/uploader.json"
       enctype="multipart/form-data"
       method="post">
       <div>Text field title: <input type="text" name="title" /></div>
