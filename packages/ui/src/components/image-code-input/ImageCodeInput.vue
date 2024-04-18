@@ -6,13 +6,11 @@
     :placeholder="props.placeholder">
     <!-- 图片 -->
     <template #prefix>
-      <div class="x-image-code-input__imageWrapper" :class="imgClass">
-        <img
-          class="x-image-code-input__image"
-          :class="imgClass"
-          @click="handleRefreshImage"
-          :src="imageValue" />
-      </div>
+      <img
+        class="x-image-code-input__image"
+        :class="imgClass"
+        @click="handleRefreshImage"
+        :src="imageValue" />
     </template>
     <!-- 状态图标 -->
     <template #suffix>
@@ -48,9 +46,9 @@
   const status = ref<string>();
   const imageValue = ref();
 
-  const runImgFn = () => {
+  const runImgFn = async () => {
     if (typeof props.image === 'function') {
-      imageValue.value = props.image();
+      imageValue.value = await props.image();
     }
   };
   runImgFn();
@@ -79,9 +77,9 @@
   // watch 值的长度 变化
   watch(
     inputValue,
-    () => {
+    async () => {
       if (inputValue.value.length === maxlength.value) {
-        const res: boolean = validate(inputValue.value);
+        const res: boolean = await validate(inputValue.value);
         res ? (status.value = 'success') : (status.value = 'error');
       } else {
         status.value = '';
@@ -90,18 +88,6 @@
     { immediate: true }
   );
 </script>
-
-<style scoped>
-  .is-small {
-    height: 24px;
-  }
-  .is-default {
-    height: 30px;
-  }
-  .is-large {
-    height: 40px;
-  }
-</style>
 
 <!--* 
   用户 ==> 传入 图片Fn  传入 检验方法
