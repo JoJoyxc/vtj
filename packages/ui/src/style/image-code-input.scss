@@ -1,0 +1,15 @@
+@use 'core' as *;
+
+@include b(image-code-input) {
+  @include e(imageWrapper) {
+    box-sizing: border-box;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  @include e(image) {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+  }
+}
