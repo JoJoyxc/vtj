@@ -44,10 +44,10 @@ export abstract class Service {
   public abstract createRawPage(file: PageFile): Promise<boolean>;
   public abstract removeRawPage(id: string): Promise<boolean>;
 
-  public abstract uploadStaticFiles(
-    files: File[],
+  public abstract uploadStaticFile(
+    file: File,
     projectId: string
-  ): Promise<StaticFileInfo[]>;
+  ): Promise<StaticFileInfo | null>;
   public abstract getStaticFiles(projectId: string): Promise<StaticFileInfo[]>;
   public abstract removeStaticFile(
     name: string,

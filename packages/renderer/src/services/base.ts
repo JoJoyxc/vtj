@@ -46,27 +46,35 @@ const createApi = (url: string = '/vtj/local/repository/${type}.json') => {
 const createUploader = (
   url: string = '/vtj/local/repository/uploader.json'
 ) => {
-  return (files: File[], projectId: string) => {
-    return request.send({
-      url,
-      method: 'post',
-      data: {
-        files,
-        projectId
-      },
-      settings: {
-        type: 'data'
-      }
-    });
+  return async (file: File, projectId: string) => {
+    return await request
+      .send({
+        url,
+        method: 'post',
+        data: {
+          files: file,
+          projectId
+        },
+        settings: {
+          type: 'data'
+        }
+      })
+      .then((res) => {
+        if (res && res[0]) {
+          return res[0];
+        }
+        return null;
+      })
+      .catch(() => null);
   };
 };
 
 export class BaseService implements Service {
   protected api: (type: string, data: any) => Promise<any>;
   protected uploader: (
-    files: File[],
+    file: File,
     projectId: string
-  ) => Promise<StaticFileInfo[]>;
+  ) => Promise<StaticFileInfo>;
   constructor() {
     this.api = createApi();
     this.uploader = createUploader();
@@ -162,11 +170,11 @@ export class BaseService implements Service {
     return await this.api('removeRawPage', id).catch(() => '');
   }
 
-  async uploadStaticFiles(
-    files: File[],
+  async uploadStaticFile(
+    file: File,
     projectId: string
-  ): Promise<StaticFileInfo[]> {
-    return await this.uploader(files, projectId).catch(() => []);
+  ): Promise<StaticFileInfo | null> {
+    return await this.uploader(file, projectId).catch(() => null);
   }
   async getStaticFiles(projectId: string): Promise<StaticFileInfo[]> {
     const res = await this.api('getStaticFiles', projectId).catch(() => []);

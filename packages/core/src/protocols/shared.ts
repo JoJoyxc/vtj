@@ -56,6 +56,6 @@ export type DataType =
  * 静态文件
  */
 export interface StaticFileInfo {
-  filename: string;
+  filename?: string;
   filepath: string;
 }

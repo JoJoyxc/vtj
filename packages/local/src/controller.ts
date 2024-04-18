@@ -90,7 +90,7 @@ const controller: Controller = {
     return service.getStaticFiles(opts as any);
   },
   removeStaticFile: async (req: ApiRequest, opts?: DevToolsOptions) => {
-    const name = req.data as string;
+    const name = req.data?.name as string;
     return service.removeStaticFile(name, opts as any);
   },
   clearStaticFiles: async (_req: ApiRequest, opts?: DevToolsOptions) => {

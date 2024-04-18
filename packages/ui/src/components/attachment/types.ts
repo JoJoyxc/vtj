@@ -1,5 +1,6 @@
 import { type ComponentPropsType } from '../shared';
 import { attachmentProps } from './props';
+import type { UploaderResponse } from '../../adapter';
 
 export type AttachmentFileType =
   | 'img'
@@ -14,14 +15,15 @@ export type AttachmentFileType =
   | 'audio'
   | 'unknow';
 
-export interface AttachmentFile {
+export interface AttachmentFile extends UploaderResponse {
   url: string;
   name?: string;
   type?: AttachmentFileType;
-  [index: string]: any;
 }
 
-export type AttachmentUploader = (file: File) => Promise<AttachmentFile>;
+export type AttachmentUploader = (
+  file: File
+) => Promise<string | AttachmentFile | null>;
 
 export type AttachmentThumbnail = (file: AttachmentFile) => string;
 

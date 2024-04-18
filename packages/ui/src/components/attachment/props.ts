@@ -110,5 +110,9 @@ export const attachmentProps = {
   clickable: {
     type: Boolean,
     default: false
+  },
+  listType: {
+    type: String as PropType<'card' | 'list'>,
+    default: 'card'
   }
 };

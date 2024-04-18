@@ -3,7 +3,6 @@
     <ElUpload
       ref="elUploadRef"
       :key="refreshKey"
-      list-type="picture-card"
       v-model:file-list="fileList"
       v-bind="uploadProps"
       :on-exceed="onExceed"
@@ -15,13 +14,25 @@
       <template #file="{ file }">
         <div
           class="x-attachment__item"
-          :class="{ 'is-selected': isSelected(file) }"
+          :class="{ 'is-selected': isSelected(file.response || file) }"
           v-loading="file.status === 'ready' || file.status === 'uploading'"
-          @click="onClick(file)">
-          <img
-            class="el-upload-list__item-thumbnail"
-            :class="{ 'is-icon': !isImage(file.response || file) }"
-            :src="createFileThumbnail(file.response || file)" />
+          @click="onClick(file.response || file)">
+          <div class="x-attachment__wrapper">
+            <img
+              class="el-upload-list__item-thumbnail"
+              :class="{ 'is-icon': !isImage(file.response || file) }"
+              :src="createFileThumbnail(file.response || file)" />
+            <div
+              class="el-upload-list__item-name"
+              :title="(file.response || file).url">
+              <span v-if="file.name" class="x-attachment__item-name">
+                {{ (file.response || file).name }}</span
+              >
+              <span class="el-upload-list__item-url">
+                {{ (file.response || file).url }}
+              </span>
+            </div>
+          </div>
           <div v-if="hasAction" class="el-upload-list__item-actions">
             <span
               v-if="props.previewable"
@@ -42,13 +53,11 @@
               <el-icon><Delete /></el-icon>
             </span>
           </div>
-          <div
-            v-if="file.name"
-            class="el-upload-list__item-name"
-            :title="(file.response || file).url">
-            {{ (file.response || file).name }}
-          </div>
         </div>
+      </template>
+
+      <template #tip>
+        <slot name="tip"></slot>
       </template>
     </ElUpload>
     <ElImageViewer
@@ -77,6 +86,7 @@
   import { Plus, ZoomIn, Download, Delete } from '@vtj/icons';
   import { cloneDeep, downloadUrl, downloadRemoteFile } from '@vtj/utils';
   import { type AttachmentEmits, type AttachmentFile } from './types';
+  import { useAdapter } from '../../adapter';
   import { attachmentProps } from './props';
   import { getFileType, isImage, toAttachmentFile } from './util';
   import { icons } from './icons';
@@ -85,6 +95,7 @@
     name: 'XAttachment'
   });
 
+  const adapter = useAdapter();
   const props = defineProps(attachmentProps);
   const emit = defineEmits<AttachmentEmits>();
   const uploading = ref(false);
@@ -96,8 +107,10 @@
 
   const classes = computed(() => {
     return {
+      [`x-attachment--${props.listType}`]: !!props.listType,
       ['is-disabled']: !!props.disabled,
       ['is-pointer']: !!props.clickable || !!props.selectable,
+      ['is-not-add']: !props.addable || props.limit === fileList.value.length,
       [`is-${props.size}`]: !!props.size
     };
   });
@@ -128,7 +141,8 @@
       limit: props.limit,
       disabled: uploading.value || props.disabled,
       multiple: props.multiple,
-      accept: props.accept
+      accept: props.accept,
+      listType: { card: 'picture-card', list: 'picture' }[props.listType] as any
     };
   });
 
@@ -161,10 +175,11 @@
   };
 
   const httpRequest = async (options: UploadRequestOptions) => {
-    if (props.uploader) {
+    const uploader = props.uploader || adapter.uploader;
+    if (uploader) {
       uploading.value = true;
       const file = options.file;
-      const res = await props.uploader(file).catch(() => null);
+      const res = await uploader(file).catch(() => null);
       if (!res) {
         const index = fileList.value.findIndex((n) => n.uid === file.uid);
         if (index > -1) {
@@ -175,14 +190,12 @@
         }
       }
       uploading.value = false;
-      return res;
+      return typeof res === 'string' ? { url: res } : res;
     }
   };
 
   const toggleSelected = (file: UploadUserFile) => {
-    const index = selections.value.findIndex(
-      (n: any) => n.uid === file.uid || n.url === file.url
-    );
+    const index = selections.value.findIndex((n: any) => n.url === file.url);
     if (index > -1) {
       if (props.multiple) {
         selections.value.splice(index, 1);
@@ -204,18 +217,14 @@
   };
 
   const unSelect = (file: UploadUserFile | AttachmentFile) => {
-    const index = selections.value.findIndex(
-      (n: any) => n.uid === (file as UploadUserFile).uid || n.url === file.url
-    );
+    const index = selections.value.findIndex((n: any) => n.url === file.url);
     if (index > -1) {
       selections.value.splice(index, 1);
     }
   };
 
   const isSelected = (file: UploadUserFile) => {
-    return !!selections.value.find(
-      (n: any) => n.uid === file.uid || n.url === file.url
-    );
+    return !!selections.value.find((n: any) => n.url === file.url);
   };
 
   const onClick = (file: UploadUserFile) => {
