@@ -276,6 +276,9 @@ export class Provider extends Base {
       getDsl: async (id: string) => {
         return (await this.getDsl(id)) || null;
       },
+      getDslByUrl: async (url: string) => {
+        return (await this.service.getDslByUrl(url)) || null;
+      },
       options
     });
 

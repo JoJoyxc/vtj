@@ -11,12 +11,13 @@
       v-if="dialogVisible"
       v-model="dialogVisible"
       title="文件选择器"
-      width="800px"
-      height="600px"
+      width="600px"
+      height="400px"
       cancel
       submit
       @submit="handleSubmit">
       <XAttachment
+        size="small"
         list-type="list"
         :selectable="true"
         :uploader="uploader"
@@ -117,12 +118,34 @@
     }
   });
 
-  const handleSubmit = () => {
+  const validate = () => {
     if (
       !selectValue.value ||
       (Array.isArray(selectValue.value) && selectValue.value.length === 0)
     ) {
       notify('请选择文件');
+      return false;
+    }
+    const accept = (props.attachment?.accept || '').toLowerCase().split(',');
+    if (accept.length > 0) {
+      const files = [].concat(selectValue.value as any) as any[];
+      const isMatch = files.every((file: any) => {
+        const url = file.name || file.url.split('?')[0];
+        const ext = url.substring(url.lastIndexOf('.')).toLowerCase();
+        return accept.includes(ext);
+      });
+      if (!isMatch) {
+        notify(`只支持 ${accept.join(',')} 文件`);
+        return false;
+      }
+      return true;
+    }
+
+    return true;
+  };
+
+  const handleSubmit = () => {
+    if (!validate()) {
       return;
     }
 
@@ -130,6 +153,7 @@
     emit('update:modelValue', inputValue.value);
     dialogVisible.value = false;
   };
+
   const handleClear = () => {
     selectValue.value = [];
     emit('change', undefined);

@@ -48,18 +48,18 @@ export interface BlockFile {
   /**
    * 区块来源，默认为Schema，一旦确定，不允许更改
    */
-  fromType?: 'Schema' | 'UrlSchema' | 'Remote';
+  fromType?: 'Schema' | 'UrlSchema' | 'Plugin';
 
   /**
    * 资源url，
    * Schema: 无url
    * UrlSchema： 只允许一个json文件
-   * Remote：支持多个文件（.css或.js）,多个文件用逗号分隔
+   * Plugin：支持多个文件（.css或.js）,多个文件用逗号分隔
    */
   urls?: string;
 
   /**
-   * Remote 时的插件名称
+   * Plugin 时的插件名称
    */
   library?: string;
 

@@ -188,4 +188,18 @@ export class BaseService implements Service {
   async clearStaticFiles(projectId: string): Promise<boolean> {
     return await this.api('clearStaticFiles', projectId).catch(() => '');
   }
+
+  async getDslByUrl(url: string): Promise<BlockSchema | null> {
+    return await request
+      .send({
+        url,
+        method: 'get',
+        settings: {
+          validSuccess: false,
+          originResponse: true
+        }
+      })
+      .then((res) => res.data as BlockSchema)
+      .catch(() => null);
+  }
 }

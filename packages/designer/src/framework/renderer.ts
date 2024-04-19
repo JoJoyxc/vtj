@@ -93,6 +93,9 @@ export class Renderer {
       getDsl: async (id: string) => {
         return (await this.service.getFile(id)) || null;
       },
+      getDslByUrl: async (url: string) => {
+        return (await this.service.getDslByUrl(url)) || null;
+      },
       options: {
         mode: ContextMode.Design,
         Vue,

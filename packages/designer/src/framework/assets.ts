@@ -85,11 +85,18 @@ export class Assets {
 
   async getBlockMaterial(from: NodeFrom) {
     if (!from || typeof from === 'string') return null;
-    const blockId = from.type === 'Schema' ? from.id : null;
-    if (!blockId) return null;
-    const dsl = this.caches[blockId] || (await this.service.getFile(blockId));
+    let dsl;
+    if (from.type === 'Schema' && from.id) {
+      dsl = this.caches[from.id] || (await this.service.getFile(from.id));
+      this.caches[from.id] = dsl;
+    }
+    if (from.type === 'UrlSchema' && from.url) {
+      dsl = this.caches[from.url] || (await this.service.getDslByUrl(from.url));
+      this.caches[from.url] = dsl;
+    }
+
     if (!dsl) return null;
-    this.caches[blockId] = dsl;
+
     const { id, name, slots, props, emits } = dsl;
     /**
      * 根据数据类型自动匹配设置器
