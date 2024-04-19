@@ -46,6 +46,7 @@ export const builtInDeps: Dependencie[] = [
     package: 'element-plus',
     version: 'latest',
     library: 'ElementPlus',
+    localeLibrary: 'ElementPlusLocaleZhCn',
     urls: [
       '@vtj/materials/deps/element-plus/dark/css-vars.css',
       '@vtj/materials/deps/element-plus/index.css',

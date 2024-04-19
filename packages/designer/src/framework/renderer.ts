@@ -36,7 +36,7 @@ export class Renderer {
   }
 
   private install(app: App) {
-    const { library, globals, VueRouter } = this.env;
+    const { library, globals, VueRouter, locales } = this.env;
     if (VueRouter) {
       const router = VueRouter.createRouter({
         history: VueRouter.createWebHashHistory(),
@@ -44,7 +44,7 @@ export class Renderer {
       });
       app.use(router);
     }
-    const plugins = Object.values(library);
+    const plugins = Object.entries(library);
     Object.assign(app.config.globalProperties, globals);
     app.config.errorHandler = (err: any, instance, info) => {
       const name = instance?.$options.name;
@@ -60,12 +60,17 @@ export class Renderer {
         message
       });
     };
-    plugins.forEach((plugin) => {
+    plugins.forEach(([name, plugin]) => {
       if (
         typeof plugin === 'function' ||
         typeof plugin.install === 'function'
       ) {
-        app?.use(plugin);
+        let options: Record<string, any> = {};
+        const locale = locales[name];
+        if (locale) {
+          options.locale = locale;
+        }
+        app?.use(plugin, options);
       }
     });
   }
