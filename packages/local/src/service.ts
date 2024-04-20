@@ -176,7 +176,9 @@ export async function publish(project: ProjectSchema) {
   );
 
   for (const block of blocks) {
-    await publishFile(project, block, componentMap);
+    if (!block.fromType || block.fromType === 'Schema') {
+      await publishFile(project, block, componentMap);
+    }
   }
   for (const page of pages) {
     if (!page.raw) {

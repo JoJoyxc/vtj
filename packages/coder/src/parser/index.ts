@@ -10,6 +10,11 @@ import { parseDataSources } from './dataSources';
 import { parseTemplate } from './template';
 import { parseImports } from './imports';
 import { parseStyle } from './style';
+import {
+  parseBlockPlugins,
+  parseUrlSchemas,
+  parseRendererImports
+} from './defines';
 
 export interface Token {
   id: string;
@@ -29,6 +34,10 @@ export interface Token {
   template: string;
   css: string;
   style: string;
+  urlSchemas: string;
+  blockPlugins: string;
+  asyncComponents: string;
+  rendererImports: string;
 }
 export function parser(
   collecter: Collecter,
@@ -68,6 +77,19 @@ export function parser(
     collecter.imports
   );
 
+  const asyncComponents = Object.keys({
+    ...collecter.urlSchemas,
+    ...collecter.blockPlugins
+  });
+
+  const urlSchemas = parseUrlSchemas(collecter.urlSchemas);
+  const blockPlugins = parseBlockPlugins(collecter.blockPlugins);
+
+  const rendererImports = parseRendererImports(
+    collecter.urlSchemas,
+    collecter.blockPlugins
+  );
+
   return {
     id: dsl.id as string,
     version: dsl.__VERSION__ as string,
@@ -85,6 +107,10 @@ export function parser(
     returns: collecter.members.join(','),
     template: nodes.join('\n'),
     css: dsl.css || '',
-    style: parseStyle(collecter.style)
+    style: parseStyle(collecter.style),
+    urlSchemas: urlSchemas.join('\n'),
+    blockPlugins: blockPlugins.join('\n'),
+    asyncComponents: asyncComponents.join(','),
+    rendererImports: rendererImports.join(',')
   };
 }

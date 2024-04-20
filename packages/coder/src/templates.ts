@@ -2,7 +2,7 @@ import { template } from '@vtj/base';
 
 const scriptTemplate = `
 <%= imports %>
-import { useProvider } from '@vtj/renderer';
+import { useProvider <% if(rendererImports) { %>, <%= rendererImports %> <% } %> } from '@vtj/renderer';
 export default defineComponent({
   name: '<%= name %>', 
   <% if(inject) { %> inject: { <%= inject %>}, <% } %>
@@ -15,10 +15,13 @@ export default defineComponent({
       version: '<%= version %>'
     });
     const state = reactive({ <%= state %> });
+    <%= urlSchemas %>
+    <%= blockPlugins %>
     return {
       state,
       props,
       provider
+      <% if(asyncComponents) { %>, <%= asyncComponents %> <% }%>
       <% if(returns) { %>, <%= returns %> <% } %>
     };
   },
