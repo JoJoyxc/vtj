@@ -19,6 +19,11 @@ export function isCSSUrl(url: string): boolean {
 export function isJSUrl(url: string): boolean {
   return /\.js$/.test(url);
 }
+
+export function isJSON(url: string): boolean {
+  return /\.json$/.test(url);
+}
+
 export function createAssetScripts(scripts: string[]): string {
   return scripts
     .map(

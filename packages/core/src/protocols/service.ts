@@ -4,7 +4,8 @@ import type {
   HistorySchema,
   HistoryItem,
   PageFile,
-  BlockFile
+  BlockFile,
+  NodeFromPlugin
 } from './schemas';
 import type { MaterialDescription } from './assets';
 import type { StaticFileInfo } from './shared';
@@ -56,4 +57,8 @@ export abstract class Service {
   public abstract clearStaticFiles(projectId: string): Promise<boolean>;
 
   public abstract getDslByUrl(url: string): Promise<BlockSchema | null>;
+
+  public abstract getPluginMaterial(
+    from: NodeFromPlugin
+  ): Promise<MaterialDescription | null>;
 }

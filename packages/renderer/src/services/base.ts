@@ -7,10 +7,12 @@ import {
   type HistorySchema,
   type HistoryItem,
   type Service,
-  type StaticFileInfo
+  type StaticFileInfo,
+  type NodeFromPlugin
 } from '@vtj/core';
 import { Request } from '@vtj/utils';
 import { ElNotification } from 'element-plus';
+import { isJSON } from '../utils';
 
 const request = new Request({
   settings: {
@@ -71,6 +73,8 @@ const createUploader = (
 
 export class BaseService implements Service {
   protected api: (type: string, data: any) => Promise<any>;
+  private urlDslCaches: Record<string, any> = {};
+  private pluginCaches: Record<string, any> = {};
   protected uploader: (
     file: File,
     projectId: string
@@ -190,7 +194,9 @@ export class BaseService implements Service {
   }
 
   async getDslByUrl(url: string): Promise<BlockSchema | null> {
-    return await request
+    const cache = this.urlDslCaches[url];
+    if (cache) return cache;
+    return (this.urlDslCaches[url] = request
       .send({
         url,
         method: 'get',
@@ -200,6 +206,27 @@ export class BaseService implements Service {
         }
       })
       .then((res) => res.data as BlockSchema)
-      .catch(() => null);
+      .catch(() => null));
+  }
+
+  async getPluginMaterial(
+    from: NodeFromPlugin
+  ): Promise<MaterialDescription | null> {
+    const { urls = [] } = from;
+    const url = urls.filter((n) => isJSON(n))[0];
+    if (!url) return null;
+    const cache = this.pluginCaches[url];
+    if (cache) return cache;
+    return (this.pluginCaches[url] = request
+      .send({
+        url,
+        method: 'get',
+        settings: {
+          validSuccess: false,
+          originResponse: true
+        }
+      })
+      .then((res) => res.data as MaterialDescription)
+      .catch(() => null));
   }
 }

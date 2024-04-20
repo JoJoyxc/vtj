@@ -83,7 +83,7 @@ export class Assets {
     this.componentMap = arrayToMap(this.components, 'name');
   }
 
-  async getBlockMaterial(from: NodeFrom) {
+  async getBlockMaterial(from: NodeFrom, blockName?: string) {
     if (!from || typeof from === 'string') return null;
     let dsl;
     if (from.type === 'Schema' && from.id) {
@@ -95,8 +95,19 @@ export class Assets {
       this.caches[from.url] = dsl;
     }
 
-    if (!dsl) return null;
+    if (from.type === 'Plugin') {
+      const material = await this.service.getPluginMaterial(from);
+      if (material) {
+        material.name = blockName || material.name;
+        material.from = from;
+        this.componentMap.set(material.name, material);
+        return material;
+      }
+      return null;
+    }
 
+    if (!dsl) return null;
+    dsl.name = blockName || dsl.name;
     const { id, name, slots, props, emits } = dsl;
     /**
      * 根据数据类型自动匹配设置器
@@ -133,6 +144,7 @@ export class Assets {
       slots,
       from
     };
+    this.componentMap.set(name, desc);
     return desc;
   }
 

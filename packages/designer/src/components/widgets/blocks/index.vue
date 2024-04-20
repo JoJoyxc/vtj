@@ -116,7 +116,7 @@
   const model: Ref<BlockFile | undefined> = ref(undefined);
   const { current } = useCurrent();
   const visible = ref(false);
-  const title = computed(() => (model.value?.id ? '编辑' : '新增'));
+  const title = computed(() => (model.value?.id ? '编辑区块' : '新增区块'));
   const subtitle = computed(() => {
     return `(共 ${blocks.value.length} 个)`;
   });
@@ -137,7 +137,7 @@
       return '.json';
     }
     if (model.value?.fromType === 'Plugin') {
-      return '.js,.css';
+      return '.js,.css,.json';
     }
     return undefined;
   });
@@ -196,7 +196,7 @@
 
   const onDragStart = async (file: BlockFile) => {
     const from = createNodeFrom(file);
-    const desc = await engine.assets.getBlockMaterial(from);
+    const desc = await engine.assets.getBlockMaterial(from, file.name);
     const designer = engine.skeleton?.getWidget('Designer')?.widgetRef
       ?.designer as Designer;
     if (designer && desc) {
