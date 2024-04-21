@@ -56,8 +56,6 @@ export abstract class Service {
   ): Promise<boolean>;
   public abstract clearStaticFiles(projectId: string): Promise<boolean>;
 
-  public abstract getDslByUrl(url: string): Promise<BlockSchema | null>;
-
   public abstract getPluginMaterial(
     from: NodeFromPlugin
   ): Promise<MaterialDescription | null>;

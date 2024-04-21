@@ -176,7 +176,7 @@ export class Simulator extends Base {
       materials,
       libraryLocaleMap
     );
-    this.renderer = new Renderer(env, service, this.designer.value);
+    this.renderer = new Renderer(env, service, provider, this.designer.value);
     if (current.value) {
       this.renderer.render(current.value);
     }

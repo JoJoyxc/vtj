@@ -242,7 +242,7 @@ function bindNodeEvents(
     const isExp = value.handler.value.startsWith('this.');
     const binder = isExp
       ? replaceThis(value.handler.value)
-      : `${camelCase(name)}_handler_${id}${eventParams}`;
+      : `${camelCase(name)}_${id}${eventParams}`;
     if (!isExp) {
       handlers[binder] = nodeContext.length
         ? {

@@ -9,6 +9,7 @@ import type {
   BlockSchema
 } from '@vtj/core';
 import { arrayToMap } from '@vtj/utils';
+import { type Provider } from '@vtj/renderer';
 import { builtInMaterials, setterManager } from '../managers';
 
 export interface AssetGroup {
@@ -26,7 +27,10 @@ export class Assets {
   componentMap: Map<string, MaterialDescription> = new Map();
   groups: Ref<AssetGroup[]> = ref([]);
   private caches: Record<string, BlockSchema> = {};
-  constructor(public service: Service) {}
+  constructor(
+    public service: Service,
+    public provider: Provider
+  ) {}
 
   private getCateoryComponents(
     cateory: MaterialCategory,
@@ -91,7 +95,8 @@ export class Assets {
       this.caches[from.id] = dsl;
     }
     if (from.type === 'UrlSchema' && from.url) {
-      dsl = this.caches[from.url] || (await this.service.getDslByUrl(from.url));
+      dsl =
+        this.caches[from.url] || (await this.provider.getDslByUrl(from.url));
       this.caches[from.url] = dsl;
     }
 

@@ -10,11 +10,7 @@ import { parseDataSources } from './dataSources';
 import { parseTemplate } from './template';
 import { parseImports } from './imports';
 import { parseStyle } from './style';
-import {
-  parseBlockPlugins,
-  parseUrlSchemas,
-  parseRendererImports
-} from './defines';
+import { parseBlockPlugins, parseUrlSchemas } from './defines';
 
 export interface Token {
   id: string;
@@ -37,7 +33,6 @@ export interface Token {
   urlSchemas: string;
   blockPlugins: string;
   asyncComponents: string;
-  rendererImports: string;
 }
 export function parser(
   collecter: Collecter,
@@ -85,10 +80,10 @@ export function parser(
   const urlSchemas = parseUrlSchemas(collecter.urlSchemas);
   const blockPlugins = parseBlockPlugins(collecter.blockPlugins);
 
-  const rendererImports = parseRendererImports(
-    collecter.urlSchemas,
-    collecter.blockPlugins
-  );
+  // const rendererImports = parseRendererImports(
+  //   collecter.urlSchemas,
+  //   collecter.blockPlugins
+  // );
 
   return {
     id: dsl.id as string,
@@ -110,7 +105,6 @@ export function parser(
     style: parseStyle(collecter.style),
     urlSchemas: urlSchemas.join('\n'),
     blockPlugins: blockPlugins.join('\n'),
-    asyncComponents: asyncComponents.join(','),
-    rendererImports: rendererImports.join(',')
+    asyncComponents: asyncComponents.join(',')
   };
 }

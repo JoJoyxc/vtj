@@ -10,12 +10,7 @@ import {
   EVENT_NODE_CHANGE
 } from '@vtj/core';
 import { type SimulatorEnv } from './simulator';
-import {
-  createRenderer,
-  createLoader,
-  ContextMode,
-  type Context
-} from '@vtj/renderer';
+import { Provider, type Context, ContextMode } from '@vtj/renderer';
 import { ElNotification } from 'element-plus';
 import { notify } from '../utils';
 import { type Designer } from './designer';
@@ -29,6 +24,7 @@ export class Renderer {
   constructor(
     public env: SimulatorEnv,
     public service: Service,
+    public provider: Provider,
     public designer: Designer | null = null
   ) {
     this.nodeChange = this.__onNodeChange.bind(this);
@@ -76,45 +72,21 @@ export class Renderer {
   }
 
   render(block: BlockModel) {
-    const {
-      window,
-      container,
-      Vue,
-      components,
-      library: libs,
-      apis
-    } = this.env;
+    const { window, container, library, Vue, components, apis } = this.env;
     const el = window.document.createElement('div');
     el.id = 'app';
     container.appendChild(el);
 
     this.dsl = Vue.reactive(block.toDsl()) as BlockSchema;
-    const loader = createLoader({
-      getDsl: async (id: string) => {
-        return (await this.service.getFile(id)) || null;
-      },
-      getDslByUrl: async (url: string) => {
-        return (await this.service.getDslByUrl(url)) || null;
-      },
-      options: {
-        mode: ContextMode.Design,
-        Vue,
-        components,
-        libs,
-        apis,
-        window
-      }
-    });
-    const { renderer, context } = createRenderer({
-      Vue,
+    const { renderer, context } = this.provider.createDslRenderer(this.dsl, {
+      window,
       mode: ContextMode.Design,
-      dsl: this.dsl,
+      Vue,
       components,
-      libs,
       apis,
-      loader,
-      window
+      libs: library
     });
+
     this.app = Vue.createApp(renderer) as App;
     this.install(this.app);
     try {

@@ -73,7 +73,6 @@ const createUploader = (
 
 export class BaseService implements Service {
   protected api: (type: string, data: any) => Promise<any>;
-  private urlDslCaches: Record<string, any> = {};
   private pluginCaches: Record<string, any> = {};
   protected uploader: (
     file: File,
@@ -191,22 +190,6 @@ export class BaseService implements Service {
   }
   async clearStaticFiles(projectId: string): Promise<boolean> {
     return await this.api('clearStaticFiles', projectId).catch(() => '');
-  }
-
-  async getDslByUrl(url: string): Promise<BlockSchema | null> {
-    const cache = this.urlDslCaches[url];
-    if (cache) return cache;
-    return (this.urlDslCaches[url] = request
-      .send({
-        url,
-        method: 'get',
-        settings: {
-          validSuccess: false,
-          originResponse: true
-        }
-      })
-      .then((res) => res.data as BlockSchema)
-      .catch(() => null));
   }
 
   async getPluginMaterial(
