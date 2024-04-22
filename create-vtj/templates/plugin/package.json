@@ -14,13 +14,15 @@
   "dependencies": {
     "@vtj/icons": "latest",
     "@vtj/utils": "latest",
-    "@vtj/ui": "latest*"
+    "@vtj/ui": "latest"
   },
   "devDependencies": {
     "@vtj/core": "latest",
     "@vtj/cli": "latest",
     "@vtj/pro": "latest",
-    "@vtj/web": "latest"
+    "@vtj/web": "latest",
+    "vue": "^3.4.15",
+    "vue-router": "~4.3.0"
   },
   "exports": {
     ".": {

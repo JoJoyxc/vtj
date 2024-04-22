@@ -20,7 +20,9 @@
     "@vtj/cli": "workspace:*",
     "@vtj/core": "workspace:*",
     "@vtj/pro": "workspace:*",
-    "@vtj/web": "workspace:*"
+    "@vtj/web": "workspace:*",
+    "vue": "^3.4.15",
+    "vue-router": "~4.3.0"
   },
   "exports": {
     ".": {
