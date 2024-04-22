@@ -64,7 +64,7 @@ export async function loadScriptUrl(
   const doc = global.document;
   const head = global.document.head;
   let module = global[library];
-  if (module) return module;
+  if (module) return module.default || module;
   return new Promise((reslove, inject) => {
     for (const url of urls) {
       const el = doc.createElement('script');
@@ -72,7 +72,7 @@ export async function loadScriptUrl(
       el.onload = () => {
         module = global[library];
         if (module) {
-          reslove(module);
+          reslove(module.default || module);
         }
       };
       el.onerror = (e: any) => {
