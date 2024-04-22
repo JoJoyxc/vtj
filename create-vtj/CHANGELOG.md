@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://gitee.com/newgateway/vtj/compare/create-vtj@0.8.0...create-vtj@0.8.1) (2024-04-22)
+
+
+### Bug Fixes
+
+* 🐛 cli template ([911c3a0](https://gitee.com/newgateway/vtj/commits/911c3a0e2bb60548affe5dcf5a496577809d63b8))
+* 🐛 cli templates deps ([e509c3f](https://gitee.com/newgateway/vtj/commits/e509c3fee7d360654944dab79b482dee133da638))
+* 🐛 cli templates version ([91ad22f](https://gitee.com/newgateway/vtj/commits/91ad22f2cf5f27f7a660a8fabe27ebffe80772d2))
+
+
+
+
+
+
 # [0.8.0](https://gitee.com/newgateway/vtj/compare/create-vtj@0.7.24...create-vtj@0.8.0) (2024-04-22)
 
 
