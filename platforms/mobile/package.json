@@ -80,7 +80,7 @@
   "main": "./lib/mui/index.ts",
   "module": "./lib/mui/index.ts",
   "types": "./lib/mui/index.ts",
-  "gitHead": "0b470d76f584714cd96bf684bf66c720c2661df1",
+  "gitHead": "d03843144f07c2d98c1e0c72c8c6eb1117c01722",
   "publishConfig": {
     "access": "public"
   }
