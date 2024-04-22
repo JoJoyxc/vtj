@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.2](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.1...@vtj/materials@0.8.2) (2024-04-22)
+
+
+### Bug Fixes
+
+* 🐛 定义事件的事件名称不支持 update:modelValue 格式，无法增加双向绑定 ([3cba3c7](https://gitee.com/newgateway/vtj/commits/3cba3c76687f2e3a0842ae6957f69266c0fd92fe))
+
+
+
+
+
 ## [0.8.1](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.0...@vtj/materials@0.8.1) (2024-04-22)
 
 

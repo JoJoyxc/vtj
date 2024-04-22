@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.2](https://gitee.com/newgateway/vtj/compare/@vtj/coder@0.8.1...@vtj/coder@0.8.2) (2024-04-22)
+
+
+### Bug Fixes
+
+* 🐛 出码定义props不指定默认值时报错 ([197a34c](https://gitee.com/newgateway/vtj/commits/197a34cad77770ae4ebb156a5162f1afec8e3284))
+
+
+
+
+
 ## [0.8.1](https://gitee.com/newgateway/vtj/compare/@vtj/coder@0.8.0...@vtj/coder@0.8.1) (2024-04-22)
 
 
