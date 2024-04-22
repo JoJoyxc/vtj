@@ -12,15 +12,15 @@
     "vitest": "vitest"
   },
   "dependencies": {
-    "@vtj/icons": "workspace:*",
-    "@vtj/utils": "workspace:*",
-    "@vtj/ui": "workspace:*"
+    "@vtj/icons": "latest",
+    "@vtj/utils": "latest",
+    "@vtj/ui": "latest*"
   },
   "devDependencies": {
-    "@vtj/core": "workspace:*",
-    "@vtj/cli": "workspace:*",
-    "@vtj/pro": "workspace:*",
-    "@vtj/web": "workspace:*"
+    "@vtj/core": "latest",
+    "@vtj/cli": "latest",
+    "@vtj/pro": "latest",
+    "@vtj/web": "latest"
   },
   "exports": {
     ".": {
