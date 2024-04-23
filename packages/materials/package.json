@@ -16,7 +16,7 @@
     "@vtj/core": "^0.8.2",
     "@vtj/ui": "^0.8.2",
     "@vtj/utils": "^0.8.2",
-    "ant-design-vue": "~4.1.0",
+    "ant-design-vue": "~4.2.0",
     "echarts": "~5.5.0",
     "element-plus": "~2.7.0",
     "vant": "~4.8.11",

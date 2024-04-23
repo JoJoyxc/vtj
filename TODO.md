@@ -61,7 +61,7 @@
 - ~~定义事件的事件名称不支持 update:modelValue 格式，无法增加双向绑定~~
 - ~~出码state 初始值不能指定props~~
 - ~~出码作用域插槽没传递出来~~
-- 编译后不应该调service.init
+- ~~编译后不应该调service.init~~
 
 # UI
 

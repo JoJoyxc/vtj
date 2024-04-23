@@ -1,5 +1,5 @@
 {
-  "name": "vtj-block-plugin",
+  "name": "vtj-plugin",
   "private": true,
   "version": "0.8.2",
   "type": "module",
