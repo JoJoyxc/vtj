@@ -97,7 +97,7 @@ export function createLoader(opts: CreateLoaderOptions): BlockLoader {
       return Vue.defineAsyncComponent(async () => {
         const plugin = await getPlugin(from, options.window);
         if (plugin) {
-          loadCssUrl(plugin.css);
+          loadCssUrl(plugin.css, options.window);
           return plugin.component;
         }
         return null;
