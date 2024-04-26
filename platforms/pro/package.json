@@ -10,17 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vtj/core": "workspace:*",
-    "@vtj/designer": "workspace:*",
-    "@vtj/local": "workspace:*",
-    "@vtj/materials": "workspace:*",
-    "@vtj/renderer": "workspace:*"
+    "@vtj/core": "workspace:~",
+    "@vtj/designer": "workspace:~",
+    "@vtj/local": "workspace:~",
+    "@vtj/materials": "workspace:~",
+    "@vtj/renderer": "workspace:~"
   },
   "devDependencies": {
-    "@vtj/cli": "workspace:*",
-    "@vtj/icons": "workspace:*",
-    "@vtj/ui": "workspace:*",
-    "@vtj/utils": "workspace:*",
+    "@vtj/cli": "workspace:~",
+    "@vtj/icons": "workspace:~",
+    "@vtj/ui": "workspace:~",
+    "@vtj/utils": "workspace:~",
     "vue": "~3.4.15",
     "vue-router": "~4.3.0"
   },

@@ -16,16 +16,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vtj/web": "workspace:*",
+    "@vtj/web": "workspace:~",
     "vue": "^3.4.15",
     "vue-router": "~4.3.0"
   },
   "devDependencies": {
-    "@vtj/cli": "workspace:*",
-    "@vtj/icons": "workspace:*",
-    "@vtj/pro": "workspace:*",
-    "@vtj/renderer": "workspace:*",
-    "@vtj/ui": "workspace:*",
-    "@vtj/utils": "workspace:*"
+    "@vtj/cli": "workspace:~",
+    "@vtj/icons": "workspace:~",
+    "@vtj/pro": "workspace:~",
+    "@vtj/renderer": "workspace:~",
+    "@vtj/ui": "workspace:~",
+    "@vtj/utils": "workspace:~"
   }
 }

@@ -18,7 +18,7 @@
     "@element-plus/icons-vue": "~2.3.1"
   },
   "devDependencies": {
-    "@vtj/cli": "workspace:*",
+    "@vtj/cli": "workspace:~",
     "vue": "~3.4.15",
     "xml2js": "~0.6.2"
   },

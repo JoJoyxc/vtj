@@ -13,11 +13,11 @@
     "copy": "node scripts/copy.mjs"
   },
   "devDependencies": {
-    "@vtj/charts": "workspace:*",
-    "@vtj/cli": "workspace:*",
-    "@vtj/core": "workspace:*",
-    "@vtj/ui": "workspace:*",
-    "@vtj/utils": "workspace:*",
+    "@vtj/charts": "workspace:~",
+    "@vtj/cli": "workspace:~",
+    "@vtj/core": "workspace:~",
+    "@vtj/ui": "workspace:~",
+    "@vtj/utils": "workspace:~",
     "@vueuse/core": "~10.9.0",
     "ant-design-vue": "~4.2.0",
     "echarts": "~5.5.0",
