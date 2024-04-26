@@ -13,7 +13,6 @@ export * from './form';
 export * from './dialog-form';
 export * from './tabs';
 export * from './data-item';
-export * from './chart';
 export * from './list';
 export * from './startup';
 export * from './test';

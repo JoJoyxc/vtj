@@ -10,10 +10,10 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@vtj/base": "^0.8.2"
+    "@vtj/base": "workspace:*"
   },
   "devDependencies": {
-    "@vtj/cli": "^0.8.2"
+    "@vtj/cli": "workspace:*"
   },
   "exports": {
     ".": {

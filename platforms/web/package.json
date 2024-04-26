@@ -8,13 +8,14 @@
     "build": "npm run check"
   },
   "dependencies": {
-    "@vtj/icons": "^0.8.5",
-    "@vtj/renderer": "^0.8.5",
-    "@vtj/ui": "^0.8.5",
-    "@vtj/utils": "^0.8.5"
+    "@vtj/icons": "workspace:*",
+    "@vtj/renderer": "workspace:*",
+    "@vtj/ui": "workspace:*",
+    "@vtj/utils": "workspace:*",
+    "@vtj/charts": "workspace:*"
   },
   "devDependencies": {
-    "@vtj/cli": "^0.8.2"
+    "@vtj/cli": "workspace:*"
   },
   "exports": {
     ".": {
