@@ -26,6 +26,7 @@
     "@vtj/pro": "workspace:~",
     "@vtj/renderer": "workspace:~",
     "@vtj/ui": "workspace:~",
-    "@vtj/utils": "workspace:~"
+    "@vtj/utils": "workspace:~",
+    "@vtj/charts": "workspace:~"
   }
 }
