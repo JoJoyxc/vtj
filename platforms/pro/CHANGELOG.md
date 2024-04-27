@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.8](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.7...@vtj/pro@0.8.8) (2024-04-27)
+
+
+### Bug Fixes
+
+* 🐛 deps ([f88b4f7](https://gitee.com/newgateway/vtj/commits/f88b4f72a634e48fa516e2b1e8e0c87d3a968ef2))
+
+
+
+
+
 ## [0.8.7](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.5...@vtj/pro@0.8.7) (2024-04-26)
 
 

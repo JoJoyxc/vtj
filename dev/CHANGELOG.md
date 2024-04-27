@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.8](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.7...dev-web@0.8.8) (2024-04-27)
+
+
+### Bug Fixes
+
+* 🐛 ui qrcode, ui image-code-input ([fcd8e72](https://gitee.com/newgateway/vtj/commits/fcd8e72bb6d6482a06f48052247e59e3785a1686))
+
+
+
+
+
 ## [0.8.7](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.5...dev-web@0.8.7) (2024-04-26)
 
 

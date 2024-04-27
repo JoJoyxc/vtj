@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.8](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.7...@vtj/materials@0.8.8) (2024-04-27)
+
+
+### Bug Fixes
+
+* 🐛 qrcode ([478acfd](https://gitee.com/newgateway/vtj/commits/478acfd35dfc97976abbaa4dd6076e1aebe6fc3f))
+
+
+
+
+
 ## [0.8.7](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.5...@vtj/materials@0.8.7) (2024-04-26)
 
 

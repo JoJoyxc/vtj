@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.8](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.7...@vtj/ui@0.8.8) (2024-04-27)
+
+
+### Bug Fixes
+
+* 🐛 qrcode ([478acfd](https://gitee.com/newgateway/vtj/commits/478acfd35dfc97976abbaa4dd6076e1aebe6fc3f))
+* 🐛 ui qrcode, ui image-code-input ([fcd8e72](https://gitee.com/newgateway/vtj/commits/fcd8e72bb6d6482a06f48052247e59e3785a1686))
+
+
+
+
+
 ## [0.8.7](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.5...@vtj/ui@0.8.7) (2024-04-26)
 
 

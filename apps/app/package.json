@@ -2,7 +2,7 @@
   "name": "vtj-project-app",
   "description": "项目示例",
   "private": true,
-  "version": "0.8.7",
+  "version": "0.8.8",
   "type": "module",
   "scripts": {
     "setup": "pnpm install --unsafe-perm --registry=https://registry.npmmirror.com",
@@ -21,12 +21,12 @@
     "vue-router": "~4.3.0"
   },
   "devDependencies": {
+    "@vtj/charts": "workspace:~",
     "@vtj/cli": "workspace:~",
     "@vtj/icons": "workspace:~",
     "@vtj/pro": "workspace:~",
     "@vtj/renderer": "workspace:~",
     "@vtj/ui": "workspace:~",
-    "@vtj/utils": "workspace:~",
-    "@vtj/charts": "workspace:~"
+    "@vtj/utils": "workspace:~"
   }
 }

@@ -2,7 +2,7 @@
   "name": "@vtj/pro",
   "description": "VTJ.PRO",
   "private": false,
-  "version": "0.8.7",
+  "version": "0.8.8",
   "type": "module",
   "scripts": {
     "dev": "cross-env ENV_TYPE=local vite",
@@ -17,11 +17,11 @@
     "@vtj/renderer": "workspace:~"
   },
   "devDependencies": {
+    "@vtj/charts": "workspace:~",
     "@vtj/cli": "workspace:~",
     "@vtj/icons": "workspace:~",
     "@vtj/ui": "workspace:~",
     "@vtj/utils": "workspace:~",
-    "@vtj/charts": "workspace:~",
     "vue": "~3.4.15",
     "vue-router": "~4.3.0"
   },
