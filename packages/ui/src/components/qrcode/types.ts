@@ -34,7 +34,7 @@ export const qrcodeProps = {
    */
   width: {
     type: Number,
-    default: 100
+    default: 200
   },
   // color
   color: {
@@ -63,7 +63,7 @@ export const qrcodeProps = {
   // 值 value
   value: {
     type: [String, Function] as PropType<QRCodeValue>,
-    default: 'vtj'
+    default: ''
   },
   // 超时时间  毫秒
   timeout: {
