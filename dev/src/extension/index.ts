@@ -1,4 +1,5 @@
-import { widgetManager, type AppWidget } from '@vtj/pro';
+import { widgetManager, type AppWidget, type ExtensionFactory } from '@vtj/pro';
+import { type App } from 'vue';
 import { VtjIconDatabase } from '@vtj/icons';
 import Meta from './Meta.vue';
 
@@ -14,4 +15,10 @@ const meta: AppWidget = {
 };
 widgetManager.register(meta);
 
-export default function () {}
+const factory: ExtensionFactory = () => {
+  return {
+    install(app: App) {}
+  };
+};
+
+export default factory;

@@ -12,6 +12,8 @@ export interface ExtensionOptions {
   library: string;
 }
 
+export type ExtensionFactory = () => Partial<EngineOptions> | void;
+
 export class Extension {
   private urls: string[] = [];
   private library: string = '';
