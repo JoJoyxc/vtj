@@ -17,7 +17,7 @@ export default createViteConfig({
     createDevTools({
       link: false,
       copy: true,
-      devMode: false
+      devMode: true
     })
   ]
 });
