@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.4](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.3...@vtj/cli@0.8.4) (2024-05-01)
+
+
+### Bug Fixes
+
+* 🐛 cli copyPlugin ([a6ed88e](https://gitee.com/newgateway/vtj/commits/a6ed88e2edcd08f06f154e6bb80286e3f664f53f))
+
+
+
+
+
+
 ## [0.8.3](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.2...@vtj/cli@0.8.3) (2024-04-27)
 
 
