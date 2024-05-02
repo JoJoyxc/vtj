@@ -95,7 +95,8 @@ export class Engine extends Base {
       globals = {},
       dependencies,
       materials,
-      materialPath = './'
+      materialPath = './',
+      adapter
     } = this.options;
     this.container = container;
     this.service = service;
@@ -106,7 +107,8 @@ export class Engine extends Base {
       service,
       dependencies,
       materials,
-      materialPath
+      materialPath,
+      adapter
     });
     this.assets = new Assets(this.service, this.provider);
     this.simulator = new Simulator({
