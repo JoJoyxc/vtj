@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.17](https://gitee.com/newgateway/vtj/compare/@vtj/utils@0.8.16...@vtj/utils@0.8.17) (2024-05-02)
+
+
+### Features
+
+* ✨ extension add params ([ce517b8](https://gitee.com/newgateway/vtj/commits/ce517b8075a491186fc69ae8a757d810022538d4))
+
+
+
+
+
 ## [0.8.16](https://gitee.com/newgateway/vtj/compare/@vtj/utils@0.8.15...@vtj/utils@0.8.16) (2024-05-02)
 
 **Note:** Version bump only for package @vtj/utils
