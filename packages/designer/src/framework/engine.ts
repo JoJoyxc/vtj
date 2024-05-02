@@ -65,7 +65,7 @@ export interface EngineOptions {
   materialPath?: string;
   globals?: Record<string, any>;
   adapter?: ProvideAdapter;
-  install?: (app: App, engine?: Engine) => void;
+  install?: (app: App, engine: Engine) => void;
 }
 
 export class Engine extends Base {

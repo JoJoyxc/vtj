@@ -253,6 +253,9 @@ importers:
       '@vtj/pro':
         specifier: workspace:~
         version: link:../platforms/pro
+      '@vtj/utils':
+        specifier: workspace:~
+        version: link:../packages/utils
       '@vtj/web':
         specifier: workspace:~
         version: link:../platforms/web

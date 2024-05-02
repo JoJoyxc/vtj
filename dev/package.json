@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@vtj/icons": "workspace:~",
+    "@vtj/utils": "workspace:~",
     "@vtj/materials": "workspace:~",
     "@vtj/pro": "workspace:~",
     "@vtj/web": "workspace:~",

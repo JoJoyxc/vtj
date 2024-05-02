@@ -61,6 +61,7 @@ export interface ProviderOptions {
 export interface ProvideAdapter {
   request: IStaticRequest;
   jsonp: Jsonp;
+  [index: string]: any;
 }
 
 export class Provider extends Base {

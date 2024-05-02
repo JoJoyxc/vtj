@@ -11,6 +11,7 @@ import type { EngineOptions } from '@vtj/designer';
 export interface ExtensionOptions {
   urls: string[];
   library: string;
+  params?: any[];
 }
 
 export type ExtensionFactory = () => Partial<EngineOptions> | void;
@@ -18,6 +19,7 @@ export type ExtensionFactory = () => Partial<EngineOptions> | void;
 export class Extension {
   private urls: string[] = [];
   private library: string = '';
+  private params: any[] = [];
   constructor(options: ExtensionOptions) {
     const __VTJ_PRO__ = {
       ...core,
@@ -30,9 +32,10 @@ export class Extension {
     (window as any).VtjUtils = VtjUtils;
     (window as any).VtjIcons = VtjIcons;
     (window as any).ElementPlus = ElementPlus;
-    const { urls, library } = options;
+    const { urls, library, params = [] } = options;
     this.urls = urls;
     this.library = library;
+    this.params = params;
   }
   async load(): Promise<Partial<EngineOptions> | undefined> {
     const css = this.urls.filter((n) => renderer.isCSSUrl(n));
@@ -43,7 +46,7 @@ export class Extension {
         .loadScriptUrl(scripts, this.library)
         .catch(() => null);
       if (output && typeof output === 'function') {
-        return output();
+        return output.apply(output, this.params);
       }
     }
   }
