@@ -218,6 +218,7 @@ export function createPluginViteConfig(
     version: false,
     emptyOutDir: isUmd ? false : true,
     formats: isUmd ? ['umd'] : ['es'],
+    buildTarget: 'es2015',
     library,
     libFileName,
     external: [
