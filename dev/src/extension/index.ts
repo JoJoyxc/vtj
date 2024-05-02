@@ -1,6 +1,7 @@
 import { widgetManager, type AppWidget, type ExtensionFactory } from '@vtj/pro';
 import { type App } from 'vue';
 import { VtjIconDatabase } from '@vtj/icons';
+import { request, jsonp } from '@vtj/utils';
 import Meta from './Meta.vue';
 
 const meta: AppWidget = {
@@ -15,9 +16,20 @@ const meta: AppWidget = {
 };
 widgetManager.register(meta);
 
+request.useRequest((req: any) => {
+  req.headers = Object.assign({}, req.headers || {}, { abc: 'abc' });
+  return req;
+});
+
 const factory: ExtensionFactory = () => {
   return {
-    install(app: App) {}
+    adapter: {
+      request,
+      jsonp
+    },
+    install(app: App, engine: any) {
+      console.log('ExtensionFactory install', app, engine);
+    }
   };
 };
 

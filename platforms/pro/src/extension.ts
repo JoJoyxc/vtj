@@ -1,5 +1,6 @@
 import * as Vue from 'vue';
 import * as core from '@vtj/core';
+import * as VtjUtils from '@vtj/utils';
 import * as designer from '@vtj/designer';
 import * as renderer from '@vtj/renderer';
 import * as VtjIcons from '@vtj/icons';
@@ -26,6 +27,7 @@ export class Extension {
 
     (window as any).Vue = Vue;
     (window as any).__VTJ_PRO__ = __VTJ_PRO__;
+    (window as any).VtjUtils = VtjUtils;
     (window as any).VtjIcons = VtjIcons;
     (window as any).ElementPlus = ElementPlus;
     const { urls, library } = options;
