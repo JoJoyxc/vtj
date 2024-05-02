@@ -363,7 +363,7 @@ export function useProvider(options: UseProviderOptions = {}): Provider {
   if (!provider) {
     throw new Error('Can not find provider');
   }
-  if (provider.mode === ContextMode.Raw && provider.nodeEnv === 'development') {
+  if (provider.nodeEnv === 'development') {
     const { id, version } = options;
     if (id && version) {
       (async () => {
