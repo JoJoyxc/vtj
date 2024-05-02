@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.15](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.14...@vtj/designer@0.8.15) (2024-05-02)
+
+
+### Bug Fixes
+
+* 🐛 engine 处理 adapter ([03478a9](https://gitee.com/newgateway/vtj/commits/03478a9ce700dddcaccc5f5922f4e3391ad001b2))
+
+
+
+
+
 ## [0.8.14](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.13...@vtj/designer@0.8.14) (2024-05-02)
 
 **Note:** Version bump only for package @vtj/designer
