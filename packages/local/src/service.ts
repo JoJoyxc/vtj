@@ -50,7 +50,11 @@ export async function init() {
   // 如果项目文件已经存在，则直接返回文件内容
   let dsl = repository.get(id);
   if (dsl) {
+    const oId = dsl.id;
     Object.assign(dsl, { id, name, description });
+    if (oId !== id) {
+      repository.save(id, dsl);
+    }
     return success(dsl);
   } else {
     const model = new ProjectModel({
