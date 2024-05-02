@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.13](https://gitee.com/newgateway/vtj/compare/lcdp@0.8.12...lcdp@0.8.13) (2024-05-02)
+
+
+### Bug Fixes
+
+* 🐛 lcdp favicon ([eb2bade](https://gitee.com/newgateway/vtj/commits/eb2badeef5d0a5ed9854b00102a60525848f702b))
+
+
+
+
+
 ## [0.8.12](https://gitee.com/newgateway/vtj/compare/lcdp@0.8.11...lcdp@0.8.12) (2024-05-01)
 
 **Note:** Version bump only for package lcdp
