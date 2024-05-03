@@ -893,6 +893,12 @@ importers:
       '@vtj/utils':
         specifier: workspace:~
         version: link:../../packages/utils
+      core-js:
+        specifier: ~3.37.0
+        version: 3.37.0
+      regenerator-runtime:
+        specifier: ~0.14.1
+        version: 0.14.1
     devDependencies:
       '@vtj/cli':
         specifier: workspace:~

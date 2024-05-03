@@ -12,7 +12,9 @@
     "@vtj/icons": "workspace:~",
     "@vtj/renderer": "workspace:~",
     "@vtj/ui": "workspace:~",
-    "@vtj/utils": "workspace:~"
+    "@vtj/utils": "workspace:~",
+    "core-js":"~3.37.0",
+    "regenerator-runtime":"~0.14.1"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:~"
