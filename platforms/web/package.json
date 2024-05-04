@@ -1,7 +1,7 @@
 {
   "name": "@vtj/web",
   "private": false,
-  "version": "0.8.17",
+  "version": "0.8.18",
   "type": "module",
   "scripts": {
     "check": "vue-tsc --noEmit",
@@ -13,8 +13,8 @@
     "@vtj/renderer": "workspace:~",
     "@vtj/ui": "workspace:~",
     "@vtj/utils": "workspace:~",
-    "core-js":"~3.37.0",
-    "regenerator-runtime":"~0.14.1"
+    "core-js": "~3.37.0",
+    "regenerator-runtime": "~0.14.1"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:~"

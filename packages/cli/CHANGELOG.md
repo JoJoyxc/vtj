@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.5](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.4...@vtj/cli@0.8.5) (2024-05-04)
+
+
+### Features
+
+* ✨ cli support buildTarget setting ([1220f51](https://gitee.com/newgateway/vtj/commits/1220f51c215ee0ca4a10a71116f187dcb059c8f7))
+* ✨ cli自动设置buildTarget ([c0e626b](https://gitee.com/newgateway/vtj/commits/c0e626bbe099c224b8cda1ca04b86a4a8b018dda))
+
+
+
+
+
 ## [0.8.4](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.3...@vtj/cli@0.8.4) (2024-05-01)
 
 

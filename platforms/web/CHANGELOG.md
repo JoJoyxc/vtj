@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.18](https://gitee.com/newgateway/vtj/compare/@vtj/web@0.8.17...@vtj/web@0.8.18) (2024-05-04)
+
+
+### Features
+
+* ✨ cli自动设置buildTarget ([c0e626b](https://gitee.com/newgateway/vtj/commits/c0e626bbe099c224b8cda1ca04b86a4a8b018dda))
+
+
+
+
+
 ## [0.8.17](https://gitee.com/newgateway/vtj/compare/@vtj/web@0.8.16...@vtj/web@0.8.17) (2024-05-02)
 
 **Note:** Version bump only for package @vtj/web
