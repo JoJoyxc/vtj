@@ -119,6 +119,9 @@ importers:
       '@vtj/core':
         specifier: workspace:~
         version: link:../../packages/core
+      '@vtj/plugin-ckeditor':
+        specifier: '*'
+        version: 0.1.1(vue@3.4.26(typescript@5.4.5))
       '@vtj/pro':
         specifier: workspace:~
         version: link:../../platforms/pro
@@ -3287,8 +3290,21 @@ packages:
   '@vtj/base@0.8.2':
     resolution: {integrity: sha512-9JGXx17IahjnEv4uyXdJidBnemcyO9sycpaS3OCrMvsMoGyxzEzTJBu5Vat0AY6/qIDsy4ObTlwmJQx5wa5pKw==}
 
+  '@vtj/icons@0.8.18':
+    resolution: {integrity: sha512-fi7avy9w0nieivXU6HO4PknQkskARne6NUjcDgE3FOoBfNGfVQy31C2Uu8mlDzeY+5YCVnn5V72Ggoh++3Ypag==}
+
   '@vtj/node@0.8.2':
     resolution: {integrity: sha512-ELEGVVSLdlMgF1n8+aBipkN5NBRO9eKIb/wt4t3o7MpaquJvcsFA+5UB19L8dU0iHSh53OnVCAq6urZwklo+zg==}
+
+  '@vtj/plugin-ckeditor@0.1.1':
+    resolution: {integrity: sha512-A71atQXTtIQ6vfIRKMDbSoH6Y+lXEb4OFbQRFuViWGG2DIvglY6wfrFkYu7979Qudu8VPMrK4QA4nhlZ6gIrVw==}
+
+  '@vtj/ui@0.8.18':
+    resolution: {integrity: sha512-r+Cxh67+ztsQFotjh2RdEXuurLque9nL4dgUO2C1GAcJOtIGIDSY9kPaF2mAHFIwVM/BNRQ3aTSnfxvE4mz+Ug==}
+    engines: {node: '>=16.0.0'}
+
+  '@vtj/utils@0.8.18':
+    resolution: {integrity: sha512-oOeQEGDUFTy2+kpG6Nh5Vg4aLy/jZ4QdLWW/hX81opjISDuJcQAlAx4/sm0eEruTWRlq+75gESLy3NlPRIO02A==}
 
   '@vue/babel-helper-vue-transform-on@1.2.2':
     resolution: {integrity: sha512-nOttamHUR3YzdEqdM/XXDyCSdxMA9VizUKoroLX6yTyRtggzQMHXcmwh8a7ZErcJttIBIc9s68a1B8GZ+Dmvsw==}
@@ -11496,6 +11512,12 @@ snapshots:
       '@types/numeral': 2.0.5
       reflect-metadata: 0.2.2
 
+  '@vtj/icons@0.8.18(vue@3.4.26(typescript@5.4.5))':
+    dependencies:
+      '@element-plus/icons-vue': 2.3.1(vue@3.4.26(typescript@5.4.5))
+    transitivePeerDependencies:
+      - vue
+
   '@vtj/node@0.8.2':
     dependencies:
       '@types/fs-extra': 11.0.4
@@ -11504,6 +11526,29 @@ snapshots:
       fs-extra: 11.2.0
     transitivePeerDependencies:
       - debug
+
+  '@vtj/plugin-ckeditor@0.1.1(vue@3.4.26(typescript@5.4.5))':
+    dependencies:
+      '@vtj/icons': 0.8.18(vue@3.4.26(typescript@5.4.5))
+      '@vtj/ui': 0.8.18(vue@3.4.26(typescript@5.4.5))
+      '@vtj/utils': 0.8.18
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+
+  '@vtj/ui@0.8.18(vue@3.4.26(typescript@5.4.5))':
+    dependencies:
+      '@vtj/icons': 0.8.18(vue@3.4.26(typescript@5.4.5))
+      '@vtj/utils': 0.8.18
+      '@vueuse/core': 10.9.0(vue@3.4.26(typescript@5.4.5))
+      element-plus: 2.7.2(vue@3.4.26(typescript@5.4.5))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+
+  '@vtj/utils@0.8.18':
+    dependencies:
+      '@vtj/base': 0.8.2
 
   '@vue/babel-helper-vue-transform-on@1.2.2': {}
 

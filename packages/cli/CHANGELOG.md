@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.6](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.5...@vtj/cli@0.8.6) (2024-05-06)
+
+
+### Features
+
+* ✨ auto plugins from package.json ([f327858](https://gitee.com/newgateway/vtj/commits/f3278585be56c841b672745bba5be780f26fb054))
+
+
+
+
+
 ## [0.8.5](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.4...@vtj/cli@0.8.5) (2024-05-04)
 
 

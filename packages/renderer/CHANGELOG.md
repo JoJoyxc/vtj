@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.19](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.18...@vtj/renderer@0.8.19) (2024-05-06)
+
+
+### Features
+
+* ✨ auto plugins from package.json ([f327858](https://gitee.com/newgateway/vtj/commits/f3278585be56c841b672745bba5be780f26fb054))
+
+
+
+
+
 ## [0.8.18](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.17...@vtj/renderer@0.8.18) (2024-05-04)
 
 **Note:** Version bump only for package @vtj/renderer
