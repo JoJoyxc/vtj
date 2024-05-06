@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.7](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.6...@vtj/cli@0.8.7) (2024-05-06)
+
+
+### Bug Fixes
+
+* 🐛 libFileName error ([4ba35ff](https://gitee.com/newgateway/vtj/commits/4ba35ff4c64c5cc292688adbdba8c45d91ecc61d))
+
+
+
+
+
 ## [0.8.6](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.5...@vtj/cli@0.8.6) (2024-05-06)
 
 
