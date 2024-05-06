@@ -191,6 +191,8 @@ export function createPluginViteConfig(
   } = options;
   const library = upperFirstCamelCase(libFileName);
 
+  const outputFileName = libFileName.replace(/\//gi, '__');
+
   const buildEnd = () => {
     if (!isUmd) return;
 
@@ -198,14 +200,14 @@ export function createPluginViteConfig(
     const materialPath = resolve('src', material);
 
     if (pathExistsSync(stylePath)) {
-      copySync(stylePath, stylePath.replace(style, `${libFileName}.css`));
+      copySync(stylePath, stylePath.replace(style, `${outputFileName}.css`));
       setTimeout(() => {
         removeSync(stylePath);
       }, 1000);
     }
 
     if (pathExistsSync(materialPath)) {
-      copySync(materialPath, resolve(outDir, `${libFileName}.json`));
+      copySync(materialPath, resolve(outDir, `${outputFileName}.json`));
     }
   };
 
@@ -220,7 +222,7 @@ export function createPluginViteConfig(
     formats: isUmd ? ['umd'] : ['es'],
     buildTarget: 'es2015',
     library,
-    libFileName,
+    libFileName: outputFileName,
     external: [
       'vue',
       'vue-router',

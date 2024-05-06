@@ -22,7 +22,8 @@
     "@vtj/pro": "workspace:~",
     "@vtj/web": "workspace:~",
     "vue": "^3.4.15",
-    "vue-router": "~4.3.0"
+    "vue-router": "~4.3.0",
+    "@vtj/plugin-ckeditor": "*"
   },
   "exports": {
     ".": {
@@ -40,5 +41,16 @@
   "gitHead": "0b470d76f584714cd96bf684bf66c720c2661df1",
   "publishConfig": {
     "access": "public"
+  },
+  "vtj": {
+    "plugins": [
+      {
+        "id": "v-test",
+        "name": "VTest",
+        "library": "VTest",
+        "title": "测试",
+        "urls": "xxx.json,xxx.css,xxx.js"
+      }
+    ]
   }
 }
