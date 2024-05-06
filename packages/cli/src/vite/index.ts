@@ -205,14 +205,12 @@ export function createPluginViteConfig(
     }
     if (pathExistsSync(stylePath)) {
       copySync(stylePath, stylePath.replace(style, `${outputFileName}.css`));
-      setTimeout(() => {
-        removeSync(stylePath);
-      }, 500);
     }
 
     if (pathExistsSync(materialPath)) {
       copySync(materialPath, resolve(outDir, `${outputFileName}.json`));
     }
+    removeSync(stylePath);
   };
 
   const defaults = {
