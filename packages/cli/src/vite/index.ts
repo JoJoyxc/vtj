@@ -197,16 +197,17 @@ export function createPluginViteConfig(
   const outputFileName = pkg.name.replace(/\//gi, '__');
 
   const buildEnd = () => {
-    if (!isUmd) return;
-
     const stylePath = resolve(outDir, style);
     const materialPath = resolve('src', material);
-
+    if (!isUmd) {
+      removeSync(stylePath);
+      return;
+    }
     if (pathExistsSync(stylePath)) {
       copySync(stylePath, stylePath.replace(style, `${outputFileName}.css`));
       setTimeout(() => {
         removeSync(stylePath);
-      }, 1000);
+      }, 500);
     }
 
     if (pathExistsSync(materialPath)) {
