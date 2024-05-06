@@ -13,7 +13,8 @@ import {
   upperFirstCamelCase,
   pathExistsSync,
   copySync,
-  removeSync
+  removeSync,
+  readJsonSync
 } from '@vtj/node';
 import { defaults } from './defaults';
 import { createBuild } from './build';
@@ -183,15 +184,17 @@ export function createPluginViteConfig(
   options: CreatePluginViteConfigOptions = {}
 ) {
   const {
-    libFileName = 'vtj-block-plugin',
     style = 'style.css',
     outDir = 'dist',
     material = 'material.json',
     isUmd
   } = options;
-  const library = upperFirstCamelCase(libFileName);
 
-  const outputFileName = libFileName.replace(/\//gi, '__');
+  const pkg = readJsonSync(resolve('package.json'));
+
+  const library = upperFirstCamelCase(pkg.name);
+
+  const outputFileName = pkg.name.replace(/\//gi, '__');
 
   const buildEnd = () => {
     if (!isUmd) return;
