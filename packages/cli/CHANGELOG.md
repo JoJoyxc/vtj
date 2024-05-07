@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.9](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.8...@vtj/cli@0.8.9) (2024-05-07)
+
+**Note:** Version bump only for package @vtj/cli
+
+
+
+
+
 ## [0.8.8](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.7...@vtj/cli@0.8.8) (2024-05-06)
 
 
