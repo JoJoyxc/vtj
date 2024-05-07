@@ -16,7 +16,7 @@ export class PluginRepository {
     const { devDependencies, dependencies } = pkg || {};
     const { presetPlugins } = opts;
     this.deps = Object.keys({ ...devDependencies, ...dependencies }).filter(
-      (name) => presetPlugins.some((regex) => regex.test(name))
+      (name) => presetPlugins.some((regex) => name.startsWith(regex))
     );
   }
 
