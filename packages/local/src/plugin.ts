@@ -30,6 +30,7 @@ export interface DevToolsOptions {
   packageName: string;
   nodeModulesDir: string;
   presetPlugins: RegExp[];
+  pluginNodeModulesDir?: string;
   hm?: string;
 }
 
@@ -189,7 +190,7 @@ const aliasPlugin = function (options: DevToolsOptions): Plugin {
 export function parsePresetPlugins(options: DevToolsOptions) {
   const {
     presetPlugins = [],
-    nodeModulesDir = 'node_modules',
+    pluginNodeModulesDir = 'node_modules',
     staticBase
   } = options;
   const pkg = readJsonSync(resolve('./package.json'));
@@ -200,7 +201,7 @@ export function parsePresetPlugins(options: DevToolsOptions) {
   const copies: CopyPluginOption[] = [];
   const staticDirs: StaticPluginOption[] = [];
   for (const dep of deps) {
-    const dist = join(nodeModulesDir, dep, 'dist');
+    const dist = join(pluginNodeModulesDir, dep, 'dist');
     if (pathExistsSync(dist)) {
       copies.push({
         from: dist,
@@ -235,6 +236,7 @@ export function createDevTools(options: Partial<DevToolsOptions> = {}) {
     packageName: '@vtj/pro',
     nodeModulesDir: 'node_modules',
     presetPlugins: [/^\@newpearl\/plugin\-/gi, /^\@vtj\/plugin\-/gi],
+    pluginNodeModulesDir: 'node_modules',
     hm: '42f2469b4aa27c3f8978f634c0c19d24',
     ...options
   };
