@@ -17,14 +17,15 @@
   },
   "dependencies": {
     "@vtj/web": "workspace:~",
+    "@vtj/plugin-ckeditor": "~0.1.3",
     "vue": "^3.4.15",
     "vue-router": "~4.3.0"
   },
   "devDependencies": {
-    "@vtj/charts": "workspace:~",
     "@vtj/cli": "workspace:~",
-    "@vtj/icons": "workspace:~",
     "@vtj/pro": "workspace:~",
+    "@vtj/charts": "workspace:~",
+    "@vtj/icons": "workspace:~",
     "@vtj/renderer": "workspace:~",
     "@vtj/ui": "workspace:~",
     "@vtj/utils": "workspace:~"

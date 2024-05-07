@@ -24,9 +24,9 @@ export class PluginRepository {
     const { presetPlugins } = this.opts;
     let name = dep;
     for (const regex of presetPlugins) {
-      name = name.replace(regex, 'v-');
+      name = name.replace(regex, 'x-');
     }
-    return upperFirstCamelCase(dep);
+    return upperFirstCamelCase(name);
   }
 
   getPlugins() {

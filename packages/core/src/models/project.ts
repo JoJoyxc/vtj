@@ -306,7 +306,7 @@ export class ProjectModel {
 
     // 没有打开任何文件时，自动打开新建的页面
     if (!this.currentFile && !page.dir) {
-      await delay(500);
+      await delay(2000);
       this.active(page, silent);
     }
   }
@@ -441,7 +441,7 @@ export class ProjectModel {
     }
 
     if (!this.currentFile && type === 'Schema') {
-      await delay(500);
+      await delay(2000);
       this.active(block, silent);
     }
   }
