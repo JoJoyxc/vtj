@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.26](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.25...@vtj/pro@0.8.26) (2024-05-07)
+
+
+### Bug Fixes
+
+* 🐛 export VtjUI ([9d5284c](https://gitee.com/newgateway/vtj/commits/9d5284c664f33904262df3c72923c7f92db90a42))
+
+
+
+
+
 ## [0.8.25](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.24...@vtj/pro@0.8.25) (2024-05-07)
 
 **Note:** Version bump only for package @vtj/pro
