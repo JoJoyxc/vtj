@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.6](https://gitee.com/newgateway/vtj/compare/create-vtj@0.8.5...create-vtj@0.8.6) (2024-05-07)
+
+**Note:** Version bump only for package create-vtj
+
+
+
+
+
 ## [0.8.5](https://gitee.com/newgateway/vtj/compare/create-vtj@0.8.4...create-vtj@0.8.5) (2024-05-06)
 
 
