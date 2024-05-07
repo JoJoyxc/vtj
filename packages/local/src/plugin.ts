@@ -31,6 +31,7 @@ export interface DevToolsOptions {
   nodeModulesDir: string;
   presetPlugins: RegExp[];
   pluginNodeModulesDir?: string;
+  extensionDir: string;
   hm?: string;
 }
 
@@ -237,6 +238,7 @@ export function createDevTools(options: Partial<DevToolsOptions> = {}) {
     nodeModulesDir: 'node_modules',
     presetPlugins: [/^\@newpearl\/plugin\-/gi, /^\@vtj\/plugin\-/gi],
     pluginNodeModulesDir: 'node_modules',
+    extensionDir: '',
     hm: '42f2469b4aa27c3f8978f634c0c19d24',
     ...options
   };
@@ -264,6 +266,13 @@ export function createDevTools(options: Partial<DevToolsOptions> = {}) {
       console.warn(
         '\n @vtj/materials is not installed, please install it first.\n'
       );
+    }
+    if (opts.extensionDir && pathExistsSync(opts.extensionDir)) {
+      copyOptions.push({
+        from: opts.extensionDir,
+        to: '@vtj/extension',
+        emptyDir: true
+      });
     }
     if (copyOptions.length > 0) {
       plugins.push(copyPlugin(copyOptions));
@@ -298,6 +307,13 @@ export function createDevTools(options: Partial<DevToolsOptions> = {}) {
       console.warn(
         '\n @vtj/materials is not installed, please install it first.\n'
       );
+    }
+
+    if (opts.extensionDir && pathExistsSync(opts.extensionDir)) {
+      staticOptions.push({
+        path: `${opts.staticBase}@vtj/extension`,
+        dir: opts.extensionDir
+      });
     }
 
     if (staticOptions.length > 0) {

@@ -20,9 +20,19 @@ export class PluginRepository {
     );
   }
 
+  getName(dep: string) {
+    const { presetPlugins } = this.opts;
+    let name = dep;
+    for (const regex of presetPlugins) {
+      name = name.replace(regex, 'v-');
+    }
+    return upperFirstCamelCase(dep);
+  }
+
   getPlugins() {
     const { vtj = {} } = this.pkg;
-    const { nodeModulesDir = 'node_modules', staticBase = '/' } = this.opts;
+    const { pluginNodeModulesDir = 'node_modules', staticBase = '/' } =
+      this.opts;
     const plugins: BlockFile[] = (vtj.plugins || []).map((n: BlockFile) => {
       n.type = 'block';
       n.fromType = 'Plugin';
@@ -32,10 +42,12 @@ export class PluginRepository {
 
     const ext = ['.css', '.js', '.json'];
     for (const dep of this.deps) {
-      const dist = join(nodeModulesDir, dep, 'dist');
+      const dist = join(pluginNodeModulesDir, dep, 'dist');
 
       if (pathExistsSync(dist)) {
-        const pkg = readJsonSync(join(nodeModulesDir, dep, 'package.json'));
+        const pkg = readJsonSync(
+          join(pluginNodeModulesDir, dep, 'package.json')
+        );
         const files = readdirSync(dist, { recursive: true, encoding: 'utf-8' });
         const urls = files
           .filter((url) => ext.some((n) => url.endsWith(n)))
@@ -50,7 +62,7 @@ export class PluginRepository {
             fromType: 'Plugin',
             preset: true,
             id: dep,
-            name,
+            name: this.getName(dep),
             title: description || name,
             library: name,
             urls: urls.join(',')
