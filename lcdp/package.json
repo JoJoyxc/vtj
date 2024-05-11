@@ -13,7 +13,6 @@
     "copy": "vtj copy dist ../docs/dist/lcdp && vtj copy dist/@vtj ../docs/dist/@vtj"
   },
   "dependencies": {
-    "@vtj/plugin-ckeditor": "~0.1.3",
     "@vtj/web": "workspace:*",
     "vue": "^3.4.15",
     "vue-router": "^4.3.0"

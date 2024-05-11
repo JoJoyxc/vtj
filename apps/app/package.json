@@ -16,7 +16,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vtj/plugin-ckeditor": "~0.1.3",
+    "@vtj/plugin-ckeditor": "~0.1.4",
     "@vtj/web": "workspace:~",
     "vue": "^3.4.15",
     "vue-router": "~4.3.0"

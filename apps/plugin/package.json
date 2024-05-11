@@ -19,7 +19,6 @@
   "devDependencies": {
     "@vtj/cli": "workspace:~",
     "@vtj/core": "workspace:~",
-    "@vtj/plugin-ckeditor": "*",
     "@vtj/pro": "workspace:~",
     "@vtj/web": "workspace:~",
     "vue": "^3.4.15",
