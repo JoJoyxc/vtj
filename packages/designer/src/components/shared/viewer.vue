@@ -9,6 +9,8 @@
       <template #default="{ data }">
         <Item
           :title="data.label"
+          :subtitle="data.type"
+          :subtitle-cls="data.type"
           clickable
           @click="onPick(data)"
           background
