@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.30](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.29...@vtj/designer@0.8.30) (2024-05-11)
+
+
+### Features
+
+* ✨ 变量绑定高级列表支持方法和数据类型展示 ([029d70b](https://gitee.com/newgateway/vtj/commits/029d70bbf5a7cb0e3fc376ee7b1283f4d4517a26))
+* ✨ 变量绑定高级列表支持方法和数据类型展示 ([2d8bd17](https://gitee.com/newgateway/vtj/commits/2d8bd175226f6dee0bfa9f319d9c16ec876d265f))
+
+
+
+
+
 ## [0.8.29](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.28...@vtj/designer@0.8.29) (2024-05-11)
 
 
