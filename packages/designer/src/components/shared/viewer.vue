@@ -29,6 +29,7 @@
   import { toRawType } from '@vtj/utils';
   import { type Context } from '@vtj/renderer';
   import Item from './item.vue';
+  import { getClassProperties } from '../../utils';
 
   export interface Props {
     context: Context | null;
@@ -67,8 +68,11 @@
           };
         });
       }
-      return Object.entries(obj)
-        .map(([k, v]) => {
+
+      const keys = getClassProperties(obj);
+      return keys
+        .map((k) => {
+          const v = obj[k];
           return {
             label: k,
             value: v,
