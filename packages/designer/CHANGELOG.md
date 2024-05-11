@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.29](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.28...@vtj/designer@0.8.29) (2024-05-11)
+
+
+### Bug Fixes
+
+* 🐛 provider install ([92f7535](https://gitee.com/newgateway/vtj/commits/92f75352286ec4956ce0b8b6cee752fab6730216))
+
+
+
+
+
 ## [0.8.28](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.27...@vtj/designer@0.8.28) (2024-05-09)
 
 
