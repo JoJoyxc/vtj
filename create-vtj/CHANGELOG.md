@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.7](https://gitee.com/newgateway/vtj/compare/create-vtj@0.8.6...create-vtj@0.8.7) (2024-05-14)
+
+
+### Features
+
+* ✨ ui support ADAPTER_KEY_STRING ([44cf31d](https://gitee.com/newgateway/vtj/commits/44cf31dee87f4896b4071b688e35eddbf5a96b1c))
+
+
+
+
+
 ## [0.8.6](https://gitee.com/newgateway/vtj/compare/create-vtj@0.8.5...create-vtj@0.8.6) (2024-05-07)
 
 **Note:** Version bump only for package create-vtj
