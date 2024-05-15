@@ -1,2 +1,37 @@
 @use 'core' as *;
 @use 'vxe-table/es/style.css';
+
+@include b(grid) {
+  &.size--mini {
+    --vxe-table-column-padding-mini: 0;
+    --vxe-table-row-height-mini: 22px !important;
+  }
+  &.size--small {
+    --vxe-table-column-padding-small: 5px 0;
+    --vxe-table-row-height-small: 30px !important;
+  }
+
+  .vxe-body--column.col--checkbox {
+    > .vxe-cell {
+      line-height: 0;
+    }
+  }
+  .vxe-body--column.col--radio {
+    > .vxe-cell {
+      line-height: 0;
+    }
+  }
+
+  .sortable-chosen {
+    opacity: 0.6;
+    background-color: var(--el-color-warning-light-8) !important;
+  }
+  .sortable-fallback {
+    background-color: var(--el-color-primary-light-8) !important;
+    background-image: none !important;
+    .vxe-cell {
+      height: 100% !important;
+      max-height: unset !important;
+    }
+  }
+}
