@@ -18,6 +18,7 @@
     mode: ContextMode.Runtime,
     service,
     adapter,
+    install,
     dependencies: {
       Vue: () => import('vue'),
       VueRouter: () => import('vue-router'),
@@ -32,7 +33,6 @@
     const app = instance?.appContext.app;
     if (app) {
       app.use(provider);
-      app.use(install as any);
     }
 
     renderer.value = await provider.getRenderComponent(

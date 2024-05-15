@@ -22,6 +22,7 @@
     "@vtj/materials": "workspace:~",
     "@vtj/pro": "workspace:~",
     "@vtj/utils": "workspace:~",
+    "@vtj/ui": "workspace:~",
     "@vtj/web": "workspace:~",
     "vue": "~3.4.15",
     "vue-router": "~4.3.0"

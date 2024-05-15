@@ -21,7 +21,8 @@ import {
   XImageCodeInput,
   XQrcode,
   XSmsCodeInput,
-  XAttachment
+  XAttachment,
+  XGrid
 } from './components';
 
 export const components = [
@@ -46,5 +47,6 @@ export const components = [
   XImageCodeInput,
   XQrcode,
   XSmsCodeInput,
-  XAttachment
+  XAttachment,
+  XGrid
 ] as DefineComponent<any, any, any, any>[];

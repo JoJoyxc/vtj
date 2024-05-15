@@ -42,16 +42,10 @@
     }
   });
 
-  const install = (app: any) => {
-
-    app.use()
-  };
-
   const engine = new Engine({
     container,
     service,
-    ...options,
-    install
+    ...options
   });
 
   engine.ready(() => {

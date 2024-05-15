@@ -17,14 +17,18 @@
     "@vtj/icons": "workspace:~",
     "@vtj/utils": "workspace:~",
     "@vueuse/core": "~10.9.0",
-    "element-plus": "~2.7.0"
+    "element-plus": "~2.7.0",
+    "vxe-table": "~4.6.12",
+    "vxe-table-plugin-menus": "~4.0.3",
+    "sortablejs": "~1.15.2"
   },
   "devDependencies": {
     "@types/qrcode": "^1.5.5",
     "@vtj/cli": "workspace:~",
     "qrcode": "~1.5.3",
     "vue": "~3.4.15",
-    "vue-router": "~4.3.0"
+    "vue-router": "~4.3.0",
+    "@types/sortablejs": "~1.15.8"
   },
   "files": [
     "dist",

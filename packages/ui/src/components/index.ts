@@ -21,3 +21,4 @@ export * from './image-code-input';
 export * from './qrcode';
 export * from './sms-code-input';
 export * from './attachment';
+export * from './grid';
