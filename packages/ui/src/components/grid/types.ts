@@ -8,7 +8,8 @@ import type {
   VxeGridDefines,
   VxeColumnPropTypes,
   VxeGridEvents,
-  VxeGridProps
+  VxeGridProps,
+  VxeGlobalRendererHandles
 } from 'vxe-table';
 
 export type GridSortableOptions = Sortable.Options;
@@ -38,7 +39,11 @@ export type GridCustomInfo = {
   fixed?: Record<string, VxeColumnPropTypes.Fixed>;
 };
 
-export type GridCellRender = VxeColumnPropTypes.CellRender;
+export type GridCellRender = VxeColumnPropTypes.CellRender & {
+  props: (
+    params: VxeGlobalRendererHandles.RenderDefaultParams
+  ) => Record<string, any>;
+};
 export type GridCellRenders = Record<string, string | GridCellRender>;
 
 export type GridProps = ComponentPropsType<typeof gridProps>;
@@ -55,5 +60,6 @@ export type {
   VxeColumnPropTypes,
   VxeGridEvents,
   VxeGridDefines,
-  VxeGridProps
+  VxeGridProps,
+  VxeGlobalRendererHandles
 };

@@ -104,7 +104,19 @@ function useScrollY(props: GridProps, attrs: Record<string, any>) {
           enabled: true,
           gt: 10
         },
-        attrs.scrollY || {}
+        getAttrValue(attrs, 'scrollY') || {}
+      )
+    : undefined;
+}
+
+function useFitlerConfig(props: GridProps, attrs: Record<string, any>) {
+  const { pager } = props;
+  return pager
+    ? Object.assign(
+        {
+          remote: pager
+        },
+        getAttrValue(attrs, 'fitlerConfig') || {}
       )
     : undefined;
 }
@@ -112,7 +124,7 @@ function useScrollY(props: GridProps, attrs: Record<string, any>) {
 export function useProps(props: GridProps, slots: string[]) {
   const attrs: Record<string, any> = useAttrs();
   const defaults: VxeGridProps = {
-    layouts: ['Top', 'Toolbar', 'Form', 'Table', 'Bottom', 'Pager'],
+    layouts: ['Toolbar', 'Form', 'Top', 'Table', 'Bottom', 'Pager'],
     size: 'small',
     height: 'auto',
     border: true,
@@ -127,6 +139,7 @@ export function useProps(props: GridProps, slots: string[]) {
     const proxyConfig = useProxyConfig(props, attrs);
     const scrollY = useScrollY(props, attrs);
     const toolbarConfig = useToolbarConfig(props, attrs, slots);
+    const filterConfig = useFitlerConfig(props, attrs);
     return {
       ...defaults,
       ...attrs,
@@ -135,7 +148,8 @@ export function useProps(props: GridProps, slots: string[]) {
       pagerConfig,
       proxyConfig,
       scrollY,
-      toolbarConfig
+      toolbarConfig,
+      filterConfig
     };
   });
 }

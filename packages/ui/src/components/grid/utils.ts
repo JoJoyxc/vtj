@@ -1,5 +1,5 @@
 import Sortable from 'sortablejs';
-// import { arrayToMap } from '@vtj/utils';
+import { isFunction } from '@vtj/utils';
 import type {
   GridSortableOptions,
   VxeGridInstance,
@@ -7,7 +7,8 @@ import type {
   GridSortableEvent,
   VxeTableDefines,
   GridColumns,
-  GridCustomInfo
+  GridCustomInfo,
+  VxeGlobalRendererHandles
 } from './types';
 import type { Emits } from '../shared';
 
@@ -148,4 +149,28 @@ export function mergeCustomInfo(columns: GridColumns, info: GridCustomInfo) {
   };
   doMerge(columns);
   return columns;
+}
+
+export function createCellRenderValue(
+  renderOpts: VxeGlobalRendererHandles.RenderDefaultOptions,
+  params: VxeGlobalRendererHandles.RenderDefaultParams
+) {
+  const { row, column } = params;
+  let cellValue = row[column.field];
+
+  const renderProps = isFunction(renderOpts.props)
+    ? renderOpts.props({ row, column, cellValue })
+    : renderOpts.props;
+
+  const props = Object.assign({}, renderProps, renderOpts.events);
+
+  if (isFunction(column.formatter)) {
+    cellValue = column.formatter({ row, column, cellValue });
+  }
+  return {
+    props,
+    cellValue,
+    row,
+    column
+  };
 }

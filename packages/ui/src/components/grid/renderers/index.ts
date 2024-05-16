@@ -1,3 +1,3 @@
-import './link';
-import './tag';
-import './image';
+import './cell/link';
+import './cell/tag';
+import './cell/image';

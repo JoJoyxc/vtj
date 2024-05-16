@@ -1,4 +1,4 @@
-import { type MaybeRef, ref, unref, onMounted } from 'vue';
+import { type MaybeRef, ref, unref, onMounted, watch } from 'vue';
 import type {
   VxeGridInstance,
   GridProps,
@@ -27,18 +27,21 @@ export function useCustom(
   vxeRef: MaybeRef<VxeGridInstance | undefined>,
   props: GridProps
 ) {
-  const columns = ref<VxeGridPropTypes.Columns>(createColumns(props));
+  const columns = ref<VxeGridPropTypes.Columns>([]);
   const adapter = useAdapter();
   let info: GridCustomInfo | null = null;
-  const { getCustom = adapter.getCustom, saveCustom = adapter.saveCustom } =
-    props;
+  const {
+    customable,
+    getCustom = adapter.getCustom,
+    saveCustom = adapter.saveCustom
+  } = props;
 
   const getId = (grid: VxeGridInstance) => {
     return `X_Grid_${grid.id || grid?.$.uid}`;
   };
 
   const onResize = (e: VxeGridDefines.ResizableChangeEventParams) => {
-    if (!info) return;
+    if (!customable || !info) return;
     const column = e.column;
     const name = getName(column);
     const value = column.renderWidth;
@@ -53,7 +56,7 @@ export function useCustom(
   };
 
   const onCustom = (e: VxeGridDefines.CustomEventParams) => {
-    if (!info) return;
+    if (!customable || !info) return;
     if (['confirm', 'reset'].includes(e.type)) {
       const { fullColumn, collectColumn } = e.$grid.getTableColumn();
       const visible: Record<string, boolean> = {};
@@ -79,7 +82,7 @@ export function useCustom(
 
   const onSort = (_e: GridSortableEvent) => {
     const grid = unref(vxeRef);
-    if (!grid || !info) return;
+    if (!customable || !grid || !info) return;
     const { collectColumn } = grid.getTableColumn();
     const getSort = (columns: VxeTableDefines.ColumnInfo[]) => {
       const result: string[] = [];
@@ -97,15 +100,26 @@ export function useCustom(
     }
   };
 
-  onMounted(async () => {
+  const updateColumns = async () => {
     const grid = unref(vxeRef);
-    if (!grid || !getCustom) return;
+    if (!customable || !grid || !getCustom) return;
     const id = getId(grid);
     info = (await getCustom(id).catch(() => null)) || { id };
     if (info) {
       columns.value = mergeCustomInfo(columns.value, info).slice(0);
     }
-  });
+  };
+
+  onMounted(updateColumns);
+
+  watch(
+    () => props.columns,
+    () => {
+      columns.value = createColumns(props);
+      updateColumns();
+    },
+    { immediate: true }
+  );
 
   return {
     columns,

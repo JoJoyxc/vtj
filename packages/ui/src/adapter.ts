@@ -5,6 +5,7 @@ import {
   inject,
   getCurrentInstance
 } from 'vue';
+import { storage } from '@vtj/utils';
 import type { GridCustomInfo } from './components';
 import type { VXETableConfigOptions } from 'vxe-table';
 export const ADAPTER_KEY: InjectionKey<Adapter> = Symbol('ADAPTER_KEY');
@@ -36,9 +37,19 @@ export interface Adapter {
   [index: string]: any;
 }
 
+const defaults: Adapter = {
+  getCustom: async (id: string) => {
+    return storage.get(id, { type: 'local' });
+  },
+  saveCustom: async (info: any) => {
+    storage.save(info.id, info, { type: 'local' });
+  }
+};
+
 export const AdapterPlugin: Plugin = {
   install(app: App, options: Adapter = {}) {
-    app.config.globalProperties.$adapter = options;
-    app.provide(ADAPTER_KEY, options);
+    const adapter = Object.assign(defaults, options);
+    app.config.globalProperties.$adapter = adapter;
+    app.provide(ADAPTER_KEY, adapter);
   }
 };

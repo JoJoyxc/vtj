@@ -71,9 +71,17 @@
       field: 'sex',
       title: '性别',
       filters: [
-        { label: '男', value: '男' },
-        { label: '女', value: '女' }
-      ]
+        { label: '男', value: 1 },
+        { label: '女', value: 0 }
+      ],
+      formatter: (data: any) => {
+        const { row } = data;
+        const map: Record<number, any> = {
+          1: '男',
+          0: '女'
+        };
+        return map[row.sex];
+      }
     },
     { field: 'age', title: '年龄', sortable: true },
     {
@@ -111,7 +119,14 @@
         }
       }
     },
-    sex: 'TagCell'
+    sex: {
+      name: 'TagCell',
+      props: (params: any) => {
+        return {
+          type: params.cellValue === 1 ? 'primary' : 'warning'
+        };
+      }
+    }
   };
 
   const onRowSort = (e: any) => {
@@ -134,6 +149,7 @@
 
   const query = async (params: any) => {
     const { currentPage, pageSize = 1000 } = params.page || {};
+    console.log('query', params);
     return await fetchData({
       currentPage,
       pageSize,

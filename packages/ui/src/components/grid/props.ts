@@ -33,6 +33,13 @@ export const gridProps = {
   },
 
   /**
+   * 开启用户自定义
+   */
+  customable: {
+    type: Boolean
+  },
+
+  /**
    * 获取自定义配置
    */
   getCustom: {

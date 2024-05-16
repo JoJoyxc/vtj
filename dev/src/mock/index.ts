@@ -20,6 +20,7 @@ Mock.mock(/\/mock-api\/upload/, {
 Mock.mock(/\/mock-api\/list/, (req: any) => {
   const query = url.parse(req.body || '');
   const { currentPage = 1, pageSize = 10, total = 0 } = query;
+  console.log('request', req);
   return Mock.mock({
     code: 0,
     success: true,
@@ -29,7 +30,7 @@ Mock.mock(/\/mock-api\/list/, (req: any) => {
           id: '@id',
           name: '@cname',
           avatar: '@image',
-          'sex|1': ['男', '女'],
+          'sex|1': [1, 0],
           age: '@integer(1,100)',
           year: '@datetime(yyyy)',
           month: '@datetime(MM)',
