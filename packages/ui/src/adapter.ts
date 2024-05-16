@@ -5,6 +5,7 @@ import {
   inject,
   getCurrentInstance
 } from 'vue';
+import type { GridCustomInfo } from './components';
 import type { VXETableConfigOptions } from 'vxe-table';
 export const ADAPTER_KEY: InjectionKey<Adapter> = Symbol('ADAPTER_KEY');
 
@@ -18,7 +19,7 @@ export type Uploader = (
   file: File
 ) => Promise<string | UploaderResponse | null>;
 
-export function useAdapter() {
+export function useAdapter(): Adapter {
   const instance = getCurrentInstance();
   const adapter = instance?.appContext.config.globalProperties.$adapter;
   if (adapter) {
@@ -30,6 +31,8 @@ export function useAdapter() {
 export interface Adapter {
   uploader?: Uploader;
   vxeConfig?: VXETableConfigOptions;
+  getCustom?: (id: string) => Promise<GridCustomInfo>;
+  saveCustom?: (info: GridCustomInfo) => Promise<any>;
   [index: string]: any;
 }
 

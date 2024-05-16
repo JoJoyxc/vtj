@@ -15,6 +15,8 @@ import {
   type VXETableConfigOptions
 } from 'vxe-table';
 import { useAdapter } from '../../../adapter';
+import '../renderers';
+
 export function useVxe(options: VXETableConfigOptions = {}) {
   const modules = [
     VxeTableFilterModule,
@@ -32,11 +34,12 @@ export function useVxe(options: VXETableConfigOptions = {}) {
   const instance = getCurrentInstance();
   const app = instance?.appContext.app;
   const { vxeConfig } = useAdapter();
-  VXETable.config({
-    ...vxeConfig,
-    ...options
-  });
+
   if (app && !(app as any).__installVxe) {
+    VXETable.config({
+      ...vxeConfig,
+      ...options
+    });
     modules.forEach((n) => app.use(n));
     (app as any).__installVxe = true;
   }

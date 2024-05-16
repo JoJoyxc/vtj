@@ -10,14 +10,32 @@ import type {
   VxeColumnPropTypes
 } from '../types';
 import { mergeCustomInfo, getName } from '../utils';
+import { useAdapter } from '../../../adapter';
+
+function createColumns(props: GridProps) {
+  const { columns = [], cellRenders = {} } = props;
+  for (const col of columns.slice(0)) {
+    const { field } = col;
+    if (!field || !cellRenders[field]) continue;
+    const render = cellRenders[field];
+    col.cellRender = typeof render === 'string' ? { name: render } : render;
+  }
+  return columns;
+}
 
 export function useCustom(
   vxeRef: MaybeRef<VxeGridInstance | undefined>,
   props: GridProps
 ) {
-  const columns = ref<VxeGridPropTypes.Columns>(props.columns ?? []);
+  const columns = ref<VxeGridPropTypes.Columns>(createColumns(props));
+  const adapter = useAdapter();
   let info: GridCustomInfo | null = null;
-  const { getCustom, saveCustom } = props;
+  const { getCustom = adapter.getCustom, saveCustom = adapter.saveCustom } =
+    props;
+
+  const getId = (grid: VxeGridInstance) => {
+    return `X_Grid_${grid.id || grid?.$.uid}`;
+  };
 
   const onResize = (e: VxeGridDefines.ResizableChangeEventParams) => {
     if (!info) return;
@@ -82,7 +100,7 @@ export function useCustom(
   onMounted(async () => {
     const grid = unref(vxeRef);
     if (!grid || !getCustom) return;
-    const id = grid.id || String(grid?.$.uid);
+    const id = getId(grid);
     info = (await getCustom(id).catch(() => null)) || { id };
     if (info) {
       columns.value = mergeCustomInfo(columns.value, info).slice(0);
