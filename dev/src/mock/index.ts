@@ -39,7 +39,9 @@ Mock.mock(/\/mock-api\/list/, (req: any) => {
           city: '@city',
           county: '@county',
           salary: '@float(100,9999,2,4)',
-          intro: '@cparagraph(1,3)'
+          intro: '@cparagraph(1,3)',
+          join: '@datetime(yyyy-MM-dd)',
+          create: '@datetime(yyyy-MM-dd hh:mm:ss)'
         }
       ],
       currentPage,

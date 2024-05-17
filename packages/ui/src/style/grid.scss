@@ -47,4 +47,12 @@
       line-height: 0;
     }
   }
+
+  @include e(filter) {
+    padding: 10px;
+    width: 180px;
+  }
+  @include e(DateFilter) {
+    width: 240px;
+  }
 }

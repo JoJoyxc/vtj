@@ -9,7 +9,9 @@ import type {
   VxeColumnPropTypes,
   VxeGridEvents,
   VxeGridProps,
-  VxeGlobalRendererHandles
+  VxeGlobalRendererHandles,
+  VxeColumnSlotTypes,
+  DefineRendererOption
 } from 'vxe-table';
 
 export type GridSortableOptions = Sortable.Options;
@@ -61,5 +63,7 @@ export type {
   VxeGridEvents,
   VxeGridDefines,
   VxeGridProps,
-  VxeGlobalRendererHandles
+  VxeGlobalRendererHandles,
+  VxeColumnSlotTypes,
+  DefineRendererOption
 };

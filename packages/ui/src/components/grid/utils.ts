@@ -151,24 +151,33 @@ export function mergeCustomInfo(columns: GridColumns, info: GridCustomInfo) {
   return columns;
 }
 
-export function createCellRenderValue(
+export function createCellRenderProps(
   renderOpts: VxeGlobalRendererHandles.RenderDefaultOptions,
   params: VxeGlobalRendererHandles.RenderDefaultParams
 ) {
   const { row, column } = params;
   let cellValue = row[column.field];
+  const { props = {}, events = {} } = renderOpts;
 
-  const renderProps = isFunction(renderOpts.props)
-    ? renderOpts.props({ row, column, cellValue })
-    : renderOpts.props;
+  const renderProps = isFunction(props)
+    ? props({ row, column, cellValue })
+    : props;
 
-  const props = Object.assign({}, renderProps, renderOpts.events);
+  const renderEvents = Object.entries(events).reduce(
+    (prev, [name, handler]) => {
+      prev[name] = (...args: any[]) =>
+        handler({ cellValue, row, column } as any, ...args);
+      return prev;
+    },
+    {} as Record<string, any>
+  );
 
   if (isFunction(column.formatter)) {
     cellValue = column.formatter({ row, column, cellValue });
   }
+
   return {
-    props,
+    props: Object.assign({}, renderProps, renderEvents),
     cellValue,
     row,
     column

@@ -2,19 +2,20 @@
   <div class="container">
     <XGrid
       id="demo"
-      size="small"
+      size="mini"
       :columns="columns"
       rowSortable
       @row-sort="onRowSort"
       @column-sort="onColSort"
       columnSortable
       @resizable-change="onResize"
+      :customable="true"
       :getCustom="getCustom"
       :saveCustom="saveCustom"
       :border="true"
       :stripe="false"
       :query="query"
-      :pager="true"
+      :pager="false"
       :resizable="true"
       :showOverflow="true"
       :virtual="false"
@@ -52,9 +53,10 @@
     {
       field: 'name',
       title: '姓名',
+      filters: [{ value: null }],
+      filterRender: { name: 'InputFilter' },
       cellRender: {
         name: 'LinkCell',
-        props: {},
         events: {
           onClick(value: any, e: any) {
             console.log(value, e);
@@ -106,6 +108,18 @@
     {
       field: 'intro',
       title: '简介'
+    },
+    {
+      field: 'join',
+      title: '入职日期',
+      filters: [{ value: '' }],
+      filterRender: {
+        name: 'DateFilter'
+      }
+    },
+    {
+      field: 'create',
+      title: '创建时间'
     }
   ];
 
@@ -148,7 +162,7 @@
   };
 
   const query = async (params: any) => {
-    const { currentPage, pageSize = 1000 } = params.page || {};
+    const { currentPage, pageSize = 10 } = params.page || {};
     console.log('query', params);
     return await fetchData({
       currentPage,
