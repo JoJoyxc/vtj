@@ -1,5 +1,5 @@
 import Sortable from 'sortablejs';
-import { isFunction } from '@vtj/utils';
+import { isFunction, camelCase } from '@vtj/utils';
 import type {
   GridSortableOptions,
   VxeGridInstance,
@@ -18,7 +18,7 @@ export function createSortable(
 ) {
   return new Sortable(el, {
     forceFallback: true,
-    delay: 50,
+    delay: 150,
     touchStartThreshold: 30,
     ...options
   });
@@ -165,7 +165,8 @@ export function createCellRenderProps(
 
   const renderEvents = Object.entries(events).reduce(
     (prev, [name, handler]) => {
-      prev[name] = (...args: any[]) =>
+      const eventName = camelCase(`on-${name}`);
+      prev[eventName] = (...args: any[]) =>
         handler({ cellValue, row, column } as any, ...args);
       return prev;
     },

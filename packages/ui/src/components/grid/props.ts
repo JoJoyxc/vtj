@@ -117,5 +117,9 @@ export const gridProps = {
    */
   cellRenders: {
     type: Object as PropType<GridCellRenders>
+  },
+
+  editRenders: {
+    type: Object
   }
 };

@@ -121,6 +121,11 @@ function useFitlerConfig(props: GridProps, attrs: Record<string, any>) {
     : undefined;
 }
 
+function useKeepSource(_props: GridProps, attrs: Record<string, any>) {
+  const editConfig = getAttrValue(attrs, 'editConfig');
+  return editConfig?.enabled ?? !!editConfig;
+}
+
 export function useProps(props: GridProps, slots: string[]) {
   const attrs: Record<string, any> = useAttrs();
   const defaults: VxeGridProps = {
@@ -140,6 +145,7 @@ export function useProps(props: GridProps, slots: string[]) {
     const scrollY = useScrollY(props, attrs);
     const toolbarConfig = useToolbarConfig(props, attrs, slots);
     const filterConfig = useFitlerConfig(props, attrs);
+    const keepSource = useKeepSource(props, attrs);
     return {
       ...defaults,
       ...attrs,
@@ -149,7 +155,8 @@ export function useProps(props: GridProps, slots: string[]) {
       proxyConfig,
       scrollY,
       toolbarConfig,
-      filterConfig
+      filterConfig,
+      keepSource
     };
   });
 }

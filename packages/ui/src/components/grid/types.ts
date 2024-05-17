@@ -42,9 +42,11 @@ export type GridCustomInfo = {
 };
 
 export type GridCellRender = VxeColumnPropTypes.CellRender & {
-  props: (
-    params: VxeGlobalRendererHandles.RenderDefaultParams
-  ) => Record<string, any>;
+  props:
+    | ((
+        params: VxeGlobalRendererHandles.RenderDefaultParams
+      ) => Record<string, any>)
+    | Record<string, any>;
 };
 export type GridCellRenders = Record<string, string | GridCellRender>;
 

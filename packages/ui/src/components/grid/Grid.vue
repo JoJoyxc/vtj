@@ -32,10 +32,22 @@
   const { columns, onResize, onCustom, onSort } = useCustom(vxeRef, props);
   const rowSortable = useRowSortable(vxeRef, props, emit);
   const columnSortable = useColumnSortable(vxeRef, props, emit, onSort);
+
+  /**
+   * 新增行，并进入编辑状态
+   */
+  const insertAndEdit = async (record: any = {}, row: any = -1) => {
+    const instance = vxeRef.value;
+    if (!instance) return;
+    const { row: newRow } = await instance.insertAt(record, row);
+    await instance.setEditRow(newRow);
+  };
+
   defineExpose({
     vxeRef,
     rowSortable,
-    columnSortable
+    columnSortable,
+    insertAndEdit
   });
 
   defineOptions({
