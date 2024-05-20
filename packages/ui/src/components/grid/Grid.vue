@@ -28,15 +28,18 @@
   const props = defineProps(gridProps);
   const emit = defineEmits<GridEmits>();
   const slots = useVxeSlots();
-  const vxeProps = useProps(props, slots);
+  const vxeProps = useProps(props, slots, emit);
   const { columns, onResize, onCustom, onSort } = useCustom(vxeRef, props);
   const rowSortable = useRowSortable(vxeRef, props, emit);
   const columnSortable = useColumnSortable(vxeRef, props, emit, onSort);
 
   /**
-   * 新增行，并进入编辑状态
+   * 新增行，并激活编辑状态
    */
-  const insertAndEdit = async (record: any = {}, row: any = -1) => {
+  const insertActived = async (record: any = {}, row: any = -1) => {
+    if (!props.editable) {
+      console.warn('XGrid在编辑模式需要开启editable');
+    }
     const instance = vxeRef.value;
     if (!instance) return;
     const { row: newRow } = await instance.insertAt(record, row);
@@ -47,7 +50,7 @@
     vxeRef,
     rowSortable,
     columnSortable,
-    insertAndEdit
+    insertActived
   });
 
   defineOptions({

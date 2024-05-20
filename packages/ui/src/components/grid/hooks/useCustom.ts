@@ -13,12 +13,26 @@ import { mergeCustomInfo, getName } from '../utils';
 import { useAdapter } from '../../../adapter';
 
 function createColumns(props: GridProps) {
-  const { columns = [], cellRenders = {} } = props;
-  for (const col of columns.slice(0)) {
-    const { field } = col;
-    if (!field || !cellRenders[field]) continue;
-    const render = cellRenders[field];
-    col.cellRender = typeof render === 'string' ? { name: render } : render;
+  const { columns = [], cellRenders = {}, editRenders = {} } = props;
+  for (const col of columns) {
+    const { field, children = [] } = col;
+    if (field) {
+      if (cellRenders[field]) {
+        const render = cellRenders[field];
+        col.cellRender = typeof render === 'string' ? { name: render } : render;
+      }
+      if (editRenders[field]) {
+        const render = editRenders[field];
+        col.editRender = typeof render === 'string' ? { name: render } : render;
+      }
+    }
+    if (children.length) {
+      col.children = createColumns({
+        columns: col.children,
+        cellRenders,
+        editRenders
+      });
+    }
   }
   return columns;
 }

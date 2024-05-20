@@ -23,10 +23,9 @@
       :virtual="false"
       :toolbar-config="toolbarConfig"
       :cellRenders="cellRenders"
-      :edit-config="{ mode: 'cell', trigger: 'click', showStatus: true }"
-      :valid-config="{}"
-      :edit-rules="editRules"
-      @edit-closed="onEditClosed">
+      :editRenders="editRenders"
+      :editRules="editRules"
+      :editable="true">
       <!-- <template #toolbar__buttons>
         <XActionBar v-bind="toolbarConfig"></XActionBar>
       </template> -->
@@ -35,7 +34,7 @@
 </template>
 <script lang="ts" setup>
   import { ref, markRaw } from 'vue';
-  import { XGrid, GridCellRenders } from '@vtj/ui';
+  import { XGrid, type GridCellRenders, type GridColumns } from '@vtj/ui';
   import { request, storage, numberFormat } from '@vtj/utils';
   import { EditPen, Delete } from '@vtj/icons';
 
@@ -52,25 +51,12 @@
     });
   };
 
-  const columns = [
+  const columns: GridColumns = [
     { type: 'checkbox', title: '', width: 60 },
     { type: 'seq', title: '序号', width: 60 },
     {
       field: 'id',
-      title: 'ID',
-      editRender: {
-        name: 'InputEdit',
-        events: {
-          change(params: any) {
-            const grid = gridRef.value as any;
-            if (grid) {
-              console.log('InputEdit change', params);
-              // grid.vxeRef.updateStatus(params);
-              // grid.vxeRef.clearValidate();
-            }
-          }
-        }
-      }
+      title: 'ID'
     },
     {
       field: 'name',
@@ -110,10 +96,7 @@
     {
       field: 'age',
       title: '年龄',
-      sortable: true,
-      editRender: {
-        name: 'InputEdit'
-      }
+      sortable: true
     },
     {
       field: 'birth',
@@ -200,6 +183,40 @@
     }
   };
 
+  const editRenders = {
+    id: 'InputEdit',
+    age: {
+      name: 'SelectEdit',
+      props: {
+        options: [
+          {
+            label: '选项一',
+            value: 1
+          },
+          {
+            label: '选项二',
+            value: 2
+          }
+        ]
+      }
+      // props: () => {
+      //   return {
+      //     options: [
+      //       {
+      //         label: '选项一',
+      //         value: 1
+      //       },
+      //       {
+      //         label: '选项二',
+      //         value: 2
+      //       }
+      //     ]
+      //   };
+      // }
+    },
+    city: 'InputEdit'
+  };
+
   const onRowSort = (e: any) => {
     console.log('onRowSort', e);
   };
@@ -268,42 +285,14 @@
           });
         }
       }
-    ],
-    name: [
-      {
-        required: true,
-        message: '验证错误信息'
-      },
-      {
-        validator({ cellValue }: any) {
-          // 模拟服务端校验
-          return new Promise((resolve, reject) => {
-            setTimeout(() => {
-              if (
-                cellValue &&
-                (cellValue.length < 3 || cellValue.length > 50)
-              ) {
-                reject(new Error('名称长度在 3 到 50 个字符之间'));
-              } else {
-                resolve(true);
-              }
-            }, 100);
-          });
-        }
-      }
     ]
   };
 
   const onToolbarButtonClick = async (e: any) => {
     if (e.code === 'insert_last_actived') {
-      gridRef.value?.insertAndEdit();
+      gridRef.value?.insertActived();
     }
     console.log(e);
-  };
-
-  const onEditClosed = (e: any) => {
-    console.log('onEditClosed', e);
-    e.$grid.clearValidate();
   };
 </script>
 

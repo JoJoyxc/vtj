@@ -48,13 +48,25 @@ export type GridCellRender = VxeColumnPropTypes.CellRender & {
       ) => Record<string, any>)
     | Record<string, any>;
 };
+
 export type GridCellRenders = Record<string, string | GridCellRender>;
+
+export type GridEditRender = VxeColumnPropTypes.EditRender & {
+  props:
+    | ((
+        params: VxeGlobalRendererHandles.RenderEditParams
+      ) => Record<string, any>)
+    | Record<string, any>;
+};
+
+export type GridEditRenders = Record<string, string | GridEditRender>;
 
 export type GridProps = ComponentPropsType<typeof gridProps>;
 
 export type GridEmits = {
   rowSort: [e: GridSortableEvent];
   columnSort: [e: GridSortableEvent];
+  cellSelected: [params: any];
 };
 
 export type {

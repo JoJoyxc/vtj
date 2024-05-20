@@ -1,14 +1,14 @@
 <template>
-  <ElInput
+  <SelectEditor
     size="small"
     clearable
     v-model="cellValue"
-    @input="onChange"
-    v-bind="renderProps"></ElInput>
+    @change="onChange"
+    v-bind="renderProps"></SelectEditor>
 </template>
 <script lang="ts" setup>
-  import { ElInput } from 'element-plus';
   import type { VxeGlobalRendererHandles } from '../../types';
+  import SelectEditor from '../../../field/editors/SelectEditor.vue';
   import { useEditRender } from '../../hooks';
   export interface Props {
     params: VxeGlobalRendererHandles.RenderEditParams;

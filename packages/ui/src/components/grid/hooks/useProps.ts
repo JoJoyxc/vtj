@@ -1,7 +1,13 @@
 import { computed, useAttrs } from 'vue';
 import { merge, camelCase, kebabCase } from '@vtj/utils';
-import type { GridProps, VxeGridProps, VxeGridPropTypes } from '../types';
+import type {
+  GridProps,
+  GridEmits,
+  VxeGridProps,
+  VxeGridPropTypes
+} from '../types';
 import { BUTTONS_SLOT_NAME, PAGER_LEFT_SLOT_NAME } from '../constants';
+import type { Emits } from '../../shared';
 
 function getAttrValue(attrs: Record<string, any>, name: string) {
   return attrs[camelCase(name)] ?? attrs[kebabCase(name)] ?? undefined;
@@ -121,12 +127,57 @@ function useFitlerConfig(props: GridProps, attrs: Record<string, any>) {
     : undefined;
 }
 
-function useKeepSource(_props: GridProps, attrs: Record<string, any>) {
-  const editConfig = getAttrValue(attrs, 'editConfig');
-  return editConfig?.enabled ?? !!editConfig;
+function useEditMode(
+  props: GridProps,
+  attrs: Record<string, any>,
+  emit: Emits<GridEmits>
+) {
+  const { editable } = props;
+  const keepSource = !!editable;
+  const editConfig = editable
+    ? {
+        enabled: !!editable,
+        mode: 'cell',
+        trigger: 'dblclick',
+        showStatus: true,
+        ...(getAttrValue(attrs, 'editConfig') || {})
+      }
+    : undefined;
+  const mouseConfig = {
+    selected: !!editable,
+    ...(getAttrValue(attrs, 'mouseConfig') || {})
+  };
+  const keyboardConfig = editable
+    ? {
+        isArrow: true,
+        isEsc: true,
+        isTab: true,
+        isEdit: true,
+        isChecked: true,
+        ...(getAttrValue(attrs, 'keyboardConfig') || {})
+      }
+    : undefined;
+
+  const onCellSelected = (params: any) => {
+    const { $grid } = params;
+    $grid.clearValidate();
+    emit('cellSelected', params);
+  };
+
+  return {
+    keepSource,
+    editConfig,
+    mouseConfig,
+    keyboardConfig,
+    onCellSelected
+  };
 }
 
-export function useProps(props: GridProps, slots: string[]) {
+export function useProps(
+  props: GridProps,
+  slots: string[],
+  emit: Emits<GridEmits>
+) {
   const attrs: Record<string, any> = useAttrs();
   const defaults: VxeGridProps = {
     layouts: ['Toolbar', 'Form', 'Top', 'Table', 'Bottom', 'Pager'],
@@ -145,7 +196,14 @@ export function useProps(props: GridProps, slots: string[]) {
     const scrollY = useScrollY(props, attrs);
     const toolbarConfig = useToolbarConfig(props, attrs, slots);
     const filterConfig = useFitlerConfig(props, attrs);
-    const keepSource = useKeepSource(props, attrs);
+    const {
+      keepSource,
+      editConfig,
+      mouseConfig,
+      keyboardConfig,
+      onCellSelected
+    } = useEditMode(props, attrs, emit);
+
     return {
       ...defaults,
       ...attrs,
@@ -156,7 +214,11 @@ export function useProps(props: GridProps, slots: string[]) {
       scrollY,
       toolbarConfig,
       filterConfig,
-      keepSource
+      keepSource,
+      editConfig,
+      mouseConfig,
+      keyboardConfig,
+      onCellSelected
     };
   });
 }

@@ -119,7 +119,18 @@ export const gridProps = {
     type: Object as PropType<GridCellRenders>
   },
 
+  /**
+   *  编辑状态单元格渲染器
+   */
   editRenders: {
     type: Object
+  },
+
+  /**
+   *  开启支持编辑模式
+   */
+  editable: {
+    type: Boolean,
+    default: false
   }
 };
