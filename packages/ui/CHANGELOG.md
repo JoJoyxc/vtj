@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.32](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.30...@vtj/ui@0.8.32) (2024-05-23)
+
+
+### Bug Fixes
+
+* 🐛 provider install ([587112d](https://gitee.com/newgateway/vtj/commits/587112d873cb5738691be63b269d16e04ae9312e))
+
+
+### Features
+
+* ✨ grid component ([43eb0ec](https://gitee.com/newgateway/vtj/commits/43eb0ec42c45ca55635b145ed62aaeb04168dd1e))
+* ✨ ui support ADAPTER_KEY_STRING ([44cf31d](https://gitee.com/newgateway/vtj/commits/44cf31dee87f4896b4071b688e35eddbf5a96b1c))
+* ✨ ui物料 ([3429074](https://gitee.com/newgateway/vtj/commits/34290740f2a2f125c033b7e3cf3bcbea4e48c1bc))
+* ✨ x-grid ([0c9e231](https://gitee.com/newgateway/vtj/commits/0c9e2312dac3f8aad0b704ead557ace663566d84))
+* ✨ x-grid edit ([2ee75c2](https://gitee.com/newgateway/vtj/commits/2ee75c25589b8062fe2d8a0852957779888238ad))
+* ✨ x-grid edit ([eab6661](https://gitee.com/newgateway/vtj/commits/eab6661fc66f546924155d2aa4f5fa3739bca44e))
+* ✨ x-grid filter ([e84528c](https://gitee.com/newgateway/vtj/commits/e84528c98d5fa3eaf3189b44917e43e4de170ade))
+* ✨ x-table ([ae5c6d4](https://gitee.com/newgateway/vtj/commits/ae5c6d4c571f3709dd19c7c8b1d4e66e8d982ce2))
+
+
+
+
+
 ## [0.8.31](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.30...@vtj/ui@0.8.31) (2024-05-14)
 
 
