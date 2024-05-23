@@ -50,6 +50,7 @@
   import { XField } from '../../';
 
   defineOptions({
+    inheritAttrs: false,
     name: 'XForm'
   });
 

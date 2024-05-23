@@ -46,17 +46,19 @@ const sharedOptions: DefineRendererOption<VxeGlobalRendererHandles.RenderResult>
     }
   };
 
-VXETable.renderer.add('InputFilter', {
-  ...sharedOptions,
+export function registerFilter() {
+  VXETable.renderer.add('InputFilter', {
+    ...sharedOptions,
 
-  renderFilter(renderOpts, params) {
-    return h(InputFilter, { params, renderOpts });
-  }
-});
+    renderFilter(renderOpts, params) {
+      return h(InputFilter, { params, renderOpts });
+    }
+  });
 
-VXETable.renderer.add('DateFilter', {
-  ...sharedOptions,
-  renderFilter(renderOpts, params) {
-    return h(DateFilter, { params, renderOpts });
-  }
-});
+  VXETable.renderer.add('DateFilter', {
+    ...sharedOptions,
+    renderFilter(renderOpts, params) {
+      return h(DateFilter, { params, renderOpts });
+    }
+  });
+}

@@ -36,7 +36,7 @@ export function useVxe(options: VXETableConfigOptions = {}) {
   const { vxeConfig } = useAdapter();
 
   if (app && !(app as any).__installVxe) {
-    VXETable.config({
+    VXETable.setConfig({
       ...vxeConfig,
       ...options
     });

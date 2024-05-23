@@ -12,7 +12,7 @@
   </VxeGrid>
 </template>
 <script lang="ts" setup>
-  import { ref } from 'vue';
+  import { ref, provide, getCurrentInstance } from 'vue';
   import {
     useVxe,
     useProps,
@@ -21,17 +21,19 @@
     useCustom,
     useVxeSlots
   } from './hooks';
-  import { gridProps } from './props';
+  import { gridProps, GridInstanceKey } from './props';
   import type { VxeGridInstance, GridEmits } from './types';
   const { VxeGrid } = useVxe();
   const vxeRef = ref<VxeGridInstance>();
   const props = defineProps(gridProps);
   const emit = defineEmits<GridEmits>();
   const slots = useVxeSlots();
-  const vxeProps = useProps(props, slots, emit);
+  const { vxeProps, getProxyInfo } = useProps(props, slots, emit, vxeRef);
   const { columns, onResize, onCustom, onSort } = useCustom(vxeRef, props);
   const rowSortable = useRowSortable(vxeRef, props, emit);
   const columnSortable = useColumnSortable(vxeRef, props, emit, onSort);
+  const instance = getCurrentInstance();
+  provide(GridInstanceKey, instance);
 
   /**
    * 新增行，并激活编辑状态
@@ -46,11 +48,20 @@
     await instance.setEditRow(newRow);
   };
 
+  const reload = async () => {
+    const info = getProxyInfo();
+    if (info && props.query) {
+      props.query(info as any);
+    }
+  };
+
   defineExpose({
     vxeRef,
     rowSortable,
     columnSortable,
-    insertActived
+    insertActived,
+    getProxyInfo,
+    reload
   });
 
   defineOptions({

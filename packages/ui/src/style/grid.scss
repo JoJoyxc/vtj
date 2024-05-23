@@ -2,6 +2,44 @@
 @use 'vxe-table/es/style.css';
 
 @include b(grid) {
+  display: flex;
+  flex-direction: column;
+
+  @include e(TagCell) {
+    .vxe-cell {
+      line-height: 0;
+    }
+  }
+  @include e(ImageCell) {
+    .vxe-cell {
+      line-height: 0;
+      padding: 5px;
+    }
+  }
+  @include e(edit) {
+    &.col--active {
+      .vxe-cell {
+        line-height: 0;
+      }
+    }
+    &.col--valid-error {
+      .el-input__wrapper {
+        --el-input-focus-border-color: var(--el-color-danger);
+      }
+    }
+    .el-date-editor {
+      --el-date-editor-width: 100%;
+    }
+  }
+
+  @include e(filter) {
+    padding: 10px;
+    width: 180px;
+  }
+  @include e(DateFilter) {
+    width: 240px;
+  }
+
   &.size--mini {
     --vxe-table-column-padding-mini: 0;
     --vxe-table-row-height-mini: 24px;
@@ -41,36 +79,15 @@
   .vxe-pager--left-wrapper {
     float: left;
   }
-
-  @include e(TagCell) {
-    .vxe-cell {
-      line-height: 0;
+  > .vxe-grid--toolbar-wrapper {
+    border-bottom: 1px solid var(--el-border-color-lighter);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    .vxe-toolbar {
+      padding: 0;
     }
   }
-  @include e(ImageCell) {
-    .vxe-cell {
-      line-height: 0;
-      padding: 5px;
-    }
-  }
-  @include e(edit) {
-    &.col--active {
-      .vxe-cell {
-        line-height: 0;
-      }
-    }
-    &.col--valid-error {
-      .el-input__wrapper {
-        --el-input-focus-border-color: var(--el-color-danger);
-      }
-    }
-  }
-
-  @include e(filter) {
-    padding: 10px;
-    width: 180px;
-  }
-  @include e(DateFilter) {
-    width: 240px;
+  > .vxe-grid--top-wrapper {
+    padding-bottom: 10px;
   }
 }

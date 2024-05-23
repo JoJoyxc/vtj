@@ -1,10 +1,11 @@
-import { computed, useAttrs } from 'vue';
+import { type MaybeRef, computed, useAttrs, unref } from 'vue';
 import { merge, camelCase, kebabCase } from '@vtj/utils';
 import type {
   GridProps,
   GridEmits,
   VxeGridProps,
-  VxeGridPropTypes
+  VxeGridPropTypes,
+  VxeGridInstance
 } from '../types';
 import { BUTTONS_SLOT_NAME, PAGER_LEFT_SLOT_NAME } from '../constants';
 import type { Emits } from '../../shared';
@@ -29,7 +30,11 @@ function useRowConfig(attrs: Record<string, any>) {
   };
 }
 
-function useProxyConfig(props: GridProps, attrs: Record<string, any>) {
+function useProxyConfig(
+  props: GridProps,
+  attrs: Record<string, any>,
+  wrapper: (...args: any) => any
+) {
   const { query, queryAll, save } = props;
   const config: VxeGridPropTypes.ProxyConfig = {
     enabled: !!query,
@@ -44,17 +49,17 @@ function useProxyConfig(props: GridProps, attrs: Record<string, any>) {
       message: 'msg'
     },
     ajax: {
-      query,
-      queryAll,
-      save,
-      delete: props.delete
+      query: wrapper(query),
+      queryAll: wrapper(queryAll),
+      save: wrapper(save),
+      delete: wrapper(props.delete)
     }
   };
   return merge(config, getAttrValue(attrs, 'proxyConfig') || {});
 }
 
 function useToolbarConfig(
-  _props: GridProps,
+  props: GridProps,
   attrs: Record<string, any>,
   slots: string[]
 ) {
@@ -62,7 +67,7 @@ function useToolbarConfig(
   const slot = slots.find((n) => n === BUTTONS_SLOT_NAME);
   const config: VxeGridPropTypes.ToolbarConfig = {
     enabled: !!toolbarConfig || !!slot,
-    custom: true,
+    custom: !!props.customable,
     slots: {
       buttons: slot
     }
@@ -176,7 +181,8 @@ function useEditMode(
 export function useProps(
   props: GridProps,
   slots: string[],
-  emit: Emits<GridEmits>
+  emit: Emits<GridEmits>,
+  vxeRef: MaybeRef<VxeGridInstance | undefined>
 ) {
   const attrs: Record<string, any> = useAttrs();
   const defaults: VxeGridProps = {
@@ -188,11 +194,30 @@ export function useProps(
     showOverflow: 'tooltip',
     autoResize: true
   };
-  return computed(() => {
+
+  const getProxyInfo = () => {
+    const info = unref(vxeRef)?.getProxyInfo();
+    if (props.queryModel && info) {
+      info.form = Object.assign({}, info.form, props.queryModel);
+    }
+    return info;
+  };
+
+  const wrapper = (func: any) => {
+    if (func) {
+      return (info: any) => {
+        info.form = Object.assign({}, info.form, props.queryModel);
+        return func(info);
+      };
+    }
+    return undefined;
+  };
+
+  const vxeProps = computed(() => {
     const columnConfig = useColumnConfig(props, attrs);
     const rowConfig = useRowConfig(attrs);
     const pagerConfig = usePagerConig(props, attrs, slots);
-    const proxyConfig = useProxyConfig(props, attrs);
+    const proxyConfig = useProxyConfig(props, attrs, wrapper);
     const scrollY = useScrollY(props, attrs);
     const toolbarConfig = useToolbarConfig(props, attrs, slots);
     const filterConfig = useFitlerConfig(props, attrs);
@@ -221,4 +246,9 @@ export function useProps(
       onCellSelected
     };
   });
+
+  return {
+    vxeProps,
+    getProxyInfo
+  };
 }

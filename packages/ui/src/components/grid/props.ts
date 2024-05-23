@@ -1,4 +1,4 @@
-import type { PropType } from 'vue';
+import type { PropType, InjectionKey, ComponentInternalInstance } from 'vue';
 import type {
   GridSortableOptions,
   GridColumns,
@@ -132,5 +132,14 @@ export const gridProps = {
   editable: {
     type: Boolean,
     default: false
+  },
+  /**
+   *  查询表单模型数据
+   */
+  queryModel: {
+    type: Object as PropType<Record<string, any>>
   }
 };
+
+export const GridInstanceKey: InjectionKey<ComponentInternalInstance | null> =
+  Symbol('GridInstanceKey');

@@ -1,6 +1,8 @@
 import type { ComponentPropsType } from '../shared';
 import { gridProps } from './props';
 import Sortable from 'sortablejs';
+import type Grid from './Grid.vue';
+
 import type {
   VxeGridInstance,
   VxeTableDefines,
@@ -68,6 +70,9 @@ export type GridEmits = {
   columnSort: [e: GridSortableEvent];
   cellSelected: [params: any];
 };
+
+export type GridInstance = InstanceType<typeof Grid>;
+
 
 export type {
   VxeGridInstance,

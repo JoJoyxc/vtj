@@ -17,28 +17,49 @@
       :border="true"
       :stripe="false"
       :query="query"
-      :pager="false"
+      :pager="true"
       :resizable="true"
       :showOverflow="true"
-      :virtual="false"
-      :toolbar-config="toolbarConfig"
+      :virtual="true"
       :cellRenders="cellRenders"
       :editRenders="editRenders"
       :editRules="editRules"
-      :editable="true">
-      <!-- <template #toolbar__buttons>
-        <XActionBar v-bind="toolbarConfig"></XActionBar>
-      </template> -->
+      :editable="false"
+      :query-model="fromModel">
+      <template #form>
+        <XQueryForm v-bind="formConfig"></XQueryForm>
+      </template>
+      <template #top>
+        <XTabs v-bind="tabsConfig"></XTabs>
+      </template>
+
+      <template #toolbar__buttons>
+        <XActionBar
+          v-bind="toolbarConfig"
+          @click="onToolbarButtonClick"></XActionBar>
+      </template>
     </XGrid>
   </div>
 </template>
 <script lang="ts" setup>
   import { ref, markRaw } from 'vue';
-  import { XGrid, type GridCellRenders, type GridColumns } from '@vtj/ui';
+  import {
+    XGrid,
+    XQueryForm,
+    XTabs,
+    XActionBar,
+    type GridCellRenders,
+    type GridColumns,
+    type ActionBarProps
+  } from '@vtj/ui';
   import { request, storage, numberFormat } from '@vtj/utils';
-  import { EditPen, Delete } from '@vtj/icons';
+  import { EditPen, Delete, Search, Plus } from '@vtj/icons';
 
   const gridRef = ref<InstanceType<typeof XGrid>>();
+
+  const fromModel = ref({
+    name: 'abx'
+  });
 
   const fetchData = (data: any) => {
     return request({
@@ -72,11 +93,12 @@
         }
       }
     },
-    // {
-    //   field: 'avatar',
-    //   title: '头像',
-    //   showOverflow: false
-    // },
+    {
+      field: 'avatar',
+      title: '头像',
+      showOverflow: false,
+      visible: false
+    },
     {
       field: 'sex',
       title: '性别',
@@ -214,7 +236,13 @@
       //   };
       // }
     },
-    city: 'InputEdit'
+    city: 'InputEdit',
+    join: {
+      name: 'DateEdit',
+      props: {
+        type: 'datetime'
+      }
+    }
   };
 
   const onRowSort = (e: any) => {
@@ -236,7 +264,7 @@
   };
 
   const query = async (params: any) => {
-    const { currentPage, pageSize = 2 } = params.page || {};
+    const { currentPage, pageSize = 50 } = params.page || {};
     console.log('query', params);
     return await fetchData({
       currentPage,
@@ -245,21 +273,34 @@
     });
   };
 
-  const toolbarConfig = {
-    buttons: [
+  const toolbarConfig: ActionBarProps = {
+    items: [
       {
-        name: '新增',
-        type: 'button',
-        status: 'primary',
-        code: 'insert_last_actived'
+        label: '查询',
+        value: 'search',
+        icon: Search
       },
       {
-        name: '校验',
-        type: 'button',
-        status: 'warning',
-        code: 'validate'
+        label: '新增',
+        value: 'insert_last_actived',
+        icon: Plus,
+        type: 'primary'
       }
     ]
+    // buttons: [
+    //   {
+    //     name: '新增',
+    //     type: 'button',
+    //     status: 'primary',
+    //     code: 'insert_last_actived'
+    //   },
+    //   {
+    //     name: '校验',
+    //     type: 'button',
+    //     status: 'warning',
+    //     code: 'validate'
+    //   }
+    // ]
   };
 
   const editRules = {
@@ -289,10 +330,70 @@
   };
 
   const onToolbarButtonClick = async (e: any) => {
-    if (e.code === 'insert_last_actived') {
+    if (e.value === 'insert_last_actived') {
       gridRef.value?.insertActived();
     }
-    console.log(e);
+    if (e.value === 'search') {
+      gridRef.value?.reload();
+    }
+    // console.log(e);
+  };
+
+  const formConfig: any = {
+    model: fromModel,
+    items: [
+      {
+        label: '姓名',
+        name: 'name'
+      },
+      {
+        label: '性别',
+        name: 'sex'
+      },
+      {
+        label: '年',
+        name: 'year'
+      },
+      {
+        label: '月',
+        name: 'month'
+      },
+      {
+        label: '入职开始日期',
+        name: 'joinStart',
+        editor: 'date',
+        props: {
+          valueFormat: 'YYYY-MM-DD'
+        }
+      },
+      {
+        label: '入职结束日期',
+        name: 'joinEnd',
+        editor: 'date',
+        props: {
+          valueFormat: 'YYYY-MM-DD'
+        }
+      }
+    ]
+  };
+
+  const tabsConfig = {
+    type: 'card',
+    modelValue: 1,
+    items: [
+      {
+        label: '待办',
+        value: 1
+      },
+      {
+        label: '已办',
+        value: 2
+      },
+      {
+        label: '全部',
+        value: 3
+      }
+    ]
   };
 </script>
 
