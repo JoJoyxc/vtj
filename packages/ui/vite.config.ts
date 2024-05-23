@@ -15,6 +15,7 @@ export default createViteConfig({
         'vue-router',
         'element-plus',
         '@element-plus/icons-vue',
+        '@vueuse/core',
         '@vtj/utils',
         '@vtj/icons',
         'echarts'
@@ -24,6 +25,7 @@ export default createViteConfig({
         'vue-router',
         'element-plus',
         '@element-plus/icons-vue',
+        '@vueuse/core',
         '@vtj/utils',
         '@vtj/icons',
         'echarts'
@@ -34,6 +36,7 @@ export default createViteConfig({
         'vue-router': 'VueRouter',
         'element-plus': 'ElementPlus',
         '@element-plus/icons-vue': 'VtjIcons',
+        '@vueuse/core': 'VueUse',
         '@vtj/utils': 'VtjUtils',
         '@vtj/icons': 'VtjIcons',
         echarts: 'echarts'

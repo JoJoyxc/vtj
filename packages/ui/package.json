@@ -17,6 +17,7 @@
     "@vtj/icons": "workspace:~",
     "@vtj/utils": "workspace:~",
     "element-plus": "~2.7.0",
+    "@vueuse/core": "~10.9.0",
     "sortablejs": "~1.15.2",
     "vxe-table": "~4.6.16",
     "vxe-table-plugin-menus": "~4.0.3"
@@ -25,7 +26,6 @@
     "@types/qrcode": "^1.5.5",
     "@types/sortablejs": "~1.15.8",
     "@vtj/cli": "workspace:~",
-    "@vueuse/core": "~10.9.0",
     "qrcode": "~1.5.3",
     "vue": "~3.4.15",
     "vue-router": "~4.3.0"

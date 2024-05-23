@@ -43,6 +43,18 @@ export const builtInDeps: Dependencie[] = [
     enabled: true
   },
   {
+    package: '@vueuse/core',
+    version: 'latest',
+    library: 'VueUse',
+    urls: [
+      '@vtj/materials/deps/@vueuse/shared/index.iife.min.js',
+      '@vtj/materials/deps/@vueuse/core/index.iife.min.js'
+    ],
+    required: false,
+    official: true,
+    enabled: true
+  },
+  {
     package: 'element-plus',
     version: 'latest',
     library: 'ElementPlus',

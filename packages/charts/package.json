@@ -16,11 +16,11 @@
   "dependencies": {
     "@vtj/icons": "workspace:~",
     "@vtj/utils": "workspace:~",
+    "@vueuse/core": "~10.9.0",
     "echarts": "~5.5.0"
   },
   "devDependencies": {
-    "@vtj/cli": "workspace:~",
-    "@vueuse/core": "~10.9.0"
+    "@vtj/cli": "workspace:~"
   },
   "files": [
     "dist",
