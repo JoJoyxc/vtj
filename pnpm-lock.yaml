@@ -392,6 +392,9 @@ importers:
       '@vtj/utils':
         specifier: workspace:~
         version: link:../utils
+      '@vueuse/core':
+        specifier: ~10.9.0
+        version: 10.9.0(vue@3.4.27(typescript@5.4.5))
       echarts:
         specifier: ~5.5.0
         version: 5.5.0
@@ -399,9 +402,6 @@ importers:
       '@vtj/cli':
         specifier: workspace:~
         version: link:../cli
-      '@vueuse/core':
-        specifier: ~10.9.0
-        version: 10.9.0(vue@3.4.27(typescript@5.4.5))
 
   packages/cli:
     dependencies:
@@ -709,6 +709,9 @@ importers:
       '@vtj/utils':
         specifier: workspace:~
         version: link:../utils
+      '@vueuse/core':
+        specifier: ~10.9.0
+        version: 10.9.0(vue@3.4.27(typescript@5.4.5))
       element-plus:
         specifier: ~2.7.0
         version: 2.7.3(vue@3.4.27(typescript@5.4.5))
@@ -731,9 +734,6 @@ importers:
       '@vtj/cli':
         specifier: workspace:~
         version: link:../cli
-      '@vueuse/core':
-        specifier: ~10.9.0
-        version: 10.9.0(vue@3.4.27(typescript@5.4.5))
       qrcode:
         specifier: ~1.5.3
         version: 1.5.3
