@@ -51,7 +51,10 @@
   const reload = async () => {
     const info = getProxyInfo();
     if (info && props.query) {
-      props.query(info as any);
+      info.pager.currentPage = 1;
+      const res = await props.query(info as any).catch(() => null);
+      info.pager.total = res?.total || 0;
+      vxeRef.value?.reloadData(res?.list || []);
     }
   };
 

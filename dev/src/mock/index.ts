@@ -44,9 +44,9 @@ Mock.mock(/\/mock-api\/list/, (req: any) => {
           create: '@datetime(yyyy-MM-dd hh:mm:ss)'
         }
       ],
-      currentPage,
-      pageSize,
-      total
+      currentPage: parseInt(currentPage),
+      pageSize: parseInt(pageSize),
+      total: parseInt(total)
     }
   });
 });

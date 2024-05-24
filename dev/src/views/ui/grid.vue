@@ -334,6 +334,8 @@
       gridRef.value?.insertActived();
     }
     if (e.value === 'search') {
+      // pageConfig.total = 10;
+      // pageConfig.currentPage = 1;
       gridRef.value?.reload();
     }
     // console.log(e);

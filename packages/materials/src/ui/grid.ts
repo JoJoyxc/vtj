@@ -65,6 +65,11 @@ const desc: MaterialDescription = {
       setters: 'ObjectSetter'
     },
     {
+      name: 'editable',
+      title: '开启编辑模式',
+      setters: 'BooleanSetter'
+    },
+    {
       name: 'queryModel',
       title: '查询表单模型数据',
       setters: 'ObjectSetter'

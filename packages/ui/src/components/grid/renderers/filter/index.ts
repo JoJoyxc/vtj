@@ -1,9 +1,9 @@
 import {
-  VXETable,
   type DefineRendererOption,
   type VxeGlobalRendererHandles
 } from 'vxe-table';
 import { h } from 'vue';
+import { registerRender } from '../../utils';
 import InputFilter from './InputFilter.vue';
 import DateFilter from './DateFilter.vue';
 
@@ -46,19 +46,17 @@ const sharedOptions: DefineRendererOption<VxeGlobalRendererHandles.RenderResult>
     }
   };
 
-export function registerFilter() {
-  VXETable.renderer.add('InputFilter', {
-    ...sharedOptions,
+registerRender('InputFilter', {
+  ...sharedOptions,
 
-    renderFilter(renderOpts, params) {
-      return h(InputFilter, { params, renderOpts });
-    }
-  });
+  renderFilter(renderOpts, params) {
+    return h(InputFilter, { params, renderOpts });
+  }
+});
 
-  VXETable.renderer.add('DateFilter', {
-    ...sharedOptions,
-    renderFilter(renderOpts, params) {
-      return h(DateFilter, { params, renderOpts });
-    }
-  });
-}
+registerRender('DateFilter', {
+  ...sharedOptions,
+  renderFilter(renderOpts, params) {
+    return h(DateFilter, { params, renderOpts });
+  }
+});

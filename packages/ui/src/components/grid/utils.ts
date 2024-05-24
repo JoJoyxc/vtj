@@ -1,4 +1,5 @@
 import Sortable from 'sortablejs';
+import { VXETable, type RendererOptions } from 'vxe-table';
 import { isFunction, camelCase } from '@vtj/utils';
 import type {
   GridSortableOptions,
@@ -8,7 +9,8 @@ import type {
   VxeTableDefines,
   GridColumns,
   GridCustomInfo,
-  VxeGlobalRendererHandles
+  VxeGlobalRendererHandles,
+  VxeGlobalInterceptorHandles
 } from './types';
 import type { Emits } from '../shared';
 
@@ -183,4 +185,19 @@ export function createCellRenderProps(
     row,
     column
   };
+}
+
+export function registerRender(name: string, options: RendererOptions) {
+  const isExist = !!VXETable.renderer.get(name);
+  if (isExist) return;
+  VXETable.renderer.add(name, options);
+}
+
+export function registerInterceptor(
+  name: VxeGlobalInterceptorHandles.Type,
+  callback: VxeGlobalInterceptorHandles.InterceptorCallback
+) {
+  const isExist = !!VXETable.interceptor.get(name);
+  if (isExist) return;
+  VXETable.interceptor.add(name, callback);
 }
