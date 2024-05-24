@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.34](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.33...@vtj/ui@0.8.34) (2024-05-24)
+
+
+### Bug Fixes
+
+* 🐛 grid bug ([0e21683](https://gitee.com/newgateway/vtj/commits/0e216835c6d91c362236e51378aea587bbbd9e59))
+
+
+
+
+
 ## [0.8.33](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.32...@vtj/ui@0.8.33) (2024-05-23)
 
 **Note:** Version bump only for package @vtj/ui
