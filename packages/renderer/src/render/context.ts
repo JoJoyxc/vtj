@@ -75,6 +75,12 @@ export class Context {
     Vue.onUnmounted(() => {
       this.__cleanup();
     });
+    Vue.onBeforeUpdate(() => {
+      this.__refs = {};
+      this.$refs = {};
+      this.__contextRefs = {};
+      this.context = {};
+    });
   }
   private __proxy() {
     if (!this.__instance) return;
@@ -120,6 +126,7 @@ export class Context {
 
     return (el: any) => {
       let dom = el?.$vtjEl || el?.$el || el;
+      console.log('ref', dom, el);
       // 销毁时，无dom
       if (!dom) {
         if (typeof ref === 'string') {
