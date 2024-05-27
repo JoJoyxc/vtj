@@ -41,7 +41,7 @@ function useProxyConfig(
     seq: true,
     sort: true,
     filter: true,
-    form: true,
+    form: false,
     props: {
       total: 'total',
       result: 'list',
@@ -132,6 +132,18 @@ function useFitlerConfig(props: GridProps, attrs: Record<string, any>) {
     : undefined;
 }
 
+function useSortconfig(props: GridProps, attrs: Record<string, any>) {
+  const { pager } = props;
+  return pager
+    ? Object.assign(
+        {
+          remote: pager
+        },
+        getAttrValue(attrs, 'sortconfig') || {}
+      )
+    : undefined;
+}
+
 function useEditMode(
   props: GridProps,
   attrs: Record<string, any>,
@@ -187,12 +199,13 @@ export function useProps(
   const attrs: Record<string, any> = useAttrs();
   const defaults: VxeGridProps = {
     layouts: ['Toolbar', 'Form', 'Top', 'Table', 'Bottom', 'Pager'],
+    loading: false,
     size: 'small',
     height: 'auto',
     border: true,
     stripe: true,
     showOverflow: 'tooltip',
-    autoResize: true
+    autoResize: false
   };
 
   const getProxyInfo = () => {
@@ -221,6 +234,7 @@ export function useProps(
     const scrollY = useScrollY(props, attrs);
     const toolbarConfig = useToolbarConfig(props, attrs, slots);
     const filterConfig = useFitlerConfig(props, attrs);
+    const sortConfig = useSortconfig(props, attrs);
     const {
       keepSource,
       editConfig,
@@ -239,6 +253,7 @@ export function useProps(
       scrollY,
       toolbarConfig,
       filterConfig,
+      sortConfig,
       keepSource,
       editConfig,
       mouseConfig,

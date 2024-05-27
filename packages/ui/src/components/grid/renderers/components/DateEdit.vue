@@ -1,14 +1,15 @@
 <template>
-  <ElInput
+  <ElDatePicker
     size="small"
     clearable
+    value-format="YYYY-MM-DD"
     v-model="cellValue"
-    @input="onChange"
-    v-bind="renderProps"></ElInput>
+    @change="onChange"
+    v-bind="renderProps"></ElDatePicker>
 </template>
 <script lang="ts" setup>
-  import { ElInput } from 'element-plus';
   import type { VxeGlobalRendererHandles } from '../../types';
+  import { ElDatePicker } from 'element-plus';
   import { useEditRender } from '../../hooks';
   export interface Props {
     params: VxeGlobalRendererHandles.RenderEditParams;
@@ -19,4 +20,8 @@
     props.renderOpts,
     props.params
   );
+
+  defineOptions({
+    name: 'DateEdit'
+  });
 </script>

@@ -1,18 +1,18 @@
 <template>
   <div class="x-grid__filter">
-    <ElInput
+    <SelectEditor
       size="small"
-      placeholder="输入关键字回车筛选"
+      placeholder="选择筛选项"
       clearable
       v-bind="mergeProps"
       v-model="state.option.value"
-      @input="onChange"
-      @keyup.enter="onKeyup"></ElInput>
+      @change="onChange"
+      @keyup.enter="onKeyup"></SelectEditor>
   </div>
 </template>
 <script lang="ts" setup>
   import { reactive, computed } from 'vue';
-  import { ElInput } from 'element-plus';
+  import SelectEditor from '../../../field/editors/SelectEditor.vue';
   import type { VxeGlobalRendererHandles } from '../../types';
 
   export interface Props {
@@ -61,4 +61,8 @@
   };
 
   load();
+
+  defineOptions({
+    name: 'SelectFilter'
+  });
 </script>

@@ -1,15 +1,14 @@
 <template>
-  <ElDatePicker
+  <SelectEditor
     size="small"
     clearable
-    value-format="YYYY-MM-DD"
     v-model="cellValue"
     @change="onChange"
-    v-bind="renderProps"></ElDatePicker>
+    v-bind="renderProps"></SelectEditor>
 </template>
 <script lang="ts" setup>
   import type { VxeGlobalRendererHandles } from '../../types';
-  import { ElDatePicker } from 'element-plus';
+  import SelectEditor from '../../../field/editors/SelectEditor.vue';
   import { useEditRender } from '../../hooks';
   export interface Props {
     params: VxeGlobalRendererHandles.RenderEditParams;
@@ -20,4 +19,7 @@
     props.renderOpts,
     props.params
   );
+  defineOptions({
+    name: 'SelectEdit'
+  });
 </script>

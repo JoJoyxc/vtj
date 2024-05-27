@@ -1,3 +1,4 @@
+import type { App } from 'vue';
 import Sortable from 'sortablejs';
 import { VXETable, type RendererOptions } from 'vxe-table';
 import { isFunction, camelCase } from '@vtj/utils';
@@ -197,7 +198,18 @@ export function registerInterceptor(
   name: VxeGlobalInterceptorHandles.Type,
   callback: VxeGlobalInterceptorHandles.InterceptorCallback
 ) {
-  const isExist = !!VXETable.interceptor.get(name);
-  if (isExist) return;
+  // const isExist = !!VXETable.interceptor.get(name);
+  // console.log(name, isExist);
+  // if (isExist) return;
   VXETable.interceptor.add(name, callback);
+}
+
+export function registerComponents(app: App, components: any[] = []) {
+  for (const component of components) {
+    const name = component.name;
+    console.log(name, component);
+    if (name && !app.component(name)) {
+      app.component(name, component);
+    }
+  }
 }

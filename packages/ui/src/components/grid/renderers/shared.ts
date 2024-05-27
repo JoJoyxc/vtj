@@ -2,12 +2,9 @@ import {
   type DefineRendererOption,
   type VxeGlobalRendererHandles
 } from 'vxe-table';
-import { h } from 'vue';
-import { registerRender } from '../../utils';
-import InputFilter from './InputFilter.vue';
-import DateFilter from './DateFilter.vue';
+import { isString } from '@vtj/utils';
 
-const sharedOptions: DefineRendererOption<VxeGlobalRendererHandles.RenderResult> =
+export const sharedFilterOptions: DefineRendererOption<VxeGlobalRendererHandles.RenderResult> =
   {
     // 重置数据方法
     filterResetMethod(params) {
@@ -39,24 +36,9 @@ const sharedOptions: DefineRendererOption<VxeGlobalRendererHandles.RenderResult>
       }
       const { value } = option;
       const cellValue = row[column.field];
-      if (cellValue) {
-        return cellValue.indexOf(value) > -1;
+      if (isString(cellValue)) {
+        return cellValue.indexOf(String(value)) > -1;
       }
-      return false;
+      return cellValue === value;
     }
   };
-
-registerRender('InputFilter', {
-  ...sharedOptions,
-
-  renderFilter(renderOpts, params) {
-    return h(InputFilter, { params, renderOpts });
-  }
-});
-
-registerRender('DateFilter', {
-  ...sharedOptions,
-  renderFilter(renderOpts, params) {
-    return h(DateFilter, { params, renderOpts });
-  }
-});

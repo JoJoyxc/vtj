@@ -5,9 +5,13 @@
     v-bind="vxeProps"
     :columns="columns"
     @custom="onCustom"
+    :loading="false"
     @resizable-change="onResize">
     <template v-for="name in slots" v-slot:[name]="scope">
       <slot :name="name" v-bind="scope"></slot>
+    </template>
+    <template #loading>
+      <div></div>
     </template>
   </VxeGrid>
 </template>

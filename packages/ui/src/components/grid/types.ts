@@ -64,6 +64,16 @@ export type GridEditRender = VxeColumnPropTypes.EditRender & {
 
 export type GridEditRenders = Record<string, string | GridEditRender>;
 
+export type GridFilterRender = VxeColumnPropTypes.FilterRender & {
+  props:
+    | ((
+        params: VxeGlobalRendererHandles.RenderFilterParams
+      ) => Record<string, any>)
+    | Record<string, any>;
+};
+
+export type GridFilterRenders = Record<string, string | GridFilterRender>;
+
 export type GridProps = ComponentPropsType<typeof gridProps>;
 
 export type GridEmits = {
@@ -73,7 +83,6 @@ export type GridEmits = {
 };
 
 export type GridInstance = InstanceType<typeof Grid>;
-
 
 export type {
   VxeGridInstance,

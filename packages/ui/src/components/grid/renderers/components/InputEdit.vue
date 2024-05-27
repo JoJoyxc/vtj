@@ -1,14 +1,14 @@
 <template>
-  <SelectEditor
+  <ElInput
     size="small"
     clearable
     v-model="cellValue"
-    @change="onChange"
-    v-bind="renderProps"></SelectEditor>
+    @input="onChange"
+    v-bind="renderProps"></ElInput>
 </template>
 <script lang="ts" setup>
+  import { ElInput } from 'element-plus';
   import type { VxeGlobalRendererHandles } from '../../types';
-  import SelectEditor from '../../../field/editors/SelectEditor.vue';
   import { useEditRender } from '../../hooks';
   export interface Props {
     params: VxeGlobalRendererHandles.RenderEditParams;
@@ -19,4 +19,7 @@
     props.renderOpts,
     props.params
   );
+  defineOptions({
+    name: 'InputEdit'
+  });
 </script>

@@ -62,4 +62,8 @@
   };
 
   load();
+
+  defineOptions({
+    name: 'DateFilter'
+  });
 </script>

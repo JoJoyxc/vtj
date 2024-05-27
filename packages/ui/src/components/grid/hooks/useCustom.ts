@@ -1,4 +1,5 @@
 import { type MaybeRef, ref, unref, onMounted, watch } from 'vue';
+import { cloneDeep } from '@vtj/utils';
 import type {
   VxeGridInstance,
   GridProps,
@@ -13,28 +14,47 @@ import { mergeCustomInfo, getName } from '../utils';
 import { useAdapter } from '../../../adapter';
 
 function createColumns(props: GridProps) {
-  const { columns = [], cellRenders = {}, editRenders = {} } = props;
-  for (const col of columns) {
+  const {
+    columns = [],
+    cellRenders = {},
+    filterRenders = {},
+    editRenders = {},
+    editable
+  } = props;
+  const cloneColumns = cloneDeep(columns);
+  for (const col of cloneColumns) {
     const { field, children = [] } = col;
     if (field) {
-      if (cellRenders[field]) {
-        const render = cellRenders[field];
-        col.cellRender = typeof render === 'string' ? { name: render } : render;
-      }
-      if (editRenders[field]) {
+      if (editable && editRenders[field]) {
         const render = editRenders[field];
         col.editRender = typeof render === 'string' ? { name: render } : render;
+      } else {
+        if (cellRenders[field]) {
+          const render = cellRenders[field];
+          col.cellRender =
+            typeof render === 'string' ? { name: render } : render;
+        }
+      }
+
+      if (filterRenders[field]) {
+        const render = filterRenders[field];
+        col.filterRender =
+          typeof render === 'string' ? { name: render } : render;
+        if (!col.filters) {
+          col.filters = [{ value: '' }];
+        }
       }
     }
     if (children.length) {
       col.children = createColumns({
         columns: col.children,
         cellRenders,
-        editRenders
+        editRenders,
+        filterRenders
       });
     }
   }
-  return columns;
+  return cloneColumns;
 }
 
 export function useCustom(
@@ -127,7 +147,7 @@ export function useCustom(
   onMounted(updateColumns);
 
   watch(
-    () => props.columns,
+    () => [props.columns, props.editable],
     () => {
       columns.value = createColumns(props);
       updateColumns();

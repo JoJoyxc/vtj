@@ -4,7 +4,9 @@ import type {
   GridColumns,
   GridCustomInfo,
   VxeGridPropTypes,
-  GridCellRenders
+  GridCellRenders,
+  GridEditRenders,
+  GridFilterRenders
 } from './types';
 
 export const gridProps = {
@@ -123,7 +125,14 @@ export const gridProps = {
    *  编辑状态单元格渲染器
    */
   editRenders: {
-    type: Object
+    type: Object as PropType<GridEditRenders>
+  },
+
+  /**
+   *  过滤器渲染器
+   */
+  filterRenders: {
+    type: Object as PropType<GridFilterRenders>
   },
 
   /**
