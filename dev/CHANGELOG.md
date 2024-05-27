@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.35](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.34...dev-web@0.8.35) (2024-05-27)
+
+
+### Bug Fixes
+
+* 🐛 x-grid renderers ([e05d6ba](https://gitee.com/newgateway/vtj/commits/e05d6bae354847898a2f7e1dfced02193a4e48c0))
+
+
+
+
+
 ## [0.8.34](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.33...dev-web@0.8.34) (2024-05-24)
 
 
