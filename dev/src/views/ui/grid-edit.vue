@@ -2,7 +2,7 @@
   <div>
     <XGrid
       height="200px"
-      :editable="editable"
+      :editable="false"
       :columns="columns"
       :data="data"
       :virtual="false"
@@ -89,9 +89,14 @@
   ];
 
   const cellRenders = {
-    input: 'XText',
+    input: {
+      name: 'XText',
+      props: {
+        type: 'success'
+      }
+    },
     link: 'XLink',
-    select: 'XSelect',
+    select: 'XText',
     image: 'XImage',
     actions: {
       name: 'XActions',

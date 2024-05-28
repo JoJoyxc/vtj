@@ -187,29 +187,3 @@ export function createCellRenderProps(
     column
   };
 }
-
-export function registerRender(name: string, options: RendererOptions) {
-  const isExist = !!VXETable.renderer.get(name);
-  if (isExist) return;
-  VXETable.renderer.add(name, options);
-}
-
-export function registerInterceptor(
-  name: VxeGlobalInterceptorHandles.Type,
-  callback: VxeGlobalInterceptorHandles.InterceptorCallback
-) {
-  // const isExist = !!VXETable.interceptor.get(name);
-  // console.log(name, isExist);
-  // if (isExist) return;
-  VXETable.interceptor.add(name, callback);
-}
-
-export function registerComponents(app: App, components: any[] = []) {
-  for (const component of components) {
-    const name = component.name;
-    console.log(name, component);
-    if (name && !app.component(name)) {
-      app.component(name, component);
-    }
-  }
-}

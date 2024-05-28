@@ -15,7 +15,7 @@ import {
   type VXETableConfigOptions
 } from 'vxe-table';
 import { useAdapter } from '../../../adapter';
-import '../renderers';
+import { RenderPlugin } from '../renderers';
 
 export function useVxe(options: VXETableConfigOptions = {}) {
   const modules = [
@@ -36,6 +36,7 @@ export function useVxe(options: VXETableConfigOptions = {}) {
   const { vxeConfig } = useAdapter();
 
   if (app && !(app as any).__installVxe) {
+    VXETable.use(RenderPlugin);
     VXETable.setConfig({
       ...vxeConfig,
       ...options

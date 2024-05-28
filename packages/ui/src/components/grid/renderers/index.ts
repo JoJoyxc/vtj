@@ -1,20 +1,29 @@
-// import type { App } from 'vue';
-// import { registerCell } from './cell';
-// import { registerFilter } from './filter';
-// import { registerEdit } from './edit';
+import type { VXETableCore } from 'vxe-table';
+import { XInput } from './input';
+import { XActions } from './actions';
+import { XDate } from './date';
+import { XImage } from './image';
+import { XLink } from './link';
+import { XSelect } from './select';
+import { XTag } from './tag';
+import { XText } from './text';
 
-// export function registerRenderers(app: App) {
-//   registerCell(app);
-//   registerFilter(app);
-//   registerEdit(app);
-// }
+import { handleClerEdit, handleClearFilter } from './interceptors';
 
-import './interceptors';
-import './input';
-import './select';
-import './date';
-import './link';
-import './tag';
-import './image';
-import './actions';
-import './text';
+export const RenderPlugin = {
+  install(vxetable: VXETableCore) {
+    vxetable.renderer.mixin({
+      XInput,
+      XActions,
+      XDate,
+      XImage,
+      XLink,
+      XSelect,
+      XTag,
+      XText
+    });
+
+    vxetable.interceptor.add('event.clearFilter', handleClearFilter);
+    vxetable.interceptor.add('event.clearEdit', handleClerEdit);
+  }
+};

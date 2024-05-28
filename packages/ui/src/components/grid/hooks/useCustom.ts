@@ -27,13 +27,12 @@ function createColumns(props: GridProps) {
     if (field) {
       if (editable && editRenders[field]) {
         const render = editRenders[field];
-        col.editRender = typeof render === 'string' ? { name: render } : render;
-      } else {
-        if (cellRenders[field]) {
-          const render = cellRenders[field];
-          col.cellRender =
-            typeof render === 'string' ? { name: render } : render;
-        }
+        col.editRender =
+          typeof render === 'string' ? { name: render, props: {} } : render;
+      } else if (cellRenders[field]) {
+        const render = cellRenders[field];
+        col.cellRender =
+          typeof render === 'string' ? { name: render, props: {} } : render;
       }
 
       if (filterRenders[field]) {

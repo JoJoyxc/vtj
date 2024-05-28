@@ -1,17 +1,16 @@
 import { h } from 'vue';
-import { createCellRenderProps, registerRender } from '../utils';
+import type { RendererOptions } from 'vxe-table';
+import { createCellRenderProps } from '../utils';
 import { XActionBar } from '../../action-bar';
-import { baseRendererOptions } from './input';
 
-registerRender('XActions', {
-  ...baseRendererOptions,
+export const XActions: RendererOptions = {
   cellClassName: 'x-grid__x-actions',
   renderDefault(renderOpts, params) {
     const { props } = createCellRenderProps(renderOpts, params);
-    return h(XActionBar, { ...props });
+    return [h(XActionBar, { ...props })];
   },
   renderCell(renderOpts, params) {
     const { props } = createCellRenderProps(renderOpts, params);
-    return h(XActionBar, { ...props });
+    return [h(XActionBar, { ...props })];
   }
-});
+};
