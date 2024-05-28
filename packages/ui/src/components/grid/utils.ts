@@ -1,6 +1,4 @@
-import type { App } from 'vue';
 import Sortable from 'sortablejs';
-import { VXETable, type RendererOptions } from 'vxe-table';
 import { isFunction, camelCase } from '@vtj/utils';
 import type {
   GridSortableOptions,
@@ -10,8 +8,7 @@ import type {
   VxeTableDefines,
   GridColumns,
   GridCustomInfo,
-  VxeGlobalRendererHandles,
-  VxeGlobalInterceptorHandles
+  VxeGlobalRendererHandles
 } from './types';
 import type { Emits } from '../shared';
 
