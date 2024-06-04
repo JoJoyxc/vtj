@@ -107,3 +107,9 @@ export const builtinFieldEditors: Record<
     props: {}
   }
 };
+
+export function registerFieldEditors(
+  editors: Record<string, BuiltinFieldEditor>
+) {
+  Object.assign(builtinFieldEditors, editors);
+}

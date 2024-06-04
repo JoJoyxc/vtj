@@ -36,6 +36,24 @@ export interface GridSortableEvent {
 
 export type GridColumns = VxeGridPropTypes.Columns;
 
+export interface GridState {
+  page?: number;
+  pageSize?: number;
+  total?: number;
+  filters?: VxeTableDefines.FilterCheckedParams[];
+  sorts?: VxeTableDefines.SortCheckedParams[];
+  [index: string]: any;
+}
+
+export interface GridLoaderData {
+  list: any[];
+  total: number;
+}
+
+export type GridLoader = (
+  state: GridState
+) => GridLoaderData | Promise<GridLoaderData>;
+
 export type GridCustomInfo = {
   id: string;
   resize?: Record<string, number>;
