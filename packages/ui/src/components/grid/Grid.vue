@@ -13,6 +13,11 @@
     <template v-for="name in slots" v-slot:[name]="scope">
       <slot :name="name" v-bind="scope"></slot>
     </template>
+    <template #empty>
+      <slot name="empty">
+        <ElEmpty></ElEmpty>
+      </slot>
+    </template>
     <template #pager>
       <ElPagination
         v-if="props.pager"
@@ -33,7 +38,12 @@
 </template>
 <script lang="ts" setup>
   import { ref, provide, getCurrentInstance } from 'vue';
-  import { ElMessageBox, ElPagination, ElNotification } from 'element-plus';
+  import {
+    ElMessageBox,
+    ElPagination,
+    ElNotification,
+    ElEmpty
+  } from 'element-plus';
   import {
     useVxe,
     useLoader,
@@ -62,7 +72,7 @@
     load,
     search,
     doLayout
-  } = useLoader(props, vxeRef);
+  } = useLoader(props, vxeRef, emit);
   const instance = getCurrentInstance();
   provide(GridInstanceKey, instance);
 
@@ -88,6 +98,12 @@
     if (!grid) return [];
     const { fullData = [] } = grid.getTableData();
     return fullData;
+  };
+
+  const getColumns = () => {
+    const grid = vxeRef.value;
+    if (!grid) return [];
+    return grid.getColumns();
   };
 
   const validate = async () => {
@@ -137,6 +153,18 @@
     return vxeRef.value?.getRecordset();
   };
 
+  const setSelectCell = (row?: any, column?: any) => {
+    if (!vxeRef.value) return;
+    if (!row) {
+      const rows = getRows();
+      const columns = getColumns();
+      vxeRef.value.setSelectCell(rows[0], columns[0]);
+    } else {
+      vxeRef.value.setSelectCell(row, column ?? getColumns()[0]);
+    }
+    vxeRef.value.focus();
+  };
+
   defineExpose({
     load,
     search,
@@ -150,7 +178,8 @@
     getRows,
     setActived,
     doLayout,
-    getRecords
+    getRecords,
+    setSelectCell
   });
 
   defineOptions({

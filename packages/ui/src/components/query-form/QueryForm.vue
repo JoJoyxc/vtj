@@ -6,7 +6,8 @@
     :inline-columns="props.inlineColumns"
     label-width="100px"
     :submit-text="null"
-    :reset-text="null">
+    :reset-text="null"
+    :footer="showCollapsible">
     <div
       class="x-query-form__inner"
       :class="collapsedClass"

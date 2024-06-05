@@ -198,7 +198,7 @@
     'join-start': dateFormat(new Date(), 'YYYY-MM-DD')
   });
 
-  const loader = async (params: any) => {
+  const loader: any = async (params: any) => {
     const { page, pageSize = 50 } = params || {};
     console.log('query', { ...params, ...model, tab: tabValue.value });
     return await fetchData({

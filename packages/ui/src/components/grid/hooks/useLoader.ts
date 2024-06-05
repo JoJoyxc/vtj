@@ -1,10 +1,17 @@
 import { type Ref, watch, nextTick } from 'vue';
-import type { GridProps, VxeGridInstance, VxeGridDefines } from '../types';
+import type { Emits } from '../../shared';
+import type {
+  GridProps,
+  VxeGridInstance,
+  VxeGridDefines,
+  GridEmits
+} from '../types';
 import { useState } from './useState';
 
 export function useLoader(
   props: GridProps,
-  vxeRef: Ref<VxeGridInstance | undefined>
+  vxeRef: Ref<VxeGridInstance | undefined>,
+  emit: Emits<GridEmits>
 ) {
   const { auto, pager } = props;
   const { state } = useState(props);
@@ -25,6 +32,8 @@ export function useLoader(
       await nextTick();
       loadData(list, reset);
       state.total = total;
+      await nextTick();
+      emit('loaded', list);
     }
   };
 

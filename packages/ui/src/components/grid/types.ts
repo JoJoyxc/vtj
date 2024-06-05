@@ -99,6 +99,7 @@ export type GridEmits = {
   columnSort: [e: GridSortableEvent];
   cellSelected: [params: any];
   editChange: [data: any[]];
+  loaded: [rows: any[]];
 };
 
 export type GridInstance = InstanceType<typeof Grid>;
