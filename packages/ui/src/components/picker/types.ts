@@ -25,3 +25,8 @@ export type PickerEmits = {
   change: [value: any];
   picked: [value: any];
 };
+
+export interface PickerOption {
+  label: string;
+  value: any;
+}

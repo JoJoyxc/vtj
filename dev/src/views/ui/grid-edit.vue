@@ -29,21 +29,65 @@
   import { ref } from 'vue';
   import { ElButton } from 'element-plus';
   import { XGrid, XForm, XField, type GridColumns } from '@vtj/ui';
-  // import { request } from '@vtj/utils';
+  import { request } from '@vtj/utils';
 
   const editable = ref(true);
   const gridRef = ref();
 
-  // const fetchData = (data: any) => {
-  //   return request({
-  //     url: '/mock-api/list',
-  //     method: 'get',
-  //     data,
-  //     settings: {
-  //       originResponse: false
-  //     }
-  //   });
-  // };
+  const fetchData = (data: any) => {
+    return request({
+      url: '/mock-api/list',
+      method: 'get',
+      data,
+      settings: {
+        originResponse: false
+      }
+    });
+  };
+
+  const pickerLoader: any = async (params: any) => {
+    console.log('do load', params);
+    const { page, pageSize = 50, form } = params || {};
+    // console.log('query', { ...params, ...model, tab: tabValue.value });
+    return await fetchData({
+      ...form,
+      currentPage: page,
+      pageSize,
+      total: 1000
+    });
+  };
+
+  const pickerColumns = [
+    {
+      field: 'id',
+      title: 'ID'
+    },
+    {
+      field: 'name',
+      title: '姓名'
+    },
+
+    {
+      field: 'sex',
+      title: '性别'
+    },
+    {
+      field: 'age',
+      title: '年龄'
+    },
+    {
+      field: 'intro',
+      title: '简介'
+    },
+    {
+      field: 'join',
+      title: '入职日期'
+    },
+    {
+      field: 'create',
+      title: '创建时间'
+    }
+  ];
 
   const model = ref({
     children: [
@@ -67,6 +111,7 @@
           select: 1,
           date: '2004-03-13',
           link: 'https://www.baidu.com',
+          picker: 'abc',
           image:
             'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg'
         }
@@ -79,11 +124,13 @@
 
   const columns: GridColumns = [
     {
-      type: 'checkbox'
+      type: 'checkbox',
+      width: 40
     },
     {
       type: 'seq',
-      title: '#'
+      title: '#',
+      width: 50
     },
     {
       field: 'input',
@@ -100,6 +147,10 @@
     {
       field: 'link',
       title: 'Link'
+    },
+    {
+      field: 'picker',
+      title: 'Picker'
     },
     {
       field: 'actions',
@@ -163,7 +214,15 @@
         type: 'datetime'
       }
     },
-    link: 'XLink'
+    link: 'XLink',
+    picker: {
+      name: 'XPicker',
+      props: {
+        loader: pickerLoader,
+        columns: pickerColumns,
+        valueKey: 'id'
+      }
+    }
   };
 
   // const filterRenders = {

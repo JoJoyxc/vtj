@@ -43,6 +43,13 @@ export const pickerProps = {
   },
 
   /**
+   * 值为对象模式
+   */
+  raw: {
+    type: Boolean
+  },
+
+  /**
    * 禁用
    */
   disabled: {
@@ -75,6 +82,12 @@ export const pickerProps = {
    */
   queryKey: {
     type: String
+  },
+  /**
+   * 单选模式，回车时自动检测取回有且计有唯一数据
+   */
+  preload: {
+    type: Boolean
   },
 
   /**

@@ -20,7 +20,7 @@
       :mouse-config="{ selected: true }"
       editable
       :keyboard-config="{ isArrow: true, isChecked: true, isEnter: false }"
-      :loader="dataLoader"
+      :loader="props.loader"
       @keydown="onKeydown"
       @loaded="onLoaded"
       @cell-dblclick="onDblClick">
@@ -36,7 +36,7 @@
           :icon="VtjIconNpReturn"
           @click="pick"></XAction>
       </template>
-      <template #form>
+      <template v-if="props.fields" #form>
         <XQueryForm :model="props.formModel" :items="props.fields"></XQueryForm>
       </template>
     </XGrid>
@@ -69,17 +69,6 @@
   const props = defineProps<Props>();
   const gridRef = ref();
 
-  const dataLoader: PickerLoader = (params: any) => {
-    params.form = props.formModel;
-    if (props.loader) {
-      return props.loader(params);
-    }
-    return {
-      list: [],
-      total: 0
-    };
-  };
-
   const onSearch = () => {
     gridRef.value?.search();
   };
@@ -105,10 +94,14 @@
   });
 
   const onKeydown = (e: any) => {
-    if (props.multiple || e.$event.key !== 'Enter') return;
-    const { row } = gridRef.value?.vxeRef.getSelectedCell();
-    if (row) {
-      props.onPick(row);  
+    if (e.$event.key !== 'Enter') return;
+    if (props.multiple) {
+      pick();
+    } else {
+      const { row } = gridRef.value?.vxeRef.getSelectedCell();
+      if (row) {
+        props.onPick(row);
+      }
     }
   };
 

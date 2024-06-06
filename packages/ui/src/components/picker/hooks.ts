@@ -1,47 +1,78 @@
-import { computed } from 'vue';
-import { toArray } from '@vtj/utils';
+import { computed, ref, watch, toRaw } from 'vue';
+import { toArray, isEqual } from '@vtj/utils';
 import type { Emits } from '../shared';
-import type { PickerProps, PickerEmits, PickerColumns } from './types';
+import type {
+  PickerProps,
+  PickerEmits,
+  PickerColumns,
+  PickerOption
+} from './types';
 
-export function useCurrentValue(props: PickerProps, emit: Emits<PickerEmits>) {
-  const { multiple, valueKey = 'value', labelKey = 'label' } = props;
+export function useOptions(props: PickerProps, emit: Emits<PickerEmits>) {
+  const { multiple, raw, valueKey = 'value', labelKey = 'label' } = props;
+  const current = ref();
+  const options = ref<PickerOption[]>([]);
 
-  const getter = (value: any) => {
-    if (typeof value === 'object') {
+  const setOptions = (rows: any, append?: boolean) => {
+    const array = toArray(rows).map((row) => {
       return {
-        label: value[labelKey],
-        value: value[valueKey]
+        label: row[labelKey],
+        value: row[valueKey] ?? JSON.stringify(row)
       };
+    });
+    options.value = append ? [...options.value, ...array] : array;
+    if (multiple) {
+      current.value = options.value.map((n) => n.value);
+    } else {
+      current.value = options.value[0]?.value;
     }
-    return value;
   };
 
-  const setter = (value: any) => {
-    if (typeof value === 'object') {
+  const getRawData = (values: any) => {
+    const rawData = options.value.map((n) => {
+      const data = toRaw(n);
       return {
-        [labelKey]: value[labelKey] ?? value.label,
-        [valueKey]: value[valueKey] ?? value.value
+        [labelKey]: data.label,
+        [valueKey]: data.value
       };
+    });
+    if (Array.isArray(values)) {
+      return values.map((v: any) => {
+        return rawData.find((n) => n[valueKey] === v);
+      });
+    } else {
+      rawData.find((n) => n[valueKey] === values);
     }
-    return value;
+    return rawData;
   };
 
-  return computed({
-    get() {
-      if (multiple) {
-        return toArray(props.modelValue || []).map((n) => getter(n));
+  watch(
+    () => props.modelValue,
+    (v) => {
+      if (raw && v && typeof v === 'object') {
+        setOptions(v);
       } else {
-        return getter(props.modelValue);
+        current.value = multiple ? toArray(v) : v;
       }
     },
-    set(val: any) {
-      const data = multiple
-        ? toArray(val || []).map((n) => setter(n))
-        : setter(val);
+    {
+      immediate: true
+    }
+  );
+
+  watch(current, (v, o) => {
+    if (!isEqual(v, o)) {
+      const data = raw ? getRawData(v) : v;
       emit('update:modelValue', data);
       emit('change', data);
     }
   });
+
+  return {
+    current,
+    options,
+    setOptions
+  };
 }
 
 export function useGridColumns(props: PickerProps) {
@@ -50,8 +81,10 @@ export function useGridColumns(props: PickerProps) {
     const presets: PickerColumns = [
       {
         type: multiple ? 'checkbox' : 'radio',
-        width: 50,
-        fixed: 'left'
+        width: 41,
+        fixed: 'left',
+        showOverflow: false,
+        resizable: false
       },
       {
         type: 'seq',

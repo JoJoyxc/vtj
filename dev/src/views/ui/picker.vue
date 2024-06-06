@@ -1,26 +1,57 @@
 <template>
   <div>
-    <XField>
+    <XField label="单选">
       <template #editor>
         <XPicker
-          v-model="modelValue"
-          :multiple="true"
-          append
+          v-model="modelValue1"
           value-key="id"
           label-key="name"
           query-key="name"
-          :dialog-props="{ title: '选择器' }"
           :columns="columns"
           :fields="fields"
           :loader="loader"
-          :defaultQuery="defaultQuery"
           @change="onChange"
           @picked="onPicked"></XPicker>
       </template>
     </XField>
-    <div>
-      {{ modelValue }}
-    </div>
+    <XField label="多选">
+      <template #editor>
+        <XPicker
+          v-model="modelValue2"
+          multiple
+          :max-collapse-tags="5"
+          value-key="id"
+          label-key="name"
+          query-key="name"
+          :columns="columns"
+          :fields="fields"
+          :loader="loader"
+          @change="onChange"
+          @picked="onPicked"></XPicker>
+      </template>
+    </XField>
+    <XField label="多选对象值">
+      <template #editor>
+        <XPicker
+          v-model="modelValue3"
+          multiple
+          raw
+          append
+          :max-collapse-tags="5"
+          value-key="id"
+          label-key="name"
+          query-key="name"
+          :default-query="defaultQuery"
+          :columns="columns"
+          :fields="fields"
+          :loader="loader"
+          @change="onChange"
+          @picked="onPicked"></XPicker>
+      </template>
+    </XField>
+    <div>modelValue1: {{ modelValue1 }}</div>
+    <div>modelValue2: {{ modelValue2 }}</div>
+    <div>modelValue3: {{ modelValue3 }}</div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -33,19 +64,14 @@
   } from '@vtj/ui';
   import { request } from '@vtj/utils';
 
-  const modelValue = ref('');
-  // const modelValue = ref(['abc']);
-  // const modelValue = ref({
-  //   label: 'ABC',
-  //   value: '123'
-  // });
-
-  // const modelValue = ref([
-  //   {
-  //     id: '123',
-  //     name: 'ABC'
-  //   }
-  // ]);
+  const modelValue1 = ref();
+  const modelValue2 = ref([]);
+  const modelValue3 = ref([
+    {
+      id: '123',
+      name: 'ABC'
+    }
+  ]);
 
   const columns: PickerColumns = [
     {
