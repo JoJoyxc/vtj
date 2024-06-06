@@ -70,7 +70,7 @@ export const pickerProps = {
     default: 'value'
   },
   /**
-   * 输入显示映射字段名称
+   * 输入框显示映射字段名称
    */
   labelKey: {
     type: String,
