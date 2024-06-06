@@ -108,5 +108,12 @@ export const pickerProps = {
    */
   gridProps: {
     type: Object as PropType<PickerGridProps>
+  },
+
+  /**
+   * 查询表单参数
+   */
+  formProps: {
+    type: Object as PropType<Record<string, any>>
   }
 };

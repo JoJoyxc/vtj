@@ -22,6 +22,7 @@
     v-if="dialogVisible"
     v-model="dialogVisible"
     :grid-props="props.gridProps"
+    :form-props="props.formProps"
     :form-model="formModel"
     :columns="columns"
     :fields="props.fields"

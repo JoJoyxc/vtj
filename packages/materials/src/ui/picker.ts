@@ -82,6 +82,11 @@ const desc: MaterialDescription = {
       title: '表格组件配置参数',
       setters: 'ObjectSetter'
     },
+    {
+      name: 'formProps',
+      title: '查询表单配置参数',
+      setters: 'ObjectSetter'
+    },
     ...omitPropItem(select[0].props, [
       'modelValue',
       'disabled',

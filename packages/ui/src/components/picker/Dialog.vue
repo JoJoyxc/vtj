@@ -37,7 +37,10 @@
           @click="pick"></XAction>
       </template>
       <template v-if="props.fields" #form>
-        <XQueryForm :model="props.formModel" :items="props.fields"></XQueryForm>
+        <XQueryForm
+          :model="props.formModel"
+          :items="props.fields"
+          v-bind="props.formProps"></XQueryForm>
       </template>
     </XGrid>
   </XDialog>
@@ -58,6 +61,7 @@
 
   export interface Props {
     gridProps?: any;
+    formProps?: any;
     columns?: PickerColumns;
     fields?: PrickerFields;
     loader?: PickerLoader;
