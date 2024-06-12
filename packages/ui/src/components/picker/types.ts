@@ -10,7 +10,7 @@ import { pickerProps } from './props';
 
 export type PickerColumns = GridColumns;
 
-export type PrickerFields = QueryFormItems;
+export type PickerFields = QueryFormItems;
 
 export type PickerLoader = GridLoader;
 

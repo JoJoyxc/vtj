@@ -52,7 +52,7 @@
   import { XGrid } from '../grid';
   import { XAction } from '../action';
   import { XQueryForm } from '../query-form';
-  import type { PickerColumns, PrickerFields, PickerLoader } from './types';
+  import type { PickerColumns, PickerFields, PickerLoader } from './types';
   import {
     VtjIconNpSearch,
     VtjIconNpReturn,
@@ -63,7 +63,7 @@
     gridProps?: any;
     formProps?: any;
     columns?: PickerColumns;
-    fields?: PrickerFields;
+    fields?: PickerFields;
     loader?: PickerLoader;
     formModel?: Record<string, any>;
     multiple?: boolean;
@@ -102,7 +102,7 @@
     if (props.multiple) {
       pick();
     } else {
-      const { row } = gridRef.value?.vxeRef.getSelectedCell();
+      const { row } = gridRef.value?.vxeRef.getSelectedCell() || {};
       if (row) {
         props.onPick(row);
       }

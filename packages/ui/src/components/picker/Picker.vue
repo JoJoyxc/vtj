@@ -127,6 +127,7 @@
     disabled,
     options,
     setOptions,
-    current
+    current,
+    visible: dialogVisible
   });
 </script>
