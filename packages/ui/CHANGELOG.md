@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.41](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.40...@vtj/ui@0.8.41) (2024-06-12)
+
+
+### Bug Fixes
+
+* 🐛 x-picker ([341a033](https://gitee.com/newgateway/vtj/commits/341a033a37ab06b0ba3a7641239c692643b1840e))
+
+
+
+
+
 ## [0.8.40](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.39...@vtj/ui@0.8.40) (2024-06-06)
 
 
