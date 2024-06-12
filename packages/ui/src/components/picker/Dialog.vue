@@ -73,6 +73,8 @@
   const props = defineProps<Props>();
   const gridRef = ref();
 
+  // const columnsComputed = computed(() => props.columns ?? []);
+
   const onSearch = () => {
     gridRef.value?.search();
   };

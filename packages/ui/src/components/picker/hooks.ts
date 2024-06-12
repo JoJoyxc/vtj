@@ -76,8 +76,8 @@ export function useOptions(props: PickerProps, emit: Emits<PickerEmits>) {
 }
 
 export function useGridColumns(props: PickerProps) {
-  const { multiple, columns = [] } = props;
   return computed(() => {
+    const { multiple, columns = [] } = props;
     const presets: PickerColumns = [
       {
         type: multiple ? 'checkbox' : 'radio',
