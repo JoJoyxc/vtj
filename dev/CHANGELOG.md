@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.43](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.42...dev-web@0.8.43) (2024-06-12)
+
+
+### Bug Fixes
+
+* 🐛 x-picker ([5227871](https://gitee.com/newgateway/vtj/commits/52278717c8b41d15cc8011f3d6e0bb8cb1d716ca))
+
+
+
+
+
 ## [0.8.42](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.41...dev-web@0.8.42) (2024-06-12)
 
 
