@@ -19,7 +19,8 @@
     <ElOption v-for="n in options" :label="n.label" :value="n.value"></ElOption>
   </ElSelect>
   <Dialog
-    v-if="dialogVisible"
+    v-if="dialogVisible && props.loader"
+    ref="dialogRef"
     v-model="dialogVisible"
     :grid-props="props.gridProps"
     :form-props="props.formProps"
@@ -45,6 +46,7 @@
   const attrs = useAttrs();
   const dialogVisible = ref(false);
   const selectRef = ref();
+  const dialogRef = ref();
   const formModel = ref<Record<string, any>>({});
   const { options, setOptions, current } = useOptions(props, emit);
   const columns = useGridColumns(props);
@@ -128,6 +130,7 @@
     options,
     setOptions,
     current,
-    visible: dialogVisible
+    visible: dialogVisible,
+    dialogRef
   });
 </script>

@@ -10,7 +10,7 @@
           query-key="name"
           :columns="columns"
           :fields="fields"
-          :loader="loader"
+          :loader="asyncLoader"
           @change="onChange"
           @picked="onPicked"></XPicker>
       </template>
@@ -108,17 +108,6 @@
     }
   ];
 
-  watch(
-    () => pickerRef.value?.visible,
-    async (v: boolean) => {
-      console.log('change', v);
-      await nextTick();
-      setTimeout(() => {
-        columns.value = columns2;
-      }, 1000);
-    }
-  );
-
   const fields: PickerFields = [
     {
       label: '姓名',
@@ -182,6 +171,8 @@
     });
   };
 
+  const asyncLoader = ref();
+
   const defaultQuery = () => {
     return {
       name: 'default'
@@ -195,4 +186,16 @@
   const onPicked = (raw: any) => {
     console.log('onPicked', raw);
   };
+
+  watch(
+    () => pickerRef.value?.visible,
+    async (v: boolean) => {
+      console.log('change', v);
+      await nextTick();
+      setTimeout(() => {
+        columns.value = columns2;
+        asyncLoader.value = loader;
+      }, 1000);
+    }
+  );
 </script>

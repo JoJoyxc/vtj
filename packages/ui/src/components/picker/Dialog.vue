@@ -23,7 +23,8 @@
       :loader="props.loader"
       @keydown="onKeydown"
       @loaded="onLoaded"
-      @cell-dblclick="onDblClick">
+      @cell-dblclick="onDblClick"
+      v-bind="props.gridProps">
       <template #toolbar__buttons>
         <XAction
           label="查询"
@@ -114,4 +115,9 @@
   const onLoaded = () => {
     gridRef.value?.setSelectCell();
   };
+
+  defineExpose({
+    pick,
+    gridRef
+  });
 </script>
