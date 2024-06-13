@@ -4,7 +4,8 @@ import type {
   QueryFormItems,
   DialogProps,
   GridProps,
-  GridLoader
+  GridLoader,
+  GridState
 } from '../';
 import { pickerProps } from './props';
 
@@ -13,6 +14,8 @@ export type PickerColumns = GridColumns;
 export type PickerFields = QueryFormItems;
 
 export type PickerLoader = GridLoader;
+
+export type PickerState = GridState;
 
 export type PickerDialogProps = UnReadOnly<Partial<DialogProps>>;
 

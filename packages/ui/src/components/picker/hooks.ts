@@ -96,3 +96,21 @@ export function useGridColumns(props: PickerProps) {
     return presets.concat(columns);
   });
 }
+
+export function useModel(props: PickerProps) {
+  const formModel = ref<Record<string, any>>({});
+
+  watch(
+    () => props.model,
+    (model: any) => {
+      formModel.value = model || {};
+    },
+    {
+      immediate: true
+    }
+  );
+
+  return {
+    formModel
+  };
+}

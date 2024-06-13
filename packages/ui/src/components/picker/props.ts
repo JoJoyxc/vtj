@@ -22,6 +22,13 @@ export const pickerProps = {
   },
 
   /**
+   * 查询表单字段值
+   */
+  model: {
+    type: Object as PropType<Record<string, any>>
+  },
+
+  /**
    * 表格数据加载器
    */
   loader: {
@@ -90,12 +97,6 @@ export const pickerProps = {
     type: Boolean
   },
 
-  /**
-   * 初始默认查询参数
-   */
-  defaultQuery: {
-    type: Function as PropType<() => any>
-  },
   /**
    *  弹窗组件配置参数
    */
