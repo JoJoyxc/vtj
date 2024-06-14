@@ -85,6 +85,7 @@
       const res = await dataLoader({});
       // 有且只有一条数据，自动返回，不打开弹窗
       if (res?.list && res.list.length === 1) {
+        blur();
         onPick(res.list[0]);
       } else {
         dialogVisible.value = true;

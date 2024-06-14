@@ -27,7 +27,8 @@
     "vue-router": "~4.3.0"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "gitHead": "d03843144f07c2d98c1e0c72c8c6eb1117c01722",
   "publishConfig": {
