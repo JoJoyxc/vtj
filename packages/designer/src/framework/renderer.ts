@@ -41,6 +41,8 @@ export class Renderer {
       app.use(router);
     }
     app.use(this.provider);
+    // 记录环境，在扩展时可能需要用到
+    (app as any).__vtj_env__ = this.env;
     const plugins = Object.entries(library);
     Object.assign(app.config.globalProperties, globals);
     app.config.errorHandler = (err: any, instance, info) => {
@@ -96,7 +98,6 @@ export class Renderer {
 
     this.app = Vue.createApp(AppContainer) as App;
     this.install(this.app);
-    console.log(AppContainer, this.app);
     try {
       this.app.mount(el);
     } catch (e: any) {
