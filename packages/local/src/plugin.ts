@@ -250,7 +250,7 @@ export function createDevTools(options: Partial<DevToolsOptions> = {}) {
   const materialsPath2 = `${opts.nodeModulesDir}/${opts.packageName}/${materialsPath1}`;
 
   const materialDirs = opts.materialDirs.map((n) => {
-    return `${opts.nodeModulesDir}/${n}/dist`;
+    return `${opts.pluginNodeModulesDir}/${n}/dist`;
   });
 
   // 复制物料目录
