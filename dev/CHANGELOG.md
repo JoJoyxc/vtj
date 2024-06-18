@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.52](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.51...dev-web@0.8.52) (2024-06-18)
+
+
+### Features
+
+* ✨ 导出 x-grid 共用工具 ([c163222](https://gitee.com/newgateway/vtj/commits/c163222f4900395087ef6fef2795260beb6936c5))
+
+
+
+
+
 ## [0.8.51](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.50...dev-web@0.8.51) (2024-06-16)
 
 
