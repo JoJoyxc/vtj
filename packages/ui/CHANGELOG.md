@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.53](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.52...@vtj/ui@0.8.53) (2024-06-20)
+
+
+### Bug Fixes
+
+* 🐛 x-grid select renderer ([ec0cca8](https://gitee.com/newgateway/vtj/commits/ec0cca8fb421ad820e9191a3089e1fee8be3730e))
+
+
+
+
+
 ## [0.8.52](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.51...@vtj/ui@0.8.52) (2024-06-18)
 
 
