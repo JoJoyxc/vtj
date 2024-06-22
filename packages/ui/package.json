@@ -19,7 +19,7 @@
     "@vueuse/core": "~10.10.0",
     "element-plus": "~2.7.0",
     "sortablejs": "~1.15.2",
-    "vxe-table": "~4.6.18",
+    "vxe-table": "~4.6.17",
     "vxe-table-plugin-menus": "~4.0.3"
   },
   "devDependencies": {
