@@ -166,6 +166,7 @@
   };
 
   defineExpose({
+    state,
     load,
     search,
     vxeRef,
