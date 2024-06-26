@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.59](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.58...@vtj/ui@0.8.59) (2024-06-26)
+
+
+### Features
+
+* ✨ 表格支持合计配置 ([8faca18](https://gitee.com/newgateway/vtj/commits/8faca18a3e2c7476d5c0a7a865ee751a0d115ea9))
+
+
+
+
+
 ## [0.8.58](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.57...@vtj/ui@0.8.58) (2024-06-26)
 
 **Note:** Version bump only for package @vtj/ui
