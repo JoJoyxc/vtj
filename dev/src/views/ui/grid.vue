@@ -23,7 +23,10 @@
       :pager="true"
       :auto="true"
       :resizable="true"
-      :virtual="true">
+      :virtual="true"
+      :sumFields="['age', 'month']"
+      :avgFields="['age', 'year']"
+      :sumAllFields="{ age: 23232 }">
     </XGrid>
   </div>
 </template>

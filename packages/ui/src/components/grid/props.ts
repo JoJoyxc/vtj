@@ -142,6 +142,25 @@ export const gridProps = {
   editable: {
     type: Boolean,
     default: false
+  },
+  /**
+   * 单页合计列
+   */
+  sumFields: {
+    type: Array as PropType<string[]>
+  },
+  /**
+   * 单页平均值列
+   */
+  avgFields: {
+    type: Array as PropType<string[]>
+  },
+
+  /**
+   * 全部数据总计列
+   */
+  sumAllFields: {
+    type: Object as PropType<Record<string, number>>
   }
 };
 
