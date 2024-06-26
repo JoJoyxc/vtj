@@ -245,6 +245,7 @@ export function useProps(
     return {
       ...defaults,
       ...attrs,
+      id: props.id,
       columnConfig,
       rowConfig,
       scrollY,
