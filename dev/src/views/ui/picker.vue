@@ -117,7 +117,8 @@
     {
       label: '姓别',
       name: 'sex',
-      editor: 'select'
+      editor: 'select',
+      disabled: true
     },
     {
       label: '入职时间开始',
