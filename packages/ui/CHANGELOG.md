@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.60](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.59...@vtj/ui@0.8.60) (2024-06-26)
+
+
+### Bug Fixes
+
+* 🐛 grid customable 失效 ([81e1e7f](https://gitee.com/newgateway/vtj/commits/81e1e7f1522771f9ed106af31776852771e7594d))
+
+
+
+
+
 ## [0.8.59](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.58...@vtj/ui@0.8.59) (2024-06-26)
 
 
