@@ -23,7 +23,7 @@
     "@vtj/ui": "workspace:~",
     "@vtj/utils": "workspace:~",
     "vue": "~3.4.15",
-    "vue-router": "~4.3.0"
+    "vue-router": "~4.4.0"
   },
   "exports": {
     "./vite": {
