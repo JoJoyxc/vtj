@@ -125,7 +125,7 @@ export class Context {
     }
 
     return (el: any) => {
-      let dom = el?.$vtjEl || el?.$el || el;
+      let dom = el?.$vtjEl || el?.$el || el?._?.vnode?.el || el;
       // 销毁时，无dom
       if (!dom) {
         if (typeof ref === 'string') {
