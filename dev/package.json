@@ -25,7 +25,7 @@
     "@vtj/utils": "workspace:~",
     "@vtj/web": "workspace:~",
     "vue": "~3.4.15",
-    "vue-router": "~4.3.0"
+    "vue-router": "~4.4.0"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:~",

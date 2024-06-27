@@ -18,8 +18,8 @@
   "dependencies": {
     "@vtj/plugin-ckeditor": "~0.1.4",
     "@vtj/web": "workspace:~",
-    "vue": "^3.4.15",
-    "vue-router": "~4.3.0"
+    "vue": "~3.4.15",
+    "vue-router": "~4.4.0"
   },
   "devDependencies": {
     "@vtj/charts": "workspace:~",

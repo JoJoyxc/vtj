@@ -22,7 +22,7 @@
     "@types/mockjs": "~1.0.10",
     "@vtj/cli": "workspace:~",
     "vue": "~3.4.15",
-    "vue-router": "~4.3.0"
+    "vue-router": "~4.4.0"
   },
   "files": [
     "dist",
