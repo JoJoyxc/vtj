@@ -35,7 +35,7 @@
     "cross-env": "~7.0.3",
     "jsdom": "~24.1.0",
     "memfs": "~4.9.2",
-    "rollup-plugin-external-globals": "~0.10.0",
+    "rollup-plugin-external-globals": "~0.11.0",
     "rollup-plugin-visualizer": "~5.12.0",
     "sass": "~1.77.0",
     "serve-static": "~1.15.0",
