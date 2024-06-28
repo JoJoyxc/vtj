@@ -5,4 +5,5 @@ export * from './useColumnSortable';
 export * from './useCustom';
 export * from './useVxeSlots';
 export * from './useEditRender';
+export * from './useFilterRender';
 export * from './useLoader';

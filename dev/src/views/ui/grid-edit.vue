@@ -137,6 +137,10 @@
       title: 'Input'
     },
     {
+      field: 'number',
+      title: 'Number'
+    },
+    {
       field: 'select',
       title: 'Select'
     },
@@ -192,6 +196,7 @@
 
   const editRenders = {
     input: 'XInput',
+    number: 'XNumber',
     select: {
       name: 'XSelect',
       props: {

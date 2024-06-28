@@ -82,12 +82,26 @@
     },
     {
       field: 'name',
-      title: '姓名'
+      title: '姓名',
+      filters: [{ value: '' }],
+      filterRender: {
+        name: 'XInput'
+      }
     },
 
     {
       field: 'sex',
-      title: '性别'
+      title: '性别',
+      filters: [{ value: '' }],
+      filterRender: {
+        name: 'XSelect',
+        props: {
+          options: [
+            { label: '男', value: 1 },
+            { label: '女', value: 0 }
+          ]
+        }
+      }
     },
     {
       field: 'age',

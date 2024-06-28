@@ -95,7 +95,9 @@ function useEditMode(
         isEsc: true,
         isTab: true,
         isEdit: true,
+        isEnter: true,
         isChecked: true,
+        isDel: true,
         ...(getAttrValue(attrs, 'keyboardConfig') || {})
       }
     : undefined;
