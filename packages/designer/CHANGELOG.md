@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.63](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.62...@vtj/designer@0.8.63) (2024-06-28)
+
+
+### Bug Fixes
+
+* 🐛 修复设计器不能选中异步组件 ([f09c73e](https://gitee.com/newgateway/vtj/commits/f09c73e9b73e7577b98f8604537720d8f0d56122))
+
+
+
+
+
 ## [0.8.62](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.61...@vtj/designer@0.8.62) (2024-06-27)
 
 **Note:** Version bump only for package @vtj/designer

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.63](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.62...@vtj/ui@0.8.63) (2024-06-28)
+
+
+### Bug Fixes
+
+* 🐛 修复设计器部分组件找不到dom节点 ([e7b1b22](https://gitee.com/newgateway/vtj/commits/e7b1b22e987007832867f98a0fc89d79120fd27f))
+
+
+
+
+
 ## [0.8.62](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.61...@vtj/ui@0.8.62) (2024-06-27)
 
 
