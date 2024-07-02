@@ -7,6 +7,8 @@
             ref="gridRef"
             size="small"
             height="200px"
+            row-sortable
+            column-sortable
             :editable="editable"
             :columns="columns"
             :loader="loader"
