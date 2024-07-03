@@ -56,19 +56,19 @@ function useFitlerConfig(props: GridProps, attrs: Record<string, any>) {
         },
         getAttrValue(attrs, 'fitlerConfig') || {}
       )
-    : undefined;
+    : getAttrValue(attrs, 'fitlerConfig');
 }
 
-function useSortconfig(props: GridProps, attrs: Record<string, any>) {
+function useSortConfig(props: GridProps, attrs: Record<string, any>) {
   const { pager } = props;
   return pager
     ? Object.assign(
         {
           remote: pager
         },
-        getAttrValue(attrs, 'sortconfig') || {}
+        getAttrValue(attrs, 'sortConfig') || {}
       )
-    : undefined;
+    : getAttrValue(attrs, 'sortConfig');
 }
 
 function useEditMode(
@@ -234,7 +234,7 @@ export function useProps(
     const rowConfig = useRowConfig(attrs);
     const scrollY = useScrollY(props, attrs);
     const filterConfig = useFitlerConfig(props, attrs);
-    const sortConfig = useSortconfig(props, attrs);
+    const sortConfig = useSortConfig(props, attrs);
     const toolbarConfig = useToolbarConfig(props, attrs, slots);
     const {
       keepSource,
