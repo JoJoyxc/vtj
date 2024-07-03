@@ -453,7 +453,7 @@ export class Request {
 }
 
 export interface IStaticRequest extends Request {
-  (options: IRequestConfig): Promise<AxiosResponse>;
+  (options: IRequestConfig): Promise<any>;
   instance: Request;
 }
 
