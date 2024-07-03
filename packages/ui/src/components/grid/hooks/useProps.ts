@@ -27,6 +27,8 @@ function useColumnConfig(props: GridProps, attrs: Record<string, any>) {
 function useRowConfig(attrs: Record<string, any>) {
   return {
     useKey: true,
+    isCurrent: true,
+    isHover: true,
     ...getAttrValue(attrs, 'rowConfig')
   };
 }

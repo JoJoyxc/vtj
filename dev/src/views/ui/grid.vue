@@ -50,8 +50,8 @@
   const columns: Ref<GridColumns> = ref([]);
   setTimeout(() => {
     columns.value = [
-      { type: 'checkbox', title: '', width: 60 },
-      { type: 'seq', title: '序号', width: 60 },
+      { type: 'checkbox', title: '', width: 60, fixed: 'left' },
+      { type: 'seq', title: '序号', width: 60, fixed: 'left' },
       {
         field: 'id',
         title: 'ID'
@@ -145,8 +145,8 @@
 
   setTimeout(() => {
     columns.value = [
-      { type: 'checkbox', title: '', width: 60 },
-      { type: 'seq', title: '序号', width: 60 },
+      { type: 'checkbox', title: '', width: 60, fixed: 'left' },
+      { type: 'seq', title: '序号', width: 60, fixed: 'left' },
       {
         field: 'id',
         title: 'ID'
