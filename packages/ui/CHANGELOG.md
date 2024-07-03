@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.66](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.65...@vtj/ui@0.8.66) (2024-07-03)
+
+
+### Bug Fixes
+
+* 🐛 表格行排序 ([7592899](https://gitee.com/newgateway/vtj/commits/75928990e4b9aacee8ec7a3f170e037eecdbe8ab))
+
+
+
+
+
 ## [0.8.65](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.64...@vtj/ui@0.8.65) (2024-07-02)
 
 
