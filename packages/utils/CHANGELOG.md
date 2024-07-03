@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.67](https://gitee.com/newgateway/vtj/compare/@vtj/utils@0.8.66...@vtj/utils@0.8.67) (2024-07-03)
+
+
+### Bug Fixes
+
+* 🐛 request类型错误 ([9a52ed6](https://gitee.com/newgateway/vtj/commits/9a52ed6ddfbd4a4c181f5dba1d6995d7da15f662))
+
+
+
+
+
 ## [0.8.66](https://gitee.com/newgateway/vtj/compare/@vtj/utils@0.8.65...@vtj/utils@0.8.66) (2024-07-03)
 
 **Note:** Version bump only for package @vtj/utils
