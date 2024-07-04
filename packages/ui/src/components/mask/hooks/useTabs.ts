@@ -151,8 +151,8 @@ export function useTabs(
 
   const init = async () => {
     await nextTick();
-    const isHome = home.value.url === route.fullPath;
-    const menu = getMenuByUrl(route.fullPath);
+    const isHome = home.value.url === route.path;
+    const menu = getMenuByUrl(route.path);
     if (isHome) {
       tabValue.value = home.value.id;
     } else {
