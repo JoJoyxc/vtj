@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.69](https://gitee.com/newgateway/vtj/compare/vtj-project-app@0.8.68...vtj-project-app@0.8.69) (2024-07-04)
+
+
+### Bug Fixes
+
+* 🐛 mask tab ([d6b0ad5](https://gitee.com/newgateway/vtj/commits/d6b0ad5a95d14d56c021d39133a7f60c9c09f611))
+
+
+
+
+
 ## [0.8.68](https://gitee.com/newgateway/vtj/compare/vtj-project-app@0.8.67...vtj-project-app@0.8.68) (2024-07-04)
 
 **Note:** Version bump only for package vtj-project-app
