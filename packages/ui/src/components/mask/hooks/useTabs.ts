@@ -82,16 +82,18 @@ export function useTabs(
   };
 
   const createTab = async (menu?: MenuDataItem): Promise<MaskTab> => {
-    const { url = route.fullPath, icon, title = '新建标签页' } = menu || {};
+    const { url = route.fullPath, icon } = menu || {};
     const creator = tabCreators[url];
     const id = uid();
     const name = upperFirstCamelCase(url);
+    const matchMenu = menu || getMenuByUrl(route.path);
+
     return {
       id,
       name,
       url,
       icon,
-      title,
+      title: matchMenu?.title || '新建标签页',
       closable: true,
       menu,
       ...(creator ? await creator() : {})
@@ -152,7 +154,7 @@ export function useTabs(
   const init = async () => {
     await nextTick();
     const isHome = home.value.url === route.path;
-    const menu = getMenuByUrl(route.path);
+    const menu = getMenuByUrl(route.fullPath);
     if (isHome) {
       tabValue.value = home.value.id;
     } else {
