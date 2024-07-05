@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.70](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.69...@vtj/ui@0.8.70) (2024-07-05)
+
+
+### Bug Fixes
+
+* 🐛 mask tab ([4b7451d](https://gitee.com/newgateway/vtj/commits/4b7451d1f85e8fd9bee485e5d24a4a178ea037ee))
+
+
+
+
+
 ## [0.8.69](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.68...@vtj/ui@0.8.69) (2024-07-04)
 
 
