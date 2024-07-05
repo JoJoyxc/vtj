@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.71](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.70...@vtj/ui@0.8.71) (2024-07-05)
+
+
+### Bug Fixes
+
+* 🐛 mask 在无框架情况下内容宽度异常 ([8e4cb5a](https://gitee.com/newgateway/vtj/commits/8e4cb5aab68b8a7047704e605130289b746b9928))
+
+
+
+
+
 ## [0.8.70](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.69...@vtj/ui@0.8.70) (2024-07-05)
 
 
