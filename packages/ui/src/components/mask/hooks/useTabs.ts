@@ -82,18 +82,17 @@ export function useTabs(
   };
 
   const createTab = async (menu?: MenuDataItem): Promise<MaskTab> => {
-    const { url = route.fullPath, icon } = menu || {};
+    const { url = route.fullPath, icon, title } = menu || {};
     const creator = tabCreators[url];
     const id = uid();
     const name = upperFirstCamelCase(url);
-    const matchMenu = menu || getMenuByUrl(route.path);
 
     return {
       id,
       name,
       url,
       icon,
-      title: matchMenu?.title || '新建标签页',
+      title: title || getMenuByUrl(route.path)?.title || '新建页签',
       closable: true,
       menu,
       ...(creator ? await creator() : {})
