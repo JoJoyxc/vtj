@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.74](https://gitee.com/newgateway/vtj/compare/@vtj/local@0.8.73...@vtj/local@0.8.74) (2024-07-06)
+
+
+### Features
+
+* ✨ 格式化json文件 ([a436e13](https://gitee.com/newgateway/vtj/commits/a436e1349196a1c8b662346fe49762ddc5272b58))
+
+
+
+
+
 ## [0.8.73](https://gitee.com/newgateway/vtj/compare/@vtj/local@0.8.72...@vtj/local@0.8.73) (2024-07-06)
 
 **Note:** Version bump only for package @vtj/local
