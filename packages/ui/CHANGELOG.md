@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.73](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.72...@vtj/ui@0.8.73) (2024-07-06)
+
+
+### Features
+
+* ✨ x-import-button ([c37101e](https://gitee.com/newgateway/vtj/commits/c37101e96cdfcd96d0eb3c4428086ea048ab7a66))
+
+
+
+
+
 ## [0.8.72](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.71...@vtj/ui@0.8.72) (2024-07-06)
 
 **Note:** Version bump only for package @vtj/ui
