@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.72](https://gitee.com/newgateway/vtj/compare/@vtj/core@0.8.71...@vtj/core@0.8.72) (2024-07-06)
+
+
+### Features
+
+* ✨ 支持项目部署二级目录配置 ([200e87b](https://gitee.com/newgateway/vtj/commits/200e87bea6ed66776d367164e2c84584e3cd22a1))
+
+
+
+
+
 ## [0.8.71](https://gitee.com/newgateway/vtj/compare/@vtj/core@0.8.70...@vtj/core@0.8.71) (2024-07-05)
 
 **Note:** Version bump only for package @vtj/core
