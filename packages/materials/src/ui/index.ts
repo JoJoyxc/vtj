@@ -24,6 +24,7 @@ import list from './list';
 import queryForm from './query-form';
 import tabs from './tabs';
 import picker from './picker';
+import importButton from './import-button';
 
 const name = '@vtj/ui';
 const components: MaterialDescription[] = [
@@ -45,7 +46,8 @@ const components: MaterialDescription[] = [
   list,
   queryForm,
   tabs,
-  picker
+  picker,
+  importButton
 ].flat();
 
 const categories: MaterialCategory[] = [
