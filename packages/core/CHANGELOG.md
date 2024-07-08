@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.75](https://gitee.com/newgateway/vtj/compare/@vtj/core@0.8.74...@vtj/core@0.8.75) (2024-07-08)
+
+
+### Features
+
+* ✨ project dsl 删除版本号标识，减少冲突 ([69149c2](https://gitee.com/newgateway/vtj/commits/69149c21d50dc7673c880910ce960124550bf864))
+
+
+
+
+
 ## [0.8.74](https://gitee.com/newgateway/vtj/compare/@vtj/core@0.8.73...@vtj/core@0.8.74) (2024-07-06)
 
 **Note:** Version bump only for package @vtj/core
