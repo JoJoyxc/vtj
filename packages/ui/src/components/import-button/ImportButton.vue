@@ -1,5 +1,6 @@
 <template>
   <ElUpload
+    class="x-import-button"
     :multiple="props.multiple"
     :accept="props.accept"
     :before-upload="onBeforeUpload">
