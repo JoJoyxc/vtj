@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.76](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.75...dev-web@0.8.76) (2024-07-08)
+
+
+### Bug Fixes
+
+* 🐛 import-button 组件style ([39b0402](https://gitee.com/newgateway/vtj/commits/39b04021b47820cd0116b94e27b1c434743ab1f9))
+
+
+
+
+
 ## [0.8.75](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.74...dev-web@0.8.75) (2024-07-08)
 
 **Note:** Version bump only for package dev-web
