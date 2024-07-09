@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.78](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.77...dev-web@0.8.78) (2024-07-09)
+
+
+### Features
+
+* ✨ XGrider ([3984daa](https://gitee.com/newgateway/vtj/commits/3984daa58a583c052f1fe54e0df17d4ad05865b9))
+
+
+
+
+
 ## [0.8.77](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.76...dev-web@0.8.77) (2024-07-09)
 
 
