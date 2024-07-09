@@ -25,3 +25,4 @@ export * from './query-form';
 export * from './grid';
 export * from './picker';
 export * from './import-button';
+export * from './dialog-grid';
