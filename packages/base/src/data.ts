@@ -38,7 +38,7 @@ export function arrayToKv(
 ) {
   const result: Record<string, any> = {};
   for (const item of data) {
-    result[item[key]] = item[item[value]];
+    result[item[key]] = item[value];
   }
   return result;
 }
@@ -56,7 +56,7 @@ export function kvToArray(
   value: string = 'value'
 ) {
   const entries = Object.entries(data);
-  return entries.map((k, v) => {
+  return entries.map(([k, v]) => {
     return {
       [key]: k,
       [value]: v
