@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.80](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.79...@vtj/ui@0.8.80) (2024-07-10)
+
+
+### Features
+
+* ✨ useEditRender 增加转换api ([95a994a](https://gitee.com/newgateway/vtj/commits/95a994a9e5f5ee553ef88c5792a4ad40c347070d))
+
+
+
+
+
 ## [0.8.79](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.78...@vtj/ui@0.8.79) (2024-07-10)
 
 
