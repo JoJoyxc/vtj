@@ -212,3 +212,23 @@ export function avg<T = any>(list: T[] = [], field?: keyof T) {
   const total = sum(list, field);
   return list.length ? total / list.length : 0;
 }
+
+/**
+ * 字符串分隔转换成数组
+ * @param val
+ * @param flag
+ * @returns
+ */
+export function splitParser(val?: string, flag: string = ',') {
+  return val ? val.split(flag) : [];
+}
+
+/**
+ * 数组转换为字符串分隔
+ * @param val
+ * @param flag
+ * @returns
+ */
+export function splitStringify(val?: string[], flag: string = ',') {
+  return val ? val.join(flag) : '';
+}
