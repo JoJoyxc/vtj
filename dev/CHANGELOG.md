@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.81](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.80...dev-web@0.8.81) (2024-07-12)
+
+
+### Features
+
+* ✨ x-grid支持动态插槽 ([cfe0d33](https://gitee.com/newgateway/vtj/commits/cfe0d333457a235cc11fd501c8f02629add9f23a))
+
+
+
+
+
 ## [0.8.80](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.79...dev-web@0.8.80) (2024-07-10)
 
 **Note:** Version bump only for package dev-web

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.81](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.80...@vtj/ui@0.8.81) (2024-07-12)
+
+
+### Bug Fixes
+
+* 🐛 select render 支持multiple ([0403fe3](https://gitee.com/newgateway/vtj/commits/0403fe3d387ce246410581136c2bdd996c7a48fe))
+
+
+### Features
+
+* ✨ x-grid支持动态插槽 ([cfe0d33](https://gitee.com/newgateway/vtj/commits/cfe0d333457a235cc11fd501c8f02629add9f23a))
+
+
+
+
+
 ## [0.8.80](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.79...@vtj/ui@0.8.80) (2024-07-10)
 
 
