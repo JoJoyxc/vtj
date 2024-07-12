@@ -215,7 +215,7 @@ export class Designer {
     const refs = el.__context__?.__refs;
     if (!refs) return null;
     const instance = refs[id || model.id];
-    return instance?._?.exposeProxy || instance;
+    return instance?._?.exposed || instance;
   }
 
   private async onDrop(e: DragEvent) {
