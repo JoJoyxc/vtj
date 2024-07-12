@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.82](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.81...@vtj/designer@0.8.82) (2024-07-12)
+
+
+### Bug Fixes
+
+* 🐛 getVueInstance 异步组件失效 ([3774776](https://gitee.com/newgateway/vtj/commits/377477630d83a9e2b97aee95682e35bb6062ee4c))
+
+
+
+
+
 ## [0.8.81](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.80...@vtj/designer@0.8.81) (2024-07-12)
 
 **Note:** Version bump only for package @vtj/designer
