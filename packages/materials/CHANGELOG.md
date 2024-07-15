@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.84](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.83...@vtj/materials@0.8.84) (2024-07-15)
+
+
+### Features
+
+* ✨ 二维码组件 ([ca2c380](https://gitee.com/newgateway/vtj/commits/ca2c3801326eef7e1c31a4773756c1d7a1a0dc47))
+
+
+
+
+
 ## [0.8.83](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.82...@vtj/materials@0.8.83) (2024-07-12)
 
 **Note:** Version bump only for package @vtj/materials

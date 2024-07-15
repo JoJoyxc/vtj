@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.84](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.83...@vtj/ui@0.8.84) (2024-07-15)
+
+
+### Features
+
+* ✨ 二维码组件 ([aadca61](https://gitee.com/newgateway/vtj/commits/aadca61132d64ff68c634108b83132d5eee9706f))
+* ✨ 二维码组件 ([ca2c380](https://gitee.com/newgateway/vtj/commits/ca2c3801326eef7e1c31a4773756c1d7a1a0dc47))
+
+
+
+
+
 ## [0.8.83](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.82...@vtj/ui@0.8.83) (2024-07-12)
 
 **Note:** Version bump only for package @vtj/ui
