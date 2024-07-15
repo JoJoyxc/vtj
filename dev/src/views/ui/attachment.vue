@@ -1,10 +1,10 @@
 <template>
   <div>
     <XAttachment
-      size="default"
+      size="small"
       v-model="fileList"
       v-model:select-value="selected"
-      :limit="2"
+      :limit="10"
       @change="onChange"
       @click="onClick"
       :uploader="uploader"
@@ -13,8 +13,13 @@
       selectable
       :previewable="true"
       :removable="true"
-      :downloadable="false"
-      :multiple="false"></XAttachment>
+      :downloadable="true"
+      :multiple="true">
+      <template #tip>
+        <div>提示文字提示文字提示文字提示文字提示文字</div>
+      </template>
+    </XAttachment>
+    <hr />
     <XAttachment
       size="default"
       list-type="list"
@@ -41,13 +46,13 @@
   const fileList = ref<AttachmentFile[]>([
     {
       url: 'http://dummyimage.com/120x90',
-      name: 'food.jpeg',
-      type: 'img'
+      name: 'food.jpeg'
+      // type: 'img'
     },
     {
       url: 'http://dummyimage.com/200x300',
-      name: 'food.jpeg',
-      type: 'img'
+      name: 'http://dummyimage.com/200x300food.jpeg'
+      // type: 'img'
     },
     {
       url: 'http://dummyimage.com/300x300/FF0000',
@@ -55,9 +60,9 @@
       type: 'img'
     },
     {
-      url: 'http://dummyimage.com/300x300',
-      name: 'food.docx',
-      type: 'word'
+      url: 'http://dummyimage.com/300x300'
+      // name: 'food.docx'
+      // type: 'word'
     }
   ]);
 

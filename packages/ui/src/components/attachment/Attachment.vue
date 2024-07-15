@@ -9,7 +9,9 @@
       :on-change="onChange"
       :http-request="httpRequest">
       <div class="x-attachment__upload">
-        <ElIcon><Plus /></ElIcon>
+        <slot name="upload">
+          <ElIcon><Plus /></ElIcon>
+        </slot>
       </div>
       <template #file="{ file }">
         <div
@@ -23,6 +25,7 @@
               :class="{ 'is-icon': !isImage(file.response || file) }"
               :src="createFileThumbnail(file.response || file)" />
             <div
+              v-if="props.listType !== 'card' || file.name"
               class="el-upload-list__item-name"
               :title="(file.response || file).url">
               <span v-if="file.name" class="x-attachment__item-name">
@@ -36,19 +39,19 @@
           <div v-if="hasAction" class="el-upload-list__item-actions">
             <span
               v-if="props.previewable"
-              @click="openImagePreviewer(file.response || file)"
+              @click.stop="openImagePreviewer(file.response || file)"
               class="el-upload-list__item-preview">
               <el-icon><ZoomIn /></el-icon>
             </span>
             <span
               v-if="props.downloadable"
-              @click="download(file.response || file)"
+              @click.stop="download(file.response || file)"
               class="el-upload-list__item-delete">
               <el-icon><Download /></el-icon>
             </span>
             <span
               v-if="props.removable && !props.disabled"
-              @click="remove(file)"
+              @click.stop="remove(file)"
               class="el-upload-list__item-delete">
               <el-icon><Delete /></el-icon>
             </span>
