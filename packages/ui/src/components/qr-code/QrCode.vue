@@ -33,7 +33,7 @@
     };
   });
 
-  const draw = async (content: string | QrCodeContentLoader) => {
+  const draw: any = async (content: string | QrCodeContentLoader) => {
     const value = typeof content === 'function' ? await content() : content;
     if (!value) {
       console.warn('QrCode content is empty');
