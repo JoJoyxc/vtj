@@ -114,5 +114,18 @@ export const attachmentProps = {
   listType: {
     type: String as PropType<'card' | 'list'>,
     default: 'card'
+  },
+  /**
+   * 上传前守卫
+   */
+  beforeUpload: {
+    type: Function
+  },
+  /**
+   * 允许上传的文件大写最大值， 支持 K / M
+   */
+  limitSize: {
+    type: String,
+    default: '10M'
   }
 };

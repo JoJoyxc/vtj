@@ -1,6 +1,9 @@
 @use 'core' as *;
 
 @include b(attachment) {
+  .el-upload-list__item {
+    transition: none;
+  }
   @include when(disabled) {
     .el-upload {
       display: none;

@@ -133,7 +133,9 @@
   const createFileThumbnail = (file: any) => {
     const type = getFileType(file.response || file);
     if (type === 'img') {
-      return props.thumbnail ? props.thumbnail(file) : file.url;
+      return props.thumbnail
+        ? props.thumbnail(file.response || file)
+        : file.url;
     }
     return icons[type];
   };
@@ -145,7 +147,10 @@
       disabled: uploading.value || props.disabled,
       multiple: props.multiple,
       accept: props.accept,
-      listType: { card: 'picture-card', list: 'picture' }[props.listType] as any
+      listType: { card: 'picture-card', list: 'picture' }[
+        props.listType
+      ] as any,
+      beforeUpload: props.beforeUpload as any
     };
   });
 
@@ -177,21 +182,49 @@
     });
   };
 
+  const validateLimitSize = (file: File) => {
+    if (!props.limitSize) return true;
+    const limitSize = props.limitSize.toUpperCase();
+    const value = Number.parseFloat(limitSize) || 0;
+    if (value) {
+      if (limitSize.endsWith('M')) {
+        return file.size < value * 1024 ** 2;
+      } else {
+        return file.size < value * 1024;
+      }
+    }
+    return true;
+  };
+
+  const clean = (file: UploadUserFile) => {
+    const index = fileList.value.findIndex((n) => n.uid === file.uid);
+    if (index > -1) {
+      fileList.value.splice(index, 1);
+    }
+  };
+
   const httpRequest = async (options: UploadRequestOptions) => {
     const uploader = props.uploader || adapter.uploader;
     if (uploader) {
-      uploading.value = true;
       const file = options.file;
+      const valid = validateLimitSize(file);
+      if (!valid) {
+        clean(file as UploadUserFile);
+        ElMessage.error({
+          message: `上传文件体积不可超过${props.limitSize}`
+        });
+        return;
+      }
+      uploading.value = true;
       const res = await uploader(file).catch(() => null);
       if (!res) {
-        const index = fileList.value.findIndex((n) => n.uid === file.uid);
-        if (index > -1) {
-          fileList.value.splice(index, 1);
-          ElMessage.error({
-            message: `文件${file.name}上传失败。`
-          });
-        }
+        clean(file as UploadUserFile);
+        ElMessage.error({
+          message: `文件${file.name}上传失败。`
+        });
+        return;
       }
+
       uploading.value = false;
       return typeof res === 'string' ? { url: res } : res;
     }
@@ -239,10 +272,7 @@
     }
   };
 
-  const onChange = async (
-    _uploadFile: UploadFile,
-    uploadFiles: UploadFiles
-  ) => {
+  const onChange = async (uploadFile: UploadFile, uploadFiles: UploadFiles) => {
     const isAllSuccess = uploadFiles.every((n) => n.status === 'success');
     if (isAllSuccess && uploadFiles.length === fileList.value.length) {
       const files: AttachmentFile[] = fileList.value.map((n) => {
@@ -250,7 +280,9 @@
       });
       emit('change', files);
       emit('update:modelValue', files);
-      refreshKey.value = Symbol();
+      if (uploadFile?.response) {
+        refreshKey.value = Symbol();
+      }
     }
   };
 
@@ -271,7 +303,9 @@
     emit('change', files);
     emit('update:modelValue', files);
     unSelect(file);
-    refreshKey.value = Symbol();
+    if (!file?.raw) {
+      refreshKey.value = Symbol();
+    }
   };
 
   const download = (file: AttachmentFile) => {

@@ -37,11 +37,13 @@
       :multiple="true"></XAttachment>
     <!-- <XAttachment v-model="fileList"></XAttachment>
     <XAttachment size="large" v-model="fileList"></XAttachment> -->
+    <hr />
+    <XAttachment multiple></XAttachment>
   </div>
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { XAttachment, request, type AttachmentFile } from '@vtj/web';
+  import { XAttachment, request, type AttachmentFile, delay } from '@vtj/web';
 
   const fileList = ref<AttachmentFile[]>([
     {
@@ -70,27 +72,27 @@
     url: 'http://dummyimage.com/120x90'
   });
 
-  const uploader = (file: File) => {
-    // return new Promise(() => {});
-    return request({
-      url: '/mock-api/upload',
-      settings: {
-        type: 'data',
-        originResponse: false,
-        validSuccess: true,
-        validate: (r) => r.data.code === 0
-      },
-      data: {
-        file
-      }
-    }).then((res) => {
-      // console.log('request', res);
-      return {
-        name: file.name,
-        url: res as unknown as string
-      };
-    });
-  };
+  // const uploader = (file: File) => {
+  //   // return new Promise(() => {});
+  //   return request({
+  //     url: '/mock-api/upload',
+  //     settings: {
+  //       type: 'data',
+  //       originResponse: false,
+  //       validSuccess: true,
+  //       validate: (r) => r.data.code === 0
+  //     },
+  //     data: {
+  //       file
+  //     }
+  //   }).then((res) => {
+  //     // console.log('request', res);
+  //     return {
+  //       name: file.name,
+  //       url: res as unknown as string
+  //     };
+  //   });
+  // };
 
   const onChange = (files: any) => {
     console.log('onChange', files);
@@ -99,4 +101,11 @@
   const onClick = (file: any) => {
     console.log('click', file);
   };
+
+  const uploader: any = async () => {
+    await delay(2000);
+    return 'https://oss.newpearl.com/newpearl/image/2024-07-15/acd6ff3e0bf8fce74d795a870c9069e6.png';
+  };
+
+  const files = ref([]);
 </script>
