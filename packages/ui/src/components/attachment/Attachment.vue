@@ -16,36 +16,36 @@
       <template #file="{ file }">
         <div
           class="x-attachment__item"
-          :class="{ 'is-selected': isSelected(file.response || file) }"
+          :class="{ 'is-selected': isSelected(file) }"
           v-loading="file.status === 'ready' || file.status === 'uploading'"
-          @click="onClick(file.response || file)">
+          @click="onClick(file)">
           <div class="x-attachment__wrapper">
             <img
               class="el-upload-list__item-thumbnail"
-              :class="{ 'is-icon': !isImage(file.response || file) }"
-              :src="createFileThumbnail(file.response || file)" />
+              :class="{ 'is-icon': !isImage(file) }"
+              :src="createFileThumbnail(file)" />
             <div
               v-if="props.listType !== 'card' || file.name"
               class="el-upload-list__item-name"
-              :title="(file.response || file).url">
+              :title="file.url">
               <span v-if="file.name" class="x-attachment__item-name">
-                {{ (file.response || file).name }}</span
+                {{ file.name }}</span
               >
               <span class="el-upload-list__item-url">
-                {{ (file.response || file).url }}
+                {{ file.url }}
               </span>
             </div>
           </div>
           <div v-if="hasAction" class="el-upload-list__item-actions">
             <span
               v-if="props.previewable"
-              @click.stop="openImagePreviewer(file.response || file)"
+              @click.stop="openImagePreviewer(file)"
               class="el-upload-list__item-preview">
               <el-icon><ZoomIn /></el-icon>
             </span>
             <span
               v-if="props.downloadable"
-              @click.stop="download(file.response || file)"
+              @click.stop="download(file)"
               class="el-upload-list__item-delete">
               <el-icon><Download /></el-icon>
             </span>
@@ -156,8 +156,11 @@
 
   watch(
     () => props.modelValue,
-    (v) => {
-      fileList.value = cloneDeep(v || []) as UploadUserFile[];
+    async (v) => {
+      const copy = cloneDeep(v || []);
+      fileList.value = props.formatter
+        ? await props.formatter(copy)
+        : (copy as UploadUserFile[]);
     },
     {
       immediate: true
@@ -180,6 +183,10 @@
     ElMessage.warning({
       message: `您选择的文件数量超过了限制，只允许上传${props.limit}个文件。`
     });
+  };
+
+  const valueFormat = async (files: any[] = []) => {
+    return props.valueFormatter ? await props.valueFormatter(files) : files;
   };
 
   const validateLimitSize = (file: File) => {
@@ -240,9 +247,9 @@
       }
     } else {
       if (props.multiple) {
-        selections.value.push(toAttachmentFile(file.response || file));
+        selections.value.push(toAttachmentFile(file));
       } else {
-        selections.value = [toAttachmentFile(file.response || file)];
+        selections.value = [toAttachmentFile(file)];
       }
     }
     emit('select', selections.value);
@@ -265,7 +272,7 @@
 
   const onClick = (file: UploadUserFile) => {
     if (props.clickable) {
-      emit('click', toAttachmentFile(file.response || file));
+      emit('click', toAttachmentFile(file));
     }
     if (props.selectable) {
       toggleSelected(file);
@@ -276,10 +283,10 @@
     const isAllSuccess = uploadFiles.every((n) => n.status === 'success');
     if (isAllSuccess && uploadFiles.length === fileList.value.length) {
       const files: AttachmentFile[] = fileList.value.map((n) => {
-        return toAttachmentFile(n.response || n);
+        return toAttachmentFile(n);
       });
       emit('change', files);
-      emit('update:modelValue', files);
+      emit('update:modelValue', await valueFormat(files));
       if (uploadFile?.response) {
         refreshKey.value = Symbol();
       }
@@ -296,12 +303,12 @@
         return n.uid !== (file as UploadUserFile).uid || n.url !== file.url;
       })
       .map((n) => {
-        return toAttachmentFile(n.response || n);
+        return toAttachmentFile(n);
       });
     fileList.value = files;
     emit('remove', file);
     emit('change', files);
-    emit('update:modelValue', files);
+    emit('update:modelValue', await valueFormat(files));
     unSelect(file);
     if (!file?.raw) {
       refreshKey.value = Symbol();

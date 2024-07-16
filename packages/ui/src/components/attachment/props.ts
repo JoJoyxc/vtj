@@ -1,6 +1,6 @@
 import type { PropType } from 'vue';
-import { type BaseSize } from '../shared';
-
+import { type BaseSize, type MaybePromise } from '../shared';
+import type { UploadUserFile } from 'element-plus';
 import type {
   AttachmentFile,
   AttachmentUploader,
@@ -127,5 +127,17 @@ export const attachmentProps = {
   limitSize: {
     type: String,
     default: '10M'
+  },
+
+  formatter: {
+    type: Function as PropType<
+      (files: AttachmentFile[]) => MaybePromise<UploadUserFile[]>
+    >
+  },
+
+  valueFormatter: {
+    type: Function as PropType<
+      (files: UploadUserFile[]) => MaybePromise<AttachmentFile[]>
+    >
   }
 };

@@ -38,7 +38,12 @@
     <!-- <XAttachment v-model="fileList"></XAttachment>
     <XAttachment size="large" v-model="fileList"></XAttachment> -->
     <hr />
-    <XAttachment multiple></XAttachment>
+    <XAttachment
+      multiple
+      :formatter="formatter"
+      :valueFormatter="valueFormatter"
+      :uploader="uploader"
+      v-model="files"></XAttachment>
   </div>
 </template>
 <script lang="ts" setup>
@@ -103,8 +108,33 @@
   };
 
   const uploader: any = async () => {
-    await delay(2000);
+    await delay(1000);
     return 'https://oss.newpearl.com/newpearl/image/2024-07-15/acd6ff3e0bf8fce74d795a870c9069e6.png';
+  };
+
+  const formatter: any = async (files: any) => {
+    console.log('formatter', files);
+    for (const file of files) {
+      file.__url = file.url;
+      file.url = file.url + '?only=true';
+    }
+    return files;
+  };
+
+  const valueFormatter: any = async (files: any) => {
+    console.log('valueFormatter', files);
+
+    // for (const file of files) {
+    //   file.url = file.__url;
+    //   delete file.__url;
+    // }
+    // console.log('valueFormatter', files);
+    return files.map((n: any) => {
+      return {
+        url: n.url,
+        name: n.name
+      };
+    });
   };
 
   const files = ref([]);
