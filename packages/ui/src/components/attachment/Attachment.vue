@@ -131,10 +131,10 @@
   );
 
   const createFileThumbnail = (file: any) => {
-    const type = getFileType(file.response || file);
+    const type = getFileType(file);
     if (type === 'img') {
-      return props.thumbnail
-        ? props.thumbnail(file.response || file)
+      return props.thumbnail && !file.url.startsWith('blob:')
+        ? props.thumbnail(file)
         : file.url;
     }
     return icons[type];
