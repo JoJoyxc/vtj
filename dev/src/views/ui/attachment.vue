@@ -4,7 +4,7 @@
       size="small"
       v-model="fileList"
       v-model:select-value="selected"
-      :limit="10"
+      :limit="5"
       @change="onChange"
       @click="onClick"
       :uploader="uploader"
@@ -109,7 +109,8 @@
 
   const uploader: any = async () => {
     await delay(1000);
-    return 'https://oss.newpearl.com/newpearl/image/2024-07-15/acd6ff3e0bf8fce74d795a870c9069e6.png';
+    return null;
+    // return 'https://oss.newpearl.com/newpearl/image/2024-07-15/acd6ff3e0bf8fce74d795a870c9069e6.png';
   };
 
   const formatter: any = async (files: any) => {

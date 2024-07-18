@@ -139,5 +139,13 @@ export const attachmentProps = {
     type: Function as PropType<
       (files: UploadUserFile[]) => MaybePromise<AttachmentFile[]>
     >
+  },
+
+  previewer: {
+    type: Function as PropType<(file: AttachmentFile) => void>
+  },
+
+  downloader: {
+    type: Function as PropType<(file: AttachmentFile) => void>
   }
 };

@@ -21,7 +21,7 @@ export async function downloadRemoteFile(
   filename: string = '',
   type?: string
 ) {
-  return fetch(url).then(async (res) => {
+  return fetch(url, { credentials: 'include' }).then(async (res) => {
     const data = await res.blob();
     downloadBlob(data, filename, type);
     return data;

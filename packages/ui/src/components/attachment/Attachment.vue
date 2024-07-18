@@ -113,7 +113,8 @@
       [`x-attachment--${props.listType}`]: !!props.listType,
       ['is-disabled']: !!props.disabled,
       ['is-pointer']: !!props.clickable || !!props.selectable,
-      ['is-not-add']: !props.addable || props.limit === fileList.value.length,
+      ['is-not-add']:
+        !props.addable || (props.limit && props.limit <= fileList.value.length),
       [`is-${props.size}`]: !!props.size
     };
   });
@@ -224,6 +225,7 @@
       }
       uploading.value = true;
       const res = await uploader(file).catch(() => null);
+      uploading.value = false;
       if (!res) {
         clean(file as UploadUserFile);
         ElMessage.error({
@@ -231,8 +233,6 @@
         });
         return;
       }
-
-      uploading.value = false;
       return typeof res === 'string' ? { url: res } : res;
     }
   };
@@ -316,9 +316,13 @@
   };
 
   const download = (file: AttachmentFile) => {
-    downloadRemoteFile(file.url, file.name).catch(() => {
-      downloadUrl(file.url, file.name);
-    });
+    if (props.downloader) {
+      props.downloader(file);
+    } else {
+      downloadRemoteFile(file.url, file.name).catch(() => {
+        downloadUrl(file.url, file.name);
+      });
+    }
     emit('download', file);
   };
 
@@ -329,7 +333,11 @@
       );
       imagePreviewerVisible.value = true;
     } else {
-      downloadUrl(file.url, file.name);
+      if (props.previewer) {
+        props.previewer(file);
+      } else {
+        downloadUrl(file.url, file.name);
+      }
     }
 
     emit('preview', file);
