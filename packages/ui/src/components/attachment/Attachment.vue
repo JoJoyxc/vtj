@@ -2,12 +2,11 @@
   <div class="x-attachment" :class="classes">
     <ElUpload
       ref="elUploadRef"
-      :key="refreshKey"
       v-model:file-list="fileList"
-      v-bind="uploadProps"
       :on-exceed="onExceed"
       :on-change="onChange"
-      :http-request="httpRequest">
+      :http-request="httpRequest"
+      v-bind="uploadProps">
       <div class="x-attachment__upload">
         <slot name="upload">
           <ElIcon><Plus /></ElIcon>
@@ -17,7 +16,7 @@
         <div
           class="x-attachment__item"
           :class="{ 'is-selected': isSelected(file) }"
-          v-loading="file.status === 'ready' || file.status === 'uploading'"
+          v-loading="loadings[file.uid]"
           @click="onClick(file)">
           <div class="x-attachment__wrapper">
             <img
@@ -73,7 +72,7 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { computed, ref, watch, type Ref } from 'vue';
+  import { computed, ref, watch, useAttrs, type Ref } from 'vue';
   import {
     ElUpload,
     ElIcon,
@@ -95,13 +94,15 @@
   import { icons } from './icons';
 
   defineOptions({
-    name: 'XAttachment'
+    name: 'XAttachment',
+    inheritAttrs: false
   });
 
   const adapter = useAdapter();
   const props = defineProps(attachmentProps);
   const emit = defineEmits<AttachmentEmits>();
-  const uploading = ref(false);
+  const attrs = useAttrs();
+  const loadings: Record<string, boolean> = {};
   const elUploadRef = ref();
   const refreshKey = ref(Symbol());
   const imagePreviewerVisible = ref(false);
@@ -143,15 +144,15 @@
 
   const uploadProps = computed(() => {
     return {
-      autoUpload: true,
       limit: props.limit,
-      disabled: uploading.value || props.disabled,
+      disabled: props.disabled,
       multiple: props.multiple,
       accept: props.accept,
       listType: { card: 'picture-card', list: 'picture' }[
         props.listType
       ] as any,
-      beforeUpload: props.beforeUpload as any
+      beforeUpload: props.beforeUpload as any,
+      ...attrs
     };
   });
 
@@ -223,9 +224,9 @@
         });
         return;
       }
-      uploading.value = true;
+      loadings[file.uid] = true;
       const res = await uploader(file).catch(() => null);
-      uploading.value = false;
+      loadings[file.uid] = false;
       if (!res) {
         clean(file as UploadUserFile);
         ElMessage.error({
@@ -336,7 +337,7 @@
       if (props.previewer) {
         props.previewer(file);
       } else {
-        downloadUrl(file.url, file.name);
+        window.open(file.url);
       }
     }
 
@@ -347,11 +348,16 @@
     imagePreviewerVisible.value = false;
   };
 
+  const upload = () => {
+    elUploadRef.value?.submit();
+  };
+
   defineExpose({
     elUploadRef,
     remove,
     download,
     selections,
-    fileList
+    fileList,
+    upload
   });
 </script>

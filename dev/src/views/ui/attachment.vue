@@ -21,7 +21,7 @@
     </XAttachment>
     <hr />
     <XAttachment
-      size="default"
+      size="large"
       list-type="list"
       v-model="fileList"
       v-model:select-value="selected"
@@ -43,7 +43,8 @@
       :formatter="formatter"
       :valueFormatter="valueFormatter"
       :uploader="uploader"
-      v-model="files"></XAttachment>
+      v-model="files"
+      :auto-upload="true"></XAttachment>
   </div>
 </template>
 <script lang="ts" setup>
@@ -109,8 +110,8 @@
 
   const uploader: any = async () => {
     await delay(1000);
-    return null;
-    // return 'https://oss.newpearl.com/newpearl/image/2024-07-15/acd6ff3e0bf8fce74d795a870c9069e6.png';
+    // return null;
+    return 'https://oss.newpearl.com/newpearl/image/2024-07-15/acd6ff3e0bf8fce74d795a870c9069e6.png';
   };
 
   const formatter: any = async (files: any) => {
