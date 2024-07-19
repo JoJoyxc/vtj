@@ -32,3 +32,4 @@ export function downloadJson(data: any, filename: string = '') {
   const jsonString = JSON.stringify(data);
   downloadBlob(jsonString, filename, 'application/json');
 }
+
