@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.91](https://gitee.com/newgateway/vtj/compare/@vtj/utils@0.8.90...@vtj/utils@0.8.91) (2024-07-19)
+
+
+### Features
+
+* ✨ 增加文件转换方法 ([6192b38](https://gitee.com/newgateway/vtj/commits/6192b38bbbc6f7926bb93bde15efd96eb17547eb))
+
+
+
+
+
 ## [0.8.90](https://gitee.com/newgateway/vtj/compare/@vtj/utils@0.8.89...@vtj/utils@0.8.90) (2024-07-18)
 
 **Note:** Version bump only for package @vtj/utils
