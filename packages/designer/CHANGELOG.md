@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.94](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.93...@vtj/designer@0.8.94) (2024-07-20)
+
+
+### Bug Fixes
+
+* 🐛 绑定器支持最大化 ([7c852f7](https://gitee.com/newgateway/vtj/commits/7c852f7514629d247ea498d0ac3170871dd6b551))
+
+
+
+
+
 ## [0.8.93](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.92...@vtj/designer@0.8.93) (2024-07-20)
 
 **Note:** Version bump only for package @vtj/designer
