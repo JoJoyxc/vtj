@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.93](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.92...@vtj/ui@0.8.93) (2024-07-20)
+
+
+### Bug Fixes
+
+* 🐛 表格select渲染器赋值问题 ([0804b87](https://gitee.com/newgateway/vtj/commits/0804b874b13bf23d27768202b230478a47346942))
+
+
+
+
+
 ## [0.8.92](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.91...@vtj/ui@0.8.92) (2024-07-19)
 
 **Note:** Version bump only for package @vtj/ui
