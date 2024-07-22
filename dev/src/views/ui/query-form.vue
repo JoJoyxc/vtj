@@ -10,7 +10,7 @@
 </template>
 <script lang="ts" setup>
   import { reactive, ref } from 'vue';
-  import { XQueryForm, XAction, XField } from '@vtj/web';
+  import { XQueryForm, XAction, XField, type QueryFormItems } from '@vtj/web';
 
   const formRef = ref();
 
@@ -18,7 +18,7 @@
     F1: 'abc'
   });
 
-  const items = [
+  const items: QueryFormItems = [
     {
       label: '姓名',
       name: 'name',

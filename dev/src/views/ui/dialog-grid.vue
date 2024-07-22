@@ -19,11 +19,11 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { XDialogGrid, XAction } from '@vtj/ui';
+  import { XDialogGrid, XAction, type GridColumns } from '@vtj/ui';
 
   const visible = ref(false);
 
-  const columns = [
+  const columns: GridColumns = [
     {
       type: 'checkbox',
       title: '',
@@ -72,12 +72,6 @@
 
   const show = () => {
     visible.value = true;
-  };
-
-  const onSubmit = (data: any) => {
-    console.log('submit', data);
-    model.value = data;
-    visible.value = false;
   };
 
   const submitMethod = async (data: any) => {
