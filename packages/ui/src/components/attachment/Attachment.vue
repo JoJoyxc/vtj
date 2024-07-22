@@ -1,75 +1,75 @@
 <template>
-  <div class="x-attachment" :class="classes">
-    <ElUpload
-      ref="elUploadRef"
-      v-model:file-list="fileList"
-      :on-exceed="onExceed"
-      :on-change="onChange"
-      :http-request="httpRequest"
-      v-bind="uploadProps">
-      <div class="x-attachment__upload">
-        <slot name="upload">
-          <ElIcon><Plus /></ElIcon>
-        </slot>
-      </div>
-      <template #file="{ file }">
-        <div
-          class="x-attachment__item"
-          :class="{ 'is-selected': isSelected(file) }"
-          v-loading="loadings[file.uid]"
-          @click="onClick(file)">
-          <div class="x-attachment__wrapper">
-            <img
-              class="el-upload-list__item-thumbnail"
-              :class="{ 'is-icon': !isImage(file) }"
-              :src="createFileThumbnail(file)" />
-            <div
-              v-if="props.listType !== 'card' || file.name"
-              class="el-upload-list__item-name"
-              :title="file.url">
-              <span v-if="file.name" class="x-attachment__item-name">
-                {{ file.name }}</span
-              >
-              <span class="el-upload-list__item-url">
-                {{ file.url }}
-              </span>
-            </div>
-          </div>
-          <div v-if="hasAction" class="el-upload-list__item-actions">
-            <span
-              v-if="props.previewable"
-              @click.stop="openImagePreviewer(file)"
-              class="el-upload-list__item-preview">
-              <el-icon><ZoomIn /></el-icon>
-            </span>
-            <span
-              v-if="props.downloadable"
-              @click.stop="download(file)"
-              class="el-upload-list__item-delete">
-              <el-icon><Download /></el-icon>
-            </span>
-            <span
-              v-if="props.removable && !props.disabled"
-              @click.stop="remove(file)"
-              class="el-upload-list__item-delete">
-              <el-icon><Delete /></el-icon>
+  <ElUpload
+    ref="elUploadRef"
+    class="x-attachment"
+    :class="classes"
+    v-model:file-list="fileList"
+    :on-exceed="onExceed"
+    :on-change="onChange"
+    :http-request="httpRequest"
+    v-bind="uploadProps">
+    <div class="x-attachment__upload">
+      <slot name="upload">
+        <ElIcon><Plus /></ElIcon>
+      </slot>
+    </div>
+    <template #file="{ file }">
+      <div
+        class="x-attachment__item"
+        :class="{ 'is-selected': isSelected(file) }"
+        v-loading="loadings[file.uid]"
+        @click="onClick(file)">
+        <div class="x-attachment__wrapper">
+          <img
+            class="el-upload-list__item-thumbnail"
+            :class="{ 'is-icon': !isImage(file) }"
+            :src="createFileThumbnail(file)" />
+          <div
+            v-if="props.listType !== 'card' || file.name"
+            class="el-upload-list__item-name"
+            :title="file.url">
+            <span v-if="file.name" class="x-attachment__item-name">
+              {{ file.name }}</span
+            >
+            <span class="el-upload-list__item-url">
+              {{ file.url }}
             </span>
           </div>
         </div>
-      </template>
+        <div v-if="hasAction" class="el-upload-list__item-actions">
+          <span
+            v-if="props.previewable"
+            @click.stop="openImagePreviewer(file)"
+            class="el-upload-list__item-preview">
+            <el-icon><ZoomIn /></el-icon>
+          </span>
+          <span
+            v-if="props.downloadable"
+            @click.stop="download(file)"
+            class="el-upload-list__item-delete">
+            <el-icon><Download /></el-icon>
+          </span>
+          <span
+            v-if="props.removable && !props.disabled"
+            @click.stop="remove(file)"
+            class="el-upload-list__item-delete">
+            <el-icon><Delete /></el-icon>
+          </span>
+        </div>
+      </div>
+    </template>
 
-      <template #tip>
-        <slot name="tip"></slot>
-      </template>
-    </ElUpload>
-    <ElImageViewer
-      v-if="props.previewable && imagePreviewerVisible"
-      hide-on-click-modal
-      teleported
-      :url-list="imageList"
-      :initial-index="imageInitialIndex"
-      @close="onImageViewerClose"></ElImageViewer>
-  </div>
+    <template #tip>
+      <slot name="tip"></slot>
+    </template>
+  </ElUpload>
+  <ElImageViewer
+    v-if="props.previewable && imagePreviewerVisible"
+    hide-on-click-modal
+    teleported
+    :url-list="imageList"
+    :initial-index="imageInitialIndex"
+    @close="onImageViewerClose"></ElImageViewer>
 </template>
 <script lang="ts" setup>
   import { computed, ref, watch, useAttrs, type Ref } from 'vue';
@@ -353,6 +353,7 @@
   };
 
   defineExpose({
+    $vtjEl: elUploadRef,
     elUploadRef,
     remove,
     download,

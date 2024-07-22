@@ -49,7 +49,7 @@
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
-  import { XAttachment, request, type AttachmentFile, delay } from '@vtj/web';
+  import { XAttachment, type AttachmentFile, delay } from '@vtj/web';
 
   const fileList = ref<AttachmentFile[]>([
     {

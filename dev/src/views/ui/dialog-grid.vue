@@ -10,7 +10,11 @@
       :rules="rules"
       :submit-method="submitMethod"
       width="600px"
-      height="500px"></XDialogGrid>
+      height="500px">
+      <template #valueCell>
+        <span>valueCell</span>
+      </template>
+    </XDialogGrid>
   </div>
 </template>
 <script lang="ts" setup>
@@ -42,6 +46,9 @@
       title: '值',
       editRender: {
         name: 'XInput'
+      },
+      slots: {
+        default: 'valueCell'
       }
     }
   ];
