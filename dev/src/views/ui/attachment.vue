@@ -44,7 +44,8 @@
       :valueFormatter="valueFormatter"
       :uploader="uploader"
       v-model="files"
-      :auto-upload="true"></XAttachment>
+      :auto-upload="true"
+      style="border: 1px red solid; display: inline-block"></XAttachment>
   </div>
 </template>
 <script lang="ts" setup>
