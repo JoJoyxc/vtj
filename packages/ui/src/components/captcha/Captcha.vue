@@ -28,6 +28,10 @@
   import { SuccessFilled, CircleCloseFilled } from '@vtj/icons';
   import type { CaptchaProps } from './types';
 
+  defineOptions({
+    name: 'XCaptcha'
+  });
+
   const props = withDefaults(defineProps<CaptchaProps>(), {
     maxlength: 4,
     placeholder: '请输入图形验证码'

@@ -19,7 +19,7 @@ export * from './test';
 export * from './input-unit';
 export * from './captcha';
 export * from './qr-code';
-export * from './sms-code-input';
+export * from './verify';
 export * from './attachment';
 export * from './query-form';
 export * from './grid';
