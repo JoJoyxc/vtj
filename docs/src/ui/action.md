@@ -75,3 +75,12 @@ demo-preview=../examples/ui/action/action-6.vue
 | background | icon 背景设置，当 mode为 icon 时有效     | string        ```always, hover, none``` | always  |
 | circle     | icon 背景样式圆形，当 mode为 icon 时有效 | string                                  | -       |
 | draggable  | 是否可拖拽                               | boolean                                 | -       |
+
+
+
+### 事件
+
+| 名称    | 说明               | 参数 |
+| ------- | ------------------ | ---- |
+| click   | 点击事件           | -    |
+| command | menu菜单项点击事件 | -    |
