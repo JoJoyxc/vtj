@@ -4,7 +4,8 @@ export default [
     base: '/ui',
     items: [
       { text: 'XIcon 图标', link: '/icon' },
-      { text: 'XContainer 组件', link: '/container' }
+      { text: 'XContainer 组件', link: '/container' },
+      { text: 'XAction 组件', link: '/action' }
     ]
   },
   {
