@@ -2,7 +2,10 @@ export default [
   {
     text: '基础元件',
     base: '/ui',
-    items: [{ text: 'XIcon 图标', link: '/icon' }]
+    items: [
+      { text: 'XIcon 图标', link: '/icon' },
+      { text: 'XContainer 组件', link: '/container' }
+    ]
   },
   {
     text: '布局排版',
