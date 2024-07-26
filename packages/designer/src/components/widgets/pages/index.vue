@@ -4,6 +4,8 @@
     title="页面管理"
     plus
     subtitle="(共 0 条)"
+    :menus="menus"
+    @command="onPlusCommand"
     @plus="onPlus">
     <ElTree
       :data="pages"
@@ -38,7 +40,6 @@
           action-in-more></Item>
       </template>
     </ElTree>
-
     <PageForm
       v-if="visible"
       v-model="visible"
@@ -49,7 +50,7 @@
 <script lang="ts" setup>
   import { ref, computed, toValue } from 'vue';
   import { ElTree } from 'element-plus';
-  import { icons } from '@vtj/icons';
+  import { icons, VtjIconTemplate, VtjIconFile } from '@vtj/icons';
   import { type PageFile } from '@vtj/core';
   import { cloneDeep } from '@vtj/utils';
   import PageForm from './form.vue';
@@ -68,10 +69,32 @@
   const item = ref();
   const parentId = ref();
 
+  const menus = [
+    {
+      label: '新建空白页面',
+      command: 'empty',
+      icon: VtjIconFile
+    },
+    {
+      label: '选择模板新建',
+      command: 'template',
+      icon: VtjIconTemplate
+    }
+  ];
+
   const onPlus = () => {
     parentId.value = undefined;
     item.value = undefined;
     visible.value = true;
+  };
+
+  const onPlusCommand = (command: string) => {
+    if (command === 'empty') {
+      onPlus();
+    }
+    if (command === 'template') {
+      alert('模板');
+    }
   };
 
   const onAction = async (action: any) => {
@@ -118,6 +141,10 @@
       engine.project.value?.deactivate();
     } else {
       engine.project.value?.active(file);
+      const region = engine.skeleton?.getRegion('Workspace');
+      if (region) {
+        region.regionRef.openTab('Designer');
+      }
     }
   };
 

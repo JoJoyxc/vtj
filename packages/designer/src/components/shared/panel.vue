@@ -1,10 +1,5 @@
 <template>
-  <XPanel
-    class="v-panel"
-    :class="classes"
-    :border="false"
-    :header="header"
-    fit>
+  <XPanel class="v-panel" :class="classes" :border="false" :header="header" fit>
     <template #actions>
       <XAction
         v-if="props.plus"
@@ -13,7 +8,10 @@
         :icon="VtjIconPlus"
         background="hover"
         title="新增"
-        @click="onClickPlus"></XAction>
+        :menus="props.menus"
+        :dropdown="{ placement: 'bottom-end' }"
+        @click="onClickPlus"
+        @command="onPlusCommand"></XAction>
       <XAction
         v-if="props.edit"
         :size="($attrs as any).size"
@@ -67,7 +65,7 @@
 </template>
 <script lang="ts" setup>
   import { ref, computed } from 'vue';
-  import { XPanel, XAction } from '@vtj/ui';
+  import { XPanel, XAction, type ActionMenuItem } from '@vtj/ui';
   import {
     VtjIconPlus,
     Back,
@@ -88,12 +86,21 @@
     save?: boolean;
     header?: boolean;
     collapsable?: boolean;
+    menus?: ActionMenuItem[];
   }
 
   const props = withDefaults(defineProps<Props>(), {
-    header: true
+    header: true,
+    menus: () => []
   });
-  const emit = defineEmits(['plus', 'back', 'remove', 'save', 'edit']);
+  const emit = defineEmits([
+    'plus',
+    'back',
+    'remove',
+    'save',
+    'edit',
+    'command'
+  ]);
 
   const collapsed = ref(false);
 
@@ -121,6 +128,10 @@
 
   const onClickSave = () => {
     emit('save');
+  };
+
+  const onPlusCommand = (item: ActionMenuItem) => {
+    emit('command', item.command);
   };
 
   const header = computed(() => {

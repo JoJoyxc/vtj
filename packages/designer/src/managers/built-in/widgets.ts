@@ -177,6 +177,21 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
     ]
   },
   {
+    name: 'Market',
+    region: 'Workspace',
+    component: widgets.Market,
+    type: 'tab',
+    closable: true,
+    label: '插件市场',
+    actions: [
+      {
+        icon: markRaw(HomeFilled),
+        type: 'info',
+        name: 'home'
+      }
+    ]
+  },
+  {
     name: 'Scripts',
     region: 'Settings',
     component: widgets.Scripts,

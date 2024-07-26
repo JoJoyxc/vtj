@@ -191,6 +191,10 @@
   const onClick = async (file: BlockFile) => {
     if (!file.fromType || file.fromType === 'Schema') {
       engine.project.value?.active(file);
+      const region = engine.skeleton?.getRegion('Workspace');
+      if (region) {
+        region.regionRef.openTab('Designer');
+      }
     }
   };
 
