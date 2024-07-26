@@ -22,28 +22,41 @@
         <span
           v-if="subtitle"
           class="v-item__subtitle"
-          :class="props.subtitleCls"
-          >{{ subtitle }}</span
-        >
+          :class="props.subtitleCls">
+          {{ subtitle }}
+        </span>
       </slot>
     </XContainer>
-    <XContainer class="v-item__actions" @click.stop>
+    <XContainer class="v-item__wrapper" @click.stop>
+      <XContainer class="v-item__actions" @click.stop>
+        <XAction
+          v-for="action in currentActions"
+          :name="action.name"
+          :title="action.label"
+          mode="icon"
+          size="small"
+          background="none"
+          type="info"
+          :icon="action.icon"
+          @click="onAction(action.name)"></XAction>
+        <ElSwitch
+          v-if="props.switch"
+          v-model="switchValue"
+          class="v-item__switch"
+          size="small"></ElSwitch>
+        <slot name="status"></slot>
+      </XContainer>
       <XAction
-        v-for="action in currentActions"
-        :name="action.name"
-        :title="action.label"
+        v-if="props.actionInMore"
+        :icon="MoreFilled"
         mode="icon"
         size="small"
         background="none"
         type="info"
-        :icon="action.icon"
-        @click="onAction(action.name)"></XAction>
-      <ElSwitch
-        v-if="props.switch"
-        v-model="switchValue"
-        class="v-item__switch"
-        size="small"></ElSwitch>
-      <slot name="status"></slot>
+        :menus="moreMenus"
+        :dropdown="{ placement: 'bottom-end' }"
+        @command="onMoreCommand">
+      </XAction>
     </XContainer>
   </XContainer>
 </template>
@@ -59,9 +72,11 @@
     VtjIconUnlock,
     VtjIconInvisible,
     VtjIconVisible,
-    VtjIconHome
+    VtjIconHome,
+    MoreFilled
   } from '@vtj/icons';
   import { ElSwitch, ElMessageBox, ElTag } from 'element-plus';
+
   const builtInActions = {
     add: {
       label: '创建',
@@ -117,6 +132,7 @@
     active?: boolean;
     hover?: boolean;
     small?: boolean;
+    actionInMore?: boolean;
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -127,10 +143,22 @@
   const switchValue = ref(!!props.modelValue);
 
   const currentActions = computed(() => {
+    if (props.actionInMore) return [];
     return props.actions.map((name) => {
       const item = builtInActions[name as keyof typeof builtInActions];
       return {
         name,
+        ...item
+      };
+    });
+  });
+
+  const moreMenus = computed(() => {
+    if (!props.actionInMore) return [];
+    return props.actions.map((name) => {
+      const item = builtInActions[name as keyof typeof builtInActions];
+      return {
+        command: name,
         ...item
       };
     });
@@ -167,6 +195,10 @@
         modelValue: props.modelValue
       });
     }
+  };
+
+  const onMoreCommand = (item: any) => {
+    onAction(item.command);
   };
 
   watch(switchValue, (v) => {

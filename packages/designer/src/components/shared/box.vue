@@ -14,8 +14,15 @@
       class="v-box__footer"
       justify="flex-end"
       align="center">
-      <XIcon :icon="VtjIconEdit" @click="onEdit"></XIcon>
-      <XIcon :icon="VtjIconRemove" @click="onRemove"></XIcon>
+      <XAction
+        :icon="MoreFilled"
+        mode="icon"
+        size="small"
+        background="none"
+        type="info"
+        :dropdown="{ placement: 'bottom-end' }"
+        :menus="menus"
+        @command="onCommand"></XAction>
     </XContainer>
     <span
       v-if="props.tag"
@@ -27,8 +34,8 @@
 </template>
 <script lang="ts" setup>
   import { computed } from 'vue';
-  import { XContainer, XIcon } from '@vtj/ui';
-  import { VtjIconEdit, VtjIconRemove } from '@vtj/icons';
+  import { XContainer, XAction } from '@vtj/ui';
+  import { VtjIconEdit, VtjIconRemove, MoreFilled } from '@vtj/icons';
   import { ElMessageBox } from 'element-plus';
 
   export interface Props {
@@ -43,6 +50,20 @@
 
   const props = defineProps<Props>();
   const emits = defineEmits(['edit', 'remove', 'dragstart', 'dragend']);
+
+  const menus = [
+    {
+      label: '编辑',
+      command: 'edit',
+      icon: VtjIconEdit
+    },
+    {
+      label: '删除',
+      command: 'remove',
+      icon: VtjIconRemove
+    }
+  ];
+
   const onEdit = () => {
     emits('edit');
   };
@@ -53,6 +74,15 @@
     }).catch(() => false);
     if (ret) {
       emits('remove');
+    }
+  };
+
+  const onCommand = (item: any) => {
+    if (item.command === 'edit') {
+      onEdit();
+    }
+    if (item.command === 'remove') {
+      onRemove();
     }
   };
 

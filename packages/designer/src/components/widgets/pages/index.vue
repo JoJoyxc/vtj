@@ -34,7 +34,8 @@
           grow
           small
           background
-          hover></Item>
+          hover
+          action-in-more></Item>
       </template>
     </ElTree>
 
