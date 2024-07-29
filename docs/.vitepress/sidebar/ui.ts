@@ -14,7 +14,10 @@ export default [
   {
     text: '布局排版',
     base: '/ui',
-    items: [{ text: 'XPanel 图标', link: '/panel' }]
+    items: [
+      { text: 'XPanel 面板', link: '/panel' },
+      { text: 'XDialog 弹窗', link: '/dialog' }
+    ]
   },
   {
     text: '表单相关',

@@ -43,8 +43,6 @@
 
   import { VtjIconPlus, VtjIconSetting } from '@vtj/icons';
 
-  import { ElTabs, ElTabPane } from 'element-plus';
-
   const header = {
     content: '面板主要标题',
     subtitle: '副标题内容',
