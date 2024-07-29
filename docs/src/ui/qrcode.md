@@ -57,3 +57,9 @@ demo-preview=../examples/ui/qrcode/qrcode-2.vue
 
 
 
+
+### 暴露
+
+| 名称    | 说明 | 类型 |
+| ------- | ---- | ---- |
+| refresh | 刷新 | -    |
