@@ -42,7 +42,7 @@ demo-preview=../examples/ui/dialog/dialog-2.vue
 | submit      | 显示确认按钮                       | `boolean\| string`            | -         |
 | cancel      | 显示取消按钮                       | `boolean\| string`            | -         |
 | bodyPadding | 显示内容区域的内边距               | `boolean`                     | `true`    |
-| primary     | -                                  | `boolean`                     | -         |
+| primary     | 标题背景颜色                       | `boolean`                     | -         |
 
 ### 事件
 

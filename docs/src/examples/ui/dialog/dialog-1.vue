@@ -2,6 +2,7 @@
   <div>
     <ElButton type="primary" @click="open1">open 弹窗1</ElButton>
     <ElButton type="primary" @click="open2">open 弹窗2</ElButton>
+    <ElButton type="primary" @click="open3">open 弹窗3</ElButton>
     <XDialog
       ref="dialog"
       key="dialog1"
@@ -37,7 +38,22 @@
       @modeChange="onModeChange"
       resizable
       @open="onOpen">
-      <div style="text-align: right">可放大缩小、拉伸</div>
+      <div style="text-align: right">可放大缩小</div>
+    </XDialog>
+
+    <XDialog
+      title="弹窗标题"
+      v-model="visible3"
+      :icon="VtjIconBug"
+      modal
+      :submit="false"
+      :cancel="false"
+      resizable
+      @resizeStart="onResizeStart"
+      @resizing="onResizing"
+      @resizeEnd="onResizeEnd"
+      @open="onOpen">
+      <div style="text-align: right">可拉伸</div>
     </XDialog>
   </div>
 </template>
@@ -50,11 +66,15 @@
 
   const visible1 = ref(false);
   const visible2 = ref(false);
+  const visible3 = ref(false);
   const open1 = () => {
     visible1.value = true;
   };
   const open2 = () => {
     visible2.value = true;
+  };
+  const open3 = () => {
+    visible3.value = true;
   };
 
   const onOpen = () => {
@@ -74,6 +94,18 @@
 
   const onModeChange = (mode) => {
     console.log('onModeChange', mode);
+  };
+
+  const onResizeStart = (e) => {
+    console.log('onResizeStart', e);
+  };
+
+  const onResizing = (e) => {
+    console.log('onResizing', e);
+  };
+
+  const onResizeEnd = (e) => {
+    console.log('onResizeEnd', e);
   };
 </script>
 
