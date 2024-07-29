@@ -6,7 +6,8 @@ export default [
       { text: 'XIcon 图标', link: '/icon' },
       { text: 'XContainer 组件', link: '/container' },
       { text: 'XAction 组件', link: '/action' },
-      { text: 'XActionBar 组件', link: '/actionBar' }
+      { text: 'XActionBar 组件', link: '/actionBar' },
+      { text: 'XQrCode 组件', link: '/qrcode' }
     ]
   },
   {
