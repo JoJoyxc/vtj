@@ -16,7 +16,8 @@ export default [
     base: '/ui',
     items: [
       { text: 'XPanel 面板', link: '/panel' },
-      { text: 'XDialog 弹窗', link: '/dialog' }
+      { text: 'XDialog 弹窗', link: '/dialog' },
+      { text: 'XHeader 标题头', link: '/header' }
     ]
   },
   {
