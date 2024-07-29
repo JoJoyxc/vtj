@@ -7,8 +7,8 @@
 </template>
 
 <script setup lang="ts">
-  import { XActionBar, type ActionBarItems } from '@vtj/web';
-  import { VtjIconBug, VtjIconApi, VtjIconPlus } from '@vtj/web';
+  import { XActionBar, type ActionBarItems } from '@vtj/ui';
+  import { VtjIconBug, VtjIconApi, VtjIconPlus } from '@vtj/icons';
 
   const menus = [
     {

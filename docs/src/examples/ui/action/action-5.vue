@@ -13,8 +13,8 @@
 </template>
 
 <script setup lang="ts">
-  import { XAction } from '@vtj/web';
-  import { Rank } from '@vtj/web';
+  import { XAction } from '@vtj/ui';
+  import { Rank } from '@vtj/icons';
 
   const onDragStart = (e: any) => {
     console.log('onDragStart', e);

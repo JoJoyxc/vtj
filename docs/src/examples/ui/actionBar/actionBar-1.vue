@@ -8,8 +8,8 @@
   </div>
 </template>
 <script lang="ts" setup>
-  import { XActionBar, type ActionBarItems } from '@vtj/web';
-  import { VtjIconBug, VtjIconApi, VtjIconPlus } from '@vtj/web';
+  import { XActionBar, type ActionBarItems } from '@vtj/ui';
+  import { VtjIconBug, VtjIconApi, VtjIconPlus } from '@vtj/icons';
 
   const menus = [
     {

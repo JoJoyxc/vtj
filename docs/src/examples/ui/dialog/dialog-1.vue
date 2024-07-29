@@ -61,7 +61,7 @@
 <script setup>
   import { ref } from 'vue';
   import { XDialog } from '@vtj/ui';
-  import { VtjIconBug } from '@vtj/web';
+  import { VtjIconBug } from '@vtj/icons';
   import { ElButton } from 'element-plus';
 
   const visible1 = ref(false);

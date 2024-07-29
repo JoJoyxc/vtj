@@ -52,7 +52,7 @@
 <script setup>
   import { ref, h } from 'vue';
   import { XDialog } from '@vtj/ui';
-  import { VtjIconBug } from '@vtj/web';
+  import { VtjIconBug } from '@vtj/icons';
   import { ElButton } from 'element-plus';
   import XQrCode from '../qrcode/qrcode-1.vue';
 

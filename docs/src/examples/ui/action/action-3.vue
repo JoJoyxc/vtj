@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
   import { XAction } from '@vtj/ui';
-  import { VtjIconBug } from '@vtj/web';
+  import { VtjIconBug } from '@vtj/icons';
 
   const onClick = (action: any) => {
     console.log('click action', action);

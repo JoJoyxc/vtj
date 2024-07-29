@@ -46,8 +46,8 @@
 
 <script setup lang="ts">
   import { ref } from 'vue';
-  import { XAction, XContainer } from '@vtj/web';
-  import { Rank } from '@vtj/web';
+  import { XAction, XContainer } from '@vtj/ui';
+  import { Rank } from '@vtj/icons';
 
   const XActionRef = ref(null);
 
