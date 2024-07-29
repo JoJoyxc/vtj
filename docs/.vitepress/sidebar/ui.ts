@@ -7,7 +7,8 @@ export default [
       { text: 'XContainer 组件', link: '/container' },
       { text: 'XAction 组件', link: '/action' },
       { text: 'XActionBar 组件', link: '/actionBar' },
-      { text: 'XQrCode 组件', link: '/qrcode' }
+      { text: 'XQrCode 组件', link: '/qrcode' },
+      { text: 'XImportButton 组件', link: '/importButton' }
     ]
   },
   {
