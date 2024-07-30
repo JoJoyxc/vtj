@@ -73,7 +73,8 @@
     VtjIconInvisible,
     VtjIconVisible,
     VtjIconHome,
-    MoreFilled
+    MoreFilled,
+    VtjIconShare
   } from '@vtj/icons';
   import { ElSwitch, ElMessageBox, ElTag } from 'element-plus';
 
@@ -113,6 +114,10 @@
     home: {
       label: '主页',
       icon: VtjIconHome
+    },
+    share: {
+      label: '分享',
+      icon: VtjIconShare
     }
   };
 

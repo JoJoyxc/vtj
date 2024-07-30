@@ -182,7 +182,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
     component: widgets.Market,
     type: 'tab',
     closable: true,
-    label: '插件市场',
+    label: '物料市场',
     actions: [
       {
         icon: markRaw(HomeFilled),

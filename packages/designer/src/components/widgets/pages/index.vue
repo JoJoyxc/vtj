@@ -25,8 +25,8 @@
             data.dir
               ? ['add', 'edit', 'remove']
               : data.raw
-                ? ['home', 'edit', 'remove']
-                : ['home', 'copy', 'edit', 'remove']
+                ? ['home', 'edit', 'share', 'remove']
+                : ['home', 'copy', 'edit', 'share', 'remove']
           "
           @action="onAction"
           @click="onClick(data)"

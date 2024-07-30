@@ -1,10 +1,16 @@
 <template>
-  <div>
-    插件市场
-    <button @click="openDesigner">open designer</button>
-  </div>
+  <Panel
+    class="v-market-widget"
+    size="small"
+    fit
+    :body="{ padding: false }"
+    :header="false"
+    ref="panel">
+    <iframe ref="frame" src="//localhost:9527/#/"></iframe>
+  </Panel>
 </template>
 <script lang="ts" setup>
+  import { Panel } from '../../shared';
   import { useEngine } from '../../../framework';
 
   const engine = useEngine();

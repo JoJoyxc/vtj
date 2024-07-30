@@ -35,7 +35,12 @@
 <script lang="ts" setup>
   import { computed } from 'vue';
   import { XContainer, XAction } from '@vtj/ui';
-  import { VtjIconEdit, VtjIconRemove, MoreFilled } from '@vtj/icons';
+  import {
+    VtjIconEdit,
+    VtjIconRemove,
+    MoreFilled,
+    VtjIconShare
+  } from '@vtj/icons';
   import { ElMessageBox } from 'element-plus';
 
   export interface Props {
@@ -56,6 +61,11 @@
       label: '编辑',
       command: 'edit',
       icon: VtjIconEdit
+    },
+    {
+      label: '分享',
+      command: 'share',
+      icon: VtjIconShare
     },
     {
       label: '删除',
