@@ -24,7 +24,7 @@ export default [
   {
     text: '表单相关',
     base: '/ui',
-    items: []
+    items: [{ text: 'XDialogForm 弹窗表单', link: '/dialogForm' }]
   },
   {
     text: '数据展示',
