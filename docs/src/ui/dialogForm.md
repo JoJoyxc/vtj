@@ -53,4 +53,16 @@ demo-preview=../examples/ui/dialogForm/dialogForm-2.vue
 
 | 插槽名 | 说明         | 类型 |
 | ------ | ------------ | ---- |
+| extra  | -            | -    |
 | handle | 底部按钮区域 | -    |
+| footer | -            | -    |
+
+
+
+### 暴露
+
+| 名称      | 说明                  | 类型 |
+| --------- | --------------------- | ---- |
+| $vtjEl    | 组件父元素的ref       |
+| formRef   | 组件内部form表单的ref |
+| dialogRef | 弹窗表单组件的ref     |

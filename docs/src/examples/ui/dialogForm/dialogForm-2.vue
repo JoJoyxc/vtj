@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ElButton @click="visible = true">Open dialog </ElButton>
+    <ElButton @click="visible = true">handle 插槽 </ElButton>
     <XDialogForm
       v-model="visible"
       title="弹窗表单"
@@ -17,6 +17,10 @@
         name="content"
         editor="select"
         :options="options"></XField>
+
+      <template #extre>
+        <ElButton type="success">自定义按钮-插槽</ElButton>
+      </template>
 
       <template #handle>
         <ElButton type="success">自定义按钮-插槽</ElButton>
