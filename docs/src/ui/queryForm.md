@@ -25,6 +25,13 @@ demo-preview=../examples/ui/queryForm/queryForm-3.vue
 :::
 
 
+### 按钮
+
+:::preview
+demo-preview=../examples/ui/queryForm/queryForm-4.vue
+:::
+
+
 
 
 
@@ -54,6 +61,11 @@ demo-preview=../examples/ui/queryForm/queryForm-3.vue
 | show-message   | 是否显示校验错误信息       | `boolean`          | true    |
 | inline-message | 是否以行内形式展示校验信息 | `boolean`          | false   |
 | size           | 用于控制该表单内组件的尺寸 | `string`           | default |
+
+
+
+##### 接收 ElForm 的所有属性
+
 
 
 
