@@ -30,7 +30,8 @@ export default [
       { text: 'XForm 表单', link: '/form' },
       { text: 'XQueryForm 查询表单', link: '/queryForm' },
       { text: 'XPicker 数据选择器', link: '/picker' },
-      { text: 'XDialogGrid 弹窗表格', link: '/dialogGrid' }
+      { text: 'XDialogGrid 弹窗表格', link: '/dialogGrid' },
+      { text: 'XCaptcha 图形验证码', link: '/captcha' }
     ]
   },
   {
