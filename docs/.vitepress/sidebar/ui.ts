@@ -31,7 +31,8 @@ export default [
       { text: 'XQueryForm 查询表单', link: '/queryForm' },
       { text: 'XPicker 数据选择器', link: '/picker' },
       { text: 'XDialogGrid 弹窗表格', link: '/dialogGrid' },
-      { text: 'XCaptcha 图形验证码', link: '/captcha' }
+      { text: 'XCaptcha 图形验证码', link: '/captcha' },
+      { text: 'XVerify 短信验证码', link: '/verify' }
     ]
   },
   {
