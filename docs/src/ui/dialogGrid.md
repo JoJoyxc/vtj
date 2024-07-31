@@ -27,6 +27,7 @@ demo-preview=../examples/ui/dialogGrid/base.vue
 | gridProps      | 表格其他配置                        | -                       | -      |
 | submitMethod   | 表单提交方法， return true 关闭弹窗 | `function`              | -      |
 
+#### 接收 XPanel 所有参数
 
 ### 插槽
 
