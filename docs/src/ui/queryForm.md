@@ -52,7 +52,6 @@ demo-preview=../examples/ui/queryForm/queryForm-4.vue
 | resetText      | 重置按钮文本               | `string`           | 重置    |
 | submitMethod   | 表单提交处理方法           | `function`         | -       |
 | tooltipMessage | 是否在tooltip显示校验信息  | `boolean`          | false   |
-| prop           | -                          | `string`           | -       |
 | label          | 标签                       | `string`           | -       |
 | label-width    | 标签宽度                   | `string \| number` | -       |
 | required       | 是否必填                   | `boolean`          | false   |

@@ -1,5 +1,11 @@
 <template>
   <div>
+    <XAction
+      label="showFooter"
+      type="primary"
+      @click="showFooter = !showFooter">
+    </XAction>
+
     <XQueryForm
       ref="formRef"
       size="default"
@@ -23,7 +29,7 @@
       :inlineColumns="1"
       :rules="rules"
       :submitMethod="onSubmitMethod"
-      :footer="true"
+      :footer="showFooter"
       submitText="提交"
       resetText="重置">
       <template #custom>
@@ -34,13 +40,15 @@
 </template>
 <script lang="ts" setup>
   import { reactive, ref } from 'vue';
-  import { XQueryForm, XField, type QueryFormItems } from '@vtj/ui';
+  import { XQueryForm, XField, XAction, type QueryFormItems } from '@vtj/ui';
 
   const formRef = ref();
 
   const model = reactive({
     F1: 'abc'
   });
+
+  const showFooter = ref(false);
 
   const items: QueryFormItems = [
     {
