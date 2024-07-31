@@ -5,33 +5,10 @@
       size="default"
       :model="model"
       :items="items"
-      :inlineColumns="1">
+      :inlineColumns="1"
+      :rules="rules">
       <template #custom>
-        <XField label="自定义"></XField>
-      </template>
-    </XQueryForm>
-
-    <XQueryForm
-      ref="formRef"
-      size="default"
-      :model="model"
-      :items="items"
-      :collapsible="false"
-      :inline="true">
-      <template #custom>
-        <XField label="自定义"></XField>
-      </template>
-    </XQueryForm>
-
-    <XQueryForm
-      ref="formRef"
-      size="default"
-      :model="model"
-      :items="items"
-      :collapsible="false"
-      :inline="false">
-      <template #custom>
-        <XField label="自定义"></XField>
+        <XField name="custom" required label="自定义"></XField>
       </template>
     </XQueryForm>
   </div>
@@ -61,13 +38,34 @@
     },
     {
       label: '年龄',
-      name: 'age',
-      required: true
+      name: 'age'
     },
     'custom'
   ];
 
-  const onClick = () => {
-    formRef.value.submit();
+  const validateCustom = (rule: any, value: any, callback: any) => {
+    if (value === '') {
+      callback(new Error('Please input the custom'));
+    } else {
+      callback();
+    }
   };
+
+  const rules = reactive({
+    name: [
+      {
+        required: true,
+        message: 'Please input  name',
+        trigger: ['blur', 'change']
+      }
+    ],
+    age: [
+      {
+        required: true,
+        message: 'Please input  name',
+        trigger: ['blur', 'change']
+      }
+    ],
+    custom: [{ validator: validateCustom, trigger: 'blur' }]
+  });
 </script>
