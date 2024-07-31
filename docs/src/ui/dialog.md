@@ -44,26 +44,28 @@ demo-preview=../examples/ui/dialog/dialog-2.vue
 | bodyPadding | 显示内容区域的内边距               | `boolean`                     | `true`    |
 | primary     | 标题背景颜色                       | `boolean`                     | -         |
 
+
+#### 接收 XPanel 所有参数
+
 ### 事件
 
-| 名称                  | 说明                         | 回调参数 |
-| --------------------- | ---------------------------- | -------- |
-| `'update:modelValue'` | 显示与隐藏 dialog 触发的回调 | -        |
-| `open`                | Dialog `打开`的回调          | -        |
-| `close`               | Dialog `关闭`的回调          | -        |
-| `destroy`             | 销毁组件时触发的回调         | -        |
-| `maximized`           | 点击`弹窗最大化`时的回调     | -        |
-| `minimized`           | 点击`弹窗最小化`时的回调     | -        |
-| `normal`              | 点击`弹窗正常化`时的回调     | -        |
-| `modeChange`          | 当`弹窗模式改变`时触发的事件 | `mode`   |
-| `dragStart`           | 当`拖拽开始`时触发的事件     | -        |
-| `dragging`            | 当`拖拽中`时触发的事件       | -        |
-| `dragEnd`             | 当`拖拽结束`时触发的事件     | -        |
-| `resizeStart`         | 当`变换开始`时触发的事件     | -        |
-| `resizing`            | 当`变换中`时触发的事件       | -        |
-| `resizeEnd`           | 当`变换结束`时触发的事件     | -        |
-| `submit`              | Dialog 点击确认按钮的回      | -        |
-| `cancel`              | Dialog 点击取消按钮的回      | -        |
+| 名称          | 说明                         | 回调参数 |
+| ------------- | ---------------------------- | -------- |
+| `open`        | Dialog `打开`的回调          | -        |
+| `close`       | Dialog `关闭`的回调          | -        |
+| `destroy`     | 销毁组件时触发的回调         | -        |
+| `maximized`   | 点击`弹窗最大化`时的回调     | -        |
+| `minimized`   | 点击`弹窗最小化`时的回调     | -        |
+| `normal`      | 点击`弹窗正常化`时的回调     | -        |
+| `modeChange`  | 当`弹窗模式改变`时触发的事件 | `mode`   |
+| `dragStart`   | 当`拖拽开始`时触发的事件     | -        |
+| `dragging`    | 当`拖拽中`时触发的事件       | -        |
+| `dragEnd`     | 当`拖拽结束`时触发的事件     | -        |
+| `resizeStart` | 当`变换开始`时触发的事件     | -        |
+| `resizing`    | 当`变换中`时触发的事件       | -        |
+| `resizeEnd`   | 当`变换结束`时触发的事件     | -        |
+| `submit`      | Dialog 点击确认按钮的回      | -        |
+| `cancel`      | Dialog 点击取消按钮的回      | -        |
 
 
 
