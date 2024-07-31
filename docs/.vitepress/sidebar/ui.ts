@@ -29,7 +29,8 @@ export default [
       { text: 'XField 字段', link: '/field' },
       { text: 'XForm 表单', link: '/form' },
       { text: 'XQueryForm 查询表单', link: '/queryForm' },
-      { text: 'XPicker 数据选择器', link: '/picker' }
+      { text: 'XPicker 数据选择器', link: '/picker' },
+      { text: 'XDialogGrid 弹窗表格', link: '/dialogGrid' }
     ]
   },
   {
