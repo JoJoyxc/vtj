@@ -4,11 +4,11 @@ export default [
     base: '/ui',
     items: [
       { text: 'XIcon 图标', link: '/icon' },
-      { text: 'XContainer 组件', link: '/container' },
-      { text: 'XAction 组件', link: '/action' },
-      { text: 'XActionBar 组件', link: '/actionBar' },
-      { text: 'XQrCode 组件', link: '/qrcode' },
-      { text: 'XImportButton 组件', link: '/importButton' }
+      { text: 'XContainer 容器', link: '/container' },
+      { text: 'XAction 操作按钮', link: '/action' },
+      { text: 'XActionBar 操作按钮集', link: '/actionBar' },
+      { text: 'XQrCode 二维码', link: '/qrcode' },
+      { text: 'XImportButton 导入按钮', link: '/importButton' }
     ]
   },
   {
@@ -41,8 +41,8 @@ export default [
     items: [
       { text: 'XAttachment 附件', link: '/attachment' },
       { text: 'XDataItem 数据项', link: '/dataItem' },
-      { text: 'XGrid', link: '/grid' },
-      { text: 'XList', link: '/list' }
+      { text: 'XGrid 表格', link: '/grid' },
+      { text: 'XList 列表', link: '/list' }
     ]
   }
 ];
