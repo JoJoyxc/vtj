@@ -40,7 +40,8 @@ export default [
     base: '/ui',
     items: [
       { text: 'XAttachment 附件', link: '/attachment' },
-      { text: 'XDataItem 数据项', link: '/dataItem' }
+      { text: 'XDataItem 数据项', link: '/dataItem' },
+      { text: 'XGrid', link: '/grid' }
     ]
   }
 ];
