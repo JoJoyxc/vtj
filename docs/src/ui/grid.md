@@ -44,6 +44,14 @@ demo-preview=../examples/ui/grid/base.vue
 
 
 
+### 事件
+
+| 名称       | 说明           | 参数   |
+| ---------- | -------------- | ------ |
+| editChange | 修改数据时触发 | (rows) |
+
+
+
 
 
 ### 插槽
@@ -54,3 +62,26 @@ demo-preview=../examples/ui/grid/base.vue
 | empty       | 没有数据   | -    |
 | pager       | 开启分页   | -    |
 | pager__left | 分页左边   | -    |
+
+
+
+### 暴露
+
+| 名称             | 说明                           | 类型 |
+| ---------------- | ------------------------------ | ---- |
+| state            | {page:number, pageSize:number} | -    |
+| load             | -                              | -    |
+| search           | -                              | -    |
+| vxeRef           | -                              | -    |
+| rowSortable      | -                              | -    |
+| columnSortable   | -                              | -    |
+| insertActived    | -                              | -    |
+| validate         | -                              | -    |
+| getSelected      | -                              | -    |
+| remove           | -                              | -    |
+| getRows          | -                              | -    |
+| setActived       | -                              | -    |
+| doLayout         | -                              | -    |
+| getRecords       | -                              | -    |
+| setSelectCell    | -                              | -    |
+| $vtjDynamicSlots | -                              | -    |
