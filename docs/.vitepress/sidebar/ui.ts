@@ -41,7 +41,8 @@ export default [
     items: [
       { text: 'XAttachment 附件', link: '/attachment' },
       { text: 'XDataItem 数据项', link: '/dataItem' },
-      { text: 'XGrid', link: '/grid' }
+      { text: 'XGrid', link: '/grid' },
+      { text: 'XList', link: '/list' }
     ]
   }
 ];
