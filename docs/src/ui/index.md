@@ -2,7 +2,7 @@
 
 
 
-|                base基础组件                 |           布局排版            |                  表单                   |              数据展示               |
+|                  基础组件                   |           布局排版            |                  表单                   |              数据展示               |
 | :-----------------------------------------: | :---------------------------: | :-------------------------------------: | :---------------------------------: |
 |           [XIcon 图标](./icon.md)           |   [XPanel 面板](./panel.md)   | [XDialogForm 弹窗表单](./dialogForm.md) | [XAttachment 附件](./attachment.md) |
 |      [XContainer 容器](./container.md)      |  [XDialog 弹窗](./dialog.md)  |       [XField 输入框](./field.md)       |  [XDataItem 数据项](./dataItem.md)  |
