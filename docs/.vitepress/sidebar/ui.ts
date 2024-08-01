@@ -38,6 +38,9 @@ export default [
   {
     text: '数据展示',
     base: '/ui',
-    items: [{ text: 'XAttachment 附件', link: '/attachment' }]
+    items: [
+      { text: 'XAttachment 附件', link: '/attachment' },
+      { text: 'XDataItem 数据项', link: '/dataItem' }
+    ]
   }
 ];
