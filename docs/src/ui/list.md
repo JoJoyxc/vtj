@@ -18,15 +18,31 @@ demo-preview=../examples/ui/list/base.vue
 
 | 属性名         | 说明                                | 类型                 | 默认值 |
 | -------------- | ----------------------------------- | -------------------- | ------ |
-| data           | 要在表中渲染的数据数组              | `array`              | []     |
+| data           | 要在表中渲染的数据对象              | `object \| function` | []     |
 | itemHeight     | 设置 itemHeight 即自动开启虚拟滚动  | `number \| function` | -      |
 | width          | 表格的宽度                          | `string \| number`   | '100%' |
 | height         | 表格的高度                          | `string \| number`   | '100%' |
-| pager          | 开启分页                            | `boolean`            | -      |
+| pager          | 开启分页                            | `boolean \| object`  | -      |
 | page           | 初始页码                            | `number`             | 1      |
 | pageSize       | 初始每页显示条目个数                | `number`             | 50     |
 | dataKey        | 数据的 Key，用来优化 Table 的渲染； | `string`             | -      |
 | infiniteScroll | 滚动到底部时，加载更多数据          | `boolean \| object`  | -      |
+
+
+属性 data: {
+  list: `any[]`,
+  total?: `number`,
+  pageSize: `number`,
+  page: `number`,
+}
+
+
+属性 infiniteScroll: {
+  disabled?: `boolean`;
+  delay?: `number`;
+  distance?: `number`;
+  immediate?: `boolean`;
+}
 
 
 
@@ -45,8 +61,8 @@ demo-preview=../examples/ui/list/base.vue
 | wrapperRef | -                 | -        |
 | loading    | 加载状态          | -        |
 | state      | page,pageSize     | -        |
-| pageCount  | -                 | -        |
+| pageCount  | 当前页数          | -        |
 | nomore     | 没有更多数据      | -        |
 | data       | 列表数据          | -        |
 | getKey     | 获取列表数据的key | function |
-| scrollTo   | -                 | function |
+| scrollTo   | 滑动到            | function |
