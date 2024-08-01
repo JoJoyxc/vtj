@@ -40,3 +40,17 @@ demo-preview=../examples/ui/grid/base.vue
 | sumFields      | 单页合计列                                                                  | `array`             | -                   |
 | avgFields      | 单页平均值列                                                                | `array`             | -                   |
 | sumAllFields   | 全部数据总计列                                                              | `object`            | -                   |
+
+
+
+
+
+
+### 插槽
+
+| 插槽名      | 说明       | 类型 |
+| ----------- | ---------- | ---- |
+| custom      | 自定义插槽 | -    |
+| empty       | 没有数据   | -    |
+| pager       | 开启分页   | -    |
+| pager__left | 分页左边   | -    |
