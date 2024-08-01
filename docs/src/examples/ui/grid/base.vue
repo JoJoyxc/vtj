@@ -14,7 +14,7 @@
   import { ref, type Ref } from 'vue';
   import { XGrid, type GridColumns } from '@vtj/ui';
   import { numberFormat } from '@vtj/utils';
-  import { data as tableData } from '../picker/data';
+  import { data as tableData } from './data';
 
   const columns: Ref<GridColumns> = ref([]);
 

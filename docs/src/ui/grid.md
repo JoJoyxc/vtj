@@ -11,6 +11,12 @@ demo-preview=../examples/ui/grid/base.vue
 :::
 
 
+### 分页表格
+
+:::preview
+demo-preview=../examples/ui/grid/grid-1.vue
+:::
+
 
 ## API
 
