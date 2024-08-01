@@ -53,6 +53,18 @@ demo-preview=../examples/ui/list/base.vue
 | load | 加载数据 | (state: ListState) |
 
 
+
+
+### 插槽
+
+| 插槽名  | 说明           | 类型 |
+| ------- | -------------- | ---- |
+| loading | 加载中         | -    |
+| nomore  | 没有更多数据了 | -    |
+
+
+
+
 ### 暴露
 
 | 名称       | 说明              | 类型     |
