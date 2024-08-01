@@ -56,32 +56,38 @@ demo-preview=../examples/ui/grid/base.vue
 
 ### 插槽
 
-| 插槽名      | 说明       | 类型 |
-| ----------- | ---------- | ---- |
-| custom      | 自定义插槽 | -    |
-| empty       | 没有数据   | -    |
-| pager       | 开启分页   | -    |
-| pager__left | 分页左边   | -    |
+| 插槽名           | 说明       | 类型 |
+| ---------------- | ---------- | ---- |
+| custom           | 自定义插槽 | -    |
+| empty            | 没有数据   | -    |
+| loading          | 加载中效果 | -    |
+| form             | 表单展示   | -    |
+| toolbar          | 工具栏     | -    |
+| toolbar__buttons | 工具栏按钮 | -    |
+| top              | 顶部区域   | -    |
+| bottom           | 底部区域   | -    |
+| pager            | 开启分页   | -    |
+| pager__left      | 分页左边   | -    |
 
 
 
 ### 暴露
 
-| 名称             | 说明                           | 类型 |
-| ---------------- | ------------------------------ | ---- |
-| state            | {page:number, pageSize:number} | -    |
-| load             | -                              | -    |
-| search           | -                              | -    |
-| vxeRef           | -                              | -    |
-| rowSortable      | -                              | -    |
-| columnSortable   | -                              | -    |
-| insertActived    | -                              | -    |
-| validate         | -                              | -    |
-| getSelected      | -                              | -    |
-| remove           | -                              | -    |
-| getRows          | -                              | -    |
-| setActived       | -                              | -    |
-| doLayout         | -                              | -    |
-| getRecords       | -                              | -    |
-| setSelectCell    | -                              | -    |
-| $vtjDynamicSlots | -                              | -    |
+| 名称             | 说明                          | 类型     |
+| ---------------- | ----------------------------- | -------- |
+| state            | page:number ; pageSize:number | `object` |
+| load             | -                             | -        |
+| search           | -                             | -        |
+| vxeRef           | -                             | -        |
+| rowSortable      | -                             | -        |
+| columnSortable   | -                             | -        |
+| insertActived    | -                             | -        |
+| validate         | -                             | -        |
+| getSelected      | -                             | -        |
+| remove           | -                             | -        |
+| getRows          | -                             | -        |
+| setActived       | -                             | -        |
+| doLayout         | -                             | -        |
+| getRecords       | -                             | -        |
+| setSelectCell    | -                             | -        |
+| $vtjDynamicSlots | -                             | -        |
