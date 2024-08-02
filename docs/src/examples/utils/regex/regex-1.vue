@@ -2,7 +2,7 @@
   <div>
     <table border="1" style="width: 100%" align="center">
       <caption>
-        字符串转换例子
+        正则表达式例子
       </caption>
       <thead>
         <tr>
