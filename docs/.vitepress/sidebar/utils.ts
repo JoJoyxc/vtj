@@ -21,7 +21,7 @@ export default [
       },
       {
         text: '正则表达式',
-        link: '/numeral'
+        link: '/regex'
       },
       {
         text: '事件通讯',
