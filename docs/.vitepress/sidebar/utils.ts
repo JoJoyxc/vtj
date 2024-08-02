@@ -55,7 +55,7 @@ export default [
       },
       {
         text: 'URL处理',
-        link: '/pathToRegexp'
+        link: '/url'
       },
       {
         text: '工具函数',
