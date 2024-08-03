@@ -21,7 +21,7 @@
     isEqual
   } from '@vtj/utils';
 
-  import configTable from '../../../.vitepress/components/configTable.vue';
+  import configTable from '$/components/configTable.vue';
 
   const list = [
     {
