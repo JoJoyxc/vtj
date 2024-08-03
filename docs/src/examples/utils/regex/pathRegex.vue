@@ -1,6 +1,6 @@
 <template>
   <div>
-    <configTable title=" path-to-regexp例子" :list="list"></configTable>
+    <config-table title=" path-to-regexp例子" :list="list"></config-table>
   </div>
 </template>
 
@@ -12,7 +12,7 @@
     pathToRegexpCompile
   } from '@vtj/utils';
 
-  import configTable from '../../../../.vitepress/components/configTable.vue';
+  import ConfigTable from '../../../../.vitepress/components/configTable.vue';
 
   const list = [
     {

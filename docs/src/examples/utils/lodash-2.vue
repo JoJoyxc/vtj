@@ -1,6 +1,6 @@
 <template>
   <div>
-    <configTable title="字符串转换例子" :list="list"></configTable>
+    <config-table title="字符串转换例子" :list="list"></config-table>
   </div>
 </template>
 
@@ -21,7 +21,7 @@
     snakeCase
   } from '@vtj/utils';
 
-  import configTable from '../../../.vitepress/components/configTable.vue';
+  import ConfigTable from '../../../.vitepress/components/configTable.vue';
 
   const list = [
     {

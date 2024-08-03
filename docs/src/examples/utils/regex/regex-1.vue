@@ -1,6 +1,6 @@
 <template>
   <div>
-    <configTable title="正则表达式例子" :list="list"></configTable>
+    <config-table title="正则表达式例子" :list="list"></config-table>
   </div>
 </template>
 
@@ -13,7 +13,7 @@
     isCarNo
   } from '@vtj/utils';
 
-  import configTable from '../../../../.vitepress/components/configTable.vue';
+  import ConfigTable from '../../../../.vitepress/components/configTable.vue';
 
   const list = [
     {

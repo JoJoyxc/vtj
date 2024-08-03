@@ -1,6 +1,6 @@
 <template>
   <div>
-    <configTable title="数据转换例子" :list="list"></configTable>
+    <config-table title="数据转换例子" :list="list"></config-table>
   </div>
 </template>
 
@@ -22,7 +22,7 @@
     splitStringify
   } from '@vtj/utils';
 
-  import configTable from '../../../../.vitepress/components/configTable.vue';
+  import ConfigTable from '../../../../.vitepress/components/configTable.vue';
 
   const list = [
     {

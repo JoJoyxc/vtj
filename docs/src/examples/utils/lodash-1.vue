@@ -1,5 +1,5 @@
 <template>
-  <configTable title="数据类型校验例子" :list="list"></configTable>
+  <config-table title="数据类型校验例子" :list="list"></config-table>
 </template>
 
 <script setup lang="ts">
@@ -21,7 +21,7 @@
     isEqual
   } from '@vtj/utils';
 
-  import configTable from '../../../.vitepress/components/configTable.vue';
+  import ConfigTable from '../../../.vitepress/components/configTable.vue';
 
   const list = [
     {

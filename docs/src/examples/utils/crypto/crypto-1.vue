@@ -1,12 +1,12 @@
 <template>
   <div>
-    <configTable title="加密解密例子" :list="list"></configTable>
+    <config-table title="加密解密例子" :list="list"></config-table>
   </div>
 </template>
 
 <script setup lang="ts">
   import { MD5, base64, unBase64, RSA, unRSA, AES, unAES } from '@vtj/utils';
-  import configTable from '../../../../.vitepress/components/configTable.vue';
+  import ConfigTable from '../../../../.vitepress/components/configTable.vue';
 
   const RSAVal: string = RSA('abc') as string;
 
