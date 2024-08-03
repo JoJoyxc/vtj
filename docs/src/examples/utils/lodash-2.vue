@@ -52,7 +52,7 @@
     {
       name: 'noop',
       example: 'noop()',
-      return: 'undefined ??'
+      return: 'undefined'
     },
     {
       name: 'get',

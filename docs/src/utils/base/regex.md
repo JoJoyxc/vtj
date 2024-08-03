@@ -34,9 +34,9 @@ js 中有 RegExp 方法做正则表达式校验，而 path-to-regexp 可以看�
 
 | 函数名              | 描述                        | 类型                    | 参数              | 返回值                                                              |
 | ------------------- | --------------------------- | ----------------------- | ----------------- | ------------------------------------------------------------------- |
-| pathToRegexp,       | 将路径字符串转换为 RegExp   | `(url:string)=> string` | url: 需转换的路径 | string                                                              |
-| pathToRegexpMatch,  | 匹配 url 地址与规则是否相符 | `(url:string)=> string` | url 需匹配的路径  | array                                                               |
-| pathToRegexpParse,  | 解析 url 字符串中的参数部分 | `(url:string)=> array`  | url 需解析的路径  | 返回一个数组，从第二个数据可以就可以得到 url 地址携带参数的属性名称 |
+| pathToRegexp        | 将路径字符串转换为 RegExp   | `(url:string)=> string` | url: 需转换的路径 | string                                                              |
+| pathToRegexpMatch   | 匹配 url 地址与规则是否相符 | `(url:string)=> string` | url 需匹配的路径  | array                                                               |
+| pathToRegexpParse   | 解析 url 字符串中的参数部分 | `(url:string)=> array`  | url 需解析的路径  | 返回一个数组，从第二个数据可以就可以得到 url 地址携带参数的属性名称 |
 | pathToRegexpCompile | 快速填充 url 字符串的参数值 | `(url)(data)=> string`  | -                 | string                                                              |
 
 
@@ -57,17 +57,11 @@ pathToRegexp(/user/:name)
 #### 作用：匹配 url 地址与规则是否相符。
 
 ```js
-var re = pathToRegexp('/foo/:bar');     // 匹配规则
-var match1 = re.pathToRegexpMatch('/test/route');    // url 路径
-var match2 = re.pathToRegexpMatch('/foo/route');     // url 路径
+const fn = pathToRegexpMatch("/user/:id");
 
-console.log(match1);
-console.log(match2);
-/**
- *  null
- *  [ '/foo/route', 'route', index: 0, input: '/foo/route' ]
- * 
- */
+fn("/user/123"); //=> { path: '/user/123', index: 0, params: { id: '123' } }
+fn("/invalid"); //=> false
+fn("/user/caf%C3%A9"); //=> { path: '/user/caf%C3%A9', index: 0, params: { id: 'café' } }
 ```
 
 
@@ -106,8 +100,8 @@ console.log(pathToRegexpCompile(url)(data))
 
 
 
-### 示例
+<!-- ### 示例
 
 :::preview
 demo-preview=../../examples/utils/regex/pathRegex.vue
-:::
+::: -->

@@ -23,7 +23,7 @@
     {
       name: 'pathToRegexpMatch',
       example: 'pathToRegexpMatch',
-      return: 'pathToRegexpMatch'
+      return: pathToRegexpMatch('/user/:name')
     },
     {
       name: 'pathToRegexpParse',
@@ -37,4 +37,6 @@
       return: pathToRegexpCompile('/user/:id/:name')({ id: 10001, name: 'bob' })
     }
   ];
+
+  console.log(pathToRegexp('/foo/:bar'));
 </script>
