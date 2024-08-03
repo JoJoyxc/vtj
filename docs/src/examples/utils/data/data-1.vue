@@ -1,131 +1,6 @@
 <template>
   <div>
-    <table border="1" style="width: 100%" align="center">
-      <caption>
-        数据转换例子
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col">函数名</th>
-          <th scope="col" style="text-align: center">例子</th>
-          <th scope="col" style="text-align: center">返回值</th>
-        </tr>
-      </thead>
-      <tbody align="center">
-        <tr>
-          <th scope="row">arrayToMap</th>
-          <td class="code">arrayToMap([{a:'a'},{b:'b'}])</td>
-          <td>{{ arrayToMap([{ a: 'a' }, { b: 'b' }]) }}</td>
-        </tr>
-
-        <tr>
-          <th scope="row">mapToObject</th>
-          <td class="code">mapToObject(new Map().set('a', 1).set('b', 2))</td>
-          <td>{{ mapToObject(new Map().set('a', 1).set('b', 2)) }}</td>
-        </tr>
-
-        <tr>
-          <th scope="row">arrayToKv</th>
-          <td class="code">
-            arrayToKv([ { "key": "a", "value": "a" }, { "key": "b", "value": "b"
-            } ])
-          </td>
-          <td>
-            {{
-              arrayToKv([
-                { key: 'a', value: 'a' },
-                { key: 'b', value: 'b' }
-              ])
-            }}
-          </td>
-        </tr>
-
-        <tr>
-          <th scope="row">kvToArray</th>
-          <td class="code">kvToArray({ a: 'a', b: 'b' })</td>
-          <td>{{ kvToArray({ a: 'a', b: 'b' }) }}</td>
-        </tr>
-
-        <tr>
-          <th scope="row">dedupArray</th>
-          <td class="code">
-            dedupArray([1, false, 'aa', 3, 3,undefined, null, {}, []])
-          </td>
-          <td>
-            {{ dedupArray([1, false, 'aa', 3, 3, undefined, null, {}, []]) }}
-          </td>
-        </tr>
-
-        <tr>
-          <th scope="row">toArray</th>
-          <td class="code">toArray({ a: 1, b: '2' })</td>
-          <td>
-            {{ toArray({ a: 1, b: '2' }) }}
-          </td>
-        </tr>
-
-        <tr>
-          <th scope="row">zipObject</th>
-          <td class="code">zipObject({ a: 1, b: '2',c:null,d:undefined })</td>
-          <td>
-            {{ zipObject({ a: 1, b: '2', c: null, d: undefined }) }}
-          </td>
-        </tr>
-
-        <tr>
-          <th scope="row">omit</th>
-          <td class="code">omit({ a: 'a', b: 'b' } , 'a')</td>
-          <td>
-            <!-- {{ omit({ a: 'a', b: 'b' }, 'a') }} -->
-          </td>
-        </tr>
-
-        <tr>
-          <th scope="row">pick</th>
-          <td class="code">pick(['a', '1', 2], 'a')</td>
-          <td>
-            <!-- {{ pick({ a: [b:'bb'] }, 'a') }} -->
-          </td>
-        </tr>
-
-        <tr>
-          <th scope="row">trim</th>
-          <td class="code">trim([' a ', '1', ' 1 '])</td>
-          <td>
-            {{ trim(['a    ', '1', '  1  ']) }}
-          </td>
-        </tr>
-
-        <tr>
-          <th scope="row">sum</th>
-          <td class="code">sum([{age:11},{age:22}])</td>
-          <td>
-            {{ sum([{ age: 11 }, { age: 22 }], 'age') }}
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">avg</th>
-          <td class="code">avg([{age:11},{age:22}])</td>
-          <td>
-            {{ avg([{ age: 11 }, { age: 22 }], 'age') }}
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">splitParser</th>
-          <td class="code">splitParser('1,2,3,4')</td>
-          <td>
-            {{ splitParser('1,2,3,4') }}
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">splitParser</th>
-          <td class="code">splitStringify([1, 2, 3, 4], '-')</td>
-          <td>
-            {{ splitStringify([1, 2, 3, 4], '-') }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <configTable title="数据转换例子" :list="list"></configTable>
   </div>
 </template>
 
@@ -146,6 +21,85 @@
     splitParser,
     splitStringify
   } from '@vtj/utils';
+
+  import configTable from '../../../../.vitepress/components/configTable.vue';
+
+  const list = [
+    {
+      name: 'arrayToMap',
+      example: "arrayToMap([{ a: 'aa' }], 'a')",
+      return: arrayToMap([{ a: 'aa' }], 'a')
+    },
+    {
+      name: 'mapToObject',
+      example: "mapToObject(new Map().set('a', 1).set('b', 2))",
+      return: mapToObject(new Map().set('a', 1).set('b', 2))
+    },
+    {
+      name: 'arrayToKv',
+      example:
+        'arrayToKv([ { "key": "a", "value": "a" }, { "key": "b", "value": "b" } ])',
+      return: arrayToKv([
+        { key: 'a', value: 'a' },
+        { key: 'b', value: 'b' }
+      ])
+    },
+    {
+      name: 'kvToArray',
+      example: "kvToArray({ a: 'a', b: 'b' })",
+      return: kvToArray({ a: 'a', b: 'b' })
+    },
+    {
+      name: 'dedupArray',
+      example: "dedupArray([1, false, 'aa', 3, 3,undefined, null, {}, []])",
+      return: dedupArray([1, false, 'aa', 3, 3, undefined, null, {}, []])
+    },
+    {
+      name: 'toArray',
+      example: "toArray({ a: 1, b: '2' })",
+      return: toArray({ a: 1, b: '2' })
+    },
+    {
+      name: 'zipObject',
+      example: "zipObject({ a: 1, b: '2',c:null,d:undefined })",
+      return: zipObject({ a: 1, b: '2', c: null, d: undefined })
+    },
+    {
+      name: 'omit',
+      example: "omit({ a: 'a', b: 'b' }, ['a'])",
+      return: omit({ a: 'a', b: 'b' }, ['a'])
+    },
+    {
+      name: 'pick',
+      example: "pick({ a: 'a', b: 'b' }, ['a'])",
+      return: pick({ a: 'a', b: 'b' }, ['a'])
+    },
+    {
+      name: 'trim',
+      example: "trim([' a ', '1       ', ' 1 '])",
+      return: trim([' a ', '1               ', ' 1 '])
+    },
+    {
+      name: 'sum',
+      example: "sum([{ age: 11 }, { age: 22 }], 'age')",
+      return: sum([{ age: 11 }, { age: 22 }], 'age')
+    },
+    {
+      name: 'avg',
+      example: "avg([{ age: 11 }, { age: 22 }], 'age')",
+      return: avg([{ age: 11 }, { age: 22 }], 'age')
+    },
+    {
+      name: 'splitParser',
+      example: "splitParser('1,2,3,4')",
+      return: splitParser('1,2,3,4')
+    },
+    {
+      name: 'splitStringify',
+      example: "splitStringify(['1', '2', '3', '4'], '-')",
+      return: splitStringify(['1', '2', '3', '4'], '-')
+    }
+  ];
 </script>
 
 <style scoped>
