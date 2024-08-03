@@ -26,13 +26,83 @@ demo-preview=../../examples/utils/regex/regex-1.vue
 
 ### 路径转化模式
 
-| 函数名              | 描述                      | 类型                    | 参数              | 返回值 |
-| ------------------- | ------------------------- | ----------------------- | ----------------- | ------ |
-| pathToRegexp,       | 将路径字符串转换为 RegExp | `(val:string)=> string` | val: 需转换的路径 | string |
-| pathToRegexpMatch,  | -                         | -                       | -                 | -      |
-| pathToRegexpParse,  | -                         | -                       | -                 | -      |
-| pathToRegexpCompile | -                         | -                       | -                 | -      |
+该工具库用来处理 url 中地址与参数，能够很方便得到我们想要的数据。
 
+js 中有 RegExp 方法做正则表达式校验，而 path-to-regexp 可以看成是 url 字符串的正则表达式。
+
+
+
+| 函数名              | 描述                        | 类型                    | 参数              | 返回值                                                              |
+| ------------------- | --------------------------- | ----------------------- | ----------------- | ------------------------------------------------------------------- |
+| pathToRegexp,       | 将路径字符串转换为 RegExp   | `(url:string)=> string` | url: 需转换的路径 | string                                                              |
+| pathToRegexpMatch,  | 匹配 url 地址与规则是否相符 | `(url:string)=> string` | url 需匹配的路径  | array                                                               |
+| pathToRegexpParse,  | 解析 url 字符串中的参数部分 | `(url:string)=> array`  | url 需解析的路径  | 返回一个数组，从第二个数据可以就可以得到 url 地址携带参数的属性名称 |
+| pathToRegexpCompile | 快速填充 url 字符串的参数值 | `(url)(data)=> string`  | -                 | string                                                              |
+
+
+
+### pathToRegexp
+
+#### 作用：这里这个方法可以类比于 js 中 new RegExp('xxx')。
+
+```js
+pathToRegexp(/user/:name)
+// => /^\/user(?:\/([^\/#\?]+?))[\/#\?]?$/i
+
+```
+
+
+### pathToRegexpMatch
+
+#### 作用：匹配 url 地址与规则是否相符。
+
+```js
+var re = pathToRegexp('/foo/:bar');     // 匹配规则
+var match1 = re.pathToRegexpMatch('/test/route');    // url 路径
+var match2 = re.pathToRegexpMatch('/foo/route');     // url 路径
+
+console.log(match1);
+console.log(match2);
+/**
+ *  null
+ *  [ '/foo/route', 'route', index: 0, input: '/foo/route' ]
+ * 
+ */
+```
+
+
+### pathToRegexpParse
+
+#### 作用：解析 url 字符串中的参数部分。
+
+```js
+var url = '/user/:id';
+console.log(pathToRegexpParse(url));
+
+// [ '/user',
+//   { name: 'id',
+//     prefix: '/',
+//     delimiter: '/',
+//     optional: false,
+//     repeat: false,
+//     partial: false,
+//     pattern: '[^\\/]+?' } ]
+
+```
+
+### pathToRegexpCompile
+
+#### 快速填充 url 字符串的参数值。
+
+
+
+```js
+var url = '/user/:id/:name'
+var data = {id: 10001, name: 'bob'}
+console.log(pathToRegexpCompile(url)(data))
+
+// => /user/10001/bob
+```
 
 
 

@@ -22,8 +22,19 @@
     },
     {
       name: 'pathToRegexpMatch',
-      example: "pathToRegexp('/user/:name')",
-      return: pathToRegexp('/user/:name')
+      example: 'pathToRegexpMatch',
+      return: 'pathToRegexpMatch'
+    },
+    {
+      name: 'pathToRegexpParse',
+      example: "pathToRegexpParse('/user/:name')",
+      return: pathToRegexpParse('/user/:name')
+    },
+    {
+      name: 'pathToRegexpCompile',
+      example:
+        "pathToRegexpCompile('/user/:id/:name')({id: 10001, name: 'bob'})",
+      return: pathToRegexpCompile('/user/:id/:name')({ id: 10001, name: 'bob' })
     }
   ];
 </script>
