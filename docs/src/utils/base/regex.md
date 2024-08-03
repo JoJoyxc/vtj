@@ -1,6 +1,8 @@
 # regex 正则表达式
 
 
+## 数据类型正则
+
 | 函数名        | 描述           | 类型     | 参数                | 返回值    |
 | ------------- | -------------- | -------- | ------------------- | --------- |
 | isUrl         | 检查url        | function | `(content: string)` | `boolean` |
@@ -16,4 +18,24 @@
 
 :::preview
 demo-preview=../../examples/utils/regex/regex-1.vue
+:::
+
+
+
+##   path-to-regexp：将路径转化为模式
+
+| 函数名              | 描述                      | 类型 | 参数 | 返回值 |
+| ------------------- | ------------------------- | ---- | ---- | ------ |
+| pathToRegexp,       | 将路径字符串转换为 RegExp | -    | -    | -      |
+| pathToRegexpMatch,  | -                         | -    | -    | -      |
+| pathToRegexpParse,  | -                         | -    | -    | -      |
+| pathToRegexpCompile | -                         | -    | -    | -      |
+
+
+
+
+### 示例
+
+:::preview
+demo-preview=../../examples/utils/regex/pathRegex.vue
 :::
