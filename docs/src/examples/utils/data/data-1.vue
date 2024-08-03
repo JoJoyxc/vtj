@@ -1,6 +1,6 @@
 <template>
   <div>
-    <configTable title="数据转换例子" :list="list"></configTable>
+    <config-table title="数据转换例子" :list="list"></config-table>
   </div>
 </template>
 
@@ -22,7 +22,7 @@
     splitStringify
   } from '@vtj/utils';
 
-  import configTable from '../../../../.vitepress/components/configTable.vue';
+  import ConfigTable from '../../../../.vitepress/components/configTable.vue';
 
   const list = [
     {
@@ -45,9 +45,27 @@
       ])
     },
     {
+      name: 'arrayToKv',
+      example:
+        'arrayToKv([ { "id": "a", "name": "a" }, { "id": "b", "name": "b" } ], "id","name")',
+      return: arrayToKv(
+        [
+          { id: 'a', name: 'a' },
+          { id: 'b', name: 'b' }
+        ],
+        'id',
+        'name'
+      )
+    },
+    {
       name: 'kvToArray',
       example: "kvToArray({ a: 'a', b: 'b' })",
       return: kvToArray({ a: 'a', b: 'b' })
+    },
+    {
+      name: 'kvToArray',
+      example: "kvToArray({ a: 'a', b: 'b' }, 'id', 'name')",
+      return: kvToArray({ a: 'a', b: 'b' }, 'id', 'name')
     },
     {
       name: 'dedupArray',

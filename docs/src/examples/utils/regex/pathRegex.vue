@@ -1,24 +1,6 @@
 <template>
   <div>
-    <table border="1" style="width: 100%" align="center">
-      <caption>
-        正则表达式例子
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col">函数名</th>
-          <th scope="col" style="text-align: center">例子</th>
-          <th scope="col" style="text-align: center">返回值</th>
-        </tr>
-      </thead>
-      <tbody align="center">
-        <tr>
-          <th scope="row">pathToRegexp</th>
-          <td class="code">pathToRegexp('/user/:name')</td>
-          <td>{{ pathToRegexp('/user/:name') }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <config-table title=" path-to-regexp例子" :list="list"></config-table>
   </div>
 </template>
 
@@ -29,49 +11,32 @@
     pathToRegexpParse,
     pathToRegexpCompile
   } from '@vtj/utils';
+
+  import ConfigTable from '../../../../.vitepress/components/configTable.vue';
+
+  const list = [
+    {
+      name: 'pathToRegexp',
+      example: "pathToRegexp('/user/:name')",
+      return: pathToRegexp('/user/:name')
+    },
+    {
+      name: 'pathToRegexpMatch',
+      example: 'pathToRegexpMatch',
+      return: pathToRegexpMatch('/user/:name')
+    },
+    {
+      name: 'pathToRegexpParse',
+      example: "pathToRegexpParse('/user/:name')",
+      return: pathToRegexpParse('/user/:name')
+    },
+    {
+      name: 'pathToRegexpCompile',
+      example:
+        "pathToRegexpCompile('/user/:id/:name')({id: 10001, name: 'bob'})",
+      return: pathToRegexpCompile('/user/:id/:name')({ id: 10001, name: 'bob' })
+    }
+  ];
+
+  console.log(pathToRegexp('/foo/:bar'));
 </script>
-
-<style scoped>
-  table {
-    border-collapse: collapse;
-    border: 2px solid rgb(140 140 140);
-    font-family: sans-serif;
-    letter-spacing: 1px;
-    font-size: 14px;
-  }
-
-  caption {
-    caption-side: top;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 22px;
-  }
-
-  thead,
-  tfoot {
-    background-color: rgb(228 240 245);
-  }
-
-  th {
-    border: 1px solid rgb(160 160 160);
-    padding: 4px;
-  }
-  td {
-    border: 1px solid rgb(160 160 160);
-    padding: 4px;
-  }
-
-  td:last-of-type {
-    text-align: center;
-    font-weight: bolder;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .code {
-    letter-spacing: 1px;
-    font-size: 16px;
-    font-style: italic;
-  }
-</style>

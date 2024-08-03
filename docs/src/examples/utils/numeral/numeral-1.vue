@@ -1,13 +1,13 @@
 <template>
   <div>
-    <configTable title="数字格式化例子" :list="list"></configTable>
+    <config-table title="数字格式化例子" :list="list"></config-table>
   </div>
 </template>
 
 <script setup lang="ts">
   import { numberFormat, toFixed } from '@vtj/utils';
 
-  import configTable from '../../../../.vitepress/components/configTable.vue';
+  import ConfigTable from '../../../../.vitepress/components/configTable.vue';
 
   const list = [
     {
