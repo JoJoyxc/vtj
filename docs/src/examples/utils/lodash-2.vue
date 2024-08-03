@@ -50,6 +50,11 @@
       return: snakeCase('Foo Bar')
     },
     {
+      name: 'noop',
+      example: 'noop()',
+      return: 'undefined ??'
+    },
+    {
       name: 'get',
       example: "get({ 'a': [{ 'b': { 'c': 3 } }] }, 'a[0].b.c')",
       return: get({ a: [{ b: { c: 3 } }] }, 'a[0].b.c')

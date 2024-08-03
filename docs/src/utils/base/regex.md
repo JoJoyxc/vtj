@@ -3,13 +3,13 @@
 
 ## 数据类型正则
 
-| 函数名        | 描述           | 类型                          | 参数                | 返回值    |
-| ------------- | -------------- | ----------------------------- | ------------------- | --------- |
-| isUrl         | 检查url        | `(content: string)=> boolean` | `(content: string)` | `boolean` |
-| isEmail       | 检查邮箱地址   | `(content: string)=> boolean` | `(content: string)` | `boolean` |
-| isIdCardNo    | 检查身份证号码 | `(content: string)=> boolean` | `(content: string)` | `boolean` |
-| isMobilePhone | 检查手机号码   | `(content: string)=> boolean` | `(content: string)` | `boolean` |
-| isCarNo       | 检查车牌号码   | `(content: string)=> boolean` | `(content: string)` | `boolean` |
+| 函数名        | 描述           | 类型                          | 参数         | 返回值    |
+| ------------- | -------------- | ----------------------------- | ------------ | --------- |
+| isUrl         | 检查url        | `(content: string)=> boolean` | 需检测的数据 | `boolean` |
+| isEmail       | 检查邮箱地址   | `(content: string)=> boolean` | 需检测的数据 | `boolean` |
+| isIdCardNo    | 检查身份证号码 | `(content: string)=> boolean` | 需检测的数据 | `boolean` |
+| isMobilePhone | 检查手机号码   | `(content: string)=> boolean` | 需检测的数据 | `boolean` |
+| isCarNo       | 检查车牌号码   | `(content: string)=> boolean` | 需检测的数据 | `boolean` |
 
 
 
