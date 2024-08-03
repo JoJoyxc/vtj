@@ -2,10 +2,10 @@
 
 
 
-| 函数名     | 描述       | 类型                        | 参数                                                                     | 返回值   |
-| ---------- | ---------- | --------------------------- | ------------------------------------------------------------------------ | -------- |
-| dateFormat | 时间格式化 | `string \| number \| Date`  | (date:<string \| number \| Date>, format: string<'YYYY-MM-DD HH:mm:ss'>) | `String` |
-| dayjs      | dayjs      | [文档](https://day.js.org/) |
+| 函数名     | 描述       | 类型                                        | 参数                                                                     | 返回值   |
+| ---------- | ---------- | ------------------------------------------- | ------------------------------------------------------------------------ | -------- |
+| dateFormat | 时间格式化 | `(val:<string \| number \| Date>)=> string` | (date:<string \| number \| Date>, format: string<'YYYY-MM-DD HH:mm:ss'>) | `String` |
+| dayjs      | dayjs      | [文档](https://day.js.org/)                 |
 
 
 

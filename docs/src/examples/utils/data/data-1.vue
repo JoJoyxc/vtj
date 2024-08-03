@@ -84,7 +84,7 @@
           <th scope="row">pick</th>
           <td class="code">pick(['a', '1', 2], 'a')</td>
           <td>
-            <!-- {{ pick({ a: 'a', b: 'b' }, 'a') }} -->
+            <!-- {{ pick({ a: [b:'bb'] }, 'a') }} -->
           </td>
         </tr>
 
