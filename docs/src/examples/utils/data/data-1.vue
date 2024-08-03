@@ -45,9 +45,27 @@
       ])
     },
     {
+      name: 'arrayToKv',
+      example:
+        'arrayToKv([ { "id": "a", "name": "a" }, { "id": "b", "name": "b" } ], "id","name")',
+      return: arrayToKv(
+        [
+          { id: 'a', name: 'a' },
+          { id: 'b', name: 'b' }
+        ],
+        'id',
+        'name'
+      )
+    },
+    {
       name: 'kvToArray',
       example: "kvToArray({ a: 'a', b: 'b' })",
       return: kvToArray({ a: 'a', b: 'b' })
+    },
+    {
+      name: 'kvToArray',
+      example: "kvToArray({ a: 'a', b: 'b' }, 'id', 'name')",
+      return: kvToArray({ a: 'a', b: 'b' }, 'id', 'name')
     },
     {
       name: 'dedupArray',
