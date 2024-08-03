@@ -95,6 +95,16 @@
       return: splitParser('1,2,3,4')
     },
     {
+      name: 'splitParser',
+      example: "splitParser('1-2-3-4')",
+      return: splitParser('1-2-3-4')
+    },
+    {
+      name: 'splitParser',
+      example: "splitParser('1-2-3-4', '-')",
+      return: splitParser('1-2-3-4', '-')
+    },
+    {
       name: 'splitStringify',
       example: "splitStringify(['1', '2', '3', '4'], '-')",
       return: splitStringify(['1', '2', '3', '4'], '-')
