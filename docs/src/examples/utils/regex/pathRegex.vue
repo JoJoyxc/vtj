@@ -12,7 +12,7 @@
     pathToRegexpCompile
   } from '@vtj/utils';
 
-  import ConfigTable from '../../../../.vitepress/components/configTable.vue';
+  import ConfigTable from '$/components/configTable.vue';
 
   const list = [
     {
