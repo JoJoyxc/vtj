@@ -84,9 +84,9 @@ Base64 转换 Blob
 ```
 
 
-### formDataToJson
+### blobToFile
 
-FormData 转换为json  
+Blob 转 File 
 
 ```js
   import { blobToFile } from '@vtj/utils';  
@@ -94,7 +94,7 @@ FormData 转换为json
     const blobParts = ['<q id="a"><span id="b">hey!</span></q>']; // 一个包含单个字符串的数组
     const blob = new Blob(blobParts, { type: 'text/html' }); // 得到 blob
 
-    const BlobToFile = blobToFile(blob, 'vtj.text');
+    const BlobToFile = blobToFile(blob, 'vtj.html');
     console.log('BlobToFile', BlobToFile);
     // DataURLtoBlob => Blob对象
   };
