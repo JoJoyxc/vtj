@@ -26,7 +26,7 @@
 ### 示例
 
 :::preview
-demo-preview=../../examples/utils/lodash-1.vue
+demo-preview=../../examples/utils/lodash/lodash-1.vue
 :::
 
 ## 字符串转换
@@ -51,7 +51,7 @@ demo-preview=../../examples/utils/lodash-1.vue
 
 
 :::preview
-demo-preview=../../examples/utils/lodash-2.vue
+demo-preview=../../examples/utils/lodash/lodash-2.vue
 :::
 
 

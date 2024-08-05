@@ -85,7 +85,6 @@
       return: isBoolean(false)
     },
     {
-      rowspan: 2,
       name: 'isBuffer',
       example: 'isBuffer(new Uint8Array(2))',
       return: isBuffer(new Uint8Array(2))
@@ -101,6 +100,7 @@
     //   return: isArrayBuffer(new Array(2))
     // },
     {
+      name: 'isArrayBuffer',
       example: 'isArrayBuffer(new ArrayBuffer(2))',
       return: isArrayBuffer(new ArrayBuffer(2))
     },
