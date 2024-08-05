@@ -9,17 +9,17 @@
 
     <XAction
       label="formDataToJson"
-      type="primary"
+      type="success"
       @click="onClickFormDataToJson"></XAction>
 
     <XAction
       label="dataURLtoBlob"
-      type="primary"
+      type="warning"
       @click="onClickDataURLtoBlob"></XAction>
 
     <XAction
       label="blobToFile"
-      type="primary"
+      type="danger"
       @click="onClickBlobToFile"></XAction>
   </div>
 </template>

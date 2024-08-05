@@ -7,17 +7,17 @@
 
     <XAction
       label="downloadBlob"
-      type="primary"
+      type="success"
       @click="onDownloadBlob"></XAction>
 
     <XAction
       label="downloadRemoteFile"
-      type="primary"
+      type="warning"
       @click="onDownloadRemoteFile"></XAction>
 
     <XAction
       label="downloadJson"
-      type="primary"
+      type="danger"
       @click="onDownloadJson"></XAction>
   </div>
 </template>

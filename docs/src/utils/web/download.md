@@ -11,7 +11,6 @@
 
 
 ### 示例
-    在控制台查看效果
 :::preview
 demo-preview=../../examples/utils/download/download.vue
 :::
