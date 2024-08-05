@@ -90,16 +90,16 @@
       example: 'isBuffer(new Uint8Array(2))',
       return: isBuffer(new Uint8Array(2))
     },
-    {
-      example: 'isBuffer(new Buffer(2))',
-      return: isBuffer(new Buffer(2))
-    },
-    {
-      rowspan: 2,
-      name: 'isArrayBuffer',
-      example: 'isArrayBuffer(new Array(2))',
-      return: isArrayBuffer(new Array(2))
-    },
+    // {
+    //   example: 'isBuffer(new Buffer(2))',
+    //   return: isBuffer(new Buffer(2))
+    // },
+    // {
+    //   rowspan: 2,
+    //   name: 'isArrayBuffer',
+    //   example: 'isArrayBuffer(new Array(2))',
+    //   return: isArrayBuffer(new Array(2))
+    // },
     {
       example: 'isArrayBuffer(new ArrayBuffer(2))',
       return: isArrayBuffer(new ArrayBuffer(2))

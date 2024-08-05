@@ -1,7 +1,5 @@
 # 辅助工具
 
-
-
 | 函数名         | 描述                        | 类型                                  | 参数                          | 返回值    |
 | -------------- | --------------------------- | ------------------------------------- | ----------------------------- | --------- |
 | isClient       | 是否浏览器环境              | `boolean`                             | -                             | `Boolean` |
@@ -10,18 +8,13 @@
 | dataURLtoBlob  | Base64 转换 Blob            | `(dataUrl:string) => Blob`            | (dataUrl:Base64)              | `Blob`    |
 | blobToFile     | Blob 转 File                | `(blob:Blob,fileName:string) => File` | (blob:Blob,fileName:文件名称) | `File`    |
 
-
-
-
 ### fileToBase64
 
 **文件对象 File 转换为 base64**
 
 ```js
 
-
 ```
-
 
 ### 示例
 

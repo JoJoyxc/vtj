@@ -8,8 +8,8 @@ export default [
       { text: '项目集成', link: '/integration' },
       { text: '功能扩展', link: '/extension' },
       {
-        text: '打造自己专属的低代码平台',
-        link: '/custom'
+        text: '打造专属低代码平台',
+        link: '/lcdp'
       }
     ]
   },
