@@ -190,7 +190,20 @@ export async function publishFile(
   const fileRepository = new JsonRepository('files');
   const dsl = fileRepository.get(file.id as string);
   if (dsl) {
-    const content = await generator(dsl, componentMap, project.dependencies);
+    const content = await generator(
+      dsl,
+      componentMap,
+      project.dependencies
+    ).catch((e) => {
+      try {
+        saveLogs({
+          dsl: dsl,
+          message: e.message,
+          stack: e.stack
+        });
+      } catch (e) {}
+      throw e;
+    });
     const vueRepository = new VueRepository();
     vueRepository.save(file.id as string, content);
     return success(true);
