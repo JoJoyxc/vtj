@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.100](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.99...@vtj/designer@0.8.100) (2024-08-09)
+
+
+### Bug Fixes
+
+* 🐛 style设置border回填不正确 ([d05da3c](https://gitee.com/newgateway/vtj/commits/d05da3c28d6ec611a99b5417ba2db23bca72555d))
+
+
+
+
+
 ## [0.8.99](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.98...@vtj/designer@0.8.99) (2024-08-08)
 
 
