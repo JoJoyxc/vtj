@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.100](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.99...@vtj/materials@0.8.100) (2024-08-09)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.99](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.98...@vtj/materials@0.8.99) (2024-08-08)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.98](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.97...@vtj/materials@0.8.98) (2024-08-08)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+
+## [0.8.97](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.96...@vtj/materials@0.8.97) (2024-07-31)
+
+
+### Features
+
+* ✨ x-form 物料props配置错误 ([f03883b](https://gitee.com/newgateway/vtj/commits/f03883b791b7de20d2915553abc68a37d39177cf))
+
+
+
+
+
+
 ## [0.8.96](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.95...@vtj/materials@0.8.96) (2024-07-25)
 
 

@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.100](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.99...dev-web@0.8.100) (2024-08-09)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.8.99](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.98...dev-web@0.8.99) (2024-08-08)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.8.98](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.97...dev-web@0.8.98) (2024-08-08)
+
+
+### Features
+
+* mark ([ce1aa4f](https://gitee.com/newgateway/vtj/commits/ce1aa4fb11a5ff5d7b990de31dff2c36bfb07500))
+
+
+
+
+
+
+## [0.8.97](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.96...dev-web@0.8.97) (2024-07-31)
+
+
+### Bug Fixes
+
+* 🐛 x-dialog在页面body出现滚动条时的bug ([b2451e6](https://gitee.com/newgateway/vtj/commits/b2451e67bfd75e6804c6fa3053a66d919e298879))
+
+
+
+
+
+
 ## [0.8.96](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.95...dev-web@0.8.96) (2024-07-25)
 
 
