@@ -115,6 +115,16 @@ onReady(async () => {
 </script>
 ```
 
+### 五、tsconfig.json
+
+ts 忽略 .vtj 文件夹校验，在 `tsconfig.json` 文件增加
+
+```ts
+{
+  "exclude": [".vtj"]
+}
+```
+
 ## 配置项
 
 ### 开启项目二级目录
