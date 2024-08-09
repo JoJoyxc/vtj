@@ -198,6 +198,8 @@ export async function publishFile(
       try {
         saveLogs({
           dsl: dsl,
+          componentMap,
+          dependencies: project.dependencies,
           message: e.message,
           stack: e.stack
         });
