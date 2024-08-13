@@ -33,6 +33,7 @@ export interface FieldOption {
   value: any;
   disabled?: boolean;
   children?: FieldOption[];
+  data?: any;
 }
 
 export type FieldOptionsLoader = (
