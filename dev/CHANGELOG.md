@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.102](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.101...dev-web@0.8.102) (2024-08-13)
+
+
+### Bug Fixes
+
+* 🐛 dialog 在body有定位的情况下位置异常 ([30d9e55](https://gitee.com/newgateway/vtj/commits/30d9e55ba1968c24509ba4513808fe7e530d3c55))
+
+
+
+
+
+## [0.8.101](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.100...dev-web@0.8.101) (2024-08-13)
+
+
+### Bug Fixes
+
+* 🐛 v-bind出码错误 ([73ea9a7](https://gitee.com/newgateway/vtj/commits/73ea9a7630688cb5904883d5e586608ff3d997cf))
+
+
+
+
+
+
+## [0.8.100](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.99...dev-web@0.8.100) (2024-08-09)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.8.99](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.98...dev-web@0.8.99) (2024-08-08)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.8.98](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.97...dev-web@0.8.98) (2024-08-08)
+
+
+### Features
+
+* mark ([ce1aa4f](https://gitee.com/newgateway/vtj/commits/ce1aa4fb11a5ff5d7b990de31dff2c36bfb07500))
+
+
+
+
+
+
 ## [0.8.97](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.96...dev-web@0.8.97) (2024-07-31)
 
 
