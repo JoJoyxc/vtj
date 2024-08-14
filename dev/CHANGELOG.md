@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.103](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.102...dev-web@0.8.103) (2024-08-14)
+
+
+### Features
+
+* ✨ picker 支持格式化数据 ([882848d](https://gitee.com/newgateway/vtj/commits/882848d4a2936f669261dd0e64f8d13c34544e50))
+
+
+
+
+
 ## [0.8.102](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.101...dev-web@0.8.102) (2024-08-13)
 
 
