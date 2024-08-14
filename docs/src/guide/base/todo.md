@@ -1,154 +1,426 @@
 # 创建一个低代码应用（ Todo ）
 
 
+
+## 先导
+在实现 Todo 待办事项这个功能之前, 先对页面布局信息进行个大概的了解。页面分为`四个区域`，从左到右分别为`应用栏（1）`，`应用管理栏（2）`，`设计视图（3）`和`配置栏（4）`。
+在页面上面的5号区域是页面的`视图转换`，可以切换页面成PC/H5/IPad。而6号区域是`页面的配置`。分别是页面的预览、刷新、设置和发布。
+![页面了解](../../assets/todo/know.png)。
+
+
+### 应用栏
+  页面最左边的应用栏。从上到下分别是 `页面管理`、`区块管理`、`组件库`、`大纲树`、`历史记录`、`API管理`、`依赖管理`、`项目配置`。
+- `页面管理` 相当于 Views， 新建页面也就是相当于 在 Views 创建一个 .vue 文件
+- `区块管理` 相当于 Components 和公共组件库一样。
+- `大纲树`   可以看到页面的 布局结构。
+- `历史记录`  记录着 所有页面的记录，可以进行回退。可以看作 git
+- `API管理`   配置请求的处理。
+- `依赖管理`  在应用开发中所需的依赖
+- `项目管理`  管理着应用的信息
+
+### 配置栏
+
+配置栏 中 的展示分为 两种。 
+1. 页面的配置 
+2. 组件的配置
+
+#### 页面配置
+
+页面的配置 分为四个标签页 设置、CSS、数据源、定义。
+
+![页面配置](../../assets/todo/pageConfig.png)
+
+- *设置页* 是进行页面的数据管理。
+  1. `状态数据（state）`相当于 vue2 中 的 `data`；
+  2. `计算属性`，相当于 vue2 中 `computed`； 
+  3. `组件方法`相当于 `methods`； 
+  4. `侦听器` 相当于 `watch`； 
+  5. `生命周期` 相当于 vue 中的生命周期。
+- *CSS*  相当于 style
+   ```vue
+    <style lang="css" scoped></style>
+   ``` 
+- *数据源*  就是请求接口返回来的数据。
+- *定义*
+   1. 定义属性
+   2. 定义事件
+   3. 定义插槽  
+   4. 注入   `inject` 数据
+
+ > 定义属性、定义事件 常用于 `区块`。 类似下面的代码。
+ ```vue
+ <template>
+  <component :item="itemData" @update="onUpdate"></component>
+</template>
+
+ ```
+ > 在 区块中 定义属性`item` 就是把 `itemData`数据 传到 区块的`item属性`中，在区块的`页面配置`的可以使用到。定义事件也是一样。
+
+
+#### 组件配置
+组件是指 在 组件库中的所有组件。
+
+组件的配置 也分为四个标签页：属性、样式、事件以及指令
+
+- 属性 组件自身的属性或者可以自定义属性
+- 样式 只对当前组件作用
+- 组件 组件自身的事件或鼠标事件以及键盘事件
+- 指令 和 vue 中的指令一致。
+
+![组件配置](../../assets/todo/componentConfig.png)
+
+## 实现效果展示
 实现 如下图效果
-![页面](../../assets/todoList/complete.png)
+![页面](../../assets/todo/todo.png)
 
-todoList 分为三部分 头部的输入框, 中间主体的列表以及底部
-### 页面的创建
+`TodoList` 分为三部分： 头部的输入框, 中间主体的列表以及底部。
+## 页面的创建
 
-在 `页面管理` 区域 点击右边加号按钮，出现弹窗。选择新增页面或新增目录，相当于在 Vue项目中的pages创建页面或目录 
-![新建页面](../../assets/todoList/newPage.png)
+在 `页面管理` 区域 点击右边加号按钮，出现弹窗。选择新增页面或新增目录，相当于在 Vue 项目中的 pages 创建页面。
+![新建页面](../../assets/todo/newPage.png)
 
 创建完成后,效果如下：
 
-![新建页面完成](../../assets/todoList/newPageDone.png)
+> 点击 中间的最大的区域 **设计视图** 可以在右边区域看到 `TodoList` 这个页面的所有配置 
+> 或者 可以直接点击页面的`设置按钮` 也可以看到页面的配置
 
-页面分为四个模块。最左边的是应用配置栏；然后是页面管理，相当于 routes ; 中间最大那块区域就是设计视图区域，最右边的是页面的配置。
+![新建页面完成](../../assets/todo/newPageDone.png)
 
 
+`TodoList` 分为三个部分,待办头部、待办项、待办底部。这三个部分分成三个区块进行开发。
+首先完成待办头部的部分
 
+## 待办头部区块
 
-### 头部输入框的创建
+### 待办头部区块的创建
+在左边的应用栏找到 `区块管理` 点击, 进入区块管理界面，在数据管理栏点击 `+` 按钮，打开新增区块弹窗。填写信息，创建区块。
+![新建头部区块](../../assets/todo/newHeader.png)
 
-输入框实现的功能是 输入值，按回车确认， 把值添加的列表中
 
+头部区块创建完成后可以看到下面的效果。
 
-在应用的配置栏中点击 `组件库`， 在 UI 中 拖动 `XContainer` 容器组件 到页面上，`XContainer`容器组件相当于一个的`div`,然后拖 `XField` 字段组件 到`XContainer`组件的里面，
-![头部的创建](../../assets/todoList/newHeader.png)
 
-拖动完成后，效果如下：
+> 注意 在开发的时候，记得注意 第二步 所指的信息。 它展现的名称代表着现在在哪个页面或者区块 进行开发
 
-**在应用栏中 点击大纲树 查看 页面组件的结果**
-![头部的创建完成](../../assets/todoList/newHeaderDone.png)
-如果看到是下面的结果, 可以直接在大纲树中拖 `XField` 组件 到 `XContainer容器组件` 上面，实现效果。
-![头部的创建异常](../../assets/todoList/newHeaderDoneError.png)
 
+![新建头部区块完成](../../assets/todo/newHeaderDone.png)
 
 
-在 最右边的页面配置区域，操作属性配置，把展示效果呈现好看点。
-XContainer 排列布局改完 纵向排列
-![container属性异常](../../assets/todoList/header-container.png)
-XField 删除label, placeholder 修改
-![field属性配置](../../assets/todoList/header-field.png)
+### 待办头部组件
+待办头部 由一个输入框和一个按钮组成。
 
-#### 头部功能实现
-输入值，按回车确认， 把值添加的列表中。
+首页在 `组件库` 中 拖拽 组件到 `待办区块` 的`设计视图`中
 
-##### 属性配置
+![新建头部区块拖拽](../../assets/todo/newHeaderInput.png)
 
-回到页面管理应用中, 点击todoList 打开页面  点击页面内容或者 右上角的设置按钮，打开页面的`数据配置`
-![页面属性配置](../../assets/todoList/newState.png)
 
+在大纲树中查看 待办头部区块 的布局信息
 
-在 `状态数据` 中 设置 所需的 数据, `XField` 组件的输入值 `inputValue`, 默认值为 `''`, 列表数据 `list`, 默认值为 `[]`。
+![新建头部区块拖拽完成](../../assets/todo/newHeaderInputDone.png)
 
-![页面属性配置完成](../../assets/todoList/newStateDone.png)
+#### 拖拽显示异常处理
+![新建头部区块拖拽异常](../../assets/todo/newHeaderError.png)
 
+如果看到的是上面的效果，可以在`大纲树`中 直接 拖拽 组件 实现布局。
 
-#### 数据双向绑定
-输入值 inputValue 与 XField 组件 进行 双向绑定。
+![新建头部区块拖拽异常处理](../../assets/todo/newHeaderCorrect.png)
 
-![数据双向绑定](../../assets/todoList/XFieldbind.png)
 
+### 待办头部数据
 
-这里的操作实现 相当于实现了 v-model 的绑定。
+待办头部 实现的功能是 用户输入数据，点击创建按钮或回车 将数据提交到列表中
 
+#### 创建数据
 
-#### 回车确认添加到列表中 
-在 `todoList` 页面, 点击 `XField` 组件，在 组件的事件中 实现 回车确认添加到列表中 。 
-![数据双向绑定](../../assets/todoList/XFieldMethodBind.png)
+所有 在 `待办头部` 的区块中 设置 `title` 属性
 
+![新建头部区块State](../../assets/todo/newHeaderState.png)
 
-### 列表组件
 
-#### 创建组件
+#### 数据 与 组件 绑定
+将 `title` 属性 和 区块中 的 `ElInput`组件的 `value` 进行双向绑定
 
-> 注意 记得回到 `todoList` 页面中 操作
+![新建头部区块StateModel](../../assets/todo/newHeaderStateModel.png)
 
-创建组件的方式和头部区域的创建一样，拖拽组件库中的组件到 todoList 页面中
 
-![创建列表](../../assets/todoList/newList.png)
+#### 提交方法
 
+在 `待办头部` 的`数据配置`中 创建 `submit` 方法
 
-#### 遍历列表
+![新建头部区块Methos](../../assets/todo/newHeaderMethod.png)
 
-在 列表的 `XContainer` 组件 中 循环遍历 `list` 列表
-![列表VFor](../../assets/todoList/newListVFor.png)
+#### 组件定义事件
+在 submit 提交方法中 我们 `触发` 自定义事件 
+```js
+this.$emit('submit')
+```
+在头部完成后 要在 `Todo` 页面 实现 自定义事件的处理 。代码类似于下面
 
-把 需要的数据绑定 到 `XContainer` 组件中
+```vue
+  // Todo 页面
+ <template>
+   // 待办头部区块
+  <todo-header @submit='addTodo'></todo-header>
+</template>
 
-**因为在属性配置哪里设置了 list 的初始值 为空数组，可能看不到列表的展示，可以回到属性配置那里添加几条测试数据**
-![列表VForBind](../../assets/todoList/newListBind.png)
+```
 
-把 列表遍历中是 数据 item 绑定到 每一个 XContainer 容器组件中
+![头部自定义事件](../../assets/todo/newHeaderCustomMethod.png)
 
-#### key 值的绑定
+#### 回车提交事件
 
-![newListKey](../../assets/todoList/newListKey.png)
+当用户在 ElInput 输入框输入数据后 回车 执行 submit 方法
 
-#### 遍历的数据绑定
- 将 数据 item对象中的数据 与 组件属性的绑定。 所有的绑定操作都是一样的操作。 
-![newListLabelBind](../../assets/todoList/newListLabelBind.png)
-绑定后,效果如下：
+![回车操作](../../assets/todo/newHeaderKeypress.png)
 
-![newListLabelBindDone](../../assets/todoList/newListLabelBindDone.png)
 
+#### 按钮点击事件
 
+在 `待办头部` 的 `ElButton` 的 `数据配置`中 实现 `click` 方法
 
-#### checkbox 的数据修改
-![newListCheckboxChange](../../assets/todoList/newListCheckboxChange.png)
+![回车操作](../../assets/todo/newHeaderBtnClick.png)
 
-#### 初步效果查看
 
-可以在 page页面中 查看效果了。
+### 待办头部完成
 
-也可以在点击页面的预览按钮查看效果。
-![preview](../../assets/todoList/preview.png)
+[提交方法](#提交方法)成功后再 列表中 增加一条数据。在[提交方法](#提交方法)中 我们触发了 `自定义事件 submit`。 接下来回到 `Todo 待办事项页面` 实现 `submit 的自定义事件`、
 
+**把 待办头部组件 todoHeader 从 区块管理中 拖拽到 Todo 待办事项页面**
 
-#### 列表项的删除
+在 大纲树 中 可以看到 todoHeader 区块已经拖进 Todo 页面了。
+![头部组件进页面](../../assets/todo/newHeaderInPage.png)
 
-实现方式 和  头部功能实现 一样
-![listDel](../../assets/todoList/newListDel.png)
+### Todo 页面 处理 自定义事件
 
+在 待办头部 todoHeader 区块中，我们触发了 `自定义事件 submit`。 接下来在 `Todo 待办事项页面` 实现 `submit 的自定义事件`。
 
+![todoHeader组件submit](../../assets/todo/newPageSubmit.png)
 
-### 底部区域的实现
+> 中间黑色代码区域实现的就是下方 addTodo 的方法
 
-组件创建和之前一样
-![bottomDone](../../assets/todoList/newBottomDone.png)
+```vue
+  // Todo 页面
+ <template>
+   // 待办头部区块
+  <todo-header @submit='addTodo'></todo-header>
+</template>
 
+```
 
-#### 实现清除已完成
-在底部 `XContainer` 组件中 `XAction` 操作组件的事件中实现点击方法
-![newBottomDel](../../assets/todoList/newBottomDel.png)
 
+#### 实现addTodo 
 
+把 自定义事件  submit 传过来的 title, 在 todo 的数据列表 list 中 增加
 
-#### 实现全选
+##### Todo定义数据 
 
-  1. 在 `todoList` 页面 的计算属性中 设置 已选todo 的数量
-  ![newPageComputed](../../assets/todoList/newPageComputed.png)
-  2. 列表中 所有项 选择了 全选为true。在 todoList 页面 的计算属性中 设置 是否全选 
-   ![newPageComputedIsAll](../../assets/todoList/newPageComputedIsAll.png)
-     - 将 `isAll` 计算属性 和 `checkbox的值` 进行双向绑定
-         ![newBottomCheckbox](../../assets/todoList/newBottomCheckbox.png)
-  3. `checkbox` 改变时 修改全选或非全选
- ![newBottomCheckboxChange](../../assets/todoList/newBottomCheckboxChange.png)
+![Todo定义数据 ](../../assets/todo/newPageState.png)
 
 
+##### addTodo
 
- #### 预览效果
->  查看效果
-  ![complete](../../assets/todoList/complete.png)
+![addTodo ](../../assets/todo/newPageAddTodo.png)
+
+
+#### 方法与自定义事件绑定
+
+Todo 页面的 方法addTodo 与 待办头部 自定义事件绑定submit 绑定
+
+![addTodo ](../../assets/todo/newPageAddTodoBind.png)
+
+
+
+### 待办项区块
+在 区块管理中 创建 TodoItem 待办项 区块，待办项 实现的是 列表的遍历渲染。
+
+
+#### 待办事项页面布局-样式
+待办项 分为两个部分 左边 待办事项(列表中的title), 右边的 switch是否完成 和删除按钮
+
+
+
+#### 列表遍历
+将 待办项 区块  拖到 Todo 待办事项 页面中
+
+在 Todo 页面 实现 对 TodoHeader区块的遍历
+![遍历List](../../assets/todo/newPageVFor.png)
+
+> 由于 Todo 页面 配置的 list 数据 默认 是 [] 空数组，TodoHeader区块 会消失
+> 可以 在 Page 页面 增加测试数据 使TodoHeader区块 出现
+
+#### 遍历数据与组件绑定
+
+```vue
+<template v-for="item in list">
+  <todo-item :item="item" :key=item.id></todo-item>
+</template>
+```
+在 vue 项目中 实现 v-for 的效果可以这么写。
+
+  **同样，在这个的开发中也是这个实现的**
+
+  1. 在 todo-item 区块 设置 item 属性
+    在 待办项 区块 中 的页面配置 中 创建 item 属性 实现了`:item`
+   ![自定义item绑定数据](../../assets/todo/newPageCustomState.png)
+  2. 将 `组件的item` 属性 与 遍历的 item 进行绑定  `:item='item'`  ==> 组件item `:item` 等于 遍历的item `item`
+    ![自定义item绑定数据](../../assets/todo/newPageCustomStateDone.png)
+
+#### key 绑定
+![key](../../assets/todo/newItemKeyBind.png)
+
+
+#### item 数据 与 组件信息绑定
+
+待办项 区块 左边标题 和 item的 `title` 绑定
+
+![title绑定](../../assets/todo/newItemTitleBind.png)
+
+待办项 区块 右边滑块 和 item的 `done` 绑定。 
+![model绑定](../../assets/todo/newItemDoneModel.png)
+
+#### title样式
+当 滑块 Switch 状态变成 true 已完成 title 展示效果中间加横线
+![class绑定](../../assets/todo/newItemClassBind.png)
+在 组件中填 css
+![style](../../assets/todo/newItemStyle.png)
+
+#### 注意
+
+滑块的value与 item.done直接进行绑定,这种做法是**错误**的。在 Vue 中 props 中的数据是不能直接修改的。此时的item.done 传进来的方式相当于 props
+
+![done绑定错误](../../assets/todo/newItemDoneBindError.png)
+
+ 要把 数据 保存下来先, 再进行修改。
+
+![done绑定](../../assets/todo/newItemDoneBind.png)
+
+滑块的value与 item.done直接进行双向绑定
+![model绑定](../../assets/todo/newItemDoneModel.png)
+
+
+> **注意： 双向绑定是赋值,`不能`用 `?.` 可选链的方式。**
+
+
+#### 滑块状态改变
+
+滑块改变时,待办项是否已完成状态也需要修改。switch 滑块状态`change`时, 触发 `update` 方法
+
+在 待办项 区块中 设置 组件方法 update。 然后再 switch 的事件中 设置 change 事件
+
+```vue
+<template>
+  <el-switch v-model="done" @change="update"></el-switch>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      done: '',
+    };
+  },
+  methods: {
+    update() {},
+  },
+};
+</script>
+
+```
+设置 组件方法 update, 触发了**自定义事件**。emit('change')
+![update](../../assets/todo/newItemMethodUpdate.png)
+
+switch 的事件中 设置 change 事件, change， 执行 update 方法
+![change](../../assets/todo/newItemMethodChange.png)
+
+
+#### 滑块change自定义事件
+
+```vue
+<template>
+  <todo-item @change="updateTodo"></todo-item>
+</template>
+```
+
+**组件内部 （待办项区块） 中 switch 状态改变 触发 emit('change')了。**
+接下来 在组件（待办项区块）上 监听 `change` 事件
+
+![change自定义](../../assets/todo/newItemCustomMethodChange.png)
+
+
+回到 `Todo` 待办事项 页面 中 点击` todoItem待办项` 查看 这个区块的组件配置。在事件中 有个 `组件事件`，这里展示的就是组件的自定义事件。
+
+![changePage自定义](../../assets/todo/newPageItemChange.png)
+
+
+监听 组件 `change` 改变, 执行 updateTodo 方法。
+
+`Todo 页面` 创建 updateTodo 方法
+![updateTodo](../../assets/todo/newPageItemChange.png)
+
+组件自定义事件 与 updateTodo 绑定
+
+![newPageCustomChangeBind](../../assets/todo/newPageCustomChangeBind.png)
+
+#### 删除按钮点击
+
+**删除按钮点击 触发自定义事件 remove**
+![newItemCustomMethodClick](../../assets/todo/newItemCustomMethodClick.png)
+
+##### 1.第一步
+  在 组件（区块）上 定义 remove 方法
+
+![newItemCustomMethodRemove](../../assets/todo/newItemCustomMethodRemove.png)
+##### 2.第二步
+
+  在 父组件 （页面） 上 找到该 组件（区块）， 在组件（区块）的事件上 创建 页面的方法
+
+![newPageRemoveMethod](../../assets/todo/newPageRemoveMethod.png)
+
+将页面 方法和 组件 Remove 事件绑定
+
+![newPageCustomRemoveBind](../../assets/todo/newPageCustomRemoveBind.png)
+
+
+```js
+  <todo-item @remove="removeTodo"></todo-item>
+  // 第一步 实现的是 @remove
+  // 第二部 实现的是 创建removeTodo方法 和 @remove="removeTodo" 绑定
+```
+
+
+### 区块底部
+
+创建`待办底部区块`然后在`组件库`中拖拽自己想要的组件，把待办底部区块拖拽到 `Todo` 页面上。
+
+实现底部展示 需要计算出总共有多少项，有多少项是待办的。
+
+首页要知道 待办列表的长度。那么把 Todo 中的 list 数据传给 `todoFooter` 待办底部。 类似于 props 
+
+1. 在 `todoFooter` 待办底部 创建自定义属性 `items` 用来接收 `Todo` 页面传进来的 `list` 数据
+  ![newFooterCustomState](../../assets/todo/newFooterCustomState.png)
+2.  在 `Todo` 页面 中 把 `list` 数据 传给 `todoFooter` 待办底部的自定义属性 `items`
+  ![newPageItems](../../assets/todo/newPageItems.png)
+
+
+
+#### 计算
+  计算出总共有多少项
+  ![newFooterTotal](../../assets/todo/newFooterTotal.png)
+  有多少项是待办的
+  ![newFooterDone](../../assets/todo/newFooterDone.png)
+  合并展示出来
+  ![newFooterSummary](../../assets/todo/newFooterSummary.png)
+
+最后将和并展示的数据绑定
+
+  ![newFooterBind](../../assets/todo/newFooterBind.png)
+
+
+
+#### 展示效果
+
+当 待办项 为空时，可以用 el-empty 展示空白数据，拖动 el-empty 组件到页面上，当待办项 长度为0时出现
+
+  ![newPageEmpty](../../assets/todo/newPageEmpty.png)
+
+Todo 功能基本实现了， 为了更好的展示效果，样式之类的自己修改。
