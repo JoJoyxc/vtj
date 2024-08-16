@@ -114,9 +114,13 @@
 
   watch(
     () => props.queryKey,
-    (newVal, oldVal) => {
-      if (newVal && oldVal && formModel.value[oldVal]) {
-        formModel.value[newVal] = formModel.value[oldVal];
+    (newKey, oldKey) => {
+      if (newKey && oldKey) {
+        const lastValue = formModel.value[oldKey];
+        if (typeof lastValue !== 'undefined') {
+          formModel.value[newKey] = lastValue;
+          delete formModel.value[oldKey];
+        }
       }
     }
   );
