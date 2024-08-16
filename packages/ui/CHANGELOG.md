@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.104](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.103...@vtj/ui@0.8.104) (2024-08-16)
+
+
+### Bug Fixes
+
+* 🐛 queryKey更新问题 ([a07426d](https://gitee.com/newgateway/vtj/commits/a07426ddfa1b3897e75f7600fc97db0bbac37bf4))
+
+
+
+
+
+
 ## [0.8.103](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.102...@vtj/ui@0.8.103) (2024-08-14)
 
 
