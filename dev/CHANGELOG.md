@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.107](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.106...dev-web@0.8.107) (2024-08-17)
+
+
+### Features
+
+* ✨ field 支持隐藏域 ([a0e8c15](https://gitee.com/newgateway/vtj/commits/a0e8c1586274004c19d052bf3e423d08887ad122))
+
+
+
+
+
 ## [0.8.106](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.105...dev-web@0.8.106) (2024-08-17)
 
 **Note:** Version bump only for package dev-web
