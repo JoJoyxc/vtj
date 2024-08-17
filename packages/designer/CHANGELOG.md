@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.106](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.105...@vtj/designer@0.8.106) (2024-08-17)
+
+
+### Bug Fixes
+
+* 🐛 不校验上下文对象 ([ed79d7d](https://gitee.com/newgateway/vtj/commits/ed79d7d70ecff6070fa9e2a9d12b1818fe16d8e9))
+
+
+
+
+
 ## [0.8.105](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.104...@vtj/designer@0.8.105) (2024-08-16)
 
 **Note:** Version bump only for package @vtj/designer
