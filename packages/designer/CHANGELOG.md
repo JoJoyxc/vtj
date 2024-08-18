@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.108](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.107...@vtj/designer@0.8.108) (2024-08-18)
+
+
+### Features
+
+* ✨ 优化属性设置面板 ([d427a0f](https://gitee.com/newgateway/vtj/commits/d427a0fa3f848547d295256440847e394221f312))
+
+
+
+
+
 ## [0.8.107](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.106...@vtj/designer@0.8.107) (2024-08-17)
 
 **Note:** Version bump only for package @vtj/designer
