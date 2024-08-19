@@ -76,6 +76,7 @@
   };
 
   const onEnter = async (e: any) => {
+    if (props.disabled) return;
     const inputValue = e.target.value;
     if (props.queryKey) {
       formModel.value[props.queryKey] = inputValue;
