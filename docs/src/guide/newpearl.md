@@ -194,6 +194,40 @@ export interface MetaModelSource {
 
 ### 项目工程
 
+![](../assets/newpearl/2.png)
+
+设计器生成的文件存储在工程根目录 `.vtj` 文件夹，不能删除，同时需要把文件提交gitlab。
+
+#### npm 私库
+
+以 `@newpearl/`前缀的依赖包需要从npm私库获取，首次使用需要登录私库
+
+```sh
+npm login --registry=https://nexus.newpearl.com/repository/frontend-public
+# username：dev
+# password：newpearl
+```
+
+#### 内置命令
+
+- `npm run setup` 安装依赖
+- `npm run dev` 运行开发环境
+- `npm run clean` 清空依赖和产物，当依赖包的版本更新后，需要先清理再setup才能获取到新的版本
+- `npm run build:sit` 打包sit
+- `npm run build:uat` 打包uat
+- `npm run build:prod` 打包live
+- `npm run preview` 预览打包产物
+
 ### 设计器
+
+#### 入口链接
+
+启动低代码开发环境，在页面的右下角右编辑的图标，点击可进入到设计器并打开当前页面的设计模式
+
+![](../assets/newpearl/3.png)
+
+### 功能区
+
+### 应用集成
 
 ### 开发示例
