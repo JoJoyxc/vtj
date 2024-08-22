@@ -12,7 +12,7 @@
     collapse-tags-tooltip
     :reserve-keyword="false"
     :suffix-icon="MoreFilled"
-    @keydown.capture.enter="onEnter"
+    @keydown.capture.enter.stop.prevent="onEnter"
     @click="onClick"
     v-model="current"
     v-bind="attrs">
@@ -125,6 +125,12 @@
       }
     }
   );
+
+  watch(dialogVisible, (v) => {
+    if (!v) {
+      formModel.value = {};
+    }
+  });
 
   defineOptions({
     name: 'XPicker',
