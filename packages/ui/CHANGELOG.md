@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.111](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.110...@vtj/ui@0.8.111) (2024-08-22)
+
+
+### Bug Fixes
+
+* 🐛 优化picker ([00b7bcd](https://gitee.com/newgateway/vtj/commits/00b7bcdf6a4a1ba5471ae0b3c64ae74183b66649))
+
+
+
+
+
 ## [0.8.110](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.109...@vtj/ui@0.8.110) (2024-08-22)
 
 
