@@ -93,8 +93,7 @@
   };
 
   const onDblClick = (e: any) => {
-    if (props.multiple) return;
-    props.onPick(e.row);
+    props.onPick(props.multiple ? [e.row] : e.row);
   };
 
   onMounted(() => {
