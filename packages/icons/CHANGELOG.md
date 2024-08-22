@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.112](https://gitee.com/newgateway/vtj/compare/@vtj/icons@0.8.111...@vtj/icons@0.8.112) (2024-08-22)
+
+**Note:** Version bump only for package @vtj/icons
+
+
+
+
+
 ## [0.8.111](https://gitee.com/newgateway/vtj/compare/@vtj/icons@0.8.110...@vtj/icons@0.8.111) (2024-08-22)
 
 **Note:** Version bump only for package @vtj/icons
