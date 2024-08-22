@@ -12,7 +12,8 @@
           :loader="asyncLoader"
           @change="onChange"
           @picked="onPicked"
-          :clearable="false"></XPicker>
+          :clearable="false"
+          size="small"></XPicker>
       </template>
     </XField>
     <XField label="多选">

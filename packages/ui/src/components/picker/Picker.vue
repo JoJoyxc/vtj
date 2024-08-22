@@ -11,12 +11,16 @@
     collapse-tags
     collapse-tags-tooltip
     :reserve-keyword="false"
-    :suffix-icon="MoreFilled"
+    :suffix-icon="VtjIconCheck"
     @keydown.capture.enter.stop.prevent="onEnter"
-    @click="onClick"
     v-model="current"
     v-bind="attrs">
     <ElOption v-for="n in options" :label="n.label" :value="n.value"></ElOption>
+    <template #prefix>
+      <div class="x-picker__tigger" @click="onClick">
+        <MoreFilled></MoreFilled>
+      </div>
+    </template>
   </ElSelect>
   <Dialog
     v-if="dialogVisible && props.loader"
@@ -33,9 +37,17 @@
     v-bind="props.dialogProps"></Dialog>
 </template>
 <script lang="ts" setup>
-  import { ref, useAttrs, computed, nextTick, watch } from 'vue';
+  import {
+    ref,
+    useAttrs,
+    computed,
+    nextTick,
+    watch,
+    onMounted,
+    onUnmounted
+  } from 'vue';
   import { ElSelect, ElOption } from 'element-plus';
-  import { MoreFilled } from '@vtj/icons';
+  import { MoreFilled, VtjIconCheck } from '@vtj/icons';
   import Dialog from './Dialog.vue';
   import { pickerProps } from './props';
   import type { PickerEmits, PickerLoader, PickerState } from './types';
@@ -96,13 +108,10 @@
       dialogVisible.value = true;
     }
   };
-  const onClick = (e: any) => {
+  const onClick = () => {
     if (props.disabled) return;
-    const tags = ['I', 'SVG', 'PATH'];
-    if (tags.includes(e.target.nodeName.toUpperCase())) {
-      blur();
-      dialogVisible.value = true;
-    }
+    blur();
+    dialogVisible.value = true;
   };
 
   const onPick = async (rows: any) => {
@@ -129,6 +138,18 @@
   watch(dialogVisible, (v) => {
     if (!v) {
       formModel.value = {};
+    }
+  });
+
+  onMounted(() => {
+    if (selectRef.value?.wrapperRef) {
+      selectRef.value.wrapperRef.appendChild(selectRef.value.prefixRef);
+    }
+  });
+
+  onUnmounted(() => {
+    if (selectRef.value?.wrapperRef) {
+      selectRef.value.wrapperRef.appendChild(selectRef.value.prefixRef);
     }
   });
 
