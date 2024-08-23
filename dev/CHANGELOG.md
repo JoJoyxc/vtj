@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.113](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.112...dev-web@0.8.113) (2024-08-23)
+
+
+### Features
+
+* ✨ cli支持自动清空缓存 ([ccf1c94](https://gitee.com/newgateway/vtj/commits/ccf1c941fccbd45cd9f1860852dd86e7876fb780))
+
+
+
+
+
 ## [0.8.112](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.111...dev-web@0.8.112) (2024-08-22)
 
 
