@@ -4,7 +4,7 @@
 
 ## 前提
 
-:::warning 集成 VTJ s低代码的前提条件
+:::warning 集成 VTJ 低代码的前提条件
 前端工程是基于 Vite + TypeScript 的 Vue3 项目
 :::
 
