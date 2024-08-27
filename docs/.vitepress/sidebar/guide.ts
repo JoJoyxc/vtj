@@ -10,8 +10,8 @@ export default [
       {
         text: '打造专属低代码平台',
         link: '/lcdp'
-      },
-      { text: '开发示例', link: '/newpearl' }
+      }
+      // { text: '开发示例', link: '/newpearl' }
     ]
   },
   {
