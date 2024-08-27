@@ -231,8 +231,8 @@ Todo 页面的 方法addTodo 与 待办头部 自定义事件绑定submit 绑定
 
 
 ### 待办项区块
-在 区块管理中 创建 TodoItem 待办项 区块，待办项 实现的是 列表的遍历渲染。
-
+在 区块管理中 **创建** `TodoItem 待办项` 区块，待办项 实现的是 列表的遍历渲染。
+![newTodoItem](../../assets/todo/newTodoItem.png)
 
 #### 待办事项页面布局-样式
 待办项 分为两个部分 左边 待办事项(列表中的title), 右边的 switch是否完成 和删除按钮
