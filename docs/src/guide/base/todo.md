@@ -236,7 +236,8 @@ Todo 页面的 方法addTodo 与 待办头部 自定义事件绑定submit 绑定
 
 #### 待办事项页面布局-样式
 待办项 分为两个部分 左边 待办事项(列表中的title), 右边的 switch是否完成 和删除按钮
-
+待办项的布局结构如下：
+![newTodoItemDone](../../assets/todo/newTodoItemDone.png)
 
 
 #### 列表遍历
