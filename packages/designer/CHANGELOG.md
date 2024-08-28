@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.116](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.115...@vtj/designer@0.8.116) (2024-08-28)
+
+
+### Bug Fixes
+
+* 🐛 setter labelWidth ([4b970f6](https://gitee.com/newgateway/vtj/commits/4b970f671577fe32ff60b80d2a65b67d51cae88b))
+
+
+
+
+
 ## [0.8.115](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.114...@vtj/designer@0.8.115) (2024-08-28)
 
 **Note:** Version bump only for package @vtj/designer
