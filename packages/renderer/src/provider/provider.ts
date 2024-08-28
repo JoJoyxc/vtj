@@ -130,6 +130,8 @@ export class Provider extends Base {
 
     if (this.nodeEnv !== 'production') {
       await this.loadAssets(_window);
+    } else {
+      await this.loadDependencies(_window);
     }
 
     this.apis = createSchemaApis(apis, meta, this.adapter);
@@ -140,6 +142,15 @@ export class Provider extends Base {
 
     this.initRouter();
     this.triggerReady();
+  }
+
+  private async loadDependencies(_window: any) {
+    const entries = Object.entries(this.dependencies);
+    for (const [name, raw] of entries) {
+      if (!_window[name]) {
+        _window[name] = await raw();
+      }
+    }
   }
 
   private async loadAssets(_window: any) {
