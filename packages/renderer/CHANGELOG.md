@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.118](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.117...@vtj/renderer@0.8.118) (2024-08-29)
+
+
+### Bug Fixes
+
+* 🐛 getPlugin error ([c3cc783](https://gitee.com/newgateway/vtj/commits/c3cc78322e2aeb59cec8af7a6e6b14caa1b459d3))
+
+
+
+
+
+
 ## [0.8.117](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.116...@vtj/renderer@0.8.117) (2024-08-29)
 
 
