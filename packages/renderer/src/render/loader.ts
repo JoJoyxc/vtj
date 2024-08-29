@@ -34,7 +34,7 @@ export async function getPlugin(
   if (scripts.length === 0 || !library) return null;
   const css = urls.filter((n) => isCSSUrl(n));
   if (css.length) {
-    loadCssUrl(css);
+    loadCssUrl(css, global);
   }
   const component: any = await loadScriptUrl(scripts, library, global).catch(
     (e: any) => {
