@@ -29,8 +29,7 @@ import {
   isCSSUrl,
   isJSUrl,
   loadCss,
-  getRawComponent,
-  loadCssUrl
+  getRawComponent
 } from '../utils';
 import { ContextMode } from '../constants';
 import {
@@ -381,12 +380,7 @@ export class Provider extends Base {
 
   definePluginComponent(from: NodeFromPlugin) {
     return defineAsyncComponent(async () => {
-      const plugin = await getPlugin(from, window);
-      if (plugin) {
-        loadCssUrl(plugin.css);
-        return plugin.component as any;
-      }
-      return null;
+      return (await getPlugin(from, window)) as any;
     });
   }
 }
