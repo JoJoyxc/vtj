@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.119](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.118...@vtj/renderer@0.8.119) (2024-08-29)
+
+
+### Bug Fixes
+
+* 🐛 loadCssUrl ([9056939](https://gitee.com/newgateway/vtj/commits/905693968a7e5bc1e1665f880b2ee8a3ff176057))
+
+
+
+
+
 ## [0.8.118](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.117...@vtj/renderer@0.8.118) (2024-08-29)
 
 
