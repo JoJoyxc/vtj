@@ -18,6 +18,10 @@
 
 ## 开发流程
 
+低代码数据流：
+
+![](../assets/newpearl/13.png)
+
 低代码应用的开发流程：
 
 1. 架构师根据需求搭建低代码开发工程，并且改造原业务应用与低代码应用融合。 低代码应用工程项目名称带有 `lowcode` 后缀，如： `nx-admin-lowcode`，运维配合接入jenkins，配置nginx采用二级目录形式访问低代码应用。
@@ -129,6 +133,9 @@ npm login --registry=https://nexus.newpearl.com/repository/frontend-public
 
 - **协议**
   —— 指低代码开发平台组件、页面的描述约定。
+
+- **DSL**
+  —— 领域特定语言，指根据协议对低代码页面的描述，是JSON格式的数据。
 
 - **页面**
   —— 指使用设计器创建的vue单文件组件，带有路由，发布后可通过路由 `/page/页面ID` 访问。
