@@ -18,10 +18,6 @@
 
 ## 开发流程
 
-低代码数据流：
-
-![](../assets/newpearl/13.png)
-
 低代码应用的开发流程：
 
 1. 架构师根据需求搭建低代码开发工程，并且改造原业务应用与低代码应用融合。 低代码应用工程项目名称带有 `lowcode` 后缀，如： `nx-admin-lowcode`，运维配合接入jenkins，配置nginx采用二级目录形式访问低代码应用。
@@ -121,13 +117,7 @@ npm login --registry=https://nexus.newpearl.com/repository/frontend-public
 - `npm run build:prod` 打包live
 - `npm run preview` 预览打包产物
 
-### 设计器
-
-:::tip 开发理念
-模型只管数据，所有个性化设置都可以通过设计器来完成
-:::
-
-#### 相关概念
+### 相关概念
 
 为了更好描述低代码的工作过程，需要了解以下概念。
 
@@ -145,6 +135,16 @@ npm login --registry=https://nexus.newpearl.com/repository/frontend-public
 
 - **物料**
   —— 指带有低代码协议描述的vue组件
+
+  ### 工作流
+
+![](../assets/newpearl/13.png)
+
+### 设计器
+
+:::tip 开发理念
+模型只管数据，所有个性化设置都可以通过设计器来完成
+:::
 
 #### 入口链接
 
@@ -166,7 +166,7 @@ npm login --registry=https://nexus.newpearl.com/repository/frontend-public
 - **设置区：** 页面设置（状态数据、计算属性、组件方法、生命周期、watch、css、数据源、组件定义），节点设置（属性、样式、事件、指令）
 - **状态区：** 当前正在设置的节点信息、~~错误报告~~
 
-#### 开发步骤
+#### 操作步骤
 
 功能的实现思路与手写代码开发方式一致。
 
