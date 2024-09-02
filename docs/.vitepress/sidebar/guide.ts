@@ -18,7 +18,6 @@ export default [
     text: '基础',
     base: '/guide/base',
     items: [
-      { text: '概念', link: '/concept' },
       { text: '创建一个低代码应用（ Todo ）', link: '/todo' },
       { text: '项目工程模板', link: '/project-template' },
       { text: '设计器使用手册', link: '/designer' }
