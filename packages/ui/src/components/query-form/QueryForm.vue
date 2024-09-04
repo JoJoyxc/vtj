@@ -75,6 +75,10 @@
     return await formRef.value?.validate();
   };
 
+  const clearValidate = () => {
+    formRef.value?.clearValidate();
+  };
+
   const reset = (fields?: string[] | string) => {
     formRef.value?.reset(fields);
   };
@@ -90,6 +94,7 @@
 
   defineExpose({
     validate,
+    clearValidate,
     submit,
     reset,
     formRef,
