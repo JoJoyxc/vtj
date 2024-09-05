@@ -13,7 +13,7 @@
   "dependencies": {
     "@types/fs-extra": "~11.0.4",
     "@vtj/base": "workspace:~",
-    "axios": "~1.6.8",
+    "axios": "~1.6.0",
     "fs-extra": "~11.2.0"
   },
   "devDependencies": {
