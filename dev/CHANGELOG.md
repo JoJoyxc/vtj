@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.124](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.123...dev-web@0.8.124) (2024-09-06)
+
+
+### Bug Fixes
+
+* 🐛 query-form disabled 失效 ([3726a9d](https://gitee.com/newgateway/vtj/commits/3726a9d49f71dc30636d20ada3563c1d836e76c1))
+
+
+
+
+
+
 ## [0.8.123](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.122...dev-web@0.8.123) (2024-09-02)
 
 **Note:** Version bump only for package dev-web
