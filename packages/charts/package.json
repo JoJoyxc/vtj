@@ -16,7 +16,7 @@
   "dependencies": {
     "@vtj/icons": "workspace:~",
     "@vtj/utils": "workspace:~",
-    "@vueuse/core": "~10.11.0",
+    "@vueuse/core": "~11.0.3",
     "echarts": "~5.5.0"
   },
   "devDependencies": {

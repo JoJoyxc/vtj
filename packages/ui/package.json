@@ -16,7 +16,7 @@
   "dependencies": {
     "@vtj/icons": "workspace:~",
     "@vtj/utils": "workspace:~",
-    "@vueuse/core": "~10.11.0",
+    "@vueuse/core": "~11.0.3",
     "element-plus": "~2.8.0",
     "sortablejs": "~1.15.2",
     "vxe-table": "~4.6.17",
