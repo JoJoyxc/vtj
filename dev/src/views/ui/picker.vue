@@ -21,6 +21,7 @@
         <XPicker
           v-model="modelValue2"
           multiple
+          append
           :max-collapse-tags="5"
           value-key="id"
           label-key="name"
