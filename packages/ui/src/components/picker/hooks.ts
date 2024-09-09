@@ -75,8 +75,8 @@ export function useOptions(props: PickerProps, emit: Emits<PickerEmits>) {
       const data = raw ? getRawData(v) : v;
       const val = valueFormatter ? valueFormatter(data) : data;
 
-      if (multiple && Array.isArray(val)) {
-        options.value = options.value.filter((n) => val.includes(n.value));
+      if (multiple && Array.isArray(data)) {
+        options.value = options.value.filter((n) => data.includes(n.value));
       }
 
       emit('update:modelValue', val);
