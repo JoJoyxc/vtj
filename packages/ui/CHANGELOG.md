@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.127](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.126...@vtj/ui@0.8.127) (2024-09-09)
+
+
+### Features
+
+* ✨ picker add beforeInit ([6afb119](https://gitee.com/newgateway/vtj/commits/6afb1191fa21a2a52ee41eefe02af23d6a4b1f52))
+
+
+
+
+
+
 ## [0.8.126](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.125...@vtj/ui@0.8.126) (2024-09-09)
 
 
