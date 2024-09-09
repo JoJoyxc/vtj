@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.126](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.125...dev-web@0.8.126) (2024-09-09)
+
+
+### Bug Fixes
+
+* 🐛 多选选择弹窗问题 ([5b3fe55](https://gitee.com/newgateway/vtj/commits/5b3fe55523a410f1d9e24d91a69799588b3b014e))
+
+
+
+
+
+
 ## [0.8.125](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.124...dev-web@0.8.125) (2024-09-08)
 
 
