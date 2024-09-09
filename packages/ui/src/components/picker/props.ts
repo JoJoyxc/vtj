@@ -136,5 +136,11 @@ export const pickerProps = {
    */
   valueFormatter: {
     type: Function
+  },
+  /**
+   * 弹窗在打开之前回调
+   */
+  beforeInit: {
+    type: Function
   }
 };

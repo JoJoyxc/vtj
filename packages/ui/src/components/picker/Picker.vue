@@ -94,6 +94,9 @@
       formModel.value[props.queryKey] = inputValue;
     }
     focus();
+    if (props.beforeInit) {
+      await props.beforeInit();
+    }
     if (!props.multiple && props.preload) {
       const res = await dataLoader({});
       // 有且只有一条数据，自动返回，不打开弹窗
@@ -108,9 +111,12 @@
       dialogVisible.value = true;
     }
   };
-  const onClick = () => {
+  const onClick = async () => {
     if (props.disabled) return;
     blur();
+    if (props.beforeInit) {
+      await props.beforeInit();
+    }
     dialogVisible.value = true;
   };
 
