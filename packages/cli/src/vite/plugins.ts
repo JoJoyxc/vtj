@@ -115,7 +115,11 @@ export const mergePlugins = (opts: CreateViteConfigOptions) => {
 
   if (opts.vueDevTools) {
     plugins.push(
-      vueDevTools(typeof opts.vueDevTools === 'object' ? opts.vueDevTools : {})
+      vueDevTools(
+        typeof opts.vueDevTools === 'object'
+          ? opts.vueDevTools
+          : { componentInspector: false }
+      )
     );
   }
 

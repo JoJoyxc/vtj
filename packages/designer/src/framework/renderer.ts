@@ -9,6 +9,7 @@ import {
   EVENT_BLOCK_CHANGE,
   EVENT_NODE_CHANGE
 } from '@vtj/core';
+import { delay } from '@vtj/utils';
 import { type SimulatorEnv } from './simulator';
 import { Provider, type Context, ContextMode } from '@vtj/renderer';
 import { notify } from '../utils';
@@ -98,6 +99,18 @@ export class Renderer {
     this.context = context;
     emitter.on(EVENT_NODE_CHANGE, this.nodeChange as any);
     emitter.on(EVENT_BLOCK_CHANGE, this.blockChange as any);
+    this.initDevTools(this.app);
+  }
+
+  async initDevTools(app: App) {
+    await delay(500);
+    const devtools = (window as any).top?.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+    console.log('devtools', devtools);
+    if (devtools) {
+      devtools.enabled = true;
+      const version = app.version;
+      devtools.emit('app:init', app, version, {});
+    }
   }
 
   dispose() {
