@@ -16,6 +16,7 @@
           size="small"></XPicker>
       </template>
     </XField>
+
     <XField label="多选">
       <template #editor>
         <XPicker
@@ -61,6 +62,8 @@
           :formatter="formatter"
           :value-formatter="valueFormatter"
           multiple
+          append
+          preload
           :max-collapse-tags="5"
           value-key="id"
           label-key="name"
@@ -89,7 +92,7 @@
   import { request } from '@vtj/utils';
   const pickerRef = ref();
   const modelValue1 = ref();
-  const modelValue2 = ref([]);
+  const modelValue2 = ref(['510000200511178510']);
   const modelValue3 = ref([
     {
       id: '123',
