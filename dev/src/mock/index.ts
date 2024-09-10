@@ -21,7 +21,7 @@ Mock.mock(/\/mock-api\/list/, (req: any) => {
   const query = url.parse(req.body || '');
   const { currentPage = 1, pageSize = 10, total = 0 } = query;
   console.log('request', req);
-  return Mock.mock({
+  const res = Mock.mock({
     code: 0,
     success: true,
     data: {
@@ -49,4 +49,9 @@ Mock.mock(/\/mock-api\/list/, (req: any) => {
       total: parseInt(total)
     }
   });
+
+  // res.data.list = [res.data.list[0]];
+  // res.data.total = 1;
+
+  return res;
 });

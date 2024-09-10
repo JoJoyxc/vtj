@@ -22,6 +22,7 @@
           v-model="modelValue2"
           multiple
           append
+          preload
           :max-collapse-tags="5"
           value-key="id"
           label-key="name"
