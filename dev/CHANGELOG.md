@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.130](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.129...dev-web@0.8.130) (2024-09-10)
+
+
+### Bug Fixes
+
+* 🐛 picker 多选回填bug ([87ec2c9](https://gitee.com/newgateway/vtj/commits/87ec2c94252529c6ccb023c4873730c6fb7bb467))
+
+
+
+
+
 ## [0.8.129](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.128...dev-web@0.8.129) (2024-09-10)
 
 
