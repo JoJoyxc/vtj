@@ -80,7 +80,9 @@ const files = [
   [
     modules + '@ckeditor/ckeditor5-vue/dist/ckeditor.js',
     'deps/@ckeditor/ckeditor5-vue/ckeditor.js'
-  ]
+  ],
+  [modules + 'vant/lib/vant.min.js', 'deps/vant/vant.min.js'],
+  [modules + 'vant/lib/index.css', 'deps/vant/index.css']
 ];
 
 function doCopy() {
