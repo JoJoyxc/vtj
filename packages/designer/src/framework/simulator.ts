@@ -133,7 +133,8 @@ export class Simulator extends Base {
               background: #fff;
             }
          </style>
-         <script type="module" src="/@id/virtual:vue-devtools-path:overlay.js"></script>
+       <script type="module" src="http://192.168.3.88:9527/@id/virtual:vue-devtools-path:overlay.js"></script>
+       <script type="module" src="http://192.168.3.88:9527/@id/virtual:vue-inspector-path:load.js"></script>
          ${createAssetsCss(css)}
        </head>
        <body> 

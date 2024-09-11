@@ -99,12 +99,12 @@ export class Renderer {
     this.context = context;
     emitter.on(EVENT_NODE_CHANGE, this.nodeChange as any);
     emitter.on(EVENT_BLOCK_CHANGE, this.blockChange as any);
-    this.initDevTools(this.app);
+    this.initDevTools(window, this.app);
   }
 
-  async initDevTools(app: App) {
-    await delay(500);
-    const devtools = (window as any).top?.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+  async initDevTools(window: any, app: App) {
+    await delay(2000);
+    const devtools = (window as any).__VUE_DEVTOOLS_GLOBAL_HOOK__;
     console.log('devtools', devtools);
     if (devtools) {
       devtools.enabled = true;

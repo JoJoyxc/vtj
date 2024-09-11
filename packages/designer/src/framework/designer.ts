@@ -265,7 +265,8 @@ export class Designer {
   }
 
   private onSelected(e: MouseEvent) {
-    e.stopPropagation();
+    // 与 vue-devtools 冲突，不能阻止冒泡
+    // e.stopPropagation();
     this.setHover(null);
     this.selected.value = this.getHelper(e);
   }
