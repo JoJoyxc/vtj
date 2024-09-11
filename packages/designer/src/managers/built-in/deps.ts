@@ -5,7 +5,7 @@ export const builtInDeps: Dependencie[] = [
     package: 'vue',
     version: 'latest',
     library: 'Vue',
-    urls: ['@vtj/materials/deps/vue/vue.global.prod.js'],
+    urls: ['@vtj/materials/deps/vue/vue.global.js'],
     assetsLibrary: BUILT_IN_VUE,
     required: true,
     official: true,
@@ -15,7 +15,7 @@ export const builtInDeps: Dependencie[] = [
     package: 'vue-router',
     version: 'latest',
     library: 'VueRouter',
-    urls: ['@vtj/materials/deps/vue-router/vue-router.global.prod.js'],
+    urls: ['@vtj/materials/deps/vue-router/vue-router.global.js'],
     assetsLibrary: BUILT_IN_VUE_ROUTER,
     required: true,
     official: true,
@@ -71,15 +71,6 @@ export const builtInDeps: Dependencie[] = [
     official: true,
     enabled: true
   },
-  // {
-  //   package: 'echarts',
-  //   version: 'latest',
-  //   library: 'echarts',
-  //   urls: ['@vtj/materials/deps/echarts/echarts.min.js'],
-  //   required: false,
-  //   official: true,
-  //   enabled: true
-  // },
   {
     package: '@vtj/ui',
     version: 'latest',
