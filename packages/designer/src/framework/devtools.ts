@@ -35,7 +35,7 @@ export class DevTools {
   }
 
   private bindEvents() {
-    const { simulator, changed } = this.engine || {};
+    const { simulator, changed, current } = this.engine || {};
     if (!simulator) return;
     watch(simulator.rendered, () => {
       this.reload();
@@ -43,6 +43,12 @@ export class DevTools {
 
     watch(
       () => changed?.value,
+      () => {
+        this.reload();
+      }
+    );
+    watch(
+      () => current?.value,
       () => {
         this.reload();
       }
