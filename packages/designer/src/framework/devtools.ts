@@ -1,4 +1,5 @@
 import { type App, type Ref, ref, watch } from 'vue';
+import { delay } from '@vtj/utils';
 import { type Engine } from './engine';
 import { VUE_DEVTOOLS_FRAME_STATE_KEY, VUE_DEVTOOLS_PATH } from '../constants';
 export class DevTools {
@@ -75,8 +76,9 @@ export class DevTools {
     });
   }
 
-  public reload() {
+  public async reload() {
     if (!this.enabled) return;
+    await delay(200);
     const win = this.window as any;
     const simulator = this.engine?.simulator;
     if (!win || !simulator) return;
