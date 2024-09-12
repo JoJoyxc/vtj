@@ -15,10 +15,7 @@ const { provider, onReady } = createProvider({
   router,
   dependencies: {
     Vue: () => import('vue'),
-    VueRouter: () => import('vue-router'),
-    ElementPlus: () => import('element-plus'),
-    VtjUtils: () => import('@vtj/utils'),
-    VtjUI: () => import('@vtj/ui')
+    VueRouter: () => import('vue-router')
   },
   project: {
     id: name

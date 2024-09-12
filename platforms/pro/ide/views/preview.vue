@@ -8,8 +8,7 @@
     createProvider,
     LocalService,
     ContextMode,
-    Extension,
-    DevTools
+    Extension
   } from '../../src';
   import { IconsPlugin } from '@vtj/icons';
   const service = new LocalService();
@@ -23,9 +22,7 @@
     ...(options || {}),
     dependencies: {
       Vue: () => import('vue'),
-      VueRouter: () => import('vue-router'),
-      ElementPlus: () => import('element-plus'),
-      VtjIcons: () => import('@vtj/icons')
+      VueRouter: () => import('vue-router')
     }
   });
   const route = useRoute();
@@ -37,7 +34,6 @@
     if (app) {
       app.use(IconsPlugin);
       app.use(provider);
-      new DevTools().setup(window, app, __BASE_PATH__);
     }
 
     renderer.value = await provider.getRenderComponent(
