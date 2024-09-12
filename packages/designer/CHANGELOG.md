@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.132](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.131...@vtj/designer@0.8.132) (2024-09-12)
+
+
+### Bug Fixes
+
+* 🐛 devtools delay load ([2c20df7](https://gitee.com/newgateway/vtj/commits/2c20df765cb28ac14c1fd1c9b4e8aa773e9628bd))
+
+
+
+
+
 ## [0.8.131](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.130...@vtj/designer@0.8.131) (2024-09-12)
 
 
