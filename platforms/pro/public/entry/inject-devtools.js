@@ -1,31 +1,3 @@
-(function () {
-  const style = document.createElement('style');
-  style.innerHTML = `
-    .vue-devtools__anchor-btn.vtj-link svg {
-      height: 14px;
-      width: 14px;
-      color: #333;
-    }
-    .vue-devtools__anchor-btn {
-    border-width: 0;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: .8;
-    }
-    .vue-devtools__anchor-btn.vtj-link {
-      cursor: pointer;
-      border-left: 1px solid #eee;
-    }
-    .vue-devtools__anchor-btn.vtj-link:hover svg {
-      color:#409eff;
-    }
-  `;
-  document.head.appendChild(style);
-})();
-
 function injectLink() {
   const panel = document.querySelector('.vue-devtools__panel');
   const link = document.createElement('div');
@@ -38,7 +10,7 @@ function injectLink() {
     const section = window.location.hash.split('/');
     const id = section.pop() || '';
     const options = window.__VTJ_LINK__ || {};
-    let path = options.href || window.location.pathname + '@vtj/pro/#/';
+    let path = options.href || window.location.pathname + '__vtj__/#/';
     if (id) {
       path += '?id=' + id;
     }
@@ -46,4 +18,4 @@ function injectLink() {
   });
 }
 
-setTimeout(injectLink, 500);
+window.addEventListener('load', injectLink);

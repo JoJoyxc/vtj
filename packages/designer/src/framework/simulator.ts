@@ -118,7 +118,7 @@ export class Simulator extends Base {
       materialExports,
       materialMapLibrary,
       libraryLocaleMap
-    } = parseDeps(deps, this.materialPath);
+    } = parseDeps(deps, this.materialPath, true);
     doc.open();
     doc.write(`
      <!DOCTYPE html>
@@ -137,7 +137,6 @@ export class Simulator extends Base {
               background: #fff;
             }
          </style>
-         <script type="module" src="http://localhost:9527/@id/virtual:vue-devtools-path:overlay.js"></script>
        ${createAssetsCss(css)}
        </head>
        <body> 

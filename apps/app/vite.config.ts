@@ -14,5 +14,5 @@ export default createViteConfig({
       pluginNodeModulesDir: '../../node_modules'
     })
   ],
-  vueDevTools: true
+  devtools: true
 });

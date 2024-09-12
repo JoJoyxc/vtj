@@ -113,11 +113,11 @@ export const mergePlugins = (opts: CreateViteConfigOptions) => {
     plugins.push(nodePolyfills(typeof opts.node === 'object' ? opts.node : {}));
   }
 
-  if (opts.vueDevTools) {
+  if (opts.devtools) {
     plugins.push(
       vueDevTools(
-        typeof opts.vueDevTools === 'object'
-          ? opts.vueDevTools
+        typeof opts.devtools === 'object'
+          ? opts.devtools
           : { componentInspector: false }
       )
     );

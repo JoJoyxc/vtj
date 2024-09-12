@@ -6,21 +6,25 @@ export class DevTools {
   private engine?: Engine;
   private app?: App;
   public isOpen: Ref<boolean> = ref(false);
+  public enabled: boolean = false;
   constructor() {}
   init(window: Window, engine: Engine) {
     this.window = window;
     this.engine = engine;
-    this.isOpen.value = !!this.getState().open;
     const project = engine.project.value;
     const { __BASE_PATH__ = '/' } = project || {};
-    this.appendScript(window, __BASE_PATH__);
+    this.appendScript(window, __BASE_PATH__, () => {
+      this.isOpen.value = !!this.getState().open;
+    });
     this.bindEvents();
   }
-  private appendScript(window: Window, basePath: string, onload?: any) {
+  private async appendScript(window: Window, basePath: string, onload?: any) {
     const doc = window.document;
     if (!doc) return;
     const src = this.createVueDevToolsScript(basePath);
     if (!src) return;
+    this.enabled = await this.checkDevtools(src);
+    if (!this.enabled) return;
     const el = doc.createElement('script');
     el.type = 'module';
     el.src = src;
@@ -32,6 +36,16 @@ export class DevTools {
     // const host = 'http://localhost:9527';
     const host = '';
     return `${host}${basePath}${VUE_DEVTOOLS_PATH}`;
+  }
+
+  private async checkDevtools(url: string) {
+    return await window
+      .fetch(url)
+      .then(async (res) => {
+        const type = res.headers.get('Content-Type');
+        return type === 'text/javascript';
+      })
+      .catch(() => false);
   }
 
   private bindEvents() {
@@ -62,6 +76,7 @@ export class DevTools {
   }
 
   public reload() {
+    if (!this.enabled) return;
     const win = this.window as any;
     const simulator = this.engine?.simulator;
     if (!win || !simulator) return;
