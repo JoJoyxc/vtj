@@ -23,7 +23,7 @@
     "echarts": "~5.5.0",
     "element-plus": "~2.8.0",
     "vant": "~4.9.0",
-    "vue": "~3.4.15",
+    "vue": "~3.5.5",
     "vue-router": "~4.4.0"
   },
   "files": [
