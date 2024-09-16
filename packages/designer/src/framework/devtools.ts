@@ -85,13 +85,20 @@ export class DevTools {
     const devtools = win.__VUE_DEVTOOLS_GLOBAL_HOOK__;
 
     if (devtools) {
-      devtools.enabled = true;
-      if (this.app) {
-        devtools.emit('app:unmount', this.app);
+      if (this.app && win.__VUE_DEVTOOLS_KIT_ACTIVE_APP_RECORD__) {
+        try {
+          devtools.emit('app:unmount', this.app);
+        } catch (e) {
+          console.warn(e);
+        }
       }
       this.app = simulator.renderer?.app as App;
       if (this.app) {
-        devtools.emit('app:init', this.app, this.app.version, {});
+        try {
+          devtools.emit('app:init', this.app, this.app.version, {});
+        } catch (e) {
+          console.warn(e);
+        }
       }
     }
   }
