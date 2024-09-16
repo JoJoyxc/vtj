@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.137](https://gitee.com/newgateway/vtj/compare/@vtj/charts@0.8.136...@vtj/charts@0.8.137) (2024-09-16)
+
+
+### Bug Fixes
+
+* 🐛 升级vue3.5 ([3b12449](https://gitee.com/newgateway/vtj/commits/3b12449447692487882539d43210d57dcc97a48a))
+
+
+
+
+
+
 ## [0.8.136](https://gitee.com/newgateway/vtj/compare/@vtj/charts@0.8.135...@vtj/charts@0.8.136) (2024-09-14)
 
 **Note:** Version bump only for package @vtj/charts

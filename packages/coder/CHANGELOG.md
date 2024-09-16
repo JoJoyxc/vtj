@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.137](https://gitee.com/newgateway/vtj/compare/@vtj/coder@0.8.136...@vtj/coder@0.8.137) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/coder
+
+
+
+
+
+
 ## [0.8.136](https://gitee.com/newgateway/vtj/compare/@vtj/coder@0.8.135...@vtj/coder@0.8.136) (2024-09-14)
 
 **Note:** Version bump only for package @vtj/coder
