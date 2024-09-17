@@ -34,8 +34,8 @@ export class DevTools {
   private async loadScripts(window: Window, onload: () => void) {
     const project = this.engine?.project.value;
     const { __BASE_PATH__ = '/' } = project || {};
-    // const host = '';
-    const host = 'http://localhost:9527';
+    const host = '';
+    // const host = 'http://localhost:9527';
     const now = Date.now();
     const devtoolsPath = `${host}${__BASE_PATH__}${VUE_DEVTOOLS_PATH}?t=${now}`;
     if (this.enabled === undefined) {
