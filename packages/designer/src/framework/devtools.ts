@@ -1,5 +1,5 @@
 import { type App, type Ref, ref, watch } from 'vue';
-import { delay } from '@vtj/utils';
+import { delay, debounce } from '@vtj/utils';
 import { type Engine } from './engine';
 import {
   VUE_DEVTOOLS_FRAME_STATE_KEY,
@@ -21,8 +21,11 @@ export class DevTools {
   public isOpen: Ref<boolean> = ref(false);
   public enabled?: boolean;
   private proxyUpdateState: (e: StorageEvent) => void;
+  private isInited: boolean = false;
+  private proxyLoad: any;
   constructor() {
     this.proxyUpdateState = this.updateState.bind(this);
+    this.proxyLoad = debounce(this.load, 500);
   }
   private createScript(window: Window, src: string, onload?: () => void) {
     const el = window.document.createElement('script');
@@ -44,7 +47,11 @@ export class DevTools {
     if (!this.enabled) return;
     this.createScript(window, devtoolsPath, () => {
       const overlayPath = `${host}${__BASE_PATH__}${VUE_DEVTOOLS_OVERLAY_PATH}?t=${now}`;
-      this.createScript(window, overlayPath, onload);
+      if (this.isInited) {
+        this.createScript(window, overlayPath, onload);
+      } else {
+        onload();
+      }
     });
   }
   async load(window?: Window) {
@@ -56,6 +63,7 @@ export class DevTools {
     if (window) {
       this.appInit(window);
     }
+    this.isInited = true;
   }
   updateState(e: StorageEvent) {
     if (e.key === VUE_DEVTOOLS_FRAME_STATE_KEY) {
@@ -67,14 +75,14 @@ export class DevTools {
     if (!this.engine) {
       this.engine = engine;
       const { simulator, changed, current } = this.engine;
-      watch(simulator.rendered, () => this.load(this.window));
+      watch(simulator.rendered, () => this.proxyLoad(this.window));
       watch(
         () => changed?.value,
-        () => this.load(this.window)
+        () => this.proxyLoad(this.window)
       );
       watch(
         () => current?.value,
-        () => this.load(this.window)
+        () => this.proxyLoad(this.window)
       );
     }
     if (this.window) {
@@ -84,7 +92,7 @@ export class DevTools {
     this.isOpen.value = !!this.getState().open;
     window.__VUE_DEVTOOLS_KIT_ACTIVE_APP_RECORD__ = {};
     this.loadScripts(window, () => {
-      this.load(window);
+      this.proxyLoad(window);
       if (this.window) {
         this.window.removeEventListener('storage', this.proxyUpdateState);
       }
@@ -106,14 +114,12 @@ export class DevTools {
   appInit(window: Window) {
     const simulator = this.engine?.simulator;
     const devtools = window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
-    if (
-      simulator &&
-      devtools &&
-      window.__VUE_DEVTOOLS_KIT_ACTIVE_APP_RECORD__
-    ) {
+    if (simulator && devtools) {
       const app = simulator.renderer?.app;
       if (!app) return;
-      devtools.emit('app:unmount', app);
+      if (this.isInited) {
+        devtools.emit('app:unmount', app);
+      }
       devtools.emit('app:init', app, app.version, {});
       this.app = app;
     }
