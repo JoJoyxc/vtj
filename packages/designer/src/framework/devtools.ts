@@ -117,7 +117,8 @@ export class DevTools {
     if (simulator && devtools) {
       const app = simulator.renderer?.app;
       if (!app) return;
-      if (this.isInited) {
+      // console.log('this.isInited', this.isInited, this.app?._uid, app._uid);
+      if (app._uid === 1) {
         devtools.emit('app:unmount', app);
       }
       devtools.emit('app:init', app, app.version, {});
