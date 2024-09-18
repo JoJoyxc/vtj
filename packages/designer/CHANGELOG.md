@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.142](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.141...@vtj/designer@0.8.142) (2024-09-18)
+
+
+### Bug Fixes
+
+* 🐛 设计器预览样式丢失问题 ([fb07321](https://gitee.com/newgateway/vtj/commits/fb0732140d4e095daf52b1cfa12a72e1ab65c178))
+
+
+
+
+
 ## [0.8.141](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.140...@vtj/designer@0.8.141) (2024-09-18)
 
 
