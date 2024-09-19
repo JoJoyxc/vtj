@@ -123,8 +123,10 @@ export class DevTools {
         window.__VUE_DEVTOOLS_KIT_ACTIVE_APP_RECORD__ = {};
       }
       if (app._uid === 1) {
+        // console.log('before app:unmount');
         devtools.emit('app:unmount', app);
       }
+      // console.log('app:init');
       devtools.emit('app:init', app, app.version, {});
       this.app = app;
     }
@@ -133,6 +135,7 @@ export class DevTools {
   appUnmount(window: Window) {
     const devtools = window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
     if (devtools && this.app) {
+      // console.log('appUnmount');
       devtools.emit('app:unmount', this.app);
       this.app = undefined;
     }

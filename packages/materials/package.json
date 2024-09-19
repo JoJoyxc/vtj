@@ -18,7 +18,7 @@
     "@vtj/core": "workspace:~",
     "@vtj/ui": "workspace:~",
     "@vtj/utils": "workspace:~",
-    "@vueuse/core": "~11.0.3",
+    "@vueuse/core": "~11.1.0",
     "ant-design-vue": "~4.2.0",
     "echarts": "~5.5.0",
     "element-plus": "~2.8.0",
