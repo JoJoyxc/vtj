@@ -1,6 +1,6 @@
 import type { MaterialDescription } from '@vtj/core';
 
-const desc: MaterialDescription = {
+const Button: MaterialDescription = {
   name: 'VantButton',
   alias: 'Button',
   label: '按钮',
@@ -129,4 +129,4 @@ const desc: MaterialDescription = {
   }
 };
 
-export default desc;
+export default Button;
