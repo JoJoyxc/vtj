@@ -50,7 +50,7 @@ const PickerGroup: MaterialDescription = {
       setters: 'StringSetter'
     }
   ],
-  slots: ['toolbar', 'title', 'confirm', 'cancel'],
+  slots: ['default', 'toolbar', 'title', 'confirm', 'cancel'],
   snippet: {
     props: {
       title: '预约日期',

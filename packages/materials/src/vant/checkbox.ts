@@ -128,7 +128,7 @@ const Checkbox: MaterialDescription[] = [
       }
     ],
     events: ['change'],
-    slots: ['toggleAll'],
+    slots: ['default', 'toggleAll'],
     snippet: {
       props: {
         modelValue: ['a', 'b']
