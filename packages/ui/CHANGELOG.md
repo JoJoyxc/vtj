@@ -3,6 +3,156 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.146](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.145...@vtj/ui@0.8.146) (2024-09-20)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+
+## [0.8.145](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.144...@vtj/ui@0.8.145) (2024-09-20)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+
+## [0.8.144](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.143...@vtj/ui@0.8.144) (2024-09-19)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.143](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.142...@vtj/ui@0.8.143) (2024-09-19)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.142](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.141...@vtj/ui@0.8.142) (2024-09-18)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.141](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.140...@vtj/ui@0.8.141) (2024-09-18)
+
+
+### Features
+
+* ✨ 打包移除vxe-table ([27e9fd5](https://gitee.com/newgateway/vtj/commits/27e9fd501d76d2890e656f9676e07150bbd1f72f))
+
+
+
+
+
+
+## [0.8.140](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.139...@vtj/ui@0.8.140) (2024-09-18)
+
+
+### Bug Fixes
+
+* 🐛 dev-tools ([07008d9](https://gitee.com/newgateway/vtj/commits/07008d98d1778081ef0c9ed74f659babf0476fc6))
+
+
+
+
+
+## [0.8.139](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.138...@vtj/ui@0.8.139) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.138](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.137...@vtj/ui@0.8.138) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.137](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.136...@vtj/ui@0.8.137) (2024-09-16)
+
+
+### Bug Fixes
+
+* 🐛 升级vue3.5 ([3b12449](https://gitee.com/newgateway/vtj/commits/3b12449447692487882539d43210d57dcc97a48a))
+
+
+
+
+
+
+## [0.8.136](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.135...@vtj/ui@0.8.136) (2024-09-14)
+
+
+### Bug Fixes
+
+* 🐛 设计器样式污染预览页面样式 ([f3631cd](https://gitee.com/newgateway/vtj/commits/f3631cdb440c6f1d5a327763a4d4695835cf3782))
+
+
+
+
+
+
+## [0.8.135](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.134...@vtj/ui@0.8.135) (2024-09-13)
+
+
+### Features
+
+* ✨ cli 增加cdn配置 ([e6cba54](https://gitee.com/newgateway/vtj/commits/e6cba54d82184732c8f39a8625e4489434e8e308))
+
+
+
+
+
+## [0.8.134](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.133...@vtj/ui@0.8.134) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+
+## [0.8.133](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.132...@vtj/ui@0.8.133) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.132](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.131...@vtj/ui@0.8.132) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.131](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.130...@vtj/ui@0.8.131) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+
 ## [0.8.130](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.129...@vtj/ui@0.8.130) (2024-09-10)
 
 

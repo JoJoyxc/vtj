@@ -7,10 +7,11 @@ import {
   url as urlUtil,
   formDataToJson
 } from '@vtj/utils';
-import Mock from 'mockjs';
 import { parseExpression } from '../utils';
 
 import { type ProvideAdapter } from './provider';
+
+let __Mock__: any;
 
 export function createSchemaApi(schema: ApiSchema, adapter: ProvideAdapter) {
   const { jsonp, request } = adapter;
@@ -65,12 +66,17 @@ export function createSchemaApis(
   return result;
 }
 
-export function mockApis(schemas: ApiSchema[] = []) {
-  Mock.setup({
-    timeout: '50-500'
+export async function mockApis(schemas: ApiSchema[] = []) {
+  __Mock__ = await import('mockjs').then((res) => {
+    return res.default || res;
   });
-  mockCleanup();
-  schemas.forEach((n) => mockApi(n));
+  if (__Mock__) {
+    __Mock__.setup({
+      timeout: '50-500'
+    });
+    mockCleanup();
+    schemas.forEach((n) => mockApi(__Mock__, n));
+  }
 }
 
 export interface MockCallbackOptions {
@@ -101,14 +107,14 @@ export interface MockCallbackOptions {
   data?: any;
 }
 
-export function mockApi(schema: ApiSchema) {
+export function mockApi(Mock: any, schema: ApiSchema) {
   if (!schema.mock) return;
   const { url, mockTemplate } = schema;
   if (url && mockTemplate) {
-    const rUrl = pathToRegexp(`${url}(.*)`);
+    const regexp = pathToRegexp(`${url}(.*)`);
     const match = pathToRegexpMatch(url, { decode: decodeURIComponent });
     const handler = parseExpression(mockTemplate, {}, true);
-    Mock.mock(rUrl, (options: MockCallbackOptions) => {
+    Mock.mock(regexp, (options: MockCallbackOptions) => {
       const params = urlUtil.parse(options.url) || {};
       const data =
         options.body instanceof FormData
@@ -123,5 +129,7 @@ export function mockApi(schema: ApiSchema) {
 
 export function mockCleanup() {
   // 清除已设置的模拟数据配置
-  (Mock as any)._mocked = {};
+  if (__Mock__) {
+    (__Mock__ as any)._mocked = {};
+  }
 }

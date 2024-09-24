@@ -3,6 +3,170 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.146](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.145...@vtj/designer@0.8.146) (2024-09-20)
+
+
+### Bug Fixes
+
+* 🐛 画布拖拽结束状态没更新 ([e5209d3](https://gitee.com/newgateway/vtj/commits/e5209d3fd010c7275f731816e0078a12a807fe9a))
+
+
+
+
+
+
+## [0.8.145](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.144...@vtj/designer@0.8.145) (2024-09-20)
+
+
+### Features
+
+* ✨ 画布支持直接拖拽节点 ([5dde38d](https://gitee.com/newgateway/vtj/commits/5dde38d401aaa2e040e97e320fb09b67a3ed1b48))
+
+
+
+
+
+
+## [0.8.144](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.143...@vtj/designer@0.8.144) (2024-09-19)
+
+**Note:** Version bump only for package @vtj/designer
+
+
+
+
+
+## [0.8.143](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.142...@vtj/designer@0.8.143) (2024-09-19)
+
+**Note:** Version bump only for package @vtj/designer
+
+
+
+
+
+## [0.8.142](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.141...@vtj/designer@0.8.142) (2024-09-18)
+
+
+### Bug Fixes
+
+* 🐛 设计器预览样式丢失问题 ([fb07321](https://gitee.com/newgateway/vtj/commits/fb0732140d4e095daf52b1cfa12a72e1ab65c178))
+
+
+
+
+
+## [0.8.141](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.140...@vtj/designer@0.8.141) (2024-09-18)
+
+
+### Features
+
+* ✨ 打包移除vxe-table ([27e9fd5](https://gitee.com/newgateway/vtj/commits/27e9fd501d76d2890e656f9676e07150bbd1f72f))
+
+
+
+
+
+
+## [0.8.140](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.139...@vtj/designer@0.8.140) (2024-09-18)
+
+
+### Bug Fixes
+
+* 🐛 dev-tools ([07008d9](https://gitee.com/newgateway/vtj/commits/07008d98d1778081ef0c9ed74f659babf0476fc6))
+
+
+
+
+
+## [0.8.139](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.138...@vtj/designer@0.8.139) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/designer
+
+
+
+
+
+## [0.8.138](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.137...@vtj/designer@0.8.138) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/designer
+
+
+
+
+
+## [0.8.137](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.136...@vtj/designer@0.8.137) (2024-09-16)
+
+
+### Bug Fixes
+
+* 🐛 升级vue3.5 ([3b12449](https://gitee.com/newgateway/vtj/commits/3b12449447692487882539d43210d57dcc97a48a))
+* 🐛 devtools ([7ec8411](https://gitee.com/newgateway/vtj/commits/7ec8411956b43a9eadd022c253f382d13233f596))
+
+
+
+
+
+
+## [0.8.136](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.135...@vtj/designer@0.8.136) (2024-09-14)
+
+
+### Bug Fixes
+
+* 🐛 设计器样式污染预览页面样式 ([f3631cd](https://gitee.com/newgateway/vtj/commits/f3631cdb440c6f1d5a327763a4d4695835cf3782))
+
+
+
+
+
+
+## [0.8.135](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.134...@vtj/designer@0.8.135) (2024-09-13)
+
+**Note:** Version bump only for package @vtj/designer
+
+
+
+
+
+## [0.8.134](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.133...@vtj/designer@0.8.134) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/designer
+
+
+
+
+
+
+## [0.8.133](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.132...@vtj/designer@0.8.133) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/designer
+
+
+
+
+
+## [0.8.132](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.131...@vtj/designer@0.8.132) (2024-09-12)
+
+
+### Bug Fixes
+
+* 🐛 devtools delay load ([2c20df7](https://gitee.com/newgateway/vtj/commits/2c20df765cb28ac14c1fd1c9b4e8aa773e9628bd))
+
+
+
+
+
+## [0.8.131](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.130...@vtj/designer@0.8.131) (2024-09-12)
+
+
+### Features
+
+* ✨ devtools ([1afcfcb](https://gitee.com/newgateway/vtj/commits/1afcfcb1389dd65c3c94dda3ee7d0472424e9067))
+* ✨ devtools module ([18e2949](https://gitee.com/newgateway/vtj/commits/18e294909e0533119f2d6f7d9fa33d470f3a6abb))
+
+
+
+
+
+
 ## [0.8.130](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.129...@vtj/designer@0.8.130) (2024-09-10)
 
 **Note:** Version bump only for package @vtj/designer

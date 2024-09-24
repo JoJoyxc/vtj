@@ -3,6 +3,90 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.36](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.35...@vtj/cli@0.8.36) (2024-09-19)
+
+
+### Bug Fixes
+
+* 🐛 回滚sass依赖 ([43f1522](https://gitee.com/newgateway/vtj/commits/43f1522b46e165c95421e84f44ccc97cd690d52a))
+
+
+
+
+
+## [0.8.35](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.34...@vtj/cli@0.8.35) (2024-09-19)
+
+**Note:** Version bump only for package @vtj/cli
+
+
+
+
+
+
+## [0.8.34](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.33...@vtj/cli@0.8.34) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/cli
+
+
+
+
+
+## [0.8.33](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.32...@vtj/cli@0.8.33) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/cli
+
+
+
+
+
+## [0.8.32](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.31...@vtj/cli@0.8.32) (2024-09-16)
+
+
+### Bug Fixes
+
+* 🐛 升级vue3.5 ([3b12449](https://gitee.com/newgateway/vtj/commits/3b12449447692487882539d43210d57dcc97a48a))
+
+
+
+
+
+
+## [0.8.31](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.30...@vtj/cli@0.8.31) (2024-09-14)
+
+
+### Features
+
+* ✨ cli add cdn ([aeb6e91](https://gitee.com/newgateway/vtj/commits/aeb6e914a377b02cf9428e49ceebd70dd54f1ffe))
+
+
+
+
+
+
+## [0.8.30](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.29...@vtj/cli@0.8.30) (2024-09-13)
+
+
+### Features
+
+* ✨ cli 增加cdn配置 ([e6cba54](https://gitee.com/newgateway/vtj/commits/e6cba54d82184732c8f39a8625e4489434e8e308))
+
+
+
+
+
+
+## [0.8.29](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.28...@vtj/cli@0.8.29) (2024-09-12)
+
+
+### Features
+
+* ✨ devtools ([1afcfcb](https://gitee.com/newgateway/vtj/commits/1afcfcb1389dd65c3c94dda3ee7d0472424e9067))
+
+
+
+
+
+
 ## [0.8.28](https://gitee.com/newgateway/vtj/compare/@vtj/cli@0.8.27...@vtj/cli@0.8.28) (2024-09-08)
 
 

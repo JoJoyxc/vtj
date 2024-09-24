@@ -3,6 +3,147 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.146](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.145...dev-web@0.8.146) (2024-09-20)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+
+## [0.8.145](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.144...dev-web@0.8.145) (2024-09-20)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+
+## [0.8.144](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.143...dev-web@0.8.144) (2024-09-19)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.8.143](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.142...dev-web@0.8.143) (2024-09-19)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.8.142](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.141...dev-web@0.8.142) (2024-09-18)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.8.141](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.140...dev-web@0.8.141) (2024-09-18)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+
+## [0.8.140](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.139...dev-web@0.8.140) (2024-09-18)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.8.139](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.138...dev-web@0.8.139) (2024-09-16)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.8.138](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.137...dev-web@0.8.138) (2024-09-16)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.8.137](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.136...dev-web@0.8.137) (2024-09-16)
+
+
+### Bug Fixes
+
+* 🐛 升级vue3.5 ([3b12449](https://gitee.com/newgateway/vtj/commits/3b12449447692487882539d43210d57dcc97a48a))
+
+
+
+
+
+
+## [0.8.136](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.135...dev-web@0.8.136) (2024-09-14)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+
+## [0.8.135](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.134...dev-web@0.8.135) (2024-09-13)
+
+
+### Features
+
+* ✨ cli 增加cdn配置 ([e6cba54](https://gitee.com/newgateway/vtj/commits/e6cba54d82184732c8f39a8625e4489434e8e308))
+
+
+
+
+
+## [0.8.134](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.133...dev-web@0.8.134) (2024-09-12)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+
+## [0.8.133](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.132...dev-web@0.8.133) (2024-09-12)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.8.132](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.131...dev-web@0.8.132) (2024-09-12)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.8.131](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.130...dev-web@0.8.131) (2024-09-12)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+
 ## [0.8.130](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.129...dev-web@0.8.130) (2024-09-10)
 
 

@@ -17,6 +17,7 @@ import { staticPlugin } from '../plugins/static';
 import { loadingPlugin } from '../plugins/loading';
 import { envPlugin } from '../plugins/env';
 import { reloadPlugin } from '../plugins/reload';
+import { cdnPlugin } from '../plugins/cdn';
 
 const createBabelPlugin = (targets: string[]) => {
   return babelPlugin({
@@ -113,10 +114,18 @@ export const mergePlugins = (opts: CreateViteConfigOptions) => {
     plugins.push(nodePolyfills(typeof opts.node === 'object' ? opts.node : {}));
   }
 
-  if (opts.vueDevTools) {
+  if (opts.devtools) {
     plugins.push(
-      vueDevTools(typeof opts.vueDevTools === 'object' ? opts.vueDevTools : {})
+      vueDevTools(
+        typeof opts.devtools === 'object'
+          ? opts.devtools
+          : { componentInspector: false }
+      )
     );
+  }
+
+  if(opts.cdn) {
+    plugins.push(cdnPlugin(opts.cdn));
   }
 
   if (opts.buildEnd) {

@@ -3,6 +3,154 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.146](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.145...@vtj/renderer@0.8.146) (2024-09-20)
+
+**Note:** Version bump only for package @vtj/renderer
+
+
+
+
+
+
+## [0.8.145](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.144...@vtj/renderer@0.8.145) (2024-09-20)
+
+
+### Features
+
+* ✨ 画布支持直接拖拽节点 ([5dde38d](https://gitee.com/newgateway/vtj/commits/5dde38d401aaa2e040e97e320fb09b67a3ed1b48))
+* ✨ mockjs改为异步按需加载 ([d3e49ad](https://gitee.com/newgateway/vtj/commits/d3e49ad6cba70eee8beca88b1c1c24610a13ebcb))
+
+
+
+
+
+
+## [0.8.144](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.143...@vtj/renderer@0.8.144) (2024-09-19)
+
+**Note:** Version bump only for package @vtj/renderer
+
+
+
+
+
+## [0.8.143](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.142...@vtj/renderer@0.8.143) (2024-09-19)
+
+**Note:** Version bump only for package @vtj/renderer
+
+
+
+
+
+## [0.8.142](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.141...@vtj/renderer@0.8.142) (2024-09-18)
+
+
+### Bug Fixes
+
+* 🐛 设计器预览样式丢失问题 ([fb07321](https://gitee.com/newgateway/vtj/commits/fb0732140d4e095daf52b1cfa12a72e1ab65c178))
+
+
+
+
+
+## [0.8.141](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.140...@vtj/renderer@0.8.141) (2024-09-18)
+
+**Note:** Version bump only for package @vtj/renderer
+
+
+
+
+
+
+## [0.8.140](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.139...@vtj/renderer@0.8.140) (2024-09-18)
+
+**Note:** Version bump only for package @vtj/renderer
+
+
+
+
+
+## [0.8.139](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.138...@vtj/renderer@0.8.139) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/renderer
+
+
+
+
+
+## [0.8.138](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.137...@vtj/renderer@0.8.138) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/renderer
+
+
+
+
+
+## [0.8.137](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.136...@vtj/renderer@0.8.137) (2024-09-16)
+
+
+### Bug Fixes
+
+* 🐛 升级vue3.5 ([3b12449](https://gitee.com/newgateway/vtj/commits/3b12449447692487882539d43210d57dcc97a48a))
+
+
+
+
+
+
+## [0.8.136](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.135...@vtj/renderer@0.8.136) (2024-09-14)
+
+**Note:** Version bump only for package @vtj/renderer
+
+
+
+
+
+
+## [0.8.135](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.134...@vtj/renderer@0.8.135) (2024-09-13)
+
+**Note:** Version bump only for package @vtj/renderer
+
+
+
+
+
+## [0.8.134](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.133...@vtj/renderer@0.8.134) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/renderer
+
+
+
+
+
+
+## [0.8.133](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.132...@vtj/renderer@0.8.133) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/renderer
+
+
+
+
+
+## [0.8.132](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.131...@vtj/renderer@0.8.132) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/renderer
+
+
+
+
+
+## [0.8.131](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.130...@vtj/renderer@0.8.131) (2024-09-12)
+
+
+### Features
+
+* ✨ devtools ([1afcfcb](https://gitee.com/newgateway/vtj/commits/1afcfcb1389dd65c3c94dda3ee7d0472424e9067))
+
+
+
+
+
+
 ## [0.8.130](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.129...@vtj/renderer@0.8.130) (2024-09-10)
 
 **Note:** Version bump only for package @vtj/renderer

@@ -3,6 +3,155 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.146](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.145...@vtj/pro@0.8.146) (2024-09-20)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+
+## [0.8.145](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.144...@vtj/pro@0.8.145) (2024-09-20)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+
+## [0.8.144](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.143...@vtj/pro@0.8.144) (2024-09-19)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+## [0.8.143](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.142...@vtj/pro@0.8.143) (2024-09-19)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+## [0.8.142](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.141...@vtj/pro@0.8.142) (2024-09-18)
+
+
+### Bug Fixes
+
+* 🐛 设计器预览样式丢失问题 ([fb07321](https://gitee.com/newgateway/vtj/commits/fb0732140d4e095daf52b1cfa12a72e1ab65c178))
+
+
+
+
+
+## [0.8.141](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.140...@vtj/pro@0.8.141) (2024-09-18)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+
+## [0.8.140](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.139...@vtj/pro@0.8.140) (2024-09-18)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+## [0.8.139](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.138...@vtj/pro@0.8.139) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+## [0.8.138](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.137...@vtj/pro@0.8.138) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+## [0.8.137](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.136...@vtj/pro@0.8.137) (2024-09-16)
+
+
+### Bug Fixes
+
+* 🐛 升级vue3.5 ([3b12449](https://gitee.com/newgateway/vtj/commits/3b12449447692487882539d43210d57dcc97a48a))
+
+
+
+
+
+
+## [0.8.136](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.135...@vtj/pro@0.8.136) (2024-09-14)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+
+## [0.8.135](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.134...@vtj/pro@0.8.135) (2024-09-13)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+## [0.8.134](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.133...@vtj/pro@0.8.134) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+
+## [0.8.133](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.132...@vtj/pro@0.8.133) (2024-09-12)
+
+
+### Performance Improvements
+
+* ⚡ devtools ([a27f48d](https://gitee.com/newgateway/vtj/commits/a27f48db10321d46994975aafce347b413f47ded))
+
+
+
+
+
+## [0.8.132](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.131...@vtj/pro@0.8.132) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+## [0.8.131](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.130...@vtj/pro@0.8.131) (2024-09-12)
+
+
+### Features
+
+* ✨ 更改设计器入口样式 ([9d37c84](https://gitee.com/newgateway/vtj/commits/9d37c842958792a1948efc6ba0b053ff139afb26))
+* ✨ devtools ([1afcfcb](https://gitee.com/newgateway/vtj/commits/1afcfcb1389dd65c3c94dda3ee7d0472424e9067))
+* ✨ devtools module ([18e2949](https://gitee.com/newgateway/vtj/commits/18e294909e0533119f2d6f7d9fa33d470f3a6abb))
+
+
+
+
+
+
 ## [0.8.130](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.8.129...@vtj/pro@0.8.130) (2024-09-10)
 
 **Note:** Version bump only for package @vtj/pro
