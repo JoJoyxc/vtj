@@ -213,7 +213,7 @@ const material: Material = {
   version,
   label: 'Vant',
   library: 'VantMaterial',
-  order: 1,
+  order: 5,
   categories,
   components: setPackageName(components, name)
 };
