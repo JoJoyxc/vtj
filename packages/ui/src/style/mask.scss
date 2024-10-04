@@ -36,6 +36,7 @@
     border-radius: 4px;
     padding: 10px;
     overflow: auto;
+    box-sizing: border-box;
   }
 
   @include when(disabled) {
