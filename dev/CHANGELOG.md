@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.151](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.150...dev-web@0.8.151) (2024-10-04)
+
+
+### Bug Fixes
+
+* 🐛 x-mask 样式 ([bd2a32b](https://gitee.com/newgateway/vtj/commits/bd2a32bb2d60c5f25a51edca036a49d4f0b4da50))
+
+
+
+
+
+
 ## [0.8.150](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.149...dev-web@0.8.150) (2024-09-30)
 
 
