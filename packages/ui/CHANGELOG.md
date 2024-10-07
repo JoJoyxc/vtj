@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.153](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.152...@vtj/ui@0.8.153) (2024-10-07)
+
+
+### Features
+
+* ✨ vxe-table 支持 dark ([0326330](https://gitee.com/newgateway/vtj/commits/0326330c509948a32f4fe29c33c7e0eec25cbae5))
+
+
+
+
+
 ## [0.8.152](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.151...@vtj/ui@0.8.152) (2024-10-04)
 
 
