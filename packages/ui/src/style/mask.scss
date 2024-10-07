@@ -27,7 +27,7 @@
     overflow: auto;
     padding: 10px;
     border-left: 1px solid getCssVar('mask-sidebar-border-color');
-    background-color: getCssVar('fill-color-lighter');
+    background-color: getCssVar('fill-color-light');
   }
   @include e(inner) {
     height: 100%;
@@ -339,8 +339,8 @@
     margin: 0;
     border-bottom: none !important;
     .el-tabs__item.is-active {
-      background-color: getCssVar('fill-color-lighter');
-      border-bottom-color: getCssVar('fill-color-lighter');
+      background-color: getCssVar('fill-color-light');
+      border-bottom-color: getCssVar('fill-color-light');
       border-radius: 2px;
     }
     .x-icon {
