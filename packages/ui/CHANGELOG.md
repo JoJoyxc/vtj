@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.154](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.153...@vtj/ui@0.8.154) (2024-10-07)
+
+
+### Bug Fixes
+
+* 🐛 优化mask grid 样式 ([23e4c3f](https://gitee.com/newgateway/vtj/commits/23e4c3f3dcb57a00da4e2a7273e436267077bf29))
+
+
+
+
+
 ## [0.8.153](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.152...@vtj/ui@0.8.153) (2024-10-07)
 
 
