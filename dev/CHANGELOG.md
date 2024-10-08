@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.156](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.155...dev-web@0.8.156) (2024-10-08)
+
+
+### Features
+
+* ✨ 增强 XMask ([1908cd9](https://gitee.com/newgateway/vtj/commits/1908cd93522fe21cb00447a7173ce8c2997c8773))
+
+
+
+
+
+
 ## [0.8.155](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.154...dev-web@0.8.155) (2024-10-07)
 
 **Note:** Version bump only for package dev-web
