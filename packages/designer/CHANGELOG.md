@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.157](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.156...@vtj/designer@0.8.157) (2024-10-09)
+
+
+### Bug Fixes
+
+* 🐛 只有一个名为default的插槽，并且无参数，可以省略 ([3a16e2d](https://gitee.com/newgateway/vtj/commits/3a16e2dbdb776b44dbb6ca24c1ac57170503d5b7))
+
+
+
+
+
 ## [0.8.156](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.155...@vtj/designer@0.8.156) (2024-10-08)
 
 

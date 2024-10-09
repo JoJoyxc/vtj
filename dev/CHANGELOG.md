@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.157](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.156...dev-web@0.8.157) (2024-10-09)
+
+
+### Bug Fixes
+
+* 🐛 优化request ([4cf521a](https://gitee.com/newgateway/vtj/commits/4cf521ad0bdf911079f50d3bdd87a694d82a7a65))
+
+
+
+
+
 ## [0.8.156](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.155...dev-web@0.8.156) (2024-10-08)
 
 
