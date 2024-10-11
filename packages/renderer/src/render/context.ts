@@ -98,7 +98,7 @@ export class Context {
     if (!code) return;
     if (this.__mode === ContextMode.Runtime) {
       const { id, type } = code;
-      const value = id ? this.__transform[id] ?? code.value : code.value;
+      const value = id ? (this.__transform[id] ?? code.value) : code.value;
       return parseFunction({ type, value }, this);
     } else {
       return parseFunction(code, this);
@@ -108,7 +108,7 @@ export class Context {
     if (!code) return;
     if (this.__mode === ContextMode.Runtime) {
       const { id, type } = code;
-      const value = id ? this.__transform[id] ?? code.value : code.value;
+      const value = id ? (this.__transform[id] ?? code.value) : code.value;
       return parseExpression({ type, value }, this);
     } else {
       return parseExpression(code, this);
@@ -129,6 +129,7 @@ export class Context {
       // 异步组件需要等待渲染
       await delay(0);
       let dom = el?.$vtjEl || el?.$el || el?._?.vnode?.el || el;
+
       // 销毁时，无dom
       if (!dom) {
         if (typeof ref === 'string') {
@@ -150,6 +151,7 @@ export class Context {
       // 设计模式记录上下文
       if (ContextMode.Design === this.__mode) {
         dom.__context__ = this;
+        dom.draggable = true;
       }
 
       if (id) {
@@ -160,7 +162,7 @@ export class Context {
         ref(el);
       } else if (ref) {
         const exist = this.$refs[ref];
-        if (exist) {
+        if (exist && el !== exist) {
           // 去重
           const sets = new Set([].concat(exist, el));
           this.$refs[ref] = Array.from(sets);

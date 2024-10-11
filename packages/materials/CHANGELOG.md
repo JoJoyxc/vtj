@@ -3,6 +3,343 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.159](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.158...@vtj/materials@0.8.159) (2024-10-11)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+
+## [0.8.158](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.157...@vtj/materials@0.8.158) (2024-10-11)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.157](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.156...@vtj/materials@0.8.157) (2024-10-09)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.156](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.155...@vtj/materials@0.8.156) (2024-10-08)
+
+
+### Bug Fixes
+
+* 🐛 XDialog classList bug ([d96b8ba](https://gitee.com/newgateway/vtj/commits/d96b8ba4901f69249707a955638a40902d79bd73))
+
+
+
+
+
+
+## [0.8.155](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.154...@vtj/materials@0.8.155) (2024-10-07)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+
+## [0.8.154](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.153...@vtj/materials@0.8.154) (2024-10-07)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.153](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.152...@vtj/materials@0.8.153) (2024-10-07)
+
+
+### Features
+
+* ✨ vxe-table 支持 dark ([0326330](https://gitee.com/newgateway/vtj/commits/0326330c509948a32f4fe29c33c7e0eec25cbae5))
+
+
+
+
+
+## [0.8.152](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.151...@vtj/materials@0.8.152) (2024-10-04)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.151](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.150...@vtj/materials@0.8.151) (2024-10-04)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+
+## [0.8.150](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.149...@vtj/materials@0.8.150) (2024-09-30)
+
+
+### Bug Fixes
+
+* 🐛 panel物料插槽缺少 ([1eb019f](https://gitee.com/newgateway/vtj/commits/1eb019f1b16e3af17b3f36c8340ccb50d16adbf7))
+
+
+
+
+
+## [0.8.149](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.148...@vtj/materials@0.8.149) (2024-09-27)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.148](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.147...@vtj/materials@0.8.148) (2024-09-27)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+
+## [0.8.147](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.146...@vtj/materials@0.8.147) (2024-09-25)
+
+
+### Bug Fixes
+
+* 🐛 复制节点对象引用问题 ([7789076](https://gitee.com/newgateway/vtj/commits/7789076f31b8c56697ce4affe3eacd2932df1cda))
+* 🐛 vant 物料 ([4982e52](https://gitee.com/newgateway/vtj/commits/4982e52da7da6795b38e85f0139303ed339dc857))
+
+
+### Features
+
+* ✨ 初始化vant物料 ([9279d61](https://gitee.com/newgateway/vtj/commits/9279d61ebbf90a2824a157ad2d182294627a3bad))
+* ✨ Vant物料 ([7ce2844](https://gitee.com/newgateway/vtj/commits/7ce2844eb1d4b1a8723086d730a34094d355e7a2))
+
+
+
+
+
+
+## [0.8.146](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.145...@vtj/materials@0.8.146) (2024-09-20)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+
+## [0.8.145](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.144...@vtj/materials@0.8.145) (2024-09-20)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+
+## [0.8.144](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.143...@vtj/materials@0.8.144) (2024-09-19)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.143](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.142...@vtj/materials@0.8.143) (2024-09-19)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.142](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.141...@vtj/materials@0.8.142) (2024-09-18)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.141](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.140...@vtj/materials@0.8.141) (2024-09-18)
+
+
+### Features
+
+* ✨ 打包移除vxe-table ([27e9fd5](https://gitee.com/newgateway/vtj/commits/27e9fd501d76d2890e656f9676e07150bbd1f72f))
+
+
+
+
+
+
+## [0.8.140](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.139...@vtj/materials@0.8.140) (2024-09-18)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.139](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.138...@vtj/materials@0.8.139) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.138](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.137...@vtj/materials@0.8.138) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.137](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.136...@vtj/materials@0.8.137) (2024-09-16)
+
+
+### Bug Fixes
+
+* 🐛 升级vue3.5 ([3b12449](https://gitee.com/newgateway/vtj/commits/3b12449447692487882539d43210d57dcc97a48a))
+
+
+
+
+
+
+## [0.8.136](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.135...@vtj/materials@0.8.136) (2024-09-14)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+
+## [0.8.135](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.134...@vtj/materials@0.8.135) (2024-09-13)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.134](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.133...@vtj/materials@0.8.134) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+
+## [0.8.133](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.132...@vtj/materials@0.8.133) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.132](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.131...@vtj/materials@0.8.132) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.131](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.130...@vtj/materials@0.8.131) (2024-09-12)
+
+
+### Features
+
+* ✨ devtools module ([18e2949](https://gitee.com/newgateway/vtj/commits/18e294909e0533119f2d6f7d9fa33d470f3a6abb))
+
+
+
+
+
+
+## [0.8.130](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.129...@vtj/materials@0.8.130) (2024-09-10)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.8.129](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.128...@vtj/materials@0.8.129) (2024-09-10)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+
+## [0.8.128](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.127...@vtj/materials@0.8.128) (2024-09-09)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+
+## [0.8.127](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.126...@vtj/materials@0.8.127) (2024-09-09)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+
+## [0.8.126](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.125...@vtj/materials@0.8.126) (2024-09-09)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+
+## [0.8.125](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.124...@vtj/materials@0.8.125) (2024-09-08)
+
+
+### Bug Fixes
+
+* 🐛 更新依赖导致的兼容问题 ([d96fe5d](https://gitee.com/newgateway/vtj/commits/d96fe5d457ab1dc35ace670dca062a3cd86894c2))
+
+
+
+
+
+## [0.8.124](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.123...@vtj/materials@0.8.124) (2024-09-06)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+
 ## [0.8.123](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.8.122...@vtj/materials@0.8.123) (2024-09-02)
 
 **Note:** Version bump only for package @vtj/materials

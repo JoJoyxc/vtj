@@ -1,5 +1,5 @@
 import { computed, ref, watch, toRaw } from 'vue';
-import { toArray, isEqual } from '@vtj/utils';
+import { toArray, isEqual, dedupArray } from '@vtj/utils';
 import type { Emits } from '../shared';
 import type {
   PickerProps,
@@ -21,13 +21,21 @@ export function useOptions(props: PickerProps, emit: Emits<PickerEmits>) {
   const options = ref<PickerOption[]>([]);
 
   const setOptions = (rows: any, append?: boolean) => {
-    const array = toArray(rows).map((row) => {
-      return {
-        label: row[labelKey],
-        value: row[valueKey] ?? JSON.stringify(row)
-      };
-    });
-    options.value = append ? [...options.value, ...array] : array;
+    const array = toArray(rows)
+      .filter((n) => !!n)
+      .map((row) => {
+        return typeof row === 'object'
+          ? {
+              label: row[labelKey],
+              value: row[valueKey] ?? JSON.stringify(row)
+            }
+          : {
+              label: row,
+              value: row
+            };
+      });
+    const values = append ? [...options.value, ...array] : array;
+    options.value = dedupArray(values, 'value');
     let val;
     if (multiple) {
       val = options.value.map((n) => n.value);
@@ -37,7 +45,7 @@ export function useOptions(props: PickerProps, emit: Emits<PickerEmits>) {
     current.value = val;
   };
 
-  const getRawData = (values: any) => {
+  const getRawData = (values: any[]) => {
     const rawData = options.value.map((n) => {
       const data = toRaw(n);
       return {
@@ -46,11 +54,11 @@ export function useOptions(props: PickerProps, emit: Emits<PickerEmits>) {
       };
     });
     if (Array.isArray(values)) {
-      return values.map((v: any) => {
-        return rawData.find((n) => n[valueKey] === v);
-      });
-    } else {
-      rawData.find((n) => n[valueKey] === values);
+      return values
+        .map((v: any) => {
+          return rawData.find((n) => n[valueKey] === v);
+        })
+        .filter((n) => !!n);
     }
     return rawData;
   };
@@ -58,11 +66,12 @@ export function useOptions(props: PickerProps, emit: Emits<PickerEmits>) {
   watch(
     () => props.modelValue,
     (v) => {
-      if (raw && v && typeof v === 'object') {
-        setOptions(v);
+      const val = formatter ? formatter(v) : v;
+      if (val) {
+        const rawData = getRawData(val);
+        setOptions(rawData.length ? rawData : val);
       } else {
-        const val = formatter ? formatter(v) : v;
-        current.value = multiple ? toArray(val) : val;
+        setOptions([]);
       }
     },
     {
@@ -72,8 +81,12 @@ export function useOptions(props: PickerProps, emit: Emits<PickerEmits>) {
 
   watch(current, (v, o) => {
     if (!isEqual(v, o)) {
-      const data = raw ? getRawData(v) : v;
+      const rawData = getRawData(v);
+      const data = raw ? rawData : v;
       const val = valueFormatter ? valueFormatter(data) : data;
+      if (multiple && Array.isArray(data)) {
+        options.value = options.value.filter((n) => data.includes(n.value));
+      }
       emit('update:modelValue', val);
       emit('change', val, props.data);
     }

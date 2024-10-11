@@ -14,6 +14,7 @@ import { pathExistsSync, readJsonSync } from '@vtj/node';
 import { join, resolve } from 'path';
 import bodyParser from 'body-parser';
 import { router } from './controller';
+import { CLIENT_DIR } from './shared';
 
 export interface DevToolsOptions {
   baseURL: string;
@@ -46,9 +47,18 @@ const setApis = (
   server: ViteDevServer | PreviewServer,
   options: DevToolsOptions
 ) => {
-  server.middlewares.use(
-    bodyParser.json({ type: 'application/json', limit: '50000kb' })
-  );
+  server.middlewares.use((req, res, next) => {
+    const reqUrl = req.url || '';
+    if (reqUrl.startsWith(options.baseURL)) {
+      bodyParser.json({ type: 'application/json', limit: '50000kb' })(
+        req,
+        res,
+        next
+      );
+    } else {
+      next();
+    }
+  });
   server.middlewares.use(async (req, res, next) => {
     const reqUrl = req.url || '';
     if (reqUrl.startsWith(options.baseURL)) {
@@ -90,7 +100,7 @@ const linkPlugin = function (options: DevToolsOptions): Plugin {
       config = resolvedConfig;
     },
     transformIndexHtml(html, ctx) {
-      if (html.includes('VTJ-LINK')) {
+      if (html.includes('__VTJ_LINK__')) {
         return html;
       }
       if (options.link) {
@@ -100,7 +110,7 @@ const linkPlugin = function (options: DevToolsOptions): Plugin {
         const link =
           typeof options.link === 'string'
             ? options.link
-            : `${options.packageName}/link.js`;
+            : `${CLIENT_DIR}/entry/index.js`;
         const url = `${config.base}${link}`;
         return html.replace(
           /<\/body>/,
@@ -224,7 +234,7 @@ export function parsePresetPlugins(options: DevToolsOptions) {
 
 export function createDevTools(options: Partial<DevToolsOptions> = {}) {
   const opts: DevToolsOptions = {
-    baseURL: '/vtj/local/repository',
+    baseURL: `/${CLIENT_DIR}/api`,
     copy: true,
     server: true,
     staticBase: '/',
@@ -303,7 +313,7 @@ export function createDevTools(options: Partial<DevToolsOptions> = {}) {
 
     if (pathExistsSync(proPath)) {
       staticOptions.push({
-        path: `${opts.staticBase}${opts.packageName}`,
+        path: `${opts.staticBase}${CLIENT_DIR}`,
         dir: proPath
       });
     }

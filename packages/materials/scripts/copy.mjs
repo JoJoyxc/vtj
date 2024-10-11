@@ -12,9 +12,14 @@ const files = [
   [packages + 'charts/dist/index.umd.js', 'deps/@vtj/charts/index.umd.js'],
 
   [modules + 'vue/dist/vue.global.prod.js', 'deps/vue/vue.global.prod.js'],
+  [modules + 'vue/dist/vue.global.js', 'deps/vue/vue.global.js'],
   [
     modules + 'vue-router/dist/vue-router.global.prod.js',
     'deps/vue-router/vue-router.global.prod.js'
+  ],
+  [
+    modules + 'vue-router/dist/vue-router.global.js',
+    'deps/vue-router/vue-router.global.js'
   ],
   [
     modules + 'element-plus/dist/index.full.min.js',
@@ -80,7 +85,18 @@ const files = [
   [
     modules + '@ckeditor/ckeditor5-vue/dist/ckeditor.js',
     'deps/@ckeditor/ckeditor5-vue/ckeditor.js'
-  ]
+  ],
+  [
+    modules + 'vxe-table/lib/index.umd.min.js',
+    'deps/vxe-table/index.umd.min.js'
+  ],
+  [modules + 'vxe-table/lib/style.min.css', 'deps/vxe-table/style.min.css'],
+  [
+    modules + 'xe-utils/dist/xe-utils.umd.min.js',
+    'deps/xe-utils/xe-utils.umd.min.js'
+  ],
+  [modules + 'vant/lib/vant.min.js', 'deps/vant/vant.min.js'],
+  [modules + 'vant/lib/index.css', 'deps/vant/index.css']
 ];
 
 function doCopy() {

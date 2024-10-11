@@ -5,7 +5,8 @@ import {
   ref,
   unref,
   nextTick,
-  createApp
+  createApp,
+  watch
 } from 'vue';
 import { type Context } from '@vtj/renderer';
 import {
@@ -24,6 +25,7 @@ import {
 import { delay } from '@vtj/utils';
 import { SlotsPicker } from '../components';
 import { type Engine } from './engine';
+import { type DevTools } from './devtools';
 
 export function createSlotsPicker(slots: MaterialSlot[]) {
   return new Promise<MaterialSlot>((resolve, reject) => {
@@ -63,10 +65,12 @@ export class Designer {
   public selected: Ref<DesignHelper | null> = ref(null);
   public dragging: MaterialDescription | null = null;
   public draggingNode: NodeModel | null = null;
+
   constructor(
     public engine: Engine,
     public contentWindow: Window,
-    public dependencies: Ref<Dependencie[]>
+    public dependencies: Ref<Dependencie[]>,
+    public devtools: DevTools
   ) {
     this.document = this.contentWindow.document;
     this.bindEvents(contentWindow, this.document);
@@ -94,6 +98,11 @@ export class Designer {
     doc.addEventListener('mouseleave', this.bind(this.onLeave, 'onLeave'));
     doc.addEventListener('dragleave', this.bind(this.onLeave, 'onLeave'));
     doc.addEventListener('dragover', this.bind(this.onDragOver, 'onDragOver'));
+    doc.addEventListener(
+      'dragstart',
+      this.bind(this.onDragStart, 'onDragStart')
+    );
+    doc.addEventListener('dragend', this.bind(this.onDragEnd, 'onDragEnd'));
     doc.addEventListener('drop', this.bind(this.onDrop, 'onDrop'));
     doc.addEventListener(
       'click',
@@ -105,6 +114,16 @@ export class Designer {
       this.bind(this.onActiveChange, 'onActiveChange')
     );
     emitter.on(EVENT_NODE_CHANGE, this.bind(this.onViewChange, 'onViewChange'));
+
+    watch(
+      this.devtools.isOpen,
+      (open) => {
+        if (open) {
+          this.cleanHelper();
+        }
+      },
+      { immediate: true }
+    );
   }
 
   private unbindEvents(cw: Window, doc: Document) {
@@ -126,6 +145,11 @@ export class Designer {
       'dragover',
       this.bind(this.onDragOver, 'onDragOver')
     );
+    doc.removeEventListener(
+      'dragstart',
+      this.bind(this.onDragStart, 'onDragStart')
+    );
+    doc.removeEventListener('dragend', this.bind(this.onDragEnd, 'onDragEnd'));
     doc.removeEventListener('drop', this.bind(this.onDrop, 'onDrop'));
     doc.removeEventListener('click', this.bind(this.onSelected, 'onSelected'));
     emitter.off(
@@ -139,8 +163,9 @@ export class Designer {
   }
 
   private onMouseOver(e: MouseEvent) {
+    if (this.devtools.isOpen.value) return;
     const hover = this.getHelper(e);
-    if (hover?.model.id !== this.selected.value?.model.id) {
+    if (hover && hover?.model.id !== this.selected.value?.model.id) {
       this.hover.value = hover;
     }
   }
@@ -194,8 +219,10 @@ export class Designer {
     if (slots.length === 0) {
       return undefined;
     }
+    // 只有一个名为default的插槽，并且无参数，可以省略
     if (slots.length === 1) {
-      return slots[0];
+      const { name, params = [] } = slots[0];
+      return name === 'default' && !params.length ? undefined : slots[0];
     }
     // 用户没选择插槽，返回null
     const slot = await createSlotsPicker(slots).catch(() => null);
@@ -265,7 +292,9 @@ export class Designer {
   }
 
   private onSelected(e: MouseEvent) {
-    e.stopPropagation();
+    if (this.devtools.isOpen.value) return;
+    // 与 vue-devtools 冲突，不能阻止冒泡
+    // e.stopPropagation();
     this.setHover(null);
     this.selected.value = this.getHelper(e);
   }
@@ -280,6 +309,22 @@ export class Designer {
     } else {
       this.dropping.value = null;
     }
+  }
+
+  private onDragStart(e: DragEvent) {
+    const helper = this.getHelper(e);
+    if (!helper) return;
+    const { model } = helper;
+    const desc = this.engine.assets.componentMap.get(model.name);
+    if (desc) {
+      this.setDragging(desc);
+    }
+    this.setDraggingNode(model as NodeModel);
+  }
+
+  private onDragEnd() {
+    this.setDraggingNode(null);
+    this.setDragging(null);
   }
 
   private isVtjElement(el: EventTarget | HTMLElement): el is VtjElement {

@@ -5,6 +5,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 import legacy from '@vitejs/plugin-legacy';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 import dts from 'vite-plugin-dts';
+import vueDevTools from 'vite-plugin-vue-devtools';
 import { visualizer } from 'rollup-plugin-visualizer';
 import ElementPlus from 'unplugin-element-plus/vite';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
@@ -16,6 +17,7 @@ import { staticPlugin } from '../plugins/static';
 import { loadingPlugin } from '../plugins/loading';
 import { envPlugin } from '../plugins/env';
 import { reloadPlugin } from '../plugins/reload';
+import { cdnPlugin } from '../plugins/cdn';
 
 const createBabelPlugin = (targets: string[]) => {
   return babelPlugin({
@@ -110,6 +112,20 @@ export const mergePlugins = (opts: CreateViteConfigOptions) => {
 
   if (opts.node) {
     plugins.push(nodePolyfills(typeof opts.node === 'object' ? opts.node : {}));
+  }
+
+  if (opts.devtools) {
+    plugins.push(
+      vueDevTools(
+        typeof opts.devtools === 'object'
+          ? opts.devtools
+          : { componentInspector: false }
+      )
+    );
+  }
+
+  if(opts.cdn) {
+    plugins.push(cdnPlugin(opts.cdn));
   }
 
   if (opts.buildEnd) {

@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.22](https://gitee.com/newgateway/vtj/compare/create-vtj@0.8.21...create-vtj@0.8.22) (2024-10-11)
+
+**Note:** Version bump only for package create-vtj
+
+
+
+
+
+
+## [0.8.21](https://gitee.com/newgateway/vtj/compare/create-vtj@0.8.20...create-vtj@0.8.21) (2024-09-16)
+
+**Note:** Version bump only for package create-vtj
+
+
+
+
+
+
+## [0.8.20](https://gitee.com/newgateway/vtj/compare/create-vtj@0.8.19...create-vtj@0.8.20) (2024-09-14)
+
+**Note:** Version bump only for package create-vtj
+
+
+
+
+
+
+## [0.8.19](https://gitee.com/newgateway/vtj/compare/create-vtj@0.8.18...create-vtj@0.8.19) (2024-09-12)
+
+
+### Bug Fixes
+
+* 🐛 cli  template type error ([2f25df2](https://gitee.com/newgateway/vtj/commits/2f25df2956d9879c53152b7908020afdf6ddb14f))
+
+
+
+
+
+
+## [0.8.18](https://gitee.com/newgateway/vtj/compare/create-vtj@0.8.17...create-vtj@0.8.18) (2024-09-06)
+
+**Note:** Version bump only for package create-vtj
+
+
+
+
+
+
 ## [0.8.17](https://gitee.com/newgateway/vtj/compare/create-vtj@0.8.16...create-vtj@0.8.17) (2024-08-13)
 
 

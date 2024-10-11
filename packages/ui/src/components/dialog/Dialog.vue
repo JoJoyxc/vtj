@@ -102,12 +102,14 @@
 </template>
 <script lang="ts" setup>
   import {
+    // @ts-ignore
     Teleport,
     ref,
     watchEffect,
     nextTick,
     getCurrentInstance,
-    computed
+    computed,
+    onUnmounted
   } from 'vue';
   import { RawClose, Popup, Maximize, Minimize } from '@vtj/icons';
   import { ElButton } from 'element-plus';
@@ -153,6 +155,10 @@
     } else {
       document.body.classList.remove('x-dialog-visible');
     }
+  });
+
+  onUnmounted(() => {
+    document.body.classList.remove('x-dialog-visible');
   });
 
   const $vtjEl = computed(() => panelRef.value?.$el);

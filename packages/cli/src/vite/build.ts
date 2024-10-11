@@ -7,8 +7,8 @@ const defaultManualChunks = (id: string) => {
   if (id.includes('node_modules')) {
     const arr = id.split('node_modules/');
     const dirs = arr[arr.length - 1].split('/');
-    if (dirs[0] === '@vtj') {
-      return `@vtj-${dirs[1]}`;
+    if (dirs[0].startsWith('@') && dirs.length > 2) {
+      return `${dirs[0]}-${dirs[1]}`;
     }
     return dirs[0];
   }
@@ -67,7 +67,8 @@ export const createBuild = (opts: CreateViteConfigOptions) => {
       plugins: rollupPlugins,
       output: {
         manualChunks,
-        exports: opts.exports || 'auto'
+        exports: opts.exports || 'auto',
+        globals: opts.externalGlobals
       },
       input: createInput(opts)
     }

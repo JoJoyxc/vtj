@@ -3,7 +3,7 @@
     class="v-pages-widget"
     title="页面管理"
     plus
-    subtitle="(共 0 条)"
+    :subtitle="subtitle"
     :menus="menus"
     @command="onPlusCommand"
     @plus="onPlus">
@@ -68,6 +68,10 @@
   const visible = ref(false);
   const item = ref();
   const parentId = ref();
+
+  const subtitle = computed(() => {
+    return `(共 ${pages.value.length} 项)`;
+  });
 
   const menus = [
     {

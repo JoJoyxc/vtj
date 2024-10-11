@@ -1,0 +1,13 @@
+.v-blocks__search {
+  margin-bottom: 10px;
+}
+.v-blocks-widget {
+  .el-collapse {
+    --el-collapse-header-height: 36px !important;
+  }
+  .el-collapse-item:last-child {
+    .el-collapse-item__wrap {
+      border-bottom: none;
+    }
+  }
+}

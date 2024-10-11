@@ -7,6 +7,8 @@ import type {
 
 import { type StaticPluginOption } from '../plugins/static';
 import { type PolyfillOptions } from 'vite-plugin-node-polyfills';
+import { type VitePluginVueDevToolsOptions } from 'vite-plugin-vue-devtools';
+import { type CdnPluginOptions } from '../plugins/cdn';
 
 declare namespace NodeJS {
   interface ProcessEnv {
@@ -246,6 +248,16 @@ export interface CreateViteConfigOptions {
    * 默认情况下，Vite 会在构建阶段将 publicDir 目录中的所有文件复制到 outDir 目录中。可以通过设置该选项为 false 来禁用该行为。
    */
   copyPublicDir?: boolean;
+
+  /**
+   * 开启 VueDevTools
+   */
+  devtools?: boolean | VitePluginVueDevToolsOptions;
+
+  /**
+   * CDN配置
+   */
+  cdn?: CdnPluginOptions;
 }
 
 export interface CreateUniappViteConfigOptions {

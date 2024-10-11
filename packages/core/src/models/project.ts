@@ -73,6 +73,7 @@ export class ProjectModel {
   meta: MetaSchema[] = [];
   currentFile: PageFile | BlockFile | null = null;
   config: ProjectConfig = {};
+  __BASE_PATH__: string = '/';
   static attrs: string[] = [
     'name',
     'homepage',
@@ -82,7 +83,8 @@ export class ProjectModel {
     'blocks',
     'apis',
     'meta',
-    'config'
+    'config',
+    '__BASE_PATH__'
   ];
   constructor(schema: ProjectSchema) {
     const { id } = schema;
@@ -109,6 +111,15 @@ export class ProjectModel {
     return file.type === 'page';
   }
 
+  cleanPagesDsl(files: PageFile[]) {
+    for (const file of files) {
+      delete file.dsl;
+      if (file.children && file.children.length) {
+        this.cleanPagesDsl(file.children);
+      }
+    }
+  }
+
   toDsl(_version?: string) {
     const { id } = this;
     const attrs = ProjectModel.attrs.reduce(
@@ -123,6 +134,7 @@ export class ProjectModel {
         delete n.dsl;
         return n;
       });
+      this.cleanPagesDsl(attrs.pages);
     }
     if (attrs.blocks) {
       attrs.blocks = attrs.blocks.map((n: BlockFile) => {

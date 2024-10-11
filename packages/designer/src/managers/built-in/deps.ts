@@ -71,21 +71,15 @@ export const builtInDeps: Dependencie[] = [
     official: true,
     enabled: true
   },
-  // {
-  //   package: 'echarts',
-  //   version: 'latest',
-  //   library: 'echarts',
-  //   urls: ['@vtj/materials/deps/echarts/echarts.min.js'],
-  //   required: false,
-  //   official: true,
-  //   enabled: true
-  // },
   {
     package: '@vtj/ui',
     version: 'latest',
     library: 'VtjUI',
     urls: [
+      '@vtj/materials/deps/vxe-table/style.min.css',
       '@vtj/materials/deps/@vtj/ui/style.css',
+      '@vtj/materials/deps/xe-utils/xe-utils.umd.min.js',
+      '@vtj/materials/deps/vxe-table/index.umd.min.js',
       '@vtj/materials/deps/@vtj/ui/index.umd.js'
     ],
     assetsUrl: '@vtj/materials/assets/ui/index.umd.js',
@@ -126,6 +120,20 @@ export const builtInDeps: Dependencie[] = [
     ],
     assetsUrl: '@vtj/materials/assets/antdv/index.umd.js',
     assetsLibrary: 'AntdvMaterial',
+    required: false,
+    official: true,
+    enabled: false
+  },
+  {
+    package: 'vant',
+    version: 'latest',
+    library: 'vant',
+    urls: [
+      '@vtj/materials/deps/vant/index.css',
+      '@vtj/materials/deps/vant/vant.min.js'
+    ],
+    assetsUrl: '@vtj/materials/assets/vant/index.umd.js',
+    assetsLibrary: 'VantMaterial',
     required: false,
     official: true,
     enabled: false

@@ -15,7 +15,7 @@ import { notify } from '../utils';
 import { type Designer } from './designer';
 
 export class Renderer {
-  private app: App | null = null;
+  public app: App | null = null;
   private dsl: BlockSchema | null = null;
   private nodeChange: (this: Renderer, node: NodeModel) => void;
   private blockChange: (this: Renderer, block: BlockModel) => void;
@@ -47,6 +47,10 @@ export class Renderer {
     const plugins = Object.entries(library);
     Object.assign(app.config.globalProperties, globals);
     plugins.forEach(([name, plugin]) => {
+      if (!plugin) {
+        console.warn(`plugin: ${name} is undefined`);
+        return;
+      }
       if (
         typeof plugin === 'function' ||
         typeof plugin.install === 'function'

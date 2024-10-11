@@ -54,6 +54,9 @@ function creator() {
         packagesDir: '../packages'
       })
     ]
+    // vueDevTools: {
+    //   componentInspector: false
+    // }
   };
 }
 

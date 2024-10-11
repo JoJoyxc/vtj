@@ -6,6 +6,7 @@
     home="/ui/mask"
     :tabs="20"
     :actions="actions"
+    :disabled="false"
     theme
     @action-click="onActionClick">
   </XMask>

@@ -5,19 +5,22 @@
     :flex="false"
     grow
     :padding="false">
-    <slot></slot>
+    <div class="x-mask__inner">
+      <slot></slot>
 
-    <RouterView v-slot="{ Component, route }">
-      <KeepAlive :exclude="props.exclude">
-        <component
-          v-if="Component"
-          :is="props.createView(Component, route)"
-          :key="route.fullPath"></component>
-      </KeepAlive>
-    </RouterView>
+      <RouterView v-slot="{ Component, route }">
+        <KeepAlive :exclude="props.exclude">
+          <component
+            v-if="Component"
+            :is="props.createView(Component, route)"
+            :key="route.fullPath"></component>
+        </KeepAlive>
+      </RouterView>
+    </div>
   </XContainer>
 </template>
 <script lang="ts" setup>
+  // @ts-ignore
   import { KeepAlive } from 'vue';
   import { RouterView, type RouteLocationNormalizedLoaded } from 'vue-router';
   import { XContainer } from '../../';

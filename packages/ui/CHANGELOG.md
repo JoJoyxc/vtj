@@ -3,6 +3,390 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.159](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.158...@vtj/ui@0.8.159) (2024-10-11)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+
+## [0.8.158](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.157...@vtj/ui@0.8.158) (2024-10-11)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.157](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.156...@vtj/ui@0.8.157) (2024-10-09)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.156](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.155...@vtj/ui@0.8.156) (2024-10-08)
+
+
+### Bug Fixes
+
+* 🐛 XDialog classList bug ([d96b8ba](https://gitee.com/newgateway/vtj/commits/d96b8ba4901f69249707a955638a40902d79bd73))
+* 🐛 XGrid types error ([d804a06](https://gitee.com/newgateway/vtj/commits/d804a0632acead23a9ac5bad1fecbfe7849f06fb))
+
+
+### Features
+
+* ✨ 增强 XMask ([1908cd9](https://gitee.com/newgateway/vtj/commits/1908cd93522fe21cb00447a7173ce8c2997c8773))
+
+
+
+
+
+
+## [0.8.155](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.154...@vtj/ui@0.8.155) (2024-10-07)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+
+## [0.8.154](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.153...@vtj/ui@0.8.154) (2024-10-07)
+
+
+### Bug Fixes
+
+* 🐛 优化mask grid 样式 ([23e4c3f](https://gitee.com/newgateway/vtj/commits/23e4c3f3dcb57a00da4e2a7273e436267077bf29))
+
+
+
+
+
+## [0.8.153](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.152...@vtj/ui@0.8.153) (2024-10-07)
+
+
+### Features
+
+* ✨ vxe-table 支持 dark ([0326330](https://gitee.com/newgateway/vtj/commits/0326330c509948a32f4fe29c33c7e0eec25cbae5))
+
+
+
+
+
+## [0.8.152](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.151...@vtj/ui@0.8.152) (2024-10-04)
+
+
+### Bug Fixes
+
+* 🐛 x-mask box-sizing ([a825972](https://gitee.com/newgateway/vtj/commits/a82597246b52f90a65115fa1e622a6ca1e53ed06))
+
+
+
+
+
+## [0.8.151](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.150...@vtj/ui@0.8.151) (2024-10-04)
+
+
+### Bug Fixes
+
+* 🐛 x-mask 样式 ([bd2a32b](https://gitee.com/newgateway/vtj/commits/bd2a32bb2d60c5f25a51edca036a49d4f0b4da50))
+
+
+
+
+
+
+## [0.8.150](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.149...@vtj/ui@0.8.150) (2024-09-30)
+
+
+### Bug Fixes
+
+* 🐛 x-grid remove return result ([a321960](https://gitee.com/newgateway/vtj/commits/a321960a63b2e90189392b3821f79eb8ee072593))
+
+
+
+
+
+## [0.8.149](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.148...@vtj/ui@0.8.149) (2024-09-27)
+
+
+### Bug Fixes
+
+* 🐛 撤销installVxe判断 ([b3f0870](https://gitee.com/newgateway/vtj/commits/b3f0870ffbe10528fdd16b4a3c1e76a27c5f1c32))
+
+
+
+
+
+## [0.8.148](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.147...@vtj/ui@0.8.148) (2024-09-27)
+
+
+### Bug Fixes
+
+* 🐛 防止vxe-table重复注册 ([8a6cf45](https://gitee.com/newgateway/vtj/commits/8a6cf45e9c0f95b48dc91ea46c142d20770b4c90))
+
+
+
+
+
+
+## [0.8.147](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.146...@vtj/ui@0.8.147) (2024-09-25)
+
+
+### Bug Fixes
+
+* 🐛 XGrid透传参数 ([4a1bd11](https://gitee.com/newgateway/vtj/commits/4a1bd1100eaa48e131c285cce11a27d780f3f923))
+
+
+
+
+
+
+## [0.8.146](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.145...@vtj/ui@0.8.146) (2024-09-20)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+
+## [0.8.145](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.144...@vtj/ui@0.8.145) (2024-09-20)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+
+## [0.8.144](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.143...@vtj/ui@0.8.144) (2024-09-19)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.143](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.142...@vtj/ui@0.8.143) (2024-09-19)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.142](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.141...@vtj/ui@0.8.142) (2024-09-18)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.141](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.140...@vtj/ui@0.8.141) (2024-09-18)
+
+
+### Features
+
+* ✨ 打包移除vxe-table ([27e9fd5](https://gitee.com/newgateway/vtj/commits/27e9fd501d76d2890e656f9676e07150bbd1f72f))
+
+
+
+
+
+
+## [0.8.140](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.139...@vtj/ui@0.8.140) (2024-09-18)
+
+
+### Bug Fixes
+
+* 🐛 dev-tools ([07008d9](https://gitee.com/newgateway/vtj/commits/07008d98d1778081ef0c9ed74f659babf0476fc6))
+
+
+
+
+
+## [0.8.139](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.138...@vtj/ui@0.8.139) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.138](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.137...@vtj/ui@0.8.138) (2024-09-16)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.137](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.136...@vtj/ui@0.8.137) (2024-09-16)
+
+
+### Bug Fixes
+
+* 🐛 升级vue3.5 ([3b12449](https://gitee.com/newgateway/vtj/commits/3b12449447692487882539d43210d57dcc97a48a))
+
+
+
+
+
+
+## [0.8.136](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.135...@vtj/ui@0.8.136) (2024-09-14)
+
+
+### Bug Fixes
+
+* 🐛 设计器样式污染预览页面样式 ([f3631cd](https://gitee.com/newgateway/vtj/commits/f3631cdb440c6f1d5a327763a4d4695835cf3782))
+
+
+
+
+
+
+## [0.8.135](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.134...@vtj/ui@0.8.135) (2024-09-13)
+
+
+### Features
+
+* ✨ cli 增加cdn配置 ([e6cba54](https://gitee.com/newgateway/vtj/commits/e6cba54d82184732c8f39a8625e4489434e8e308))
+
+
+
+
+
+## [0.8.134](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.133...@vtj/ui@0.8.134) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+
+## [0.8.133](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.132...@vtj/ui@0.8.133) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.132](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.131...@vtj/ui@0.8.132) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+## [0.8.131](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.130...@vtj/ui@0.8.131) (2024-09-12)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
+
+## [0.8.130](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.129...@vtj/ui@0.8.130) (2024-09-10)
+
+
+### Bug Fixes
+
+* 🐛 picker 多选回填bug ([87ec2c9](https://gitee.com/newgateway/vtj/commits/87ec2c94252529c6ccb023c4873730c6fb7bb467))
+
+
+
+
+
+## [0.8.129](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.128...@vtj/ui@0.8.129) (2024-09-10)
+
+
+### Bug Fixes
+
+* 🐛 picker多选带回单条数据 ([d8ea230](https://gitee.com/newgateway/vtj/commits/d8ea23000cbec7e6aed1f48c03b287d70b593195))
+* 🐛 picker多选带回单条数据 ([533cb23](https://gitee.com/newgateway/vtj/commits/533cb23b32e9e663ad74a89ef180a39540049a17))
+
+
+
+
+
+
+## [0.8.128](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.127...@vtj/ui@0.8.128) (2024-09-09)
+
+
+### Bug Fixes
+
+* 🐛 picker multiple bug ([0c6c476](https://gitee.com/newgateway/vtj/commits/0c6c476d2d0c9418f5f6ffcf93c78b3cf7e12cb5))
+
+
+
+
+
+
+## [0.8.127](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.126...@vtj/ui@0.8.127) (2024-09-09)
+
+
+### Features
+
+* ✨ picker add beforeInit ([6afb119](https://gitee.com/newgateway/vtj/commits/6afb1191fa21a2a52ee41eefe02af23d6a4b1f52))
+
+
+
+
+
+
+## [0.8.126](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.125...@vtj/ui@0.8.126) (2024-09-09)
+
+
+### Bug Fixes
+
+* 🐛 多选选择弹窗问题 ([5b3fe55](https://gitee.com/newgateway/vtj/commits/5b3fe55523a410f1d9e24d91a69799588b3b014e))
+
+
+
+
+
+
+## [0.8.125](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.124...@vtj/ui@0.8.125) (2024-09-08)
+
+
+### Bug Fixes
+
+* 🐛 更新依赖导致的兼容问题 ([d96fe5d](https://gitee.com/newgateway/vtj/commits/d96fe5d457ab1dc35ace670dca062a3cd86894c2))
+* 🐛 降低dialog modal 透明度 ([1b1aa41](https://gitee.com/newgateway/vtj/commits/1b1aa41dfc74f8619b1ba6ced9975aaa2a26fcec))
+* 🐛 tooltip placement ([c0b9a09](https://gitee.com/newgateway/vtj/commits/c0b9a0987ebca32591bdebda9ad3d7c6192db378))
+
+
+
+
+
+## [0.8.124](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.123...@vtj/ui@0.8.124) (2024-09-06)
+
+
+### Bug Fixes
+
+* 🐛 picker dialog enter event ([d54a1bb](https://gitee.com/newgateway/vtj/commits/d54a1bb34937202824ca43bc4d82bd4b3c0dbb20))
+* 🐛 query-form disabled 失效 ([3726a9d](https://gitee.com/newgateway/vtj/commits/3726a9d49f71dc30636d20ada3563c1d836e76c1))
+
+
+### Features
+
+* ✨ form add clearValidate ([15d222b](https://gitee.com/newgateway/vtj/commits/15d222b2c2efbb278eb0064da58a03d23a312f0b))
+
+
+
+
+
+
 ## [0.8.123](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.122...@vtj/ui@0.8.123) (2024-09-02)
 
 **Note:** Version bump only for package @vtj/ui

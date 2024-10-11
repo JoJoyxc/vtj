@@ -1,14 +1,15 @@
 {
   "name": "@vtj/materials",
   "private": false,
-  "version": "0.8.123",
+  "version": "0.8.159",
   "type": "module",
   "scripts": {
-    "build": "npm run remove && npm run build:ui && npm run build:charts && npm run build:element && npm run build:antdv && npm run copy",
+    "build": "npm run remove && npm run build:ui && npm run build:charts && npm run build:element && npm run build:antdv && npm run build:vant && npm run copy",
     "build:ui": "vue-tsc && cross-env BUILD_TYPE=ui vite build",
     "build:element": "vue-tsc && cross-env BUILD_TYPE=element vite build",
     "build:antdv": "vue-tsc && cross-env BUILD_TYPE=antdv vite build",
     "build:charts": "vue-tsc && cross-env BUILD_TYPE=charts vite build",
+    "build:vant": "vue-tsc && cross-env BUILD_TYPE=vant vite build",
     "remove": "node scripts/rm.mjs",
     "copy": "node scripts/copy.mjs"
   },
@@ -18,12 +19,12 @@
     "@vtj/core": "workspace:~",
     "@vtj/ui": "workspace:~",
     "@vtj/utils": "workspace:~",
-    "@vueuse/core": "~10.11.0",
+    "@vueuse/core": "~11.1.0",
     "ant-design-vue": "~4.2.0",
     "echarts": "~5.5.0",
-    "element-plus": "~2.7.0",
+    "element-plus": "~2.8.0",
     "vant": "~4.9.0",
-    "vue": "~3.4.15",
+    "vue": "~3.5.5",
     "vue-router": "~4.4.0"
   },
   "files": [
