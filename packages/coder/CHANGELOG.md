@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.158](https://gitee.com/newgateway/vtj/compare/@vtj/coder@0.8.157...@vtj/coder@0.8.158) (2024-10-11)
+
+
+### Bug Fixes
+
+* 🐛 coder vue file add [@ts-nocheck](https://gitee.com/ts-nocheck) ([4145014](https://gitee.com/newgateway/vtj/commits/4145014aabf5110b6707d93a6541d047c5e5611d))
+
+
+
+
+
 ## [0.8.157](https://gitee.com/newgateway/vtj/compare/@vtj/coder@0.8.156...@vtj/coder@0.8.157) (2024-10-09)
 
 **Note:** Version bump only for package @vtj/coder
