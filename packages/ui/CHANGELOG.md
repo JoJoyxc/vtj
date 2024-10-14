@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.161](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.160...@vtj/ui@0.8.161) (2024-10-14)
+
+
+### Features
+
+* ✨ auto update ([f8993a0](https://gitee.com/newgateway/vtj/commits/f8993a054bcbe3e5ccb32d274930a236a07eeab3))
+
+
+
+
+
+
 ## [0.8.160](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.159...@vtj/ui@0.8.160) (2024-10-14)
 
 **Note:** Version bump only for package @vtj/ui
