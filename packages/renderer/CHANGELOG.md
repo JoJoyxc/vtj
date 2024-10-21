@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.165](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.164...@vtj/renderer@0.8.165) (2024-10-21)
+
+
+### Bug Fixes
+
+* 🐛 Access ([b321e9f](https://gitee.com/newgateway/vtj/commits/b321e9f444aa58bea03cf4faf6ce6c40083b005c))
+
+
+
+
+
 ## [0.8.164](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.163...@vtj/renderer@0.8.164) (2024-10-21)
 
 

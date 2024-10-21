@@ -1,7 +1,7 @@
 {
   "name": "@vtj/coder",
   "private": false,
-  "version": "0.8.164",
+  "version": "0.8.165",
   "type": "module",
   "scripts": {
     "build": "vue-tsc && vite build",
