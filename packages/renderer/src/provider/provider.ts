@@ -22,6 +22,7 @@ import {
 import { ElNotification } from 'element-plus';
 import { request } from './defaults';
 import { createSchemaApis, mockApis, mockCleanup } from './apis';
+import { Access } from '../plugins';
 import { isVuePlugin } from '../utils';
 import { version } from '../version';
 import {
@@ -67,6 +68,7 @@ export interface ProvideAdapter {
   request: IStaticRequest;
   jsonp: Jsonp;
   metaQuery?: (...args: any[]) => Promise<any>;
+  access?: Access;
   [index: string]: any;
 }
 
@@ -115,6 +117,12 @@ export class Provider extends Base {
     }
     Object.assign(this.globals, globals);
     Object.assign(this.adapter, adapter);
+
+    const { access, request } = this.adapter;
+    if (access) {
+      access.connect({ mode, router, request });
+    }
+
     // 设计模式在引擎已初始化了项目数据，这里不需要再次初始化
     if (mode !== ContextMode.Design) {
       this.load(project as ProjectSchema);
@@ -245,13 +253,19 @@ export class Provider extends Base {
     if (this.options.install) {
       app.use(this.options.install);
     }
+    if (this.adapter.access) {
+      app.use(this.adapter.access);
+    }
     app.provide(providerKey, this);
     app.config.globalProperties.installed = installed;
     if (this.nodeEnv === 'development') {
       app.config.errorHandler = (err: any, instance, info) => {
         const name = instance?.$options.name;
-        const msg = err?.message || err?.msg || '未知错误';
-        const message = `[ ${name} ] ${msg}`;
+        const msg =
+          typeof err === 'string'
+            ? err
+            : err?.message || err?.msg || '未知错误';
+        const message = `[ ${name} ] ${msg} ${info}`;
         console.error(
           '[VTJ Error]:',
           {
