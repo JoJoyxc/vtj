@@ -44,6 +44,13 @@ export interface AccessOptions {
   auth?: string | (() => void);
 
   /**
+   * 判断是否登录页面
+   * @param path
+   * @returns
+   */
+  isAuth?: (to: RouteLocationNormalized) => boolean;
+
+  /**
    * 重定向参数名
    */
   redirectParam?: string;
@@ -160,14 +167,20 @@ export class Access {
     app.provide(ACCESS_KEY, this);
   }
 
-  private isAuthUrl() {
-    const { auth } = this.options;
-    return auth && typeof auth === 'string' && location.href.includes(auth);
+  private isAuthPath(to: RouteLocationNormalized) {
+    const { auth, isAuth } = this.options;
+    if (isAuth) {
+      return isAuth(to);
+    }
+    if (to.path && typeof auth === 'string') {
+      return auth.includes(to.path);
+    }
+    return false;
   }
 
   private toLogin() {
     const { auth, redirectParam } = this.options;
-    if (!auth || this.isAuthUrl()) return;
+    if (!auth) return;
     if (typeof auth === 'function') {
       auth();
     } else {
@@ -198,10 +211,12 @@ export class Access {
   }
 
   private guard(to: RouteLocationNormalized, next: NavigationGuardNext) {
-    if (this.isWhiteList(to)) return next();
-    if (this.isLogined()) return next();
-    next(false);
-    this.toLogin();
+    if (this.isWhiteList(to) || this.isLogined() || this.isAuthPath(to)) {
+      return next();
+    } else {
+      next(false);
+      this.toLogin();
+    }
   }
 
   private isWhiteList(to: RouteLocationNormalized) {
