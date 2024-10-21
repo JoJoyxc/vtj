@@ -39,9 +39,9 @@ export interface AccessOptions {
   unauthorized?: string | (() => void);
 
   /**
-   * 授权登录页面路由路径或url
+   * 授权登录页面 pathname
    */
-  auth?: string | (() => void);
+  auth?: string | ((search: string) => void);
 
   /**
    * 判断是否登录页面
@@ -65,7 +65,7 @@ export interface AccessOptions {
    * @param message
    * @returns
    */
-  alert?: (message: string) => void;
+  alert?: (message: string, options: Record<string, any>) => Promise<any>;
 
   unauthorizedMessage?: string;
 }
@@ -136,13 +136,20 @@ export class Access {
     }
   }
 
-  logout() {
-    const { storageKey, storagePrefix } = this.options;
+  clear() {
+    const { storageKey, storagePrefix, session, authKey } = this.options;
     this.data = null;
     storage.remove(storageKey, {
       type: 'local',
       prefix: storagePrefix
     });
+    if (session) {
+      cookie.remove(authKey);
+    }
+  }
+
+  logout() {
+    this.clear();
     this.toLogin();
   }
 
@@ -173,7 +180,8 @@ export class Access {
       return isAuth(to);
     }
     if (to.path && typeof auth === 'string') {
-      return auth.includes(to.path);
+      const path = auth.split('#')[1] || auth;
+      return to.path === path;
     }
     return false;
   }
@@ -181,12 +189,13 @@ export class Access {
   private toLogin() {
     const { auth, redirectParam } = this.options;
     if (!auth) return;
+    const search = redirectParam
+      ? `?${redirectParam}=${encodeURIComponent(location.href)}`
+      : '';
     if (typeof auth === 'function') {
-      auth();
+      auth(search);
     } else {
-      location.href = redirectParam
-        ? `${auth}?${redirectParam}=${encodeURIComponent(location.href)}`
-        : auth;
+      location.href = redirectParam ? `${auth}${search}` : auth;
     }
   }
 
@@ -236,25 +245,28 @@ export class Access {
     );
   }
 
-  private setRequest(request: Request) {
+  private async showUnauthorizedAlert(res: any) {
     const { alert, unauthorizedMessage = '登录已失效' } = this.options;
+    if (this.isUnauthorized(res) && alert) {
+      await alert(unauthorizedMessage, { title: '提示', type: 'warning' }).catch(e=>e);
+      this.toLogin();
+    }
+  }
+
+  private setRequest(request: Request) {
     request.useRequest((req) => {
       req.headers.Authorization = this.data?.token;
       return req;
     });
     request.useResponse(
-      (res) => {
-        if (this.isUnauthorized(res) && alert) {
-          alert(unauthorizedMessage);
-        }
+      async (res) => {
+        await this.showUnauthorizedAlert(res);
         return res;
       },
-      (err) => {
+      async (err) => {
         const res = err.response || err || {};
-        if (this.isUnauthorized(res) && alert) {
-          alert(unauthorizedMessage);
-        }
-        return err;
+        await this.showUnauthorizedAlert(res);
+        return Promise.reject(err);
       }
     );
   }
