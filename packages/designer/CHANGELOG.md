@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.164](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.163...@vtj/designer@0.8.164) (2024-10-21)
+
+
+### Bug Fixes
+
+* 🐛 apis tag style ([0a7c12e](https://gitee.com/newgateway/vtj/commits/0a7c12e781d6d7ef6370d03c549a23812a99a4d0))
+
+
+
+
+
+
 ## [0.8.163](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.162...@vtj/designer@0.8.163) (2024-10-17)
 
 
