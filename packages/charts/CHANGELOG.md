@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.168](https://gitee.com/newgateway/vtj/compare/@vtj/charts@0.8.167...@vtj/charts@0.8.168) (2024-10-22)
+
+
+### Bug Fixes
+
+* 🐛 access adapter ([4ed5e17](https://gitee.com/newgateway/vtj/commits/4ed5e17d8746639598819457fe06c541c307d1a2))
+
+
+
+
+
 ## [0.8.167](https://gitee.com/newgateway/vtj/compare/@vtj/charts@0.8.166...@vtj/charts@0.8.167) (2024-10-22)
 
 **Note:** Version bump only for package @vtj/charts
