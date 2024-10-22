@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.166](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.165...dev-web@0.8.166) (2024-10-22)
+
+
+### Features
+
+* ✨ 设计器支持Access配置 ([4d1e91e](https://gitee.com/newgateway/vtj/commits/4d1e91ebcf1b00ad05ac11d1f05fbc96d1ffd06d))
+
+
+
+
+
 ## [0.8.165](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.164...dev-web@0.8.165) (2024-10-21)
 
 **Note:** Version bump only for package dev-web
