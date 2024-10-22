@@ -4,7 +4,7 @@ import type {
   RouteLocationNormalized,
   NavigationGuardNext
 } from 'vue-router';
-import { storage, cookie, toArray, Request } from '@vtj/utils';
+import { storage, cookie, toArray, Request, delay } from '@vtj/utils';
 import { ContextMode } from '../constants';
 
 export interface AccessOptions {
@@ -109,6 +109,7 @@ export const ACCESS_KEY: InjectionKey<Access> = Symbol('access');
 export class Access {
   private options: AccessOptions;
   private data: AccessData | null = null;
+  private mode?: ContextMode = ContextMode.Raw;
   constructor(options: Partial<AccessOptions>) {
     this.options = Object.assign({}, defaults, options);
     this.loadData();
@@ -116,6 +117,7 @@ export class Access {
 
   connect(params: AccessConnectParams) {
     const { mode, router, request } = params;
+    this.mode = mode;
     if (router && mode === ContextMode.Raw) {
       this.setGuard(router);
     }
@@ -189,6 +191,7 @@ export class Access {
   private toLogin() {
     const { auth, redirectParam } = this.options;
     if (!auth) return;
+    if (this.mode !== ContextMode.Raw) return;
     const search = redirectParam
       ? `?${redirectParam}=${encodeURIComponent(location.href)}`
       : '';
@@ -248,14 +251,19 @@ export class Access {
   private async showUnauthorizedAlert(res: any) {
     const { alert, unauthorizedMessage = '登录已失效' } = this.options;
     if (this.isUnauthorized(res) && alert) {
-      await alert(unauthorizedMessage, { title: '提示', type: 'warning' }).catch(e=>e);
+      // 延时是为了提示层渲染在loading的层级之上
+      await delay(150);
+      await alert(unauthorizedMessage, {
+        title: '提示',
+        type: 'warning'
+      }).catch((e) => e);
       this.toLogin();
     }
   }
 
   private setRequest(request: Request) {
     request.useRequest((req) => {
-      req.headers.Authorization = this.data?.token;
+      req.headers[this.options.authKey] = this.data?.token;
       return req;
     });
     request.useResponse(
