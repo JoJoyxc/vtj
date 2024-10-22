@@ -172,7 +172,9 @@ export class Access {
   }
 
   install(app: App) {
-    app.config.globalProperties.$access = this;
+    if (!app.config.globalProperties.$access) {
+      app.config.globalProperties.$access = this;
+    }
     app.provide(ACCESS_KEY, this);
   }
 
