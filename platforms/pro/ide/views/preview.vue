@@ -19,10 +19,13 @@
     ? await new Extension(config).load()
     : {};
   const { __BASE_PATH__ = '/' } = config || {};
-  const access = new Access({
-    ...(adapters?.access || {}),
-    alert: ElMessageBox.alert
-  });
+  const accessOptions = adapters?.access;
+  const access = accessOptions
+    ? new Access({
+        ...accessOptions,
+        alert: ElMessageBox.alert
+      })
+    : undefined;
   const { provider, onReady } = createProvider({
     mode: ContextMode.Runtime,
     service,

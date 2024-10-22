@@ -265,7 +265,10 @@ export class Access {
 
   private setRequest(request: Request) {
     request.useRequest((req) => {
-      req.headers[this.options.authKey] = this.data?.token;
+      const token = this.data?.token;
+      if (token) {
+        req.headers[this.options.authKey] = this.data?.token;
+      }
       return req;
     });
     request.useResponse(
