@@ -59,7 +59,7 @@
             @action-command="onActionCommand">
             <Avatar :avatar="props.avatar">
               <template v-if="$slots.user" #default>
-                <slot name="user"> </slot>
+                <slot name="user"></slot>
               </template>
             </Avatar>
           </Toolbar>
