@@ -1,7 +1,7 @@
 import { ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
-import { type MenuDataItem } from '@vtj/ui';
-import { type PageFile } from '@vtj/core';
+import type { MenuDataItem } from '@vtj/ui';
+import type { PageFile } from '@vtj/core';
 import { useProvider } from '../provider';
 import { useAccess } from '../plugins';
 
