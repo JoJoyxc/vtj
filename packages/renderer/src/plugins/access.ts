@@ -258,12 +258,22 @@ export class Access {
     return !!this.data;
   }
 
+  private hasRoutePermission(to: RouteLocationNormalized) {
+    const id = to.params.id;
+    return id && this.can(id);
+  }
+
   private setGuard(router: Router) {
     router.beforeEach((to, _from, next) => this.guard(to, next));
   }
 
   private guard(to: RouteLocationNormalized, next: NavigationGuardNext) {
-    if (this.isWhiteList(to) || this.isLogined() || this.isAuthPath(to)) {
+    if (
+      this.isWhiteList(to) ||
+      this.isLogined() ||
+      this.isAuthPath(to) ||
+      this.hasRoutePermission(to)
+    ) {
       return next();
     } else {
       next(false);
