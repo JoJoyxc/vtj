@@ -32,7 +32,11 @@ import {
   loadCss,
   getRawComponent
 } from '../utils';
-import { ContextMode } from '../constants';
+import {
+  ContextMode,
+  PAGE_ROUTE_NAME,
+  HOMEPAGE_ROUTE_NAME
+} from '../constants';
 import {
   createRenderer,
   createLoader,
@@ -231,13 +235,13 @@ export class Provider extends Base {
     if (!router) return;
     router.addRoute({
       path: '/page/:id',
-      name: 'VtjPage',
+      name: PAGE_ROUTE_NAME,
       component: PageContainer
     });
 
     router.addRoute({
       path: '/',
-      name: 'VtjHomepage',
+      name: HOMEPAGE_ROUTE_NAME,
       component: project?.homepage ? PageContainer : StartupContainer
     });
   }

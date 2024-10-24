@@ -4,16 +4,8 @@ import type {
   RouteLocationNormalized,
   NavigationGuardNext
 } from 'vue-router';
-import {
-  storage,
-  cookie,
-  toArray,
-  Request,
-  delay,
-  unAES,
-  MD5
-} from '@vtj/utils';
-import { ContextMode } from '../constants';
+import { storage, cookie, toArray, Request, delay, unRSA } from '@vtj/utils';
+import { ContextMode, PAGE_ROUTE_NAME } from '../constants';
 
 export interface AccessOptions {
   /**
@@ -81,9 +73,9 @@ export interface AccessOptions {
   unauthorizedMessage?: string;
 
   /**
-   * 密钥
+   * RSA解密私钥
    */
-  crypto?: string;
+  privateKey?: string;
 }
 
 export interface AccessData {
@@ -142,7 +134,7 @@ export class Access {
     }
   }
 
-  login(data: AccessData | string) {
+  login(data: AccessData | string | string[]) {
     const { storageKey, storagePrefix, session, authKey } = this.options;
     this.setData(data);
     if (!this.data) return;
@@ -226,12 +218,20 @@ export class Access {
   }
 
   private setData(data: any) {
-    const { crypto } = this.options;
+    const { privateKey } = this.options;
+    if (Array.isArray(data) && privateKey) {
+      const contents = data.map((n) => unRSA(n, privateKey));
+      this.data = JSON.parse(contents.join(''));
+      return;
+    }
     if (typeof data === 'string') {
       try {
-        this.data = JSON.parse(
-          crypto ? unAES(data, MD5(crypto.toLowerCase())) : data
-        ) as AccessData;
+        const content = privateKey ? unRSA(data, privateKey) : data;
+        if (content) {
+          this.data = JSON.parse(content);
+        } else {
+          console.warn('RSA解密失败或登录信息缺失');
+        }
       } catch (e) {
         console.warn(e);
       }
@@ -259,8 +259,11 @@ export class Access {
   }
 
   private hasRoutePermission(to: RouteLocationNormalized) {
-    const id = to.params.id;
-    return id && this.can(id);
+    if (to.name === PAGE_ROUTE_NAME) {
+      const id = to.params.id;
+      return id && this.can(id);
+    }
+    return true;
   }
 
   private setGuard(router: Router) {
@@ -268,17 +271,20 @@ export class Access {
   }
 
   private guard(to: RouteLocationNormalized, next: NavigationGuardNext) {
-    if (
-      this.isWhiteList(to) ||
-      this.isLogined() ||
-      this.isAuthPath(to) ||
-      this.hasRoutePermission(to)
-    ) {
+    if (this.isWhiteList(to) || this.isAuthPath(to)) {
       return next();
-    } else {
-      next(false);
-      this.toLogin();
     }
+
+    if (this.isLogined()) {
+      if (this.hasRoutePermission(to)) {
+        return next();
+      } else {
+        this.showTip('无权限访问该页面');
+        return next(false);
+      }
+    }
+    next(false);
+    this.toLogin();
   }
 
   private isWhiteList(to: RouteLocationNormalized) {
@@ -299,15 +305,22 @@ export class Access {
   }
 
   private async showUnauthorizedAlert(res: any) {
-    const { alert, unauthorizedMessage = '登录已失效' } = this.options;
-    if (this.isUnauthorized(res) && alert) {
+    const { unauthorizedMessage = '登录已失效' } = this.options;
+    if (this.isUnauthorized(res)) {
+      await this.showTip(unauthorizedMessage);
+      this.toLogin();
+    }
+  }
+
+  private async showTip(content: string) {
+    const { alert } = this.options;
+    if (alert) {
       // 延时是为了提示层渲染在loading的层级之上
       await delay(150);
-      await alert(unauthorizedMessage, {
+      await alert(content, {
         title: '提示',
         type: 'warning'
       }).catch((e) => e);
-      this.toLogin();
     }
   }
 
