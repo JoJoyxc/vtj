@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.170](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.169...@vtj/renderer@0.8.170) (2024-10-24)
+
+
+### Bug Fixes
+
+* 🐛 未处理的异常提示 ([368fd27](https://gitee.com/newgateway/vtj/commits/368fd279596f81c8aa83943650ee7a1a99e67ab0))
+* 🐛 acesss route permission  guard ([b42c3d4](https://gitee.com/newgateway/vtj/commits/b42c3d471ecda4f2a291d3a9e196c327b99798d1))
+
+
+
+
+
 ## [0.8.169](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.168...@vtj/renderer@0.8.169) (2024-10-24)
 
 
