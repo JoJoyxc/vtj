@@ -277,7 +277,7 @@ export class Provider extends Base {
         );
 
         ElNotification.error({
-          title: '运行时错误：请在控制台查看详情',
+          title: '未处理的异常：请在控制台查看详情',
           message
         });
       };
