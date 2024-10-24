@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.169](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.168...@vtj/renderer@0.8.169) (2024-10-24)
+
+
+### Bug Fixes
+
+* 🐛 access menus ([477e663](https://gitee.com/newgateway/vtj/commits/477e663f8bd506bf5fbfc00cb01fa8ec8ceb3487))
+
+
+### Features
+
+* ✨ 菜单支持权限控制 ([7c4306f](https://gitee.com/newgateway/vtj/commits/7c4306f02ee6232d2583d70987c1d086b5615b94))
+* ✨ 菜单支持权限控制 ([bdc2bc7](https://gitee.com/newgateway/vtj/commits/bdc2bc7320767108977f673bcad55aacf406b2e8))
+
+
+
+
+
 ## [0.8.168](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.167...@vtj/renderer@0.8.168) (2024-10-22)
 
 
