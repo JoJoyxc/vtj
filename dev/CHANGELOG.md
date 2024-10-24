@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.171](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.170...dev-web@0.8.171) (2024-10-24)
+
+
+### Bug Fixes
+
+* 🐛 access改为RSA加密 ([c4811cf](https://gitee.com/newgateway/vtj/commits/c4811cf9ae941a31f95494b5a6c41c3d69aa9f25))
+
+
+
+
+
 ## [0.8.170](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.169...dev-web@0.8.170) (2024-10-24)
 
 **Note:** Version bump only for package dev-web
