@@ -31,7 +31,8 @@ function menusFilter(
     if (menu.children && menu.children.length) {
       const childArray = menusFilter(menu.children, permissions);
       if (childArray.length) {
-        result = result.concat(childArray);
+        menu.children = childArray;
+        result.push(menu);
       }
     } else {
       if (permissions[menu.id]) {

@@ -4,7 +4,15 @@ import type {
   RouteLocationNormalized,
   NavigationGuardNext
 } from 'vue-router';
-import { storage, cookie, toArray, Request, delay } from '@vtj/utils';
+import {
+  storage,
+  cookie,
+  toArray,
+  Request,
+  delay,
+  unAES,
+  MD5
+} from '@vtj/utils';
 import { ContextMode } from '../constants';
 
 export interface AccessOptions {
@@ -67,7 +75,15 @@ export interface AccessOptions {
    */
   alert?: (message: string, options: Record<string, any>) => Promise<any>;
 
+  /**
+   * 未登录提示文本
+   */
   unauthorizedMessage?: string;
+
+  /**
+   * 密钥
+   */
+  crypto?: string;
 }
 
 export interface AccessData {
@@ -126,15 +142,17 @@ export class Access {
     }
   }
 
-  login(data: AccessData) {
+  login(data: AccessData | string) {
     const { storageKey, storagePrefix, session, authKey } = this.options;
-    this.data = data;
+    this.setData(data);
+    if (!this.data) return;
+
     storage.save(storageKey, data, {
       type: 'local',
       prefix: storagePrefix
     });
     if (session) {
-      cookie.set(authKey, data.token);
+      cookie.set(authKey, this.data.token);
     }
   }
 
@@ -159,8 +177,11 @@ export class Access {
     return this.data;
   }
 
-  can(code: string | string[]) {
+  can(code: string | string[] | ((p: Record<string, boolean>) => boolean)) {
     const { permissions = {} } = this.data || {};
+    if (typeof code === 'function') {
+      return code(permissions);
+    }
     const codes = toArray(code);
     return codes.every((n) => permissions[n]);
   }
@@ -204,12 +225,29 @@ export class Access {
     }
   }
 
+  private setData(data: any) {
+    const { crypto } = this.options;
+    if (typeof data === 'string') {
+      try {
+        this.data = JSON.parse(
+          crypto ? unAES(data, MD5(crypto.toLowerCase())) : data
+        ) as AccessData;
+      } catch (e) {
+        console.warn(e);
+      }
+    } else {
+      this.data = data;
+    }
+  }
+
   private loadData() {
     const { storageKey, storagePrefix } = this.options;
-    this.data = storage.get(storageKey, {
+    const data = storage.get(storageKey, {
       type: 'local',
       prefix: storagePrefix
     });
+
+    this.setData(data);
   }
 
   private isLogined() {
