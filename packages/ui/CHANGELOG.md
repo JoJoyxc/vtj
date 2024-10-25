@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.172](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.171...@vtj/ui@0.8.172) (2024-10-25)
+
+
+### Features
+
+* ✨ mask支持设置用户卡片宽度 ([8148e6b](https://gitee.com/newgateway/vtj/commits/8148e6b61e9353f038f06cccc17d358ea18bb34c))
+
+
+
+
+
 ## [0.8.171](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.8.170...@vtj/ui@0.8.171) (2024-10-24)
 
 **Note:** Version bump only for package @vtj/ui
