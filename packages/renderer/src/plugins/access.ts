@@ -73,6 +73,11 @@ export interface AccessOptions {
   unauthorizedMessage?: string;
 
   /**
+   * 无权限提示
+   */
+  noPermissionMessage?: string;
+
+  /**
    * RSA解密私钥
    */
   privateKey?: string;
@@ -104,12 +109,13 @@ const defaults: AccessOptions = {
   session: false,
   authKey: 'Authorization',
   storageKey: 'ACCESS_STORAGE',
-  storagePrefix: '__VTJ__',
+  storagePrefix: '__VTJ_',
   unauthorized: '/unauthorized',
   auth: '/#/login',
   redirectParam: 'r',
   unauthorizedCode: 401,
-  unauthorizedMessage: '登录已经失效，请重新登录！'
+  unauthorizedMessage: '登录已经失效，请重新登录！',
+  noPermissionMessage: '无权限访问该页面'
 };
 
 export const ACCESS_KEY: InjectionKey<Access> = Symbol('access');
@@ -279,7 +285,8 @@ export class Access {
       if (this.hasRoutePermission(to)) {
         return next();
       } else {
-        this.showTip('无权限访问该页面');
+        const msg = this.options.noPermissionMessage || '无权限访问';
+        this.showTip(msg);
         return next(false);
       }
     }
