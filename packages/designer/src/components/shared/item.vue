@@ -116,7 +116,7 @@
       icon: VtjIconHome
     },
     share: {
-      label: '分享',
+      label: '共享',
       icon: VtjIconShare
     }
   };

@@ -39,7 +39,8 @@
     VtjIconEdit,
     VtjIconRemove,
     MoreFilled,
-    VtjIconShare
+    VtjIconShare,
+    VtjIconCopy
   } from '@vtj/icons';
   import { ElMessageBox } from 'element-plus';
 
@@ -63,7 +64,12 @@
       icon: VtjIconEdit
     },
     {
-      label: '分享',
+      label: '复制',
+      command: 'copy',
+      icon: VtjIconCopy
+    },
+    {
+      label: '共享',
       command: 'share',
       icon: VtjIconShare
     },
