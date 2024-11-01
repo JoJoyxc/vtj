@@ -23,6 +23,7 @@
     : {};
   const { __BASE_PATH__ = '/' } = config || {};
   const accessOptions = adapters?.access;
+  const remote = adapters?.remote;
   const access = accessOptions
     ? new Access({
         ...accessOptions,
@@ -58,7 +59,7 @@
     container,
     service,
     materialPath: __BASE_PATH__,
-    adapter: { access },
+    adapter: { access, remote },
     ...options
   });
 

@@ -66,6 +66,7 @@ export interface EngineOptions {
   globals?: Record<string, any>;
   adapter?: Partial<ProvideAdapter>;
   install?: (app: App, engine?: Engine) => void;
+  remoteHost?: string;
 }
 
 export class Engine extends Base {
@@ -82,6 +83,7 @@ export class Engine extends Base {
   public isEmptyCurrent: Ref<boolean> = ref(false);
   public history: Ref<HistoryModel | null> = ref(null);
   public provider: Provider;
+  public adapter?: Partial<ProvideAdapter>;
   /**
    * 当current变化时，更新该值，用于通知组件更新
    */
@@ -101,6 +103,7 @@ export class Engine extends Base {
     } = this.options;
     this.container = container;
     this.service = service;
+    this.adapter = adapter;
     this.provider = new Provider({
       mode: ContextMode.Design,
       globals,

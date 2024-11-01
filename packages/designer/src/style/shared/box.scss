@@ -2,7 +2,7 @@
 
 @include b(box) {
   position: relative;
-  height: 60px;
+  mini-height: 60px;
   overflow: hidden;
   background-color: var(--el-fill-color-lighter);
   border: 1px dashed transparent;

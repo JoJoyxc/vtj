@@ -6,8 +6,10 @@
     @dragstart="onDragStart"
     @dragend="onDragEnd">
     <XContainer direction="column" justify="center" align="center">
-      <span class="v-box__name">{{ props.name }}</span>
-      <span class="v-box__label">{{ props.title }}</span>
+      <slot>
+        <span class="v-box__name">{{ props.name }}</span>
+        <span class="v-box__label">{{ props.title }}</span>
+      </slot>
     </XContainer>
     <XContainer
       v-if="props.editable"
@@ -39,7 +41,6 @@
     VtjIconEdit,
     VtjIconRemove,
     MoreFilled,
-    VtjIconShare,
     VtjIconCopy
   } from '@vtj/icons';
   import { ElMessageBox } from 'element-plus';
@@ -67,11 +68,6 @@
       label: '复制',
       command: 'copy',
       icon: VtjIconCopy
-    },
-    {
-      label: '共享',
-      command: 'share',
-      icon: VtjIconShare
     },
     {
       label: '删除',

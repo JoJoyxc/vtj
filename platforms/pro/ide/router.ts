@@ -10,6 +10,11 @@ const routes = [
     path: '/preview/:id',
     name: 'preview',
     component: () => import('./views/preview.vue')
+  },
+  {
+    path: '/auth',
+    name: 'auth',
+    component: () => import('./views/auth.vue')
   }
 ];
 

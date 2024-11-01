@@ -20,6 +20,7 @@
     : {};
   const { __BASE_PATH__ = '/' } = config || {};
   const accessOptions = adapters?.access;
+  const remote = adapters?.remote;
   const access = accessOptions
     ? new Access({
         ...accessOptions,
@@ -30,7 +31,7 @@
     mode: ContextMode.Runtime,
     service,
     materialPath: __BASE_PATH__,
-    adapter: { access },
+    adapter: { access, remote },
     ...(options || {}),
     dependencies: {
       Vue: () => import('vue'),

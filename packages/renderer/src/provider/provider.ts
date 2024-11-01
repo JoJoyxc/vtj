@@ -73,6 +73,10 @@ export interface ProvideAdapter {
   jsonp: Jsonp;
   metaQuery?: (...args: any[]) => Promise<any>;
   access?: Access;
+  /**
+   * 远程服务 host
+   */
+  remote?: string;
   [index: string]: any;
 }
 

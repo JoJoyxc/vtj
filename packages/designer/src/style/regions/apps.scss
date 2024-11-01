@@ -55,5 +55,6 @@
   @include e(panels) {
     flex-grow: 1;
     overflow: hidden;
+    min-width: 160px;
   }
 }

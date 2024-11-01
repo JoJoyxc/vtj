@@ -175,6 +175,10 @@ export class Access {
     return this.data;
   }
 
+  getToken() {
+    return this.data?.token;
+  }
+
   can(code: string | string[] | ((p: Record<string, boolean>) => boolean)) {
     const { permissions = {} } = this.data || {};
     if (typeof code === 'function') {

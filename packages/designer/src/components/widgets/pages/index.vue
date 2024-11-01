@@ -45,7 +45,6 @@
       v-model="visible"
       :item="item"
       :parent-id="parentId"></PageForm>
-    <MicroApp></MicroApp>
   </Panel>
 </template>
 <script lang="ts" setup>
@@ -55,7 +54,7 @@
   import { type PageFile } from '@vtj/core';
   import { cloneDeep } from '@vtj/utils';
   import PageForm from './form.vue';
-  import { Panel, Item, MicroApp } from '../../shared';
+  import { Panel, Item } from '../../shared';
   import { useProject, useCurrent } from '../../hooks';
   import { message, notify } from '../../../utils';
 

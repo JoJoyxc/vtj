@@ -10,7 +10,7 @@
         size="small"
         v-model="keyword"
         :prefix-icon="Search"
-        placeholder="搜索API"
+        placeholder="搜索区块"
         clearable></ElInput>
     </div>
     <ElCollapse :model-value="categories">
@@ -19,7 +19,7 @@
         :name="name"
         :title="`${name} (${items.length})`">
         <ElRow wrap="wrap" :gutter="5">
-          <ElCol v-for="block in blocks" :key="block.id" :span="span">
+          <ElCol v-for="block in items" :key="block.id" :span="span">
             <Box
               :name="block.name"
               :title="block.title"

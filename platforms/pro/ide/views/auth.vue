@@ -1,0 +1,50 @@
+<template>
+  <div class="loading">正在登录中...</div>
+</template>
+<script lang="ts" setup>
+  import { useRouter, useRoute } from 'vue-router';
+  import { jsonp } from '@vtj/utils';
+  import { ElMessageBox } from 'element-plus';
+  import { LocalService, Extension, Access } from '../../src';
+  const route = useRoute();
+  const router = useRouter();
+  const service = new LocalService();
+  const config = await service.getExtension().catch(() => null);
+  const { adapters } = config ? await new Extension(config).load() : {};
+  // const { __BASE_PATH__ = '/' } = config || {};
+  const accessOptions = adapters?.access;
+  const remote = adapters?.remote;
+  const access = accessOptions
+    ? new Access({
+        ...accessOptions,
+        alert: ElMessageBox.alert
+      })
+    : undefined;
+
+  const getLoginInfo = async (token: string) => {
+    const api = `${remote}/api/open/user/${token}`;
+    const res = await jsonp(api).catch(() => null);
+    if (!res || !res.success) {
+      await ElMessageBox.alert('登录失败');
+      const redirect = route.query.redirect as string;
+      router.push(redirect || '/');
+      return null;
+    } else {
+      return res.data;
+    }
+  };
+
+  const token = route.query.token as string;
+  const info = await getLoginInfo(token);
+  if (info) {
+    access?.login(info);
+    const redirect = route.query.redirect as string;
+    router.push(redirect || '/');
+  }
+</script>
+
+<style lang="scss" scoped>
+  .loading {
+    padding: 40px;
+  }
+</style>
