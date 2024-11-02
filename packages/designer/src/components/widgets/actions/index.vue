@@ -37,9 +37,16 @@
         <ElDropdownMenu>
           <ElDropdownItem command="current">发布页面</ElDropdownItem>
           <ElDropdownItem command="project">整站发布</ElDropdownItem>
+          <ElDropdownItem command="template" :icon="VtjIconTemplate" divided>
+            发布到模板
+          </ElDropdownItem>
         </ElDropdownMenu>
       </template>
     </ElDropdown>
+    <Publisher
+      v-if="publisherVisible"
+      v-model="publisherVisible"
+      v-bind="publisherProps"></Publisher>
   </div>
 </template>
 <script lang="ts" setup>
@@ -50,17 +57,20 @@
     ElBadge,
     ElDropdown,
     ElDropdownMenu,
-    ElDropdownItem
+    ElDropdownItem,
+    ElMessageBox
   } from 'element-plus';
   import {
     VtjIconSetting,
     VtjIconRefresh,
     VtjIconBug,
-    VtjIconPreview
+    VtjIconPreview,
+    VtjIconTemplate
   } from '@vtj/icons';
   import { XAction } from '@vtj/ui';
   import { delay } from '@vtj/utils';
-  import { useSelected } from '../../hooks';
+  import Publisher from './publisher.vue';
+  import { useSelected, useOpenApi } from '../../hooks';
   import { message } from '../../../utils';
 
   export interface Props {
@@ -73,7 +83,10 @@
   });
 
   const { engine, designer } = useSelected();
+  const { isLogined, toRemoteAuth } = useOpenApi();
   const isPreview = ref(false);
+  const publisherVisible = ref(false);
+  const publisherProps = ref();
   const refresh = () => {
     if (engine.current.value) {
       if (isPreview.value) {
@@ -128,13 +141,55 @@
     }
   };
 
+  const onPublishToTemplate = async () => {
+    const project = engine.project.value;
+    if (!project) return;
+    if (project.currentFile) {
+      if (await isLogined()) {
+        const canvas = await engine.simulator.capture();
+        const { name, title } = project.currentFile;
+        if (!canvas) {
+          message('截图失败', 'warning');
+          return;
+        }
+        publisherProps.value = {
+          canvas,
+          name,
+          title,
+          dsl: engine.current.value?.toDsl()
+        };
+        publisherVisible.value = true;
+      } else {
+        const ret = await ElMessageBox.confirm(
+          '发布到模板需登录系统，您还没登录或登录已过期，请重新登录！',
+          '提示',
+          {
+            type: 'info',
+            confirmButtonText: '立即登录'
+          }
+        ).catch(() => false);
+        if (ret) {
+          toRemoteAuth();
+        }
+      }
+    } else {
+      message('请先打开文件', 'warning');
+    }
+  };
+
   const onPublishCommand = (command: string) => {
     const project = engine.project.value;
     if (!project) return;
-    if (command === 'current') {
-      onPublish();
-    } else {
-      project.publish();
+    switch (command) {
+      case 'current':
+        onPublish();
+        break;
+      case 'project':
+        project.publish();
+        break;
+      case 'template':
+        onPublishToTemplate();
+        break;
     }
   };
 

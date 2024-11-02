@@ -16,7 +16,8 @@
     "@vtj/ui": "workspace:~",
     "@vtj/utils": "workspace:~",
     "mockjs": "~1.1.0",
-    "monaco-editor": "~0.51.0"
+    "monaco-editor": "~0.51.0",
+    "html2canvas": "~1.4.1"
   },
   "devDependencies": {
     "@types/mockjs": "~1.0.10",

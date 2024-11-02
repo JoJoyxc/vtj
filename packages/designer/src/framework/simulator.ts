@@ -18,6 +18,7 @@ import {
   mockApis,
   mockCleanup
 } from '@vtj/renderer';
+import html2canvas from 'html2canvas';
 import { logger } from '@vtj/utils';
 import { Renderer } from './renderer';
 import { Designer } from './designer';
@@ -272,6 +273,18 @@ export class Simulator extends Base {
       this.renderer?.render(current);
       this.rendered.value = Symbol();
     }
+  }
+
+  capture() {
+    return new Promise((resolve, reject) => {
+      if (!this.contentWindow) return reject(null);
+      const body = this.contentWindow.document.body;
+      html2canvas(body)
+        .then((canvas) => {
+          resolve(canvas);
+        })
+        .catch(reject);
+    });
   }
 
   dispose() {

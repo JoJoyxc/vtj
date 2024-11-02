@@ -1,8 +1,7 @@
-import { ref, type Ref } from 'vue';
-import {} from 'vue-router';
-import { jsonp } from '@vtj/utils';
+import { computed, ref, type Ref } from 'vue';
+import { groupBy } from '@vtj/utils';
 import { ElMessageBox, ElMessage } from 'element-plus';
-import { useEngine } from '../../framework';
+import { useOpenApi } from './useOpenApi';
 
 export interface TemplateDto {
   id: string;
@@ -16,49 +15,16 @@ export interface TemplateDto {
 }
 
 export function useTemplates() {
-  const engine = useEngine();
+  const {
+    engine,
+    access,
+    toRemoteAuth,
+    isLogined,
+    getTemplates,
+    getTemplateDsl
+  } = useOpenApi();
 
   const templates: Ref<TemplateDto[]> = ref([]);
-  const { access, remote, auth = '#/auth' } = engine.adapter || {};
-
-  const toRemoteAuth = () => {
-    if (remote) {
-      const { protocol, host, pathname } = location;
-      const clientUrl = `${protocol}//${host}${pathname}${auth}`;
-      const redirectUrl =
-        clientUrl +
-        '?redirect=' +
-        encodeURIComponent(location.hash.substring(1));
-      location.href = `${remote}/auth/client.html?url=${encodeURIComponent(redirectUrl)}`;
-    }
-  };
-
-  const isLogined = async () => {
-    const token = access?.getData()?.token;
-    if (token) {
-      const api = `${remote}/api/open/logined/${token}`;
-      const res = await jsonp(api).catch(() => null);
-      if (res && res.data) {
-        return true;
-      }
-      return false;
-    }
-    return false;
-  };
-
-  const getTemplates = async () => {
-    const api = `${remote}/api/open/templates`;
-    const token = access?.getData()?.token;
-    const res = await jsonp(api, { query: { token } });
-    return res?.data || [];
-  };
-
-  const getTemplateDsl = async (id: string) => {
-    const token = access?.getData()?.token;
-    const api = `${remote}/api/open/dsl/${token}`;
-    const res = await jsonp(api, { query: { id } });
-    return res?.data || null;
-  };
 
   const installTemplate = async (templateId: string) => {
     const dsl = await getTemplateDsl(templateId);
@@ -82,6 +48,13 @@ export function useTemplates() {
     });
   };
 
+  const groups = computed(() => {
+    const userId = access?.getData()?.id;
+    return groupBy(templates.value, (template) => {
+      return template.author === userId ? '我的' : template.category;
+    });
+  });
+
   getTemplates().then((res) => {
     templates.value = res;
   });
@@ -93,6 +66,8 @@ export function useTemplates() {
     isLogined,
     getTemplates,
     getTemplateDsl,
-    installTemplate
+    installTemplate,
+    groups,
+    access
   };
 }

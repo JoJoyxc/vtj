@@ -20,10 +20,10 @@
 
 .v-templates-widgets {
   &__item {
-    padding: 4px;
     min-height: 200px;
     &:hover {
-      .use-handle {
+      .use-handle,
+      .v-templates-widgets__title {
         opacity: 1;
       }
     }
@@ -45,15 +45,15 @@
   }
   &__title {
     position: absolute;
-    width: 95%;
-    bottom: 10px;
+    width: 100%;
+    bottom: 0;
     z-index: 1;
-    height: 24px;
-    line-height: 24px;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
-    background: var(--el-color-primary-light-9);
-    border-radius: 12px;
-    opacity: 0.8;
+    background-color: var(--el-mask-color);
+    border-radius: 0 0 4px 4px;
+    opacity: 0;
   }
 
   .use-handle {
