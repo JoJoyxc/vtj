@@ -37,6 +37,7 @@ type Events = {
 
 export const emitter = mitt<Events>();
 
+
 export type Emitter = {
   on(type: string, listener: (...args: any[]) => void): void;
   off(type: string, listener: (...args: any[]) => void): void;

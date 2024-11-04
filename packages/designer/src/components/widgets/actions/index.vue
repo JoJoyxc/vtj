@@ -147,12 +147,13 @@
     if (project.currentFile) {
       if (await isLogined()) {
         const canvas = await engine.simulator.capture();
-        const { name, title } = project.currentFile;
+        const { name, title, market } = project.currentFile;
         if (!canvas) {
           message('截图失败', 'warning');
           return;
         }
         publisherProps.value = {
+          id: market?.id,
           canvas,
           name,
           title,

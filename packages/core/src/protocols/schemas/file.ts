@@ -13,11 +13,7 @@ export interface MarketInstallInfo {
   /**
    * 安装版本号
    */
-  version: string;
-  /**
-   * 物料主页 url
-   */
-  url: string;
+  version?: string;
 }
 
 export interface BlockFile {

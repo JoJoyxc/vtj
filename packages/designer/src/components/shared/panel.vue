@@ -2,6 +2,14 @@
   <XPanel class="v-panel" :class="classes" :border="false" :header="header" fit>
     <template #actions>
       <XAction
+        v-if="props.refresh"
+        :size="($attrs as any).size"
+        mode="icon"
+        :icon="VtjIconRefresh"
+        background="hover"
+        title="刷新"
+        @click="onClickRefresh"></XAction>
+      <XAction
         v-if="props.plus"
         :size="($attrs as any).size"
         mode="icon"
@@ -73,13 +81,15 @@
     VtjIconSave,
     EditPen,
     ArrowDown,
-    ArrowUp
+    ArrowUp,
+    VtjIconRefresh
   } from '@vtj/icons';
 
   export interface Props {
     title?: string;
     subtitle?: string;
     plus?: boolean;
+    refresh?: boolean;
     back?: boolean;
     edit?: boolean;
     remove?: boolean;
@@ -94,6 +104,7 @@
     menus: () => []
   });
   const emit = defineEmits([
+    'refresh',
     'plus',
     'back',
     'remove',
@@ -109,6 +120,10 @@
       'is-collapsed': !!collapsed.value
     };
   });
+
+  const onClickRefresh = () => {
+    emit('refresh');
+  };
 
   const onClickPlus = () => {
     emit('plus');

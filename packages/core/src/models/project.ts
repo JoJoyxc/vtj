@@ -381,8 +381,8 @@ export class ProjectModel {
         model: this,
         type: 'clone',
         data: {
-          page,
-          newPage
+          source: page,
+          target: newPage
         }
       };
       emitter.emit(EVENT_PROJECT_PAGES_CHANGE, event);
@@ -486,6 +486,32 @@ export class ProjectModel {
         model: this,
         type: 'update',
         data: block
+      };
+      emitter.emit(EVENT_PROJECT_BLOCKS_CHANGE, event);
+      emitter.emit(EVENT_PROJECT_CHANGE, event);
+    }
+  }
+
+  cloneBlock(block: BlockFile, silent: boolean = false) {
+    const id = uid();
+    const name = `${block.name}Copy`;
+    const title = `${block.title}_副本`;
+
+    const dsl = new BlockModel({
+      id,
+      name
+    }).toDsl();
+    const newBlock = merge({}, block, { id, name, title, dsl });
+    const index = this.blocks.findIndex((n) => n.id === block.id);
+    this.blocks.splice(index + 1, 0, newBlock);
+    if (!silent) {
+      const event: ProjectModelEvent = {
+        model: this,
+        type: 'clone',
+        data: {
+          source: block,
+          target: newBlock
+        }
       };
       emitter.emit(EVENT_PROJECT_BLOCKS_CHANGE, event);
       emitter.emit(EVENT_PROJECT_CHANGE, event);

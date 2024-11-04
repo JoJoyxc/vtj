@@ -2,7 +2,10 @@
   <Panel
     class="v-blocks-widget v-templates-widgets"
     title="模板"
-    :subtitle="subtitle">
+    :subtitle="subtitle"
+    refresh
+    @refresh="refreshTemplates"
+    v-loading="loading">
     <div class="v-blocks__search">
       <ElInput
         size="small"
@@ -32,7 +35,10 @@
                 VIP
               </ElTag>
               <ElImage :src="item.cover" fit="contain"></ElImage>
-              <div class="v-templates-widgets__title">{{ item.title }}</div>
+              <div class="v-templates-widgets__title">
+                <span class="v-box__name">{{ item.name }}</span>
+                <span class="v-box__label">{{ item.title }}</span>
+              </div>
               <div class="use-handle">
                 <ElButton
                   class="v-templates-widgets__download"
@@ -63,7 +69,8 @@
     ElImage,
     ElButton,
     ElMessageBox,
-    ElTag
+    ElTag,
+    vLoading
   } from 'element-plus';
   import { Search, Download } from '@vtj/icons';
   import { groupBy } from '@vtj/utils';
@@ -71,8 +78,15 @@
   import { useColSpan, useTemplates, type TemplateDto } from '../../hooks';
 
   const { span } = useColSpan(240);
-  const { templates, toRemoteAuth, isLogined, installTemplate, access } =
-    useTemplates();
+  const {
+    templates,
+    toRemoteAuth,
+    isLogined,
+    installTemplate,
+    access,
+    refreshTemplates,
+    loading
+  } = useTemplates();
   const keyword = ref('');
 
   const list = computed(() => {
@@ -118,5 +132,9 @@
 
   defineOptions({
     name: 'TemplatesWidget'
+  });
+
+  defineExpose({
+    refreshTemplates
   });
 </script>

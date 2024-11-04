@@ -69,6 +69,8 @@ export interface EngineOptions {
   remoteHost?: string;
 }
 
+export const SAVE_BLOCK_FILE_FINISH = 'SAVE_BLOCK_FILE_FINISH';
+
 export class Engine extends Base {
   public app?: App;
   public skeleton?: SkeletonWrapperInstance | null;
@@ -250,6 +252,7 @@ export class Engine extends Base {
       const dsl = await this.service.getFile(file.id);
       if (dsl) {
         dsl.name = file.name;
+        Object.assign(dsl, file.dsl || {});
         await this.service.saveFile(dsl);
       }
     }
@@ -268,15 +271,24 @@ export class Engine extends Base {
     }
 
     if (type === 'clone') {
-      const { page, newPage } = e.data;
-      const dsl = await this.service.getFile(page.id);
+      const { source, target } = e.data;
+      const dsl = await this.service.getFile(source.id);
       if (dsl) {
-        dsl.id = newPage.id;
-        dsl.name = newPage.name;
+        dsl.id = target.id;
+        dsl.name = target.name;
         await this.service.saveFile(dsl);
       }
     }
     triggerRef(this.project);
+    this.emitter.emit(SAVE_BLOCK_FILE_FINISH, e);
+  }
+
+  onSaveBlockFileFinish(callback: (e: ProjectModelEvent) => void) {
+    const _callback = (e: any) => {
+      callback(e);
+      this.emitter.off(SAVE_BLOCK_FILE_FINISH, _callback);
+    };
+    this.emitter.on(SAVE_BLOCK_FILE_FINISH, _callback);
   }
 
   private async saveMaterials() {

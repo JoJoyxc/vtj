@@ -25,7 +25,14 @@
       editor="select"
       :options="getTemplateCategories"
       required></XField>
-    <XField label="版本号" name="version" required></XField>
+    <XField
+      label="版本号"
+      name="version"
+      required
+      :rules="{
+        pattern: VERSION_REGEX,
+        message: '版本号格式不正确，示例: 0.1.0'
+      }"></XField>
     <XField
       label="分享"
       name="share"
@@ -40,13 +47,13 @@
   </XDialogForm>
 </template>
 <script lang="ts" setup>
-  import { computed, reactive } from 'vue';
+  import { computed, reactive, ref } from 'vue';
   import { XDialogForm, XField } from '@vtj/ui';
-  import { ElImage, ElMessage } from 'element-plus';
+  import { ElImage, ElMessage, ElMessageBox } from 'element-plus';
   import { VtjIconTemplate } from '@vtj/icons';
   import { dataURLtoBlob } from '@vtj/utils';
   import { useOpenApi, type PublishTemplateDto } from '../../hooks';
-  import { NAME_REGEX } from '../../../constants';
+  import { NAME_REGEX, VERSION_REGEX } from '../../../constants';
   export interface Props {
     id?: string;
     canvas: any;
@@ -56,13 +63,28 @@
   }
   const props = defineProps<Props>();
 
-  const { getTemplateCategories, publishTemplate } = useOpenApi();
+  const { getTemplateCategories, publishTemplate, getTemplateById, engine } =
+    useOpenApi();
 
   const model = reactive({
     name: props.name,
     title: props.title,
     share: true
   });
+
+  const isOwner = ref(false);
+
+  if (props.id) {
+    getTemplateById(props.id).then((res) => {
+      if (res) {
+        Object.assign(model, {
+          category: res.category,
+          version: res.latest
+        });
+      }
+      isOwner.value = !!res;
+    });
+  }
 
   const imageDataUrl = computed(() => {
     if (props.canvas) {
@@ -74,8 +96,21 @@
   const submit = async () => {
     const cover = dataURLtoBlob(imageDataUrl.value);
     const { dsl, id } = props;
+    let templateId;
+    if (isOwner.value) {
+      const ret = await ElMessageBox.confirm(
+        '该模板已存在，请确认您的操作是更新模板还是重新创建',
+        {
+          type: 'warning',
+          title: '提示',
+          confirmButtonText: '更新',
+          cancelButtonText: '重新创建'
+        }
+      ).catch(() => false);
+      templateId = ret ? id : undefined;
+    }
     const dto: PublishTemplateDto = {
-      id,
+      id: templateId,
       dsl: JSON.stringify(dsl),
       cover,
       category: '',
@@ -92,6 +127,9 @@
       ElMessage.success({
         message: '发布模板成功！'
       });
+
+      const widget = engine.skeleton?.getWidget('Templates');
+      widget?.widgetRef.refreshTemplates();
     }
     return !!ret;
   };

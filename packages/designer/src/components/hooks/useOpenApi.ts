@@ -1,4 +1,5 @@
 import { jsonp } from '@vtj/utils';
+import type { BlockSchema } from '@vtj/core';
 import { useEngine } from '../../framework';
 
 export interface PublishTemplateDto {
@@ -8,8 +9,21 @@ export interface PublishTemplateDto {
   cover: Blob;
   share: boolean;
   version: string;
+  latest?: string;
   dsl: string;
   id?: string;
+}
+
+export interface TemplateDto {
+  id: string;
+  name: string;
+  title: string;
+  vip: boolean;
+  share: boolean;
+  cover: string;
+  author: string;
+  category: string;
+  latest: string;
 }
 
 export function useOpenApi() {
@@ -45,14 +59,24 @@ export function useOpenApi() {
     const api = `${remote}/api/open/templates`;
     const token = access?.getData()?.token;
     const res = await jsonp(api, { query: { token } });
-    return res?.data || [];
+    return (res?.data || []) as TemplateDto[];
+  };
+
+  const getTemplateById = async (id: string) => {
+    const token = access?.getData()?.token;
+    const api = `${remote}/api/open/template/${token}`;
+    const res = await jsonp(api, { query: { id } });
+    return (res?.data || null) as TemplateDto;
   };
 
   const getTemplateDsl = async (id: string) => {
     const token = access?.getData()?.token;
     const api = `${remote}/api/open/dsl/${token}`;
     const res = await jsonp(api, { query: { id } });
-    return res?.data || null;
+    if (res?.data) {
+      return res.data as BlockSchema;
+    }
+    return null;
   };
 
   const getDictOptions = async (code: string) => {
@@ -91,6 +115,7 @@ export function useOpenApi() {
     getTemplateDsl,
     getDictOptions,
     getTemplateCategories,
-    publishTemplate
+    publishTemplate,
+    getTemplateById
   };
 }

@@ -28,6 +28,7 @@
               :tag="fromTypeMap[block.fromType || 'Schema']?.label"
               :tagType="fromTypeMap[block.fromType || 'Schema']?.type"
               @edit="onEdit(block)"
+              @copy="onCopy(block)"
               @remove="onRemove(block)"
               @click="onClick(block)"
               :draggable="current?.id !== block.id"
@@ -238,6 +239,10 @@
   const onEdit = (file: BlockFile) => {
     model.value = cloneDeep(file);
     visible.value = true;
+  };
+
+  const onCopy = (file: BlockFile) => {
+    engine.project.value?.cloneBlock(file);
   };
 
   const onRemove = (file: BlockFile) => {

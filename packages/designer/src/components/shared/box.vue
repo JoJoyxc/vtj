@@ -56,18 +56,18 @@
   }
 
   const props = defineProps<Props>();
-  const emits = defineEmits(['edit', 'remove', 'dragstart', 'dragend']);
+  const emits = defineEmits(['copy', 'edit', 'remove', 'dragstart', 'dragend']);
 
   const menus = [
-    {
-      label: '编辑',
-      command: 'edit',
-      icon: VtjIconEdit
-    },
     {
       label: '复制',
       command: 'copy',
       icon: VtjIconCopy
+    },
+    {
+      label: '编辑',
+      command: 'edit',
+      icon: VtjIconEdit
     },
     {
       label: '删除',
@@ -78,6 +78,10 @@
 
   const onEdit = () => {
     emits('edit');
+  };
+
+  const onCopy = () => {
+    emits('copy');
   };
 
   const onRemove = async () => {
@@ -95,6 +99,9 @@
     }
     if (item.command === 'remove') {
       onRemove();
+    }
+    if (item.command === 'copy') {
+      onCopy();
     }
   };
 

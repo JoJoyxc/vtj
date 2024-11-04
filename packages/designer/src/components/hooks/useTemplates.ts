@@ -1,18 +1,7 @@
 import { computed, ref, type Ref } from 'vue';
 import { groupBy } from '@vtj/utils';
 import { ElMessageBox, ElMessage } from 'element-plus';
-import { useOpenApi } from './useOpenApi';
-
-export interface TemplateDto {
-  id: string;
-  name: string;
-  title: string;
-  vip: boolean;
-  share: boolean;
-  cover: string;
-  author: string;
-  category: string;
-}
+import { useOpenApi, type TemplateDto } from './useOpenApi';
 
 export function useTemplates() {
   const {
@@ -25,8 +14,18 @@ export function useTemplates() {
   } = useOpenApi();
 
   const templates: Ref<TemplateDto[]> = ref([]);
+  const loading = ref(false);
 
   const installTemplate = async (templateId: string) => {
+    const current = engine.current.value;
+    const project = engine.project.value;
+    if (!project) return;
+    if (!current) {
+      ElMessage.warning({
+        message: '设计区无文件，请先打开页面或区块'
+      });
+      return;
+    }
     const dsl = await getTemplateDsl(templateId);
     if (!dsl) {
       return await ElMessageBox.alert('模板不可用，可能该模板没发布过版本', {
@@ -34,18 +33,30 @@ export function useTemplates() {
         title: '提示'
       });
     }
-    if (!engine.current.value) {
-      ElMessage.warning({
-        message: '设计区无文件，请先打开页面或区块'
-      });
-      return;
-    }
-    const old = engine.current.value.toDsl();
+
+    const old = current.toDsl();
     const { id, name } = old;
-    engine.current.value.update({ ...dsl, id, name });
-    ElMessage.success({
-      message: '模板已加载完成'
+    const newDsl = { ...dsl, id, name };
+    const file = project.currentFile;
+
+    engine.onSaveBlockFileFinish(() => {
+      current.update(newDsl);
+      ElMessage.success({
+        message: '模板已加载完成'
+      });
     });
+
+    if (file) {
+      file.market = {
+        id: templateId
+      };
+      file.dsl = newDsl;
+      if (project.isPageFile(file)) {
+        project.updatePage(file);
+      } else {
+        project.updateBlock(file);
+      }
+    }
   };
 
   const groups = computed(() => {
@@ -55,9 +66,18 @@ export function useTemplates() {
     });
   });
 
-  getTemplates().then((res) => {
-    templates.value = res;
-  });
+  const refreshTemplates = () => {
+    loading.value = true;
+    getTemplates()
+      .then((res) => {
+        templates.value = res;
+      })
+      .finally(() => {
+        loading.value = false;
+      });
+  };
+
+  refreshTemplates();
 
   return {
     engine,
@@ -68,6 +88,8 @@ export function useTemplates() {
     getTemplateDsl,
     installTemplate,
     groups,
-    access
+    access,
+    refreshTemplates,
+    loading
   };
 }

@@ -4,8 +4,6 @@
     title="页面管理"
     plus
     :subtitle="subtitle"
-    :menus="menus"
-    @command="onPlusCommand"
     @plus="onPlus">
     <ElTree
       :data="pages"
@@ -50,7 +48,7 @@
 <script lang="ts" setup>
   import { ref, computed, toValue } from 'vue';
   import { ElTree } from 'element-plus';
-  import { icons, VtjIconTemplate, VtjIconFile } from '@vtj/icons';
+  import { icons } from '@vtj/icons';
   import { type PageFile } from '@vtj/core';
   import { cloneDeep } from '@vtj/utils';
   import PageForm from './form.vue';
@@ -73,33 +71,10 @@
     return `(共 ${pages.value.length} 项)`;
   });
 
-  const menus = [
-    {
-      label: '新建空白页面',
-      command: 'empty',
-      icon: VtjIconFile
-    },
-    {
-      label: '选择模板新建',
-      command: 'template',
-      icon: VtjIconTemplate
-    }
-  ];
-
   const onPlus = () => {
     parentId.value = undefined;
     item.value = undefined;
     visible.value = true;
-  };
-
-  const onPlusCommand = (command: string) => {
-    if (command === 'empty') {
-      onPlus();
-    }
-    if (command === 'template') {
-      alert('模板');
-      // window.open('http://localhost:9528/#/templates');
-    }
   };
 
   const onAction = async (action: any) => {
