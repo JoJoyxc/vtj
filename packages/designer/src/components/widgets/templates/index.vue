@@ -14,7 +14,8 @@
         placeholder="搜索模板"
         clearable></ElInput>
     </div>
-    <ElCollapse :model-value="categories">
+    <ElEmpty v-if="!list.length" description="找不到符合条件的模板"></ElEmpty>
+    <ElCollapse v-else :model-value="categories">
       <ElCollapseItem
         v-for="(items, name) in groups"
         :name="name"
@@ -54,7 +55,6 @@
         </ElRow>
       </ElCollapseItem>
     </ElCollapse>
-    <ElEmpty v-if="!templates.length"></ElEmpty>
   </Panel>
 </template>
 <script lang="ts" setup>

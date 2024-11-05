@@ -13,7 +13,8 @@
         placeholder="搜索区块"
         clearable></ElInput>
     </div>
-    <ElCollapse :model-value="categories">
+    <ElEmpty v-if="!list.length" description="找不到符合条件的区块"></ElEmpty>
+    <ElCollapse v-else :model-value="categories">
       <ElCollapseItem
         v-for="(items, name) in groups"
         :name="name"
@@ -38,7 +39,6 @@
         </ElRow>
       </ElCollapseItem>
     </ElCollapse>
-    <ElEmpty v-if="!blocks.length"></ElEmpty>
     <XDialogForm
       v-model="visible"
       :title="title"
