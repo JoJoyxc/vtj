@@ -62,6 +62,7 @@ export interface ProviderOptions {
   nodeEnv?: NodeEnv;
   install?: (app: App) => void;
   routeParentName?: RouteRecordName;
+  pageRouteName?: string;
 }
 
 export enum NodeEnv {
@@ -238,9 +239,9 @@ export class Provider extends Base {
   private initRouter() {
     const { router, project, options } = this;
     if (!router) return;
-    const { routeParentName } = options;
+    const { routeParentName, pageRouteName = 'page' } = options;
     const pageRoute: RouteRecordRaw = {
-      path: '/page/:id',
+      path: `/${pageRouteName}/:id`,
       name: PAGE_ROUTE_NAME,
       component: PageContainer
     };
