@@ -7,17 +7,17 @@ export const dev = {
 };
 
 export const sit = {
-  REMOTE: 'https://market.vtj.pro'
+  REMOTE: 'https://lcdp.vtj.pro'
 };
 
 export const uat = {
-  REMOTE: 'https://market.vtj.pro'
+  REMOTE: 'https://lcdp.vtj.pro'
 };
 
 export const pre = {
-  REMOTE: 'https://market.vtj.pro'
+  REMOTE: 'https://lcdp.vtj.pro'
 };
 
 export const live = {
-  REMOTE: 'https://market.vtj.pro'
+  REMOTE: 'https://lcdp.vtj.pro'
 };

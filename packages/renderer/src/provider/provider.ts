@@ -1,5 +1,5 @@
 import { type App, type InjectionKey, inject, defineAsyncComponent } from 'vue';
-import { type Router } from 'vue-router';
+import type { Router, RouteRecordName, RouteRecordRaw } from 'vue-router';
 import {
   type ProjectSchema,
   type PageFile,
@@ -61,6 +61,7 @@ export interface ProviderOptions {
   materialPath?: string;
   nodeEnv?: NodeEnv;
   install?: (app: App) => void;
+  routeParentName?: RouteRecordName;
 }
 
 export enum NodeEnv {
@@ -235,19 +236,26 @@ export class Provider extends Base {
   }
 
   private initRouter() {
-    const { router, project } = this;
+    const { router, project, options } = this;
     if (!router) return;
-    router.addRoute({
+    const { routeParentName } = options;
+    const pageRoute: RouteRecordRaw = {
       path: '/page/:id',
       name: PAGE_ROUTE_NAME,
       component: PageContainer
-    });
-
-    router.addRoute({
+    };
+    const homeRoute: RouteRecordRaw = {
       path: '/',
       name: HOMEPAGE_ROUTE_NAME,
       component: project?.homepage ? PageContainer : StartupContainer
-    });
+    };
+    if (routeParentName) {
+      router.addRoute(routeParentName, pageRoute);
+      router.addRoute(routeParentName, homeRoute);
+    } else {
+      router.addRoute(pageRoute);
+      router.addRoute(homeRoute);
+    }
   }
 
   install(app: App) {
