@@ -22,6 +22,7 @@ export class Renderer {
   private nodeChange: (this: Renderer, node: NodeModel) => void;
   private blockChange: (this: Renderer, block: BlockModel) => void;
   public context: Context | null = null;
+  private file?: PageFile | BlockFile | null;
   constructor(
     public env: SimulatorEnv,
     public service: Service,
@@ -68,6 +69,7 @@ export class Renderer {
   }
 
   render(block: BlockModel, file?: PageFile | BlockFile | null) {
+    this.file = file;
     const { window, container, library, Vue, components, apis } = this.env;
     const el = window.document.createElement('div');
     el.id = 'app';
@@ -90,8 +92,6 @@ export class Renderer {
       libs: library
     });
 
-    console.log('context', context);
-
     const AppContainer = Vue.defineComponent({
       render() {
         return Vue.h(Vue.Suspense, [Vue.h(renderer)]);
@@ -102,7 +102,7 @@ export class Renderer {
     this.install(this.app);
     Object.assign(
       this.app.config.globalProperties.$route.meta,
-      (file as PageFile).meta
+      (file as PageFile)?.meta || {}
     );
     try {
       this.app.mount(el);
@@ -118,6 +118,10 @@ export class Renderer {
   dispose() {
     if (this.app) {
       this.app.unmount();
+      const $route = this.app.config.globalProperties.$route;
+      if ($route) {
+        $route.meta = {};
+      }
       const container = this.app._container;
       if (container && container.parentNode) {
         container.parentNode.removeChild(container);
@@ -127,6 +131,7 @@ export class Renderer {
     }
     this.dsl = null;
     this.context = null;
+    this.file = null;
     emitter.off(EVENT_NODE_CHANGE, this.nodeChange as any);
     emitter.off(EVENT_BLOCK_CHANGE, this.blockChange as any);
   }
@@ -153,8 +158,9 @@ export class Renderer {
     }
   }
   private __onBlockChange(block: BlockModel) {
+    const file = this.file;
     this.dispose();
-    this.render(block);
+    this.render(block, file);
     // 恢复选中状态
     if (this.designer?.selected.value) {
       this.designer.setSelected(block);
