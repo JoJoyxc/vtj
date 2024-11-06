@@ -138,7 +138,7 @@ export class Simulator extends Base {
             height: 100%;
           }
           #app {
-            background: #fff;
+            background: var(--el-bg-color, #fff);
             box-sizing: border-box;
           }
           #app.is-page {
