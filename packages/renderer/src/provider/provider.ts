@@ -1,5 +1,10 @@
 import { type App, type InjectionKey, inject, defineAsyncComponent } from 'vue';
-import type { Router, RouteRecordName, RouteRecordRaw } from 'vue-router';
+import type {
+  Router,
+  RouteRecordName,
+  RouteRecordRaw,
+  RouteMeta
+} from 'vue-router';
 import {
   type ProjectSchema,
   type PageFile,
@@ -63,6 +68,7 @@ export interface ProviderOptions {
   install?: (app: App) => void;
   routeParentName?: RouteRecordName;
   pageRouteName?: string;
+  routeMeta?: RouteMeta;
 }
 
 export enum NodeEnv {
@@ -239,7 +245,7 @@ export class Provider extends Base {
   private initRouter() {
     const { router, project, options } = this;
     if (!router) return;
-    const { routeParentName, pageRouteName = 'page' } = options;
+    const { routeParentName, pageRouteName = 'page', routeMeta } = options;
     const pageRoute: RouteRecordRaw = {
       path: `/${pageRouteName}/:id`,
       name: PAGE_ROUTE_NAME,
@@ -248,7 +254,8 @@ export class Provider extends Base {
     const homeRoute: RouteRecordRaw = {
       path: '/',
       name: HOMEPAGE_ROUTE_NAME,
-      component: project?.homepage ? PageContainer : StartupContainer
+      component: project?.homepage ? PageContainer : StartupContainer,
+      meta: routeMeta
     };
     if (routeParentName) {
       router.addRoute(routeParentName, pageRoute);
@@ -383,11 +390,17 @@ export class Provider extends Base {
     });
   }
 
-  async getRenderComponent(id: string) {
+  async getRenderComponent(
+    id: string,
+    output?: (file: BlockFile | PageFile) => void
+  ) {
     const file = this.getFile(id);
     if (!file) {
       logger.warn(`Can not find file: ${id}`);
       return null;
+    }
+    if (output) {
+      output(file);
     }
     const rawPath = `.vtj/vue/${id}.vue`;
     const rawModule = this.modules[rawPath];

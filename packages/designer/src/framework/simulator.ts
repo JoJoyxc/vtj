@@ -129,14 +129,26 @@ export class Simulator extends Base {
        <meta name="viewport"
              content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,viewport-fit=cover"/>
          <style>
-            html, body, #app {
-              padding: 0;
-              margin: 0;
-              min-height: 100vh;
-              width: 100%;
-              height: 100%;
-              background: #fff;
-            }
+          html,
+          body,
+          #app {
+            margin: 0;
+            min-height: 100vh;
+            width: 100%;
+            height: 100%;
+          }
+          #app {
+            background: #fff;
+            box-sizing: border-box;
+          }
+          #app.is-page {
+             padding: 10px;
+          }
+            #app.is-page.is-pure {
+             background-color: var(--el-fill-color-light, #f5f7fa);
+             padding: 0;
+          }
+
          </style>
        ${createAssetsCss(css)}
        </head>
@@ -165,7 +177,7 @@ export class Simulator extends Base {
     this.renderer?.dispose();
     this.renderer = null;
     const cw = this.contentWindow as any;
-    const { assets, service, current, provider } = this.engine;
+    const { assets, service, current, provider, project } = this.engine;
     const materialMap = provider.materials || {};
     const materials: Material[] = [];
     for (const name of materialExports) {
@@ -184,7 +196,7 @@ export class Simulator extends Base {
     this.devtools.init(cw, this.engine);
     this.renderer = new Renderer(env, service, provider, this.designer.value);
     if (current.value) {
-      this.renderer.render(current.value);
+      this.renderer.render(current.value, project.value?.currentFile);
       this.rendered.value = Symbol();
     }
     this.triggerReady();
@@ -270,7 +282,7 @@ export class Simulator extends Base {
     this.renderer?.dispose();
     const current = this.engine.current.value;
     if (current) {
-      this.renderer?.render(current);
+      this.renderer?.render(current, this.engine.project.value?.currentFile);
       this.rendered.value = Symbol();
     }
   }

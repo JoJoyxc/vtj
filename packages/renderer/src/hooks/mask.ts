@@ -4,6 +4,7 @@ import type { MenuDataItem } from '@vtj/ui';
 import type { PageFile } from '@vtj/core';
 import { useProvider } from '../provider';
 import { useAccess } from '../plugins';
+import { PAGE_ROUTE_NAME, HOMEPAGE_ROUTE_NAME } from '../constants';
 
 function createMenus(pages: PageFile[] = []): MenuDataItem[] {
   return pages.map((page) => {
@@ -49,18 +50,22 @@ export function useMask() {
   const route = useRoute();
   const access = useAccess();
   const disabled = ref(false);
+  const pure = ref(false);
   const accessData = access?.getData();
   const project = provider.project;
   watchEffect(() => {
     const { name, params, meta } = route;
-    if (name === 'VtjPage') {
+    if (name === PAGE_ROUTE_NAME) {
       const page = provider.getPage(params.id as string);
       disabled.value = !page?.mask;
-    } else if (name === 'VtjHomepage') {
+      pure.value = !!page?.pure;
+    } else if (name === HOMEPAGE_ROUTE_NAME) {
       const page = provider.getHomepage();
       disabled.value = !page?.mask;
+      pure.value = !!page?.pure;
     } else {
       disabled.value = !meta.mask;
+      pure.value = !!meta.pure;
     }
   });
 
@@ -71,6 +76,7 @@ export function useMask() {
     logo: config?.logo,
     themeSwitchable: config?.themeSwitchable,
     title: config?.title || project?.description || project?.name || 'VTJ App',
-    menus: menusFilter(menus, accessData?.permissions)
+    menus: menusFilter(menus, accessData?.permissions),
+    pure
   };
 }

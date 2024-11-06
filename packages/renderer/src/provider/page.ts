@@ -11,18 +11,21 @@ export const PageContainer = defineComponent({
     const file = id ? provider.getPage(id) : provider.getHomepage();
     const component = file ? await provider.getRenderComponent(file.id) : null;
     if (file) {
+      Object.assign(route.meta, file.meta || {});
       useTitle(file.title || 'VTJ');
     }
     return {
       provider,
       component,
       file,
-      query: route.query
+      query: route.query,
+      meta: file?.meta
     };
   },
   render() {
-    if (this.component) {
-      return h(this.component, this.query);
+    const { component, query } = this;
+    if (component) {
+      return h(component, query);
     } else {
       return h('div', '页面不存在');
     }

@@ -108,4 +108,14 @@ export interface PageFile extends BlockFile {
    * 源码文件，非低代码页面
    */
   raw?: boolean;
+
+  /**
+   * 纯净的页面
+   */
+  pure?: boolean;
+
+  /**
+   * 路由元信息
+   */
+  meta?: Record<string, any>;
 }

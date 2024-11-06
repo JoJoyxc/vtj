@@ -5,6 +5,8 @@ import {
   type BlockModel,
   type NodeModel,
   type Service,
+  type PageFile,
+  type BlockFile,
   emitter,
   EVENT_BLOCK_CHANGE,
   EVENT_NODE_CHANGE
@@ -65,10 +67,17 @@ export class Renderer {
     });
   }
 
-  render(block: BlockModel) {
+  render(block: BlockModel, file?: PageFile | BlockFile | null) {
     const { window, container, library, Vue, components, apis } = this.env;
     const el = window.document.createElement('div');
     el.id = 'app';
+    if (file?.type === 'page') {
+      el.classList.add('is-page');
+    }
+    const isPure = (file as PageFile)?.pure;
+    if (isPure) {
+      el.classList.add('is-pure');
+    }
     container.appendChild(el);
 
     this.dsl = Vue.reactive(block.toDsl()) as BlockSchema;
@@ -81,6 +90,8 @@ export class Renderer {
       libs: library
     });
 
+    console.log('context', context);
+
     const AppContainer = Vue.defineComponent({
       render() {
         return Vue.h(Vue.Suspense, [Vue.h(renderer)]);
@@ -89,6 +100,10 @@ export class Renderer {
 
     this.app = Vue.createApp(AppContainer) as App;
     this.install(this.app);
+    Object.assign(
+      this.app.config.globalProperties.$route.meta,
+      (file as PageFile).meta
+    );
     try {
       this.app.mount(el);
     } catch (e: any) {

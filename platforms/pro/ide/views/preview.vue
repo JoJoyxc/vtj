@@ -50,7 +50,10 @@
     }
 
     renderer.value = await provider.getRenderComponent(
-      route.params.id.toString()
+      route.params.id.toString(),
+      (file: any) => {
+        Object.assign(route.meta, file.meta);
+      }
     );
   });
 </script>
