@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.0](https://gitee.com/newgateway/vtj/compare/@vtj/docs@0.8.172...@vtj/docs@0.9.0-alpha.0) (2024-11-18)
+
+
+### Bug Fixes
+
+* 🐛 ui examples- 例子中导入的路径 ([b3764dc](https://gitee.com/newgateway/vtj/commits/b3764dc6576dec4c715882672e5de9a6174454db))
+
+
+
+
+
 ## [0.8.172](https://gitee.com/newgateway/vtj/compare/@vtj/docs@0.8.171...@vtj/docs@0.8.172) (2024-10-25)
 
 **Note:** Version bump only for package @vtj/docs

@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.0](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.172...@vtj/designer@0.9.0-alpha.0) (2024-11-18)
+
+
+### Bug Fixes
+
+* 🐛 设计器样式 ([82d7f45](https://gitee.com/newgateway/vtj/commits/82d7f4588344f86b23a3c55ec16bf3632052b128))
+* 🐛 设计器app实例重复问题 ([8878ada](https://gitee.com/newgateway/vtj/commits/8878ada4cfa1b96541a8f3311f0983c66747088f))
+* 🐛 修复模板和区块查询无结果展示 ([2f33dac](https://gitee.com/newgateway/vtj/commits/2f33daccd3d1a9024d1b4023196e621eba30fc95))
+* 🐛 注释物料市场 ([6c93b67](https://gitee.com/newgateway/vtj/commits/6c93b67678a25dc3aa445aabbb3304c703176b48))
+* 🐛 docs 刷新无效 ([39d6534](https://gitee.com/newgateway/vtj/commits/39d653474361464a611038031ccbd63e9de75efb))
+
+
+### Features
+
+* ✨ 模板发布功能 ([c9a05b7](https://gitee.com/newgateway/vtj/commits/c9a05b786717e57aca0769fbfd6e2da389527fe8))
+* ✨ 模板管理 ([16bc3dc](https://gitee.com/newgateway/vtj/commits/16bc3dcefc7c96898769c182a4183614cf797daa))
+* ✨ 模板模块 ([5b4217c](https://gitee.com/newgateway/vtj/commits/5b4217c70a7c31868afaf86cabc0dfcfe4d00dc5))
+* ✨ 切换文件打开设计视图 ([89d1f98](https://gitee.com/newgateway/vtj/commits/89d1f98a48f6478889ceac31547df67e7c794557))
+* ✨ 设计器支持纯净页面和路由元信息设置 ([3a11d0f](https://gitee.com/newgateway/vtj/commits/3a11d0fa1e1a19e7286e82f562165c07a5cf0aaa))
+* ✨ 物料市场 ([7c009c0](https://gitee.com/newgateway/vtj/commits/7c009c0191ade61a47a76a7b27b61902c7ce6e55))
+* ✨ item  box 操作按钮改为下拉菜单 ([8a13c33](https://gitee.com/newgateway/vtj/commits/8a13c33969f3c275a96e7ae0756028e6fbd3169e))
+* ✨ scss modern-compiler ([ca6734f](https://gitee.com/newgateway/vtj/commits/ca6734f8af7072e79b2b7f6fafef6156593b75ab))
+
+
+
+
+
 ## [0.8.172](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.8.171...@vtj/designer@0.8.172) (2024-10-25)
 
 **Note:** Version bump only for package @vtj/designer

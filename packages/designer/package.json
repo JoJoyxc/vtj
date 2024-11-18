@@ -1,7 +1,7 @@
 {
   "name": "@vtj/designer",
   "private": false,
-  "version": "0.8.172",
+  "version": "0.9.0-alpha.0",
   "type": "module",
   "scripts": {
     "build": "vue-tsc && vite build",
@@ -15,9 +15,9 @@
     "@vtj/renderer": "workspace:~",
     "@vtj/ui": "workspace:~",
     "@vtj/utils": "workspace:~",
+    "html2canvas": "~1.4.1",
     "mockjs": "~1.1.0",
-    "monaco-editor": "~0.52.0",
-    "html2canvas": "~1.4.1"
+    "monaco-editor": "~0.52.0"
   },
   "devDependencies": {
     "@types/mockjs": "~1.0.10",

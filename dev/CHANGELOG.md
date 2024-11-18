@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.0](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.172...dev-web@0.9.0-alpha.0) (2024-11-18)
+
+
+### Features
+
+* ✨ 设计器支持纯净页面和路由元信息设置 ([3a11d0f](https://gitee.com/newgateway/vtj/commits/3a11d0fa1e1a19e7286e82f562165c07a5cf0aaa))
+
+
+
+
+
 ## [0.8.172](https://gitee.com/newgateway/vtj/compare/dev-web@0.8.171...dev-web@0.8.172) (2024-10-25)
 
 **Note:** Version bump only for package dev-web

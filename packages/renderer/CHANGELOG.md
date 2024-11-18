@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.0](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.172...@vtj/renderer@0.9.0-alpha.0) (2024-11-18)
+
+
+### Features
+
+* ✨ 模板管理 ([16bc3dc](https://gitee.com/newgateway/vtj/commits/16bc3dcefc7c96898769c182a4183614cf797daa))
+* ✨ 设计器支持纯净页面和路由元信息设置 ([3a11d0f](https://gitee.com/newgateway/vtj/commits/3a11d0fa1e1a19e7286e82f562165c07a5cf0aaa))
+* ✨ 支持路由位置定义 ([ebab744](https://gitee.com/newgateway/vtj/commits/ebab7441fa5436bd9d8a31117d7eff3e3f672fe7))
+* ✨ 支持页面路由路径前缀定义 ([f46b37d](https://gitee.com/newgateway/vtj/commits/f46b37d5d0ff37703ebdd4f47600e8dbb6ddf4f0))
+* ✨ scss modern-compiler ([ca6734f](https://gitee.com/newgateway/vtj/commits/ca6734f8af7072e79b2b7f6fafef6156593b75ab))
+
+
+
+
+
 ## [0.8.172](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.8.171...@vtj/renderer@0.8.172) (2024-10-25)
 
 
