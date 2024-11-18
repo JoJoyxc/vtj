@@ -282,7 +282,7 @@ export class Provider extends Base {
     }
     app.provide(providerKey, this);
     app.config.globalProperties.installed = installed;
-    if (this.nodeEnv === 'development') {
+    if (this.mode === ContextMode.Design) {
       app.config.errorHandler = (err: any, instance, info) => {
         const name = instance?.$options.name;
         const msg =

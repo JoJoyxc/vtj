@@ -11,13 +11,13 @@
   },
   "dependencies": {
     "@vtj/core": "workspace:~",
-    "@vtj/icons": "workspace:~",
-    "@vtj/ui": "workspace:~",
     "@vtj/utils": "workspace:~",
     "mockjs": "~1.1.0"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:~",
+    "@vtj/ui": "workspace:~",
+    "@vtj/icons": "workspace:~",
     "vue": "~3.5.5",
     "vue-router": "~4.4.0"
   },

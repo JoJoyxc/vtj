@@ -35,8 +35,8 @@
       <span>发布</span>
       <template #dropdown>
         <ElDropdownMenu>
-          <ElDropdownItem command="current">发布页面</ElDropdownItem>
-          <ElDropdownItem command="project">整站发布</ElDropdownItem>
+          <ElDropdownItem command="current" :icon="VtjIconPublish">发布页面</ElDropdownItem>
+          <ElDropdownItem command="project" :icon="VtjIconProject">整站发布</ElDropdownItem>
           <ElDropdownItem command="template" :icon="VtjIconTemplate" divided>
             发布到模板
           </ElDropdownItem>
@@ -65,7 +65,9 @@
     VtjIconRefresh,
     VtjIconBug,
     VtjIconPreview,
-    VtjIconTemplate
+    VtjIconTemplate,
+    VtjIconPublish,
+    VtjIconProject
   } from '@vtj/icons';
   import { XAction } from '@vtj/ui';
   import { delay } from '@vtj/utils';

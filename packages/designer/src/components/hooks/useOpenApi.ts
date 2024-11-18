@@ -58,7 +58,7 @@ export function useOpenApi() {
   const getTemplates = async () => {
     const api = `${remote}/api/open/templates`;
     const token = access?.getData()?.token;
-    const res = await jsonp(api, { query: { token } });
+    const res = await jsonp(api, { query: token ? { token } : {} });
     return (res?.data || []) as TemplateDto[];
   };
 
