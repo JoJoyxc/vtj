@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.2](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.1...@vtj/pro@0.9.0-alpha.2) (2024-11-18)
+
+
+### Bug Fixes
+
+* 🐛 vtj link ([e339950](https://gitee.com/newgateway/vtj/commits/e339950c6bdf263bb1d09ff6363d3f1776d7001b))
+
+
+
+
+
 # [0.9.0-alpha.1](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.0...@vtj/pro@0.9.0-alpha.1) (2024-11-18)
 
 
