@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.3](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.2...@vtj/designer@0.9.0-alpha.3) (2024-11-19)
+
+
+### Bug Fixes
+
+* 🐛 monaco-editor ([f45bf5c](https://gitee.com/newgateway/vtj/commits/f45bf5c88f55ad21c68ae32a42b9e12225e342bb))
+
+
+
+
+
 # [0.9.0-alpha.2](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.1...@vtj/designer@0.9.0-alpha.2) (2024-11-18)
 
 **Note:** Version bump only for package @vtj/designer
