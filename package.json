@@ -37,7 +37,7 @@
     "ci": "git add . && git commit -m \"ci: 👷commit \" && git push",
     "commit": "git add . && git-cz",
     "prepare": "husky install",
-    "prerelease": "lerna version prerelease --yes && npm run test && npm run build && npm run ci && lerna publish from-package --dist-tag test --no-private --yes && pnpm run sync",
+    "prerelease": "lerna version prerelease --yes && npm run test && npm run build && npm run ci && pnpm -r publish  --access public --tag test --no-git-checks && pnpm run sync",
     "patch": "lerna version patch --yes && npm run build && npm run ci && npm run publish && pnpm run sync",
     "minor": "lerna version minor --yes && npm run build && npm run ci && npm run publish && pnpm run sync",
     "publish": "pnpm -r publish  --access public --publish-branch next --report-summary --no-git-checks",
