@@ -1,3 +1,4 @@
+import { groupBy } from './lodash';
 /**
  * 数组转Map
  * @param data
@@ -231,4 +232,27 @@ export function splitParser(val?: string, flag: string = ',') {
  */
 export function splitStringify(val?: string[], flag: string = ',') {
   return val ? val.join(flag) : '';
+}
+
+/**
+ * 数组转换为树结构
+ * @param array
+ * @param id
+ * @param parentId
+ * @returns
+ */
+export function arrayToTree<T extends Record<string, any>>(
+  array: T[],
+  id: keyof T = 'id',
+  parentId: keyof T = 'parentId',
+  children: string = 'children',
+  root: string | number = 'null'
+) {
+  const groupByParentId = groupBy(array, parentId);
+  for (const items of Object.values(groupByParentId)) {
+    items.forEach((item: any) => {
+      item[children] = groupByParentId[item[id]] || [];
+    });
+  }
+  return groupByParentId[root];
 }
