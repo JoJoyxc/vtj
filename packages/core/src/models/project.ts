@@ -390,6 +390,38 @@ export class ProjectModel {
     }
   }
 
+  async saveToBlock(page: PageFile, silent: boolean = false) {
+    this.active(page, silent);
+    await delay(1000);
+    const id = uid();
+    const name = page.name;
+    const title = page.title;
+    const dsl = new BlockModel({
+      id,
+      name
+    }).toDsl();
+
+    const block: BlockFile = merge({}, page, {
+      id,
+      name,
+      title,
+      dsl,
+      type: 'block',
+      fromType: 'Schema'
+    });
+
+    this.blocks.push(block);
+    if (!silent) {
+      const event: ProjectModelEvent = {
+        model: this,
+        type: 'create',
+        data: block
+      };
+      emitter.emit(EVENT_PROJECT_BLOCKS_CHANGE, event);
+      emitter.emit(EVENT_PROJECT_CHANGE, event);
+    }
+  }
+
   /**
    * 删除页面或目录
    * @param id

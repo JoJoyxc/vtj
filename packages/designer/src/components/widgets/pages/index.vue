@@ -24,7 +24,7 @@
               ? ['add', 'edit', 'remove']
               : data.raw
                 ? ['home', 'edit', 'remove']
-                : ['home', 'copy', 'edit', 'remove']
+                : ['home', 'edit', 'copy', 'remove', 'saveToBlock']
           "
           @action="onAction"
           @click="onClick(data)"
@@ -110,6 +110,10 @@
     if (name === 'home') {
       project.value?.setHomepage(data.id);
       message('设置主页成功', 'success');
+    }
+    if (name === 'saveToBlock') {
+      await project.value?.saveToBlock(data);
+      message('已保存到区块', 'success');
     }
   };
 

@@ -74,7 +74,8 @@
     VtjIconVisible,
     VtjIconHome,
     MoreFilled,
-    VtjIconShare
+    VtjIconShare,
+    VtjIconComponents
   } from '@vtj/icons';
   import { ElSwitch, ElMessageBox, ElTag } from 'element-plus';
 
@@ -118,6 +119,11 @@
     share: {
       label: '共享',
       icon: VtjIconShare
+    },
+    saveToBlock: {
+      label: '存为区块',
+      divided: true,
+      icon: VtjIconComponents
     }
   };
 
