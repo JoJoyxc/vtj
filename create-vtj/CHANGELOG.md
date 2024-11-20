@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.2](https://gitee.com/newgateway/vtj/compare/create-vtj@0.9.0-alpha.1...create-vtj@0.9.0-alpha.2) (2024-11-20)
+
+
+### Bug Fixes
+
+* 🐛 project template ([8b72f9b](https://gitee.com/newgateway/vtj/commits/8b72f9b78dc2ab1fc0695806178b8114fbc675fb))
+* 🐛 template project add clean script ([b209526](https://gitee.com/newgateway/vtj/commits/b2095262aacc54506c6d44c01bee03d91dd39d01))
+
+
+
+
+
 # [0.9.0-alpha.1](https://gitee.com/newgateway/vtj/compare/create-vtj@0.9.0-alpha.0...create-vtj@0.9.0-alpha.1) (2024-11-18)
 
 

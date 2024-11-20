@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.4](https://gitee.com/newgateway/vtj/compare/dev-web@0.9.0-alpha.3...dev-web@0.9.0-alpha.4) (2024-11-20)
+
+
+### Features
+
+* ✨ base add arrayToTree ([d48d2b4](https://gitee.com/newgateway/vtj/commits/d48d2b46a12a9fee2d145b819ab398cfecc2e528))
+
+
+
+
+
 # [0.9.0-alpha.3](https://gitee.com/newgateway/vtj/compare/dev-web@0.9.0-alpha.2...dev-web@0.9.0-alpha.3) (2024-11-19)
 
 **Note:** Version bump only for package dev-web
