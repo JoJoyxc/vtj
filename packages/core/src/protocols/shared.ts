@@ -79,6 +79,12 @@ export interface ExtensionConfig {
   params?: Array<Record<string, any>>;
 
   /**
+   * 路由History模式
+   */
+
+  history?: 'hash' | 'web';
+
+  /**
    * 项目部署目录
    */
   __BASE_PATH__?: string;

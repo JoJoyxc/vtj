@@ -21,7 +21,7 @@
   const { options, adapters } = config
     ? await new Extension(config).load()
     : {};
-  const { __BASE_PATH__ = '/' } = config || {};
+  const { __BASE_PATH__ = '/', history = 'hash' } = config || {};
   const accessOptions = adapters?.access;
   const remote = adapters?.remote;
   const access = accessOptions
@@ -31,6 +31,8 @@
       })
     : undefined;
 
+  const isHashRouter = () => history === 'hash';
+
   widgetManager.set('Switcher', {
     props: {
       onClick: (project: ProjectModel) => {
@@ -39,7 +41,9 @@
           pathname === `${__BASE_PATH__}__vtj__/` ? __BASE_PATH__ : pathname;
         const file = project.currentFile;
         if (file && file.type === 'page' && project.homepage !== file.id) {
-          url = `${url}#/page/${file.id}`;
+          url = isHashRouter()
+            ? `${url}#/page/${file.id}`
+            : `${url}page/${file.id}`;
         }
         window.open(url, 'VTJProject');
       }
