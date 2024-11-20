@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.5](https://gitee.com/newgateway/vtj/compare/@vtj/core@0.9.0-alpha.4...@vtj/core@0.9.0-alpha.5) (2024-11-20)
+
+
+### Bug Fixes
+
+* 🐛 设计器支持 history 配置 ([9855072](https://gitee.com/newgateway/vtj/commits/985507252d1a1793a36e005bf206e9cab34fdffd))
+
+
+
+
+
 # [0.9.0-alpha.4](https://gitee.com/newgateway/vtj/compare/@vtj/core@0.9.0-alpha.3...@vtj/core@0.9.0-alpha.4) (2024-11-20)
 
 
