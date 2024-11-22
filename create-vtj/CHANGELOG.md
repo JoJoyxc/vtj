@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.3](https://gitee.com/newgateway/vtj/compare/create-vtj@0.9.0-alpha.2...create-vtj@0.9.0-alpha.3) (2024-11-22)
+
+
+### Bug Fixes
+
+* 🐛 project ignore .vtj/histories ([a6f0e14](https://gitee.com/newgateway/vtj/commits/a6f0e1422ad51dde551d5731c1221c0d457469f9))
+
+
+
+
+
 # [0.9.0-alpha.2](https://gitee.com/newgateway/vtj/compare/create-vtj@0.9.0-alpha.1...create-vtj@0.9.0-alpha.2) (2024-11-20)
 
 

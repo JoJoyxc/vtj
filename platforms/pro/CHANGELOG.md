@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.6](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.5...@vtj/pro@0.9.0-alpha.6) (2024-11-22)
+
+
+### Bug Fixes
+
+* 🐛 设计视图与预览试图样式不一直问题 ([dbcaf07](https://gitee.com/newgateway/vtj/commits/dbcaf0753a7d85bd399a1511730b32bbb12db8ab))
+
+
+
+
+
 # [0.9.0-alpha.5](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.4...@vtj/pro@0.9.0-alpha.5) (2024-11-20)
 
 
