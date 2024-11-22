@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.8](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.9.0-alpha.7...@vtj/materials@0.9.0-alpha.8) (2024-11-22)
+
+
+### Bug Fixes
+
+* 🐛 data-item meterial ([f4110d5](https://gitee.com/newgateway/vtj/commits/f4110d5e705af03be32f466c487a1c2d3bd68a13))
+
+
+
+
+
 # [0.9.0-alpha.7](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.9.0-alpha.6...@vtj/materials@0.9.0-alpha.7) (2024-11-22)
 
 **Note:** Version bump only for package @vtj/materials
