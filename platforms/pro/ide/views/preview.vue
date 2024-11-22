@@ -53,6 +53,14 @@
       route.params.id.toString(),
       (file: any) => {
         Object.assign(route.meta, file.meta);
+        const el = app?._container;
+        if (file?.type === 'page') {
+          el.classList.add('is-page');
+        }
+        const isPure = file?.pure;
+        if (isPure) {
+          el.classList.add('is-pure');
+        }
       }
     );
   });
