@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.7](https://gitee.com/newgateway/vtj/compare/dev-web@0.9.0-alpha.6...dev-web@0.9.0-alpha.7) (2024-11-22)
+
+
+### Features
+
+* ✨ data-item add active hover paadding prop settings ([833c52f](https://gitee.com/newgateway/vtj/commits/833c52fbecafb1c5fc02d71999db6af287b5f2e9))
+
+
+
+
+
 # [0.9.0-alpha.6](https://gitee.com/newgateway/vtj/compare/dev-web@0.9.0-alpha.5...dev-web@0.9.0-alpha.6) (2024-11-22)
 
 **Note:** Version bump only for package dev-web

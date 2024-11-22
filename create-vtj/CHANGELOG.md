@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.4](https://gitee.com/newgateway/vtj/compare/create-vtj@0.9.0-alpha.3...create-vtj@0.9.0-alpha.4) (2024-11-22)
+
+
+### Features
+
+* ✨ data-item add active hover paadding prop settings ([833c52f](https://gitee.com/newgateway/vtj/commits/833c52fbecafb1c5fc02d71999db6af287b5f2e9))
+
+
+
+
+
 # [0.9.0-alpha.3](https://gitee.com/newgateway/vtj/compare/create-vtj@0.9.0-alpha.2...create-vtj@0.9.0-alpha.3) (2024-11-22)
 
 
