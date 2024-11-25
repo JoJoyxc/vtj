@@ -256,3 +256,20 @@ export function arrayToTree<T extends Record<string, any>>(
   }
   return groupByParentId[root];
 }
+
+/**
+ * 树结构扁平化
+ * @param array
+ * @returns
+ */
+export function flatChildren(array: any[] = []) {
+  let result: any[] = [];
+  array.forEach((n) => {
+    const { children, ...item } = n;
+    if (n.children && n.children.length > 0) {
+      result = result.concat(flatChildren(n.children));
+    }
+    result.push(item);
+  });
+  return result;
+}
