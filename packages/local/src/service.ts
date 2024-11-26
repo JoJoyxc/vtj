@@ -245,7 +245,13 @@ export async function genVueContent(project: ProjectSchema, dsl: BlockSchema) {
     Object.entries(materials)
   );
 
-  const content = await generator(dsl, componentMap, project.dependencies);
+  const content = await generator(
+    dsl,
+    componentMap,
+    project.dependencies
+  ).catch((e) => {
+    throw e;
+  });
   return success(content);
 }
 
