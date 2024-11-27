@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.9](https://gitee.com/newgateway/vtj/compare/@vtj/local@0.9.0-alpha.8...@vtj/local@0.9.0-alpha.9) (2024-11-27)
+
+
+### Bug Fixes
+
+* 🐛 调整原生插件分类名称 ([e2783aa](https://gitee.com/newgateway/vtj/commits/e2783aa37c2de08143a1c2fc0b3915662b418e2c))
+
+
+
+
+
 # [0.9.0-alpha.8](https://gitee.com/newgateway/vtj/compare/@vtj/local@0.9.0-alpha.7...@vtj/local@0.9.0-alpha.8) (2024-11-22)
 
 **Note:** Version bump only for package @vtj/local

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.2](https://gitee.com/newgateway/vtj/compare/@vtj/base@0.9.0-alpha.1...@vtj/base@0.9.0-alpha.2) (2024-11-27)
+
+
+### Features
+
+* ✨ 树结构扁平化 ([6a29e91](https://gitee.com/newgateway/vtj/commits/6a29e917f06865894bff50d27de75e9fb49dbe31))
+
+
+
+
+
 # [0.9.0-alpha.1](https://gitee.com/newgateway/vtj/compare/@vtj/base@0.9.0-alpha.0...@vtj/base@0.9.0-alpha.1) (2024-11-20)
 
 

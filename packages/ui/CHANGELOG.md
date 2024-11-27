@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.9](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.9.0-alpha.8...@vtj/ui@0.9.0-alpha.9) (2024-11-27)
+
+
+### Bug Fixes
+
+* 🐛 onActivated recalculate grid ([94e0d22](https://gitee.com/newgateway/vtj/commits/94e0d2254dd42c5f3912e0a5c09051675b9fb435))
+
+
+
+
+
 # [0.9.0-alpha.8](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.9.0-alpha.7...@vtj/ui@0.9.0-alpha.8) (2024-11-22)
 
 **Note:** Version bump only for package @vtj/ui
