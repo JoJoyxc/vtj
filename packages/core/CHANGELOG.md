@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.11](https://gitee.com/newgateway/vtj/compare/@vtj/core@0.9.0-alpha.10...@vtj/core@0.9.0-alpha.11) (2024-11-28)
+
+
+### Features
+
+* ✨ mask 支持 menuBasePath ([5613bd7](https://gitee.com/newgateway/vtj/commits/5613bd793a873d5ce493e8184335ab3b4f845be8))
+
+
+
+
+
 # [0.9.0-alpha.10](https://gitee.com/newgateway/vtj/compare/@vtj/core@0.9.0-alpha.9...@vtj/core@0.9.0-alpha.10) (2024-11-28)
 
 **Note:** Version bump only for package @vtj/core
