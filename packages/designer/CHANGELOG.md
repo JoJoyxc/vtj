@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.12](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.11...@vtj/designer@0.9.0-alpha.12) (2024-11-28)
+
+
+### Features
+
+* ✨ 支持删除模版 ([64bec04](https://gitee.com/newgateway/vtj/commits/64bec04a6300acaf3bc6d457f32240b32a8b895d))
+
+
+
+
+
 # [0.9.0-alpha.11](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.10...@vtj/designer@0.9.0-alpha.11) (2024-11-28)
 
 
