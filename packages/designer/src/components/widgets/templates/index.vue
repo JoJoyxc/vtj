@@ -25,7 +25,7 @@
             <Box
               class="v-templates-widgets__item"
               :name="item.name"
-              :title="item.title">
+              :title="item.label">
               <ElTag
                 v-if="item.vip"
                 class="is-vip"
@@ -38,7 +38,7 @@
               <ElImage :src="item.cover" fit="contain"></ElImage>
               <div class="v-templates-widgets__title">
                 <span class="v-box__name">{{ item.name }}</span>
-                <span class="v-box__label">{{ item.title }}</span>
+                <span class="v-box__label">{{ item.label }}</span>
               </div>
               <div class="use-handle">
                 <ElButton
@@ -93,7 +93,7 @@
     if (keyword.value) {
       return templates.value.filter((n) => {
         return (
-          n.name.includes(keyword.value) || n.title?.includes(keyword.value)
+          n.name.includes(keyword.value) || n.label?.includes(keyword.value)
         );
       });
     }
@@ -117,7 +117,7 @@
       await installTemplate(template.id);
     } else {
       const ret = await ElMessageBox.confirm(
-        '下载模板需登录系统，您还没登录或登录已过期，请重新登录！',
+        '使用需登录，您还没登录或登录已过期，请重新登录！',
         '提示',
         {
           type: 'info',

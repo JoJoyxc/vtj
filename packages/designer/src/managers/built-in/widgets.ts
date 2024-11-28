@@ -17,7 +17,6 @@ import {
   VtjIconHistory,
   VtjIconApi,
   VtjIconCategory,
-  VtjIconInfo,
   VtjIconSetting,
   HomeFilled,
   VtjIconTemplate
@@ -132,7 +131,7 @@ export const builtInWidgets: Array<AppWidget | TabWidget | Widget> = [
     component: widgets.About,
     type: 'app',
     openType: 'dialog',
-    icon: VtjIconInfo,
+    icon: widgets.UserAvatar,
     label: '关于',
     props: {
       width: 500,

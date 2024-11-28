@@ -28,6 +28,7 @@ import About from './about/index.vue';
 import ProjectConfig from './project-config/index.vue';
 import Market from './market/index.vue';
 import Templates from './templates/index.vue';
+import UserAvatar from './user-avatar/index.vue';
 
 export const widgets = {
   Logo,
@@ -59,5 +60,6 @@ export const widgets = {
   About,
   ProjectConfig,
   Market,
-  Templates
+  Templates,
+  UserAvatar
 };

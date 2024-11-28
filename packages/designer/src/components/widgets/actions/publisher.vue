@@ -18,7 +18,7 @@
       name="name"
       required
       :rules="{ pattern: NAME_REGEX, message: '名称格式不正确' }"></XField>
-    <XField label="标题" name="title" required></XField>
+    <XField label="标题" name="label" required></XField>
     <XField
       label="分类"
       name="category"
@@ -58,7 +58,7 @@
     id?: string;
     canvas: any;
     name: string;
-    title: string;
+    label: string;
     dsl: any;
   }
   const props = defineProps<Props>();
@@ -68,7 +68,7 @@
 
   const model = reactive({
     name: props.name,
-    title: props.title,
+    label: props.label,
     share: true
   });
 

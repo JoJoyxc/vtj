@@ -4,7 +4,7 @@ import { useEngine } from '../../framework';
 
 export interface PublishTemplateDto {
   name: string;
-  title: string;
+  label: string;
   category: string;
   cover: Blob;
   share: boolean;
@@ -17,7 +17,7 @@ export interface PublishTemplateDto {
 export interface TemplateDto {
   id: string;
   name: string;
-  title: string;
+  label: string;
   vip: boolean;
   share: boolean;
   cover: string;
@@ -38,14 +38,14 @@ export function useOpenApi() {
         clientUrl +
         '?redirect=' +
         encodeURIComponent(location.hash.substring(1));
-      location.href = `${remote}/auth/client.html?url=${encodeURIComponent(redirectUrl)}`;
+      location.href = `${remote}/auth.html?r=${encodeURIComponent(redirectUrl)}`;
     }
   };
 
   const isLogined = async () => {
     const token = access?.getData()?.token;
     if (token) {
-      const api = `${remote}/api/open/logined/${token}`;
+      const api = `${remote}/api/open/user/${token}`;
       const res = await jsonp(api).catch(() => null);
       if (res && res.data) {
         return true;
