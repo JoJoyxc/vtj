@@ -17,7 +17,10 @@
       label="名称"
       name="name"
       required
-      :rules="{ pattern: NAME_REGEX, message: '名称格式不正确' }"></XField>
+      :rules="{
+        pattern: NAME_REGEX,
+        message: '名称格式不正确，要求英文字母大写驼峰格式'
+      }"></XField>
     <XField label="标题" name="label" required></XField>
     <XField
       label="分类"
@@ -34,10 +37,10 @@
         message: '版本号格式不正确，示例: 0.1.0'
       }"></XField>
     <XField
-      label="分享"
+      label="公开"
       name="share"
       editor="switch"
-      tip="禁用分享即仅自己可以使用该模板"
+      tip="关闭公共即仅自己可以使用该模板, 公开的模版不允许删除"
       required>
     </XField>
     <XField
@@ -99,12 +102,13 @@
     let templateId;
     if (isOwner.value) {
       const ret = await ElMessageBox.confirm(
-        '该模板已存在，请确认您的操作是更新模板还是重新创建',
+        '该模板已存在，请确认您的操作是更新模板还是新建',
         {
           type: 'warning',
           title: '提示',
           confirmButtonText: '更新',
-          cancelButtonText: '重新创建'
+          cancelButtonText: '新建',
+          showClose: false
         }
       ).catch(() => false);
       templateId = ret ? id : undefined;

@@ -35,6 +35,14 @@
                 round>
                 VIP
               </ElTag>
+              <XAction
+                v-if="isOwner(item)"
+                class="is-delete"
+                :icon="Delete"
+                mode="icon"
+                size="small"
+                type="danger"
+                @click="handleRemove(item)"></XAction>
               <ElImage :src="item.cover" fit="contain"></ElImage>
               <div class="v-templates-widgets__title">
                 <span class="v-box__name">{{ item.name }}</span>
@@ -72,7 +80,8 @@
     ElTag,
     vLoading
   } from 'element-plus';
-  import { Search, Download } from '@vtj/icons';
+  import { Search, Download, Delete } from '@vtj/icons';
+  import { XAction } from '@vtj/ui';
   import { groupBy } from '@vtj/utils';
   import { Panel, Box } from '../../shared';
   import { useColSpan, useTemplates, type TemplateDto } from '../../hooks';
@@ -85,7 +94,8 @@
     installTemplate,
     access,
     refreshTemplates,
-    loading
+    loading,
+    removeTemplate
   } = useTemplates();
   const keyword = ref('');
 
@@ -99,10 +109,11 @@
     }
     return templates.value;
   });
+
   const groups = computed(() => {
     const userId = access?.getData()?.id;
     return groupBy(list.value, (template) => {
-      return template.author === userId ? '我的' : template.category;
+      return template.userId === userId ? '我的' : template.category;
     });
   });
 
@@ -127,6 +138,20 @@
       if (ret) {
         toRemoteAuth();
       }
+    }
+  };
+
+  const isOwner = (item: TemplateDto) => {
+    return item.userId === access?.getData()?.id;
+  };
+
+  const handleRemove = async (item: TemplateDto) => {
+    const ret = await ElMessageBox.confirm('确定删除该模版？', '提示', {
+      type: 'warning'
+    }).catch(() => false);
+    if (ret) {
+      await removeTemplate(item.id);
+      refreshTemplates();
     }
   };
 

@@ -10,7 +10,8 @@ export function useTemplates() {
     toRemoteAuth,
     isLogined,
     getTemplates,
-    getTemplateDsl
+    getTemplateDsl,
+    removeTemplate
   } = useOpenApi();
 
   const templates: Ref<TemplateDto[]> = ref([]);
@@ -87,6 +88,7 @@ export function useTemplates() {
     getTemplates,
     getTemplateDsl,
     installTemplate,
+    removeTemplate,
     groups,
     access,
     refreshTemplates,

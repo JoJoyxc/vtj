@@ -22,6 +22,7 @@ export interface TemplateDto {
   share: boolean;
   cover: string;
   author: string;
+  userId: string;
   category: string;
   latest: string;
 }
@@ -67,6 +68,13 @@ export function useOpenApi() {
     const api = `${remote}/api/open/template/${token}`;
     const res = await jsonp(api, { query: { id } });
     return (res?.data || null) as TemplateDto;
+  };
+
+  const removeTemplate = async (id: string) => {
+    const token = access?.getData()?.token;
+    const api = `${remote}/api/open/template/remove/${token}`;
+    const res = await jsonp(api, { query: { id } });
+    return !!res?.data;
   };
 
   const getTemplateDsl = async (id: string) => {
@@ -116,6 +124,7 @@ export function useOpenApi() {
     getDictOptions,
     getTemplateCategories,
     publishTemplate,
-    getTemplateById
+    getTemplateById,
+    removeTemplate
   };
 }
