@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.10](https://gitee.com/newgateway/vtj/compare/@vtj/mobile@0.9.0-alpha.9...@vtj/mobile@0.9.0-alpha.10) (2024-11-28)
+
+**Note:** Version bump only for package @vtj/mobile
+
+
+
+
+
 # [0.9.0-alpha.9](https://gitee.com/newgateway/vtj/compare/@vtj/mobile@0.9.0-alpha.8...@vtj/mobile@0.9.0-alpha.9) (2024-11-27)
 
 **Note:** Version bump only for package @vtj/mobile

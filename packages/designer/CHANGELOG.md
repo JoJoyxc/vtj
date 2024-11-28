@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.10](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.9...@vtj/designer@0.9.0-alpha.10) (2024-11-28)
+
+
+### Features
+
+* ✨ 用户信息 ([e6b237d](https://gitee.com/newgateway/vtj/commits/e6b237dcb7f561597b43b9f3ef96d9cbc728bba0))
+
+
+
+
+
 # [0.9.0-alpha.9](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.8...@vtj/designer@0.9.0-alpha.9) (2024-11-27)
 
 **Note:** Version bump only for package @vtj/designer
