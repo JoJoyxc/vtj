@@ -131,15 +131,19 @@ export class ProjectModel {
     );
     if (attrs.pages) {
       attrs.pages = attrs.pages.map((n: PageFile) => {
-        delete n.dsl;
-        return n;
+        return {
+          ...n,
+          dsl: undefined
+        };
       });
       this.cleanPagesDsl(attrs.pages);
     }
     if (attrs.blocks) {
       attrs.blocks = attrs.blocks.map((n: BlockFile) => {
-        delete n.dsl;
-        return n;
+        return {
+          ...n,
+          dsl: undefined
+        };
       });
     }
     return {
