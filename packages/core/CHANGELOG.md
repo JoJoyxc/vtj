@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.14](https://gitee.com/newgateway/vtj/compare/@vtj/core@0.9.0-alpha.13...@vtj/core@0.9.0-alpha.14) (2024-11-29)
+
+
+### Bug Fixes
+
+* 🐛 delete file dsl prop bug ([76e1933](https://gitee.com/newgateway/vtj/commits/76e19331e93f6b8bdbe99d5515beec1b5224b45e))
+
+
+
+
+
 # [0.9.0-alpha.13](https://gitee.com/newgateway/vtj/compare/@vtj/core@0.9.0-alpha.12...@vtj/core@0.9.0-alpha.13) (2024-11-29)
 
 
