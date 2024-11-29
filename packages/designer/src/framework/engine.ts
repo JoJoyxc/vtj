@@ -177,7 +177,7 @@ export class Engine extends Base {
       if (project.isPageFile(file) && !!file.raw) {
         return;
       }
-      const dsl = await this.service.getFile(file.id);
+      const dsl = await this.service.getFile(file.id, project.toDsl());
       if (dsl) {
         file.dsl = dsl;
       }
@@ -196,7 +196,7 @@ export class Engine extends Base {
   private async changeFile(e: BlockModel) {
     await nextTick();
     const dsl = e.toDsl();
-    this.service.saveFile(dsl);
+    this.service.saveFile(dsl, this.project.value?.toDsl());
     this.updateCurrent(e);
     this.history.value?.add(dsl);
     triggerRef(this.history);
@@ -234,13 +234,14 @@ export class Engine extends Base {
   private async saveBlockFile(e: ProjectModelEvent) {
     const type = e.type;
     const project = e.model;
+    const projectDsl = project.toDsl();
     if (type === 'create') {
       const file = e.data as BlockFile | PageFile;
       if (project.isPageFile(file) && !!file.raw) {
-        await this.service.createRawPage(file);
+        await this.service.createRawPage(file, projectDsl);
         message(`源码文件已经生成：/.vtj/vue/${file.id}.vue`, 'success');
       } else {
-        file.dsl && (await this.service.saveFile(file.dsl));
+        file.dsl && (await this.service.saveFile(file.dsl, projectDsl));
       }
     }
 
@@ -249,34 +250,34 @@ export class Engine extends Base {
       if (project.isPageFile(file) && (file.dir || file.raw)) {
         return;
       }
-      const dsl = await this.service.getFile(file.id);
+      const dsl = await this.service.getFile(file.id, projectDsl);
       if (dsl) {
         dsl.name = file.name;
         Object.assign(dsl, file.dsl || {});
-        await this.service.saveFile(dsl);
+        await this.service.saveFile(dsl, projectDsl);
       }
     }
 
     if (type === 'delete') {
       const file = e.data as BlockFile | PageFile;
       if (file && project.isPageFile(file) && !!file.raw) {
-        await this.service.removeRawPage(file.id);
+        await this.service.removeRawPage(file.id, projectDsl);
       } else {
         if (!(file as PageFile).dir) {
-          await this.service.removeFile(file.id);
-          await this.service.removeRawPage(file.id);
-          await this.service.removeHistory(file.id);
+          await this.service.removeFile(file.id, projectDsl);
+          await this.service.removeRawPage(file.id, projectDsl);
+          await this.service.removeHistory(file.id, projectDsl);
         }
       }
     }
 
     if (type === 'clone') {
       const { source, target } = e.data;
-      const dsl = await this.service.getFile(source.id);
+      const dsl = await this.service.getFile(source.id, projectDsl);
       if (dsl) {
         dsl.id = target.id;
         dsl.name = target.name;
-        await this.service.saveFile(dsl);
+        await this.service.saveFile(dsl, projectDsl);
       }
     }
     triggerRef(this.project);
@@ -307,13 +308,15 @@ export class Engine extends Base {
     const current = this.current.value;
     if (current) {
       this.updateCurrent(current);
-      this.service.saveFile(current.toDsl());
+      this.service.saveFile(current.toDsl(), this.project.value?.toDsl());
     }
   }
 
   private async initHistory(block: BlockModel | null) {
     if (block) {
-      const dsl = await this.service.getHistory(block.id).catch(() => null);
+      const dsl = await this.service
+        .getHistory(block.id, this.project.value?.toDsl())
+        .catch(() => null);
       this.history.value = new HistoryModel(
         Object.assign(dsl || {}, { id: block.id })
       );
@@ -325,33 +328,48 @@ export class Engine extends Base {
   private async saveHistory(e: HistoryModelEvent) {
     const type = e.type;
     const history = e.model;
+    const projectDsl = this.project.value?.toDsl();
     if (type === 'create') {
-      await this.service.saveHistoryItem(history.id as string, e.data);
+      await this.service.saveHistoryItem(
+        history.id as string,
+        e.data,
+        projectDsl
+      );
     }
     if (type === 'delete') {
       await this.service.removeHistoryItem(
         history.id as string,
-        e.data as string[]
+        e.data as string[],
+        projectDsl
       );
     }
 
     if (type === 'clear') {
-      await this.service.removeHistoryItem(history.id as string, e.data);
+      await this.service.removeHistoryItem(
+        history.id as string,
+        e.data,
+        projectDsl
+      );
     }
 
     const dsl = history.toDsl();
-    await this.service.saveHistory(dsl);
+    await this.service.saveHistory(dsl, projectDsl);
     triggerRef(this.history);
   }
 
   private async loadHistory(e: HistoryModelEvent) {
     const history = e.model;
     const data = e.data as HistoryItem;
-    const item = await this.service.getHistoryItem(history.id, data.id);
+    const projectDsl = this.project.value?.toDsl();
+    const item = await this.service.getHistoryItem(
+      history.id,
+      data.id,
+      projectDsl
+    );
     if (item && item.dsl) {
       const block = new BlockModel(item.dsl);
       await this.updateCurrent(block);
-      this.service.saveFile(item.dsl);
+      this.service.saveFile(item.dsl, projectDsl);
       triggerRef(this.history);
     }
   }

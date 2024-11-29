@@ -4,7 +4,16 @@ import type {
   RouteLocationNormalized,
   NavigationGuardNext
 } from 'vue-router';
-import { storage, cookie, toArray, Request, delay, unRSA } from '@vtj/utils';
+import {
+  storage,
+  cookie,
+  toArray,
+  Request,
+  delay,
+  unRSA,
+  isFunction,
+  isString
+} from '@vtj/utils';
 import { ContextMode, PAGE_ROUTE_NAME } from '../constants';
 
 export interface AccessOptions {
@@ -115,7 +124,7 @@ const defaults: AccessOptions = {
   authKey: 'Authorization',
   storageKey: 'ACCESS_STORAGE',
   storagePrefix: '__VTJ_',
-  unauthorized: '/unauthorized',
+  unauthorized: undefined,
   auth: '/#/login',
   redirectParam: 'r',
   unauthorizedCode: 401,
@@ -297,9 +306,17 @@ export class Access {
       if (this.hasRoutePermission(to)) {
         return next();
       } else {
-        const msg = this.options.noPermissionMessage || '无权限访问';
-        this.showTip(msg);
-        return next(false);
+        const { noPermissionMessage = '无权限访问', unauthorized = false } =
+          this.options;
+        this.showTip(noPermissionMessage);
+        if (isFunction(unauthorized)) {
+          unauthorized();
+          return next(false);
+        } else if (isString(unauthorized)) {
+          return next(unauthorized);
+        } else {
+          return next(false);
+        }
       }
     }
     next(false);
@@ -336,11 +353,12 @@ export class Access {
     if (alert) {
       // 延时是为了提示层渲染在loading的层级之上
       await delay(150);
-      await alert(content, {
+      return await alert(content, {
         title: '提示',
         type: 'warning'
-      }).catch((e) => e);
+      }).catch(() => false);
     }
+    return false;
   }
 
   private setRequest(request: Request) {
