@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.13](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.12...@vtj/designer@0.9.0-alpha.13) (2024-11-29)
+
+
+### Bug Fixes
+
+* 🐛 截图失败提示 ([b3e6eb4](https://gitee.com/newgateway/vtj/commits/b3e6eb481113cd9d0d2088bc6c8a332d53999ed6))
+
+
+### Features
+
+* ✨ engine srevice pass projectDsl param ([774cd9d](https://gitee.com/newgateway/vtj/commits/774cd9dba1de19f73293c264cc7c769759c66e98))
+
+
+
+
+
 # [0.9.0-alpha.12](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.11...@vtj/designer@0.9.0-alpha.12) (2024-11-28)
 
 
