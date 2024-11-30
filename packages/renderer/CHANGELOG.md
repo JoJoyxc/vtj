@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.15](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.0-alpha.14...@vtj/renderer@0.9.0-alpha.15) (2024-11-30)
+
+
+### Bug Fixes
+
+* 🐛 provider create route to chidlren ([7fce647](https://gitee.com/newgateway/vtj/commits/7fce6476a0e35a63986489a1d47378d6a759adae))
+
+
+
+
+
 # [0.9.0-alpha.14](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.0-alpha.13...@vtj/renderer@0.9.0-alpha.14) (2024-11-29)
 
 **Note:** Version bump only for package @vtj/renderer
