@@ -119,7 +119,7 @@
 
   const onClick = async (file: PageFile) => {
     if (file.raw) {
-      message('这是源码模式页面，不能低代码设计', 'warning');
+      message('这是源码模式页面，不能在设计器中打开', 'warning');
     }
     if (file.dir || file.raw) {
       engine.project.value?.deactivate();

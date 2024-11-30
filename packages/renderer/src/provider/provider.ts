@@ -246,13 +246,14 @@ export class Provider extends Base {
     const { router, project, options } = this;
     if (!router) return;
     const { routeParentName, pageRouteName = 'page', routeMeta } = options;
+    const pathStart = routeParentName ? '' : '/';
     const pageRoute: RouteRecordRaw = {
-      path: `/${pageRouteName}/:id`,
+      path: `${pathStart}${pageRouteName}/:id`,
       name: PAGE_ROUTE_NAME,
       component: PageContainer
     };
     const homeRoute: RouteRecordRaw = {
-      path: '/',
+      path: pathStart,
       name: HOMEPAGE_ROUTE_NAME,
       component: project?.homepage ? PageContainer : StartupContainer,
       meta: routeMeta
