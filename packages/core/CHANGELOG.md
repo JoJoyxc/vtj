@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.16](https://gitee.com/newgateway/vtj/compare/@vtj/core@0.9.0-alpha.15...@vtj/core@0.9.0-alpha.16) (2024-11-30)
+
+
+### Bug Fixes
+
+* 🐛 public isReady ([83c0950](https://gitee.com/newgateway/vtj/commits/83c0950b7275de0afa1d96fcf06e2b2e2900feae))
+
+
+
+
+
 # [0.9.0-alpha.15](https://gitee.com/newgateway/vtj/compare/@vtj/core@0.9.0-alpha.14...@vtj/core@0.9.0-alpha.15) (2024-11-30)
 
 **Note:** Version bump only for package @vtj/core
