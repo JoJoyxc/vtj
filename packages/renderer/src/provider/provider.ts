@@ -111,7 +111,7 @@ export class Provider extends Base {
       mode = ContextMode.Raw,
       dependencies,
       materials,
-      project = {},
+      project,
       adapter = {},
       globals = {},
       modules = {},
@@ -140,12 +140,13 @@ export class Provider extends Base {
     }
 
     // 设计模式在引擎已初始化了项目数据，这里不需要再次初始化
-    if (mode !== ContextMode.Design) {
+    if (project && project.id && mode !== ContextMode.Design) {
       this.load(project as ProjectSchema);
     }
   }
 
   async load(project: ProjectSchema) {
+    if (!project.id) return;
     const module = this.modules[`.vtj/projects/${project.id}.json`];
     this.project = module ? await module() : await this.service.init(project);
     if (!this.project) {
@@ -258,6 +259,12 @@ export class Provider extends Base {
       component: project?.homepage ? PageContainer : StartupContainer,
       meta: routeMeta
     };
+    if (router.hasRoute(PAGE_ROUTE_NAME)) {
+      router.removeRoute(PAGE_ROUTE_NAME);
+    }
+    if (router.hasRoute(HOMEPAGE_ROUTE_NAME)) {
+      router.removeRoute(HOMEPAGE_ROUTE_NAME);
+    }
     if (routeParentName) {
       router.addRoute(routeParentName, pageRoute);
       router.addRoute(routeParentName, homeRoute);
