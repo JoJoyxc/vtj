@@ -57,7 +57,7 @@ function menusFilter(menus: MenuDataItem[], access?: Access): MenuDataItem[] {
 
 export function useMask(options?: UseMaskOptions) {
   const {
-    menuPathPrefix = '/',
+    menuPathPrefix = '',
     pageRouteName = 'page',
     disableMenusFilter = false
   } = options || {};
