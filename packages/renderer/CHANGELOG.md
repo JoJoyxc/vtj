@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.18](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.0-alpha.17...@vtj/renderer@0.9.0-alpha.18) (2024-12-03)
+
+
+### Bug Fixes
+
+* 🐛 适配 provider  access mask ([456c52d](https://gitee.com/newgateway/vtj/commits/456c52d563ed5963f387a32a9814b7282986a70b))
+
+
+
+
+
 # [0.9.0-alpha.17](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.0-alpha.16...@vtj/renderer@0.9.0-alpha.17) (2024-12-02)
 
 
