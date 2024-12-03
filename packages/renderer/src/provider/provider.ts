@@ -66,7 +66,7 @@ export interface ProviderOptions {
   materialPath?: string;
   nodeEnv?: NodeEnv;
   install?: (app: App) => void;
-  routeParentName?: RouteRecordName;
+  routeAppendTo?: RouteRecordName;
   pageRouteName?: string;
   routeMeta?: RouteMeta;
 }
@@ -246,8 +246,8 @@ export class Provider extends Base {
   private initRouter() {
     const { router, project, options } = this;
     if (!router) return;
-    const { routeParentName, pageRouteName = 'page', routeMeta } = options;
-    const pathStart = routeParentName ? '' : '/';
+    const { routeAppendTo, pageRouteName = 'page', routeMeta } = options;
+    const pathStart = routeAppendTo ? '' : '/';
     const pageRoute: RouteRecordRaw = {
       path: `${pathStart}${pageRouteName}/:id`,
       name: PAGE_ROUTE_NAME,
@@ -265,9 +265,9 @@ export class Provider extends Base {
     if (router.hasRoute(HOMEPAGE_ROUTE_NAME)) {
       router.removeRoute(HOMEPAGE_ROUTE_NAME);
     }
-    if (routeParentName) {
-      router.addRoute(routeParentName, pageRoute);
-      router.addRoute(routeParentName, homeRoute);
+    if (routeAppendTo) {
+      router.addRoute(routeAppendTo, pageRoute);
+      router.addRoute(routeAppendTo, homeRoute);
     } else {
       router.addRoute(pageRoute);
       router.addRoute(homeRoute);

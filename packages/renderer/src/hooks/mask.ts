@@ -7,10 +7,16 @@ import { useAccess, type Access } from '../plugins';
 import { PAGE_ROUTE_NAME, HOMEPAGE_ROUTE_NAME } from '../constants';
 
 export interface UseMaskOptions {
-  menuBasePath?: string;
+  pageRouteName?: string;
+  menuPathPrefix?: string;
+  disableMenusFilter?: boolean;
 }
 
-function createMenus(basePath: string, pages: PageFile[] = []): MenuDataItem[] {
+function createMenus(
+  menuPathPrefix: string,
+  pageRouteName: string,
+  pages: PageFile[] = []
+): MenuDataItem[] {
   return pages.map((page) => {
     const { id, title, icon, children, hidden } = page;
     const menu: MenuDataItem = {
@@ -18,10 +24,10 @@ function createMenus(basePath: string, pages: PageFile[] = []): MenuDataItem[] {
       title,
       icon,
       hidden,
-      url: `${basePath}/${id}`,
+      url: `${menuPathPrefix}/${pageRouteName}/${id}`,
       children:
         children && children.length
-          ? createMenus(basePath, children)
+          ? createMenus(menuPathPrefix, pageRouteName, children)
           : undefined
     };
     return menu;
@@ -50,7 +56,11 @@ function menusFilter(menus: MenuDataItem[], access?: Access): MenuDataItem[] {
 }
 
 export function useMask(options?: UseMaskOptions) {
-  const { menuBasePath = '/page' } = options || {};
+  const {
+    menuPathPrefix = '/',
+    pageRouteName = 'page',
+    disableMenusFilter = false
+  } = options || {};
   const provider = useProvider();
   const route = useRoute();
   const access = useAccess();
@@ -73,14 +83,18 @@ export function useMask(options?: UseMaskOptions) {
     }
   });
 
-  const menus: MenuDataItem[] = createMenus(menuBasePath, project?.pages);
+  const menus: MenuDataItem[] = createMenus(
+    menuPathPrefix,
+    pageRouteName,
+    project?.pages
+  );
   const config = project?.config;
   return {
     disabled,
     logo: config?.logo,
     themeSwitchable: config?.themeSwitchable,
     title: config?.title || project?.description || project?.name || 'VTJ App',
-    menus: menusFilter(menus, access),
+    menus: disableMenusFilter ? menus : menusFilter(menus, access),
     pure
   };
 }

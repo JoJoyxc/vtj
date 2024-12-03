@@ -92,9 +92,9 @@ export interface AccessOptions {
   privateKey?: string;
 
   /**
-   * 权限编码前缀
+   * 应用编码
    */
-  keyPrefix?: string;
+  appName?: string;
 }
 
 export interface AccessData {
@@ -130,7 +130,7 @@ const defaults: AccessOptions = {
   unauthorizedCode: 401,
   unauthorizedMessage: '登录已经失效，请重新登录！',
   noPermissionMessage: '无权限访问该页面',
-  keyPrefix: ''
+  appName: ''
 };
 
 export const ACCESS_KEY: InjectionKey<Access> = Symbol('access');
@@ -195,20 +195,20 @@ export class Access {
   }
 
   can(code: string | string[] | ((p: Record<string, boolean>) => boolean)) {
-    const { keyPrefix } = this.options;
+    const { appName } = this.options;
     const { permissions = {} } = this.data || {};
     if (typeof code === 'function') {
       return code(permissions);
     }
     const codes = toArray(code);
-    return codes.every((n) => permissions[n] || permissions[keyPrefix + n]);
+    return codes.every((n) => permissions[n] || permissions[appName + '.' + n]);
   }
 
   some(code: string | string[]) {
-    const { keyPrefix } = this.options;
+    const { appName } = this.options;
     const { permissions = {} } = this.data || {};
     const codes = toArray(code);
-    return codes.some((n) => permissions[n] || permissions[keyPrefix + n]);
+    return codes.some((n) => permissions[n] || permissions[appName + '.' + n]);
   }
 
   install(app: App) {
