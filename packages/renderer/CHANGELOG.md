@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.19](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.0-alpha.18...@vtj/renderer@0.9.0-alpha.19) (2024-12-03)
+
+
+### Bug Fixes
+
+* 🐛 mask path prefix ([5c4dc27](https://gitee.com/newgateway/vtj/commits/5c4dc276884fe9a3e27a72bcf6fbc54cc9bf61d2))
+
+
+
+
+
 # [0.9.0-alpha.18](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.0-alpha.17...@vtj/renderer@0.9.0-alpha.18) (2024-12-03)
 
 
