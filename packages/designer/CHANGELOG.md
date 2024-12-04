@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.23](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.22...@vtj/designer@0.9.0-alpha.23) (2024-12-04)
+
+**Note:** Version bump only for package @vtj/designer
+
+
+
+
+
 # [0.9.0-alpha.22](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.21...@vtj/designer@0.9.0-alpha.22) (2024-12-04)
 
 **Note:** Version bump only for package @vtj/designer
