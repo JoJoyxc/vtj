@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.24](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.23...@vtj/pro@0.9.0-alpha.24) (2024-12-04)
+
+
+### Bug Fixes
+
+* 🐛 ACCESS_STORAGE_KEY ([82865dc](https://gitee.com/newgateway/vtj/commits/82865dc561a56f34b15bc0777b53f6280216e183))
+
+
+
+
+
 # [0.9.0-alpha.23](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.22...@vtj/pro@0.9.0-alpha.23) (2024-12-04)
 
 **Note:** Version bump only for package @vtj/pro
