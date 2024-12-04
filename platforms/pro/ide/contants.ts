@@ -1,0 +1,1 @@
+export const ACCESS_STORAGE_KEY = 'PRO_IDE_STORAGE__';

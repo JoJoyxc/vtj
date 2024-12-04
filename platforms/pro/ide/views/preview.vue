@@ -11,6 +11,7 @@
     Extension,
     Access
   } from '../../src';
+  import { ACCESS_STORAGE_KEY } from '../contants';
   import { IconsPlugin } from '@vtj/icons';
   import { ElMessageBox } from 'element-plus';
   const service = new LocalService();
@@ -24,7 +25,8 @@
   const access = accessOptions
     ? new Access({
         ...accessOptions,
-        alert: ElMessageBox.alert
+        alert: ElMessageBox.alert,
+        storageKey: ACCESS_STORAGE_KEY
       })
     : undefined;
   const { provider, onReady } = createProvider({

@@ -7,6 +7,7 @@
   import { ref, getCurrentInstance } from 'vue';
   import { useRoute } from 'vue-router';
   import { XMask } from '@vtj/ui';
+  import { ACCESS_STORAGE_KEY } from '../contants';
   import {
     createProvider,
     LocalService,
@@ -27,7 +28,8 @@
   const access = accessOptions
     ? new Access({
         ...accessOptions,
-        alert: ElMessageBox.alert
+        alert: ElMessageBox.alert,
+        storageKey: ACCESS_STORAGE_KEY
       })
     : undefined;
   const { provider, onReady } = createProvider({

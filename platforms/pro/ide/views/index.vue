@@ -5,6 +5,7 @@
   import { ref, watch } from 'vue';
   import { useRoute } from 'vue-router';
   import { ElMessageBox } from 'element-plus';
+  import { ACCESS_STORAGE_KEY } from '../contants';
   import {
     Engine,
     widgetManager,
@@ -27,7 +28,8 @@
   const access = accessOptions
     ? new Access({
         ...accessOptions,
-        alert: ElMessageBox.alert
+        alert: ElMessageBox.alert,
+        storageKey: ACCESS_STORAGE_KEY
       })
     : undefined;
 

@@ -6,6 +6,7 @@
   import { jsonp } from '@vtj/utils';
   import { ElMessageBox } from 'element-plus';
   import { LocalService, Extension, Access } from '../../src';
+  import { ACCESS_STORAGE_KEY } from '../contants';
   const route = useRoute();
   const router = useRouter();
   const service = new LocalService();
@@ -17,7 +18,8 @@
   const access = accessOptions
     ? new Access({
         ...accessOptions,
-        alert: ElMessageBox.alert
+        alert: ElMessageBox.alert,
+        storageKey: ACCESS_STORAGE_KEY
       })
     : undefined;
 
