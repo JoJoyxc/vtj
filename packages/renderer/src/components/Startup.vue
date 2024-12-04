@@ -17,7 +17,7 @@
     name?: string;
     tagline?: string;
     actionText?: string;
-    link?: string;
+    link?: string | (() => void);
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -29,7 +29,11 @@
   const onClick = () => {
     if (typeof window !== 'undefined') {
       if (props.link) {
-        window.location.href = props.link;
+        if (typeof props.link === 'function') {
+          props.link();
+        } else {
+          window.location.href = props.link;
+        }
         return;
       }
       const options = (window as any).__VTJ_LINK__ || {};
