@@ -147,7 +147,7 @@ export class Access {
   connect(params: AccessConnectParams) {
     const { mode, router, request } = params;
     this.mode = mode;
-    if (router && mode === ContextMode.Raw) {
+    if (router && this.mode === ContextMode.Raw) {
       this.setGuard(router);
     }
     if (request) {
@@ -233,7 +233,7 @@ export class Access {
   private toLogin() {
     const { auth, redirectParam } = this.options;
     if (!auth) return;
-    if (this.mode !== ContextMode.Raw) return;
+    // if (this.mode === ContextMode.Design) return;
     const search = redirectParam
       ? `?${redirectParam}=${encodeURIComponent(location.href)}`
       : '';
