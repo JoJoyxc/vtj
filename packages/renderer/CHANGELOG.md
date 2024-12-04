@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.20](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.0-alpha.19...@vtj/renderer@0.9.0-alpha.20) (2024-12-04)
+
+
+### Bug Fixes
+
+* 🐛 designer ([e2d7a79](https://gitee.com/newgateway/vtj/commits/e2d7a79bb91050db5144d46db86a2c224af63368))
+
+
+
+
+
 # [0.9.0-alpha.19](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.0-alpha.18...@vtj/renderer@0.9.0-alpha.19) (2024-12-03)
 
 
