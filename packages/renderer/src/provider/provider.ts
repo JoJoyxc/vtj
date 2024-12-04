@@ -81,6 +81,7 @@ export interface ProvideAdapter {
   jsonp: Jsonp;
   metaQuery?: (...args: any[]) => Promise<any>;
   access?: Access;
+  startupComponent?: any;
   /**
    * 远程服务 host
    */
@@ -243,7 +244,7 @@ export class Provider extends Base {
   }
 
   private initRouter() {
-    const { router, project, options } = this;
+    const { router, project, options, adapter } = this;
     if (!router) return;
     const { routeAppendTo, pageRouteName = 'page', routeMeta } = options;
     const pathStart = routeAppendTo ? '' : '/';
@@ -255,7 +256,9 @@ export class Provider extends Base {
     const homeRoute: RouteRecordRaw = {
       path: pathStart,
       name: HOMEPAGE_ROUTE_NAME,
-      component: project?.homepage ? PageContainer : StartupContainer,
+      component: project?.homepage
+        ? PageContainer
+        : adapter.startupComponent || StartupContainer,
       meta: routeMeta
     };
     if (router.hasRoute(PAGE_ROUTE_NAME)) {
