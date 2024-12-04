@@ -25,6 +25,9 @@
           :class="props.subtitleCls">
           {{ subtitle }}
         </span>
+        <div v-if="props.textTags" class="v-item__tags">
+          <span v-for="item in props.textTags">{{ item }}</span>
+        </div>
       </slot>
     </XContainer>
     <XContainer class="v-item__wrapper" @click.stop>
@@ -144,6 +147,7 @@
     hover?: boolean;
     small?: boolean;
     actionInMore?: boolean;
+    textTags?: string[];
   }
 
   const props = withDefaults(defineProps<Props>(), {

@@ -142,6 +142,9 @@
   };
 
   const isOwner = (item: TemplateDto) => {
+    if (item.share) {
+      return false;
+    }
     return item.userId === access?.getData()?.id;
   };
 

@@ -1,4 +1,4 @@
-import { uid, merge, upperFirstCamelCase, delay } from '@vtj/base';
+import { uid, merge, upperFirstCamelCase, delay, cloneDeep } from '@vtj/base';
 import type {
   ProjectSchema,
   Dependencie,
@@ -60,6 +60,11 @@ export const EVENT_PROJECT_PUBLISH = 'EVENT_PROJECT_PUBLISH';
  * 项目文件发布
  */
 export const EVENT_PROJECT_FILE_PUBLISH = 'EVENT_PROJECT_FILE_PUBLISH';
+
+/**
+ * 出码
+ */
+export const EVENT_PROJECT_GEN_SOURCE = 'EVENT_PROJECT_GEN_SOURCE';
 
 export class ProjectModel {
   id: string = '';
@@ -131,19 +136,19 @@ export class ProjectModel {
     );
     if (attrs.pages) {
       attrs.pages = attrs.pages.map((n: PageFile) => {
-        return {
+        return cloneDeep({
           ...n,
           dsl: undefined
-        };
+        });
       });
       this.cleanPagesDsl(attrs.pages);
     }
     if (attrs.blocks) {
       attrs.blocks = attrs.blocks.map((n: BlockFile) => {
-        return {
+        return cloneDeep({
           ...n,
           dsl: undefined
-        };
+        });
       });
     }
     return {
@@ -743,5 +748,14 @@ export class ProjectModel {
     } else {
       emitter.emit(EVENT_PROJECT_PUBLISH, event);
     }
+  }
+
+  genSource() {
+    const event: ProjectModelEvent = {
+      model: this,
+      type: 'gen',
+      data: null
+    };
+    emitter.emit(EVENT_PROJECT_GEN_SOURCE, event);
   }
 }

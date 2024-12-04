@@ -16,7 +16,8 @@ import {
   EVENT_BLOCK_CHANGE,
   EVENT_NODE_CHANGE,
   EVENT_HISTORY_CHANGE,
-  EVENT_HISTORY_LOAD
+  EVENT_HISTORY_LOAD,
+  EVENT_PROJECT_GEN_SOURCE
 } from '../models';
 
 type Events = {
@@ -33,10 +34,10 @@ type Events = {
   [EVENT_NODE_CHANGE]: NodeModel;
   [EVENT_HISTORY_CHANGE]: HistoryModelEvent;
   [EVENT_HISTORY_LOAD]: HistoryModelEvent;
+  [EVENT_PROJECT_GEN_SOURCE]: ProjectModelEvent;
 };
 
 export const emitter = mitt<Events>();
-
 
 export type Emitter = {
   on(type: string, listener: (...args: any[]) => void): void;
@@ -54,4 +55,5 @@ export type ModelEventType =
   | 'clone'
   | 'clear'
   | 'load'
-  | 'publish';
+  | 'publish'
+  | 'gen';

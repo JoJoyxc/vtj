@@ -40,7 +40,7 @@
       label="公开"
       name="share"
       editor="switch"
-      tip="关闭公共即仅自己可以使用该模板, 公开的模版不允许删除"
+      tip="非公共的模版即仅自己可以使用, 公开模版后不允许删除"
       required>
     </XField>
     <XField

@@ -2,7 +2,7 @@
   <XDialogForm
     :title="title"
     width="800px"
-    height="650px"
+    height="700px"
     :form-props="{ tooltipMessage: false }"
     :model="model"
     :submit-method="submit">
@@ -17,10 +17,14 @@
     <XField v-if="!model.dir && !!props.item" label="路由" disabled>
       <template #editor>
         <ElAlert :closable="false">
-          {{ `/page/${(model as any).id}` }}
+          {{ `${engine.options.pageBasePath || ''}/page/${(model as any).id}` }}
           <XIcon
             :icon="CopyDocument"
-            @click="onCopy(`/page/${(model as any).id}`)"></XIcon>
+            @click="
+              onCopy(
+                `${engine.options.pageBasePath || ''}/page/${(model as any).id}`
+              )
+            "></XIcon>
         </ElAlert>
       </template>
     </XField>
@@ -43,6 +47,14 @@
       label="包含母版"
       editor="switch"
       tip="页面内嵌入框架"></XField>
+
+    <XField
+      name="cache"
+      :visible="{ dir: false }"
+      inline
+      label="开启缓存"
+      editor="switch"
+      tip="开启路由 KeepAlive 缓存"></XField>
 
     <XField
       name="hidden"
@@ -115,7 +127,8 @@
     hidden: false,
     raw: false,
     prue: false,
-    meta: null
+    meta: null,
+    cache: false
   });
 
   const model = ref(props.item || createEmptyModel());

@@ -90,4 +90,6 @@ export abstract class Service {
   public abstract getPluginMaterial(
     from: NodeFromPlugin
   ): Promise<MaterialDescription | null>;
+
+  public abstract genSource(project: ProjectSchema): Promise<string>;
 }

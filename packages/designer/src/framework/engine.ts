@@ -31,6 +31,7 @@ import {
   EVENT_PROJECT_FILE_PUBLISH,
   EVENT_HISTORY_CHANGE,
   EVENT_HISTORY_LOAD,
+  EVENT_PROJECT_GEN_SOURCE,
   type Service,
   type Emitter,
   type ProjectSchema,
@@ -67,6 +68,7 @@ export interface EngineOptions {
   adapter?: Partial<ProvideAdapter>;
   install?: (app: App, engine?: Engine) => void;
   remoteHost?: string;
+  pageBasePath?: string;
 }
 
 export const SAVE_BLOCK_FILE_FINISH = 'SAVE_BLOCK_FILE_FINISH';
@@ -90,7 +92,7 @@ export class Engine extends Base {
    * 当current变化时，更新该值，用于通知组件更新
    */
   public changed: Ref<symbol> = ref(Symbol());
-  constructor(private options: EngineOptions) {
+  constructor(public options: EngineOptions) {
     super();
     const {
       container,
@@ -167,6 +169,7 @@ export class Engine extends Base {
     emitter.on(EVENT_NODE_CHANGE, () => this.changeCurrentFile());
     emitter.on(EVENT_HISTORY_CHANGE, (e) => this.saveHistory(e));
     emitter.on(EVENT_HISTORY_LOAD, (e) => this.loadHistory(e));
+    emitter.on(EVENT_PROJECT_GEN_SOURCE, () => this.genSource());
   }
 
   private async activeFile(e: ProjectModelEvent) {
@@ -386,6 +389,11 @@ export class Engine extends Base {
         message('整站发布成功', 'success');
       }
     }
+  }
+
+  private async genSource() {
+    const dsl = this.project.value?.toDsl();
+    return dsl ? await this.service.genSource(dsl) : undefined;
   }
 
   private async publishCurrent() {

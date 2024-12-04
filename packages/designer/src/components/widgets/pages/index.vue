@@ -29,13 +29,12 @@
           @action="onAction"
           @click="onClick(data)"
           :active="current?.id === data.id"
-          :tag="project?.homepage === data.id ? '主页' : undefined"
-          tag-type="success"
           grow
           small
           background
           hover
-          action-in-more></Item>
+          action-in-more
+          :text-tags="createTextTags(data)"></Item>
       </template>
     </ElTree>
     <PageForm
@@ -70,6 +69,29 @@
   const subtitle = computed(() => {
     return `(共 ${pages.value.length} 项)`;
   });
+
+  const createTextTags = (page: PageFile) => {
+    const tags: string[] = [];
+    if (project.value?.homepage === page.id) {
+      tags.push('主');
+    }
+    if (page.mask) {
+      tags.push('母');
+    }
+    if (page.cache) {
+      tags.push('缓');
+    }
+    if (page.hidden) {
+      tags.push('隐');
+    }
+    if (page.pure) {
+      tags.push('纯');
+    }
+    if (page.raw) {
+      tags.push('源');
+    }
+    return tags;
+  };
 
   const onPlus = () => {
     parentId.value = undefined;

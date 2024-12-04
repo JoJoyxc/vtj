@@ -115,6 +115,11 @@ export interface PageFile extends BlockFile {
   pure?: boolean;
 
   /**
+   * 开启页面缓存
+   */
+  cache?: boolean;
+
+  /**
    * 路由元信息
    */
   meta?: Record<string, any>;

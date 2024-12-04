@@ -26,7 +26,26 @@
       <VtjIconSetting></VtjIconSetting>
     </ElButton>
     <ElDivider direction="vertical"></ElDivider>
+
+    <ElButton
+      v-if="props.coder"
+      @click="onCoder"
+      :icon="Download"
+      size="small"
+      type="success">
+      出码
+    </ElButton>
+
+    <ElButton
+      v-if="props.onlyPublishTemplate"
+      @click="onPublishToTemplate"
+      :icon="VtjIconTemplate"
+      size="small"
+      type="primary">
+      发布模板
+    </ElButton>
     <ElDropdown
+      v-else
       split-button
       type="primary"
       size="small"
@@ -35,26 +54,29 @@
       <span>发布</span>
       <template #dropdown>
         <ElDropdownMenu>
-          <ElDropdownItem command="current" :icon="VtjIconPublish"
-            >发布当前文件</ElDropdownItem
-          >
-          <ElDropdownItem command="project" :icon="VtjIconProject"
-            >发布整站文件</ElDropdownItem
-          >
+          <ElDropdownItem command="current" :icon="VtjIconPublish">
+            发布文件
+          </ElDropdownItem>
+          <ElDropdownItem command="project" :icon="VtjIconProject">
+            整站发布
+          </ElDropdownItem>
           <ElDropdownItem command="template" :icon="VtjIconTemplate" divided>
-            发布到模板
+            发布模板
           </ElDropdownItem>
         </ElDropdownMenu>
       </template>
     </ElDropdown>
+
     <Publisher
       v-if="publisherVisible"
       v-model="publisherVisible"
       v-bind="publisherProps"></Publisher>
+
+    <!-- <Coder :icon="Download"></Coder> -->
   </div>
 </template>
 <script lang="ts" setup>
-  import { ref } from 'vue';
+  import { ref, h } from 'vue';
   import {
     ElButton,
     ElDivider,
@@ -71,21 +93,24 @@
     VtjIconPreview,
     VtjIconTemplate,
     VtjIconPublish,
-    VtjIconProject
+    VtjIconProject,
+    Download
   } from '@vtj/icons';
-  import { XAction } from '@vtj/ui';
+  import { XAction, createDialog } from '@vtj/ui';
   import { delay } from '@vtj/utils';
   import Publisher from './publisher.vue';
+  import Coder from './coder.vue';
   import { useSelected, useOpenApi } from '../../hooks';
   import { message } from '../../../utils';
 
   export interface Props {
+    onlyPublishTemplate?: boolean;
     coder?: boolean;
   }
 
-  withDefaults(defineProps<Props>(), {
-    coder: true,
-    copy: true
+  const props = withDefaults(defineProps<Props>(), {
+    onlyPublishTemplate: false,
+    coder: false
   });
 
   const { engine, designer } = useSelected();
@@ -197,6 +222,21 @@
       case 'template':
         onPublishToTemplate();
         break;
+    }
+  };
+
+  const onCoder = async () => {
+    const project = engine.project.value;
+    if (!project) return;
+    const link = await engine.service.genSource(project.toDsl());
+    if (link) {
+      createDialog({
+        width: '600px',
+        height: '200px',
+        title: '出码',
+        icon: Download,
+        content: h(Coder, { link })
+      });
     }
   };
 
