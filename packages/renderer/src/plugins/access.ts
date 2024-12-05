@@ -187,10 +187,17 @@ export class Access {
   }
 
   getData() {
+    if (this.data) {
+      return this.data;
+    }
+    this.loadData();
     return this.data;
   }
 
   getToken() {
+    if (!this.data) {
+      this.loadData();
+    }
     return this.data?.token;
   }
 
@@ -274,7 +281,7 @@ export class Access {
       prefix: storagePrefix
     });
 
-    this.setData(data);
+    this.setData(data || null);
   }
 
   private isLogined() {
@@ -282,7 +289,7 @@ export class Access {
     if (session && authKey) {
       return !!cookie.get(authKey);
     }
-    return !!this.data;
+    return !!this.getToken();
   }
 
   private hasRoutePermission(to: RouteLocationNormalized) {
