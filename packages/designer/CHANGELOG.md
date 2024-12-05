@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.26](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.25...@vtj/designer@0.9.0-alpha.26) (2024-12-05)
+
+
+### Bug Fixes
+
+* 🐛 删除节点,出码vue不更新 ([ef56f5b](https://gitee.com/newgateway/vtj/commits/ef56f5bbfed34b9a34f7faaac4533f24cd592b3f))
+
+
+
+
+
 # [0.9.0-alpha.25](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.24...@vtj/designer@0.9.0-alpha.25) (2024-12-05)
 
 
