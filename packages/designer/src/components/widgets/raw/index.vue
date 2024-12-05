@@ -31,13 +31,13 @@
   });
 
   watch(
-    current,
-    async (v) => {
+    [current, engine.changed],
+    async () => {
       const project = engine.project.value;
-      if (project && v) {
+      if (project && current.value) {
         content.value = await engine.service.genVueContent(
           project.toDsl(),
-          v.toDsl()
+          current.value.toDsl()
         );
       } else {
         content.value = '';
