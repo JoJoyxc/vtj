@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.31](https://gitee.com/newgateway/vtj/compare/dev-web@0.9.0-alpha.30...dev-web@0.9.0-alpha.31) (2024-12-05)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
 # [0.9.0-alpha.30](https://gitee.com/newgateway/vtj/compare/dev-web@0.9.0-alpha.29...dev-web@0.9.0-alpha.30) (2024-12-05)
 
 **Note:** Version bump only for package dev-web
