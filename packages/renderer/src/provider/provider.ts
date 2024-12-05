@@ -350,7 +350,9 @@ export class Provider extends Base {
   }
   async getDsl(id: string): Promise<BlockSchema | null> {
     const module = this.modules[`.vtj/files/${id}.json`];
-    return module ? await module() : this.service.getFile(id).catch(() => null);
+    return module
+      ? await module()
+      : this.service.getFile(id, this.project || undefined).catch(() => null);
   }
 
   async getDslByUrl(url: string): Promise<BlockSchema | null> {
