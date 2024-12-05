@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.25](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.24...@vtj/designer@0.9.0-alpha.25) (2024-12-05)
+
+
+### Bug Fixes
+
+* 🐛 genSource ([dab2bce](https://gitee.com/newgateway/vtj/commits/dab2bce9244d61a2f2f416f1bf0efeb46884fbed))
+
+
+
+
+
 # [0.9.0-alpha.24](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.23...@vtj/designer@0.9.0-alpha.24) (2024-12-04)
 
 **Note:** Version bump only for package @vtj/designer
