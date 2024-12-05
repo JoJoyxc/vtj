@@ -33,13 +33,14 @@ export function useOpenApi() {
 
   const toRemoteAuth = () => {
     if (remote) {
-      const { protocol, host, pathname } = location;
-      const clientUrl = `${protocol}//${host}${pathname}${auth}`;
-      const redirectUrl =
-        clientUrl +
-        '?redirect=' +
-        encodeURIComponent(location.hash.substring(1));
-      location.href = `${remote}/auth.html?r=${encodeURIComponent(redirectUrl)}`;
+      // const { protocol, host, pathname } = location;
+      // const clientUrl = `${protocol}//${host}${pathname}${auth}`;
+      // const redirectUrl =
+      //   clientUrl +
+      //   '?redirect=' +
+      //   encodeURIComponent(location.hash.substring(1));
+      // location.href = `${remote}/auth.html?r=${encodeURIComponent(redirectUrl)}`;
+      location.href = `${remote}/auth.html?r=${encodeURIComponent(location.href)}`;
     }
   };
 
