@@ -392,8 +392,14 @@ export class Engine extends Base {
   }
 
   private async genSource() {
-    const dsl = this.project.value?.toDsl();
-    return dsl ? await this.service.genSource(dsl) : undefined;
+    const project = this.project.value;
+    if (project) {
+      const dsl = {
+        ...project.toDsl(),
+        pages: project.getPages()
+      };
+      return dsl ? await this.service.genSource(dsl) : undefined;
+    }
   }
 
   private async publishCurrent() {
