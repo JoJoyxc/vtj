@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.32](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.31...@vtj/designer@0.9.0-alpha.32) (2024-12-05)
+
+
+### Bug Fixes
+
+* 🐛 toRemoteAuth ([a02d006](https://gitee.com/newgateway/vtj/commits/a02d0065bc0d23d72befb363118c1d71355b0303))
+
+
+
+
+
 # [0.9.0-alpha.31](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.30...@vtj/designer@0.9.0-alpha.31) (2024-12-05)
 
 **Note:** Version bump only for package @vtj/designer
