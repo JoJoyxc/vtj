@@ -143,6 +143,8 @@ export class Provider extends Base {
     // 设计模式在引擎已初始化了项目数据，这里不需要再次初始化
     if (project && mode !== ContextMode.Design) {
       this.load(project as ProjectSchema);
+    } else {
+      this.project = project as ProjectSchema;
     }
   }
 
