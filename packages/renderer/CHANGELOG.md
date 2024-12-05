@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.29](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.0-alpha.28...@vtj/renderer@0.9.0-alpha.29) (2024-12-05)
+
+
+### Bug Fixes
+
+* 🐛 provider ([8a3a137](https://gitee.com/newgateway/vtj/commits/8a3a1373136816039f43554135d13445aa7b4f58))
+
+
+
+
+
 # [0.9.0-alpha.28](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.0-alpha.27...@vtj/renderer@0.9.0-alpha.28) (2024-12-05)
 
 
