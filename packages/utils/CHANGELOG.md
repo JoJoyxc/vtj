@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.28](https://gitee.com/newgateway/vtj/compare/@vtj/utils@0.9.0-alpha.27...@vtj/utils@0.9.0-alpha.28) (2024-12-05)
+
+**Note:** Version bump only for package @vtj/utils
+
+
+
+
+
 # [0.9.0-alpha.27](https://gitee.com/newgateway/vtj/compare/@vtj/utils@0.9.0-alpha.26...@vtj/utils@0.9.0-alpha.27) (2024-12-05)
 
 
