@@ -31,13 +31,13 @@
   });
 
   watch(
-    [current, engine.changed],
-    async () => {
+    current,
+    async (v) => {
       const project = engine.project.value;
-      if (project && current.value) {
+      if (project && v) {
         content.value = await engine.service.genVueContent(
           project.toDsl(),
-          current.value.toDsl()
+          v.toDsl()
         );
       } else {
         content.value = '';
@@ -50,6 +50,6 @@
   );
 
   defineOptions({
-    name: 'SchemaWidget'
+    name: 'RawWidget'
   });
 </script>
