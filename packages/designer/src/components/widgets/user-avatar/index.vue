@@ -20,7 +20,7 @@
     return avatar
       ? avatar.startsWith('https:')
         ? avatar
-        : `${remote}${avatar}`
+        : `${remote}/api/oss/file/${avatar}`
       : null;
   });
 </script>
