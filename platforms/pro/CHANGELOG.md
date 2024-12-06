@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.36](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.35...@vtj/pro@0.9.0-alpha.36) (2024-12-06)
+
+
+### Bug Fixes
+
+* 🐛 toRemoteAuth ([a031815](https://gitee.com/newgateway/vtj/commits/a0318153269d9212e447b228f9aeb4734074af56))
+
+
+
+
+
 # [0.9.0-alpha.35](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.34...@vtj/pro@0.9.0-alpha.35) (2024-12-06)
 
 
