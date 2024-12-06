@@ -2,13 +2,12 @@
   <div class="loading">正在登录中...</div>
 </template>
 <script lang="ts" setup>
-  import { useRouter, useRoute } from 'vue-router';
+  import { useRoute } from 'vue-router';
   import { jsonp } from '@vtj/utils';
   import { ElMessageBox } from 'element-plus';
   import { LocalService, Extension, Access } from '../../src';
   import { ACCESS_STORAGE_KEY } from '../contants';
   const route = useRoute();
-  const router = useRouter();
   const service = new LocalService();
   const config = await service.getExtension().catch(() => null);
   const { adapters } = config ? await new Extension(config).load() : {};
@@ -29,7 +28,8 @@
     if (!res || !res.success) {
       await ElMessageBox.alert('登录失败');
       const redirect = route.query.redirect as string;
-      router.push(redirect || '/');
+      location.href = redirect || '/';
+      // router.push(redirect || '/');
       return null;
     } else {
       return res.data;
@@ -41,7 +41,8 @@
   if (info) {
     access?.login(info);
     const redirect = route.query.redirect as string;
-    router.push(redirect || '/');
+    location.href = redirect || '/';
+    // router.push(redirect || '/');
   }
 </script>
 
