@@ -228,7 +228,7 @@
   const onCoder = async () => {
     const project = engine.project.value;
     if (!project) return;
-    const link = await engine.service.genSource(project.toDsl());
+    const link = await engine.genSource();
     if (link) {
       createDialog({
         width: '600px',

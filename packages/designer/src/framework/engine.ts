@@ -391,7 +391,7 @@ export class Engine extends Base {
     }
   }
 
-  private async genSource() {
+  public async genSource() {
     const project = this.project.value;
     if (project) {
       const dsl = {
