@@ -3,16 +3,26 @@
     class="v-user-avatar"
     :size="30"
     :icon="UserFilled"
-    :src="avatar"></ElAvatar>
+    :src="avatarSrc"></ElAvatar>
 </template>
 <script lang="ts" setup>
+  import { computed } from 'vue';
   import { ElAvatar } from 'element-plus';
   import { UserFilled } from '@vtj/icons';
   import { useEngine } from '../../../framework';
 
   const engine = useEngine();
   const { access } = engine.adapter || {};
-  const avatar = access?.getData()?.avatar;
+
+  const avatarSrc = computed(() => {
+    const avatar = access?.getData()?.avatar || '';
+    const remote = engine.adapter?.remote || '';
+    return avatar
+      ? avatar.startsWith('https:')
+        ? avatar
+        : `${remote}${avatar}`
+      : null;
+  });
 </script>
 
 <style lang="scss" scoped>

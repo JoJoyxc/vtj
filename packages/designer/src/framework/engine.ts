@@ -67,7 +67,6 @@ export interface EngineOptions {
   globals?: Record<string, any>;
   adapter?: Partial<ProvideAdapter>;
   install?: (app: App, engine?: Engine) => void;
-  remoteHost?: string;
   pageBasePath?: string;
 }
 
