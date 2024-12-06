@@ -65,13 +65,11 @@
       const section = hash
         ? hash.split('?')[0].split('/')
         : pathname.split('/');
-      if (section.length > 2) {
-        const id = section.pop() || '';
-        const options = window.__VTJ_LINK__ || {};
-        let path = options.href || window.location.pathname + '__vtj__/#/';
-        if (id) {
-          path += '?id=' + id;
-        }
+      const id = section.pop() || '';
+      const options = window.__VTJ_LINK__ || {};
+      let path = options.href || window.location.pathname + '__vtj__/#/';
+      if (id) {
+        path += '?id=' + id;
       }
       window.open(path, 'VTJDesigner');
     }
