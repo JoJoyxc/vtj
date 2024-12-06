@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.38](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.37...@vtj/pro@0.9.0-alpha.38) (2024-12-06)
+
+
+### Bug Fixes
+
+* 🐛 auth ([aa40adc](https://gitee.com/newgateway/vtj/commits/aa40adce11037e75a82bfd1da60c7972972f34ae))
+
+
+
+
+
 # [0.9.0-alpha.37](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.36...@vtj/pro@0.9.0-alpha.37) (2024-12-06)
 
 **Note:** Version bump only for package @vtj/pro
