@@ -42,7 +42,7 @@ export function useOpenApi() {
       // location.href = `${remote}/auth.html?r=${encodeURIComponent(redirectUrl)}`;
       const redirect = encodeURIComponent(location.href);
       const { protocol, host, pathname } = location;
-      const clientUrl = `${protocol}//${host}${pathname}#/auth?redirect=${redirect}`;
+      const clientUrl = `${protocol}//${host}${pathname}#/auth?redirect=${encodeURIComponent(redirect)}`;
       location.href = `${remote}/auth.html?r=${encodeURIComponent(clientUrl)}`;
     }
   };
