@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.39](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.38...@vtj/designer@0.9.0-alpha.39) (2024-12-06)
+
+
+### Bug Fixes
+
+* 🐛 v-user-avatar ([547c9c1](https://gitee.com/newgateway/vtj/commits/547c9c12a85ea1bc9288e7ccef65eebdc78850d5))
+
+
+
+
+
 # [0.9.0-alpha.38](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.37...@vtj/designer@0.9.0-alpha.38) (2024-12-06)
 
 
