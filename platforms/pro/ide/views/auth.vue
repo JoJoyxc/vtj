@@ -27,9 +27,6 @@
     const res = await jsonp(api).catch(() => null);
     if (!res || !res.success) {
       await ElMessageBox.alert('登录失败');
-      const redirect = route.query.redirect as string;
-      location.href = redirect || '/';
-      // router.push(redirect || '/');
       return null;
     } else {
       return res.data;
@@ -37,12 +34,11 @@
   };
 
   const token = route.query.token as string;
-  const info = await getLoginInfo(token);
+  const info = token ? await getLoginInfo(token) : null;
   if (info) {
     access?.login(info);
     const redirect = route.query.redirect as string;
-    location.href = redirect || '/';
-    // router.push(redirect || '/');
+    location.href = decodeURIComponent(redirect || '/');
   }
 </script>
 
