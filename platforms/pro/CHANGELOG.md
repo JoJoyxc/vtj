@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.41](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.40...@vtj/pro@0.9.0-alpha.41) (2024-12-09)
+
+
+### Bug Fixes
+
+* 🐛 ide preview ([a50f093](https://gitee.com/newgateway/vtj/commits/a50f0930dedf78dbf24c75fa045d927942fbccec))
+
+
+
+
+
 # [0.9.0-alpha.40](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.39...@vtj/pro@0.9.0-alpha.40) (2024-12-06)
 
 **Note:** Version bump only for package @vtj/pro
