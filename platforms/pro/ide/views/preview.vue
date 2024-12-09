@@ -24,9 +24,9 @@
   const remote = adapters?.remote;
   const access = accessOptions
     ? new Access({
-        ...accessOptions,
         alert: ElMessageBox.alert,
-        storageKey: ACCESS_STORAGE_KEY
+        storageKey: ACCESS_STORAGE_KEY,
+        ...accessOptions
       })
     : undefined;
   const { provider, onReady } = createProvider({
