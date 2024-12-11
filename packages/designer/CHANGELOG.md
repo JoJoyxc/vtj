@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.42](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.41...@vtj/designer@0.9.0-alpha.42) (2024-12-11)
+
+
+### Bug Fixes
+
+* 🐛 html2canvas ([513fa07](https://gitee.com/newgateway/vtj/commits/513fa07e85404ca1e8daeb864a40dc039670c1f3))
+
+
+
+
+
 # [0.9.0-alpha.41](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.0-alpha.40...@vtj/designer@0.9.0-alpha.41) (2024-12-09)
 
 **Note:** Version bump only for package @vtj/designer
