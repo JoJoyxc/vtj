@@ -99,6 +99,7 @@
   const submit = async () => {
     if (!imageDataUrl.value) {
       await ElMessageBox.alert('截图失败，无法完成发布', {
+        title: '提示',
         type: 'error'
       });
       return false;

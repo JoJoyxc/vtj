@@ -291,7 +291,9 @@ export class Simulator extends Base {
     return new Promise((resolve, reject) => {
       if (!this.contentWindow) return reject(null);
       const body = this.contentWindow.document.body;
-      html2canvas(body)
+      html2canvas(body, {
+        allowTaint: true
+      })
         .then((canvas) => {
           resolve(canvas);
         })
