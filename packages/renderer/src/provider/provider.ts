@@ -158,8 +158,15 @@ export class Provider extends Base {
     const _window = window as any;
     // 解决CkEditor错误提示问题
     _window.CKEDITOR_VERSION = undefined;
-    await this.loadDependencies(_window);
-    await this.loadAssets(_window);
+
+    /**
+     * 源码模式只加载原生代码依赖
+     */
+    if (this.mode === ContextMode.Raw) {
+      await this.loadDependencies(_window);
+    } else {
+      await this.loadAssets(_window);
+    }
     this.apis = createSchemaApis(apis, meta, this.adapter);
     mockCleanup();
     if (this.project.config?.mock) {
@@ -174,7 +181,7 @@ export class Provider extends Base {
     const entries = Object.entries(this.dependencies);
     for (const [name, raw] of entries) {
       if (!_window[name]) {
-        _window[name] = await raw();
+        _window[name] = this.library[name] = await raw();
       }
     }
   }
@@ -231,6 +238,7 @@ export class Provider extends Base {
           const material = materialMap[materialExport]
             ? ((await materialMap[materialExport]()).default as Material)
             : (_window[materialExport] as Material);
+
           if (material && lib) {
             (material.components || []).forEach((item) => {
               components[item.name] = getRawComponent(item, lib);
