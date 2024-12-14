@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.44](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.9.0-alpha.43...@vtj/ui@0.9.0-alpha.44) (2024-12-14)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
 # [0.9.0-alpha.43](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.9.0-alpha.42...@vtj/ui@0.9.0-alpha.43) (2024-12-14)
 
 **Note:** Version bump only for package @vtj/ui

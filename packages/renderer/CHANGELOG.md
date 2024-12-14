@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.44](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.0-alpha.43...@vtj/renderer@0.9.0-alpha.44) (2024-12-14)
+
+
+### Bug Fixes
+
+* 🐛 NodeEnv ([2385a7e](https://gitee.com/newgateway/vtj/commits/2385a7e2ecc7aa96e685875ae1c5243ab084a38f))
+
+
+
+
+
 # [0.9.0-alpha.43](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.0-alpha.42...@vtj/renderer@0.9.0-alpha.43) (2024-12-14)
 
 
