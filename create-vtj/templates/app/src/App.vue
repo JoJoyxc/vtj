@@ -1,8 +1,15 @@
 <template>
   <ElConfigProvider :locale="zhCn">
     <Suspense>
-      <XMask :title="title" :logo="logo || _logo" :menus="menus" :disabled="disabled" :pure="pure" :actions="actions"
-        @action-click="onActionClick" :theme="themeSwitchable"></XMask>
+      <XMask
+        :title="title"
+        :logo="logo || _logo"
+        :menus="menus"
+        :disabled="disabled"
+        :pure="pure"
+        :actions="actions"
+        @action-click="onActionClick"
+        :theme="themeSwitchable"></XMask>
     </Suspense>
   </ElConfigProvider>
 </template>

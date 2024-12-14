@@ -304,7 +304,7 @@ export class Access {
     router.beforeEach((to, _from, next) => this.guard(to, next));
   }
 
-  private guard(to: RouteLocationNormalized, next: NavigationGuardNext) {
+  private async guard(to: RouteLocationNormalized, next: NavigationGuardNext) {
     if (this.isWhiteList(to) || this.isAuthPath(to)) {
       return next();
     }
@@ -315,7 +315,7 @@ export class Access {
       } else {
         const { noPermissionMessage = '无权限访问', unauthorized = false } =
           this.options;
-        this.showTip(noPermissionMessage);
+        await this.showTip(noPermissionMessage);
         if (isFunction(unauthorized)) {
           unauthorized();
           return next(false);

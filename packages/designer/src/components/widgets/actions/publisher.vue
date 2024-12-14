@@ -72,7 +72,7 @@
   const model = reactive({
     name: props.name,
     label: props.label,
-    share: true
+    share: false
   });
 
   const isOwner = ref(false);

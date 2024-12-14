@@ -158,12 +158,8 @@ export class Provider extends Base {
     const _window = window as any;
     // 解决CkEditor错误提示问题
     _window.CKEDITOR_VERSION = undefined;
-    if (this.nodeEnv !== 'production') {
-      await this.loadAssets(_window);
-    } else {
-      await this.loadDependencies(_window);
-    }
-
+    await this.loadDependencies(_window);
+    await this.loadAssets(_window);
     this.apis = createSchemaApis(apis, meta, this.adapter);
     mockCleanup();
     if (this.project.config?.mock) {
@@ -215,31 +211,31 @@ export class Provider extends Base {
       }
     }
 
-    // 生产环境不需要物料
-    for (const materialUrl of materials) {
-      await loadScript(urlUtils.append(materialUrl, { v: version }));
-    }
+    // 生产环境不需要物料描述文件
+    if (nodeEnv === NodeEnv.Development) {
+      for (const materialUrl of materials) {
+        await loadScript(urlUtils.append(materialUrl, { v: version }));
+      }
 
-    const materialMap = this.materials || {};
-    // console.log(materialExports, materialMap);
-
-    for (const materialExport of materialExports) {
-      const lib = _window[materialMapLibrary[materialExport]];
-      const builtInComponents = BUILT_IN_COMPONENTS[materialExport];
-      if (builtInComponents) {
-        if (lib) {
-          builtInComponents.forEach((name) => {
-            components[name] = lib[name];
-          });
-        }
-      } else {
-        const material = materialMap[materialExport]
-          ? ((await materialMap[materialExport]()).default as Material)
-          : (_window[materialExport] as Material);
-        if (material && lib) {
-          (material.components || []).forEach((item) => {
-            components[item.name] = getRawComponent(item, lib);
-          });
+      const materialMap = this.materials || {};
+      for (const materialExport of materialExports) {
+        const lib = _window[materialMapLibrary[materialExport]];
+        const builtInComponents = BUILT_IN_COMPONENTS[materialExport];
+        if (builtInComponents) {
+          if (lib) {
+            builtInComponents.forEach((name) => {
+              components[name] = lib[name];
+            });
+          }
+        } else {
+          const material = materialMap[materialExport]
+            ? ((await materialMap[materialExport]()).default as Material)
+            : (_window[materialExport] as Material);
+          if (material && lib) {
+            (material.components || []).forEach((item) => {
+              components[item.name] = getRawComponent(item, lib);
+            });
+          }
         }
       }
     }
