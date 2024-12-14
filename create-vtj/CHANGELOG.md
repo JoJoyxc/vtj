@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.6](https://gitee.com/newgateway/vtj/compare/create-vtj@0.9.0-alpha.5...create-vtj@0.9.0-alpha.6) (2024-12-14)
+
+
+### Bug Fixes
+
+* 🐛 NodeEnv.Development ([a791d74](https://gitee.com/newgateway/vtj/commits/a791d74b6f2fcc57394bf501b75b7dd1aaedfc01))
+
+
+
+
+
 # [0.9.0-alpha.5](https://gitee.com/newgateway/vtj/compare/create-vtj@0.9.0-alpha.4...create-vtj@0.9.0-alpha.5) (2024-11-27)
 
 **Note:** Version bump only for package create-vtj

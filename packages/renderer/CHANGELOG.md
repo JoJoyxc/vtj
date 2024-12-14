@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.43](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.0-alpha.42...@vtj/renderer@0.9.0-alpha.43) (2024-12-14)
+
+
+### Bug Fixes
+
+* 🐛 NodeEnv.Development ([a791d74](https://gitee.com/newgateway/vtj/commits/a791d74b6f2fcc57394bf501b75b7dd1aaedfc01))
+
+
+
+
+
 # [0.9.0-alpha.42](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.0-alpha.41...@vtj/renderer@0.9.0-alpha.42) (2024-12-11)
 
 **Note:** Version bump only for package @vtj/renderer
