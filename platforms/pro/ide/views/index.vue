@@ -81,8 +81,8 @@
     container,
     service,
     materialPath: __BASE_PATH__,
-    adapter: { access, remote },
-    ...options
+    ...options,
+    adapter: Object.assign({ access, remote }, options?.adapter || {})
   });
 
   engine.ready(() => {
