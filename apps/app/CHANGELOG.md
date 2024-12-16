@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.49](https://gitee.com/newgateway/vtj/compare/vtj-project-app@0.9.0-alpha.48...vtj-project-app@0.9.0-alpha.49) (2024-12-16)
+
+**Note:** Version bump only for package vtj-project-app
+
+
+
+
+
 # [0.9.0-alpha.48](https://gitee.com/newgateway/vtj/compare/vtj-project-app@0.9.0-alpha.47...vtj-project-app@0.9.0-alpha.48) (2024-12-16)
 
 **Note:** Version bump only for package vtj-project-app
