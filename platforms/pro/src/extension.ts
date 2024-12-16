@@ -67,7 +67,7 @@ export class Extension {
           .loadScriptUrl(scripts, this.library)
           .catch(() => null);
         if (output && typeof output === 'function') {
-          options = output.apply(output, this.options, this.params);
+          options = output.call(output, this.options, this.params);
         } else {
           options = output || {};
         }
