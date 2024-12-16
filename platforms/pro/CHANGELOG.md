@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.47](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.46...@vtj/pro@0.9.0-alpha.47) (2024-12-16)
+
+
+### Bug Fixes
+
+* 🐛 ExtensionFactory ([9651fc7](https://gitee.com/newgateway/vtj/commits/9651fc763acfa77c9a8559e66dcc1fd0130075dc))
+
+
+
+
+
 # [0.9.0-alpha.46](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.45...@vtj/pro@0.9.0-alpha.46) (2024-12-16)
 
 **Note:** Version bump only for package @vtj/pro

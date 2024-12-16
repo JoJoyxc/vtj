@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.7](https://gitee.com/newgateway/vtj/compare/create-vtj@0.9.0-alpha.6...create-vtj@0.9.0-alpha.7) (2024-12-16)
+
+
+### Bug Fixes
+
+* 🐛 simulator style ([08af11b](https://gitee.com/newgateway/vtj/commits/08af11b3e4a7ba310eff971a3f5c871c5b501d18))
+
+
+
+
+
 # [0.9.0-alpha.6](https://gitee.com/newgateway/vtj/compare/create-vtj@0.9.0-alpha.5...create-vtj@0.9.0-alpha.6) (2024-12-14)
 
 
