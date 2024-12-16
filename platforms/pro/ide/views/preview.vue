@@ -33,8 +33,8 @@
     mode: ContextMode.Runtime,
     service,
     materialPath: __BASE_PATH__,
-    adapter: { access, remote },
     ...(options || {}),
+    adapter: Object.assign({ access, remote }, options?.adapter || {}),
     dependencies: {
       Vue: () => import('vue'),
       VueRouter: () => import('vue-router')
