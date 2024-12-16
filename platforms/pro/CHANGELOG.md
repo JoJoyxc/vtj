@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.50](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.49...@vtj/pro@0.9.0-alpha.50) (2024-12-16)
+
+
+### Bug Fixes
+
+* 🐛 apdapter ([61a7a77](https://gitee.com/newgateway/vtj/commits/61a7a772779afd9c405244e24bd8c9f217c68eec))
+
+
+
+
+
 # [0.9.0-alpha.49](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.48...@vtj/pro@0.9.0-alpha.49) (2024-12-16)
 
 
