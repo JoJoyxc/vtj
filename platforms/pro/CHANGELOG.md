@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0-alpha.48](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.47...@vtj/pro@0.9.0-alpha.48) (2024-12-16)
+
+
+### Bug Fixes
+
+* 🐛 ExtensionOutput ([ca694cd](https://gitee.com/newgateway/vtj/commits/ca694cd2cfb85294451d057e1645a17de574b3bf))
+
+
+
+
+
 # [0.9.0-alpha.47](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.0-alpha.46...@vtj/pro@0.9.0-alpha.47) (2024-12-16)
 
 
