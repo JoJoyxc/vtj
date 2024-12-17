@@ -35,10 +35,15 @@
 
   const token = route.query.token as string;
   const info = token ? await getLoginInfo(token) : null;
+  console.log('info', info);
   if (info) {
-    access?.login(info);
-    const redirect = route.query.redirect as string;
-    location.href = decodeURIComponent(redirect || '/');
+    try {
+      access?.login(info);
+      const redirect = route.query.redirect as string;
+      location.href = decodeURIComponent(redirect || '/');
+    } catch (e) {
+      location.reload();
+    }
   }
 </script>
 
