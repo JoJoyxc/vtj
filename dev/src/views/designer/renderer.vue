@@ -5,7 +5,11 @@
 </template>
 <script lang="ts" setup>
   import { reactive } from 'vue';
-  import { createRenderer, type BlockSchema } from '@vtj/pro';
+  import {
+    createRenderer,
+    type BlockSchema,
+    type NodeDirective
+  } from '@vtj/pro';
   import { XAction } from '@vtj/web';
 
   const dsl: BlockSchema = reactive({
@@ -25,7 +29,36 @@
         name: 'XAction',
         props: {
           label: 'ABC'
-        }
+        },
+        directives: [
+          {
+            name: 'vIf',
+            value: {
+              type: 'JSExpression',
+              value: 'true'
+            }
+          },
+          {
+            name: 'loading',
+            value: {
+              type: 'JSExpression',
+              value: 'true'
+            }
+          }
+        ] as NodeDirective[]
+      },
+      {
+        name: 'div',
+        children: 'Div Content',
+        directives: [
+          {
+            name: 'vHtml',
+            value: {
+              type: 'JSExpression',
+              value: '"<h1>aaa</h1>"'
+            }
+          }
+        ] as NodeDirective[]
       }
     ]
   });
