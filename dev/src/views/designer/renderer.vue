@@ -1,16 +1,28 @@
 <template>
   <div>
     <component :is="renderer"></component>
+    <div v-pin:[arg].modifiers="true">abc</div>
   </div>
 </template>
 <script lang="ts" setup>
-  import { reactive } from 'vue';
+  import { reactive, ref } from 'vue';
+
   import {
     createRenderer,
     type BlockSchema,
     type NodeDirective
   } from '@vtj/pro';
   import { XAction } from '@vtj/web';
+  const vPin = {
+    mounted(el: any, binding: any) {
+      el.innerHTML = JSON.stringify(binding);
+    },
+    updated() {
+      /* ... */
+    }
+  };
+
+  const arg = ref('top');
 
   const dsl: BlockSchema = reactive({
     name: 'Test',

@@ -148,12 +148,7 @@ function createWithDirectives(
         directiveArgument.push(n.arg);
       }
       if (n.modifiers) {
-        isJSExpression;
-        directiveArgument.push(
-          isJSExpression(n.modifiers)
-            ? context.__parseExpression(n.modifiers)
-            : n.modifiers
-        );
+        directiveArgument.push(n.modifiers);
       }
       return directiveArgument;
     })
