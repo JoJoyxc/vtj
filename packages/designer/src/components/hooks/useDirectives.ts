@@ -85,13 +85,15 @@ export function useDirectives(
   const vShow = getDirctive('vShow');
   const vBind = getDirctive('vBind');
   const vFor = getDirctive('vFor');
+  const vHtml = getDirctive('vHtml');
   const vModels = getVModels();
 
   const directives = {
     vIf,
     vShow,
     vBind,
-    vFor
+    vFor,
+    vHtml
   };
 
   const onValueChange = (
@@ -151,6 +153,7 @@ export function useDirectives(
     vShow,
     vBind,
     vFor,
+    vHtml,
     vModels,
     onValueChange,
     onForChange,

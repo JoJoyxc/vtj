@@ -35,7 +35,6 @@
 
   const token = route.query.token as string;
   const info = token ? await getLoginInfo(token) : null;
-  console.log('info', info);
   if (info) {
     try {
       access?.login(info);

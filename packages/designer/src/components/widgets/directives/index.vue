@@ -29,6 +29,15 @@
           :value="vBind.value"
           @change="onValueChange">
         </SetterWrapper>
+        <SetterWrapper
+          name="vHtml"
+          label="v-html"
+          setters="ExpressionSetter"
+          :current="current"
+          :context="context"
+          :value="vHtml.value"
+          @change="onValueChange">
+        </SetterWrapper>
       </ElForm>
     </Panel>
     <Panel class="v-sub-panel" title="循环" size="small" :fit="false">
@@ -118,6 +127,7 @@
     vShow,
     vBind,
     vFor,
+    vHtml,
     vModels,
     onValueChange,
     onForChange,

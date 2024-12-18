@@ -289,7 +289,7 @@ function parseDirectives(
   computedKeys: string[] = []
 ) {
   const result: string[] = [];
-  const { vIf, vShow, vModels, vFor, vBind } = getDiretives(directives);
+  const { vIf, vShow, vModels, vFor, vBind, vHtml } = getDiretives(directives);
   if (vIf) {
     result.push(`v-if="${parseValue(vIf.value, true, true, computedKeys)}"`);
   }
@@ -323,6 +323,12 @@ function parseDirectives(
       `v-for="(${item}, ${index}) in ${parseValue(vFor.value, true, true, computedKeys)}"`
     );
   }
+
+  if (vHtml) {
+    result.push(
+      `v-html="${parseValue(vHtml.value, true, true, computedKeys)}"`
+    );
+  }
   // todo: 实现others 指令
   return result;
 }
@@ -332,13 +338,15 @@ function getDiretives(directives: NodeDirective[] = []) {
   const vFor = directives.find((n) => camelCase(n.name) === 'vFor');
   const vShow = directives.find((n) => camelCase(n.name) === 'vShow');
   const vBind = directives.find((n) => camelCase(n.name) === 'vBind');
+  const vHtml = directives.find((n) => camelCase(n.name) === 'vHtml');
   const vModels = directives.filter((n) => camelCase(n.name) === 'vModel');
   return {
     vIf,
     vFor,
     vShow,
     vModels,
-    vBind
+    vBind,
+    vHtml
   };
 }
 
