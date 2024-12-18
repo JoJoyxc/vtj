@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.2](https://gitee.com/newgateway/vtj/compare/dev-web@0.9.1...dev-web@0.9.2) (2024-12-18)
+
+
+### Features
+
+* ✨ 支持自定义指令 ([8a193fd](https://gitee.com/newgateway/vtj/commits/8a193fddd211d4b69d282bdfbfe6e76c6352033f))
+
+
+
+
+
 ## [0.9.1](https://gitee.com/newgateway/vtj/compare/dev-web@0.9.0...dev-web@0.9.1) (2024-12-17)
 
 
