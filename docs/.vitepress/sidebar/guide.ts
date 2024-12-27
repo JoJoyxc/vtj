@@ -32,7 +32,8 @@ export default [
           { text: '节点大纲树', link: '/designer/06' },
           { text: '历史记录', link: '/designer/07' },
           { text: '页面设置', link: '/designer/08' },
-          { text: '节点设置', link: '/designer/09' }
+          { text: '节点设置', link: '/designer/09' },
+          { text: '设置器和绑定器', link: '/designer/10' }
         ]
       }
     ]
