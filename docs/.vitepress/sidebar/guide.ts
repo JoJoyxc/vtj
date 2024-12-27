@@ -16,11 +16,24 @@ export default [
   },
   {
     text: '基础',
-    base: '/guide/base',
+    base: '/guide',
     items: [
-      { text: '创建一个低代码应用（ Todo ）', link: '/todo' },
-      { text: '项目工程模板', link: '/project-template' },
-      { text: '设计器使用手册', link: '/designer' }
+      { text: '创建一个低代码应用（ Todo ）', link: '/base/todo' },
+      {
+        text: '设计器入门教程',
+        collapsed: true,
+        items: [
+          { text: '概念', link: '/base/concept' },
+          { text: '项目工程搭建和配置', link: '/designer/01' },
+          { text: '可视化设计器功能概述', link: '/designer/02' },
+          { text: '页面管理', link: '/designer/03' },
+          { text: '物料和依赖管理', link: '/designer/04' },
+          { text: '工作区和画布操作', link: '/designer/05' },
+          { text: '节点大纲树', link: '/designer/06' },
+          { text: '历史记录', link: '/designer/07' },
+          { text: '页面设置', link: '/designer/08' }
+        ]
+      }
     ]
   },
   {
