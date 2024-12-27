@@ -8,8 +8,8 @@ export default [
       { text: '项目集成', link: '/integration' },
       { text: '功能扩展', link: '/extension' },
       {
-        text: '打造专属低代码平台',
-        link: '/lcdp'
+        text: '打造专属低代码平台(案例)',
+        link: '/newpearl'
       }
       // { text: '开发示例', link: '/newpearl' }
     ]
@@ -31,7 +31,8 @@ export default [
           { text: '工作区和画布操作', link: '/designer/05' },
           { text: '节点大纲树', link: '/designer/06' },
           { text: '历史记录', link: '/designer/07' },
-          { text: '页面设置', link: '/designer/08' }
+          { text: '页面设置', link: '/designer/08' },
+          { text: '节点设置', link: '/designer/09' }
         ]
       }
     ]
