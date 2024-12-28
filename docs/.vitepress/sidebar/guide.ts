@@ -33,7 +33,8 @@ export default [
           { text: '历史记录', link: '/designer/07' },
           { text: '页面设置', link: '/designer/08' },
           { text: '节点设置', link: '/designer/09' },
-          { text: '设置器和绑定器', link: '/designer/10' }
+          { text: '设置器和绑定器', link: '/designer/10' },
+          { text: 'API管理和数据源', link: '/designer/11' }
         ]
       }
     ]
