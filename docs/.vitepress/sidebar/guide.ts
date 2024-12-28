@@ -34,7 +34,8 @@ export default [
           { text: '页面设置', link: '/designer/08' },
           { text: '节点设置', link: '/designer/09' },
           { text: '设置器和绑定器', link: '/designer/10' },
-          { text: 'API管理和数据源', link: '/designer/11' }
+          { text: 'API管理和数据源', link: '/designer/11' },
+          { text: '区块管理', link: '/designer/12' }
         ]
       }
     ]
