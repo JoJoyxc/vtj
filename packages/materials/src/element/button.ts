@@ -74,7 +74,7 @@ const button: MaterialDescription = {
     }
   ],
   events: ['click'],
-  slots: ['default', 'loading', 'icon'],
+  slots: ['default', 'loading', 'icon', 'tag'],
   snippet: {
     name: 'ElButton',
     children: '按钮',
