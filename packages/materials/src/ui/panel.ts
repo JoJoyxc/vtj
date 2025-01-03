@@ -24,13 +24,11 @@ const desc: MaterialDescription = {
     },
     {
       name: 'border',
-      label: 'border',
       title: '显示边框',
       setters: 'BooleanSetter'
     },
     {
       name: 'radius',
-      label: 'radius',
       title: '圆角',
       setters: 'BooleanSetter'
     },
