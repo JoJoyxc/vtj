@@ -36,29 +36,29 @@ const desc: MaterialDescription = {
     },
     {
       name: 'card',
-      label: '卡片模式',
+      title: '卡片模式',
       setters: 'BooleanSetter'
     },
     Object.assign(size('size'), { setters: ['SelectSetter'] }),
     {
       name: 'shadow',
-      label: '阴影设置',
+      title: '阴影设置',
       setters: 'SelectSetter',
       options: ['none', 'always', 'hover']
     },
     {
       name: 'header',
-      label: '头部设置',
+      title: '头部设置',
       setters: ['StringSetter', 'ObjectSetter']
     },
     {
       name: 'body',
-      label: 'body',
+      title: 'body',
       setters: 'ObjectSetter'
     },
     {
       name: 'footer',
-      label: 'footer',
+      title: 'footer',
       setters: 'ObjectSetter'
     }
   ],
