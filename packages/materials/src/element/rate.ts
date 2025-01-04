@@ -125,6 +125,11 @@ const Rate: MaterialDescription = {
       setters: 'StringSetter'
     },
     {
+      name: 'ariaLabel',
+      title: '和 Rate 的 aria-label 属性保持一致',
+      setters: 'StringSetter'
+    },
+    {
       name: 'label',
       label: 'label',
       title: '和 Rate 的 aria-label 属性保持一致',
