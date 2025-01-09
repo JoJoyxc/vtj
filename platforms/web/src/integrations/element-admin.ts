@@ -15,6 +15,8 @@ import {
 } from '../renderer';
 import { createModules } from '../modules';
 
+type VtjModules = ReturnType<typeof createModules>;
+
 export interface SetupElementAdminOptions {
   id: string;
   app: App;
@@ -32,12 +34,20 @@ function toElIcon(icon?: string) {
   return icon ? `vi-ep:${kebabCase(icon)}` : undefined;
 }
 
-function createPageRoute(page: PageFile) {
+async function getComponent(path: string, modules: VtjModules) {
+  // const rawPath = `.vtj/vue/${id}.vue`;
+  const rawModule = modules[path];
+  if (rawModule) {
+    return ((await rawModule()) as any)?.default;
+  }
+}
+
+function createPageRoute(page: PageFile, modules: VtjModules) {
   const { id, title, icon, hidden, cache = false, meta = {} } = page;
   return {
     path: `page/${id}`,
     name: `Page_${id}`,
-    component: () => import(`$vtj/vue/${id}.vue`),
+    component: () => getComponent(`.vtj/vue/${id}.vue`, modules),
     meta: {
       title,
       hidden,
@@ -48,11 +58,11 @@ function createPageRoute(page: PageFile) {
   };
 }
 
-function createNoMaskRoute(page: PageFile) {
+function createNoMaskRoute(page: PageFile, modules: VtjModules) {
   const { id, title, icon, cache = false, meta = {} } = page;
   return {
     path: `/page/${id}`,
-    component: () => import(`$vtj/vue/${id}.vue`),
+    component: () => getComponent(`.vtj/vue/${id}.vue`, modules),
     meta: {
       title,
       icon: toElIcon(icon),
@@ -65,7 +75,8 @@ function createNoMaskRoute(page: PageFile) {
 
 function childrenToRoutes(
   children: PageFile[] = [],
-  noMask: any[]
+  noMask: any[],
+  modules: VtjModules
 ): RouteRecordRaw[] {
   return children.map((child) => {
     const { id, dir, mask = true, title, icon, hidden } = child;
@@ -80,23 +91,23 @@ function childrenToRoutes(
           alwaysShow: true,
           icon: toElIcon(icon)
         },
-        children: childrenToRoutes(child.children, noMask)
+        children: childrenToRoutes(child.children, noMask, modules)
       };
     }
     if (!mask) {
-      noMask.push(createNoMaskRoute(child));
+      noMask.push(createNoMaskRoute(child, modules));
     }
-    return createPageRoute(child);
+    return createPageRoute(child, modules);
   });
 }
 
-function pagesToRoutes(pages: PageFile[], layout: any) {
+function pagesToRoutes(pages: PageFile[], layout: any, modules: VtjModules) {
   const noMask: any[] = [];
   const items: any[] = [];
   for (const page of pages) {
     const { id, dir, mask = true, title, icon, hidden, children = [] } = page;
     if (!dir && !mask) {
-      noMask.push(createNoMaskRoute(page));
+      noMask.push(createNoMaskRoute(page, modules));
     }
 
     if (children.length) {
@@ -110,7 +121,7 @@ function pagesToRoutes(pages: PageFile[], layout: any) {
           alwaysShow: true,
           icon: toElIcon(icon)
         },
-        children: childrenToRoutes(children, noMask)
+        children: childrenToRoutes(children, noMask, modules)
       });
     } else {
       items.push({
@@ -123,7 +134,7 @@ function pagesToRoutes(pages: PageFile[], layout: any) {
           alwaysShow: !!dir,
           icon: toElIcon(icon)
         },
-        children: dir ? [] : [createPageRoute(page)]
+        children: dir ? [] : [createPageRoute(page, modules)]
       });
     }
   }
@@ -169,8 +180,7 @@ export async function setupElementAdminRoutes(
   if (loader) {
     const project = ((await loader()) as any).default as ProjectSchema;
     const pages = project.pages || [];
-    const pageRoutes = pagesToRoutes(pages, layout);
-    console.log(pageRoutes);
+    const pageRoutes = pagesToRoutes(pages, layout, modules);
     routes.unshift(...pageRoutes);
     routes.forEach((item) => {
       router.addRoute(item);
