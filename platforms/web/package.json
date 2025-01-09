@@ -9,6 +9,7 @@
     "build": "npm run check"
   },
   "dependencies": {
+    "@vtj/core": "workspace:~",
     "@vtj/charts": "workspace:~",
     "@vtj/icons": "workspace:~",
     "@vtj/renderer": "workspace:~",
