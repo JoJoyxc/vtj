@@ -1,7 +1,7 @@
 {
   "name": "@vtj/web",
   "private": false,
-  "version": "0.9.9",
+  "version": "0.9.10",
   "type": "module",
   "sideEffects": false,
   "scripts": {
@@ -9,8 +9,8 @@
     "build": "npm run check"
   },
   "dependencies": {
-    "@vtj/core": "workspace:~",
     "@vtj/charts": "workspace:~",
+    "@vtj/core": "workspace:~",
     "@vtj/icons": "workspace:~",
     "@vtj/renderer": "workspace:~",
     "@vtj/ui": "workspace:~",
