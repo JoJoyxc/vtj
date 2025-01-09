@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.11](https://gitee.com/newgateway/vtj/compare/@vtj/web@0.9.10...@vtj/web@0.9.11) (2025-01-09)
+
+
+### Features
+
+* ✨ 集成element-plus-admin ([e1ff497](https://gitee.com/newgateway/vtj/commits/e1ff497830db18d19759c8ed89ec41d856f0d865))
+
+
+
+
+
 ## [0.9.10](https://gitee.com/newgateway/vtj/compare/@vtj/web@0.9.9...@vtj/web@0.9.10) (2025-01-09)
 
 
