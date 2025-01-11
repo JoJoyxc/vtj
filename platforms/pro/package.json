@@ -49,6 +49,7 @@
     "access": "public"
   },
   "vtj": {
+    "platform": "h5",
     "adapters": {
       "remote": "https://lcdp.vtj.pro",
       "access": {

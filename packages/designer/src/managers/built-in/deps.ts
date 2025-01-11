@@ -52,7 +52,8 @@ export const builtInDeps: Dependencie[] = [
     ],
     required: false,
     official: true,
-    enabled: true
+    enabled: true,
+    platform: ['web', 'h5']
   },
   {
     package: 'element-plus',
@@ -69,7 +70,8 @@ export const builtInDeps: Dependencie[] = [
     assetsLibrary: 'ElementPlusMaterial',
     required: false,
     official: true,
-    enabled: true
+    enabled: true,
+    platform: 'web'
   },
   {
     package: '@vtj/ui',
@@ -86,7 +88,8 @@ export const builtInDeps: Dependencie[] = [
     assetsLibrary: 'VtjUIMaterial',
     required: false,
     official: true,
-    enabled: true
+    enabled: true,
+    platform: 'web'
   },
   {
     package: '@vtj/charts',
@@ -100,7 +103,8 @@ export const builtInDeps: Dependencie[] = [
     assetsLibrary: 'VtjChartsMaterial',
     required: false,
     official: true,
-    enabled: true
+    enabled: true,
+    platform: ['web', 'h5']
   },
   {
     package: 'ant-design-vue',
@@ -122,7 +126,8 @@ export const builtInDeps: Dependencie[] = [
     assetsLibrary: 'AntdvMaterial',
     required: false,
     official: true,
-    enabled: false
+    enabled: false,
+    platform: ['web']
   },
   {
     package: 'vant',
@@ -136,6 +141,7 @@ export const builtInDeps: Dependencie[] = [
     assetsLibrary: 'VantMaterial',
     required: false,
     official: true,
-    enabled: false
+    enabled: false,
+    platform: ['h5', 'uniapp']
   }
 ];
