@@ -1,7 +1,9 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
-layout: home
 
+title: 低代码开发工具
+
+layout: home
 hero:
   name: 'VTJ.PRO'
   text: 低代码开发工具
