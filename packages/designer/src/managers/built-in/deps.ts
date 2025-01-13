@@ -92,21 +92,6 @@ export const builtInDeps: Dependencie[] = [
     platform: 'web'
   },
   {
-    package: '@vtj/charts',
-    version: 'latest',
-    library: 'VtjCharts',
-    urls: [
-      '@vtj/materials/deps/echarts/echarts.min.js',
-      '@vtj/materials/deps/@vtj/charts/index.umd.js'
-    ],
-    assetsUrl: '@vtj/materials/assets/charts/index.umd.js',
-    assetsLibrary: 'VtjChartsMaterial',
-    required: false,
-    official: true,
-    enabled: true,
-    platform: ['web', 'h5']
-  },
-  {
     package: 'ant-design-vue',
     version: 'latest',
     library: 'antd',
@@ -141,7 +126,22 @@ export const builtInDeps: Dependencie[] = [
     assetsLibrary: 'VantMaterial',
     required: false,
     official: true,
-    enabled: false,
+    enabled: true,
     platform: ['h5', 'uniapp']
+  },
+  {
+    package: '@vtj/charts',
+    version: 'latest',
+    library: 'VtjCharts',
+    urls: [
+      '@vtj/materials/deps/echarts/echarts.min.js',
+      '@vtj/materials/deps/@vtj/charts/index.umd.js'
+    ],
+    assetsUrl: '@vtj/materials/assets/charts/index.umd.js',
+    assetsLibrary: 'VtjChartsMaterial',
+    required: false,
+    official: true,
+    enabled: true,
+    platform: ['web', 'h5']
   }
 ];
