@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.16](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.9.15...@vtj/materials@0.9.16) (2025-01-13)
+
+
+### Features
+
+* ✨ h5平台 ([0497ccb](https://gitee.com/newgateway/vtj/commits/0497ccbb53f01a537176cae36f69b5d3019fc68e))
+
+
+
+
+
 ## [0.9.15](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.9.14...@vtj/materials@0.9.15) (2025-01-13)
 
 **Note:** Version bump only for package @vtj/materials
