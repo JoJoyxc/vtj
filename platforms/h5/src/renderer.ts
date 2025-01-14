@@ -1,6 +1,6 @@
 import { createAdapter } from '@vtj/renderer';
 
-import { showNotify, showLoadingToast } from 'vant';
+import { showNotify, showLoadingToast, showDialog } from 'vant';
 
 export function loading() {
   return showLoadingToast({
@@ -16,6 +16,10 @@ export function notify(
 ) {
   const msg = title ? `[${title}]${message}` : message;
   showNotify({ type, message: msg });
+}
+
+export function alert(message: string) {
+  return showDialog({ message });
 }
 
 export * from '@vtj/renderer';
