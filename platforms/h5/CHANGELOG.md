@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.17](https://gitee.com/newgateway/vtj/compare/@vtj/h5@0.9.16...@vtj/h5@0.9.17) (2025-01-14)
+
+
+### Bug Fixes
+
+* 🐛 cli loading ([ec7a59d](https://gitee.com/newgateway/vtj/commits/ec7a59deaeda7050973a1e4dcb9d102d52e04f50))
+
+
+
+
+
 ## 0.9.16 (2025-01-13)
 
 
