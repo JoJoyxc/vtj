@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.8](https://gitee.com/newgateway/vtj/compare/create-vtj@0.9.7...create-vtj@0.9.8) (2025-01-14)
+
+
+### Bug Fixes
+
+* 🐛 h5项目模版 ([eb22ff0](https://gitee.com/newgateway/vtj/commits/eb22ff065d2c16d3d6e5f7c150178007c535d51d))
+
+
+
+
+
 ## [0.9.7](https://gitee.com/newgateway/vtj/compare/create-vtj@0.9.6...create-vtj@0.9.7) (2025-01-13)
 
 
