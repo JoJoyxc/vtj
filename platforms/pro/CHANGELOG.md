@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.20](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.19...@vtj/pro@0.9.20) (2025-01-14)
+
+
+### Bug Fixes
+
+* 🐛 engine pageBasePath ([c516c01](https://gitee.com/newgateway/vtj/commits/c516c01dd9bc97681250db80c80694baad837e9e))
+
+
+
+
+
 ## [0.9.19](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.9.18...@vtj/pro@0.9.19) (2025-01-14)
 
 **Note:** Version bump only for package @vtj/pro
