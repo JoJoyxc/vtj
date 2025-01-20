@@ -27,6 +27,21 @@ const materials = {
     entry: 'src/vant/index.ts',
     library: 'VantMaterial',
     outDir: 'dist/assets/vant'
+  },
+  uniApp: {
+    entry: 'src/uni-app/index.ts',
+    library: 'UniApp',
+    outDir: 'dist/deps/uni-app'
+  },
+  uniH5: {
+    entry: 'src/uni-h5/index.ts',
+    library: 'UniH5',
+    outDir: 'dist/deps/uni-h5'
+  },
+  uniH5C: {
+    entry: 'src/uni-h5/components/index.ts',
+    library: 'UniH5Material',
+    outDir: 'dist/assets/uni-h5'
   }
 };
 
@@ -41,7 +56,13 @@ function createConfig(name: string) {
     version: true,
     formats: ['umd'],
     buildTarget: 'es2015',
-    external: ['vue', 'vue-router', '@vtj/base', '@vtj/core']
+    external: ['vue', 'vue-router', '@vtj/base', '@vtj/core'],
+    externalGlobals: {
+      vue: 'Vue',
+      'vue-router': 'VueRouter',
+      '@vtj/base': 'VtjBase',
+      '@vtj/core': 'VtjCore'
+    }
   });
 }
 
