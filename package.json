@@ -56,6 +56,8 @@
     "designer:build": "cd packages/designer && npm run build",
     "renderer:test": "cd packages/renderer && npm run vitest",
     "renderer:build": "cd packages/renderer && npm run build",
+    "uni:test": "cd packages/uni && npm run vitest",
+    "uni:build": "cd packages/uni && npm run build",
     "local:test": "cd packages/local && npm run vitest",
     "local:build": "cd packages/local && npm run build",
     "materials:test": "cd packages/materials && npm run vitest",

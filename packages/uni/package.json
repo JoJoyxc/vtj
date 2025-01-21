@@ -1,0 +1,45 @@
+{
+  "name": "@vtj/uni",
+  "private": false,
+  "version": "0.9.22",
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {
+    "build": "vue-tsc && vite build",
+    "test": "vitest run",
+    "vitest": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@vtj/core": "workspace:~",
+    "@vtj/icons": "workspace:~",
+    "@vtj/utils": "workspace:~",
+    "@dcloudio/uni-app": "3.0.0-4040520250103001",
+    "@dcloudio/uni-h5": "3.0.0-4040520250103001"
+  },
+  "devDependencies": {
+    "@vtj/cli": "workspace:~"
+  },
+  "exports": {
+    "./dist/style.css": "./dist/style.scss",
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./*": [
+      "./*"
+    ]
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "gitHead": "d03843144f07c2d98c1e0c72c8c6eb1117c01722",
+  "publishConfig": {
+    "access": "public"
+  }
+}
