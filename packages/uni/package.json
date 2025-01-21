@@ -14,8 +14,8 @@
     "@vtj/core": "workspace:~",
     "@vtj/icons": "workspace:~",
     "@vtj/utils": "workspace:~",
-    "@dcloudio/uni-app": "3.0.0-4040520250103001",
-    "@dcloudio/uni-h5": "3.0.0-4040520250103001"
+    "@dcloudio/uni-app": "3.0.0-4040520250104002",
+    "@dcloudio/uni-h5": "3.0.0-4040520250104002"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:~"
