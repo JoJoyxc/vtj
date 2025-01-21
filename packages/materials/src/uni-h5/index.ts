@@ -1,4 +1,4 @@
-import '@dcloudio/uni-h5/style/framework/base.css';
+import './style.scss';
 
 //@ts-ignore
 export * from '@dcloudio/uni-h5';

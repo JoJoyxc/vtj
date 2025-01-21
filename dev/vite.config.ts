@@ -1,5 +1,6 @@
 import { createViteConfig } from '@vtj/cli';
 import { createDevTools } from '@vtj/local';
+import { resolve } from 'path';
 import proxy from './proxy.config';
 const isExtension = !!process.env.Extension;
 
@@ -55,7 +56,13 @@ function creator() {
         devMode: true,
         packagesDir: '../packages'
       })
-    ]
+    ],
+    alias: {
+      vue: '@dcloudio/uni-h5-vue'
+      // vue: resolve(
+      //   '../node_modules/@dcloudio/uni-h5-vue/dist/vue.runtime.esm.js'
+      // )
+    }
     // vueDevTools: {
     //   componentInspector: false
     // }
