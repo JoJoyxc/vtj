@@ -38,6 +38,11 @@ const materials = {
     library: 'UniH5',
     outDir: 'dist/deps/uni-h5'
   },
+  uniH5Vue: {
+    entry: 'src/uni-h5-vue/index.ts',
+    library: 'Vue',
+    outDir: 'dist/deps/uni-h5-vue'
+  },
   uniH5C: {
     entry: 'src/uni-h5/components/index.ts',
     library: 'UniH5Material',

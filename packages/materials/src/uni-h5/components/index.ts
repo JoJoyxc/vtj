@@ -7,7 +7,7 @@ import { version } from '../../version';
 import { setPackageName } from '../../shared';
 import view from './view';
 
-const name = '@vtj/charts';
+const name = '@dcloudio/uni-h5';
 const components: MaterialDescription[] = [view].flat();
 
 const categories: MaterialCategory[] = [

@@ -4,7 +4,6 @@
 <script lang="ts" setup>
   import { ref, onMounted } from 'vue';
   import { setupUniApp } from '@vtj/uni';
-  import { plugin } from '@dcloudio/uni-h5';
   import UniRoot from '@/components/UniRoot.vue';
   import UniPage from '@/components/UniPage.vue';
 
