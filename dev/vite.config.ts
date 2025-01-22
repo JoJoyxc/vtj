@@ -3,6 +3,7 @@ import { createDevTools } from '@vtj/local';
 import { resolve } from 'path';
 import proxy from './proxy.config';
 const isExtension = !!process.env.Extension;
+const isUni = !!process.env.uni;
 
 function creator() {
   if (isExtension) {
@@ -32,9 +33,15 @@ function creator() {
       }
     };
   }
+
   return {
     proxy,
     host: '0.0.0.0',
+    pages: isUni
+      ? {
+          main: 'uni.html'
+        }
+      : undefined,
     https: false,
     legacy: false,
     elementPlus: false,
@@ -57,15 +64,11 @@ function creator() {
         packagesDir: '../packages'
       })
     ],
-    alias: {
-      vue: '@dcloudio/uni-h5-vue'
-      // vue: resolve(
-      //   '../node_modules/@dcloudio/uni-h5-vue/dist/vue.runtime.esm.js'
-      // )
-    }
-    // vueDevTools: {
-    //   componentInspector: false
-    // }
+    alias: isUni
+      ? {
+          vue: '@dcloudio/uni-h5-vue'
+        }
+      : undefined
   };
 }
 

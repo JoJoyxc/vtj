@@ -23,7 +23,9 @@
   "scripts": {
     "setup": "pnpm install --unsafe-perm --registry=https://registry.npmmirror.com",
     "dev": "cd dev && npm run dev",
+    "dev:uni": "cd dev && npm run dev:uni",
     "dev:build": "cd dev && npm run build",
+    "dev:build-uni": "cd dev && npm run build:uni",
     "dev:preview": "cd dev && npm run preview",
     "clean": "lerna clean -y && node scripts/clean.mjs",
     "reset": "pnpm run clean && pnpm run setup",

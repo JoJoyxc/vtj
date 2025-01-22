@@ -14,7 +14,8 @@
     "@vtj/designer": "workspace:~",
     "@vtj/local": "workspace:~",
     "@vtj/materials": "workspace:~",
-    "@vtj/renderer": "workspace:~"
+    "@vtj/renderer": "workspace:~",
+    "@vtj/uni": "workspace:~"
   },
   "devDependencies": {
     "@vtj/charts": "workspace:~",

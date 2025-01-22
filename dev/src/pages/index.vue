@@ -23,6 +23,4 @@
     app.mount(uniRef.value);
   });
   console.log('uniapp', app);
-
-  // console.log(injectHook);
 </script>
