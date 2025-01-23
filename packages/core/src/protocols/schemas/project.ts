@@ -64,6 +64,11 @@ export interface ProjectSchema {
   config?: ProjectConfig;
 
   /**
+   * UniApp项目配置
+   */
+  uniConfig: UniConfig;
+
+  /**
    * 标记
    */
   __VTJ_PROJECT__?: boolean;
@@ -97,4 +102,24 @@ export interface ProjectConfig {
    * logo
    */
   logo?: string;
+}
+
+/**
+ * UniApp 项目配置
+ */
+export interface UniConfig {
+  /**
+   * manifest.json 应用配置
+   */
+  manifest?: Record<string, any>;
+
+  /**
+   * 设置默认页面的窗口表现
+   */
+  globalStyle?: Record<string, any>;
+
+  /**
+   * 设置底部 tab 的表现
+   */
+  tabBar?: Record<string, any>;
 }
