@@ -7,38 +7,41 @@
   </View>
 </template>
 
-<script lang="ts">
-  // import { ref } from 'vue';
+<script lang="ts" setup>
+  import { ref } from 'vue';
+  import { onLoad } from '@dcloudio/uni-app';
+  //@ts-ignore
+  import { View, Image, Text } from '@dcloudio/uni-h5';
+  //@ts-ignore
+  import Logo from '@/assets/logo.png';
+  //@ts-ignore
+  const title = ref('Hello');
+
+  onLoad((opt) => {
+    console.log('onLoad', opt);
+  });
+
+  // import { defineComponent, ref } from '@dcloudio/uni-h5-vue';
   // import { onLoad } from '@dcloudio/uni-app';
   // import { View, Image, Text } from '@dcloudio/uni-h5';
   // import Logo from '@/assets/logo.png';
-  // const title = ref('Hello');
-
-  // onLoad((opt) => {
-  //   console.log('onLoad', opt);
-  // });
-
-  import { defineComponent, ref } from '@dcloudio/uni-h5-vue';
-  import { onLoad } from '@dcloudio/uni-app';
-  import { View, Image, Text } from '@dcloudio/uni-h5';
-  import Logo from '@/assets/logo.png';
-  export default {
-    components: {
-      View,
-      Image,
-      Text
-    },
-    setup() {
-      const title = ref('Hello');
-      return {
-        title,
-        Logo
-      };
-    },
-    onLoad(opt) {
-      console.log('onLoad', opt);
-    }
-  };
+  // export default {
+  //   components: {
+  //     View,
+  //     Image,
+  //     Text
+  //   },
+  //   setup() {
+  //     const title = ref('Hello');
+  //     return {
+  //       title,
+  //       Logo
+  //     };
+  //   },
+  //   onLoad(opt) {
+  //     console.log('onLoad', opt);
+  //   }
+  // };
 </script>
 
 <style>

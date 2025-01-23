@@ -37,11 +37,15 @@ function creator() {
   return {
     proxy,
     host: '0.0.0.0',
+    base: './',
+    emptyOutDir: isUni ? false : true,
     pages: isUni
       ? {
-          main: 'uni.html'
+          main: 'uni/index.html'
         }
-      : undefined,
+      : {
+          main: 'index.html'
+        },
     https: false,
     legacy: false,
     elementPlus: false,

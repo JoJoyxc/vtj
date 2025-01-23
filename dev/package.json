@@ -4,8 +4,8 @@
   "version": "0.9.25",
   "type": "module",
   "scripts": {
-    "dev": "cross-env ENV_TYPE=local vite",
-    "dev:uni": "cross-env uni=true vite",
+    "dev": "cross-env ENV_TYPE=local vite --force",
+    "dev:uni": "cross-env uni=true vite --force",
     "build": "pnpm run build:prod",
     "build:dev": "vue-tsc && cross-env ENV_TYPE=dev vite build",
     "build:uni": "vue-tsc && cross-env ENV_TYPE=dev uni=true vite build",

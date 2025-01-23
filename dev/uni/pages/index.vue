@@ -4,8 +4,8 @@
 <script lang="ts" setup>
   import { ref, onMounted } from 'vue';
   import { setupUniApp } from '@vtj/uni';
-  import UniRoot from '@/components/UniRoot.vue';
-  import UniPage from '@/components/UniPage.vue';
+  import UniRoot from '../components/UniRoot.vue';
+  import UniPage from '../components/UniPage.vue';
 
   const uniRef = ref();
   const app = setupUniApp({

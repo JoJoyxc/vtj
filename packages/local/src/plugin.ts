@@ -172,7 +172,7 @@ const aliasPlugin = function (options: DevToolsOptions): Plugin {
               ),
               '@vtj/uni/dist/style.css': join(
                 packagesDir,
-                'uni/src/style/index.scss'
+                'uni/src/index.scss'
               ),
               '@vtj/base': join(packagesDir, 'base/src'),
               '@vtj/utils': join(packagesDir, 'utils/src/index.ts'),

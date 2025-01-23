@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+  //@ts-ignore
   import { onLaunch, onShow } from '@dcloudio/uni-app';
 
   onLaunch(() => {
