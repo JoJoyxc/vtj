@@ -1,25 +1,17 @@
 import { createApp } from 'vue';
 //@ts-ignore
 import { plugin, setupApp } from '@dcloudio/uni-h5';
+import type { SetupUniAppOptions } from '../types';
 import {
   injectUniConfig,
   injectUniGlobal,
   injectUniRoutes,
-  injectUniFeatures,
-  type UniRoute
+  injectUniFeatures
 } from '../injects';
-
-export interface SetupUniAppOptions {
-  App: any;
-  routes: UniRoute[];
-  manifest?: Record<string, any>;
-  globalStyle?: Record<string, any>;
-  tabBar?: Record<string, any>;
-}
 
 export function setupUniApp(options: SetupUniAppOptions) {
   const { App, routes } = options;
-  injectUniFeatures();
+  injectUniFeatures(options);
   injectUniConfig();
   injectUniGlobal();
   injectUniRoutes(routes);

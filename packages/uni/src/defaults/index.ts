@@ -1,3 +1,3 @@
 import MANIFEST_JSON from './manifest.json';
-import PAGE_JSON from './pages.json';
-export { MANIFEST_JSON, PAGE_JSON };
+import PAGES_JSON from './pages.json';
+export { MANIFEST_JSON, PAGES_JSON };

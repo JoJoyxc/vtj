@@ -1,13 +1,16 @@
+import type { SetupUniAppOptions } from '../types';
 export function injectUniFeatures(
-  _options: Record<string, any> = {},
+  options: SetupUniAppOptions,
   global: any = window
 ) {
   // todo: _options
 
+  const { routes = [], routerMode = 'hash', tabBar } = options;
+
   const features = {
     // vue
     __VUE_OPTIONS_API__: true, // enable/disable Options API support, default: true
-    __VUE_PROD_DEVTOOLS__: true, // enable/disable devtools support in production, default: false
+    __VUE_PROD_DEVTOOLS__: false, // enable/disable devtools support in production, default: false
     __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
     // uni
     __UNI_FEATURE_WX__: false, // 是否启用小程序的组件实例 API，如：selectComponent 等（uni-core/src/service/plugin/appConfig）
@@ -24,10 +27,10 @@ export function injectUniFeatures(
     __UNI_FEATURE_UNI_CLOUD__: false, // 是否启用uniCloud
     __UNI_FEATURE_I18N_LOCALE__: false, // 是否启用i18n
     __UNI_FEATURE_NVUE__: false, // 是否启用nvue
-    __UNI_FEATURE_ROUTER_MODE__: 'hash', // 路由模式
-    __UNI_FEATURE_PAGES__: true, // 是否多页面
-    __UNI_FEATURE_TABBAR__: false, // 是否包含tabBar
-    __UNI_FEATURE_TABBAR_MIDBUTTON__: false, // 是否包含midButton
+    __UNI_FEATURE_ROUTER_MODE__: routerMode, // 路由模式
+    __UNI_FEATURE_PAGES__: routes.length > 1, // 是否多页面
+    __UNI_FEATURE_TABBAR__: !!tabBar, // 是否包含tabBar
+    __UNI_FEATURE_TABBAR_MIDBUTTON__: !!tabBar?.midButton, // 是否包含midButton
     __UNI_FEATURE_TOPWINDOW__: false, // 是否包含topWindow
     __UNI_FEATURE_LEFTWINDOW__: false, // 是否包含leftWindow
     __UNI_FEATURE_RIGHTWINDOW__: false, // 是否包含rightWindow

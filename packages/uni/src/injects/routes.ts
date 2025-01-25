@@ -3,17 +3,12 @@ import {
   openBlock,
   createBlock,
   createVNode,
-  withCtx,
-  type DefineComponent
+  withCtx
 } from 'vue';
 //@ts-ignore
 import { PageComponent, setupPage, getApp } from '@dcloudio/uni-h5';
 
-export interface UniRoute {
-  path: string;
-  component: DefineComponent | (() => Promise<DefineComponent>);
-  meta?: Record<string, any>;
-}
+import type { UniRoute } from '../types';
 
 function createPageComponent(loader: any) {
   return {
