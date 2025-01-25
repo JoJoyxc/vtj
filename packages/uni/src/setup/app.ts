@@ -5,8 +5,9 @@ import {
   injectUniConfig,
   injectUniGlobal,
   injectUniRoutes,
+  injectUniFeatures,
   type UniRoute
-} from './injects';
+} from '../injects';
 
 export interface SetupUniAppOptions {
   App: any;
@@ -18,6 +19,7 @@ export interface SetupUniAppOptions {
 
 export function setupUniApp(options: SetupUniAppOptions) {
   const { App, routes } = options;
+  injectUniFeatures();
   injectUniConfig();
   injectUniGlobal();
   injectUniRoutes(routes);

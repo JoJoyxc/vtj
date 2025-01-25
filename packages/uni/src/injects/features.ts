@@ -1,4 +1,4 @@
-export function initUniFeatures(
+export function injectUniFeatures(
   _options: Record<string, any> = {},
   global: any = window
 ) {
@@ -25,7 +25,7 @@ export function initUniFeatures(
     __UNI_FEATURE_I18N_LOCALE__: false, // 是否启用i18n
     __UNI_FEATURE_NVUE__: false, // 是否启用nvue
     __UNI_FEATURE_ROUTER_MODE__: 'hash', // 路由模式
-    __UNI_FEATURE_PAGES__: false, // 是否多页面
+    __UNI_FEATURE_PAGES__: true, // 是否多页面
     __UNI_FEATURE_TABBAR__: false, // 是否包含tabBar
     __UNI_FEATURE_TABBAR_MIDBUTTON__: false, // 是否包含midButton
     __UNI_FEATURE_TOPWINDOW__: false, // 是否包含topWindow

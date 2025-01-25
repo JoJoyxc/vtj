@@ -5,8 +5,8 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "build": "vue-tsc && vite build && npm run build:feat",
-    "build:feat": "vue-tsc && cross-env BUILD_TYPE=feat vite build",
+    "build": "vue-tsc && vite build && npm run build:umd",
+    "build:umd": "cross-env UMD=true vite build",
     "test": "vitest run",
     "vitest": "vitest",
     "coverage": "vitest run --coverage"
@@ -24,11 +24,6 @@
   },
   "exports": {
     "./dist/style.css": "./dist/style.scss",
-    "./features": {
-      "import": "./dist/features.mjs",
-      "require": "./dist/features.mjs",
-      "types": "./types/features.d.ts"
-    },
     ".": {
       "types": "./types/index.d.ts",
       "import": "./dist/index.mjs",

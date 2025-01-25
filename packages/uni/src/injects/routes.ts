@@ -3,14 +3,15 @@ import {
   openBlock,
   createBlock,
   createVNode,
-  withCtx
+  withCtx,
+  type DefineComponent
 } from 'vue';
 //@ts-ignore
 import { PageComponent, setupPage, getApp } from '@dcloudio/uni-h5';
 
 export interface UniRoute {
   path: string;
-  component: any;
+  component: DefineComponent | (() => Promise<DefineComponent>);
   meta?: Record<string, any>;
 }
 
@@ -19,7 +20,7 @@ function createPageComponent(loader: any) {
     mpType: 'page',
     setup() {
       const app = getApp();
-      const query = (app && app.$route && app.$route.query) || {};
+      const query = app?.$route?.query || {};
       const component =
         typeof loader === 'function' ? defineAsyncComponent(loader) : loader;
 
@@ -41,28 +42,33 @@ function createPageComponent(loader: any) {
   };
 }
 
-function createPageMeta(meta: Record<string, any> = {}) {
+function createPageMeta(route: UniRoute, index: number) {
+  const { path, meta = {} } = route;
+
+  const isEntry = index === 0;
+  // todo
   return {
-    isQuit: true,
-    isEntry: true,
+    isQuit: isEntry,
+    isEntry: isEntry,
     navigationBar: {
       titleText: 'uni-app3',
       type: 'default',
       style: 'default'
     },
     isNVue: false,
-    route: 'pages/index/index',
+    route: path,
     ...meta
   };
 }
 
 export function injectUniRoutes(routes: UniRoute[], global: any = window) {
-  const uniRoutes = routes.map((item) => {
+  const uniRoutes = routes.map((item, index) => {
     const component = createPageComponent(item.component);
-    const meta = createPageMeta(item.meta);
+    const meta = createPageMeta(item, index);
+    const { path } = item;
     return {
-      path: item.path,
-      alias: item.path,
+      path,
+      alias: path,
       meta,
       component
     };

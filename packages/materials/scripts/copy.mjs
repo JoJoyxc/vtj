@@ -10,6 +10,7 @@ const files = [
   [packages + 'ui/dist/index.umd.js', 'deps/@vtj/ui/index.umd.js'],
   [packages + 'ui/dist/style.css', 'deps/@vtj/ui/style.css'],
   [packages + 'charts/dist/index.umd.js', 'deps/@vtj/charts/index.umd.js'],
+  [packages + 'uni/dist/index.umd.js', 'deps/@vtj/uni/index.umd.js'],
 
   [modules + 'vue/dist/vue.global.prod.js', 'deps/vue/vue.global.prod.js'],
   [modules + 'vue/dist/vue.global.js', 'deps/vue/vue.global.js'],

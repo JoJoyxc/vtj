@@ -1,9 +1,45 @@
-import { createApp } from 'vue';
-import { initUniFeatures } from '@vtj/uni/features';
-import '@vtj/uni/src/index.scss';
-import App from './pages/index.vue';
+import { setupUniApp, View, install } from '@vtj/uni';
+import { createRenderer, type BlockSchema } from '@vtj/pro';
+import App from './components/UniRoot.vue';
 
-initUniFeatures();
-const app = createApp(App);
+const dsl: BlockSchema = {
+  name: 'UniPageDemo',
+  nodes: [
+    {
+      name: 'View',
+      children: 'ViewText'
+    }
+  ],
+  lifeCycles: {
+    onLoad: {
+      type: 'JSFunction',
+      value: `
+      (opt)=>{
+      console.log('onLoad app',opt)
+      }
+        `
+    },
+    onShow: {
+      type: 'JSFunction',
+      value: `
+      ()=>{
+      console.log('onShow app')
+      }
+        `
+    }
+  }
+};
 
-app.mount('#app');
+const { renderer } = createRenderer({ dsl, components: { View } });
+
+const app = setupUniApp({
+  App,
+  routes: [
+    {
+      path: '/',
+      component: renderer
+    }
+  ]
+});
+app.use(install);
+app.mount(document.body);
