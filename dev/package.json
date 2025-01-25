@@ -23,6 +23,8 @@
     "@vtj/icons": "workspace:~",
     "@vtj/materials": "workspace:~",
     "@vtj/pro": "workspace:~",
+    "@vtj/renderer": "workspace:~",
+    "@vtj/core": "workspace:~",
     "@vtj/ui": "workspace:~",
     "@vtj/utils": "workspace:~",
     "@vtj/web": "workspace:~",

@@ -1,5 +1,6 @@
 import { setupUniApp, View, install } from '@vtj/uni';
-import { createRenderer, type BlockSchema } from '@vtj/pro';
+import { createRenderer } from '@vtj/renderer';
+import { type BlockSchema } from '@vtj/core';
 import App from './components/UniRoot.vue';
 
 const dsl: BlockSchema = {
@@ -7,7 +8,15 @@ const dsl: BlockSchema = {
   nodes: [
     {
       name: 'View',
-      children: 'ViewText'
+      children: [
+        {
+          name: 'Button',
+          props: {
+            type: 'primary'
+          },
+          children: 'ButtonText'
+        }
+      ]
     }
   ],
   lifeCycles: {

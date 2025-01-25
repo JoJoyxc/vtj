@@ -30,7 +30,10 @@ import {
   Video,
   Map,
   Canvas,
-  WebView
+  WebView,
+  PickerViewColumn,
+  ResizeSensor,
+  SwiperItem
   //@ts-ignore
 } from '@dcloudio/uni-h5';
 
@@ -67,7 +70,10 @@ const components = {
   Video,
   Map,
   Canvas,
-  WebView
+  WebView,
+  PickerViewColumn,
+  ResizeSensor,
+  SwiperItem
 };
 
 export { View, ScrollView };
