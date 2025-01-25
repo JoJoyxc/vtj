@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 //@ts-ignore
 import { plugin, setupApp } from '@dcloudio/uni-h5';
 import type { SetupUniAppOptions } from '../types';
+import { mergeOptions } from '../utils';
 import {
   injectUniConfig,
   injectUniGlobal,
@@ -10,8 +11,9 @@ import {
 } from '../injects';
 
 export function setupUniApp(options: SetupUniAppOptions) {
-  const { App, routes } = options;
-  injectUniFeatures(options);
+  const opts = mergeOptions(options);
+  const { App, routes } = opts;
+  injectUniFeatures(opts);
   injectUniConfig();
   injectUniGlobal();
   injectUniRoutes(routes);

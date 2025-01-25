@@ -14,7 +14,7 @@ export interface SetupUniAppOptions {
   manifest?: Record<string, any>;
   globalStyle?: Record<string, any>;
   tabBar?: Record<string, any>;
-  routerMode?: RouterMode;
-  base?: string;
-  routerBase?: string;
+  // routerMode?: RouterMode;
+  // base?: string;
+  // routerBase?: string;
 }
