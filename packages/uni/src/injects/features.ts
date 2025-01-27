@@ -1,56 +1,42 @@
-import type { SetupUniAppOptions } from '../types';
+import type { SetupUniAppOptions, ManifestJson, PagesJson } from '../types';
 
-function getRouterMode(manifest: Record<string, any>) {
-  const webManifest = manifest.web || manifest.h5;
-  let routerMode = 'hash';
-  if (
-    webManifest &&
-    webManifest.router &&
-    webManifest.router.mode === 'history'
-  ) {
-    routerMode = '"history"';
-  }
-  return routerMode;
+function getRouterMode(manifest: ManifestJson) {
+  const webManifest = manifest.h5;
+  return webManifest?.router?.mode || 'hash';
 }
 
-function getWindows(manifest: Record<string, any>) {
+function getWindows(pagesJson: PagesJson) {
   return {
-    topWindow: !!manifest.topWindow?.path,
-    leftWindow: !!manifest.leftWindow?.path,
-    rightWindow: !!manifest.rightWindow?.path
+    topWindow: !!pagesJson.topWindow?.path,
+    leftWindow: !!pagesJson.leftWindow?.path,
+    rightWindow: !!pagesJson.rightWindow?.path
   };
 }
 
 function getPullDownRefresh(options: SetupUniAppOptions) {
-  const { routes = [], globalStyle = {} } = options;
-  if (globalStyle.enablePullDownRefresh) {
+  const { pagesJson = {} } = options;
+  const { globalStyle, pages = [] } = pagesJson;
+  if (globalStyle?.enablePullDownRefresh) {
     return true;
   }
-  if (routes.find((page) => !!page.meta?.styleenablePullDownRefresh)) {
+  if (pages.find((page) => !!page.style?.enablePullDownRefresh)) {
     return true;
   }
   return false;
 }
 
 function isNavigationCustom(options: SetupUniAppOptions) {
-  const { routes = [], globalStyle = {} } = options;
+  const { pagesJson = {} } = options;
+  const { globalStyle, pages = [] } = pagesJson;
   let isCustom = false;
-  if (globalStyle.navigationBar.style === 'custom') {
+  if (globalStyle?.navigationStyle === 'custom') {
     isCustom = true; // 全局custom
-    if (
-      routes.find(
-        (page) => page.meta?.style?.navigationBar?.style === 'default'
-      )
-    ) {
+    if (pages.find((page) => page.style?.navigationStyle === 'default')) {
       isCustom = false;
     }
   } else {
     // 所有页面均custom
-    if (
-      routes.every(
-        (page) => page.meta?.style?.navigationBar?.style === 'custom'
-      )
-    ) {
+    if (pages.every((page) => page.style?.navigationStyle === 'custom')) {
       isCustom = true;
     }
   }
@@ -65,28 +51,28 @@ function getNavigationBar(options: SetupUniAppOptions) {
     navigationBarSearchInput: false,
     navigationBarTransparent: false
   };
-  const { routes = [], globalStyle = {} } = options;
+  const { pagesJson = {} } = options;
+  const { globalStyle, pages = [] } = pagesJson;
   if (isCustom) {
     return features;
   }
-  if (
-    !routes.find((page) => !!page.meta?.style?.navigationBar?.buttons?.length)
-  ) {
-    features.navigationBarButtons = false;
+  features.navigationBar = true;
+  const titleNView = globalStyle?.h5?.titleNView;
+
+  if (pages.find((page) => !!page.style?.h5?.titleNView?.buttons.length)) {
+    features.navigationBarButtons = true;
   }
   if (
-    !globalStyle.navigationBar?.searchInput &&
-    !routes.find((page) => !!page.meta?.style?.navigationBar?.searchInput)
+    titleNView?.searchInput ||
+    pages.find((page) => !!page.style?.h5?.titleNView?.searchInput)
   ) {
-    features.navigationBarSearchInput = false;
+    features.navigationBarSearchInput = true;
   }
   if (
-    globalStyle.navigationBar?.type !== 'transparent' &&
-    !routes.find(
-      (page) => page.meta?.style?.navigationBar?.type === 'transparent'
-    )
+    titleNView?.type === 'transparent' ||
+    pages.find((page) => page.style?.h5?.titleNView?.type === 'transparent')
   ) {
-    features.navigationBarTransparent = false;
+    features.navigationBarTransparent = true;
   }
   return features;
 }
@@ -95,8 +81,8 @@ export function injectUniFeatures(
   options: SetupUniAppOptions,
   global: any = window
 ) {
-  const { routes = [], tabBar, manifest = {} } = options;
-  const { topWindow, leftWindow, rightWindow } = getWindows(manifest);
+  const { pagesJson = {}, manifestJson = {} } = options;
+  const { topWindow, leftWindow, rightWindow } = getWindows(pagesJson);
   const {
     navigationBar,
     navigationBarButtons,
@@ -124,10 +110,10 @@ export function injectUniFeatures(
     __UNI_FEATURE_UNI_CLOUD__: false, // 是否启用uniCloud
     __UNI_FEATURE_I18N_LOCALE__: false, // 是否启用i18n
     __UNI_FEATURE_NVUE__: false, // 是否启用nvue
-    __UNI_FEATURE_ROUTER_MODE__: getRouterMode(manifest), // 路由模式
-    __UNI_FEATURE_PAGES__: !!routes.length, // 是否多页面
-    __UNI_FEATURE_TABBAR__: !!tabBar?.list?.length, // 是否包含tabBar
-    __UNI_FEATURE_TABBAR_MIDBUTTON__: !!tabBar?.midButton, // 是否包含midButton
+    __UNI_FEATURE_ROUTER_MODE__: getRouterMode(manifestJson), // 路由模式
+    __UNI_FEATURE_PAGES__: !!pagesJson.pages?.length, // 是否多页面
+    __UNI_FEATURE_TABBAR__: !!pagesJson.tabBar?.list?.length, // 是否包含tabBar
+    __UNI_FEATURE_TABBAR_MIDBUTTON__: !!pagesJson.tabBar?.midButton, // 是否包含midButton
     __UNI_FEATURE_TOPWINDOW__: topWindow, // 是否包含topWindow
     __UNI_FEATURE_LEFTWINDOW__: leftWindow, // 是否包含leftWindow
     __UNI_FEATURE_RIGHTWINDOW__: rightWindow, // 是否包含rightWindow

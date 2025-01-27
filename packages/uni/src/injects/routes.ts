@@ -10,6 +10,8 @@ import { PageComponent, setupPage, getApp } from '@dcloudio/uni-h5';
 
 import type { UniRoute } from '../types';
 
+import { getNavigationBar } from '../utils';
+
 function createPageComponent(loader: any) {
   return {
     mpType: 'page',
@@ -38,7 +40,7 @@ function createPageComponent(loader: any) {
 }
 
 function createPageMeta(route: UniRoute, index: number) {
-  const { path, meta = {} } = route;
+  const { path, style = {}, meta = {} } = route;
 
   const isEntry = index === 0;
   // todo
@@ -46,9 +48,8 @@ function createPageMeta(route: UniRoute, index: number) {
     isQuit: isEntry,
     isEntry: isEntry,
     navigationBar: {
-      titleText: 'uni-app3',
       type: 'default',
-      style: 'default'
+      ...getNavigationBar(style)
     },
     isNVue: false,
     route: path,

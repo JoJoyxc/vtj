@@ -14,7 +14,7 @@ export function setupUniApp(options: SetupUniAppOptions) {
   const opts = mergeOptions(options);
   const { App, routes } = opts;
   injectUniFeatures(opts);
-  injectUniConfig();
+  injectUniConfig(opts);
   injectUniGlobal();
   injectUniRoutes(routes);
   const app = createApp(setupApp(App));
