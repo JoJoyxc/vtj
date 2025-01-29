@@ -18,7 +18,8 @@ export default createViteConfig({
     '@vtj/utils',
     '@vtj/icons',
     '@dcloudio/uni-app',
-    '@dcloudio/uni-h5'
+    '@dcloudio/uni-h5',
+    '@dcloudio/uni-app-vue'
   ],
   externalGlobals: isUmd
     ? {

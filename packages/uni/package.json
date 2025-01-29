@@ -5,7 +5,8 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "build": "vue-tsc && vite build && npm run build:umd",
+    "version": "node ./scripts/compilerVersion.mjs",
+    "build": "npm run version && vue-tsc && vite build && npm run build:umd",
     "build:umd": "cross-env UMD=true vite build",
     "test": "vitest run",
     "vitest": "vitest",
