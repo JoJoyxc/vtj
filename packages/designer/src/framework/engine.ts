@@ -1,6 +1,5 @@
 import {
   createApp,
-  onMounted,
   onUnmounted,
   unref,
   inject,
@@ -49,7 +48,7 @@ import {
 } from '@vtj/renderer';
 import { logger } from '@vtj/utils';
 import { SkeletonWrapper, type SkeletonWrapperInstance } from '../wrappers';
-import { depsManager } from '../managers';
+import { depsManager, widgetManager } from '../managers';
 import { Simulator } from './simulator';
 import { Assets } from './assets';
 import { message } from '../utils';
@@ -125,8 +124,7 @@ export class Engine extends Base {
     });
 
     this.bindEvents();
-    this.init(project as ProjectSchema);
-    onMounted(this.render.bind(this));
+    this.init(project as ProjectSchema).then(this.render.bind(this));
     onUnmounted(this.dispose.bind(this));
   }
   private async init(project: ProjectSchema) {
@@ -135,6 +133,12 @@ export class Engine extends Base {
       return null;
     });
     if (dsl) {
+      const platform = dsl.platform || 'web';
+      if (platform === 'uniapp') {
+        widgetManager.set('UniConfig', {
+          invisible: false
+        });
+      }
       dsl.dependencies = depsManager.merge(
         dsl.dependencies || [],
         dsl.platform

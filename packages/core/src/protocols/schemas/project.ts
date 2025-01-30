@@ -111,15 +111,10 @@ export interface UniConfig {
   /**
    * manifest.json 应用配置
    */
-  manifest?: Record<string, any>;
+  manifestJson?: Record<string, any>;
 
   /**
-   * 设置默认页面的窗口表现
+   * pages.json 页面配置
    */
-  globalStyle?: Record<string, any>;
-
-  /**
-   * 设置底部 tab 的表现
-   */
-  tabBar?: Record<string, any>;
+  pagesJson?: Record<string, any>;
 }

@@ -50,7 +50,7 @@
     "access": "public"
   },
   "vtj": {
-    "platform": "web",
+    "platform": "uniapp",
     "adapters": {
       "remote": "https://lcdp.vtj.pro",
       "access": {

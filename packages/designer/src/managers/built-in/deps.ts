@@ -9,7 +9,19 @@ export const builtInDeps: Dependencie[] = [
     assetsLibrary: BUILT_IN_VUE,
     required: true,
     official: true,
-    enabled: true
+    enabled: true,
+    platform: ['web', 'h5']
+  },
+  {
+    package: 'vue',
+    version: 'latest',
+    library: 'Vue',
+    urls: ['@vtj/materials/deps/uni-h5-vue/index.umd.js'],
+    assetsLibrary: BUILT_IN_VUE,
+    required: true,
+    official: true,
+    enabled: true,
+    platform: 'uniapp'
   },
   {
     package: 'vue-router',
@@ -20,6 +32,31 @@ export const builtInDeps: Dependencie[] = [
     required: true,
     official: true,
     enabled: true
+  },
+  {
+    package: 'uni-app',
+    version: 'latest',
+    library: 'UniApp',
+    urls: ['@vtj/materials/deps/uni-app/index.umd.js'],
+    required: true,
+    official: true,
+    enabled: true,
+    platform: 'uniapp'
+  },
+  {
+    package: 'uni-h5',
+    version: 'latest',
+    library: 'UniH5',
+    urls: [
+      '@vtj/materials/deps/uni-h5/style.css',
+      '@vtj/materials/deps/uni-h5/index.umd.js'
+    ],
+    required: true,
+    official: true,
+    enabled: true,
+    assetsUrl: '@vtj/materials/assets/uni-h5/index.umd.js',
+    assetsLibrary: 'UniH5Material',
+    platform: 'uniapp'
   },
   {
     package: '@vtj/utils',

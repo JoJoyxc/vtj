@@ -22,7 +22,7 @@ const material: Material = {
   version,
   label: 'UniApp',
   library: 'UniH5Material',
-  order: 7,
+  order: 4,
   categories,
   components: setPackageName(components, name)
 };
