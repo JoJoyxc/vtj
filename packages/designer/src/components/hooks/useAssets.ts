@@ -1,13 +1,36 @@
 import { computed, watchEffect, reactive, ref, watch } from 'vue';
+import { BUILT_IN_NAME } from '@vtj/core';
 import { useEngine, type AssetGroup } from '../../framework';
 
 const getDefaultModelValue = (categories: any[] = []) => {
   return categories.map((n) => n.name);
 };
 
+const mergeUniappToBuiltIn = (groups: AssetGroup[]) => {
+  const builtIn = groups.find((n) => n.name === BUILT_IN_NAME);
+  if (builtIn) {
+    builtIn.children =
+      builtIn.children?.filter((n) => n.name === 'elements') || [];
+    builtIn.names = [];
+    builtIn.count = builtIn.children?.[0].count || 0;
+    // const uniapp = groups.find((n) => n.name === '@dcloudio/uni-h5');
+    // if (uniapp) {
+    //   builtIn.children = [...(uniapp.children || []), ...builtIn.children];
+    //   builtIn.count += uniapp.count;
+    //   builtIn.names = uniapp.names || [];
+    //   // groups.splice(groups.indexOf(uniapp), 1);
+    // }
+    // console.log('uniapp', groups);
+  }
+};
+
 export function useAssets() {
   const engine = useEngine();
   const { components, groups, componentMap } = engine.assets;
+  const { platform = 'web' } = engine.project.value || {};
+  if (platform === 'uniapp') {
+    mergeUniappToBuiltIn(groups.value);
+  }
 
   const model = reactive({} as Record<string, any>);
 

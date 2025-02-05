@@ -21,10 +21,8 @@ export default createViteConfig({
     '@dcloudio/uni-h5',
     '@dcloudio/uni-app-vue'
   ],
-  externalGlobals: isUmd
-    ? {
-        vue: 'Vue',
-        '@dcloudio/uni-h5': 'UniH5'
-      }
-    : undefined
+  externalGlobals: {
+    vue: 'Vue',
+    '@dcloudio/uni-h5': 'UniH5'
+  }
 });

@@ -6,14 +6,19 @@ import type {
 import { version } from '../../version';
 import { setPackageName } from '../../shared';
 import view from './view';
+import button from './button';
 
 const name = '@dcloudio/uni-h5';
-const components: MaterialDescription[] = [view].flat();
+const components: MaterialDescription[] = [view, button].flat();
 
 const categories: MaterialCategory[] = [
   {
     id: 'container',
     category: '视图组件'
+  },
+  {
+    id: 'form',
+    category: '表单'
   }
 ];
 

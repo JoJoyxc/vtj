@@ -20,6 +20,7 @@ import {
 } from '@vtj/renderer';
 import { notify } from '../utils';
 import { type Designer } from './designer';
+// import { injectUniFeatures } from '@vtj/uni';
 
 export class Renderer {
   public app: App | null = null;
@@ -34,6 +35,7 @@ export class Renderer {
     public provider: Provider,
     public designer: Designer | null = null
   ) {
+    // injectUniFeatures({} as any, this.env.window);
     this.nodeChange = this.__onNodeChange.bind(this);
     this.blockChange = this.__onBlockChange.bind(this);
   }
@@ -43,6 +45,7 @@ export class Renderer {
     (app as any).__vtj_env__ = this.env;
 
     const { library, globals, VueRouter, locales } = this.env;
+
     if (VueRouter) {
       const router = VueRouter.createRouter({
         history: VueRouter.createWebHashHistory(),

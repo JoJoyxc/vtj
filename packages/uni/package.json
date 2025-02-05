@@ -16,14 +16,14 @@
     "@vtj/core": "workspace:~",
     "@vtj/icons": "workspace:~",
     "@vtj/utils": "workspace:~",
-    "@dcloudio/uni-app-vue": "3.0.0-4040520250104002",
-    "@dcloudio/uni-app": "3.0.0-4040520250104002",
-    "@dcloudio/uni-h5": "3.0.0-4040520250104002",
-    "@dcloudio/uni-components": "3.0.0-4040520250104002",
-    "@dcloudio/vite-plugin-uni": "3.0.0-4040520250104002"
+    "@dcloudio/uni-h5": "3.0.0-4040520250104002"
   },
   "devDependencies": {
-    "@vtj/cli": "workspace:~"
+    "@vtj/cli": "workspace:~",
+    "@dcloudio/uni-components": "3.0.0-4040520250104002",
+    "@dcloudio/vite-plugin-uni": "3.0.0-4040520250104002",
+    "@dcloudio/uni-app-vue": "3.0.0-4040520250104002",
+    "@dcloudio/uni-app": "3.0.0-4040520250104002"
   },
   "exports": {
     "./dist/style.css": "./dist/style.scss",

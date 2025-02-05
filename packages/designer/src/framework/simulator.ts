@@ -5,6 +5,7 @@ import {
   type ApiSchema,
   type MetaSchema,
   type ProjectConfig,
+  type PlatformType,
   Base,
   BUILT_IN_NAME,
   BUILT_IN_LIBRARAY_MAP
@@ -102,33 +103,11 @@ export class Simulator extends Base {
     );
   }
 
-  private setup(iframe: HTMLIFrameElement, deps: Dependencie[]) {
-    const cw = iframe.contentWindow;
-    if (!cw) {
-      logger.warn('Simulator contentWindow is null');
-      return;
-    }
-    cw.__simulator__ = this;
-    const doc = cw.document;
-    this.contentWindow = cw;
-    const {
-      scripts,
-      css,
-      materials,
-      libraryExports,
-      materialExports,
-      materialMapLibrary,
-      libraryLocaleMap
-    } = parseDeps(deps, this.materialPath, true);
-    doc.open();
-    doc.write(`
-     <!DOCTYPE html>
-     <html lang="zh-CN">
-       <head>
-       <meta charset="utf-8">
-       <meta name="viewport"
-             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,viewport-fit=cover"/>
-         <style>
+  private createGlobalCss(platform: PlatformType = 'web') {
+    return platform === 'uniapp'
+      ? ''
+      : `
+        <style>
           html,
           body,
           #app {
@@ -149,8 +128,51 @@ export class Simulator extends Base {
              background-color: var(--el-fill-color-light, #f5f7fa);
              padding: 0;
           }
+         </style>`;
+  }
+  private initUniFeatures(platform: PlatformType = 'web') {
+    return platform === 'uniapp'
+      ? ''
+      : `
+    <script>
+      window.__UNI_FEATURE_UNI_CLOUD__ = false;
+      window.__UNI_FEATURE_WX__ = false;
+      window.__UNI_FEATURE_WXS__ = false;
+      window.__UNI_FEATURE_PAGES__ = false;
+    </script>
+    `;
+  }
 
-         </style>
+  private setup(iframe: HTMLIFrameElement, deps: Dependencie[]) {
+    const cw = iframe.contentWindow;
+    if (!cw) {
+      logger.warn('Simulator contentWindow is null');
+      return;
+    }
+    cw.__simulator__ = this;
+    const doc = cw.document;
+    this.contentWindow = cw;
+    const {
+      scripts,
+      css,
+      materials,
+      libraryExports,
+      materialExports,
+      materialMapLibrary,
+      libraryLocaleMap
+    } = parseDeps(deps, this.materialPath, true);
+    const { platform = 'web' } = this.engine.project.value || {};
+    console.log('platform', platform);
+    doc.open();
+    doc.write(`
+     <!DOCTYPE html>
+     <html lang="zh-CN">
+       <head>
+       <meta charset="utf-8">
+       <meta name="viewport"
+             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,viewport-fit=cover"/>
+       ${this.initUniFeatures()}
+       ${this.createGlobalCss(platform)}
        ${createAssetsCss(css)}
        </head>
        <body> 
