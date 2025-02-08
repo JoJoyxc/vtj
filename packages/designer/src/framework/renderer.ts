@@ -7,6 +7,8 @@ import {
   type Service,
   type PageFile,
   type BlockFile,
+  type ProjectModel,
+  type PlatformType,
   emitter,
   EVENT_BLOCK_CHANGE,
   EVENT_NODE_CHANGE
@@ -20,7 +22,7 @@ import {
 } from '@vtj/renderer';
 import { notify } from '../utils';
 import { type Designer } from './designer';
-// import { injectUniFeatures } from '@vtj/uni';
+import { setupUniApp } from '@vtj/uni';
 
 export class Renderer {
   public app: App | null = null;
@@ -33,20 +35,20 @@ export class Renderer {
     public env: SimulatorEnv,
     public service: Service,
     public provider: Provider,
+    public project: ProjectModel | null = null,
     public designer: Designer | null = null
   ) {
-    // injectUniFeatures({} as any, this.env.window);
     this.nodeChange = this.__onNodeChange.bind(this);
     this.blockChange = this.__onBlockChange.bind(this);
   }
 
-  private install(app: App) {
+  private install(app: App, platform: PlatformType) {
     // 记录环境，在扩展时可能需要用到
     (app as any).__vtj_env__ = this.env;
 
     const { library, globals, VueRouter, locales } = this.env;
 
-    if (VueRouter) {
+    if (VueRouter && platform !== 'uniapp') {
       const router = VueRouter.createRouter({
         history: VueRouter.createWebHashHistory(),
         routes: []
@@ -76,20 +78,72 @@ export class Renderer {
     });
   }
 
-  render(block: BlockModel, file?: PageFile | BlockFile | null) {
-    this.file = file;
-    const { window, container, library, Vue, components, apis } = this.env;
+  createUniApp(
+    platform: PlatformType,
+    file: PageFile | BlockFile,
+    renderer: any
+  ) {
+    const { window, Vue } = this.env;
+    const app = setupUniApp({
+      Vue,
+      UniH5: (window as any).UniH5,
+      window,
+      App: {
+        onLaunch() {
+          console.log('onLaunch');
+        }
+      },
+      // manifestJson,
+      // pagesJson,
+      routes: [
+        {
+          path: '/',
+          component: renderer,
+          style: {
+            navigationBarTitleText: file.title
+          }
+        }
+      ]
+    }) as App;
+
+    this.install(app, platform);
+    app.mount(window.document.body);
+    return app;
+  }
+
+  createApp(platform: PlatformType, file: PageFile | BlockFile, renderer: any) {
+    const { window, container, Vue } = this.env;
     const el = window.document.createElement('div');
     el.id = 'app';
-    if (file?.type === 'page') {
+    if (file.type === 'page') {
       el.classList.add('is-page');
     }
-    const isPure = (file as PageFile)?.pure;
+    const isPure = (file as PageFile).pure;
     if (isPure) {
       el.classList.add('is-pure');
     }
     container.appendChild(el);
 
+    const AppContainer = Vue.defineComponent({
+      render() {
+        return Vue.h(Vue.Suspense, [Vue.h(renderer)]);
+      }
+    });
+
+    const app = Vue.createApp(AppContainer) as App;
+    this.install(app, platform);
+    Object.assign(
+      app.config.globalProperties.$route.meta,
+      (file as PageFile).meta || {}
+    );
+    app.mount(el);
+    return app;
+  }
+
+  render(block: BlockModel, file?: PageFile | BlockFile | null) {
+    if (!file) return;
+    this.file = file;
+    const { window, library, Vue, components, apis } = this.env;
     this.dsl = Vue.reactive(block.toDsl()) as BlockSchema;
     const { renderer, context } = this.provider.createDslRenderer(this.dsl, {
       window,
@@ -99,21 +153,12 @@ export class Renderer {
       apis,
       libs: library
     });
-
-    const AppContainer = Vue.defineComponent({
-      render() {
-        return Vue.h(Vue.Suspense, [Vue.h(renderer)]);
-      }
-    });
-
-    this.app = Vue.createApp(AppContainer) as App;
-    this.install(this.app);
-    Object.assign(
-      this.app.config.globalProperties.$route.meta,
-      (file as PageFile)?.meta || {}
-    );
+    const { platform = 'web' } = this.project || {};
     try {
-      this.app.mount(el);
+      this.app =
+        platform === 'uniapp'
+          ? this.createUniApp(platform, file, renderer)
+          : this.createApp(platform, file, renderer);
     } catch (e: any) {
       notify(e.message || '未知错误', '运行时错误');
       console.error(e);
@@ -125,15 +170,18 @@ export class Renderer {
 
   dispose() {
     if (this.app) {
+      const { platform = 'web' } = this.project || {};
       this.app.unmount();
       const $route = this.app.config.globalProperties.$route;
       if ($route) {
         $route.meta = {};
       }
-      const container = this.app._container;
-      if (container && container.parentNode) {
-        container.parentNode.removeChild(container);
-        this.app._container = null;
+      if (platform !== 'uniapp') {
+        const container = this.app._container;
+        if (container && container.parentNode) {
+          container.parentNode.removeChild(container);
+          this.app._container = null;
+        }
       }
       this.app = null;
     }

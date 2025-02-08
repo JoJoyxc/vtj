@@ -1,15 +1,24 @@
-import {
-  UniServiceJSBridge,
-  UniViewJSBridge,
-  getApp,
-  uni,
-  getCurrentPages,
-  upx2px,
-  setupPage
-  //@ts-ignore
-} from '@dcloudio/uni-h5';
+// import {
+//   UniServiceJSBridge,
+//   UniViewJSBridge,
+//   getApp,
+//   uni,
+//   getCurrentPages,
+//   upx2px,
+//   setupPage
+//   //@ts-ignore
+// } from '@dcloudio/uni-h5';
 
-export function injectUniGlobal(global: any = window) {
+export function injectUniGlobal(UniH5: any, global: any = window) {
+  const {
+    UniServiceJSBridge,
+    UniViewJSBridge,
+    getApp,
+    uni,
+    getCurrentPages,
+    upx2px,
+    setupPage
+  } = UniH5;
   global.UniServiceJSBridge = UniServiceJSBridge;
   global.UniViewJSBridge = UniViewJSBridge;
   global.getApp = getApp;

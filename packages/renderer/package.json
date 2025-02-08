@@ -12,6 +12,7 @@
   "dependencies": {
     "@vtj/core": "workspace:~",
     "@vtj/utils": "workspace:~",
+    "@vtj/uni": "workspace:~",
     "mockjs": "~1.1.0"
   },
   "devDependencies": {

@@ -5,7 +5,9 @@ const desc: MaterialDescription = {
   label: '按钮',
   categoryId: 'form',
   props: [],
-  snippet: {}
+  snippet: {
+    children: 'Button'
+  }
 };
 
 export default desc;

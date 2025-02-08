@@ -31,7 +31,9 @@ const desc: MaterialDescription = {
       setters: 'NumberSetter'
     }
   ],
-  snippet: {}
+  snippet: {
+    children: '视图内容'
+  }
 };
 
 export default desc;

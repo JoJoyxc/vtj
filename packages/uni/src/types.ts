@@ -11,8 +11,11 @@ export interface UniRoute {
 export type RouterMode = 'hash' | 'history';
 
 export interface SetupUniAppOptions {
+  Vue: any;
   App: any;
-  routes: UniRoute[];
+  UniH5: any;
+  window?: any;
+  routes?: UniRoute[];
   manifestJson?: ManifestJson;
   pagesJson?: PagesJson;
 }

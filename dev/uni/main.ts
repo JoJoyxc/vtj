@@ -1,6 +1,10 @@
 import { setupUniApp, install } from '@vtj/uni';
 import { createRenderer } from '@vtj/renderer';
 import { type BlockSchema } from '@vtj/core';
+//@ts-ignore
+import * as Vue from '@dcloudio/uni-h5-vue';
+//@ts-ignore
+import * as UniH5 from '@dcloudio/uni-h5';
 import App from './components/UniRoot.vue';
 
 const manifestJson: any = {};
@@ -104,7 +108,9 @@ const { renderer: page2Renderer } = createRenderer({
 });
 
 const app = setupUniApp({
+  Vue,
   App,
+  UniH5,
   manifestJson,
   pagesJson,
   routes: [
@@ -124,5 +130,5 @@ const app = setupUniApp({
     }
   ]
 });
-app.use(install);
+app.use(install, UniH5);
 app.mount(document.body);

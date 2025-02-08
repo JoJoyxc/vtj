@@ -162,7 +162,6 @@ export class Simulator extends Base {
       libraryLocaleMap
     } = parseDeps(deps, this.materialPath, true);
     const { platform = 'web' } = this.engine.project.value || {};
-    console.log('platform', platform);
     doc.open();
     doc.write(`
      <!DOCTYPE html>
@@ -217,7 +216,13 @@ export class Simulator extends Base {
       libraryLocaleMap
     );
     this.devtools.init(cw, this.engine);
-    this.renderer = new Renderer(env, service, provider, this.designer.value);
+    this.renderer = new Renderer(
+      env,
+      service,
+      provider,
+      project.value,
+      this.designer.value
+    );
     if (current.value) {
       this.renderer.render(current.value, project.value?.currentFile);
       this.rendered.value = Symbol();

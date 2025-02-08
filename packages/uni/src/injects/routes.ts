@@ -1,18 +1,21 @@
-import {
-  defineAsyncComponent,
-  openBlock,
-  createBlock,
-  createVNode,
-  withCtx
-} from 'vue';
+// import {
+//   defineAsyncComponent,
+//   openBlock,
+//   createBlock,
+//   createVNode,
+//   withCtx
+// } from 'vue';
 //@ts-ignore
-import { PageComponent, setupPage, getApp } from '@dcloudio/uni-h5';
+// import { PageComponent, setupPage, getApp } from '@dcloudio/uni-h5';
 
 import type { UniRoute } from '../types';
 
 import { getNavigationBar } from '../utils';
 
-function createPageComponent(loader: any) {
+function createPageComponent(Vue: any, UniH5: any, loader: any) {
+  const { defineAsyncComponent, openBlock, createBlock, withCtx, createVNode } =
+    Vue;
+  const { PageComponent, setupPage, getApp } = UniH5;
   return {
     mpType: 'page',
     setup() {
@@ -57,9 +60,14 @@ function createPageMeta(route: UniRoute, index: number) {
   };
 }
 
-export function injectUniRoutes(routes: UniRoute[], global: any = window) {
+export function injectUniRoutes(
+  Vue: any,
+  UniH5: any,
+  routes: UniRoute[],
+  global: any = window
+) {
   const uniRoutes = routes.map((item, index) => {
-    const component = createPageComponent(item.component);
+    const component = createPageComponent(Vue, UniH5, item.component);
     const meta = createPageMeta(item, index);
     const { path } = item;
     return {
