@@ -66,7 +66,7 @@ export interface ProjectSchema {
   /**
    * UniApp项目配置
    */
-  uniConfig: UniConfig;
+  uniConfig?: UniConfig;
 
   /**
    * 标记

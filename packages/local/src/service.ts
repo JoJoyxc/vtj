@@ -21,6 +21,7 @@ import {
   type StaticRepositoryOptions
 } from './repository';
 import type { DevToolsOptions } from './plugin';
+import { getUniConfig } from './uni';
 
 let isInit = false;
 
@@ -80,6 +81,10 @@ export async function init(_body: any, opts: DevToolsOptions) {
     const blocks = (dsl.blocks || []).filter((n) => !n.preset);
     dsl.blocks = plugins.concat(blocks);
     Object.assign(dsl, { id, name, description, platform });
+
+    if (platform === 'uniapp') {
+      dsl.uniConfig = getUniConfig(dsl);
+    }
     if (!isInit) {
       isInit = true;
       repository.save(id, dsl);
@@ -95,6 +100,9 @@ export async function init(_body: any, opts: DevToolsOptions) {
       blocks: plugins
     });
     dsl = model.toDsl();
+    if (platform === 'uniapp') {
+      dsl.uniConfig = getUniConfig(dsl);
+    }
     repository.save(id, dsl);
     dsl.__BASE_PATH__ = opts.staticBase;
     return success(dsl);

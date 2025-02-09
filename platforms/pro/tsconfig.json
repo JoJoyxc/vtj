@@ -1,17 +1,13 @@
 {
   "extends": "./node_modules/@vtj/cli/config/tsconfig.web.json",
   "compilerOptions": {
+    "resolveJsonModule": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     }
   },
-  "exclude": [
-    "src/vite/*.ts",
-    ".vtj"
-  ],
+  "exclude": ["src/vite/*.ts", ".vtj"],
   "references": [
     {
       "path": "./tsconfig.node.json"
