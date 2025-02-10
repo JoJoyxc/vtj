@@ -263,6 +263,7 @@ const Field: MaterialDescription = {
     'end-validate'
   ],
   slots: [
+    'default',
     'label',
     'input',
     'left-icon',
