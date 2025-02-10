@@ -54,6 +54,8 @@
     "core:build": "cd packages/core && npm run build",
     "coder:test": "cd packages/coder && npm run vitest",
     "coder:build": "cd packages/coder && npm run build",
+    "parser:test": "cd packages/parser && npm run vitest",
+    "parser:build": "cd packages/parser && npm run build",
     "designer:test": "cd packages/designer && npm run vitest",
     "designer:build": "cd packages/designer && npm run build",
     "renderer:test": "cd packages/renderer && npm run vitest",

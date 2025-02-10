@@ -2,7 +2,8 @@ import type { ProjectSchema } from '@vtj/core';
 import { manifestJson as defaultManifestJson } from './manifest';
 import { pagesJson as defaultPagesJson } from './pages';
 import { resolve } from 'path';
-import { readJsonSync, pathExistsSync } from '@vtj/node';
+import { readJsonSync, pathExistsSync, fs } from '@vtj/node';
+import { parseUniApp } from '@vtj/parser';
 
 function getJson(name: string, dsl: ProjectSchema) {
   const map: Record<string, string> = {
@@ -22,9 +23,19 @@ function getJson(name: string, dsl: ProjectSchema) {
   return uniConfig[name] || defaults[name];
 }
 
+function getApp(dsl: ProjectSchema) {
+  const filePath = resolve('./src/App.vue');
+  if (pathExistsSync(filePath)) {
+    const source = fs.readFileSync(filePath, 'utf-8');
+    return parseUniApp(source);
+  }
+  return dsl.uniConfig || {};
+}
+
 export function getUniConfig(dsl: ProjectSchema) {
   const manifestJson: Record<string, any> = getJson('manifestJson', dsl);
   const pagesJson: Record<string, any> = getJson('pagesJson', dsl);
+  const lifeCycle = getApp(dsl);
   const { name, id, description } = dsl;
   Object.assign(manifestJson, {
     name: name,
@@ -33,6 +44,7 @@ export function getUniConfig(dsl: ProjectSchema) {
   });
   return {
     ...dsl.uniConfig,
+    ...lifeCycle,
     manifestJson,
     pagesJson
   };
