@@ -38,24 +38,14 @@
 </template>
 <script setup lang="ts">
   import type { UniConfig } from '@vtj/core';
+  import { APP_LIFE_CYCLE } from '@vtj/uni';
   import { Panel } from '../../shared';
   import { ElDivider, ElForm, ElFormItem } from 'element-plus';
   import JsonSetter from '../../setters/json.vue';
   import FunctionSetter from '../../setters/function.vue';
   import { useProject } from '../../hooks';
 
-  const lifeCycle = [
-    'onLaunch',
-    'onShow',
-    'onHide',
-    'onError',
-    'onPageNotFound',
-    'onUnhandledRejection',
-    'onThemeChange',
-    'onPageNotFound',
-    'onUniNViewMessage',
-    'onExit'
-  ];
+  const lifeCycle = APP_LIFE_CYCLE;
 
   defineOptions({
     name: 'UniConfigWidget'

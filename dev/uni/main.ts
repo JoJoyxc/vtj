@@ -11,8 +11,26 @@ const manifestJson: any = {};
 
 const pagesJson: any = {
   globalStyle: {
-    navigationStyle: 'default',
-    navigationBarTitleText: 'Global Title'
+    navigationBarTextStyle: 'white',
+    navigationBarTitleText: 'uni-app',
+    navigationBarBackgroundColor: '#333333',
+    backgroundColor: '#F8F8F8'
+  },
+  tabBar: {
+    color: '#7A7E83',
+    selectedColor: '#3cc51f',
+    borderStyle: 'black',
+    backgroundColor: '#ffffff',
+    list: [
+      {
+        pagePath: '/',
+        text: '主页'
+      },
+      {
+        pagePath: '/pages/2',
+        text: '组件'
+      }
+    ]
   }
 };
 

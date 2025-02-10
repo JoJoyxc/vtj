@@ -6,6 +6,7 @@ import {
   type MetaSchema,
   type ProjectConfig,
   type PlatformType,
+  type UniConfig,
   Base,
   BUILT_IN_NAME,
   BUILT_IN_LIBRARAY_MAP
@@ -78,10 +79,11 @@ export class Simulator extends Base {
     deps: Ref<Dependencie[]>,
     apis: Ref<ApiSchema[]>,
     meta: Ref<MetaSchema[]>,
-    config: Ref<ProjectConfig>
+    config: Ref<ProjectConfig>,
+    uniConfig: Ref<UniConfig>
   ) {
     watch(
-      [iframe, deps, apis, meta, config],
+      [iframe, deps, apis, meta, config, uniConfig],
       () => {
         if (iframe.value && deps.value.length) {
           this.resetReady();

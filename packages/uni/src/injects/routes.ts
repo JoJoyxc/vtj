@@ -8,7 +8,7 @@
 //@ts-ignore
 // import { PageComponent, setupPage, getApp } from '@dcloudio/uni-h5';
 
-import type { UniRoute } from '../types';
+import type { UniRoute, PagesJson } from '../types';
 
 import { getNavigationBar } from '../utils';
 
@@ -42,12 +42,15 @@ function createPageComponent(Vue: any, UniH5: any, loader: any) {
   };
 }
 
-function createPageMeta(route: UniRoute, index: number) {
+function createPageMeta(pagesJson: PagesJson, route: UniRoute, index: number) {
   const { path, style = {}, meta = {} } = route;
-
+  const tabBarList = pagesJson.tabBar?.list || [];
+  const tabBarIndex = tabBarList.findIndex((tab) => tab.pagePath === path);
+  const isTabBar = tabBarIndex > -1;
   const isEntry = index === 0;
-  // todo
   return {
+    isTabBar,
+    tabBarIndex,
     isQuit: isEntry,
     isEntry: isEntry,
     navigationBar: {
@@ -64,11 +67,12 @@ export function injectUniRoutes(
   Vue: any,
   UniH5: any,
   routes: UniRoute[],
+  pagesJson: PagesJson,
   global: any = window
 ) {
   const uniRoutes = routes.map((item, index) => {
     const component = createPageComponent(Vue, UniH5, item.component);
-    const meta = createPageMeta(item, index);
+    const meta = createPageMeta(pagesJson, item, index);
     const { path } = item;
     return {
       path,
@@ -78,4 +82,5 @@ export function injectUniRoutes(
     };
   });
   global.__uniRoutes = uniRoutes;
+  global.__uniLayout = {};
 }

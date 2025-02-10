@@ -26,7 +26,7 @@ export function mergeOptions(options: SetupUniAppOptions): SetupUniAppOptions {
 
 export const navigationBarMaps: Record<string, string> = {
   navigationBarBackgroundColor: 'backgroundColor',
-  navigationBarTextStyle: 'textStyle',
+  navigationBarTextStyle: 'titleColor',
   navigationBarTitleText: 'titleText',
   navigationStyle: 'style',
   titleImage: 'titleImage',
@@ -36,9 +36,16 @@ export const navigationBarMaps: Record<string, string> = {
 
 export function getNavigationBar(style: Record<string, any>) {
   const navigationBarStyle: Record<string, any> = {};
+  const colors: Record<string, string> = {
+    black: '#000000',
+    white: '#ffffff'
+  };
   for (const key in style) {
     if (navigationBarMaps[key]) {
-      navigationBarStyle[navigationBarMaps[key]] = style[key];
+      navigationBarStyle[navigationBarMaps[key]] =
+        key === 'navigationBarTextStyle'
+          ? colors[style[key]] || colors.black
+          : style[key];
     }
   }
   return navigationBarStyle;

@@ -18,11 +18,12 @@ import {
   Provider,
   type Context,
   ContextMode,
-  clearLoaderCache
+  clearLoaderCache,
+  parseFunction
 } from '@vtj/renderer';
 import { notify } from '../utils';
 import { type Designer } from './designer';
-import { setupUniApp } from '@vtj/uni';
+import { setupUniApp, createUniAppComponent } from '@vtj/uni';
 
 export class Renderer {
   public app: App | null = null;
@@ -84,17 +85,19 @@ export class Renderer {
     renderer: any
   ) {
     const { window, Vue } = this.env;
+    const { uniConfig = {} } = this.project || {};
+    const { manifestJson, pagesJson } = uniConfig;
+    const AppComponent = createUniAppComponent(uniConfig, (v) =>
+      parseFunction(v, window, false, true)
+    );
+
     const app = setupUniApp({
       Vue,
       UniH5: (window as any).UniH5,
       window,
-      App: {
-        onLaunch() {
-          console.log('onLaunch');
-        }
-      },
-      // manifestJson,
-      // pagesJson,
+      App: AppComponent,
+      manifestJson,
+      pagesJson,
       routes: [
         {
           path: '/',

@@ -10,10 +10,12 @@ export function parseUniApp(source: string) {
       const calleeName = (path.node.callee as any)?.name;
       if (calleeName) {
         const code = generateCode(path.node.arguments[0]);
-        uniConfig[calleeName as keyof UniConfig] = {
-          type: 'JSFunction',
-          value: code
-        };
+        if (code) {
+          uniConfig[calleeName as keyof UniConfig] = {
+            type: 'JSFunction',
+            value: code
+          };
+        }
       }
     }
   });

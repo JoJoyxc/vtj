@@ -15,6 +15,31 @@ export function injectUniConfig(
     versionName = ''
   } = manifestJson;
 
+  // const tabBar = {
+  //   position: 'bottom',
+  //   color: '#7A7E83',
+  //   selectedColor: '#3cc51f',
+  //   borderStyle: 'black',
+  //   blurEffect: 'none',
+  //   fontSize: '10px',
+  //   iconWidth: '24px',
+  //   spacing: '3px',
+  //   height: '50px',
+  //   list: [
+  //     {
+  //       pagePath: '/',
+  //       text: '主页'
+  //     },
+  //     {
+  //       pagePath: 'pages/2',
+  //       text: '组件'
+  //     }
+  //   ],
+  //   backgroundColor: '#ffffff',
+  //   selectedIndex: 0,
+  //   shown: true
+  // };
+
   const globalStyle = pagesJson.globalStyle as Record<string, any>;
   const router = manifestJson.h5?.router || {};
   global.__uniConfig = {
@@ -62,5 +87,22 @@ export function injectUniConfig(
     darkmode: false,
     themeConfig: {},
     tabBar: pagesJson.tabBar
+      ? {
+          position: 'bottom',
+          color: '#7A7E83',
+          selectedColor: '#3cc51f',
+          borderStyle: 'black',
+          blurEffect: 'none',
+          fontSize: '10px',
+          iconWidth: '24px',
+          spacing: '3px',
+          height: '50px',
+          backgroundColor: '#ffffff',
+          selectedIndex: 0,
+          shown: true,
+          ...pagesJson.tabBar
+        }
+      : undefined
+    // tabBar: pagesJson.tabBar
   };
 }
