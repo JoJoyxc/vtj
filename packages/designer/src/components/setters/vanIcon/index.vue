@@ -59,9 +59,9 @@
 <script setup lang='ts'>
   import {Icon} from 'vant';
   import { ElInput, ElEmpty, ElButton } from 'element-plus';
-  import { XIcon, XDialog } from '@vtj/ui';
+  import { XDialog } from '@vtj/ui';
   import { computed, ref } from 'vue';
-  import { icons, ArrowDown, Search } from '@vtj/icons';
+  import { ArrowDown, Search } from '@vtj/icons';
   import iconName from './iconName';
 
   export interface Props {
@@ -77,7 +77,7 @@
   const current = ref<string>(props.modelValue);
   const keyword = ref('');
   const currentIcon = computed<any>(
-    () => (icons as any)[props.modelValue] || props.modelValue
+    () => (iconName as any)[props.modelValue] || props.modelValue
   );
 
   const iconList = computed(() => {
