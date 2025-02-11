@@ -8,7 +8,7 @@
       :suffix-icon="ArrowDown"
       @focus="onFocus">
       <template #prepend>
-        <icon :name="currentIcon"></icon>
+        <i :class="[`van-icon-${currentIcon}`, 'van-icon']"></i>
       </template>
     </ElInput>
     <XDialog
@@ -34,14 +34,16 @@
         ></ElInput>
         <div class="van-icon-setter__content">
           <div class="van-icon-setter__list">
-            <icon
+            <i
               v-for="item in iconList"
-              :name='item'
-              disabled
               @click="onClick(item)"
-              :class="{ 'is-active': current === item }"
-              class='van-icon-setter__item'
-            ></icon>
+              :class="[
+                current === item ? 'is-active' : '',
+                `van-icon-${item}`,
+                'van-icon',
+                'van-icon-setter__item'
+              ]"
+            ></i>
             <ElEmpty v-if="iconList.length === 0" class='empty-wrapper'></ElEmpty>
           </div>
         </div>
@@ -57,7 +59,6 @@
 </template>
 
 <script setup lang='ts'>
-  import {Icon} from 'vant';
   import { ElInput, ElEmpty, ElButton } from 'element-plus';
   import { XDialog } from '@vtj/ui';
   import { computed, ref } from 'vue';
@@ -141,21 +142,21 @@
       height: 50px;
       margin: 5px;
       font-size: 20px;
-      border: 1px dashed #dcdfe6;
+      border: 1px dashed var(--vxe-input-disabled-color);
       border-radius: 4px;
       text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
       &:hover {
-        border: 1px solid #409eff;
+        border: 1px solid var(--vxe-ui-font-primary-color);
         cursor: pointer;
       }
     }
   }
   .is-active {
-    background-color: #409eff;
-    color: #fff;
+    background-color: var(--vxe-ui-font-primary-color);
+    color: var(--vxe-icon-background-color);
     border: none;
   }
   .empty-wrapper {
