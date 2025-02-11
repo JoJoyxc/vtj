@@ -26,8 +26,6 @@
     ? await new Extension(config).load()
     : {};
 
-  console.log(options, adapters);
-
   const { __BASE_PATH__ = '/' } = config || {};
   const accessOptions = adapters?.access;
   const remote = adapters?.remote;
@@ -53,6 +51,7 @@
   const iframeRef = ref();
   const route = useRoute();
   const instance = getCurrentInstance();
+  console.log(options, adapters, route);
   onReady(async () => {
     const app = instance?.appContext.app;
     if (app) {
@@ -63,6 +62,7 @@
   onMounted(() => {
     initUniSandbox(iframeRef.value, {} as any, (env: any) => {
       alert('ready');
+      console.log(env);
     });
   });
 </script>
