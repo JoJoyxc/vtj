@@ -29,6 +29,12 @@
       "style": {
         "navigationBarTitleText": "uni-app"
       }
+    },
+    {
+      "path": "pages/detail",
+      "style": {
+        "navigationBarTitleText": "Detail"
+      }
     }
   ],
   "globalStyle": {
@@ -50,6 +56,15 @@
       {
         "pagePath": "pages/sub",
         "text": "组件"
+      }
+    ]
+  },
+  "condition": {
+    "current": 0,
+    "list": [
+      {
+        "name": "test",
+        "path": "pages/detail"
       }
     ]
   }

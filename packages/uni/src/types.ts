@@ -6,6 +6,7 @@ export interface UniRoute {
   style?: PageStyle;
   needLogin?: boolean;
   meta?: Record<string, any>;
+  home?: boolean;
 }
 
 export type RouterMode = 'hash' | 'history';

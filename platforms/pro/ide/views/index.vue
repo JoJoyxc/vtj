@@ -74,8 +74,11 @@
 
   widgetManager.set('Previewer', {
     props: {
-      path: (block: any) => {
+      path: (block: any, project: ProjectModel) => {
         const pathname = location.pathname;
+        if (project.platform === 'uniapp') {
+          return `${pathname}#/uni/preview/${block.id}`;
+        }
         return `${pathname}#/preview/${block.id}`;
       }
     }

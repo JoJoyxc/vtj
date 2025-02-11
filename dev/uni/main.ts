@@ -137,7 +137,8 @@ const app = setupUniApp({
       component: renderer,
       style: {
         navigationBarTitleText: 'Page 1'
-      }
+      },
+      home: false
     },
     {
       path: '/pages/2',

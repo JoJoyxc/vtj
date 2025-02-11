@@ -85,7 +85,7 @@ export class Renderer {
     renderer: any
   ) {
     const { window, Vue } = this.env;
-    const { uniConfig = {} } = this.project || {};
+    const { uniConfig = {}, homepage } = this.project || {};
     const { manifestJson, pagesJson } = uniConfig;
     const AppComponent = createUniAppComponent(uniConfig, (v) =>
       parseFunction(v, window, false, true)
@@ -103,8 +103,11 @@ export class Renderer {
           path: '/',
           component: renderer,
           style: {
-            navigationBarTitleText: file.title
-          }
+            navigationBarTitleText: file.title,
+            ...(file as PageFile).style
+          },
+          needLogin: (file as PageFile).needLogin,
+          home: file.id === homepage
         }
       ]
     }) as App;

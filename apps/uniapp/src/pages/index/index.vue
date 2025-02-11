@@ -1,6 +1,6 @@
 <template>
   <view class="content">
-    <image class="logo" src="/static/logo.png" />
+    <image class="logo" src="/static/logo.png" @click="toSubPage" />
     <view class="text-area">
       <text class="title">{{ title }} </text>
       <x-test></x-test>
@@ -13,6 +13,12 @@
   import { ref } from 'vue';
   import { VtjIconApi } from '@vtj/mobile';
   const title = ref('Hello');
+
+  const toSubPage = () => {
+    uni.navigateTo({
+      url: '/pages/detail'
+    });
+  };
 </script>
 
 <style lang="scss" scoped>

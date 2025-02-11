@@ -9,7 +9,6 @@
 // import { PageComponent, setupPage, getApp } from '@dcloudio/uni-h5';
 
 import type { UniRoute, PagesJson } from '../types';
-
 import { getNavigationBar } from '../utils';
 
 function createPageComponent(Vue: any, UniH5: any, loader: any) {
@@ -43,7 +42,7 @@ function createPageComponent(Vue: any, UniH5: any, loader: any) {
 }
 
 function createPageMeta(pagesJson: PagesJson, route: UniRoute, index: number) {
-  const { path, style = {}, meta = {} } = route;
+  const { path, style = {}, meta = {}, home } = route;
   const tabBarList = pagesJson.tabBar?.list || [];
   const tabBarIndex = tabBarList.findIndex((tab) => tab.pagePath === path);
   const isTabBar = tabBarIndex > -1;
@@ -51,8 +50,8 @@ function createPageMeta(pagesJson: PagesJson, route: UniRoute, index: number) {
   return {
     isTabBar,
     tabBarIndex,
-    isQuit: isEntry,
-    isEntry: isEntry,
+    isQuit: home ?? isEntry,
+    isEntry: home ?? isEntry,
     navigationBar: {
       type: 'default',
       ...getNavigationBar(style)

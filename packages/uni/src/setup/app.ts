@@ -1,7 +1,7 @@
 // import { createApp } from 'vue';
 //@ts-ignore
 // import { plugin, setupApp } from '@dcloudio/uni-h5';
-import type { UniConfig, JSFunction } from '@vtj/core';
+import type { UniConfig, JSFunction, PageFile } from '@vtj/core';
 import type { SetupUniAppOptions } from '../types';
 import { mergeOptions } from '../utils';
 import { APP_LIFE_CYCLE } from '../constants';
@@ -36,4 +36,12 @@ export function createUniAppComponent(
     }
   });
   return comp;
+}
+
+export function createUniRoutes(
+  Vue: any,
+  pages: PageFile[],
+  homepage?: string
+) {
+  console.log(Vue, pages, homepage);
 }

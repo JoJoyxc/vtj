@@ -1,3 +1,6 @@
 <template>
-  <view>Sub</view>
+  <view>
+    <view>Sub Page</view>
+    <button>Button</button>
+  </view>
 </template>

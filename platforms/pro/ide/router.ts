@@ -23,6 +23,11 @@ const routes = [
     path: '/auth',
     name: 'auth',
     component: () => import('./views/auth.vue')
+  },
+  {
+    path: '/uni/preview/:id',
+    name: 'UniPreview',
+    component: () => import('./uni/preview.vue')
   }
 ];
 
