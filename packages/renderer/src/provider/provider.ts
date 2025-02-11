@@ -173,7 +173,9 @@ export class Provider extends Base {
     this.apis = createSchemaApis(apis, meta, this.adapter);
     mockCleanup();
     mockApis(apis);
-    this.initRouter();
+    if (project.platform !== 'uniapp') {
+      this.initRouter();
+    }
     this.triggerReady();
   }
 
