@@ -12,6 +12,8 @@ import {
   injectUniFeatures
 } from '../injects';
 
+import { install } from './plugin';
+
 export function setupUniApp(options: SetupUniAppOptions) {
   const opts = mergeOptions(options);
   const { Vue, App, UniH5, routes = [], pagesJson = {}, window } = opts;
@@ -21,6 +23,7 @@ export function setupUniApp(options: SetupUniAppOptions) {
   injectUniGlobal(UniH5, window);
   injectUniRoutes(Vue, UniH5, routes, pagesJson, window);
   const app = Vue.createApp(setupApp(App));
+  app.use(install, UniH5);
   app.use(plugin);
   return app;
 }

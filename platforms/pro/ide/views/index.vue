@@ -77,7 +77,11 @@
       path: (block: any, project: ProjectModel) => {
         const pathname = location.pathname;
         if (project.platform === 'uniapp') {
-          return `${pathname}#/uni/preview/${block.id}`;
+          const host =
+            process.env.NODE_ENV === 'production'
+              ? ''
+              : 'http://localhost:8010';
+          return `${host}${pathname}uni/#/pages/${block.id}`;
         }
         return `${pathname}#/preview/${block.id}`;
       }

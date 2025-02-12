@@ -85,6 +85,8 @@
     "pro:dev": "cd platforms/pro && npm run dev",
     "pro:build": "cd platforms/pro && npm run build",
     "pro:preview": "cd platforms/pro && npm run preview",
+    "pro-uni:dev": "cd platforms/pro-uni && npm run dev",
+    "pro-uni:build": "cd platforms/pro-uni && npm run build",
     "mui:dev": "cd platforms/mobile && npm run dev",
     "mui:app": "cd platforms/mobile && npm run dev:app",
     "mui:build": "cd platforms/mobile && npm run build && npm run build:h5",

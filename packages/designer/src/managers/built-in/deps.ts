@@ -77,7 +77,8 @@ export const builtInDeps: Dependencie[] = [
     ],
     required: true,
     official: true,
-    enabled: true
+    enabled: true,
+    platform: ['web', 'h5']
   },
   {
     package: '@vueuse/core',
