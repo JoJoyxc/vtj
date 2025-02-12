@@ -26,7 +26,7 @@ const Collapse: MaterialDescription[] = [
         setters: 'BooleanSetter'
       }
     ],
-    events: ['change'],
+    events: ['update:modelValue', 'change'],
     snippet: {
       props: {
         modelValue: ['1']
