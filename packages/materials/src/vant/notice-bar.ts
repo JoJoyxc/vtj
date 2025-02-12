@@ -52,7 +52,7 @@ const NoticeBar: MaterialDescription = {
     {
       name: 'scrollable',
       title: '是否开启滚动播放，内容长度溢出时默认开启',
-      setters: 'SelectSetter'
+      setters: 'BooleanSetter'
     },
     {
       name: 'wrapable',
