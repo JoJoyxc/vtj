@@ -114,14 +114,14 @@ const Uploader: MaterialDescription = {
     {
       name: 'max-size',
       title: '文件大小限制，单位为 byte',
-      defaultValue: 'Infinity',
-      setters: ['StringSetter', 'NumberSetter', 'FunctionSetter']
+      defaultValue: Infinity,
+      setters: ['NumberSetter', 'StringSetter', 'FunctionSetter']
     },
     {
       name: 'max-count',
       title: '文件上传数量限制',
-      defaultValue: 'Infinity',
-      setters: 'StringSetter'
+      defaultValue: Infinity,
+      setters: ['NumberSetter', 'StringSetter']
     },
     {
       name: 'result-type',
