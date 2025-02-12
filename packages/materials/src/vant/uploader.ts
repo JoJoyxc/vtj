@@ -146,7 +146,7 @@ const Uploader: MaterialDescription = {
       name: 'upload-icon',
       title: '上传区域图标名称或图片链接，等同于 Icon 组件的 name 属性',
       defaultValue: 'photograph',
-      setters: 'StringSetter'
+      setters: ['VanIconSetter', 'StringSetter']
     }
   ],
   events: [
