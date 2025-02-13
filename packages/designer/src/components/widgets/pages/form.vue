@@ -134,7 +134,7 @@
     mask: true,
     hidden: false,
     raw: false,
-    pure: false,
+    pure: true,
     meta: null,
     cache: false
   });
