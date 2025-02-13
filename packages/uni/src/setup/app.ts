@@ -1,8 +1,14 @@
 // import { createApp } from 'vue';
 //@ts-ignore
 // import { plugin, setupApp } from '@dcloudio/uni-h5';
-import type { UniConfig, JSFunction, PageFile } from '@vtj/core';
-import type { SetupUniAppOptions } from '../types';
+import type {
+  UniConfig,
+  JSFunction,
+  PageFile,
+  ProjectSchema,
+  BlockSchema
+} from '@vtj/core';
+import type { SetupUniAppOptions, UniRoute } from '../types';
 import { mergeOptions } from '../utils';
 import { APP_LIFE_CYCLE } from '../constants';
 import {
@@ -47,4 +53,73 @@ export function createUniRoutes(
   homepage?: string
 ) {
   console.log(Vue, pages, homepage);
+}
+
+const dsl: BlockSchema = {
+  name: 'UniPageDemo',
+
+  nodes: [
+    {
+      name: 'View',
+      children: [
+        {
+          name: 'Button',
+          children: 'Button'
+        }
+      ]
+    }
+  ],
+  lifeCycles: {
+    onLoad: {
+      type: 'JSFunction',
+      value: `
+      (opt)=>{
+      console.log('onLoad app',opt, uni)
+      }
+        `
+    },
+    onShow: {
+      type: 'JSFunction',
+      value: `
+      ()=>{
+      console.log('onShow app')
+      }
+        `
+    }
+  }
+};
+
+export function createPreviewUniRoutes(
+  Vue: any,
+  createRenderer: any
+): UniRoute[] {
+  // const loader = async () => {
+  //   console.log('loader');
+  //   return {
+  //     setup() {
+  //       console.log('setup--');
+  //     },
+  //     render() {
+  //       return Vue.h('View', 'aaaa');
+  //     }
+  //   };
+  // };
+  const { renderer } = createRenderer({ dsl, components: {} });
+
+  const ComponentContainer = Vue.defineComponent({
+    setup() {
+      return () => Vue.h(renderer);
+    }
+  });
+
+  return [
+    {
+      path: '/pages/1',
+      component: renderer,
+      style: {
+        navigationBarTitleText: 'Page 1'
+      },
+      home: false
+    }
+  ];
 }

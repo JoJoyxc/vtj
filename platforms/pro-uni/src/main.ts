@@ -10,7 +10,11 @@ import {
   type Provider
 } from '@vtj/renderer';
 import type { BlockSchema } from '@vtj/core';
-import { setupUniApp, createUniAppComponent } from '@vtj/uni';
+import {
+  setupUniApp,
+  createUniAppComponent,
+  createPreviewUniRoutes
+} from '@vtj/uni';
 import { notify, loading } from './shared';
 
 const adapter = createAdapter({ loading, notify });
@@ -64,28 +68,19 @@ const init = (provider: Provider) => {
   const { Vue, UniH5 } = window as any;
   const project = provider.project;
   if (!project) return;
-  const { renderer } = createRenderer({ dsl, components: {} });
+  // const { renderer } = createRenderer({ dsl, components: {} });
 
   const App = createUniAppComponent(project.uniConfig || {}, (script: any) =>
     parseFunction(script, window, false, true)
   );
 
-  console.log(App);
+  const routes = createPreviewUniRoutes(Vue, createRenderer);
 
   const app = setupUniApp({
     Vue,
     App,
     UniH5,
-    routes: [
-      {
-        path: '/pages/:id',
-        component: renderer,
-        style: {
-          navigationBarTitleText: 'Page 1'
-        },
-        home: false
-      }
-    ]
+    routes
   });
   app.use(provider);
   app.mount(document.body);

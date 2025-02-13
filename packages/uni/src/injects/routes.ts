@@ -22,7 +22,6 @@ function createPageComponent(Vue: any, UniH5: any, loader: any) {
       const query = app?.$route?.query || {};
       const component =
         typeof loader === 'function' ? defineAsyncComponent(loader) : loader;
-
       return () => (
         openBlock(),
         createBlock(PageComponent, null, {
