@@ -5,19 +5,16 @@ import {
   ContextMode,
   createAdapter,
   createServiceRequest,
-  createRenderer
+  createRenderer,
+  parseFunction,
+  type Provider
 } from '@vtj/renderer';
 import type { BlockSchema } from '@vtj/core';
-import { setupUniApp } from '@vtj/uni';
+import { setupUniApp, createUniAppComponent } from '@vtj/uni';
+import { notify, loading } from './shared';
 
-// import { createApp } from 'vue';
-// import router from './router';
-// import App from './App.vue';
-// import { name } from '../package.json';
-// import './style/index.scss';
-
-const adapter = createAdapter({});
-const service = new LocalService(createServiceRequest());
+const adapter = createAdapter({ loading, notify });
+const service = new LocalService(createServiceRequest(notify));
 const { provider, onReady } = createProvider({
   nodeEnv: process.env.NODE_ENV as NodeEnv,
   mode: ContextMode.Runtime,
@@ -62,12 +59,22 @@ const dsl: BlockSchema = {
     }
   }
 };
-const init = () => {
-  const { renderer } = createRenderer({ dsl, components: {} });
+
+const init = (provider: Provider) => {
   const { Vue, UniH5 } = window as any;
-  return setupUniApp({
+  const project = provider.project;
+  if (!project) return;
+  const { renderer } = createRenderer({ dsl, components: {} });
+
+  const App = createUniAppComponent(project.uniConfig || {}, (script: any) =>
+    parseFunction(script, window, false, true)
+  );
+
+  console.log(App);
+
+  const app = setupUniApp({
     Vue,
-    App: {},
+    App,
     UniH5,
     routes: [
       {
@@ -80,10 +87,8 @@ const init = () => {
       }
     ]
   });
-};
-
-onReady(async () => {
-  const app = init();
   app.use(provider);
   app.mount(document.body);
-});
+};
+
+onReady(() => init(provider));
