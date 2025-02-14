@@ -1,71 +1,13 @@
 {
-  "easycom": {
-    "autoscan": true,
-    "custom": {
-      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue",
-      "^x-(.*)": "@vtj/mobile/lib/mui/components/x-$1/x-$1.vue"
-    }
-  },
   "pages": [
     {
-      "path": "pages/index/index",
-      "style": {
-        "navigationBarTitleText": "uni-app",
-        "h5": {
-          "titleNView": {
-            "titleText": "uni-app2",
-            "buttons": [
-              {
-                "type": "menu",
-                "text": "button"
-              }
-            ]
-          }
-        }
-      }
-    },
-    {
-      "path": "pages/sub",
-      "style": {
-        "navigationBarTitleText": "uni-app"
-      }
-    },
-    {
-      "path": "pages/detail",
-      "style": {
-        "navigationBarTitleText": "Detail"
-      }
+      "path": "pages/404"
     }
   ],
   "globalStyle": {
-    "navigationBarTextStyle": "white",
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#333333",
-    "backgroundColor": "#F8F8F8"
-  },
-  "tabBar": {
-    "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
-    "borderStyle": "black",
-    "backgroundColor": "#ffffff",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "主页"
-      },
-      {
-        "pagePath": "pages/sub",
-        "text": "组件"
-      }
-    ]
-  },
-  "condition": {
-    "current": 0,
-    "list": [
-      {
-        "name": "test",
-        "path": "pages/detail"
-      }
-    ]
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#ffffff"
   }
 }
