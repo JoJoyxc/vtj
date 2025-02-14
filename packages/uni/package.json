@@ -15,7 +15,8 @@
   "dependencies": {
     "@vtj/core": "workspace:~",
     "@vtj/icons": "workspace:~",
-    "@vtj/utils": "workspace:~"
+    "@vtj/utils": "workspace:~",
+    "@vtj/renderer": "workspace:~"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:~",

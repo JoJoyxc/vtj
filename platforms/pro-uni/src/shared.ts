@@ -1,21 +1,35 @@
-import { showNotify, showLoadingToast, showDialog } from 'vant';
+declare global {
+  interface Window {
+    uni: any;
+  }
+}
 
 export function loading() {
-  return showLoadingToast({
-    message: '加载中...',
-    forbidClick: true
+  if (!window.uni) return;
+
+  window.uni.showLoading({
+    title: '加载中...',
+    mask: true
   });
+
+  return () => {
+    window.uni.hideLoading();
+  };
 }
 
 export function notify(
   message: string,
   title: string = '',
-  type: 'primary' | 'warning' | 'danger' | 'success' = 'warning'
+  _type: 'primary' | 'warning' | 'danger' | 'success' = 'warning'
 ) {
-  const msg = title ? `[${title}]${message}` : message;
-  showNotify({ type, message: msg });
+  if (!window.uni) return;
+  window.uni.showModal({
+    title,
+    content: message,
+    showCancel: false
+  });
 }
 
 export function alert(message: string) {
-  return showDialog({ message });
+  notify(message);
 }

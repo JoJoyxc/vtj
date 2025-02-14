@@ -69,8 +69,8 @@ export function injectUniRoutes(
   global: any = window
 ) {
   const uniRoutes = routes.map((item, index) => {
-    const component = createPageComponent(Vue, UniH5, item.component);
     const meta = createPageMeta(pagesJson, item, index);
+    const component = createPageComponent(Vue, UniH5, item.component);
     const { path } = item;
     return {
       path,

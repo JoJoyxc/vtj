@@ -60,3 +60,9 @@ export function getGobalStyle(style: Record<string, any>) {
   }
   return globalStyle;
 }
+
+export function getFileId(hash: string) {
+  const str = hash.split('?')[0];
+  const match = str.match(/\#\/pages\/([\w\W]*)/i);
+  return match?.[1] ?? '';
+}

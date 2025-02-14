@@ -14,6 +14,12 @@
   import { VtjIconApi } from '@vtj/mobile';
   const title = ref('Hello');
 
+  uni.showModal({
+    title: 'Title',
+    content: 'Content',
+    showCancel: false
+  });
+
   const toSubPage = () => {
     uni.navigateTo({
       url: '/pages/detail'

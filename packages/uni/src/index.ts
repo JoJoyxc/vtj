@@ -5,3 +5,4 @@ export * from './types';
 export * from './setup';
 export * from './defaults';
 export * from './injects';
+export * from './utils';

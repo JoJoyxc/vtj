@@ -1,6 +1,7 @@
 import type { DefineComponent } from 'vue';
 
 export interface UniRoute {
+  id: string;
   path: string;
   component: DefineComponent | (() => Promise<DefineComponent>);
   style?: PageStyle;

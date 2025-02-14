@@ -100,6 +100,7 @@ export class Renderer {
       pagesJson,
       routes: [
         {
+          id: file.id,
           path: '/',
           component: renderer,
           style: {
