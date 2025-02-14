@@ -1,4 +1,4 @@
-import type { UniConfig, JSFunction, PageFile } from '@vtj/core';
+import type { UniConfig, JSFunction } from '@vtj/core';
 import type { Provider } from '@vtj/renderer';
 import type { SetupUniAppOptions, UniRoute } from '../types';
 import { mergeOptions } from '../utils';
@@ -47,19 +47,6 @@ export async function createUniRoutes(provider: Provider, createRenderer: any) {
     if (!dsl) continue;
     const { renderer } = createRenderer({ dsl, components: {} });
     const home = provider.project?.homepage === page.id;
-    if (home) {
-      routes.unshift({
-        id: page.id,
-        path: '/',
-        component: renderer,
-        style: {
-          navigationBarTitleText: page.title,
-          ...page.style
-        },
-        needLogin: page.needLogin,
-        home
-      });
-    }
     routes.push({
       id: page.id,
       path: `/pages/${page.id}`,
@@ -72,30 +59,14 @@ export async function createUniRoutes(provider: Provider, createRenderer: any) {
       home
     });
   }
-}
 
-export async function createPreviewUniRoutes(
-  provider: Provider,
-  id: string,
-  createRenderer: any
-): Promise<UniRoute[]> {
-  const file = provider.getFile(id);
-  const dsl = await provider.getDsl(id);
-  if (!file || !dsl) return [];
+  const homeRoute = routes.find((route) => !!route.home) || routes[0];
+  if (homeRoute) {
+    routes.unshift({
+      ...homeRoute,
+      path: '/'
+    });
+  }
 
-  const { renderer } = createRenderer({ dsl, components: {} });
-  const home = provider.project?.homepage === id;
-  return [
-    {
-      id,
-      path: `/pages/${id}`,
-      component: renderer,
-      style: {
-        navigationBarTitleText: file.title,
-        ...(file as PageFile).style
-      },
-      needLogin: (file as PageFile).needLogin,
-      home
-    }
-  ];
+  return routes;
 }

@@ -9,16 +9,12 @@ import {
   parseFunction,
   type Provider
 } from '@vtj/renderer';
-import {
-  setupUniApp,
-  createUniAppComponent,
-  createPreviewUniRoutes,
-  getFileId
-} from '@vtj/uni';
+import { setupUniApp, createUniAppComponent, createUniRoutes } from '@vtj/uni';
 import { notify, loading } from './shared';
 
 const adapter = createAdapter({ loading, notify });
 const service = new LocalService(createServiceRequest(notify));
+
 const { provider, onReady } = createProvider({
   nodeEnv: process.env.NODE_ENV as NodeEnv,
   mode: ContextMode.Runtime,
@@ -39,8 +35,7 @@ const init = async (provider: Provider) => {
   const App = createUniAppComponent(project.uniConfig || {}, (script) =>
     parseFunction(script, window, false, true)
   );
-  const fileId = getFileId(location.hash);
-  const routes = await createPreviewUniRoutes(provider, fileId, createRenderer);
+  const routes = await createUniRoutes(provider, createRenderer);
 
   const app = setupUniApp({
     Vue,
