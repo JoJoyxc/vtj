@@ -8,7 +8,7 @@ import { setPackageName } from '../../shared';
 import view from './view';
 import button from './button';
 
-const name = '@dcloudio/uni-h5';
+const name = 'uni-h5';
 const components: MaterialDescription[] = [view, button].flat();
 
 const categories: MaterialCategory[] = [

@@ -103,7 +103,11 @@ export function parseTemplate(
       }
 
       const tagName =
-        isFromUrlSchema(from) || isFromPlugin(from) ? 'component' : name;
+        from === 'uni-h5'
+          ? kebabCase(name)
+          : isFromUrlSchema(from) || isFromPlugin(from)
+            ? 'component'
+            : name;
       contents.push(
         name === 'img'
           ? `<${name} ${directives} ${props} ${events} />`

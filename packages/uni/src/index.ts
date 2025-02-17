@@ -6,3 +6,4 @@ export * from './setup';
 export * from './defaults';
 export * from './injects';
 export * from './utils';
+export * from './shared';

@@ -1,7 +1,12 @@
 {
   "pages": [
     {
-      "path": "pages/404"
+      "path": "pages/45t6jkzfq",
+      "style": {},
+      "needLogin": false
+    },
+    {
+      "path": "pages/startup"
     }
   ],
   "globalStyle": {

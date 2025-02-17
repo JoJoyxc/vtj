@@ -9,8 +9,13 @@ import {
   parseFunction,
   type Provider
 } from '@vtj/renderer';
-import { setupUniApp, createUniAppComponent, createUniRoutes } from '@vtj/uni';
-import { notify, loading } from './shared';
+import {
+  setupUniApp,
+  createUniAppComponent,
+  createUniRoutes,
+  notify,
+  loading
+} from '@vtj/uni';
 
 const adapter = createAdapter({ loading, notify });
 const service = new LocalService(createServiceRequest(notify));

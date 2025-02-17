@@ -3,13 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"]
     },
-    "lib": [
-      "esnext"
-    ],
+    "lib": ["esnext"],
     "types": [
       "node",
       "@dcloudio/types",
@@ -25,11 +21,8 @@
     "src/**/*.tsx",
     "src/**/*.vue"
   ],
+  "exclude": [".vtj/**/*"],
   "vueCompilerOptions": {
-    "nativeTags": [
-      "component",
-      "template",
-      "slot"
-    ]
+    "nativeTags": ["component", "template", "slot"]
   }
 }

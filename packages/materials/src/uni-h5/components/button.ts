@@ -4,7 +4,12 @@ const desc: MaterialDescription = {
   name: 'Button',
   label: '按钮',
   categoryId: 'form',
-  props: [],
+  props: [
+    {
+      name: 'type',
+      label: 'type'
+    }
+  ],
   snippet: {
     children: 'Button'
   }

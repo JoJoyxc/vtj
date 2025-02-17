@@ -204,6 +204,9 @@ importers:
       '@dcloudio/uni-ui':
         specifier: ~1.5.3
         version: 1.5.7
+      '@vtj/renderer':
+        specifier: workspace:~
+        version: link:../../packages/renderer
       '@vtj/uni-app':
         specifier: workspace:~
         version: link:../../platforms/uni-app

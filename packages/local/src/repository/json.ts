@@ -7,10 +7,13 @@ import {
   ensureFileSync
 } from '@vtj/node';
 
+import type { PlatformType } from '@vtj/core';
+
 export class JsonRepository {
   private path: string;
-  constructor(path: string) {
-    this.path = resolve('.vtj', path);
+  constructor(path: string, platform: PlatformType = 'web') {
+    const dir = platform === 'uniapp' ? 'src/vtj' : '.vtj';
+    this.path = resolve(dir, path);
   }
   exist(name: string) {
     const filePath = join(this.path, `${name}.json`);
