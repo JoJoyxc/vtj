@@ -1,13 +1,5 @@
-// import { createApp } from 'vue';
-//@ts-ignore
-// import { plugin, setupApp } from '@dcloudio/uni-h5';
-import type {
-  UniConfig,
-  JSFunction,
-  PageFile,
-  ProjectSchema,
-  BlockSchema
-} from '@vtj/core';
+import type { UniConfig, JSFunction } from '@vtj/core';
+import type { Provider } from '@vtj/renderer';
 import type { SetupUniAppOptions, UniRoute } from '../types';
 import { mergeOptions } from '../utils';
 import { APP_LIFE_CYCLE } from '../constants';
@@ -47,79 +39,34 @@ export function createUniAppComponent(
   return comp;
 }
 
-export function createUniRoutes(
-  Vue: any,
-  pages: PageFile[],
-  homepage?: string
-) {
-  console.log(Vue, pages, homepage);
-}
-
-const dsl: BlockSchema = {
-  name: 'UniPageDemo',
-
-  nodes: [
-    {
-      name: 'View',
-      children: [
-        {
-          name: 'Button',
-          children: 'Button'
-        }
-      ]
-    }
-  ],
-  lifeCycles: {
-    onLoad: {
-      type: 'JSFunction',
-      value: `
-      (opt)=>{
-      console.log('onLoad app',opt, uni)
-      }
-        `
-    },
-    onShow: {
-      type: 'JSFunction',
-      value: `
-      ()=>{
-      console.log('onShow app')
-      }
-        `
-    }
-  }
-};
-
-export function createPreviewUniRoutes(
-  Vue: any,
-  createRenderer: any
-): UniRoute[] {
-  // const loader = async () => {
-  //   console.log('loader');
-  //   return {
-  //     setup() {
-  //       console.log('setup--');
-  //     },
-  //     render() {
-  //       return Vue.h('View', 'aaaa');
-  //     }
-  //   };
-  // };
-  const { renderer } = createRenderer({ dsl, components: {} });
-
-  const ComponentContainer = Vue.defineComponent({
-    setup() {
-      return () => Vue.h(renderer);
-    }
-  });
-
-  return [
-    {
-      path: '/pages/1',
+export async function createUniRoutes(provider: Provider, createRenderer: any) {
+  const pages = provider.project?.pages || [];
+  const routes: UniRoute[] = [];
+  for (const page of pages) {
+    const dsl = await provider.getDsl(page.id);
+    if (!dsl) continue;
+    const { renderer } = createRenderer({ dsl, components: {} });
+    const home = provider.project?.homepage === page.id;
+    routes.push({
+      id: page.id,
+      path: `/pages/${page.id}`,
       component: renderer,
       style: {
-        navigationBarTitleText: 'Page 1'
+        navigationBarTitleText: page.title,
+        ...page.style
       },
-      home: false
-    }
-  ];
+      needLogin: page.needLogin,
+      home
+    });
+  }
+
+  const homeRoute = routes.find((route) => !!route.home) || routes[0];
+  if (homeRoute) {
+    routes.unshift({
+      ...homeRoute,
+      path: '/'
+    });
+  }
+
+  return routes;
 }

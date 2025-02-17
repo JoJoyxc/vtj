@@ -104,7 +104,7 @@ export function injectUniFeatures(
     __UNI_FEATURE_I18N_EN__: false, // 是否启用en
     __UNI_FEATURE_I18N_ES__: false, // 是否启用es
     __UNI_FEATURE_I18N_FR__: false, // 是否启用fr
-    __UNI_FEATURE_I18N_ZH_HANS__: false, // 是否启用zh_Hans
+    __UNI_FEATURE_I18N_ZH_HANS__: true, // 是否启用zh_Hans
     __UNI_FEATURE_I18N_ZH_HANT__: false, // 是否启用zh_Hant
     // 以下特性，编译器已自动识别是否需要启用
     __UNI_FEATURE_UNI_CLOUD__: false, // 是否启用uniCloud

@@ -1,5 +1,5 @@
 {
-  "name": "@vtj/h5",
+  "name": "@vtj/uni-app",
   "private": false,
   "version": "0.9.29",
   "type": "module",
@@ -10,10 +10,9 @@
   },
   "dependencies": {
     "@vtj/core": "workspace:~",
-    "@vtj/icons": "workspace:~",
     "@vtj/renderer": "workspace:~",
     "@vtj/utils": "workspace:~",
-    "vant": "~4.9.10"
+    "@vtj/uni": "workspace:~"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:~"
