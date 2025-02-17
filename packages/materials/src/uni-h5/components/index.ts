@@ -5,11 +5,15 @@ import type {
 } from '@vtj/core';
 import { version } from '../../version';
 import { setPackageName } from '../../shared';
+// container 视图容器
 import view from './view';
+import scrollView from './scrollView';
+
+// Base 基础内容
 import button from './button';
 
 const name = '@dcloudio/uni-h5';
-const components: MaterialDescription[] = [view, button].flat();
+const components: MaterialDescription[] = [view, scrollView, button].flat();
 
 const categories: MaterialCategory[] = [
   {
