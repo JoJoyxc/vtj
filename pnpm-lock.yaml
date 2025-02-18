@@ -754,6 +754,9 @@ importers:
       '@vtj/base':
         specifier: workspace:~
         version: link:../base
+      '@vtj/coder':
+        specifier: workspace:~
+        version: link:../coder
       '@vtj/core':
         specifier: workspace:~
         version: link:../core

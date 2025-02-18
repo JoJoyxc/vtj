@@ -1,9 +1,14 @@
-import type { ProjectSchema } from '@vtj/core';
+import type { ProjectSchema, JSFunction } from '@vtj/core';
 import { manifestJson as defaultManifestJson } from './manifest';
 import { pagesJson as defaultPagesJson } from './pages';
 import { resolve } from 'path';
 import { readJsonSync, pathExistsSync, fs } from '@vtj/node';
 import { parseUniApp } from '@vtj/parser';
+import { tsFormatter } from '@vtj/coder';
+
+function isJSFunction(x: any): x is JSFunction {
+  return typeof x === 'object' && x && x.type === 'JSFunction';
+}
 
 function getJson(name: string, dsl: ProjectSchema) {
   const map: Record<string, string> = {
@@ -32,7 +37,17 @@ function getApp(dsl: ProjectSchema) {
   return dsl.uniConfig || {};
 }
 
-export function getUniConfig(dsl: ProjectSchema) {
+async function formatUniConfigCode(uniConfig: Record<string, any>) {
+  for (const [name, value] of Object.entries(uniConfig)) {
+    if (isJSFunction(value)) {
+      const code = uniConfig[name].value;
+      uniConfig[name].value = await tsFormatter(code);
+    }
+  }
+  return uniConfig;
+}
+
+export async function getUniConfig(dsl: ProjectSchema) {
   const manifestJson: Record<string, any> = getJson('manifestJson', dsl);
   const pagesJson: Record<string, any> = getJson('pagesJson', dsl);
   const lifeCycle = getApp(dsl);
@@ -44,7 +59,7 @@ export function getUniConfig(dsl: ProjectSchema) {
   });
   return {
     ...dsl.uniConfig,
-    ...lifeCycle,
+    ...(await formatUniConfigCode(lifeCycle)),
     manifestJson,
     pagesJson
   };

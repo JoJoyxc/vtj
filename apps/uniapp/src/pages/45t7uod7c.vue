@@ -1,17 +1,16 @@
 <template>
-  <view> <button type="primary">Button</button></view>
+  <button>Button</button>
 </template>
 <script lang="ts">
   // @ts-nocheck
   import { defineComponent, reactive } from 'vue';
+  import { Button } from '@dcloudio/uni-h5';
   import { useProvider } from '@vtj/renderer';
   export default defineComponent({
-    name: 'SubComp',
+    name: 'TestBlock',
+    components: { Button },
     setup(props) {
-      const provider = useProvider({
-        id: '2a57sbp3j3',
-        version: '1739783437449'
-      });
+      const provider = useProvider({ id: '45t7uod7c', version: '1739861975242' });
       const state = reactive<Record<string, any>>({});
       return { state, props, provider };
     }
