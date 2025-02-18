@@ -3,6 +3,7 @@
     class="v-blocks-widget v-templates-widgets"
     title="模板"
     :subtitle="subtitle"
+    :body="{ flex: true, direction: 'column' }"
     refresh
     @refresh="refreshTemplates"
     v-loading="loading">
@@ -14,55 +15,59 @@
         placeholder="搜索模板"
         clearable></ElInput>
     </div>
-    <ElEmpty v-if="!list.length" description="找不到符合条件的模板"></ElEmpty>
-    <ElCollapse v-else :model-value="categories">
-      <ElCollapseItem
-        v-for="(items, name) in groups"
-        :name="name"
-        :title="`${name} (${items.length})`">
-        <ElRow wrap="wrap" :gutter="5">
-          <ElCol v-for="item in items" :key="item.id" :span="span">
-            <Box
-              class="v-templates-widgets__item"
-              :name="item.name"
-              :title="item.label">
-              <ElTag
-                v-if="item.vip"
-                class="is-vip"
-                type="danger"
-                size="small"
-                effect="light"
-                round>
-                VIP
-              </ElTag>
-              <XAction
-                v-if="isOwner(item)"
-                class="is-delete"
-                :icon="Delete"
-                mode="icon"
-                size="small"
-                type="danger"
-                @click="handleRemove(item)"></XAction>
-              <ElImage :src="item.cover" fit="contain"></ElImage>
-              <div class="v-templates-widgets__title">
-                <span class="v-box__name">{{ item.name }}</span>
-                <span class="v-box__label">{{ item.label }}</span>
-              </div>
-              <div class="use-handle">
-                <ElButton
-                  class="v-templates-widgets__download"
-                  :icon="Download"
-                  type="primary"
-                  round
-                  @click="download(item)">
-                  使用
-                </ElButton>
-              </div>
-            </Box>
-          </ElCol>
-        </ElRow>
-      </ElCollapseItem>
-    </ElCollapse>
+    <XTabs :items="tabs" v-model="currentTab" class='v-templates-widgets__tab'>
+      <template #default>
+        <ElCollapse v-if='categories.length' :model-value="categories">
+          <ElCollapseItem
+            v-for="(items, name) in tabs[currentTab].model"
+            :name="name"
+            :title="`${name} (${items.length})`">
+            <ElRow wrap="wrap" :gutter="5">
+              <ElCol v-for="item in items" :key="item.id" :span="span">
+                <Box
+                  class="v-templates-widgets__item"
+                  :name="item.name"
+                  :title="item.label">
+                  <ElTag
+                    v-if="item.vip"
+                    class="is-vip"
+                    type="danger"
+                    size="small"
+                    effect="light"
+                    round>
+                    VIP
+                  </ElTag>
+                  <XAction
+                    v-if="isOwner(item)"
+                    class="is-delete"
+                    :icon="Delete"
+                    mode="icon"
+                    size="small"
+                    type="danger"
+                    @click="handleRemove(item)"></XAction>
+                  <ElImage :src="item.cover" fit="contain"></ElImage>
+                  <div class="v-templates-widgets__title">
+                    <span class="v-box__name">{{ item.name }}</span>
+                    <span class="v-box__label">{{ item.label }}</span>
+                  </div>
+                  <div class="use-handle">
+                    <ElButton
+                      class="v-templates-widgets__download"
+                      :icon="Download"
+                      type="primary"
+                      round
+                      @click="download(item)">
+                      使用
+                    </ElButton>
+                  </div>
+                </Box>
+              </ElCol>
+            </ElRow>
+          </ElCollapseItem>
+        </ElCollapse>
+        <ElEmpty v-else description="找不到符合条件的模板"></ElEmpty>
+      </template>
+    </XTabs>
   </Panel>
 </template>
 <script lang="ts" setup>
@@ -81,7 +86,7 @@
     vLoading
   } from 'element-plus';
   import { Search, Download, Delete } from '@vtj/icons';
-  import { XAction } from '@vtj/ui';
+  import { XAction, XTabs } from '@vtj/ui';
   import { groupBy } from '@vtj/utils';
   import { Panel, Box } from '../../shared';
   import { useColSpan, useTemplates, type TemplateDto } from '../../hooks';
@@ -98,6 +103,7 @@
     removeTemplate
   } = useTemplates();
   const keyword = ref('');
+  const currentTab = ref('0');
 
   const list = computed(() => {
     if (keyword.value) {
@@ -110,14 +116,24 @@
     return templates.value;
   });
 
-  const groups = computed(() => {
-    const userId = access?.getData()?.id;
-    return groupBy(list.value, (template) => {
-      return template.userId === userId ? '我的' : template.category;
-    });
+  const categories = computed(() => {
+    return Object.keys(tabs.value[currentTab.value].model) || [];
   });
 
-  const categories = computed(() => Object.keys(groups.value));
+  const tabs = computed(() => {
+    const userId = access?.getData()?.id;
+    const groups = groupBy(list.value, (template) => {
+      return template.userId === userId ? '我的' : '共享';
+    });
+    const tabList = [
+      {label: '我的', model: {}},
+      {label: '共享', model: {}},
+    ];
+    tabList.forEach(i => {
+      i.model = groupBy(groups[i.label], (template) => template.category)
+    });
+    return tabList;
+  });
 
   const subtitle = computed(() => {
     return `(共 ${templates.value.length} 个)`;
@@ -166,3 +182,22 @@
     refreshTemplates
   });
 </script>
+<style lang='scss' scoped>
+  .v-templates-widgets {
+    ::v-deep .x-container {
+      overflow-y: hidden;
+    }
+  }
+  .v-templates-widgets__tab {
+    height: 100%;
+    ::v-deep .el-collapse {
+      overflow-y: hidden;
+    }
+    ::v-deep .el-tabs__content {
+      overflow-y: scroll;
+    }
+    ::v-deep .el-tabs__nav-scroll {
+      border-bottom: 1px solid var(--el-border-color);
+    }
+  }
+</style>
