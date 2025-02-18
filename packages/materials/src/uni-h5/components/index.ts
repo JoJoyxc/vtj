@@ -8,17 +8,56 @@ import { setPackageName } from '../../shared';
 // container 视图容器
 import view from './view';
 import scrollView from './scrollView';
+import swiper from './swiper';
+import matchMedia from './matchMedia';
+import matchArea from './movableArea';
+import movableView from './movableView';
+import coverView from './coverView';
+import coverImage from './coverImage';
 
-// Base 基础内容
+// basic 基础内容
+import icon from './icon';
+import text from './text';
+import richText from './richText';
+import progress from './progress';
+
+//form 表单组件
 import button from './button';
+import checkbox from './checkbox';
+import editor from './editor';
+import form from './form';
 
 const name = '@dcloudio/uni-h5';
-const components: MaterialDescription[] = [view, scrollView, button].flat();
+const components: MaterialDescription[] = [
+  // container
+  view,
+  scrollView,
+  swiper,
+  matchMedia,
+  matchArea,
+  movableView,
+  coverView,
+  coverImage,
+  // basic
+  icon,
+  text,
+  richText,
+  progress,
+  // form
+  button,
+  checkbox,
+  editor,
+  form
+].flat();
 
 const categories: MaterialCategory[] = [
   {
     id: 'container',
     category: '视图组件'
+  },
+  {
+    id: 'basic',
+    category: '基础内容'
   },
   {
     id: 'form',

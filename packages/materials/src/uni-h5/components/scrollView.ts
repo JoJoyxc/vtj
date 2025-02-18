@@ -1,6 +1,6 @@
 import type { MaterialDescription } from '@vtj/core';
 
-const ScrollView: MaterialDescription = {
+const desc: MaterialDescription = {
   name: 'ScrollView',
   label: '滚动视图',
   categoryId: 'container',
@@ -74,11 +74,84 @@ const ScrollView: MaterialDescription = {
       title: '设置自定义下拉刷新阈值',
       defaultValue: 45,
       setters: 'NumberSetter'
+    },
+    {
+      name: 'refresher-default-style',
+      title: '设置自定义下拉刷新默认样式',
+      defaultValue: 'black',
+      setters: 'SelectSetter',
+      options: ['black', 'white', 'none', 'none']
+    },
+    {
+      name: 'refresher-background',
+      title: '设置自定义下拉刷新区域背景颜色',
+      defaultValue: '#FFF',
+      setters: 'ColorSetter'
+    },
+    {
+      name: 'refresher-triggered',
+      title: '设置当前下拉刷新状态',
+      defaultValue: false,
+      setters: 'BooleanSetter'
+    },
+    {
+      name: 'enable-flex',
+      title: '启用 flexbox 布局',
+      defaultValue: false,
+      setters: 'BooleanSetter'
+    },
+    {
+      name: 'scroll-anchoring',
+      title: '开启 scroll anchoring 特性，即控制滚动位置不随内容变化而抖动',
+      defaultValue: false,
+      setters: 'BooleanSetter'
     }
   ],
+  events: [
+    'scrolltoupper',
+    'scrolltolower',
+    'scroll',
+    'refresherpulling',
+    'refresherrefresh',
+    'refresherrestore',
+    'refresherabort'
+  ],
   snippet: {
-    children: 'Button'
+    props: {
+      'scroll-y': true,
+      scrollTop: 0,
+      style: { height: '300rpx' }
+    },
+    children: [
+      {
+        name: 'view',
+        props: {
+          id: 'demo1',
+          class: 'scroll-view-item uni-bg-red',
+          style: { height: '300rpx', background: 'red' }
+        },
+        children: 'A'
+      },
+      {
+        name: 'view',
+        props: {
+          id: 'demo2',
+          class: 'scroll-view-item uni-bg-green',
+          style: { height: '300rpx', background: 'green' }
+        },
+        children: 'B'
+      },
+      {
+        name: 'view',
+        props: {
+          id: 'demo3',
+          class: 'scroll-view-item uni-bg-blue',
+          style: { height: '300rpx', background: 'blue' }
+        },
+        children: 'C'
+      }
+    ]
   }
 };
 
-export default ScrollView;
+export default desc;
