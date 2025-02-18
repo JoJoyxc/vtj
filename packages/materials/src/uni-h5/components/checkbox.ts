@@ -4,7 +4,7 @@ const desc: MaterialDescription[] = [
   {
     name: 'CheckboxGroup',
     label: '多选框组',
-    categoryId: 'basic',
+    categoryId: 'form',
     events: ['change'],
     snippet: {
       children: [

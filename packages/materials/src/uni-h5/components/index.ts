@@ -26,6 +26,17 @@ import button from './button';
 import checkbox from './checkbox';
 import editor from './editor';
 import form from './form';
+import input from './input';
+import label from './label';
+import picker from './picker';
+import pickerView from './pickerView';
+import radio from './radio';
+import slider from './slider';
+import Switch from './Switch';
+import textarea from './textarea';
+
+// nav
+import navigator from './navigator';
 
 const name = '@dcloudio/uni-h5';
 const components: MaterialDescription[] = [
@@ -47,7 +58,17 @@ const components: MaterialDescription[] = [
   button,
   checkbox,
   editor,
-  form
+  form,
+  input,
+  label,
+  picker,
+  pickerView,
+  radio,
+  slider,
+  Switch,
+  textarea,
+  //nav
+  navigator
 ].flat();
 
 const categories: MaterialCategory[] = [
@@ -62,6 +83,10 @@ const categories: MaterialCategory[] = [
   {
     id: 'form',
     category: '表单'
+  },
+  {
+    id: 'nav',
+    category: '路由与页面跳转'
   }
 ];
 

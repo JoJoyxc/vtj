@@ -119,8 +119,8 @@ const desc: MaterialDescription = {
   snippet: {
     props: {
       'scroll-y': true,
-      scrollTop: 0,
-      style: { height: '300rpx' }
+      'scroll-top': 0,
+      style: { height: '300px' }
     },
     children: [
       {
@@ -128,7 +128,7 @@ const desc: MaterialDescription = {
         props: {
           id: 'demo1',
           class: 'scroll-view-item uni-bg-red',
-          style: { height: '300rpx', background: 'red' }
+          style: { 'min-height': '300px', background: 'red' }
         },
         children: 'A'
       },
@@ -137,7 +137,7 @@ const desc: MaterialDescription = {
         props: {
           id: 'demo2',
           class: 'scroll-view-item uni-bg-green',
-          style: { height: '300rpx', background: 'green' }
+          style: { 'min-height': '300px', background: 'green' }
         },
         children: 'B'
       },
@@ -146,7 +146,7 @@ const desc: MaterialDescription = {
         props: {
           id: 'demo3',
           class: 'scroll-view-item uni-bg-blue',
-          style: { height: '300rpx', background: 'blue' }
+          style: { 'min-height': '300px', background: 'blue' }
         },
         children: 'C'
       }

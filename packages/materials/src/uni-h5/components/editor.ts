@@ -3,7 +3,7 @@ import type { MaterialDescription } from '@vtj/core';
 const desc: MaterialDescription = {
   name: 'Editor',
   label: '富文本编辑器',
-  categoryId: 'basic',
+  categoryId: 'form',
   props: [
     {
       name: 'read-only',

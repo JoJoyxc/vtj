@@ -144,12 +144,52 @@ const desc: MaterialDescription[] = [
       props: {
         autoplay: true,
         indicatorDots: true,
-        circular: true
+        circular: true,
+        style: {
+          color: '#fff',
+          height: '200px'
+        }
       },
       children: [
-        { name: 'SwiperItem' },
-        { name: 'SwiperItem' },
-        { name: 'SwiperItem' }
+        {
+          name: 'SwiperItem',
+          props: {
+            style: {
+              background: '#f76260',
+              textAlign: 'center',
+              color: '#fff',
+              height: '200px',
+              lineHeight: '200px'
+            }
+          },
+          children: 'A'
+        },
+        {
+          name: 'SwiperItem',
+          props: {
+            style: {
+              background: '#09bb07',
+              textAlign: 'center',
+              color: '#fff',
+              height: '200px',
+              lineHeight: '200px'
+            }
+          },
+          children: 'B'
+        },
+        {
+          name: 'SwiperItem',
+          props: {
+            style: {
+              background: '#007aff',
+              textAlign: 'center',
+              color: '#fff',
+              height: '200px',
+              lineHeight: '200px'
+            }
+          },
+          children: 'C'
+        }
       ]
     }
   },
@@ -169,7 +209,7 @@ const desc: MaterialDescription[] = [
       children: [
         {
           name: 'View',
-          props: { style: { height: '300rpx', background: 'green' } },
+          props: { style: { height: '300px', background: 'green' } },
           children: 'A'
         }
       ]

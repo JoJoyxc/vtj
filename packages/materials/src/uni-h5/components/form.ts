@@ -3,7 +3,7 @@ import type { MaterialDescription } from '@vtj/core';
 const desc: MaterialDescription = {
   name: 'Form',
   label: '表单',
-  categoryId: 'basic',
+  categoryId: 'form',
   props: [
     {
       name: 'report-submit',
@@ -18,7 +18,35 @@ const desc: MaterialDescription = {
   ],
   events: ['submit', 'reset'],
   snippet: {
-    children: [{ name: 'View' }]
+    children: [
+      {
+        name: 'Label',
+        children: [
+          { name: 'View', children: '用户名' },
+          {
+            name: 'Input',
+            props: {
+              style: { height: '40px', backgroundColor: '#f0f0f0' },
+              placeholder: '请输入用户名'
+            }
+          }
+        ]
+      },
+      {
+        name: 'Label',
+        children: [
+          { name: 'View', children: '密码' },
+          {
+            name: 'Input',
+            props: {
+              style: { height: '40px', backgroundColor: '#f0f0f0' },
+              placeholder: '请输入密码'
+            }
+          }
+        ]
+      },
+      { name: 'Button', children: '提交' }
+    ]
   }
 };
 
