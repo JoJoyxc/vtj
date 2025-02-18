@@ -306,12 +306,18 @@ export class Simulator extends Base {
   }
 
   refresh() {
-    this.renderer?.dispose();
-    const current = this.engine.current.value;
-    if (current) {
-      this.renderer?.render(current, this.engine.project.value?.currentFile);
-      this.rendered.value = Symbol();
-    }
+    const { skeleton } = this.engine;
+    const regionRef = skeleton?.getRegion('Workspace')?.regionRef;
+    regionRef?.reload();
+
+    // this.renderer?.dispose();
+    // if (current.value) {
+    //   this.renderer?.render(
+    //     current.value,
+    //     this.engine.project.value?.currentFile
+    //   );
+    //   this.rendered.value = Symbol();
+    // }
   }
 
   capture() {
