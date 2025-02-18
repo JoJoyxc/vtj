@@ -87,7 +87,7 @@ export async function init(_body: any, opts: DevToolsOptions) {
     Object.assign(dsl, { id, name, description, platform });
 
     if (platform === 'uniapp') {
-      dsl.uniConfig = getUniConfig(dsl);
+      dsl.uniConfig = await getUniConfig(dsl);
     }
     if (!isInit) {
       isInit = true;
@@ -105,7 +105,7 @@ export async function init(_body: any, opts: DevToolsOptions) {
     });
     dsl = model.toDsl();
     if (platform === 'uniapp') {
-      dsl.uniConfig = getUniConfig(dsl);
+      dsl.uniConfig = await getUniConfig(dsl);
     }
     repository.save(id, dsl);
     dsl.__BASE_PATH__ = opts.staticBase;
@@ -275,7 +275,7 @@ export async function genUniConfig(project: ProjectSchema) {
   try {
     uniRepository.saveManifestJson(project);
     uniRepository.savePagesJson(project);
-    uniRepository.saveApp(project);
+    await uniRepository.saveApp(project);
     return success(true);
   } catch (e) {
     return fail((e as any).message);

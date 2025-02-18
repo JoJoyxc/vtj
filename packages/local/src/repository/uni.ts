@@ -1,6 +1,7 @@
 import { resolve } from 'path';
 import type { ProjectSchema } from '@vtj/core';
 import { writeJsonSync, outputFileSync } from '@vtj/node';
+import { vueFormatter, tsFormatter } from '@vtj/coder';
 
 export const APP_LIFE_CYCLE = [
   'onLaunch',
@@ -17,8 +18,7 @@ export const APP_LIFE_CYCLE = [
 
 const vueAppTempalte = `
 <script setup lang="ts">
-  {{names}}
-  {{content}}
+  {{ts}}
 </script>
 <style></style>
 `;
@@ -27,21 +27,26 @@ export class UniRepository {
   constructor() {}
 
   createProjectPages(project: ProjectSchema) {
-    const oPages = project.uniConfig?.pagesJson?.pages || [];
+    const oPages = (project.uniConfig?.pagesJson?.pages || []).filter(
+      (n: any) => !n.vtj
+    );
     const pages = project.pages || [];
+
     const json: any[] = [];
     for (const page of pages) {
       if (page.id === project.homepage) {
         json.unshift({
           path: `pages/${page.id}`,
           style: page.style || {},
-          needLogin: page.needLogin
+          needLogin: page.needLogin,
+          vtj: true
         });
       } else {
         json.push({
           path: `pages/${page.id}`,
           style: page.style || {},
-          needLogin: page.needLogin
+          needLogin: page.needLogin,
+          vtj: true
         });
       }
     }
@@ -76,7 +81,7 @@ export class UniRepository {
     return true;
   }
 
-  saveApp(project: ProjectSchema) {
+  async saveApp(project: ProjectSchema) {
     const filePath = resolve('src/App.vue');
     const uniConfig = project.uniConfig || {};
     const names: string[] = [];
@@ -87,15 +92,11 @@ export class UniRepository {
         content.push(`${name}(${value.value})`);
       }
     }
-    const result = names.length
-      ? vueAppTempalte
-          .replace(
-            '{{names}}',
-            `import {${names.join(',')}} from '@dcloudio/uni-app';`
-          )
-          .replace('{{content}}', content.join(';\n'))
+    const tsCode = names.length
+      ? `import {${names.join(',')}} from '@dcloudio/uni-app';${content.join(';\n')}`
       : '';
 
-    outputFileSync(filePath, result, 'utf-8');
+    const result = vueAppTempalte.replace('{{ts}}', await tsFormatter(tsCode));
+    outputFileSync(filePath, await vueFormatter(result), 'utf-8');
   }
 }
