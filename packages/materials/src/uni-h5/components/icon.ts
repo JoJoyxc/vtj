@@ -5,7 +5,22 @@ const desc: MaterialDescription = {
   label: '图标',
   categoryId: 'basic',
   props: [
-    { name: 'type', title: 'icon的类型', setters: 'StringSetter' },
+    {
+      name: 'type',
+      title: 'icon的类型',
+      setters: 'SelectSetter',
+      options: [
+        'success',
+        'success_no_circle',
+        'info',
+        'warn',
+        'waiting',
+        'cancel',
+        'download',
+        'search',
+        'clear'
+      ]
+    },
     {
       name: 'size',
       title: 'icon的大小， 单位px',
