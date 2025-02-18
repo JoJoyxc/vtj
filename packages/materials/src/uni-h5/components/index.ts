@@ -42,6 +42,7 @@ import image from './image';
 import video from './video';
 import map from './map';
 import canvas from './canvas';
+import webView from './webView';
 
 const name = '@dcloudio/uni-h5';
 const components: MaterialDescription[] = [
@@ -78,7 +79,8 @@ const components: MaterialDescription[] = [
   image,
   video,
   map,
-  canvas
+  canvas,
+  webView
 ].flat();
 
 const categories: MaterialCategory[] = [
