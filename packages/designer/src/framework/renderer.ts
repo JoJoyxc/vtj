@@ -90,7 +90,7 @@ export class Renderer {
     const AppComponent = createUniAppComponent(uniConfig, (v) =>
       parseFunction(v, window, false, true)
     );
-
+    const navigationStyle = file.type === 'block' ? 'custom' : undefined;
     const app = setupUniApp({
       Vue,
       UniH5: (window as any).UniH5,
@@ -104,6 +104,7 @@ export class Renderer {
           path: '/',
           component: renderer,
           style: {
+            navigationStyle,
             navigationBarTitleText: file.title,
             ...(file as PageFile).style
           },

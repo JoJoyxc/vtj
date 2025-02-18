@@ -40,7 +40,7 @@ const init = async (provider: Provider) => {
   const App = createUniAppComponent(project.uniConfig || {}, (script) =>
     parseFunction(script, window, false, true)
   );
-  const routes = await createUniRoutes(provider, createRenderer);
+  const routes = await createUniRoutes(provider, createRenderer, true);
 
   const app = setupUniApp({
     Vue,
