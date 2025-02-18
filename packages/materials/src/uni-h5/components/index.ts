@@ -37,6 +37,11 @@ import textarea from './textarea';
 
 // nav
 import navigator from './navigator';
+import audio from './audio';
+import image from './image';
+import video from './video';
+import map from './map';
+import canvas from './canvas';
 
 const name = '@dcloudio/uni-h5';
 const components: MaterialDescription[] = [
@@ -68,7 +73,12 @@ const components: MaterialDescription[] = [
   Switch,
   textarea,
   //nav
-  navigator
+  navigator,
+  audio,
+  image,
+  video,
+  map,
+  canvas
 ].flat();
 
 const categories: MaterialCategory[] = [
@@ -87,6 +97,10 @@ const categories: MaterialCategory[] = [
   {
     id: 'nav',
     category: '路由与页面跳转'
+  },
+  {
+    id: 'media',
+    category: '媒体'
   }
 ];
 
