@@ -39,7 +39,11 @@ export function createUniAppComponent(
   return comp;
 }
 
-export async function createUniRoutes(provider: Provider, createRenderer: any) {
+export async function createUniRoutes(
+  provider: Provider,
+  createRenderer: any,
+  includeBlock: boolean = false
+) {
   const pages = provider.project?.pages || [];
   const routes: UniRoute[] = [];
   for (const page of pages) {
@@ -66,6 +70,23 @@ export async function createUniRoutes(provider: Provider, createRenderer: any) {
       ...homeRoute,
       path: '/'
     });
+  }
+
+  if (includeBlock) {
+    const blocks = provider.project?.blocks || [];
+    for (const block of blocks) {
+      const dsl = await provider.getDsl(block.id);
+      if (!dsl) continue;
+      const { renderer } = createRenderer({ dsl, components: {} });
+      routes.push({
+        id: block.id,
+        path: `/pages/${block.id}`,
+        component: renderer,
+        style: {
+          navigationStyle: 'custom'
+        }
+      });
+    }
   }
 
   return routes;
