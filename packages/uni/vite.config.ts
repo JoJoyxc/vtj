@@ -17,6 +17,7 @@ export default createViteConfig({
     '@vtj/ui',
     '@vtj/utils',
     '@vtj/icons',
+    '@vtj/renderer',
     '@dcloudio/uni-app',
     '@dcloudio/uni-h5',
     '@dcloudio/uni-app-vue'

@@ -1,25 +1,26 @@
 <template>
   <Panel class="v-uni-config-widget" title="UniApp 配置">
     <ElDivider content-position="center" border-style="dotted">
-      manifest.json
+      全局配置
     </ElDivider>
-    <ElForm size="small" label-position="right">
-      <ElFormItem @keydown.enter.native.prevent>
+    <ElForm size="small" label-position="top">
+      <ElFormItem label="manifest.json" @keydown.enter.native.prevent>
         <JsonSetter
           :model-value="getValue('manifestJson')"
           @change="onChange('manifestJson', $event)"></JsonSetter>
       </ElFormItem>
-    </ElForm>
-    <ElDivider content-position="center" border-style="dotted">
-      pages.json
-    </ElDivider>
-    <ElForm size="small" label-position="right">
-      <ElFormItem @keydown.enter.native.prevent>
+      <ElFormItem label="pages.json" @keydown.enter.native.prevent>
         <JsonSetter
           :model-value="getValue('pagesJson')"
           @change="onChange('pagesJson', $event)"></JsonSetter>
       </ElFormItem>
+      <ElFormItem label="CSS" @keydown.enter.native.prevent>
+        <CssSetter
+          :model-value="getValue('css')"
+          @change="onChange('css', $event)"></CssSetter>
+      </ElFormItem>
     </ElForm>
+
     <ElDivider content-position="center" border-style="dotted">
       应用生命周期
     </ElDivider>
@@ -43,6 +44,7 @@
   import { ElDivider, ElForm, ElFormItem } from 'element-plus';
   import JsonSetter from '../../setters/json.vue';
   import FunctionSetter from '../../setters/function.vue';
+  import CssSetter from '../../setters/css.vue';
   import { useProject } from '../../hooks';
 
   const lifeCycle = APP_LIFE_CYCLE;

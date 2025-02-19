@@ -86,7 +86,7 @@ export class Renderer {
   ) {
     const { window, Vue } = this.env;
     const { uniConfig = {}, homepage } = this.project || {};
-    const { manifestJson, pagesJson } = uniConfig;
+    const { manifestJson, pagesJson, css } = uniConfig;
     const AppComponent = createUniAppComponent(uniConfig, (v) =>
       parseFunction(v, window, false, true)
     );
@@ -98,6 +98,7 @@ export class Renderer {
       App: AppComponent,
       manifestJson,
       pagesJson,
+      css,
       routes: [
         {
           id: file.id,

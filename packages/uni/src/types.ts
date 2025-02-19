@@ -20,6 +20,7 @@ export interface SetupUniAppOptions {
   routes?: UniRoute[];
   manifestJson?: ManifestJson;
   pagesJson?: PagesJson;
+  css?: string;
 }
 
 export interface ManifestJson {

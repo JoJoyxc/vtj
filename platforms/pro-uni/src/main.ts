@@ -40,13 +40,15 @@ const init = async (provider: Provider) => {
   const App = createUniAppComponent(project.uniConfig || {}, (script) =>
     parseFunction(script, window, false, true)
   );
+  const css = project.uniConfig?.css || '';
   const routes = await createUniRoutes(provider, createRenderer, true);
 
   const app = setupUniApp({
     Vue,
     App,
     UniH5,
-    routes
+    routes,
+    css
   });
 
   app.use(provider);

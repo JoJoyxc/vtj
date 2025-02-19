@@ -6,13 +6,7 @@
       "@/*": ["./src/*"]
     },
     "lib": ["esnext"],
-    "types": [
-      "node",
-      "@dcloudio/types",
-      "miniprogram-api-typings",
-      "@uni-helper/uni-app-types",
-      "@uni-helper/uni-ui-types"
-    ]
+    "types": ["node", "@dcloudio/types"]
   },
   "include": [
     "shims-uni.d.ts",

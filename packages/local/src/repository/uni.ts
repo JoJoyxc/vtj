@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import type { ProjectSchema } from '@vtj/core';
 import { writeJsonSync, outputFileSync } from '@vtj/node';
-import { vueFormatter, tsFormatter } from '@vtj/coder';
+import { vueFormatter, tsFormatter, cssFormatter } from '@vtj/coder';
 
 export const APP_LIFE_CYCLE = [
   'onLaunch',
@@ -18,9 +18,11 @@ export const APP_LIFE_CYCLE = [
 
 const vueAppTempalte = `
 <script setup lang="ts">
-  {{ts}}
+{{ts}}
 </script>
-<style></style>
+<style>
+{{css}}
+</style>
 `;
 
 export class UniRepository {
@@ -89,14 +91,16 @@ export class UniRepository {
     for (const [name, value] of Object.entries(uniConfig)) {
       if (APP_LIFE_CYCLE.includes(name) && value.value) {
         names.push(name);
-        content.push(`${name}(${value.value})`);
+        const code = value.value.replace(/;\n/g, '\n');
+        content.push(`${name}(${code})`);
       }
     }
     const tsCode = names.length
       ? `import {${names.join(',')}} from '@dcloudio/uni-app';${content.join(';\n')}`
       : '';
-
-    const result = vueAppTempalte.replace('{{ts}}', await tsFormatter(tsCode));
+    const css = uniConfig.css || '';
+    let result = vueAppTempalte.replace('{{ts}}', await tsFormatter(tsCode));
+    result = result.replace('{{css}}', await cssFormatter(css));
     outputFileSync(filePath, await vueFormatter(result), 'utf-8');
   }
 }

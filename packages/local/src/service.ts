@@ -275,16 +275,12 @@ export async function genUniConfig(
   injectPages: boolean = false
 ) {
   const uniRepository = new UniRepository();
-  try {
-    uniRepository.saveManifestJson(project);
-    if (injectPages) {
-      uniRepository.savePagesJson(project);
-    }
-    await uniRepository.saveApp(project);
-    return success(true);
-  } catch (e) {
-    return fail((e as any).message);
+  uniRepository.saveManifestJson(project);
+  if (injectPages) {
+    uniRepository.savePagesJson(project);
   }
+  await uniRepository.saveApp(project);
+  return success(true);
 }
 
 export async function genVueContent(project: ProjectSchema, dsl: BlockSchema) {

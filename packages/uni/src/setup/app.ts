@@ -7,19 +7,32 @@ import {
   injectUniConfig,
   injectUniGlobal,
   injectUniRoutes,
-  injectUniFeatures
+  injectUniFeatures,
+  injectUniCSS
 } from '../injects';
 
 import { install } from './plugin';
 
 export function setupUniApp(options: SetupUniAppOptions) {
   const opts = mergeOptions(options);
-  const { Vue, App, UniH5, routes = [], pagesJson = {}, window } = opts;
+  const {
+    Vue,
+    App,
+    UniH5,
+    routes = [],
+    pagesJson = {},
+    manifestJson = {},
+    window,
+    css
+  } = opts;
   const { plugin, setupApp } = UniH5;
   injectUniFeatures(opts, window);
   injectUniConfig(opts, window);
   injectUniGlobal(UniH5, window);
   injectUniRoutes(Vue, UniH5, routes, pagesJson, window);
+  if (css) {
+    injectUniCSS(manifestJson.appid || Date.now(), css, window);
+  }
   const app = Vue.createApp(setupApp(App));
   app.use(install, UniH5);
   app.use(plugin);

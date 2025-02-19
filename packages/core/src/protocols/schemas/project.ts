@@ -119,6 +119,11 @@ export interface UniConfig {
   pagesJson?: Record<string, any>;
 
   /**
+   * 全局样式
+   */
+  css?: string;
+
+  /**
    * 当uni-app 初始化完成时触发（全局只触发一次），参数为应用启动参数，同 uni.getLaunchOptionsSync 的返回值
    */
   onLaunch?: JSFunction;

@@ -2,7 +2,7 @@ import type { ProjectSchema, JSFunction } from '@vtj/core';
 import { manifestJson as defaultManifestJson } from './manifest';
 import { pagesJson as defaultPagesJson } from './pages';
 import { resolve } from 'path';
-import { readJsonSync, pathExistsSync, fs } from '@vtj/node';
+import { readJsonSync, pathExistsSync, fs, camelCase } from '@vtj/node';
 import { parseUniApp } from '@vtj/parser';
 import { tsFormatter } from '@vtj/coder';
 
@@ -52,9 +52,11 @@ export async function getUniConfig(dsl: ProjectSchema) {
   const pagesJson: Record<string, any> = getJson('pagesJson', dsl);
   const lifeCycle = getApp(dsl);
   const { name, id, description } = dsl;
+
+  const appId = camelCase(id?.replace(/\//, '__')).toUpperCase();
   Object.assign(manifestJson, {
     name: name,
-    appid: id?.replace(/\//, '__'),
+    appid: appId.startsWith('__UNI__') ? appId : `__UNI__${appId}`,
     description: description
   });
   return {
