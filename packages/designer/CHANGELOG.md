@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.30...@vtj/designer@0.10.0) (2025-02-19)
+
+
+### Bug Fixes
+
+* 🐛 uniapp coder ([960bc99](https://gitee.com/newgateway/vtj/commits/960bc99553045131ce609293a66c799918e3c5bb))
+* 🐛 uniapp saveProject update pages.json ([99844ad](https://gitee.com/newgateway/vtj/commits/99844ad6fd285c7424dd56eb7006e496cec09d92))
+* 🐛 uniapp tabBar ([45a05d4](https://gitee.com/newgateway/vtj/commits/45a05d49d53645aaddb7a841b23b961e5337c3f9))
+
+
+### Features
+
+* ✨ 重构设计器刷新功能 ([e028015](https://gitee.com/newgateway/vtj/commits/e028015e192c34b4ef5013418509126b2e7c36a9))
+* ✨ local init uniapp project config ([63c665a](https://gitee.com/newgateway/vtj/commits/63c665a120fdfb5ccfd9df73356ec4d87dd001a3))
+* ✨ temp save ([0dd3c2e](https://gitee.com/newgateway/vtj/commits/0dd3c2e3fabf5f490ea3d01353cd9f185cce0455))
+* ✨ uni deps ([3c05124](https://gitee.com/newgateway/vtj/commits/3c0512437948a3d640503d15c90b83a471708ca2))
+* ✨ uni生命周期 ([b2e1f6a](https://gitee.com/newgateway/vtj/commits/b2e1f6a65d6e5a093f6836ce6b91759dcea73137))
+* ✨ uniapp 页面预览 ([16075f6](https://gitee.com/newgateway/vtj/commits/16075f6469f2e5790fe73ed7263b855fa8e4dd1d))
+* ✨ uniapp 预览工程 ([262e4e2](https://gitee.com/newgateway/vtj/commits/262e4e2080bd46945655148645eebb91f441b590))
+* ✨ uniapp 支持全局css ([18fb654](https://gitee.com/newgateway/vtj/commits/18fb654e13691b7226b77b6b93379b876d2089a2))
+* ✨ uniapp coder ([5e961d2](https://gitee.com/newgateway/vtj/commits/5e961d2154bcce1bfefef8d054878df13aa706c8))
+* ✨ uniapp page setting ([4946b16](https://gitee.com/newgateway/vtj/commits/4946b16a374781dd7af9c8aad8f64062c9e5425d))
+* ✨ uniapp uniconfig 协议 ([7f5790b](https://gitee.com/newgateway/vtj/commits/7f5790be80d840ef0735a45034b7edcd4265c76c))
+
+
+
+
+
 ## [0.9.30](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.9.29...@vtj/designer@0.9.30) (2025-02-18)
 
 **Note:** Version bump only for package @vtj/designer

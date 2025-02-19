@@ -1,6 +1,6 @@
 {
   "name": "vtj-project-uniapp",
-  "version": "0.9.30",
+  "version": "0.10.0",
   "private": true,
   "scripts": {
     "dev:app": "uni -p app",
@@ -61,9 +61,9 @@
     "@dcloudio/uni-mp-weixin": "3.0.0-4040520250104002",
     "@dcloudio/uni-quickapp-webview": "3.0.0-4040520250104002",
     "@dcloudio/uni-ui": "~1.5.3",
-    "vue-i18n": "~11.0.1",
     "@vtj/renderer": "workspace:~",
-    "@vtj/uni-app": "workspace:~"
+    "@vtj/uni-app": "workspace:~",
+    "vue-i18n": "~11.0.1"
   },
   "devDependencies": {
     "@dcloudio/types": "~3.4.7",
@@ -73,11 +73,11 @@
     "@dcloudio/vite-plugin-uni": "3.0.0-4040520250104002",
     "@uni-helper/uni-app-types": "~0.5.13",
     "@uni-helper/uni-ui-types": "~0.5.13",
-    "@vue/runtime-core": "~3.5.5",
-    "miniprogram-api-typings": "~4.0.2",
     "@vtj/cli": "workspace:~",
+    "@vtj/local": "workspace:~",
     "@vtj/pro": "workspace:~",
-    "@vtj/local": "workspace:~"
+    "@vue/runtime-core": "~3.5.5",
+    "miniprogram-api-typings": "~4.0.2"
   },
   "vtj": {
     "platform": "uniapp"

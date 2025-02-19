@@ -1,0 +1,15 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 0.10.0 (2025-02-19)
+
+
+### Features
+
+* ✨ uniapp 页面预览 ([16075f6](https://gitee.com/newgateway/vtj/commits/16075f6469f2e5790fe73ed7263b855fa8e4dd1d))
+* ✨ uniapp 预览工程 ([262e4e2](https://gitee.com/newgateway/vtj/commits/262e4e2080bd46945655148645eebb91f441b590))
+* ✨ uniapp 预览渲染 ([209cb02](https://gitee.com/newgateway/vtj/commits/209cb02ff11a30868886da59cae598b244812ff5))
+* ✨ uniapp 支持全局css ([18fb654](https://gitee.com/newgateway/vtj/commits/18fb654e13691b7226b77b6b93379b876d2089a2))
+* ✨ uniapp coder ([5e961d2](https://gitee.com/newgateway/vtj/commits/5e961d2154bcce1bfefef8d054878df13aa706c8))

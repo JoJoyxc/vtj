@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://gitee.com/newgateway/vtj/compare/create-vtj@0.9.11...create-vtj@0.10.0) (2025-02-19)
+
+
+### Features
+
+* ✨ 更新依赖 ([096a58b](https://gitee.com/newgateway/vtj/commits/096a58bc912583b89967553fde05850332d4e984))
+* ✨ uniapp 支持全局css ([18fb654](https://gitee.com/newgateway/vtj/commits/18fb654e13691b7226b77b6b93379b876d2089a2))
+
+
+
+
+
 ## [0.9.11](https://gitee.com/newgateway/vtj/compare/create-vtj@0.9.10...create-vtj@0.9.11) (2025-02-13)
 
 **Note:** Version bump only for package create-vtj

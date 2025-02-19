@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://gitee.com/newgateway/vtj/compare/vtj-project-uniapp@0.9.30...vtj-project-uniapp@0.10.0) (2025-02-19)
+
+
+### Bug Fixes
+
+* 🐛 uniapp saveProject update pages.json ([99844ad](https://gitee.com/newgateway/vtj/commits/99844ad6fd285c7424dd56eb7006e496cec09d92))
+* 🐛 uniapp tabBar ([45a05d4](https://gitee.com/newgateway/vtj/commits/45a05d49d53645aaddb7a841b23b961e5337c3f9))
+
+
+### Features
+
+* ✨ 更新依赖 ([096a58b](https://gitee.com/newgateway/vtj/commits/096a58bc912583b89967553fde05850332d4e984))
+* ✨ uniapp ([c6718a1](https://gitee.com/newgateway/vtj/commits/c6718a17adf444edf9b29cc36b701ecf39fffd56))
+* ✨ uniapp 页面预览 ([16075f6](https://gitee.com/newgateway/vtj/commits/16075f6469f2e5790fe73ed7263b855fa8e4dd1d))
+* ✨ uniapp 支持全局css ([18fb654](https://gitee.com/newgateway/vtj/commits/18fb654e13691b7226b77b6b93379b876d2089a2))
+* ✨ uniapp coder ([7eaf0f3](https://gitee.com/newgateway/vtj/commits/7eaf0f3413b8cfbeb153e2d35b885975739a4945))
+* ✨ uniapp coder ([5e961d2](https://gitee.com/newgateway/vtj/commits/5e961d2154bcce1bfefef8d054878df13aa706c8))
+* ✨ uniapp page setting ([4946b16](https://gitee.com/newgateway/vtj/commits/4946b16a374781dd7af9c8aad8f64062c9e5425d))
+* ✨ uniapp项目模版 ([c9e9724](https://gitee.com/newgateway/vtj/commits/c9e9724201eff42317e19a6b0c834c277a12cfe9))
+
+
+
+
+
 ## [0.9.30](https://gitee.com/newgateway/vtj/compare/vtj-project-uniapp@0.9.29...vtj-project-uniapp@0.9.30) (2025-02-18)
 
 **Note:** Version bump only for package vtj-project-uniapp

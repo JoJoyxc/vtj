@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.9.30...@vtj/ui@0.10.0) (2025-02-19)
+
+
+### Features
+
+* ✨ 更新依赖 ([096a58b](https://gitee.com/newgateway/vtj/commits/096a58bc912583b89967553fde05850332d4e984))
+* ✨ uniapp project schema ([684a79b](https://gitee.com/newgateway/vtj/commits/684a79b8eb63aeef480538c0fe77e7b551684727))
+
+
+
+
+
 ## [0.9.30](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.9.29...@vtj/ui@0.9.30) (2025-02-18)
 
 

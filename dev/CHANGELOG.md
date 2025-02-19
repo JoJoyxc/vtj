@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://gitee.com/newgateway/vtj/compare/dev-web@0.9.30...dev-web@0.10.0) (2025-02-19)
+
+
+### Bug Fixes
+
+* 🐛 uniapp tabBar ([45a05d4](https://gitee.com/newgateway/vtj/commits/45a05d49d53645aaddb7a841b23b961e5337c3f9))
+
+
+### Features
+
+* ✨ uni navigationBar ([733ef66](https://gitee.com/newgateway/vtj/commits/733ef66c2dc5de9d489edf292052a1295ace5a2f))
+* ✨ uni package ([c066522](https://gitee.com/newgateway/vtj/commits/c066522248825e048f7ca27ca5fd6b9c5efcfa2a))
+* ✨ uni-h5-vue 物料 ([63f975f](https://gitee.com/newgateway/vtj/commits/63f975f1e650dd5d83b2d9bd15fa593d41cce521))
+* ✨ uniapp page setting ([4946b16](https://gitee.com/newgateway/vtj/commits/4946b16a374781dd7af9c8aad8f64062c9e5425d))
+* ✨ uniapp renderer prototype ([39528d5](https://gitee.com/newgateway/vtj/commits/39528d5a91195466ea5690a3cc9409241ff28920))
+* ✨ uniapp style ([fefda6c](https://gitee.com/newgateway/vtj/commits/fefda6cb4e19f254e201c581266124547052018b))
+* ✨ uniapp uniconfig 协议 ([7f5790b](https://gitee.com/newgateway/vtj/commits/7f5790be80d840ef0735a45034b7edcd4265c76c))
+
+
+
+
+
 ## [0.9.30](https://gitee.com/newgateway/vtj/compare/dev-web@0.9.29...dev-web@0.9.30) (2025-02-18)
 
 **Note:** Version bump only for package dev-web

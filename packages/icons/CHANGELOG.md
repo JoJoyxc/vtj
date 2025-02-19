@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://gitee.com/newgateway/vtj/compare/@vtj/icons@0.9.30...@vtj/icons@0.10.0) (2025-02-19)
+
+
+### Features
+
+* ✨ 增加uniapp图标 ([4c622ba](https://gitee.com/newgateway/vtj/commits/4c622baa9287862b95b9ac2261d5e2da188bc7c3))
+
+
+
+
+
 ## [0.9.30](https://gitee.com/newgateway/vtj/compare/@vtj/icons@0.9.29...@vtj/icons@0.9.30) (2025-02-18)
 
 **Note:** Version bump only for package @vtj/icons

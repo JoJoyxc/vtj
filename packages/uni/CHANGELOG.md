@@ -1,0 +1,32 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 0.10.0 (2025-02-19)
+
+
+### Bug Fixes
+
+* 🐛 uniapp tabBar ([45a05d4](https://gitee.com/newgateway/vtj/commits/45a05d49d53645aaddb7a841b23b961e5337c3f9))
+
+
+### Features
+
+* ✨ 更新依赖 ([096a58b](https://gitee.com/newgateway/vtj/commits/096a58bc912583b89967553fde05850332d4e984))
+* ✨ temp save ([0dd3c2e](https://gitee.com/newgateway/vtj/commits/0dd3c2e3fabf5f490ea3d01353cd9f185cce0455))
+* ✨ uni features ([5c7f96b](https://gitee.com/newgateway/vtj/commits/5c7f96b753780dce947177cd94be37a6dd5cb636))
+* ✨ uni navigationBar ([733ef66](https://gitee.com/newgateway/vtj/commits/733ef66c2dc5de9d489edf292052a1295ace5a2f))
+* ✨ uni package ([c066522](https://gitee.com/newgateway/vtj/commits/c066522248825e048f7ca27ca5fd6b9c5efcfa2a))
+* ✨ uni plugin ([36f87ea](https://gitee.com/newgateway/vtj/commits/36f87ea641cf2d018b548ffa548059577e77a47a))
+* ✨ uni生命周期 ([b2e1f6a](https://gitee.com/newgateway/vtj/commits/b2e1f6a65d6e5a093f6836ce6b91759dcea73137))
+* ✨ uniapp ([c6718a1](https://gitee.com/newgateway/vtj/commits/c6718a17adf444edf9b29cc36b701ecf39fffd56))
+* ✨ uniapp 页面预览 ([16075f6](https://gitee.com/newgateway/vtj/commits/16075f6469f2e5790fe73ed7263b855fa8e4dd1d))
+* ✨ uniapp 预览工程 ([262e4e2](https://gitee.com/newgateway/vtj/commits/262e4e2080bd46945655148645eebb91f441b590))
+* ✨ uniapp 预览渲染 ([209cb02](https://gitee.com/newgateway/vtj/commits/209cb02ff11a30868886da59cae598b244812ff5))
+* ✨ uniapp 支持全局css ([18fb654](https://gitee.com/newgateway/vtj/commits/18fb654e13691b7226b77b6b93379b876d2089a2))
+* ✨ uniapp coder ([5e961d2](https://gitee.com/newgateway/vtj/commits/5e961d2154bcce1bfefef8d054878df13aa706c8))
+* ✨ uniapp page setting ([4946b16](https://gitee.com/newgateway/vtj/commits/4946b16a374781dd7af9c8aad8f64062c9e5425d))
+* ✨ uniapp renderer prototype ([39528d5](https://gitee.com/newgateway/vtj/commits/39528d5a91195466ea5690a3cc9409241ff28920))
+* ✨ uniapp style ([fefda6c](https://gitee.com/newgateway/vtj/commits/fefda6cb4e19f254e201c581266124547052018b))
+* ✨ uniapp uniconfig 协议 ([7f5790b](https://gitee.com/newgateway/vtj/commits/7f5790be80d840ef0735a45034b7edcd4265c76c))

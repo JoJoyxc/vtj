@@ -1,7 +1,7 @@
 {
   "name": "dev-web",
   "private": true,
-  "version": "0.9.30",
+  "version": "0.10.0",
   "type": "module",
   "scripts": {
     "dev": "cross-env ENV_TYPE=local vite --force",
@@ -20,15 +20,15 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
+    "@vtj/core": "workspace:~",
     "@vtj/icons": "workspace:~",
     "@vtj/materials": "workspace:~",
     "@vtj/pro": "workspace:~",
     "@vtj/renderer": "workspace:~",
-    "@vtj/core": "workspace:~",
     "@vtj/ui": "workspace:~",
+    "@vtj/uni": "workspace:~",
     "@vtj/utils": "workspace:~",
     "@vtj/web": "workspace:~",
-    "@vtj/uni": "workspace:~",
     "vue": "~3.5.5",
     "vue-router": "~4.5.0"
   },

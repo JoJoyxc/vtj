@@ -1,7 +1,7 @@
 {
   "name": "@vtj/parser",
   "private": false,
-  "version": "0.9.25",
+  "version": "0.10.0",
   "type": "module",
   "scripts": {
     "build": "vue-tsc && vite build",
@@ -10,14 +10,14 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@vtj/base": "workspace:~",
-    "@vtj/core": "workspace:~",
-    "@vtj/coder": "workspace:~",
-    "@vue/compiler-sfc": "~3.5.13",
-    "@vue/compiler-dom": "~3.5.13",
+    "@babel/generator": "~7.26.8",
     "@babel/parser": "~7.26.8",
     "@babel/traverse": "~7.26.8",
-    "@babel/generator": "~7.26.8"
+    "@vtj/base": "workspace:~",
+    "@vtj/coder": "workspace:~",
+    "@vtj/core": "workspace:~",
+    "@vue/compiler-dom": "~3.5.13",
+    "@vue/compiler-sfc": "~3.5.13"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:~"

@@ -1,7 +1,7 @@
 {
   "name": "@vtj/uni-app",
   "private": false,
-  "version": "0.9.29",
+  "version": "0.10.0",
   "type": "module",
   "sideEffects": false,
   "scripts": {
@@ -11,8 +11,8 @@
   "dependencies": {
     "@vtj/core": "workspace:~",
     "@vtj/renderer": "workspace:~",
-    "@vtj/utils": "workspace:~",
-    "@vtj/uni": "workspace:~"
+    "@vtj/uni": "workspace:~",
+    "@vtj/utils": "workspace:~"
   },
   "devDependencies": {
     "@vtj/cli": "workspace:~"

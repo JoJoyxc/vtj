@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.30...@vtj/renderer@0.10.0) (2025-02-19)
+
+
+### Bug Fixes
+
+* 🐛 uniapp saveProject update pages.json ([99844ad](https://gitee.com/newgateway/vtj/commits/99844ad6fd285c7424dd56eb7006e496cec09d92))
+
+
+### Features
+
+* ✨ uni生命周期 ([b2e1f6a](https://gitee.com/newgateway/vtj/commits/b2e1f6a65d6e5a093f6836ce6b91759dcea73137))
+* ✨ uniapp coder ([5e961d2](https://gitee.com/newgateway/vtj/commits/5e961d2154bcce1bfefef8d054878df13aa706c8))
+* ✨ uniapp uniconfig 协议 ([7f5790b](https://gitee.com/newgateway/vtj/commits/7f5790be80d840ef0735a45034b7edcd4265c76c))
+
+
+
+
+
 ## [0.9.30](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.29...@vtj/renderer@0.9.30) (2025-02-18)
 
 **Note:** Version bump only for package @vtj/renderer
