@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.0](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.10.0...@vtj/renderer@0.10.1-alpha.0) (2025-02-19)
+
+
+### Bug Fixes
+
+* 🐛 merge dependencies ([a014620](https://gitee.com/newgateway/vtj/commits/a014620aea23a0bcf8a5dca306dc6f799ef8396e))
+
+
+
+
+
 # [0.10.0](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.9.30...@vtj/renderer@0.10.0) (2025-02-19)
 
 
