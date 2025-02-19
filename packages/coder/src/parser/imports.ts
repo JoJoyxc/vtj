@@ -8,7 +8,7 @@ export function parseImports(
   collectImports: Record<string, Set<string>> = {},
   platform: PlatformType = 'web'
 ) {
-  const uniH5 = '@dcloudio/uni-h5';
+  const uniH5: string[] = ['@dcloudio/uni-h5', 'uni-h5'];
   const imports: Record<string, string[]> = {
     vue: ['defineComponent', 'reactive']
   };
@@ -21,7 +21,7 @@ export function parseImports(
       const items = imports[desc.package] ?? (imports[desc.package] = []);
       const item = desc.parent || (desc.alias || '').split('.')[0] || desc.name;
       items.push(item);
-      if (platform === 'uniapp' && desc.package === uniH5) {
+      if (platform === 'uniapp' && uniH5.includes(desc.package)) {
         uniComponents.push(item);
       }
     }
@@ -30,7 +30,7 @@ export function parseImports(
   for (const [name, value] of Object.entries(collectImports)) {
     const items = imports[name] ?? (imports[name] = []);
     items.push(...Array.from(value));
-    if (platform === 'uniapp' && name === uniH5) {
+    if (platform === 'uniapp' && uniH5.includes(name)) {
       uniComponents.push(...Array.from(value));
     }
   }
@@ -38,7 +38,7 @@ export function parseImports(
   const result = Object.entries(imports)
     .filter(([name, values]) => {
       return platform === 'uniapp'
-        ? name !== uniH5 && !!values.length
+        ? !uniH5.includes(name) && !!values.length
         : !!values.length;
     })
     .map(([name, values]) => {

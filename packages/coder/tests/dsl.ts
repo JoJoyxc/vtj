@@ -72,11 +72,16 @@ export const deps = [
 ];
 
 export const dsl = {
-  name: 'Homepage',
+  name: 'Aaa',
   locked: false,
   inject: [],
   state: {},
-  lifeCycles: {},
+  lifeCycles: {
+    onLoad: {
+      type: 'JSFunction',
+      value: '() => {\n    console.log(this.$libs.UniH5.uni)\n}'
+    }
+  },
   methods: {},
   computed: {},
   watch: [],
@@ -86,31 +91,7 @@ export const dsl = {
   slots: [],
   dataSources: {},
   __VTJ_BLOCK__: true,
-  __VERSION__: '1739757792261',
-  id: '45t62ph4y',
-  nodes: [
-    {
-      id: '45t62u8i1',
-      name: 'View',
-      from: '@dcloudio/uni-h5',
-      invisible: false,
-      locked: false,
-      children: [
-        {
-          id: 'b911igg7g',
-          name: 'Button',
-          from: '@dcloudio/uni-h5',
-          invisible: false,
-          locked: false,
-          children: 'Button',
-          props: {},
-          directives: [],
-          events: {}
-        }
-      ],
-      props: {},
-      directives: [],
-      events: {}
-    }
-  ]
+  __VERSION__: '1739932454932',
+  id: '45t8zpljt',
+  nodes: []
 };
