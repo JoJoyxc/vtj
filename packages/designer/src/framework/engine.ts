@@ -236,7 +236,7 @@ export class Engine extends Base {
   private async saveProject(e: ProjectModelEvent) {
     const project = e.model;
     const dsl = project.toDsl();
-    await this.service.saveProject(dsl);
+    await this.service.saveProject(dsl, e.type);
     triggerRef(this.project);
   }
 

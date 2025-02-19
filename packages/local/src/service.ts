@@ -113,12 +113,12 @@ export async function init(_body: any, opts: DevToolsOptions) {
   }
 }
 
-export async function saveProject(dsl: ProjectSchema) {
+export async function saveProject(dsl: ProjectSchema, type?: string) {
   const repository = new JsonRepository('projects', dsl.platform);
   if (repository.exist(dsl.id as string)) {
     const ret = repository.save(dsl.id as string, dsl);
     if (dsl.platform === 'uniapp') {
-      await genUniConfig(dsl);
+      await genUniConfig(dsl, type === 'delete');
     }
     return success(ret);
   } else {
@@ -264,17 +264,22 @@ export async function publish(project: ProjectSchema) {
     }
   }
   if (project.platform === 'uniapp') {
-    await genUniConfig(project);
+    await genUniConfig(project, true);
   }
 
   return success(true);
 }
 
-export async function genUniConfig(project: ProjectSchema) {
+export async function genUniConfig(
+  project: ProjectSchema,
+  injectPages: boolean = false
+) {
   const uniRepository = new UniRepository();
   try {
     uniRepository.saveManifestJson(project);
-    uniRepository.savePagesJson(project);
+    if (injectPages) {
+      uniRepository.savePagesJson(project);
+    }
     await uniRepository.saveApp(project);
     return success(true);
   } catch (e) {
