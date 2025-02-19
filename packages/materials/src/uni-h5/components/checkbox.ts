@@ -16,7 +16,7 @@ const desc: MaterialDescription[] = [
   {
     name: 'Checkbox',
     label: '多选项',
-    categoryId: 'basic',
+    categoryId: 'form',
     props: [
       {
         name: 'value',

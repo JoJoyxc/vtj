@@ -11,9 +11,7 @@ const desc: MaterialDescription = {
       setters: 'StringSetter'
     }
   ],
-  snippet: {
-    children: [{ name: 'Checkbox', children: '选项' }]
-  }
+  snippet: {}
 };
 
 export default desc;
