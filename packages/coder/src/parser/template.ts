@@ -103,7 +103,7 @@ export function parseTemplate(
       }
 
       const tagName =
-        from === 'uni-h5'
+        from === '@dcloudio/uni-h5'
           ? kebabCase(name)
           : isFromUrlSchema(from) || isFromPlugin(from)
             ? 'component'
