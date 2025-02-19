@@ -6,8 +6,8 @@
       </h1>
       <div class="vtj-startup__tagline">{{ props.tagline }}</div>
       <div class="vtj-startup__actions">
-        <span>设置项目主页后，将替换此页面显示</span>
-        <button @click="onClick">{{ props.actionText }}</button>
+        <span class="span">设置项目主页后，将替换此页面显示</span>
+        <span class="button" @click="onClick">{{ props.actionText }}</span>
       </div>
     </div>
   </div>
@@ -71,7 +71,7 @@
       font-weight: 700;
       white-space: pre-wrap;
 
-      span {
+      .span {
         background: -webkit-linear-gradient(120deg, #bd34fe 30%, #41d1ff);
         -webkit-background-clip: text;
         background-clip: text;
@@ -97,7 +97,7 @@
       padding: 20px 0 0 0;
       margin-top: 20px;
 
-      span {
+      .span {
         color: #e6a23c;
         @media (max-width: 768px) {
           display: block;
@@ -106,7 +106,8 @@
         }
       }
 
-      button {
+      .button {
+        height: 40px;
         padding: 0 20px;
         border-radius: 20px;
         background-color: #409eff;
@@ -114,6 +115,8 @@
         color: #fff;
         font-weight: 600;
         cursor: pointer;
+        display: inline-block;
+        line-height: 40px;
 
         @media (max-width: 768px) {
           width: 100%;

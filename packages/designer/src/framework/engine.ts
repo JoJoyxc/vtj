@@ -139,10 +139,7 @@ export class Engine extends Base {
           invisible: false
         });
       }
-      dsl.dependencies = depsManager.merge(
-        dsl.dependencies || [],
-        dsl.platform
-      );
+      dsl.dependencies = depsManager.merge(dsl.dependencies || [], platform);
       this.project.value = new ProjectModel(dsl);
       this.saveMaterials();
       this.triggerReady();

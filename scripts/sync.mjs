@@ -16,7 +16,8 @@ const modules = [
   '@vtj/core',
   '@vtj/web',
   '@vtj/pro',
-  '@vtj/mobile'
+  '@vtj/uni',
+  '@vtj/uni-app'
 ];
 
 const maxTimes = 60;
