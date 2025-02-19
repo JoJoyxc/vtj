@@ -19,7 +19,7 @@
       <template #default>
         <ElCollapse v-if='categories.length' :model-value="categories">
           <ElCollapseItem
-            v-for="(items, name) in tabs[currentTab].model"
+            v-for="(items, name) in tabModel"
             :name="name"
             :title="`${name} (${items.length})`">
             <ElRow wrap="wrap" :gutter="5">
@@ -71,7 +71,7 @@
   </Panel>
 </template>
 <script lang="ts" setup>
-  import { ref, computed } from 'vue';
+  import { ref, computed, type ComputedRef } from 'vue';
   import {
     ElRow,
     ElCol,
@@ -86,10 +86,19 @@
     vLoading
   } from 'element-plus';
   import { Search, Download, Delete } from '@vtj/icons';
-  import { XAction, XTabs } from '@vtj/ui';
+  import { XAction, XTabs, type TabsItem } from '@vtj/ui';
   import { groupBy } from '@vtj/utils';
   import { Panel, Box } from '../../shared';
   import { useColSpan, useTemplates, type TemplateDto } from '../../hooks';
+
+  type Model = {
+    [key: string]: TemplateDto[];
+  };
+
+  interface TabItem extends TabsItem {
+    label: string;
+    model: Model;
+  }
 
   const { span } = useColSpan(240);
   const {
@@ -103,7 +112,7 @@
     removeTemplate
   } = useTemplates();
   const keyword = ref('');
-  const currentTab = ref('0');
+  const currentTab = ref<string>('0');
 
   const list = computed(() => {
     if (keyword.value) {
@@ -116,23 +125,30 @@
     return templates.value;
   });
 
-  const categories = computed(() => {
-    return Object.keys(tabs.value[currentTab.value].model) || [];
-  });
-
-  const tabs = computed(() => {
+  const tabs: ComputedRef<TabItem[]> = computed(() => {
     const userId = access?.getData()?.id;
-    const groups = groupBy(list.value, (template) => {
+    const groups = groupBy(list.value, (template: TemplateDto) => {
       return template.userId === userId ? '我的' : '共享';
     });
+    // '我的'在第一位
     const tabList = [
       {label: '我的', model: {}},
-      {label: '共享', model: {}},
+      {label: '共享', model: {}}
     ];
     tabList.forEach(i => {
-      i.model = groupBy(groups[i.label], (template) => template.category)
+      i.model = groupBy(groups[i.label], (template: TemplateDto) => template.category)
     });
     return tabList;
+  });
+
+  const categories: ComputedRef<string[]> = computed(() => {
+    const current = Number(currentTab.value);
+    return Object.keys(tabs.value[current].model) || [];
+  });
+
+  const tabModel: ComputedRef<Model> = computed(() => {
+    const current = Number(currentTab.value);
+    return tabs.value[current].model
   });
 
   const subtitle = computed(() => {
@@ -182,22 +198,20 @@
     refreshTemplates
   });
 </script>
-<style lang='scss' scoped>
-  .v-templates-widgets {
-    ::v-deep .x-container {
-      overflow-y: hidden;
-    }
-  }
+<style scoped>
   .v-templates-widgets__tab {
     height: 100%;
-    ::v-deep .el-collapse {
-      overflow-y: hidden;
-    }
-    ::v-deep .el-tabs__content {
-      overflow-y: scroll;
-    }
-    ::v-deep .el-tabs__nav-scroll {
-      border-bottom: 1px solid var(--el-border-color);
-    }
+  }
+  :deep(.x-container) {
+    overflow-y: hidden;
+  }
+  :deep(.el-collapse) {
+    overflow-y: hidden;
+  }
+  :deep(.el-tabs__content) {
+    overflow-y: scroll;
+  }
+  :deep(.el-tabs__nav-scroll) {
+    border-bottom: 1px solid var(--el-border-color);
   }
 </style>
