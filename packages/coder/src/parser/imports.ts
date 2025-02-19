@@ -8,7 +8,12 @@ export function parseImports(
   collectImports: Record<string, Set<string>> = {},
   platform: PlatformType = 'web'
 ) {
-  const uniH5: string[] = ['@dcloudio/uni-h5', 'uni-h5'];
+  const uniH5: string[] = [
+    '@dcloudio/uni-h5',
+    'uni-h5',
+    '@dcloudio/uni-ui',
+    'uni-ui'
+  ];
   const imports: Record<string, string[]> = {
     vue: ['defineComponent', 'reactive']
   };

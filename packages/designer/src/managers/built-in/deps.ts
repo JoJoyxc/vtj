@@ -59,6 +59,21 @@ export const builtInDeps: Dependencie[] = [
     platform: 'uniapp'
   },
   {
+    package: 'uni-ui',
+    version: 'latest',
+    library: 'UniUI',
+    urls: [
+      '@vtj/materials/deps/uni-ui/style.css',
+      '@vtj/materials/deps/uni-ui/index.umd.js'
+    ],
+    required: true,
+    official: true,
+    enabled: true,
+    assetsUrl: '@vtj/materials/assets/uni-ui/index.umd.js',
+    assetsLibrary: 'UniUIMaterial',
+    platform: 'uniapp'
+  },
+  {
     package: '@vtj/utils',
     version: 'latest',
     library: 'VtjUtils',

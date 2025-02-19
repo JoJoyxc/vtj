@@ -17,6 +17,7 @@ const modules = [
   '@vtj/web',
   '@vtj/pro',
   '@vtj/uni',
+  '@vtj/h5',
   '@vtj/uni-app'
 ];
 

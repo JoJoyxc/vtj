@@ -1,6 +1,12 @@
 {
   "pages": [
     {
+      "path": "pages/45t9p4lwt",
+      "style": {},
+      "needLogin": false,
+      "vtj": true
+    },
+    {
       "path": "pages/startup"
     }
   ],
@@ -9,5 +15,11 @@
     "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#ffffff"
+  },
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+    }
   }
 }

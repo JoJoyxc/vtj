@@ -47,6 +47,16 @@ const materials = {
     entry: 'src/uni-h5/components/index.ts',
     library: 'UniH5Material',
     outDir: 'dist/assets/uni-h5'
+  },
+  uniUI: {
+    entry: 'src/uni-ui/index.ts',
+    library: 'UniUI',
+    outDir: 'dist/deps/uni-ui'
+  },
+  uniUIC: {
+    entry: 'src/uni-ui/components/index.ts',
+    library: 'UniUIMaterial',
+    outDir: 'dist/assets/uni-ui'
   }
 };
 
