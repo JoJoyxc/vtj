@@ -37,7 +37,12 @@ export function useOpenApi() {
       const { auth = '/auth.html' } = access.options;
       const { protocol, host, pathname } = location;
       const clientUrl = `${protocol}//${host}${pathname}#/auth?redirect=${redirect}`;
-      location.href = `${remote}${auth}?r=${encodeURIComponent(clientUrl)}`;
+      if (typeof auth === 'string') {
+        const href = auth.startsWith('/') ? `${remote}${auth}` : auth;
+        location.href = `${href}?r=${encodeURIComponent(clientUrl)}`;
+      } else {
+        auth(location.search);
+      }
     }
   };
 
