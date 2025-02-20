@@ -76,3 +76,6 @@ package-lock.json
 
 /scripts/ssh.mjs
 /pnpm-publish-summary.json
+
+# materials
+!/packages/materials/src/uni-ui/lib
