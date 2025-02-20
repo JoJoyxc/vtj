@@ -1,5 +1,5 @@
 import type { App } from 'vue';
-
+import './lib/uni.scss';
 import UniBadge from '@dcloudio/uni-ui/lib/uni-badge/uni-badge.vue';
 import UniBreadcrumb from '@dcloudio/uni-ui/lib/uni-breadcrumb/uni-breadcrumb.vue';
 import UniBreadcrumbItem from '@dcloudio/uni-ui/lib/uni-breadcrumb-item/uni-breadcrumb-item.vue';
