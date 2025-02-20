@@ -23,16 +23,14 @@ export function setupUniApp(options: SetupUniAppOptions) {
     pagesJson = {},
     manifestJson = {},
     window,
-    css
+    css = ''
   } = opts;
   const { plugin, setupApp } = UniH5;
   injectUniFeatures(opts, window);
   injectUniConfig(opts, window);
   injectUniGlobal(UniH5, window);
   injectUniRoutes(Vue, UniH5, routes, pagesJson, window);
-  if (css) {
-    injectUniCSS(manifestJson.appid || Date.now(), css, window);
-  }
+  injectUniCSS(manifestJson.appid || Date.now(), css, window);
   const app = Vue.createApp(setupApp(App));
   app.use(install, UniH5);
   app.use(plugin);
@@ -55,7 +53,8 @@ export function createUniAppComponent(
 export async function createUniRoutes(
   provider: Provider,
   createRenderer: any,
-  includeBlock: boolean = false
+  includeBlock: boolean = false,
+  basePath: string = '/pages'
 ) {
   const pages = provider.project?.pages || [];
   const routes: UniRoute[] = [];
@@ -66,7 +65,7 @@ export async function createUniRoutes(
     const home = provider.project?.homepage === page.id;
     routes.push({
       id: page.id,
-      path: `/pages/${page.id}`,
+      path: `${basePath}/${page.id}`,
       component: renderer,
       style: {
         navigationBarTitleText: page.title,
@@ -83,6 +82,10 @@ export async function createUniRoutes(
       ...homeRoute,
       path: '/'
     });
+    routes.unshift({
+      ...homeRoute,
+      path: basePath
+    });
   }
 
   if (includeBlock) {
@@ -93,7 +96,7 @@ export async function createUniRoutes(
       const { renderer } = createRenderer({ dsl, components: {} });
       routes.push({
         id: block.id,
-        path: `/pages/${block.id}`,
+        path: `${basePath}/${block.id}`,
         component: renderer,
         style: {
           navigationStyle: 'custom'
