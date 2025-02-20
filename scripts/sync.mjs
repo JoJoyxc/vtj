@@ -18,7 +18,8 @@ const modules = [
   '@vtj/pro',
   '@vtj/uni',
   '@vtj/h5',
-  '@vtj/uni-app'
+  '@vtj/uni-app',
+  '@vtj/parser'
 ];
 
 const maxTimes = 60;
