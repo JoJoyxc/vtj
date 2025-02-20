@@ -7,21 +7,8 @@ const getDefaultModelValue = (categories: any[] = []) => {
 };
 
 const mergeUniappToBuiltIn = (groups: AssetGroup[]) => {
-  const builtIn = groups.find((n) => n.name === BUILT_IN_NAME);
-  if (builtIn) {
-    builtIn.children =
-      builtIn.children?.filter((n) => n.name === 'elements') || [];
-    builtIn.names = [];
-    builtIn.count = builtIn.children?.[0].count || 0;
-    // const uniapp = groups.find((n) => n.name === '@dcloudio/uni-h5');
-    // if (uniapp) {
-    //   builtIn.children = [...(uniapp.children || []), ...builtIn.children];
-    //   builtIn.count += uniapp.count;
-    //   builtIn.names = uniapp.names || [];
-    //   // groups.splice(groups.indexOf(uniapp), 1);
-    // }
-    // console.log('uniapp', groups);
-  }
+  const index = groups.findIndex((n) => n.name === BUILT_IN_NAME);
+  groups.splice(index, 1);
 };
 
 export function useAssets() {

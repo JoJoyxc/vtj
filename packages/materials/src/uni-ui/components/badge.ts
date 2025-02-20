@@ -11,7 +11,11 @@ const desc: MaterialDescription = {
       setters: 'StringSetter'
     }
   ],
-  snippet: {}
+  snippet: {
+    props: {
+      text: '100'
+    }
+  }
 };
 
 export default desc;

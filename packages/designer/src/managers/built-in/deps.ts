@@ -180,7 +180,7 @@ export const builtInDeps: Dependencie[] = [
     required: false,
     official: true,
     enabled: true,
-    platform: ['h5', 'uniapp']
+    platform: ['h5']
   },
   {
     package: '@vtj/charts',

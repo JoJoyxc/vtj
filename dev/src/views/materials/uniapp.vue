@@ -22,7 +22,8 @@
       platform: 'uniapp'
     },
     materials: {
-      UniH5Material: () => import('@vtj/materials/src/uni-h5/components/index')
+      UniH5Material: () => import('@vtj/materials/src/uni-h5/components/index'),
+      UniUIMaterial: () => import('@vtj/materials/src/uni-ui/components/index')
       //   VtjUIMaterial: () => import('@vtj/materials/src/ui'),
       //   AntdvMaterial: () => import('@vtj/materials/src/antdv'),
       //   VantMaterial: () => import('@vtj/materials/src/vant')

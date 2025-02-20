@@ -45,6 +45,7 @@ import canvas from './canvas';
 import webView from './webView';
 
 const name = '@dcloudio/uni-h5';
+
 const components: MaterialDescription[] = [
   // container
   view,
@@ -80,7 +81,43 @@ const components: MaterialDescription[] = [
   video,
   map,
   canvas,
-  webView
+  webView,
+  {
+    name: 'component',
+    label: '动态组件',
+    categoryId: 'elements',
+    doc: 'https://cn.vuejs.org/api/built-in-special-elements.html#component',
+    props: [
+      {
+        name: 'is',
+        label: '组件名',
+        setters: 'InputSetter'
+      }
+    ],
+    snippet: {
+      children: '组件文本内容示例',
+      props: {
+        is: 'view'
+      }
+    }
+  },
+  {
+    name: 'slot',
+    label: '插槽',
+    categoryId: 'elements',
+    doc: 'https://cn.vuejs.org/api/built-in-special-elements.html#slot',
+    props: [
+      {
+        name: 'name',
+        label: '名称',
+        defaultValue: 'default',
+        setters: 'InputSetter'
+      }
+    ],
+    snippet: {
+      children: '默认插槽内容'
+    }
+  }
 ].flat();
 
 const categories: MaterialCategory[] = [
@@ -103,13 +140,17 @@ const categories: MaterialCategory[] = [
   {
     id: 'media',
     category: '媒体'
+  },
+  {
+    id: 'elements',
+    category: '特殊元素'
   }
 ];
 
 const material: Material = {
   name,
   version,
-  label: 'UniApp',
+  label: '内置',
   library: 'UniH5Material',
   order: 4,
   categories,
