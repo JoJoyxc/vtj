@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.1](https://gitee.com/newgateway/vtj/compare/@vtj/coder@0.10.1-alpha.0...@vtj/coder@0.10.1-alpha.1) (2025-02-20)
+
+
+### Features
+
+* ✨ uniapp 支持 uni-ui ([1ee244c](https://gitee.com/newgateway/vtj/commits/1ee244cd04b300c2bd7e84579ea01e4ec98169b8))
+
+
+
+
+
 ## [0.10.1-alpha.0](https://gitee.com/newgateway/vtj/compare/@vtj/coder@0.10.0...@vtj/coder@0.10.1-alpha.0) (2025-02-19)
 
 **Note:** Version bump only for package @vtj/coder

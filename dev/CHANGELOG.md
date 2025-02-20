@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.1](https://gitee.com/newgateway/vtj/compare/dev-web@0.10.1-alpha.0...dev-web@0.10.1-alpha.1) (2025-02-20)
+
+
+### Features
+
+* ✨ uni-ui 物料 ([a959e45](https://gitee.com/newgateway/vtj/commits/a959e4528930d3b9aa3cd8b2bbeb89c2527d9be2))
+
+
+
+
+
 ## [0.10.1-alpha.0](https://gitee.com/newgateway/vtj/compare/dev-web@0.10.0...dev-web@0.10.1-alpha.0) (2025-02-19)
 
 **Note:** Version bump only for package dev-web
