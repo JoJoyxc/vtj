@@ -98,7 +98,8 @@ const files = [
     'deps/xe-utils/xe-utils.umd.min.js'
   ],
   [modules + 'vant/lib/vant.min.js', 'deps/vant/vant.min.js'],
-  [modules + 'vant/lib/index.css', 'deps/vant/index.css']
+  [modules + 'vant/lib/index.css', 'deps/vant/index.css'],
+  [modules + 'mockjs/dist/mock-min.js', 'deps/mockjs/mock-min.js']
 ];
 
 function doCopy() {

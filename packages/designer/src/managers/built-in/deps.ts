@@ -196,5 +196,14 @@ export const builtInDeps: Dependencie[] = [
     official: true,
     enabled: true,
     platform: ['web', 'h5']
+  },
+  {
+    package: 'mockjs',
+    version: 'latest',
+    library: 'Mock',
+    urls: ['@vtj/materials/deps/mockjs/mock-min.js'],
+    required: false,
+    official: true,
+    enabled: true
   }
 ];

@@ -23,9 +23,8 @@ import {
   request,
   url as urlUtils
 } from '@vtj/utils';
-import Mock from 'mockjs';
 import { createSchemaApis, mockApis, mockCleanup } from './apis';
-import { isVuePlugin } from '../utils';
+import { isVuePlugin, getMock } from '../utils';
 import { version } from '../version';
 import {
   parseDeps,
@@ -131,10 +130,6 @@ export class Provider extends Base {
     } else {
       this.project = project as ProjectSchema;
     }
-
-    Mock.setup({
-      timeout: '50-500'
-    });
   }
 
   public createMock(func: (...args: any) => any) {
@@ -147,7 +142,8 @@ export class Provider extends Base {
           logger.warn('模拟数据模版异常', e);
         }
       }
-      return Mock.mock(template);
+      const Mock = getMock();
+      return Mock?.mock(template);
     };
   }
 
@@ -170,6 +166,7 @@ export class Provider extends Base {
     } else {
       await this.loadAssets(_window);
     }
+    this.initMock(_window);
     this.apis = createSchemaApis(apis, meta, this.adapter);
     mockCleanup();
     mockApis(apis);
@@ -177,6 +174,19 @@ export class Provider extends Base {
       this.initRouter();
     }
     this.triggerReady();
+  }
+
+  public initMock(global?: any) {
+    const Mock = getMock(global);
+    if (Mock) {
+      Mock.setup({
+        timeout: '50-500'
+      });
+    } else {
+      if (this.mode === ContextMode.Runtime) {
+        console.warn('Mock is undefined!');
+      }
+    }
   }
 
   private async loadDependencies(_window: any) {

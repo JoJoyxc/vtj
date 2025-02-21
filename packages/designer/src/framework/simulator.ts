@@ -282,6 +282,7 @@ export class Simulator extends Base {
       }
     }
     const { adapter, globals } = provider;
+    provider.initMock(cw);
     const apis = createSchemaApis(
       project.value?.apis,
       project.value?.meta,

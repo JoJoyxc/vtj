@@ -47,6 +47,7 @@ import {
   type ProvideAdapter
 } from '@vtj/renderer';
 import { logger } from '@vtj/utils';
+
 import { SkeletonWrapper, type SkeletonWrapperInstance } from '../wrappers';
 import { depsManager, widgetManager } from '../managers';
 import { Simulator } from './simulator';

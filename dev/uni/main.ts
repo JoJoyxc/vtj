@@ -133,6 +133,7 @@ const app = setupUniApp({
   pagesJson,
   routes: [
     {
+      id: 'a',
       path: '/',
       component: renderer,
       style: {
@@ -141,6 +142,7 @@ const app = setupUniApp({
       home: false
     },
     {
+      id: '2',
       path: '/pages/2',
       component: page2Renderer,
       style: {
