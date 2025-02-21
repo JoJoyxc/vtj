@@ -32,7 +32,7 @@ import UniGridItem from '@dcloudio/uni-ui/lib/uni-grid-item/uni-grid-item.vue';
 import UniGroup from '@dcloudio/uni-ui/lib/uni-group/uni-group.vue';
 import UniIcons from '@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue';
 //? css 参数。 scss 问题  处理不了 $ 变量
-// import UniIndexedList from '@dcloudio/uni-ui/lib/uni-indexed-list/uni-indexed-list.vue';
+import UniIndexedList from '@dcloudio/uni-ui/lib/uni-indexed-list/uni-indexed-list.vue';
 import UniLink from '@dcloudio/uni-ui/lib/uni-link/uni-link.vue';
 import UniList from '@dcloudio/uni-ui/lib/uni-list/uni-list.vue';
 import UniListItem from '@dcloudio/uni-ui/lib/uni-list-item/uni-list-item.vue';
@@ -104,7 +104,7 @@ const components = {
   UniGridItem,
   UniGroup,
   UniIcons,
-  // UniIndexedList,
+  UniIndexedList,
   UniLink,
   UniList,
   UniListItem,
@@ -169,7 +169,7 @@ export {
   UniGridItem,
   UniGroup,
   UniIcons,
-  // UniIndexedList,
+  UniIndexedList,
   UniLink,
   UniList,
   UniListItem,
