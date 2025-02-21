@@ -19,7 +19,7 @@ import UniDateformat from '@dcloudio/uni-ui/lib/uni-dateformat/uni-dateformat.vu
 // import UniDatetimePicker from '@dcloudio/uni-ui/lib/uni-datetime-picker/uni-datetime-picker.vue';
 import UniDatetimePicker from './lib/uni-datetime-picker/uni-datetime-picker.vue';
 //? css 参数。 $uni-bg-color异常。 scss 问题 处理不了 $ 变量
-// import UniDrawer from '@dcloudio/uni-ui/lib/uni-drawer/uni-drawer.vue';
+import UniDrawer from '@dcloudio/uni-ui/lib/uni-drawer/uni-drawer.vue';
 import UniEasyinput from '@dcloudio/uni-ui/lib/uni-easyinput/uni-easyinput.vue';
 import UniFob from '@dcloudio/uni-ui/lib/uni-fab/uni-fab.vue';
 import UniFov from '@dcloudio/uni-ui/lib/uni-fav/uni-fav.vue';
@@ -38,7 +38,7 @@ import UniList from '@dcloudio/uni-ui/lib/uni-list/uni-list.vue';
 import UniListItem from '@dcloudio/uni-ui/lib/uni-list-item/uni-list-item.vue';
 import UniListChat from '@dcloudio/uni-ui/lib/uni-list-chat/uni-list-chat.vue';
 //? css 参数。。 scss 问题 处理不了 $ 变量
-// import UniListAd from '@dcloudio/uni-ui/lib/uni-list-ad/uni-list-ad.vue';
+import UniListAd from '@dcloudio/uni-ui/lib/uni-list-ad/uni-list-ad.vue';
 import UniLoadMore from '@dcloudio/uni-ui/lib/uni-load-more/uni-load-more.vue';
 import UniNavBar from '@dcloudio/uni-ui/lib/uni-nav-bar/uni-nav-bar.vue';
 import UniNoticeBar from '@dcloudio/uni-ui/lib/uni-notice-bar/uni-notice-bar.vue';
@@ -92,7 +92,7 @@ const components = {
   UniDataSelect,
   UniDateformat,
   UniDatetimePicker,
-  // UniDrawer,
+  UniDrawer,
   UniEasyinput,
   UniFob,
   UniFov,
@@ -109,7 +109,7 @@ const components = {
   UniList,
   UniListItem,
   UniListChat,
-  // UniListAd,
+  UniListAd,
   UniLoadMore,
   UniNavBar,
   UniNoticeBar,
@@ -157,7 +157,7 @@ export {
   UniDataSelect,
   UniDateformat,
   UniDatetimePicker,
-  // UniDrawer,
+  UniDrawer,
   UniEasyinput,
   UniFob,
   UniFov,
@@ -174,7 +174,7 @@ export {
   UniList,
   UniListItem,
   UniListChat,
-  // UniListAd,
+  UniListAd,
   UniLoadMore,
   UniNavBar,
   UniNoticeBar,
