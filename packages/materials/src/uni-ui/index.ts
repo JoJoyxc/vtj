@@ -1,3 +1,4 @@
+import './polyfill';
 import type { App } from 'vue';
 import './lib/uni.scss';
 import UniBadge from '@dcloudio/uni-ui/lib/uni-badge/uni-badge.vue';
