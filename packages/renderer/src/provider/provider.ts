@@ -182,10 +182,6 @@ export class Provider extends Base {
       Mock.setup({
         timeout: '50-500'
       });
-    } else {
-      if (this.mode === ContextMode.Runtime) {
-        console.warn('Mock is undefined!');
-      }
     }
   }
 
