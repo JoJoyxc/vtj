@@ -2,7 +2,7 @@ import type { UniConfig, JSFunction } from '@vtj/core';
 import type { Provider } from '@vtj/renderer';
 import type { SetupUniAppOptions, UniRoute } from '../types';
 import { mergeOptions } from '../utils';
-import { APP_LIFE_CYCLE } from '../constants';
+import { APP_LIFE_CYCLE, ROUTE_PAGE_BASE_PATH } from '../constants';
 import {
   injectUniConfig,
   injectUniGlobal,
@@ -54,7 +54,7 @@ export async function createUniRoutes(
   provider: Provider,
   createRenderer: any,
   includeBlock: boolean = false,
-  basePath: string = '/pages'
+  basePath: string = ROUTE_PAGE_BASE_PATH
 ) {
   const pages = provider.project?.pages || [];
   const routes: UniRoute[] = [];
@@ -78,13 +78,10 @@ export async function createUniRoutes(
 
   const homeRoute = routes.find((route) => !!route.home) || routes[0];
   if (homeRoute) {
+    const homePath = basePath === ROUTE_PAGE_BASE_PATH ? '/' : basePath;
     routes.unshift({
       ...homeRoute,
-      path: '/'
-    });
-    routes.unshift({
-      ...homeRoute,
-      path: basePath
+      path: homePath
     });
   }
 

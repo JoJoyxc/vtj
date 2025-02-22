@@ -39,3 +39,5 @@ export const PAGE_LIFE_CYCLES_LIST = [
   'beforeUnmount',
   'unmounted'
 ];
+
+export const ROUTE_PAGE_BASE_PATH = '/pages';
