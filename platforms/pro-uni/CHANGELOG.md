@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.3](https://gitee.com/newgateway/vtj/compare/@vtj/pro-uni@0.10.1-alpha.2...@vtj/pro-uni@0.10.1-alpha.3) (2025-02-22)
+
+
+### Features
+
+* ✨ engine add pageRouteName option ([9c5aa80](https://gitee.com/newgateway/vtj/commits/9c5aa80b67bcd7127c9f5c569be49b00069b13b5))
+
+
+
+
+
 ## [0.10.1-alpha.2](https://gitee.com/newgateway/vtj/compare/@vtj/pro-uni@0.10.1-alpha.1...@vtj/pro-uni@0.10.1-alpha.2) (2025-02-22)
 
 **Note:** Version bump only for package @vtj/pro-uni
