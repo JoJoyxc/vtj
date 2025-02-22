@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.2](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.10.1-alpha.1...@vtj/designer@0.10.1-alpha.2) (2025-02-22)
+
+
+### Bug Fixes
+
+* 🐛 修复TS报错 ([e91fd22](https://gitee.com/newgateway/vtj/commits/e91fd2207c9e5fce9d70aff53aa960731c28d6fa))
+* 🐛 components group tab ([48b6529](https://gitee.com/newgateway/vtj/commits/48b65297ca1b78c6beac588bee036cac11444e66))
+* 🐛 ide access auth ([f259285](https://gitee.com/newgateway/vtj/commits/f25928584898144848f2781e6876a49b7a44c0d6))
+
+
+### Features
+
+* ✨ 模板管理添加tab ([8b0d71a](https://gitee.com/newgateway/vtj/commits/8b0d71ae78a24ce7d4f209a9665c11ace53bc668))
+* ✨ mock改为依赖控制开启 ([6d01e1a](https://gitee.com/newgateway/vtj/commits/6d01e1aa59c7a6b2b7127b136fd8fdd829e5f976))
+
+
+
+
+
 ## [0.10.1-alpha.1](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.10.1-alpha.0...@vtj/designer@0.10.1-alpha.1) (2025-02-20)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.2](https://gitee.com/newgateway/vtj/compare/@vtj/uni@0.10.1-alpha.1...@vtj/uni@0.10.1-alpha.2) (2025-02-22)
+
+
+### Bug Fixes
+
+* 🐛 uni createUniRoutes basePath ([6264b60](https://gitee.com/newgateway/vtj/commits/6264b6050db399761b60cce605f6178a7bcc28ec))
+
+
+
+
+
 ## [0.10.1-alpha.1](https://gitee.com/newgateway/vtj/compare/@vtj/uni@0.10.1-alpha.0...@vtj/uni@0.10.1-alpha.1) (2025-02-20)
 
 

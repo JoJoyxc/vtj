@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.2](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.10.1-alpha.1...@vtj/ui@0.10.1-alpha.2) (2025-02-22)
+
+**Note:** Version bump only for package @vtj/ui
+
+
+
+
+
 ## [0.10.1-alpha.1](https://gitee.com/newgateway/vtj/compare/@vtj/ui@0.10.1-alpha.0...@vtj/ui@0.10.1-alpha.1) (2025-02-20)
 
 **Note:** Version bump only for package @vtj/ui

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.2](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.10.1-alpha.1...@vtj/renderer@0.10.1-alpha.2) (2025-02-22)
+
+
+### Features
+
+* ✨ mock改为依赖控制开启 ([6d01e1a](https://gitee.com/newgateway/vtj/commits/6d01e1aa59c7a6b2b7127b136fd8fdd829e5f976))
+
+
+
+
+
 ## [0.10.1-alpha.1](https://gitee.com/newgateway/vtj/compare/@vtj/renderer@0.10.1-alpha.0...@vtj/renderer@0.10.1-alpha.1) (2025-02-20)
 
 **Note:** Version bump only for package @vtj/renderer
