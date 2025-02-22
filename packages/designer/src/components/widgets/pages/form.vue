@@ -168,7 +168,7 @@
   });
 
   const pageDir = computed(() => {
-    return isUniapp.value ? 'pages' : 'page';
+    return engine.options.pageRouteName || (isUniapp.value ? 'pages' : 'page');
   });
 
   const createEmptyModel = () => ({

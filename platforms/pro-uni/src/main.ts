@@ -7,15 +7,13 @@ import {
   createServiceRequest,
   createRenderer,
   parseFunction,
-  type Provider
-} from '@vtj/renderer';
-import {
   setupUniApp,
   createUniAppComponent,
   createUniRoutes,
   notify,
-  loading
-} from '@vtj/uni';
+  loading,
+  type Provider
+} from '@vtj/uni-app';
 
 const adapter = createAdapter({ loading, notify });
 const service = new LocalService(createServiceRequest(notify));

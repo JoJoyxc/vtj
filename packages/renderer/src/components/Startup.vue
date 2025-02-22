@@ -53,6 +53,7 @@
     grid-row: 1;
     width: 100%;
     max-width: 800px;
+    margin: 0 10px;
 
     &__wrapper {
       height: 100%;
@@ -117,6 +118,7 @@
         cursor: pointer;
         display: inline-block;
         line-height: 40px;
+        text-align: center;
 
         @media (max-width: 768px) {
           width: 100%;

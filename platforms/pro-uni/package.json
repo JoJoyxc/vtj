@@ -10,9 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vtj/core": "workspace:~",
-    "@vtj/renderer": "workspace:~",
-    "@vtj/uni": "workspace:~",
+    "@vtj/uni-app": "workspace:~",
     "@vtj/utils": "workspace:~"
   },
   "devDependencies": {

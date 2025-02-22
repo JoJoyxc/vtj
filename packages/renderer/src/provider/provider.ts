@@ -260,8 +260,15 @@ export class Provider extends Base {
   private initRouter() {
     const { router, project, options, adapter } = this;
     if (!router) return;
-    const { routeAppendTo, pageRouteName = 'page', routeMeta } = options;
+    const defaultPageRouteName =
+      project?.platform === 'uniapp' ? 'pages' : 'page';
+    const {
+      routeAppendTo,
+      pageRouteName = defaultPageRouteName,
+      routeMeta
+    } = options;
     const pathStart = routeAppendTo ? '' : '/';
+
     const pageRoute: RouteRecordRaw = {
       path: `${pathStart}${pageRouteName}/:id`,
       name: PAGE_ROUTE_NAME,
