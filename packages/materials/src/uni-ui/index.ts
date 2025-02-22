@@ -24,7 +24,7 @@ import UniEasyinput from '@dcloudio/uni-ui/lib/uni-easyinput/uni-easyinput.vue';
 import UniFob from '@dcloudio/uni-ui/lib/uni-fab/uni-fab.vue';
 import UniFov from '@dcloudio/uni-ui/lib/uni-fav/uni-fav.vue';
 import UniFilePicker from '@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue';
-import UniForms from '@dcloudio/uni-ui/lib/uni-forms/uni-forms.vue';
+import UniForms from './lib/uni-forms/uni-forms.vue';
 import UniFormsItem from '@dcloudio/uni-ui/lib/uni-forms-item/uni-forms-item.vue';
 import UniGoodsNav from '@dcloudio/uni-ui/lib/uni-goods-nav/uni-goods-nav.vue';
 import UniGrid from '@dcloudio/uni-ui/lib/uni-grid/uni-grid.vue';
