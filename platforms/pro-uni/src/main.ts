@@ -5,22 +5,23 @@ import {
   ContextMode,
   createAdapter,
   createServiceRequest,
-  createRenderer,
   parseFunction,
   setupUniApp,
   createUniAppComponent,
   createUniRoutes,
   notify,
   loading,
+  createModules,
   type Provider
 } from '@vtj/uni-app';
 
 const adapter = createAdapter({ loading, notify });
 const service = new LocalService(createServiceRequest(notify));
-
+const modules = createModules();
 const { provider, onReady } = createProvider({
   nodeEnv: process.env.NODE_ENV as NodeEnv,
   mode: ContextMode.Runtime,
+  modules,
   materialPath: '../',
   adapter,
   service,
@@ -39,7 +40,7 @@ const init = async (provider: Provider) => {
     parseFunction(script, window, false, true)
   );
   const css = project.uniConfig?.css || '';
-  const routes = await createUniRoutes(provider, createRenderer, true);
+  const routes = await createUniRoutes(provider, true);
 
   const app = setupUniApp({
     Vue,

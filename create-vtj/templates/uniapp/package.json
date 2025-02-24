@@ -38,6 +38,7 @@
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
     "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
     "type-check": "vue-tsc --noEmit",
+    "clean": "vtj rm ./package-lock.json && vtj rm ./pnpm-lock.yaml && vtj rm ./dist && vtj rm ./node_modules",
     "preview:h5": "cross-env VITE_CJS_IGNORE_WARNING=true PREVIEW=true vite preview",
     "dev": "cross-env ENV_TYPE=local npm run dev:h5",
     "build": "npm run h5:prod",

@@ -6,7 +6,6 @@ import {
   LocalService,
   createServiceRequest,
   createProvider,
-  createModules,
   loading,
   notify
 } from '@vtj/uni-app';
@@ -19,7 +18,6 @@ const service = new LocalService(createServiceRequest(notify));
 const { provider } = createProvider({
   nodeEnv: process.env.NODE_ENV as NodeEnv,
   mode: ContextMode.Raw,
-  modules: createModules(),
   adapter,
   service,
   project: {

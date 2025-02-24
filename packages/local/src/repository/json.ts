@@ -11,8 +11,9 @@ import type { PlatformType } from '@vtj/core';
 
 export class JsonRepository {
   private path: string;
-  constructor(path: string, platform: PlatformType = 'web') {
-    const dir = platform === 'uniapp' ? 'src/vtj' : '.vtj';
+  constructor(path: string, _platform: PlatformType = 'web') {
+    // const dir = platform === 'uniapp' ? 'src/vtj' : '.vtj';
+    const dir = '.vtj';
     this.path = resolve(dir, path);
   }
   exist(name: string) {

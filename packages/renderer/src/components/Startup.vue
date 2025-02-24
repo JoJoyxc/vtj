@@ -2,7 +2,7 @@
   <div class="vtj-startup__wrapper">
     <div class="vtj-startup">
       <h1 class="vtj-startup__name">
-        <span>{{ props.name }}</span>
+        <span class="span">{{ props.name }}</span>
       </h1>
       <div class="vtj-startup__tagline">{{ props.tagline }}</div>
       <div class="vtj-startup__actions">

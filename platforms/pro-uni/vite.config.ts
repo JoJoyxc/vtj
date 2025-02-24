@@ -14,6 +14,9 @@ export default createViteConfig({
   port: 8010,
   alias: {
     vue: '@dcloudio/uni-h5-vue',
-    '@vtj/uni': isDev ? resolve('../../packages/uni/src') : '@vtj/uni'
+    '@vtj/uni': isDev ? resolve('../../packages/uni/src') : '@vtj/uni',
+    '@vtj/renderer': isDev
+      ? resolve('../../packages/renderer/src')
+      : '@vtj/renderer'
   }
 });

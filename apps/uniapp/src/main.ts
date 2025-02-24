@@ -6,20 +6,21 @@ import {
   LocalService,
   createServiceRequest,
   createProvider,
-  createModules,
   loading,
-  notify
+  notify,
+  createModules
 } from '@vtj/uni-app';
+
 import App from './App.vue';
 import { name } from '../package.json';
 
 const adapter = createAdapter({ loading, notify });
 const service = new LocalService(createServiceRequest(notify));
-
+const modules = createModules();
 const { provider } = createProvider({
   nodeEnv: process.env.NODE_ENV as NodeEnv,
   mode: ContextMode.Raw,
-  modules: createModules(),
+  modules,
   adapter,
   service,
   project: {

@@ -12,8 +12,10 @@ export function loading() {
     mask: true
   });
 
-  return () => {
-    window.uni.hideLoading();
+  return {
+    close: () => {
+      window.uni.hideLoading();
+    }
   };
 }
 

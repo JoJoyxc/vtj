@@ -26,6 +26,7 @@ import { Renderer } from './renderer';
 import { Designer } from './designer';
 import { type Engine } from './engine';
 import { DevTools } from './devtools';
+import Mock from 'mockjs';
 
 declare global {
   interface Window {
@@ -68,6 +69,8 @@ export class Simulator extends Base {
     const { engine, materialPath } = options;
     this.engine = engine;
     this.materialPath = materialPath;
+
+    (window as any).Mock = Mock;
 
     watch(this.engine.current, () => {
       this.refresh();
@@ -282,7 +285,7 @@ export class Simulator extends Base {
       }
     }
     const { adapter, globals } = provider;
-    provider.initMock(cw);
+    provider.initMock();
     const apis = createSchemaApis(
       project.value?.apis,
       project.value?.meta,
@@ -310,15 +313,6 @@ export class Simulator extends Base {
     const { skeleton } = this.engine;
     const regionRef = skeleton?.getRegion('Workspace')?.regionRef;
     regionRef?.reload();
-
-    // this.renderer?.dispose();
-    // if (current.value) {
-    //   this.renderer?.render(
-    //     current.value,
-    //     this.engine.project.value?.currentFile
-    //   );
-    //   this.rendered.value = Symbol();
-    // }
   }
 
   capture() {

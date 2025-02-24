@@ -52,7 +52,6 @@ export function createUniAppComponent(
 
 export async function createUniRoutes(
   provider: Provider,
-  createRenderer: any,
   includeBlock: boolean = false,
   basePath: string = ROUTE_PAGE_BASE_PATH
 ) {
@@ -61,7 +60,7 @@ export async function createUniRoutes(
   for (const page of pages) {
     const dsl = await provider.getDsl(page.id);
     if (!dsl) continue;
-    const { renderer } = createRenderer({ dsl, components: {} });
+    const { renderer } = provider.createDslRenderer(dsl);
     const home = provider.project?.homepage === page.id;
     routes.push({
       id: page.id,
@@ -90,7 +89,7 @@ export async function createUniRoutes(
     for (const block of blocks) {
       const dsl = await provider.getDsl(block.id);
       if (!dsl) continue;
-      const { renderer } = createRenderer({ dsl, components: {} });
+      const { renderer } = provider.createDslRenderer(dsl);
       routes.push({
         id: block.id,
         path: `${basePath}/${block.id}`,

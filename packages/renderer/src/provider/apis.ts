@@ -75,20 +75,23 @@ export function createSchemaApis(
   return result;
 }
 
-export async function mockApis(schemas: ApiSchema[] = []) {
-  const Mock = getMock();
+export async function mockApis(
+  schemas: ApiSchema[] = [],
+  global: any = window
+) {
+  const Mock = getMock(global);
   if (Mock) {
-    mockCleanup();
+    mockCleanup(global);
     schemas.forEach((n) => mockApi(Mock, n));
   }
 }
 
-export function createMock(source: DataSourceSchema) {
+export function createMock(source: DataSourceSchema, global: any = window) {
   const mockTemplate =
     isJSFunction(source.mockTemplate) && source.mockTemplate.value
       ? parseFunction(source.mockTemplate, {}, true)
       : undefined;
-  const Mock = getMock();
+  const Mock = getMock(global);
   return async (...args: any[]) => {
     let template = {};
     if (mockTemplate) {
@@ -150,9 +153,9 @@ export function mockApi(Mock: any, schema: ApiSchema) {
   }
 }
 
-export function mockCleanup() {
+export function mockCleanup(global: any = window) {
   // 清除已设置的模拟数据配置
-  const Mock = getMock();
+  const Mock = getMock(global);
   if (Mock) {
     (Mock as any)._mocked = {};
   }

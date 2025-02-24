@@ -1,12 +1,6 @@
 {
   "pages": [
     {
-      "path": "pages/45t9p4lwt",
-      "style": {},
-      "needLogin": false,
-      "vtj": true
-    },
-    {
       "path": "pages/startup"
     }
   ],
