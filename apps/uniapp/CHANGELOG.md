@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.5](https://gitee.com/newgateway/vtj/compare/vtj-project-uniapp@0.10.1-alpha.4...vtj-project-uniapp@0.10.1-alpha.5) (2025-02-24)
+
+
+### Bug Fixes
+
+* 🐛 uniapp renderer ([717debf](https://gitee.com/newgateway/vtj/commits/717debf345cee5168f88124e351ca92aa70a3d0d))
+
+
+
+
+
 ## [0.10.1-alpha.4](https://gitee.com/newgateway/vtj/compare/vtj-project-uniapp@0.10.1-alpha.3...vtj-project-uniapp@0.10.1-alpha.4) (2025-02-24)
 
 
