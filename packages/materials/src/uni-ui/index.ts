@@ -20,19 +20,25 @@ import UniDateformat from '@dcloudio/uni-ui/lib/uni-dateformat/uni-dateformat.vu
 import UniDatetimePicker from './lib/uni-datetime-picker/uni-datetime-picker.vue';
 //? css 参数。 $uni-bg-color异常。 scss 问题 处理不了 $ 变量
 import UniDrawer from '@dcloudio/uni-ui/lib/uni-drawer/uni-drawer.vue';
-import UniEasyinput from '@dcloudio/uni-ui/lib/uni-easyinput/uni-easyinput.vue';
+//? 条件编译 出现两个组件
+// import UniEasyinput from '@dcloudio/uni-ui/lib/uni-easyinput/uni-easyinput.vue';
+import UniEasyinput from './lib/uni-easyinput/uni-easyinput.vue';
 import UniFob from '@dcloudio/uni-ui/lib/uni-fab/uni-fab.vue';
 import UniFov from '@dcloudio/uni-ui/lib/uni-fav/uni-fav.vue';
 import UniFilePicker from '@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue';
 import UniForms from '@dcloudio/uni-ui/lib/uni-forms/uni-forms.vue';
-import UniFormsItem from '@dcloudio/uni-ui/lib/uni-forms-item/uni-forms-item.vue';
+//? 条件编译 出现两个组件
+// import UniFormsItem from '@dcloudio/uni-ui/lib/uni-forms-item/uni-forms-item.vue';
+import UniFormsItem from './lib/uni-forms-item/uni-forms-item.vue';
 import UniGoodsNav from '@dcloudio/uni-ui/lib/uni-goods-nav/uni-goods-nav.vue';
 import UniGrid from '@dcloudio/uni-ui/lib/uni-grid/uni-grid.vue';
 import UniGridItem from '@dcloudio/uni-ui/lib/uni-grid-item/uni-grid-item.vue';
 import UniGroup from '@dcloudio/uni-ui/lib/uni-group/uni-group.vue';
-import UniIcons from '@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue';
+// import UniIcons from '@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue';
+import UniIcons from './lib/uni-icons/uni-icons.vue';
 //? css 参数。 scss 问题  处理不了 $ 变量
-import UniIndexedList from '@dcloudio/uni-ui/lib/uni-indexed-list/uni-indexed-list.vue';
+// import UniIndexedList from '@dcloudio/uni-ui/lib/uni-indexed-list/uni-indexed-list.vue';
+import UniIndexedList from './lib/uni-indexed-list/uni-indexed-list.vue';
 import UniLink from '@dcloudio/uni-ui/lib/uni-link/uni-link.vue';
 import UniList from '@dcloudio/uni-ui/lib/uni-list/uni-list.vue';
 import UniListItem from '@dcloudio/uni-ui/lib/uni-list-item/uni-list-item.vue';

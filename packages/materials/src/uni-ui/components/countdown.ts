@@ -79,7 +79,14 @@ const desc: MaterialDescription = {
     }
   ],
   events: ['timeup'],
-  snippet: {}
+  snippet: {
+    props: {
+      day: 1,
+      hour: 1,
+      minute: 2,
+      second: 40
+    }
+  }
 };
 
 export default desc;

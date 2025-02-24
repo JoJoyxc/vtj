@@ -58,20 +58,26 @@ const desc: MaterialDescription = {
       },
       content: [
         {
-          iconPath: '/static/image.png',
-          selectedIconPath: '/static/image-active.png',
+          iconPath:
+            'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+          selectedIconPath:
+            'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
           text: '相册',
           active: false
         },
         {
-          iconPath: '/static/home.png',
-          selectedIconPath: '/static/home-active.png',
+          iconPath:
+            'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+          selectedIconPath:
+            'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
           text: '首页',
           active: false
         },
         {
-          iconPath: '/static/star.png',
-          selectedIconPath: '/static/star-active.png',
+          iconPath:
+            'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+          selectedIconPath:
+            'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
           text: '收藏',
           active: false
         }

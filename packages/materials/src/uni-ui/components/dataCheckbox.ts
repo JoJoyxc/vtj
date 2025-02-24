@@ -78,7 +78,7 @@ const desc: MaterialDescription = {
       setters: 'ObjectSetter'
     }
   ],
-  events: ['change'],
+  events: ['change', 'update:modelValue'],
   snippet: {
     props: {
       localdata: [

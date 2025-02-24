@@ -55,12 +55,12 @@ const desc: MaterialDescription = {
   events: ['change', 'update:modelValue'],
   snippet: {
     props: {
-      range: [
+      localdata: [
         { value: 0, text: '篮球' },
         { value: 1, text: '足球' },
         { value: 2, text: '游泳' }
       ],
-      modelValue: 0
+      modelValue: 1
     }
   }
 };
