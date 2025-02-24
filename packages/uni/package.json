@@ -27,7 +27,6 @@
     "@vtj/cli": "workspace:~"
   },
   "exports": {
-    "./dist/style.css": "./dist/style.scss",
     ".": {
       "types": "./types/index.d.ts",
       "import": "./dist/index.mjs",
