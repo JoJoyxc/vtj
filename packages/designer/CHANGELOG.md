@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.4](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.10.1-alpha.3...@vtj/designer@0.10.1-alpha.4) (2025-02-24)
+
+
+### Bug Fixes
+
+* 🐛 uniapp mock ([1cf64a8](https://gitee.com/newgateway/vtj/commits/1cf64a88b69336c59db9233dbc24bf31ccdc4ecd))
+
+
+
+
+
 ## [0.10.1-alpha.3](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.10.1-alpha.2...@vtj/designer@0.10.1-alpha.3) (2025-02-22)
 
 
