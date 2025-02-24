@@ -1,6 +1,12 @@
 {
   "pages": [
     {
+      "path": "pages/45tgdx01t",
+      "style": {},
+      "needLogin": false,
+      "vtj": true
+    },
+    {
       "path": "pages/startup"
     }
   ],

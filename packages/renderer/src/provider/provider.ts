@@ -155,7 +155,6 @@ export class Provider extends Base {
 
   async load(project: ProjectSchema) {
     const module = this.modules[`.vtj/projects/${project.id}.json`];
-    console.log('load', this.modules, module);
     this.project = module ? await module() : await this.service.init(project);
     if (!this.project) {
       throw new Error('project is null');
