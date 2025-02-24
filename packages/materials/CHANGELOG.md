@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.6](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.10.1-alpha.5...@vtj/materials@0.10.1-alpha.6) (2025-02-24)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.10.1-alpha.5](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.10.1-alpha.4...@vtj/materials@0.10.1-alpha.5) (2025-02-24)
+
+
+### Bug Fixes
+
+* 🐛 uniapp renderer ([717debf](https://gitee.com/newgateway/vtj/commits/717debf345cee5168f88124e351ca92aa70a3d0d))
+
+
+
+
+
+## [0.10.1-alpha.4](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.10.1-alpha.3...@vtj/materials@0.10.1-alpha.4) (2025-02-24)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.10.1-alpha.3](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.10.1-alpha.2...@vtj/materials@0.10.1-alpha.3) (2025-02-22)
+
+**Note:** Version bump only for package @vtj/materials
+
+
+
+
+
+## [0.10.1-alpha.2](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.10.1-alpha.1...@vtj/materials@0.10.1-alpha.2) (2025-02-22)
+
+
+### Bug Fixes
+
+* 🐛 scss var compiler error ([7b48c0a](https://gitee.com/newgateway/vtj/commits/7b48c0abeca27aea96484be1266007bbca08bb08))
+* 🐛 scss var error ([5dc67a6](https://gitee.com/newgateway/vtj/commits/5dc67a6ba6c148333be043b796309a62837f3552))
+* 🐛 uni-ui ployfill ([962c7d8](https://gitee.com/newgateway/vtj/commits/962c7d8ce35a4ff2584bc50ca7fa441c371c3462))
+* 🐛 uni-ui polyfill ([bfdac0d](https://gitee.com/newgateway/vtj/commits/bfdac0de17cd8b1e774d02fb216fd22c806eefc8))
+* 🐛 uniapp-ui的拓展组件引用 ([dd71af5](https://gitee.com/newgateway/vtj/commits/dd71af5b1f7c250dfcf2c3df366b49363ad73060))
+
+
+### Features
+
+* ✨ 增加uni-badge ([c917bc6](https://gitee.com/newgateway/vtj/commits/c917bc6f26659c61dad4ad372eb90a7af9a61ef0))
+* ✨ mock改为依赖控制开启 ([6d01e1a](https://gitee.com/newgateway/vtj/commits/6d01e1aa59c7a6b2b7127b136fd8fdd829e5f976))
+* ✨ uniapp 拓展组件引入 ([98cc6b9](https://gitee.com/newgateway/vtj/commits/98cc6b9d2ddc53a09ca1077061748d1e77798c84))
+
+
+
+
+
 ## [0.10.1-alpha.1](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.10.1-alpha.0...@vtj/materials@0.10.1-alpha.1) (2025-02-20)
 
 

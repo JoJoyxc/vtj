@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.6](https://gitee.com/newgateway/vtj/compare/@vtj/coder@0.10.1-alpha.5...@vtj/coder@0.10.1-alpha.6) (2025-02-24)
+
+**Note:** Version bump only for package @vtj/coder
+
+
+
+
+
+## [0.10.1-alpha.5](https://gitee.com/newgateway/vtj/compare/@vtj/coder@0.10.1-alpha.4...@vtj/coder@0.10.1-alpha.5) (2025-02-24)
+
+**Note:** Version bump only for package @vtj/coder
+
+
+
+
+
+## [0.10.1-alpha.4](https://gitee.com/newgateway/vtj/compare/@vtj/coder@0.10.1-alpha.3...@vtj/coder@0.10.1-alpha.4) (2025-02-24)
+
+**Note:** Version bump only for package @vtj/coder
+
+
+
+
+
+## [0.10.1-alpha.3](https://gitee.com/newgateway/vtj/compare/@vtj/coder@0.10.1-alpha.2...@vtj/coder@0.10.1-alpha.3) (2025-02-22)
+
+**Note:** Version bump only for package @vtj/coder
+
+
+
+
+
+## [0.10.1-alpha.2](https://gitee.com/newgateway/vtj/compare/@vtj/coder@0.10.1-alpha.1...@vtj/coder@0.10.1-alpha.2) (2025-02-22)
+
+**Note:** Version bump only for package @vtj/coder
+
+
+
+
+
 ## [0.10.1-alpha.1](https://gitee.com/newgateway/vtj/compare/@vtj/coder@0.10.1-alpha.0...@vtj/coder@0.10.1-alpha.1) (2025-02-20)
 
 

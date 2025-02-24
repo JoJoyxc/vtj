@@ -14,10 +14,17 @@ const mergeUniappToBuiltIn = (groups: AssetGroup[]) => {
 export function useAssets() {
   const engine = useEngine();
   const { components, groups, componentMap } = engine.assets;
-  const { platform = 'web' } = engine.project.value || {};
-  if (platform === 'uniapp') {
-    mergeUniappToBuiltIn(groups.value);
-  }
+
+  watch(
+    groups,
+    () => {
+      const { platform = 'web' } = engine.project.value || {};
+      if (platform === 'uniapp') {
+        mergeUniappToBuiltIn(groups.value);
+      }
+    },
+    { immediate: true }
+  );
 
   const model = reactive({} as Record<string, any>);
 

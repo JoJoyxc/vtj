@@ -1,4 +1,10 @@
-import { type App, type InjectionKey, inject, defineAsyncComponent } from 'vue';
+import {
+  type App,
+  type InjectionKey,
+  inject,
+  defineAsyncComponent,
+  version
+} from 'vue';
 import type {
   Router,
   RouteRecordName,
@@ -25,7 +31,6 @@ import {
 } from '@vtj/utils';
 import { createSchemaApis, mockApis, mockCleanup } from './apis';
 import { isVuePlugin, getMock } from '../utils';
-import { version } from '../version';
 import {
   parseDeps,
   isCSSUrl,
@@ -116,6 +121,7 @@ export class Provider extends Base {
     if (materials) {
       this.materials = materials;
     }
+
     Object.assign(this.globals, globals);
     Object.assign(this.adapter, adapter);
 
@@ -168,8 +174,8 @@ export class Provider extends Base {
     }
     this.initMock(_window);
     this.apis = createSchemaApis(apis, meta, this.adapter);
-    mockCleanup();
-    mockApis(apis);
+    mockCleanup(_window);
+    mockApis(apis, _window);
     if (project.platform !== 'uniapp') {
       this.initRouter();
     }
@@ -260,8 +266,15 @@ export class Provider extends Base {
   private initRouter() {
     const { router, project, options, adapter } = this;
     if (!router) return;
-    const { routeAppendTo, pageRouteName = 'page', routeMeta } = options;
+    const defaultPageRouteName =
+      project?.platform === 'uniapp' ? 'pages' : 'page';
+    const {
+      routeAppendTo,
+      pageRouteName = defaultPageRouteName,
+      routeMeta
+    } = options;
     const pathStart = routeAppendTo ? '' : '/';
+
     const pageRoute: RouteRecordRaw = {
       path: `${pathStart}${pageRouteName}/:id`,
       name: PAGE_ROUTE_NAME,
@@ -305,6 +318,7 @@ export class Provider extends Base {
       app.use(this.adapter.access);
     }
     app.provide(providerKey, this);
+    app.config.globalProperties.$provider = this;
     app.config.globalProperties.installed = installed;
     if (this.mode === ContextMode.Design) {
       app.config.errorHandler = (err: any, instance, info) => {
@@ -398,6 +412,7 @@ export class Provider extends Base {
       window,
       ...opts
     };
+
     const loader = createLoader({
       getDsl: async (id: string) => {
         return (await this.getDsl(id)) || null;
@@ -474,7 +489,7 @@ export interface UseProviderOptions {
 }
 
 export function useProvider(options: UseProviderOptions = {}): Provider {
-  const provider = inject(providerKey);
+  const provider = inject(providerKey, null);
   if (!provider) {
     throw new Error('Can not find provider');
   }

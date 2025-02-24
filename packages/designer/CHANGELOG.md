@@ -3,6 +3,63 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.6](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.10.1-alpha.5...@vtj/designer@0.10.1-alpha.6) (2025-02-24)
+
+**Note:** Version bump only for package @vtj/designer
+
+
+
+
+
+## [0.10.1-alpha.5](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.10.1-alpha.4...@vtj/designer@0.10.1-alpha.5) (2025-02-24)
+
+**Note:** Version bump only for package @vtj/designer
+
+
+
+
+
+## [0.10.1-alpha.4](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.10.1-alpha.3...@vtj/designer@0.10.1-alpha.4) (2025-02-24)
+
+
+### Bug Fixes
+
+* 🐛 uniapp mock ([1cf64a8](https://gitee.com/newgateway/vtj/commits/1cf64a88b69336c59db9233dbc24bf31ccdc4ecd))
+
+
+
+
+
+## [0.10.1-alpha.3](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.10.1-alpha.2...@vtj/designer@0.10.1-alpha.3) (2025-02-22)
+
+
+### Features
+
+* ✨ engine add pageRouteName option ([9c5aa80](https://gitee.com/newgateway/vtj/commits/9c5aa80b67bcd7127c9f5c569be49b00069b13b5))
+
+
+
+
+
+## [0.10.1-alpha.2](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.10.1-alpha.1...@vtj/designer@0.10.1-alpha.2) (2025-02-22)
+
+
+### Bug Fixes
+
+* 🐛 修复TS报错 ([e91fd22](https://gitee.com/newgateway/vtj/commits/e91fd2207c9e5fce9d70aff53aa960731c28d6fa))
+* 🐛 components group tab ([48b6529](https://gitee.com/newgateway/vtj/commits/48b65297ca1b78c6beac588bee036cac11444e66))
+* 🐛 ide access auth ([f259285](https://gitee.com/newgateway/vtj/commits/f25928584898144848f2781e6876a49b7a44c0d6))
+
+
+### Features
+
+* ✨ 模板管理添加tab ([8b0d71a](https://gitee.com/newgateway/vtj/commits/8b0d71ae78a24ce7d4f209a9665c11ace53bc668))
+* ✨ mock改为依赖控制开启 ([6d01e1a](https://gitee.com/newgateway/vtj/commits/6d01e1aa59c7a6b2b7127b136fd8fdd829e5f976))
+
+
+
+
+
 ## [0.10.1-alpha.1](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.10.1-alpha.0...@vtj/designer@0.10.1-alpha.1) (2025-02-20)
 
 

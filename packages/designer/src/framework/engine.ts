@@ -68,6 +68,7 @@ export interface EngineOptions {
   adapter?: ProvideAdapter;
   install?: (app: App, engine?: Engine) => void;
   pageBasePath?: string;
+  pageRouteName?: string;
 }
 
 export const SAVE_BLOCK_FILE_FINISH = 'SAVE_BLOCK_FILE_FINISH';
@@ -101,6 +102,7 @@ export class Engine extends Base {
       dependencies,
       materials,
       materialPath = './',
+      pageRouteName,
       adapter,
       install
     } = this.options;
@@ -116,6 +118,7 @@ export class Engine extends Base {
       materials,
       materialPath,
       adapter,
+      pageRouteName,
       install
     });
     this.assets = new Assets(this.service, this.provider);

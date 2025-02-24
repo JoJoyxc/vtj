@@ -1,7 +1,7 @@
 {
   "name": "@vtj/uni",
   "private": false,
-  "version": "0.10.1-alpha.1",
+  "version": "0.10.1-alpha.6",
   "type": "module",
   "sideEffects": false,
   "scripts": {
@@ -27,7 +27,6 @@
     "@vtj/cli": "workspace:~"
   },
   "exports": {
-    "./dist/style.css": "./dist/style.scss",
     ".": {
       "types": "./types/index.d.ts",
       "import": "./dist/index.mjs",

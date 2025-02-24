@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.6](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.10.1-alpha.5...@vtj/pro@0.10.1-alpha.6) (2025-02-24)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+## [0.10.1-alpha.5](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.10.1-alpha.4...@vtj/pro@0.10.1-alpha.5) (2025-02-24)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+## [0.10.1-alpha.4](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.10.1-alpha.3...@vtj/pro@0.10.1-alpha.4) (2025-02-24)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+## [0.10.1-alpha.3](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.10.1-alpha.2...@vtj/pro@0.10.1-alpha.3) (2025-02-22)
+
+**Note:** Version bump only for package @vtj/pro
+
+
+
+
+
+## [0.10.1-alpha.2](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.10.1-alpha.1...@vtj/pro@0.10.1-alpha.2) (2025-02-22)
+
+
+### Bug Fixes
+
+* 🐛 ide access auth ([f259285](https://gitee.com/newgateway/vtj/commits/f25928584898144848f2781e6876a49b7a44c0d6))
+
+
+
+
+
 ## [0.10.1-alpha.1](https://gitee.com/newgateway/vtj/compare/@vtj/pro@0.10.1-alpha.0...@vtj/pro@0.10.1-alpha.1) (2025-02-20)
 
 **Note:** Version bump only for package @vtj/pro

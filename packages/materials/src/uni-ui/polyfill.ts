@@ -37,5 +37,5 @@ if (!_Vue) {
     prototype: {}
   };
 } else {
-  _Vue.prototype = _Vue.prototype || {};
+  // _Vue.prototype = _Vue.prototype || {};
 }

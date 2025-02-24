@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.6](https://gitee.com/newgateway/vtj/compare/dev-web@0.10.1-alpha.5...dev-web@0.10.1-alpha.6) (2025-02-24)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.10.1-alpha.5](https://gitee.com/newgateway/vtj/compare/dev-web@0.10.1-alpha.4...dev-web@0.10.1-alpha.5) (2025-02-24)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.10.1-alpha.4](https://gitee.com/newgateway/vtj/compare/dev-web@0.10.1-alpha.3...dev-web@0.10.1-alpha.4) (2025-02-24)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.10.1-alpha.3](https://gitee.com/newgateway/vtj/compare/dev-web@0.10.1-alpha.2...dev-web@0.10.1-alpha.3) (2025-02-22)
+
+**Note:** Version bump only for package dev-web
+
+
+
+
+
+## [0.10.1-alpha.2](https://gitee.com/newgateway/vtj/compare/dev-web@0.10.1-alpha.1...dev-web@0.10.1-alpha.2) (2025-02-22)
+
+
+### Features
+
+* ✨ mock改为依赖控制开启 ([6d01e1a](https://gitee.com/newgateway/vtj/commits/6d01e1aa59c7a6b2b7127b136fd8fdd829e5f976))
+
+
+
+
+
 ## [0.10.1-alpha.1](https://gitee.com/newgateway/vtj/compare/dev-web@0.10.1-alpha.0...dev-web@0.10.1-alpha.1) (2025-02-20)
 
 

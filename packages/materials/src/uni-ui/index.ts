@@ -27,7 +27,7 @@ import UniEasyinput from './lib/uni-easyinput/uni-easyinput.vue';
 import UniFob from '@dcloudio/uni-ui/lib/uni-fab/uni-fab.vue';
 import UniFov from '@dcloudio/uni-ui/lib/uni-fav/uni-fav.vue';
 import UniFilePicker from '@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue';
-import UniForms from '@dcloudio/uni-ui/lib/uni-forms/uni-forms.vue';
+import UniForms from './lib/uni-forms/uni-forms.vue';
 //? 条件编译 出现两个组件
 // import UniFormsItem from '@dcloudio/uni-ui/lib/uni-forms-item/uni-forms-item.vue';
 import UniFormsItem from './lib/uni-forms-item/uni-forms-item.vue';
