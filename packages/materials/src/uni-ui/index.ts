@@ -13,7 +13,8 @@ import UniCountdown from '@dcloudio/uni-ui/lib/uni-countdown/uni-countdown.vue';
 import UniDataCheckbox from '@dcloudio/uni-ui/lib/uni-data-checkbox/uni-data-checkbox.vue';
 import UniDataPicker from '@dcloudio/uni-ui/lib/uni-data-picker/uni-data-picker.vue';
 import UniDataPickerview from '@dcloudio/uni-ui/lib/uni-data-pickerview/uni-data-pickerview.vue';
-import UniDataSelect from '@dcloudio/uni-ui/lib/uni-data-select/uni-data-select.vue';
+// import UniDataSelect from '@dcloudio/uni-ui/lib/uni-data-select/uni-data-select.vue';
+import UniDataSelect from './lib/uni-data-select/uni-data-select.vue';
 import UniDateformat from '@dcloudio/uni-ui/lib/uni-dateformat/uni-dateformat.vue';
 //? 编译器 原因： 声明了变量多次。第618-620行。
 // import UniDatetimePicker from '@dcloudio/uni-ui/lib/uni-datetime-picker/uni-datetime-picker.vue';
