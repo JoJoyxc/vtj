@@ -39,7 +39,31 @@ const desc: MaterialDescription[] = [
       }
     ],
     events: ['selection-change'],
-    snippet: {}
+    snippet: {
+      props: {
+        border: true,
+        stripe: true,
+        emptyText: '暂无更多数据'
+      },
+      children: [
+        {
+          name: 'UniTr',
+          children: [
+            { name: 'UniTh', props: { align: 'center' }, children: '日期' },
+            { name: 'UniTh', props: { align: 'center' }, children: '姓名' },
+            { name: 'UniTh', props: { align: 'center' }, children: '地址' }
+          ]
+        },
+        {
+          name: 'UniTr',
+          children: [
+            { name: 'UniTd', children: '2020-10-20' },
+            { name: 'UniTd', children: 'Jason' },
+            { name: 'UniTd', children: '北京市海淀区' }
+          ]
+        }
+      ]
+    }
   },
   {
     name: 'UniTr',

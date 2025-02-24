@@ -168,7 +168,7 @@ const desc: MaterialDescription[] = [
     }
   },
   {
-    name: 'UniListItemChat',
+    name: 'UniListChat',
     label: '列表聊天项',
     categoryId: 'ext',
     props: [
@@ -241,7 +241,18 @@ const desc: MaterialDescription[] = [
       }
     ],
     events: ['click'],
-    slots: ['default']
+    slots: ['default'],
+    snippet: {
+      props: {
+        avatarCircle: true,
+        badgeText: 12,
+        title: 'uni-app',
+        avatar:
+          'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg',
+        note: '您收到一条新的消息',
+        time: '2020-02-02 20:20'
+      }
+    }
   }
 ];
 

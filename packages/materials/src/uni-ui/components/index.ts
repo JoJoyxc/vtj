@@ -28,6 +28,7 @@ import grid from './grid';
 import group from './group';
 import icons from './icons';
 import indexedList from './indexedList';
+import link from './link';
 import list from './list';
 import loadMore from './loadMore';
 import navbar from './navbar';
@@ -74,6 +75,7 @@ const components: MaterialDescription[] = [
   group,
   icons,
   indexedList,
+  link,
   list,
   loadMore,
   navbar,
