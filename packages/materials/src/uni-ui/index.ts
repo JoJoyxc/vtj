@@ -1,6 +1,7 @@
 import './polyfill';
 import type { App } from 'vue';
 import './lib/uni.scss';
+
 import UniBadge from '@dcloudio/uni-ui/lib/uni-badge/uni-badge.vue';
 import UniBreadcrumb from '@dcloudio/uni-ui/lib/uni-breadcrumb/uni-breadcrumb.vue';
 import UniBreadcrumbItem from '@dcloudio/uni-ui/lib/uni-breadcrumb-item/uni-breadcrumb-item.vue';
@@ -87,6 +88,8 @@ import UniTitle from '@dcloudio/uni-ui/lib/uni-title/uni-title.vue';
 import UniTooltip from '@dcloudio/uni-ui/lib/uni-tooltip/uni-tooltip.vue';
 import UniTransition from '@dcloudio/uni-ui/lib/uni-transition/uni-transition.vue';
 
+import UniuniPopupDialog from './lib/uni-popup-dialog/uni-popup-dialog.vue';
+
 // 62
 const components = {
   UniBadge,
@@ -150,7 +153,8 @@ const components = {
   UniTag,
   UniTitle,
   UniTooltip,
-  UniTransition
+  UniTransition,
+  UniuniPopupDialog
 };
 
 export {
@@ -215,7 +219,8 @@ export {
   UniTag,
   UniTitle,
   UniTooltip,
-  UniTransition
+  UniTransition,
+  UniuniPopupDialog
 };
 
 export function install(app: App) {

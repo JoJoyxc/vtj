@@ -6,6 +6,7 @@ import * as Vue from '@dcloudio/uni-h5-vue';
 //@ts-ignore
 import * as UniH5 from '@dcloudio/uni-h5';
 import App from './components/UniRoot.vue';
+import SubView from './components/SubView.vue';
 
 const manifestJson: any = {};
 
@@ -61,6 +62,9 @@ const dsl: BlockSchema = {
             }
           },
           children: 'Page 1'
+        },
+        {
+          name: 'SubView'
         }
       ]
     }
@@ -85,45 +89,7 @@ const dsl: BlockSchema = {
   }
 };
 
-const dsl2: BlockSchema = {
-  name: 'Page2',
-  nodes: [
-    {
-      name: 'View',
-      children: [
-        {
-          name: 'Button',
-          props: {
-            type: 'primary'
-          },
-          events: {
-            click: {
-              name: 'click',
-              handler: {
-                type: 'JSFunction',
-                value: `
-                ()=>{
-                  uni.navigateTo({
-                    url: '/'
-                  })
-                }
-                `
-              }
-            }
-          },
-          children: 'Page 2'
-        }
-      ]
-    }
-  ]
-};
-
-const { renderer } = createRenderer({ dsl, components: {} });
-
-const { renderer: page2Renderer } = createRenderer({
-  dsl: dsl2,
-  components: {}
-});
+const { renderer } = createRenderer({ dsl, components: { SubView } });
 
 const app = setupUniApp({
   Vue,
@@ -140,14 +106,6 @@ const app = setupUniApp({
         navigationBarTitleText: 'Page 1'
       },
       home: false
-    },
-    {
-      id: '2',
-      path: '/pages/2',
-      component: page2Renderer,
-      style: {
-        navigationBarTitleText: 'Page 2'
-      }
     }
   ]
 });

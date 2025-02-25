@@ -1,4 +1,4 @@
-import type { App } from 'vue';
+import { type App } from 'vue';
 
 // import { toKebabCase } from '../utils';
 export function install(app: App, UniH5?: any) {
@@ -44,6 +44,7 @@ export function install(app: App, UniH5?: any) {
   components.forEach((k) => {
     const v = UniH5[k];
     app.component(k, v);
-    // app.component(toKebabCase(k), v);
+    // customElements.define(toKebabCase(k), defineCustomElement(v));
+    // defineCustomElement.app.component(toKebabCase(k), v);
   });
 }

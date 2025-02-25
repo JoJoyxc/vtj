@@ -1,4 +1,4 @@
-// import './index.scss';
+import './index.scss';
 export { version } from './version';
 export * from './constants';
 export * from './types';

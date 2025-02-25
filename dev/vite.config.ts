@@ -1,9 +1,21 @@
 import { createViteConfig } from '@vtj/cli';
 import { createDevTools } from '@vtj/local';
-import { resolve } from 'path';
+import fs from 'fs-extra';
 import proxy from './proxy.config';
 const isExtension = !!process.env.Extension;
 const isUni = !!process.env.uni;
+
+const UniUI = {
+  name: 'transform-file',
+  load(id: string) {
+    if (id.includes('SubView.vue')) {
+      const content = fs.readFileSync(id, 'utf-8');
+      // console.log(content);
+
+      return content.replace('button', 'Button');
+    }
+  }
+};
 
 function creator() {
   if (isExtension) {
@@ -66,7 +78,9 @@ function creator() {
         copy: false,
         devMode: true,
         packagesDir: '../packages'
-      })
+      }),
+
+      isUni ? UniUI : undefined
     ],
     alias: isUni
       ? {

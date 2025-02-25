@@ -9,6 +9,7 @@ export interface PublishTemplateDto {
   cover: Blob;
   share: boolean;
   version: string;
+  platform: string;
   latest?: string;
   dsl: string;
   id?: string;
@@ -25,6 +26,7 @@ export interface TemplateDto {
   userId: string;
   category: string;
   latest: string;
+  platform: string;
 }
 
 export function useOpenApi() {

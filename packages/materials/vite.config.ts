@@ -1,5 +1,6 @@
 import { createViteConfig } from '@vtj/cli';
-
+import fs from 'fs-extra';
+import { kebabCase } from 'lodash-es';
 const BUILD_TYPE = process.env.BUILD_TYPE || '';
 
 const materials = {
@@ -57,6 +58,69 @@ const materials = {
     entry: 'src/uni-ui/components/index.ts',
     library: 'UniUIMaterial',
     outDir: 'dist/assets/uni-ui'
+  }
+};
+
+const UniComponents = [
+  'View',
+  'ScrollView',
+  'Swiper',
+  'MovableArea',
+  'MovableView',
+  'CoverView',
+  'CoverImage',
+  'Icon',
+  'Text',
+  'RichText',
+  'Progress',
+  'Button',
+  'CheckboxGroup',
+  'Checkbox',
+  'Editor',
+  'Form',
+  'Input',
+  'Label',
+  'Picker',
+  'PickerView',
+  'RadioGroup',
+  'Radio',
+  'Slider',
+  'Switch',
+  'Textarea',
+  'Navigator',
+  'Image',
+  'Video',
+  'Map',
+  'Canvas',
+  'WebView',
+  'PickerViewColumn',
+  'ResizeSensor',
+  'SwiperItem'
+];
+
+const UniComponentsKebabCase = UniComponents.map((n) => {
+  return {
+    name: n,
+    value: kebabCase(n)
+  };
+});
+
+const UinUI = {
+  name: 'uni-ui-loader',
+  load(id: string) {
+    if (
+      id.includes('/materials/src/uni-ui/lib') ||
+      id.includes('@dcloudio/uni-ui')
+    ) {
+      let content = fs.readFileSync(id, 'utf-8');
+      for (const { name, value } of UniComponentsKebabCase) {
+        content = content
+          .replace(new RegExp(`<${value}`, 'g'), `<${name}`)
+          .replace(new RegExp(`</${value}`, 'g'), `</${name}`);
+      }
+
+      return content;
+    }
   }
 };
 
@@ -149,7 +213,8 @@ $uni-font-size-paragraph: 15px;
         }
       };
       return cfg;
-    }
+    },
+    plugins: [UinUI]
   });
 }
 
