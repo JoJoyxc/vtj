@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.7](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.10.1-alpha.6...@vtj/materials@0.10.1-alpha.7) (2025-02-25)
+
+
+### Bug Fixes
+
+* 🐛 uni-ui ([eb90a85](https://gitee.com/newgateway/vtj/commits/eb90a85ed74658162ddf1c08eca746663ee7793a))
+
+
+### Features
+
+* ✨ 导入 uniapp 拓展组件 ([19ce940](https://gitee.com/newgateway/vtj/commits/19ce940129c350ee68162325bdc1f98ecf680a12))
+* ✨ 导入 uniapp 拓展组件 文件 ([c2d5b5b](https://gitee.com/newgateway/vtj/commits/c2d5b5b5681515c56bad5d239588a89eca489b07))
+* ✨ 增加 Uniapp 拓展组件物料 ([4484202](https://gitee.com/newgateway/vtj/commits/4484202ecf68d6a94c924d3f325ea5df9ac5e53d))
+* ✨ uniapp 拓展物料 ([eefdc75](https://gitee.com/newgateway/vtj/commits/eefdc751f6166eca962fdc3c49eb0a08353b708c))
+* ✨ uniapp 拓展组件 ([7979655](https://gitee.com/newgateway/vtj/commits/797965598a20dcc0ad1eeb0c84f1356b1e8203e7))
+* ✨ uniapp 拓展组件 ([3412026](https://gitee.com/newgateway/vtj/commits/3412026e45b3f3643d15a356107c7ce27847edd1))
+
+
+
+
+
 ## [0.10.1-alpha.6](https://gitee.com/newgateway/vtj/compare/@vtj/materials@0.10.1-alpha.5...@vtj/materials@0.10.1-alpha.6) (2025-02-24)
 
 **Note:** Version bump only for package @vtj/materials
