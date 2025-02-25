@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1-alpha.7](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.10.1-alpha.6...@vtj/designer@0.10.1-alpha.7) (2025-02-25)
+
+
+### Bug Fixes
+
+* 🐛 uni-ui ([eb90a85](https://gitee.com/newgateway/vtj/commits/eb90a85ed74658162ddf1c08eca746663ee7793a))
+
+
+### Features
+
+* ✨ template 支持按platfrom查询 ([d48f7a6](https://gitee.com/newgateway/vtj/commits/d48f7a6274bfd4def7f7ef5d3575bdd46d4c8cee))
+
+
+
+
+
 ## [0.10.1-alpha.6](https://gitee.com/newgateway/vtj/compare/@vtj/designer@0.10.1-alpha.5...@vtj/designer@0.10.1-alpha.6) (2025-02-24)
 
 **Note:** Version bump only for package @vtj/designer
