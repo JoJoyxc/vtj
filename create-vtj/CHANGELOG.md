@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.2](https://gitee.com/newgateway/vtj/compare/create-vtj@0.10.1...create-vtj@0.10.2) (2025-02-26)
+
+
+### Bug Fixes
+
+* 🐛 调整uniapp本地文件存储目录 ([fcee7aa](https://gitee.com/newgateway/vtj/commits/fcee7aa537d68dfe9f9a0a03f9516c64810462b7))
+
+
+
+
+
 ## [0.10.1](https://gitee.com/newgateway/vtj/compare/create-vtj@0.10.1-alpha.3...create-vtj@0.10.1) (2025-02-25)
 
 **Note:** Version bump only for package create-vtj
