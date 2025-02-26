@@ -19,8 +19,8 @@ import UniDateformat from '@dcloudio/uni-ui/lib/uni-dateformat/uni-dateformat.vu
 import UniDatetimePicker from './lib/uni-datetime-picker/uni-datetime-picker.vue';
 import UniDrawer from '@dcloudio/uni-ui/lib/uni-drawer/uni-drawer.vue';
 import UniEasyinput from './lib/uni-easyinput/uni-easyinput.vue';
-import UniFob from '@dcloudio/uni-ui/lib/uni-fab/uni-fab.vue';
-import UniFov from '@dcloudio/uni-ui/lib/uni-fav/uni-fav.vue';
+import UniFab from '@dcloudio/uni-ui/lib/uni-fab/uni-fab.vue';
+import UniFav from './lib/uni-fav/uni-fav.vue';
 import UniFilePicker from './lib/uni-file-picker/uni-file-picker.vue';
 import UniForms from './lib/uni-forms/uni-forms.vue';
 import UniFormsItem from './lib/uni-forms-item/uni-forms-item.vue';
@@ -85,8 +85,8 @@ const components = {
   UniDatetimePicker,
   UniDrawer,
   UniEasyinput,
-  UniFob,
-  UniFov,
+  UniFab,
+  UniFav,
   UniFilePicker,
   UniForms,
   UniFormsItem,
@@ -151,8 +151,8 @@ export {
   UniDatetimePicker,
   UniDrawer,
   UniEasyinput,
-  UniFob,
-  UniFov,
+  UniFab,
+  UniFav,
   UniFilePicker,
   UniForms,
   UniFormsItem,
