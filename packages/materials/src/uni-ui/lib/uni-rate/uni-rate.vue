@@ -44,7 +44,7 @@
 
 <script>
   // #ifdef APP-NVUE
-  const dom = uni.requireNativePlugin('dom');
+  // const dom = uni.requireNativePlugin('dom');
   // #endif
   /**
    * Rate 评分
@@ -229,7 +229,7 @@
         if (!this.IsPC()) return;
         if (this.userRated) return;
         if (this.userMouseFristMove) {
-          console.log('---mousemove----', this.valueSync);
+          // console.log('---mousemove----', this.valueSync);
           this.userLastRate = this.valueSync;
           this.userMouseFristMove = false;
         }
