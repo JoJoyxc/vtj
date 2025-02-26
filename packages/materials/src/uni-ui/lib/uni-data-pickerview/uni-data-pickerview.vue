@@ -244,8 +244,9 @@
   }
 
   .selected-item {
-    margin-left: 10px;
-    margin-right: 10px;
+    // 增加注释
+    // margin-left: 10px;
+    // margin-right: 10px;
     padding: 12px 0;
     text-align: center;
     /* #ifndef APP-NVUE */

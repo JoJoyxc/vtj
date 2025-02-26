@@ -373,7 +373,7 @@
   }
 
   .selected-area {
-    flex: 1;
+    /* flex: 1; */
     overflow: hidden;
     /* #ifndef APP-NVUE */
     display: flex;
@@ -386,7 +386,7 @@
     margin-right: auto;
     /* #endif */
     /* #ifdef APP-NVUE */
-    width: 40px;
+    /* width: 40px; */
     /* #endif */
   }
 
@@ -461,7 +461,7 @@
     top: 20%;
     /* #endif */
     /* #ifdef APP-NVUE */
-    top: 200px;
+    /* top: 200px; */
     /* #endif */
     right: 0;
     bottom: 0;
@@ -475,7 +475,7 @@
     z-index: 102;
     overflow: hidden;
     /* #ifdef APP-NVUE */
-    width: 750rpx;
+    /* width: 750rpx; */
     /* #endif */
   }
 
