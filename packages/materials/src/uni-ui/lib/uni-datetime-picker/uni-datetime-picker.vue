@@ -382,16 +382,16 @@
         }
       },
       // #ifndef VUE3
-      value: {
-        immediate: true,
-        handler(newVal) {
-          if (this.isEmitValue) {
-            this.isEmitValue = false;
-            return;
-          }
-          this.initPicker(newVal);
-        }
-      },
+      // value: {
+      //   immediate: true,
+      //   handler(newVal) {
+      //     if (this.isEmitValue) {
+      //       this.isEmitValue = false;
+      //       return;
+      //     }
+      //     this.initPicker(newVal);
+      //   }
+      // },
       // #endif
       // #ifdef VUE3
       modelValue: {

@@ -47,7 +47,7 @@ import UniPopupShare from '@dcloudio/uni-ui/lib/uni-popup-share/uni-popup-share.
 import UniRate from './lib/uni-rate/uni-rate.vue';
 import UniRow from './lib/uni-row/uni-row.vue';
 import UniCol from './lib/uni-col/uni-col.vue';
-import UniSearchBar from '@dcloudio/uni-ui/lib/uni-search-bar/uni-search-bar.vue';
+import UniSearchBar from './lib/uni-search-bar/uni-search-bar.vue';
 import UniSection from '@dcloudio/uni-ui/lib/uni-section/uni-section.vue';
 import UniSegmentedControl from '@dcloudio/uni-ui/lib/uni-segmented-control/uni-segmented-control.vue';
 import UniSteps from '@dcloudio/uni-ui/lib/uni-steps/uni-steps.vue';

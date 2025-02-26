@@ -1,9 +1,9 @@
 let bindIngXMixins = {};
 
 // #ifdef APP-NVUE
-const BindingX = uni.requireNativePlugin('bindingx');
-const dom = uni.requireNativePlugin('dom');
-const animation = uni.requireNativePlugin('animation');
+// const BindingX = uni.requireNativePlugin('bindingx');
+// const dom = uni.requireNativePlugin('dom');
+// const animation = uni.requireNativePlugin('animation');
 
 bindIngXMixins = {
   data() {
@@ -36,10 +36,11 @@ bindIngXMixins = {
     }
   },
   mounted() {
-    this.box = this.getEl(this.$refs['selector-box--hock']);
-    this.selector = this.getEl(this.$refs['selector-content--hock']);
-    this.leftButton = this.getEl(this.$refs['selector-left-button--hock']);
-    this.rightButton = this.getEl(this.$refs['selector-right-button--hock']);
+    console.log('this', this);
+    // this.box = this.getEl(this.$refs['selector-box--hock']);
+    // this.selector = this.getEl(this.$refs['selector-content--hock']);
+    // this.leftButton = this.getEl(this.$refs['selector-left-button--hock']);
+    // this.rightButton = this.getEl(this.$refs['selector-right-button--hock']);
     this.init();
   },
   beforeDestroy() {
@@ -264,10 +265,10 @@ bindIngXMixins = {
      * 获取ref
      * @param {Object} el
      */
-    getEl(el) {
-      console.log('getEl', el);
-      return el.ref;
-    },
+    // getEl(el) {
+    //   console.log('getEl', el);
+    //   return el.ref;
+    // },
     /**
      * 获取节点信息
      */
