@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.3](https://gitee.com/newgateway/vtj/compare/create-vtj@0.10.2...create-vtj@0.10.3) (2025-02-26)
+
+
+### Bug Fixes
+
+* 🐛 project gitignore ([2794a00](https://gitee.com/newgateway/vtj/commits/2794a00ca5254f4e08028dba1bf094b003585a3d))
+
+
+
+
+
 ## [0.10.2](https://gitee.com/newgateway/vtj/compare/create-vtj@0.10.1...create-vtj@0.10.2) (2025-02-26)
 
 
