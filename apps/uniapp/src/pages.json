@@ -1,9 +1,9 @@
 {
   "pages": [
     {
-      "path": "pages/45ti8unnk",
+      "path": "pages/45tiwi8z7",
       "style": {
-        "navigationBarTitleText": "我的标题"
+        "navigationBarTitleText": "Title"
       },
       "needLogin": false,
       "vtj": true
