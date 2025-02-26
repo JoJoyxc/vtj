@@ -382,16 +382,16 @@
         }
       },
       // #ifndef VUE3
-      // value: {
-      //   immediate: true,
-      //   handler(newVal) {
-      //     if (this.isEmitValue) {
-      //       this.isEmitValue = false;
-      //       return;
-      //     }
-      //     this.initPicker(newVal);
-      //   }
-      // },
+      value: {
+        immediate: true,
+        handler(newVal) {
+          if (this.isEmitValue) {
+            this.isEmitValue = false;
+            return;
+          }
+          this.initPicker(newVal);
+        }
+      },
       // #endif
       // #ifdef VUE3
       modelValue: {
@@ -616,7 +616,7 @@
         // #endif
         // #ifndef MP-WEIXIN
         const { windowWidth } = uni.getSystemInfoSync();
-        // // #endif
+        // #endif
         this.isPhone = windowWidth <= 500;
         this.windowWidth = windowWidth;
       },
