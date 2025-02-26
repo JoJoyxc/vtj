@@ -65,8 +65,6 @@ import UniTitle from '@dcloudio/uni-ui/lib/uni-title/uni-title.vue';
 import UniTooltip from '@dcloudio/uni-ui/lib/uni-tooltip/uni-tooltip.vue';
 import UniTransition from './lib/uni-transition/uni-transition.vue';
 
-import UniuniPopupDialog from './lib/uni-popup-dialog/uni-popup-dialog.vue';
-
 const components = {
   UniBadge,
   UniBreadcrumb,
@@ -129,8 +127,7 @@ const components = {
   UniTag,
   UniTitle,
   UniTooltip,
-  UniTransition,
-  UniuniPopupDialog
+  UniTransition
 };
 
 export {
@@ -195,8 +192,7 @@ export {
   UniTag,
   UniTitle,
   UniTooltip,
-  UniTransition,
-  UniuniPopupDialog
+  UniTransition
 };
 
 export function install(app: App) {
