@@ -63,7 +63,7 @@ import UniTd from './lib/uni-td/uni-td.vue';
 import UniTag from '@dcloudio/uni-ui/lib/uni-tag/uni-tag.vue';
 import UniTitle from '@dcloudio/uni-ui/lib/uni-title/uni-title.vue';
 import UniTooltip from '@dcloudio/uni-ui/lib/uni-tooltip/uni-tooltip.vue';
-import UniTransition from '@dcloudio/uni-ui/lib/uni-transition/uni-transition.vue';
+import UniTransition from './lib/uni-transition/uni-transition.vue';
 
 import UniuniPopupDialog from './lib/uni-popup-dialog/uni-popup-dialog.vue';
 
