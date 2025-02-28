@@ -49,7 +49,6 @@ function createPageMeta(pagesJson: PagesJson, route: UniRoute, index: number) {
   const tabBar = tabBarList[tabBarIndex];
   const isTabBar = !!tabBar;
   const isEntry = index === 0;
-  console.log(route, tabBarList, tabBarIndex);
   return {
     isTabBar,
     tabBarIndex,
