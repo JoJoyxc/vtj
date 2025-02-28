@@ -41,11 +41,15 @@ function createPageComponent(Vue: any, UniH5: any, loader: any) {
 }
 
 function createPageMeta(pagesJson: PagesJson, route: UniRoute, index: number) {
-  const { path, style = {}, meta = {}, home } = route;
+  const { path, style = {}, meta = {}, home, id } = route;
   const tabBarList = pagesJson.tabBar?.list || [];
-  const tabBarIndex = tabBarList.findIndex((tab) => tab.pagePath === path);
-  const isTabBar = tabBarIndex > -1;
+  const tabBarIndex = tabBarList.findIndex((tab) => {
+    return tab.pagePath === path || tab.pagePath?.endsWith(id);
+  });
+  const tabBar = tabBarList[tabBarIndex];
+  const isTabBar = !!tabBar;
   const isEntry = index === 0;
+  console.log(route, tabBarList, tabBarIndex);
   return {
     isTabBar,
     tabBarIndex,
@@ -56,7 +60,7 @@ function createPageMeta(pagesJson: PagesJson, route: UniRoute, index: number) {
       ...getNavigationBar(style)
     },
     isNVue: false,
-    route: path,
+    route: tabBar ? tabBar.pagePath : path,
     ...meta
   };
 }
