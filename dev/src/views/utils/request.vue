@@ -28,7 +28,7 @@
           loading.close();
         }
       },
-      showError(msg, e) {
+      showError(msg) {
         ElNotification.warning({
           message: msg
         });
