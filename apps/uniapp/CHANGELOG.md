@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.9](https://gitee.com/newgateway/vtj/compare/vtj-project-uniapp@0.10.8...vtj-project-uniapp@0.10.9) (2025-03-04)
+
+**Note:** Version bump only for package vtj-project-uniapp
+
+
+
+
+
+## [0.10.8](https://gitee.com/newgateway/vtj/compare/vtj-project-uniapp@0.10.7...vtj-project-uniapp@0.10.8) (2025-03-04)
+
+**Note:** Version bump only for package vtj-project-uniapp
+
+
+
+
+
+## [0.10.7](https://gitee.com/newgateway/vtj/compare/vtj-project-uniapp@0.10.5...vtj-project-uniapp@0.10.7) (2025-03-04)
+
+
+### Bug Fixes
+
+* 🐛 uniapp provider undefined ([e150d60](https://gitee.com/newgateway/vtj/commits/e150d60e32736747e203473c8fb6e58fd12e4d79))
+
+
+
+
+
 ## [0.10.6](https://gitee.com/newgateway/vtj/compare/vtj-project-uniapp@0.10.5...vtj-project-uniapp@0.10.6) (2025-02-28)
 
 **Note:** Version bump only for package vtj-project-uniapp
